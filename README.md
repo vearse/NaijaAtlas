@@ -1,6 +1,6 @@
-# Explore Nigeria
+# NaijaAtlas
 
-Interactive one-page map of Nigeria — states, LGAs, and geopolitical regions.
+Interactive map of Nigeria — states, LGAs, and geopolitical regions.
 
 ## Stack
 
@@ -18,6 +18,8 @@ npm run download:geo   # fetch SALB + temikeezy source data
 npm run build:geo      # process boundaries → public/geo/
 npm run dev
 ```
+
+Set `NEXT_PUBLIC_SITE_URL` to your production URL (e.g. `https://naijaatlas.com`) for SEO canonical links.
 
 ## Data
 

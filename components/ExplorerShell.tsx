@@ -61,7 +61,7 @@ export default function ExplorerShell({
               </div>
               <div>
                 <h1 className="text-lg lg:text-xl font-bold text-slate-900 tracking-tight leading-none">
-                  Explore Nigeria
+                  NaijaAtlas
                 </h1>
                 <p className="text-[11px] lg:text-xs text-slate-500 mt-0.5 hidden sm:block">
                   36 states · 774 LGAs · 6 regions

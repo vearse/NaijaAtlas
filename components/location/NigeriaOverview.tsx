@@ -13,9 +13,9 @@ export default function NigeriaOverview({ states }: NigeriaOverviewProps) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-bold text-slate-900">Nigeria</h2>
+        <h2 className="text-xl font-bold text-slate-900">NaijaAtlas</h2>
         <p className="text-sm text-slate-600 mt-1 leading-relaxed">
-          Explore all 36 states, the Federal Capital Territory, and their local
+          Map all 36 states, the Federal Capital Territory, and their local
           government areas. Click a state on the map, pick a region above, or use
           search to drill down.
         </p>

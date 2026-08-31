@@ -74,7 +74,7 @@ export default function LocationPanel({
         ? `${selectedStates.length} states`
         : activeRegion
           ? activeRegion.name
-          : "Explore Nigeria";
+          : "NaijaAtlas";
 
   const sheetSubtitle = lgaLoc
     ? `${lgaLoc.stateName} · LGA`
