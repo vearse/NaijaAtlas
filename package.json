@@ -1,0 +1,44 @@
+{
+  "name": "explore-nigeria",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "prebuild": "node scripts/verify-geo.mjs",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "build:geo": "tsx scripts/geo-processing/fetch-neighbors.ts && tsx scripts/geo-processing/build-all.ts",
+    "download:geo": "tsx scripts/geo-processing/download-sources.ts"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "d3": "^7.9.0",
+    "fuse.js": "^7.0.0",
+    "maplibre-gl": "^4.7.1",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.6.0",
+    "zustand": "^5.0.2"
+  },
+  "devDependencies": {
+    "@turf/turf": "^7.1.0",
+    "@types/d3": "^7.4.3",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "adm-zip": "^0.5.16",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.16.0",
+    "eslint-config-next": "^15.1.0",
+    "postcss": "^8.4.49",
+    "shapefile": "^0.6.6",
+    "tailwindcss": "^3.4.16",
+    "topojson-client": "^3.1.0",
+    "topojson-server": "^3.0.1",
+    "topojson-simplify": "^3.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
