@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import LocationSearch from "@/components/search/LocationSearch";
+import PoweredByIseOwo from "@/components/PoweredByIseOwo";
 import RegionFilter from "@/components/map/RegionFilter";
 import SelectedStatesBar from "@/components/map/SelectedStatesBar";
 import MapControls from "@/components/map/MapControls";
@@ -67,7 +68,12 @@ export default function ExplorerShell({
                 </p>
               </div>
             </div>
-            <LocationSearch />
+            <div className="flex flex-col items-stretch lg:items-end gap-1.5 w-full lg:w-auto lg:max-w-md">
+              <LocationSearch />
+              <div className="flex justify-end">
+                <PoweredByIseOwo />
+              </div>
+            </div>
           </div>
           <div className="mt-2 lg:mt-4 space-y-1.5 lg:space-y-2">
             <p className="hidden lg:block text-[10px] font-semibold uppercase tracking-widest text-slate-400">

@@ -3,3 +3,4 @@ node_modules/
 data/geo/source/salb/extracted_*/
 *.log
 .DS_Store
+.cursor/
