@@ -81,8 +81,9 @@ export default function StateDetails({
 
       <ShowLgasButton stateId={location.id} stateName={location.name} />
 
-      <p className="text-xs text-slate-500 -mt-2 text-center">
-        Or double-click {location.name} on the map
+      <p className="text-xs text-slate-500 -mt-2 text-center leading-relaxed">
+        Double-click {location.name} on the map to show LGAs, or use the button
+        above.
       </p>
 
       <p className="text-sm text-slate-600 leading-relaxed">

@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function PoweredByIseOwo() {
   return (
     <Link
-      href="https://iseowoapp.com"
+      href="https://iseowoapp.com?utm_source=naija-atlas"
       target="_blank"
       rel="noopener noreferrer"
       className="inline-flex items-center gap-2 rounded-lg px-2 py-1.5 text-slate-500 hover:text-slate-700 hover:bg-slate-50 transition-colors shrink-0"

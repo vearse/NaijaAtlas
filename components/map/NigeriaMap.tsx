@@ -7,24 +7,30 @@ import { useMapStore } from "@/lib/store/mapStore";
 import {
   BASE_STYLE,
   GEO_SOURCES,
+  DRAGGED_STATE_SOURCE,
   createNeighborLayers,
   createRegionLayers,
   createStateLayers,
   createStateLabelLayer,
   createCountryLabelLayer,
-  createLgaFillLineLayers,
-  createLgaLabelLayer,
+  createDraggedStateLayers,
+  addLgaStateLayers,
+  removeLgaStateLayers,
+  stackLgaLayers,
+  stackAllLgaLayers,
+  lgaLayersReady,
   geoSourceUrl,
   lgaSourceId,
-  lgaFillLayerId,
-  lgaLineLayerId,
-  lgaLabelLayerId,
-  lgaSourceSpec,
 } from "./mapLayers";
 import MapTooltip from "./MapTooltip";
 import MapLoadingBadge from "./MapLoadingBadge";
 import { createHoverController } from "@/lib/map/useHoverHighlight";
 import { queryPriorityLayers } from "@/lib/map/interaction";
+import {
+  cloneGeometry,
+  translateGeometry,
+  withExcludeState,
+} from "@/lib/map/dragStateGeometry";
 import {
   NIGERIA_BOUNDS,
   WEST_AFRICA_BOUNDS,
@@ -48,13 +54,18 @@ type HitKind = "lga" | "state" | "region";
 
 function classifyFeature(layerId: string): HitKind | null {
   if (layerId.includes("-fill") && layerId.startsWith("lgas-")) return "lga";
+  if (layerId.includes("-line") && layerId.startsWith("lgas-")) return "lga";
   if (layerId.includes("-labels") && layerId.startsWith("lgas-")) return "lga";
   if (layerId === "states-fill" || layerId === "states-labels") return "state";
   if (layerId === "regions-fill") return "region";
   return null;
 }
 
-export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
+export default function NigeriaMap({
+  states,
+  regions,
+  lgas,
+}: NigeriaMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const hoverRef = useRef<ReturnType<typeof createHoverController> | null>(null);
@@ -66,6 +77,15 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
   const loadLgaLayerRef = useRef<(stateId: string) => Promise<void>>(async () => {});
   const regionsRef = useRef(regions);
   regionsRef.current = regions;
+  const adm1FeaturesRef = useRef<Map<string, GeoJSON.Feature>>(new Map());
+  const dragHandlersBoundRef = useRef(false);
+  const draggedBaseGeometryRef = useRef<GeoJSON.Geometry | null>(null);
+  const draggedFeaturePropsRef = useRef<GeoJSON.GeoJsonProperties>({});
+  const dragSessionRef = useRef<{
+    active: boolean;
+    startLngLat: maplibregl.LngLat | null;
+    moved: boolean;
+  }>({ active: false, startLngLat: null, moved: false });
 
   const [tooltip, setTooltip] = useState<{
     name: string;
@@ -84,6 +104,8 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
   const lgaVisibleStateIds = useMapStore((s) => s.lgaVisibleStateIds);
   const selectedLgaId = useMapStore((s) => s.selectedLgaId);
+  const draggedStateId = useMapStore((s) => s.draggedStateId);
+  const dragModeStateId = useMapStore((s) => s.dragModeStateId);
   const activeRegionId = useMapStore((s) => s.activeRegionId);
   const resetCounter = useMapStore((s) => s.resetCounter);
   const loadedLgaRef = useRef(new Set<string>());
@@ -168,7 +190,7 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
       const store = useMapStore.getState();
 
       if (hit.kind === "lga") {
-        store.setSelectedLga(id);
+        store.setSelectedLga(store.selectedLgaId === id ? null : id);
         return;
       }
 
@@ -210,6 +232,34 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
 
   const handleMapMove = useCallback(
     (map: maplibregl.Map, e: maplibregl.MapMouseEvent) => {
+      const drag = dragSessionRef.current;
+      if (drag.active && drag.startLngLat && draggedBaseGeometryRef.current) {
+        const dLng = e.lngLat.lng - drag.startLngLat.lng;
+        const dLat = e.lngLat.lat - drag.startLngLat.lat;
+        if (Math.abs(dLng) > 0.0001 || Math.abs(dLat) > 0.0001) {
+          drag.moved = true;
+        }
+
+        const source = map.getSource(DRAGGED_STATE_SOURCE) as
+          | maplibregl.GeoJSONSource
+          | undefined;
+        if (source && draggedBaseGeometryRef.current) {
+          const newGeometry = translateGeometry(
+            draggedBaseGeometryRef.current,
+            dLng,
+            dLat
+          );
+          source.setData({
+            type: "Feature",
+            properties: draggedFeaturePropsRef.current,
+            geometry: newGeometry,
+          });
+          draggedBaseGeometryRef.current = cloneGeometry(newGeometry);
+          dragSessionRef.current.startLngLat = e.lngLat;
+        }
+        return;
+      }
+
       const hit = pickTopFeature(map, e.point);
 
       if (!hit) {
@@ -219,11 +269,15 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
         return;
       }
 
-      map.getCanvas().style.cursor = "pointer";
       const props = hit.feature.properties as Record<string, unknown>;
       const id = getFeatureId(props);
       const name = getFeatureName(props);
       const source = hit.feature.source as string;
+
+      map.getCanvas().style.cursor =
+        hit.kind === "state" && id === useMapStore.getState().dragModeStateId
+          ? "grab"
+          : "pointer";
 
       if (id && source) hoverRef.current?.set(source, id);
 
@@ -233,6 +287,134 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
       setTooltip({ name, level: levelLabel, x: e.point.x, y: e.point.y });
     },
     [pickTopFeature]
+  );
+
+  const clearDraggedSource = useCallback((map: maplibregl.Map) => {
+    const source = map.getSource(DRAGGED_STATE_SOURCE) as
+      | maplibregl.GeoJSONSource
+      | undefined;
+    source?.setData({ type: "FeatureCollection", features: [] });
+    draggedBaseGeometryRef.current = null;
+  }, []);
+
+  const liftStateForDrag = useCallback(
+    (map: maplibregl.Map, stateId: string) => {
+      const feature = adm1FeaturesRef.current.get(stateId);
+      if (!feature?.geometry) return;
+
+      const prev = useMapStore.getState().draggedStateId;
+      if (prev && prev !== stateId) {
+        clearDraggedSource(map);
+      }
+
+      useMapStore.getState().setDraggedStateId(stateId);
+      draggedBaseGeometryRef.current = cloneGeometry(feature.geometry);
+      draggedFeaturePropsRef.current = feature.properties ?? { id: stateId };
+
+      const source = map.getSource(DRAGGED_STATE_SOURCE) as
+        | maplibregl.GeoJSONSource
+        | undefined;
+      source?.setData(feature as GeoJSON.Feature);
+    },
+    [clearDraggedSource]
+  );
+
+  const setupDragLayers = useCallback(
+    (map: maplibregl.Map) => {
+      if (!map.getSource(DRAGGED_STATE_SOURCE)) {
+        map.addSource(DRAGGED_STATE_SOURCE, {
+          type: "geojson",
+          data: { type: "FeatureCollection", features: [] },
+          promoteId: "id",
+        });
+        for (const layer of createDraggedStateLayers()) {
+          map.addLayer(layer);
+        }
+        if (loadedLgaRef.current.size > 0) {
+          stackAllLgaLayers(map, loadedLgaRef.current);
+        }
+      }
+
+      if (!dragHandlersBoundRef.current) {
+        dragHandlersBoundRef.current = true;
+
+        const beginDrag = (
+          e: maplibregl.MapMouseEvent & {
+            features?: maplibregl.MapGeoJSONFeature[];
+          }
+        ) => {
+          if (e.originalEvent.button !== 0) return;
+          const props = e.features?.[0]?.properties as
+            | Record<string, unknown>
+            | undefined;
+          const id = props ? getFeatureId(props) : null;
+          const store = useMapStore.getState();
+          if (!id || store.dragModeStateId !== id) return;
+
+          e.preventDefault();
+          if (store.draggedStateId !== id) {
+            liftStateForDrag(map, id);
+          }
+          map.dragPan.disable();
+          dragSessionRef.current = {
+            active: true,
+            startLngLat: e.lngLat,
+            moved: false,
+          };
+          map.getCanvas().style.cursor = "grabbing";
+        };
+
+        const onDragEnd = () => {
+          if (!dragSessionRef.current.active) return;
+          dragSessionRef.current.active = false;
+          dragSessionRef.current.startLngLat = null;
+          map.dragPan.enable();
+          const lifted = useMapStore.getState().draggedStateId;
+          map.getCanvas().style.cursor = lifted ? "grab" : "";
+        };
+
+        map.on("mousedown", "states-fill", beginDrag);
+        map.on("mousedown", "dragged-state-fill", beginDrag);
+        map.on("mouseup", onDragEnd);
+        map.on("mouseleave", onDragEnd);
+        map.on("mouseenter", "dragged-state-fill", () => {
+          if (
+            useMapStore.getState().dragModeStateId &&
+            !dragSessionRef.current.active
+          ) {
+            map.getCanvas().style.cursor = "grab";
+          }
+        });
+        map.on("mouseenter", "states-fill", (e) => {
+          const props = e.features?.[0]?.properties as
+            | Record<string, unknown>
+            | undefined;
+          const id = props ? getFeatureId(props) : null;
+          if (
+            id === useMapStore.getState().dragModeStateId &&
+            !dragSessionRef.current.active
+          ) {
+            map.getCanvas().style.cursor = "grab";
+          }
+        });
+        map.on("mouseleave", "dragged-state-fill", () => {
+          if (!dragSessionRef.current.active) map.getCanvas().style.cursor = "";
+        });
+      }
+
+      if (adm1FeaturesRef.current.size > 0) return;
+
+      void fetch("/geo/nigeria-adm1.geojson")
+        .then((res) => res.json())
+        .then((collection: GeoJSON.FeatureCollection) => {
+          for (const f of collection.features) {
+            const id = getFeatureId(f.properties as Record<string, unknown>);
+            if (id) adm1FeaturesRef.current.set(id, f as GeoJSON.Feature);
+          }
+        })
+        .catch((err) => console.warn("ADM1 preload for drag failed:", err));
+    },
+    [liftStateForDrag]
   );
 
   // ——— Map init (once) ———
@@ -290,6 +472,7 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
       hoverRef.current = createHoverController(map);
       mapReadyRef.current = true;
       setMapReady(true);
+      setupDragLayers(map);
 
       const pending = useMapStore.getState().lgaVisibleStateIds;
       for (const stateId of pending) {
@@ -313,8 +496,16 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
       map.remove();
       mapRef.current = null;
       hoverRef.current = null;
+      dragHandlersBoundRef.current = false;
     };
-  }, [handleMapClick, handleMapDblClick, handleMapMove]);
+  }, [handleMapClick, handleMapDblClick, handleMapMove, setupDragLayers]);
+
+  // ——— Clear lifted state when drag id cleared ———
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map?.isStyleLoaded() || draggedStateId) return;
+    clearDraggedSource(map);
+  }, [draggedStateId, clearDraggedSource, mapReady]);
 
   // ——— Sync selection, labels & region highlight ———
   useEffect(() => {
@@ -354,13 +545,29 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
         map.setLayoutProperty("states-labels", "visibility", "none");
       } else if (activeRegionId) {
         map.setLayoutProperty("states-labels", "visibility", "visible");
-        map.setFilter("states-labels", ["==", ["get", "regionId"], activeRegionId]);
+        map.setFilter(
+          "states-labels",
+          withExcludeState(
+            ["==", ["get", "regionId"], activeRegionId],
+            draggedStateId
+          )
+        );
         map.setPaintProperty("states-labels", "text-opacity", 1);
       } else {
         map.setLayoutProperty("states-labels", "visibility", "visible");
-        map.setFilter("states-labels", null);
+        map.setFilter(
+          "states-labels",
+          withExcludeState(null, draggedStateId)
+        );
         map.setPaintProperty("states-labels", "text-opacity", 1);
       }
+    }
+
+    if (map.getLayer("states-fill")) {
+      map.setFilter("states-fill", withExcludeState(null, draggedStateId));
+    }
+    if (map.getLayer("states-line")) {
+      map.setFilter("states-line", withExcludeState(null, draggedStateId));
     }
 
     if (map.getLayer("country-label")) {
@@ -395,6 +602,7 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
           0.22,
         ]);
       } else if (selectedStateIds.size > 0) {
+        const lgaOnMap = lgaVisibleStateIds.size > 0;
         map.setPaintProperty("states-fill", "fill-color", [
           "case",
           ["boolean", ["feature-state", "selected"], false],
@@ -406,7 +614,7 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
         map.setPaintProperty("states-fill", "fill-opacity", [
           "case",
           ["boolean", ["feature-state", "selected"], false],
-          0.55,
+          lgaOnMap ? 0.22 : 0.55,
           ["boolean", ["feature-state", "hover"], false],
           0.42,
           0.18,
@@ -430,7 +638,7 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
         ]);
       }
     }
-  }, [selectedKey, lgaVisibleKey, activeRegionId, states, regions, setFeatureState, mapReady, selectedStateIds, lgaVisibleStateIds]);
+  }, [selectedKey, lgaVisibleKey, activeRegionId, draggedStateId, states, regions, setFeatureState, mapReady, selectedStateIds, lgaVisibleStateIds]);
 
   // ——— LGA selected highlight ———
   useEffect(() => {
@@ -449,13 +657,19 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
 
   const loadLgaLayer = useCallback(async (stateId: string) => {
     const map = mapRef.current;
-    if (!map || !map.isStyleLoaded()) return;
-    const srcId = lgaSourceId(stateId);
-    if (map.getSource(srcId)) return;
+    if (!map?.isStyleLoaded()) return;
+
+    if (lgaLayersReady(map, stateId)) {
+      loadedLgaRef.current.add(stateId);
+      stackLgaLayers(map, stateId);
+      return;
+    }
+
     if (loadingLgaRef.current.has(stateId)) return;
 
     loadingLgaRef.current.add(stateId);
     setLgaLoadingCount(loadingLgaRef.current.size);
+
     try {
       const res = await fetch(`/geo/lgas/${stateId}.geojson`);
       if (!res.ok) {
@@ -465,24 +679,9 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
       const data = (await res.json()) as GeoJSON.FeatureCollection;
 
       const liveMap = mapRef.current;
-      if (!liveMap?.isStyleLoaded() || liveMap.getSource(srcId)) return;
+      if (!liveMap?.isStyleLoaded()) return;
 
-      const lineId = lgaLineLayerId(stateId);
-      const labelId = lgaLabelLayerId(stateId);
-
-      liveMap.addSource(srcId, lgaSourceSpec(data));
-      for (const layer of createLgaFillLineLayers(stateId)) {
-        liveMap.addLayer(layer);
-      }
-      liveMap.addLayer(createLgaLabelLayer(stateId));
-      // Stack: fill → line → label (label on top, borders visible beneath)
-      if (liveMap.getLayer(lineId) && liveMap.getLayer(labelId)) {
-        liveMap.moveLayer(lineId, labelId);
-      }
-      if (liveMap.getLayer(labelId)) {
-        liveMap.moveLayer(labelId);
-      }
-
+      addLgaStateLayers(liveMap, stateId, data);
       loadedLgaRef.current.add(stateId);
     } finally {
       loadingLgaRef.current.delete(stateId);
@@ -495,16 +694,7 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
   const removeLgaLayer = useCallback((stateId: string) => {
     const map = mapRef.current;
     if (!map) return;
-
-    const srcId = lgaSourceId(stateId);
-    for (const lid of [
-      lgaLabelLayerId(stateId),
-      lgaLineLayerId(stateId),
-      lgaFillLayerId(stateId),
-    ]) {
-      if (map.getLayer(lid)) map.removeLayer(lid);
-    }
-    if (map.getSource(srcId)) map.removeSource(srcId);
+    removeLgaStateLayers(map, stateId);
     loadingLgaRef.current.delete(stateId);
     loadedLgaRef.current.delete(stateId);
   }, []);
@@ -524,6 +714,13 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
       }
     }
   }, [lgaVisibleKey, mapReady, loadLgaLayer, removeLgaLayer, lgaVisibleStateIds]);
+
+  // Keep LGA lines above fills after drag layer changes
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map?.isStyleLoaded() || loadedLgaRef.current.size === 0) return;
+    stackAllLgaLayers(map, loadedLgaRef.current);
+  }, [lgaVisibleKey, mapReady, draggedStateId]);
 
   // ——— Fly to selection ———
   useEffect(() => {
@@ -589,6 +786,14 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
       />
       {lgaLoadingCount > 0 && (
         <MapLoadingBadge label="Loading LGAs…" />
+      )}
+      {dragModeStateId && mapReady && (
+        <div className="absolute top-3 left-3 z-10 pointer-events-none">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1.5 text-xs font-medium text-amber-900 shadow-md ring-1 ring-amber-300/80">
+            <span aria-hidden>↔</span>
+            Drag mode — pull the state on the map
+          </span>
+        </div>
       )}
       {tooltip && (
         <MapTooltip

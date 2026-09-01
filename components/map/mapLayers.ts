@@ -1,15 +1,17 @@
-import type { LayerSpecification, SourceSpecification } from "maplibre-gl";
+import type { LayerSpecification, Map, SourceSpecification } from "maplibre-gl";
 import { MAP_GLYPHS, MAP_FONT, MAP_FONT_EMPHASIS } from "@/lib/map/interaction";
+import { LGA_PALETTE, colorForIndex } from "@/lib/map/colors";
 
 const FILL_TRANSITION = {
   "fill-opacity-transition": { duration: 300 },
   "fill-color-transition": { duration: 300 },
 };
 
+/** LGA boundary strokes — warm stone/brown so they read clearly over green fills */
 const LGA_LINE = {
-  default: "#94a3b8",
-  hover: "#64748b",
-  selected: "#475569",
+  default: "#8B7355",
+  hover: "#6B5344",
+  selected: "#5C4033",
 } as const;
 
 const LINE_TRANSITION = {
@@ -70,6 +72,60 @@ export function lgaLineLayerId(stateId: string) {
 
 export function lgaLabelLayerId(stateId: string) {
   return `${lgaSourceId(stateId)}-labels`;
+}
+
+export function lgaLayersReady(map: Map, stateId: string): boolean {
+  return (
+    !!map.getSource(lgaSourceId(stateId)) &&
+    !!map.getLayer(lgaFillLayerId(stateId)) &&
+    !!map.getLayer(lgaLineLayerId(stateId)) &&
+    !!map.getLayer(lgaLabelLayerId(stateId))
+  );
+}
+
+/** Assign cyclical earth-tone fills when geo props are missing or uniform. */
+export function enrichLgaColors(
+  data: GeoJSON.FeatureCollection
+): GeoJSON.FeatureCollection {
+  return {
+    type: "FeatureCollection",
+    features: data.features.map((feature, index) => ({
+      ...feature,
+      properties: {
+        ...feature.properties,
+        fillColor: colorForIndex(index, LGA_PALETTE),
+      },
+    })),
+  };
+}
+
+export function removeLgaStateLayers(map: Map, stateId: string): void {
+  const srcId = lgaSourceId(stateId);
+  for (const lid of [
+    lgaLabelLayerId(stateId),
+    lgaLineLayerId(stateId),
+    lgaFillLayerId(stateId),
+    `${srcId}-boundaries`,
+  ]) {
+    if (map.getLayer(lid)) map.removeLayer(lid);
+  }
+  if (map.getSource(srcId)) map.removeSource(srcId);
+}
+
+/** Line above fill, labels on top — matches last known-good map behaviour. */
+export function stackLgaLayers(map: Map, stateId: string): void {
+  const lineId = lgaLineLayerId(stateId);
+  const labelId = lgaLabelLayerId(stateId);
+  if (map.getLayer(lineId) && map.getLayer(labelId)) {
+    map.moveLayer(lineId, labelId);
+  }
+  if (map.getLayer(labelId)) {
+    map.moveLayer(labelId);
+  }
+}
+
+export function stackAllLgaLayers(map: Map, stateIds: Iterable<string>): void {
+  for (const stateId of stateIds) stackLgaLayers(map, stateId);
 }
 
 export function createNeighborLayers(): LayerSpecification[] {
@@ -274,6 +330,68 @@ export function createStateLabelLayer(): LayerSpecification {
   };
 }
 
+import {
+  DRAG_STATE_FILL,
+  DRAG_STATE_LINE,
+} from "@/lib/map/dragStateGeometry";
+
+export const DRAGGED_STATE_SOURCE = "dragged-state";
+
+export function createDraggedStateLayers(): LayerSpecification[] {
+  return [
+    {
+      id: "dragged-state-fill",
+      source: DRAGGED_STATE_SOURCE,
+      type: "fill",
+      paint: {
+        "fill-color": DRAG_STATE_FILL,
+        "fill-opacity": 0.72,
+        ...FILL_TRANSITION,
+      },
+    },
+    {
+      id: "dragged-state-line",
+      source: DRAGGED_STATE_SOURCE,
+      type: "line",
+      paint: {
+        "line-color": DRAG_STATE_LINE,
+        "line-width": 2.5,
+        ...LINE_TRANSITION,
+      },
+    },
+    {
+      id: "dragged-state-labels",
+      source: DRAGGED_STATE_SOURCE,
+      type: "symbol",
+      minzoom: 4,
+      layout: {
+        "text-field": ["get", "name"],
+        "text-size": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          5,
+          11,
+          7,
+          12,
+          9,
+          13,
+        ],
+        "text-anchor": "center",
+        "text-allow-overlap": true,
+        "text-ignore-placement": true,
+        "text-font": [MAP_FONT_EMPHASIS],
+        "text-max-width": 10,
+      },
+      paint: {
+        "text-color": DRAG_STATE_LINE,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 2.5,
+      },
+    },
+  ];
+}
+
 export function createCountryLabelLayer(): LayerSpecification {
   return {
     id: "country-label",
@@ -330,8 +448,9 @@ export function createLgaFillLineLayers(stateId: string): LayerSpecification[] {
           0.72,
           ["boolean", ["feature-state", "hover"], false],
           0.62,
-          0.52,
+          0.58,
         ],
+        "fill-outline-color": LGA_LINE.default,
         ...FILL_TRANSITION,
       },
     },
@@ -339,6 +458,10 @@ export function createLgaFillLineLayers(stateId: string): LayerSpecification[] {
       id: lgaLineLayerId(stateId),
       source: src,
       type: "line",
+      layout: {
+        "line-join": "round",
+        "line-cap": "round",
+      },
       paint: {
         "line-color": [
           "case",
@@ -351,26 +474,18 @@ export function createLgaFillLineLayers(stateId: string): LayerSpecification[] {
         "line-width": [
           "case",
           ["boolean", ["feature-state", "hover"], false],
-          1.25,
+          2.5,
           ["boolean", ["feature-state", "selected"], false],
-          1.5,
-          0.75,
+          2.75,
+          2,
         ],
         "line-opacity": [
           "case",
           ["boolean", ["feature-state", "hover"], false],
           1,
           ["boolean", ["feature-state", "selected"], false],
+          1,
           0.95,
-          0.72,
-        ],
-        "line-dasharray": [
-          "case",
-          ["boolean", ["feature-state", "hover"], false],
-          ["literal", [1, 0]],
-          ["boolean", ["feature-state", "selected"], false],
-          ["literal", [1, 0]],
-          ["literal", [4, 3]],
         ],
         ...LINE_TRANSITION,
       },
@@ -404,4 +519,20 @@ export function createLgaLabelLayer(stateId: string): LayerSpecification {
 
 export function createLgaLayers(stateId: string): LayerSpecification[] {
   return [...createLgaFillLineLayers(stateId), createLgaLabelLayer(stateId)];
+}
+
+/** Tear down any prior mount, then add source + fill/line/label layers. */
+export function addLgaStateLayers(
+  map: Map,
+  stateId: string,
+  data: GeoJSON.FeatureCollection
+): void {
+  removeLgaStateLayers(map, stateId);
+  const srcId = lgaSourceId(stateId);
+  map.addSource(srcId, lgaSourceSpec(enrichLgaColors(data)));
+  for (const layer of createLgaFillLineLayers(stateId)) {
+    map.addLayer(layer);
+  }
+  map.addLayer(createLgaLabelLayer(stateId));
+  stackLgaLayers(map, stateId);
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import dynamic from "next/dynamic";
 import LocationSearch from "@/components/search/LocationSearch";
 import PoweredByIseOwo from "@/components/PoweredByIseOwo";
@@ -58,6 +58,7 @@ export default function ExplorerShell({
   const activeRegionId = useMapStore((s) => s.activeRegionId);
   const mobileSheet = useMapStore((s) => s.mobileSheet);
   const openMobileSheet = useMapStore((s) => s.openMobileSheet);
+
   const closeMobileSheet = useMapStore((s) => s.closeMobileSheet);
   const [compareModalOpen, setCompareModalOpen] = useState(false);
   const [infoModalOpen, setInfoModalOpen] = useState(false);

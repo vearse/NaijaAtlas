@@ -247,6 +247,46 @@ function writeJson(rel: string, data: unknown) {
   fs.writeFileSync(p, JSON.stringify(data, null, 2));
 }
 
+type PersonField = {
+  name: string;
+  party: string | null;
+  imageUrl: string | null;
+  role: string | null;
+};
+
+function preservePersonImageUrls<T extends Record<string, unknown>>(
+  built: T,
+  relPath: string,
+  personKeys: (keyof T)[]
+): T {
+  const existingPath = out(relPath);
+  if (!fs.existsSync(existingPath)) return built;
+
+  try {
+    const existing = JSON.parse(
+      fs.readFileSync(existingPath, "utf-8")
+    ) as { NG?: Record<string, PersonField> };
+    const row = existing.NG;
+    if (!row) return built;
+
+    for (const key of personKeys) {
+      const builtPerson = built[key];
+      const existingPerson = row[String(key)];
+      if (
+        builtPerson &&
+        typeof builtPerson === "object" &&
+        existingPerson?.imageUrl
+      ) {
+        (builtPerson as PersonField).imageUrl = existingPerson.imageUrl;
+      }
+    }
+  } catch {
+    /* keep built output */
+  }
+
+  return built;
+}
+
 function writeCsv(rel: string, lines: string[]) {
   const p = out(rel);
   ensureDir(path.dirname(p));
@@ -655,11 +695,23 @@ function buildCountryGovernance(term: string) {
           president: personOrDash(
             "Bola Ahmed Tinubu",
             "APC",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Bola_Tinubu_%28cropped%29.jpg/220px-Bola_Tinubu_%28cropped%29.jpg"
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Bola_Tinubu_portrait.jpg/960px-Bola_Tinubu_portrait.jpg"
           ),
-          vicePresident: personOrDash("Kashim Shettima", "APC"),
-          senatePresident: personOrDash("Godswill Akpabio", "APC"),
-          speaker: personOrDash("Tajudeen Abbas", "APC"),
+          vicePresident: personOrDash(
+            "Kashim Shettima",
+            "APC",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Kashim_Shettima_office_portrait.jpg/500px-Kashim_Shettima_office_portrait.jpg"
+          ),
+          senatePresident: personOrDash(
+            "Godswill Akpabio",
+            "APC",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Godswill_Obot_Akpabio_%282012%29_%28cropped%29.jpg/500px-Godswill_Obot_Akpabio_%282012%29_%28cropped%29.jpg"
+          ),
+          speaker: personOrDash(
+            "Tajudeen Abbas",
+            "APC",
+            "https://pbs.twimg.com/media/F3bBi1UXwAA45PX?format=jpg&name=medium"
+          ),
           senateSeats: 109,
           houseSeats: 360,
         }
@@ -687,7 +739,14 @@ function buildCountryGovernance(term: string) {
     );
   }
 
-  writeJson(`data/compare/country/governance/${term}.json`, { NG: seed2023 });
+  const rel = `data/compare/country/governance/${term}.json`;
+  const merged = preservePersonImageUrls(seed2023, rel, [
+    "president",
+    "vicePresident",
+    "senatePresident",
+    "speaker",
+  ]);
+  writeJson(rel, { NG: merged });
 }
 
 function buildCountryEconomy(period: string) {

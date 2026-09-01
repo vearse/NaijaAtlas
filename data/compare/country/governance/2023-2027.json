@@ -3,25 +3,25 @@
     "president": {
       "name": "Bola Ahmed Tinubu",
       "party": "APC",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Bola_Tinubu_%28cropped%29.jpg/220px-Bola_Tinubu_%28cropped%29.jpg",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Bola_Tinubu_portrait.jpg/960px-Bola_Tinubu_portrait.jpg?utm_source=en.wikipedia.org&utm_campaign=index",
       "role": null
     },
     "vicePresident": {
       "name": "Kashim Shettima",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Kashim_Shettima_office_portrait.jpg/500px-Kashim_Shettima_office_portrait.jpg?utm_source=en.wikipedia.org&utm_campaign=parser",
       "role": null
     },
     "senatePresident": {
       "name": "Godswill Akpabio",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Godswill_Obot_Akpabio_%282012%29_%28cropped%29.jpg/500px-Godswill_Obot_Akpabio_%282012%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
       "role": null
     },
     "speaker": {
       "name": "Tajudeen Abbas",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://pbs.twimg.com/media/F3bBi1UXwAA45PX?format=jpg&name=medium",
       "role": null
     },
     "senateSeats": 109,

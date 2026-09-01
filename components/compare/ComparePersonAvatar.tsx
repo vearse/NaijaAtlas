@@ -19,18 +19,20 @@ function initials(name: string): string {
 
 export default function ComparePersonAvatar({
   person,
-  size = "sm",
+  size = "md",
 }: ComparePersonAvatarProps) {
   const [failed, setFailed] = useState(false);
-  const dim = size === "md" ? "h-9 w-9" : "h-7 w-7";
+  const dim = size === "md" ? "h-12 w-12" : "h-10 w-10";
   const text = size === "md" ? "text-xs" : "text-[10px]";
 
   if (person.imageUrl && !failed) {
     return (
       <img
         src={person.imageUrl}
-        alt=""
+        alt={person.name}
         referrerPolicy="no-referrer"
+        loading="lazy"
+        decoding="async"
         onError={() => setFailed(true)}
         className={`${dim} rounded-full object-cover shrink-0 ring-2 ring-white shadow-sm`}
       />

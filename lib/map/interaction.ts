@@ -11,6 +11,7 @@ export { LGA_PALETTE, REGION_FILL, colorForIndex } from "./colors";
 /** Layers that receive pointer events — fills first so hover works on area, not just borders */
 export const INTERACTIVE_LAYERS = {
   lgaFill: (stateId: string) => `lgas-${stateId}-fill`,
+  lgaLine: (stateId: string) => `lgas-${stateId}-line`,
   lgaLabel: (stateId: string) => `lgas-${stateId}-labels`,
   stateFill: "states-fill",
   stateLabel: "states-labels",
@@ -23,6 +24,7 @@ export function collectLgaLayerIds(
   const ids: string[] = [];
   for (const sid of lgaVisibleStateIds) {
     ids.push(INTERACTIVE_LAYERS.lgaFill(sid));
+    ids.push(INTERACTIVE_LAYERS.lgaLine(sid));
     ids.push(INTERACTIVE_LAYERS.lgaLabel(sid));
   }
   return ids;

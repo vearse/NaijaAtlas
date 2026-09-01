@@ -39,7 +39,7 @@ export default function RegionFilter({ regions }: RegionFilterProps) {
           </button>
         ))}
       </div>
-      {activeRegion ? (
+      {activeRegion && (
         <p className="text-xs text-slate-500">
           <span
             className="inline-block h-2 w-2 rounded-full mr-1.5 align-middle"
@@ -48,10 +48,6 @@ export default function RegionFilter({ regions }: RegionFilterProps) {
           <span className="font-medium text-slate-700">{activeRegion.name}</span>
           {" — "}
           state names &amp; colours on map. Click again to load all LGAs.
-        </p>
-      ) : (
-        <p className="text-xs text-slate-400">
-          Click a region to highlight its states on the map
         </p>
       )}
     </div>

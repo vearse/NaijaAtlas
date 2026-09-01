@@ -8,6 +8,10 @@ export interface MapSelectionState {
   selectedStateIds: Set<string>;
   lgaVisibleStateIds: Set<string>;
   selectedLgaId: string | null;
+  /** State currently lifted off the map for dragging (one at a time). */
+  draggedStateId: string | null;
+  /** Selected state armed for dragging from the header (required before map drag). */
+  dragModeStateId: string | null;
   activeRegionId: string | null;
   panelOpen: boolean;
   mobileSheet: MobileSheetMode;
@@ -18,6 +22,8 @@ export interface MapSelectionState {
   hideLgas: (id: string) => void;
   showLgasForStates: (ids: string[]) => void;
   setSelectedLga: (id: string | null) => void;
+  setDraggedStateId: (id: string | null) => void;
+  toggleDragMode: (stateId: string) => void;
   setActiveRegion: (id: string | null) => void;
   openMobileSheet: () => void;
   peekMobileSheet: () => void;
@@ -35,6 +41,8 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   selectedStateIds: new Set(),
   lgaVisibleStateIds: new Set(),
   selectedLgaId: null,
+  draggedStateId: null,
+  dragModeStateId: null,
   activeRegionId: null,
   panelOpen: false,
   mobileSheet: "hidden",
@@ -47,6 +55,10 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   toggleState: (id) => {
     const next = new Set(get().selectedStateIds);
     const lgaVisible = new Set(get().lgaVisibleStateIds);
+    const draggedStateId =
+      get().draggedStateId === id ? null : get().draggedStateId;
+    const dragModeStateId =
+      get().dragModeStateId === id ? null : get().dragModeStateId;
     if (next.has(id)) {
       next.delete(id);
       lgaVisible.delete(id);
@@ -64,6 +76,8 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       selectedStateIds: next,
       lgaVisibleStateIds: lgaVisible,
       selectedLgaId: null,
+      draggedStateId,
+      dragModeStateId,
       panelOpen: next.size > 0,
       activeRegionId: null,
       mobileSheet: mobileSheetForSelection(next.size),
@@ -75,6 +89,8 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       selectedStateIds: new Set(ids),
       lgaVisibleStateIds: new Set(ids),
       selectedLgaId: null,
+      draggedStateId: null,
+      dragModeStateId: null,
       panelOpen: ids.length > 0,
       activeRegionId: null,
       mobileSheet: mobileSheetForSelection(ids.length),
@@ -111,6 +127,21 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     set({ lgaVisibleStateIds: lgaVisible });
   },
 
+  setDraggedStateId: (id) => set({ draggedStateId: id }),
+
+  toggleDragMode: (stateId) => {
+    const current = get().dragModeStateId;
+    if (current === stateId) {
+      set({
+        dragModeStateId: null,
+        draggedStateId:
+          get().draggedStateId === stateId ? null : get().draggedStateId,
+      });
+      return;
+    }
+    set({ dragModeStateId: stateId, draggedStateId: null });
+  },
+
   showLgasForStates: (ids) => {
     set({
       lgaVisibleStateIds: new Set(ids),
@@ -135,6 +166,8 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       selectedStateIds: new Set(),
       lgaVisibleStateIds: new Set(),
       selectedLgaId: null,
+      draggedStateId: null,
+      dragModeStateId: null,
       panelOpen: false,
       mobileSheet: id ? "peek" : "hidden",
     }),
@@ -144,6 +177,8 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       selectedStateIds: new Set(),
       lgaVisibleStateIds: new Set(),
       selectedLgaId: null,
+      draggedStateId: null,
+      dragModeStateId: null,
       activeRegionId: null,
       panelOpen: false,
       mobileSheet: "hidden",

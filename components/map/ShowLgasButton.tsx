@@ -1,6 +1,7 @@
 "use client";
 
 import { useMapStore } from "@/lib/store/mapStore";
+import DragModeButton from "./DragModeButton";
 
 interface ShowLgasButtonProps {
   stateId: string;
@@ -38,34 +39,30 @@ export default function ShowLgasButton({
   const { lgaVisibleStateIds, showLgas, hideLgas } = useMapStore();
   const visible = lgaVisibleStateIds.has(stateId);
 
-  if (compact) {
-    return (
-      <button
-        type="button"
-        onClick={() => (visible ? hideLgas(stateId) : showLgas(stateId))}
-        className={`shrink-0 h-8 w-8 flex items-center justify-center rounded-lg transition-colors ${
-          visible
-            ? "bg-ng-green text-white shadow-sm"
-            : "bg-slate-100 text-slate-600 hover:bg-emerald-50 hover:text-ng-green"
-        }`}
-        aria-pressed={visible}
-        aria-label={
-          visible
-            ? `Hide ${stateName} LGAs on map`
-            : `Show ${stateName} LGAs on map`
-        }
-        title={visible ? "LGAs on map" : "Show LGAs"}
-      >
-        <MapLayersIcon active={visible} />
-      </button>
-    );
-  }
-
-  return (
+  const lgaButton = compact ? (
     <button
       type="button"
       onClick={() => (visible ? hideLgas(stateId) : showLgas(stateId))}
-      className={`w-full rounded-xl px-4 py-3 text-sm font-semibold shadow-sm transition-all flex items-center justify-center gap-2 ${
+      className={`h-8 w-8 flex items-center justify-center rounded-lg transition-colors ${
+        visible
+          ? "bg-ng-green text-white shadow-sm"
+          : "bg-slate-100 text-slate-600 hover:bg-emerald-50 hover:text-ng-green"
+      }`}
+      aria-pressed={visible}
+      aria-label={
+        visible
+          ? `Hide ${stateName} LGAs on map`
+          : `Show ${stateName} LGAs on map`
+      }
+      title={visible ? "LGAs on map" : "Show LGAs"}
+    >
+      <MapLayersIcon active={visible} />
+    </button>
+  ) : (
+    <button
+      type="button"
+      onClick={() => (visible ? hideLgas(stateId) : showLgas(stateId))}
+      className={`flex-1 min-w-0 rounded-xl px-4 py-3 text-sm font-semibold shadow-sm transition-all flex items-center justify-center gap-2 ${
         visible
           ? "bg-ng-green text-white hover:bg-emerald-700"
           : "bg-emerald-50 text-ng-green border border-emerald-200 hover:bg-emerald-100"
@@ -77,5 +74,16 @@ export default function ShowLgasButton({
         ? `LGAs visible for ${stateName}`
         : `Show ${stateName} LGAs on map`}
     </button>
+  );
+
+  return (
+    <div className="grid grid-cols-[1fr_auto] gap-2 items-stretch">
+      {lgaButton}
+      <DragModeButton
+        stateId={stateId}
+        stateName={stateName}
+        size={compact ? "sm" : "md"}
+      />
+    </div>
   );
 }

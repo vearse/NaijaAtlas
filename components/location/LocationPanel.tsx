@@ -47,6 +47,11 @@ export default function LocationPanel({
   const { selectedStateIds, selectedLgaId, activeRegionId, setSelectedLga, mobileSheet } =
     useMapStore();
 
+  const toggleLgaSelection = (id: string) => {
+    const store = useMapStore.getState();
+    store.setSelectedLga(store.selectedLgaId === id ? null : id);
+  };
+
   const lgaLoc = selectedLgaId
     ? lgas.find((l) => l.id === selectedLgaId)
     : null;
@@ -154,7 +159,7 @@ export default function LocationPanel({
               lgas={lgas}
               compareBundle={compareBundle}
               selectedLgaId={selectedLgaId}
-              onSelectLga={setSelectedLga}
+              onSelectLga={toggleLgaSelection}
             />
           )}
 

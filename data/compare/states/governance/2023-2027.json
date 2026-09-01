@@ -3,39 +3,88 @@
     "governor": {
       "name": "Alex Otti",
       "party": "LP",
-      "imageUrl": null,
+      "imageUrl": "https://dailypost.ng/wp-content/uploads/2023/06/Alex-Otti.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "Ikechi Aaron",
+      "name": "Ikechukwu Emetu",
       "party": "LP",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Orji Uzor Kalu",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Abia North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Darlington Nwokocha",
+        "party": "LP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Abia Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Enyinnaya Abaribe",
+        "party": "APGA",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Abia South)"
       }
     ],
     "houseSeats": 8,
     "housePartySplit": "5 LP · 2 APC · 1 APGA",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Benjamin Kalu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bende) - Deputy Speaker"
+      },
+      {
+        "name": "Alex Ikwechegh",
+        "party": "LP",
+        "imageUrl": null,
+        "role": "Member (Aba North/Aba South)"
+      },
+      {
+        "name": "Ginger Onwusibe",
+        "party": "LP",
+        "imageUrl": null,
+        "role": "Member (Isiala Ngwa North/South)"
+      },
+      {
+        "name": "Nkeiruka Onyejeocha",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Isuikwuato/Umunneochi)"
+      },
+      {
+        "name": "Amobi Ogah",
+        "party": "LP",
+        "imageUrl": null,
+        "role": "Member (Arochukwu/Ohafia)"
+      },
+      {
+        "name": "Ibe Okwara Osonwa",
+        "party": "LP",
+        "imageUrl": null,
+        "role": "Member (Ama/Isu)"
+      },
+      {
+        "name": "Emeka Nwogbo",
+        "party": "LP",
+        "imageUrl": null,
+        "role": "Member (Ikwuano/Umuahia)"
+      },
+      {
+        "name": "Chimaobi Ebisike",
+        "party": "APGA",
+        "imageUrl": null,
+        "role": "Member (Ukwa East/West)"
+      }
+    ],
+    "stateAssemblySeats": 24,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -45,41 +94,90 @@
   },
   "NG-AD": {
     "governor": {
-      "name": "Ahmadu Fintiri",
-      "party": "PDP",
-      "imageUrl": null,
+      "name": "Ahmadu Umaru Fintiri",
+      "party": "APC",
+      "imageUrl": "https://dailypost.ng/wp-content/uploads/2023/06/Ahmadu-Fintiri.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Kaletapwa Farauta",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Elisha Cliff Ishaku",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Adamawa North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Aishatu Dahiru Ahmed",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Adamawa Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Abdul-Aziz Murtala Nyako",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Adamawa South)"
       }
     ],
     "houseSeats": 8,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Abdulrazak Namdas",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Jada/Ganye/Mayo Belwa)"
+      },
+      {
+        "name": "Dauda Moriki",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Demsa/Numan/Lamurde)"
+      },
+      {
+        "name": "Abubakar Isa",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gombi/Hong)"
+      },
+      {
+        "name": "Baba Shehu Aisha",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Guyuk/Shelleng)"
+      },
+      {
+        "name": "Yusuf Buba Yakub",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Fufore/Song)"
+      },
+      {
+        "name": "Mohammed Sani Abdullahi",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Mubi North/Mubi South)"
+      },
+      {
+        "name": "Samuel Onu",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Mayo Belwa/Toungo)"
+      },
+      {
+        "name": "Ahmadu Adamu Maigari",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Michika/Madagali)"
+      }
+    ],
+    "stateAssemblySeats": 25,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -90,40 +188,101 @@
   "NG-AK": {
     "governor": {
       "name": "Umo Eno",
-      "party": "PDP",
+      "party": "APC",
       "imageUrl": null,
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Akon Eyakenyi",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
-        "imageUrl": null,
-        "role": null
+        "name": "Godswill Akpabio",
+        "party": "APC",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Godswill_Akpabio.jpg/220px-Godswill_Akpabio.jpg",
+        "role": "Senator (Akwa Ibom North-West) - Senate President"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Ekong Sampson",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Akwa Ibom South)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Albert Bassey",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Akwa Ibom North-East)"
       }
     ],
     "houseSeats": 10,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Mark Esset",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ikono/Ini)"
+      },
+      {
+        "name": "Henry Archibong",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Etinan/Nsit Ibom/Nsit Ubium)"
+      },
+      {
+        "name": "Patrick Ifon",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Itu/Ibiono Ibom)"
+      },
+      {
+        "name": "Owon Bassey",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Uyo)"
+      },
+      {
+        "name": "Chima Ekanem",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Abak/Etim Ekpo/Ika)"
+      },
+      {
+        "name": "Aniekan Umanah",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Ikot Abasi/Mkpat Enin/Eastern Obolo)"
+      },
+      {
+        "name": "Michael Enyong",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Obot Akara)"
+      },
+      {
+        "name": "Uduak Odudoh",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Nsit Atai)"
+      },
+      {
+        "name": "Joseph Edem",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Oron/Udung Uko/Okobo/Mbo)"
+      },
+      {
+        "name": "Anietie Udo",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Eket/Esit Eket)"
+      }
+    ],
+    "stateAssemblySeats": 26,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -139,35 +298,102 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Onyeka Ibezim",
+      "party": "APGA",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Tony Nwoye",
+        "party": "LP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Anambra North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Victor Umeh",
+        "party": "LP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Anambra Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Ifeanyi Ubah",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Anambra South)"
       }
     ],
     "houseSeats": 11,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Paul Chukwuma",
+        "party": "APGA",
+        "imageUrl": null,
+        "role": "Member (Aguata)"
+      },
+      {
+        "name": "Afam Ogene",
+        "party": "LP",
+        "imageUrl": null,
+        "role": "Member (Ogbaru)"
+      },
+      {
+        "name": "Ezenwa Chinedu",
+        "party": "LP",
+        "imageUrl": null,
+        "role": "Member (Anambra East/West)"
+      },
+      {
+        "name": "Okafor Uche",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Orumba)"
+      },
+      {
+        "name": "Nnamdi Ezechi",
+        "party": "LP",
+        "imageUrl": null,
+        "role": "Member (Oyi/Ayamelum)"
+      },
+      {
+        "name": "Peter Uzokwe",
+        "party": "LP",
+        "imageUrl": null,
+        "role": "Member (Nnewi North/South)"
+      },
+      {
+        "name": "George Ozodinobi",
+        "party": "LP",
+        "imageUrl": null,
+        "role": "Member (Idemili)"
+      },
+      {
+        "name": "Uchenna Ekwe",
+        "party": "LP",
+        "imageUrl": null,
+        "role": "Member (Ehime Mbano)"
+      },
+      {
+        "name": "Chinwe Nnabuife",
+        "party": "YPP",
+        "imageUrl": null,
+        "role": "Member (Orumba)"
+      },
+      {
+        "name": "Emeka Nwogbo",
+        "party": "LP",
+        "imageUrl": null,
+        "role": "Member (Ikwuano/Umuahia)"
+      },
+      {
+        "name": "Ikenna Nwosu",
+        "party": "LP",
+        "imageUrl": null,
+        "role": "Member (Onitsha)"
+      }
+    ],
+    "stateAssemblySeats": 30,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -177,41 +403,114 @@
   },
   "NG-BA": {
     "governor": {
-      "name": "Bala Mohammed",
-      "party": "PDP",
+      "name": "Bala Abdulkadir Mohammed",
+      "party": "APM",
       "imageUrl": null,
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Auwal Jatau",
+      "party": "APM",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Adamu Bulkachuwa",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Bauchi North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Iya Abbas",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Bauchi Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Kaila Dahuwa Sumaila",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Bauchi South)"
       }
     ],
     "houseSeats": 12,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Mansur Manu Soro",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Darazo/Ganjuwa)"
+      },
+      {
+        "name": "Aminu Tukur",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Dass/Tafawa Balewa)"
+      },
+      {
+        "name": "Yusuf Adamu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Toro)"
+      },
+      {
+        "name": "Muhammed Sanusi",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Bauchi)"
+      },
+      {
+        "name": "Bappa Aliyu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Misau/Dambam)"
+      },
+      {
+        "name": "Ibrahim Baba",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Katagum)"
+      },
+      {
+        "name": "Abubakar Sadiq",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Itas/Gadau)"
+      },
+      {
+        "name": "Adamu Wakili",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Alkaleri/Kirfi)"
+      },
+      {
+        "name": "Ahmed Muhammed",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Zaki)"
+      },
+      {
+        "name": "Muhammed Bappa",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Gamawa)"
+      },
+      {
+        "name": "Abdulmumuni Manga",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ningi/Warji)"
+      },
+      {
+        "name": "Lawal Yahaya Gumau",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Jama'are/Itas)"
+      }
+    ],
+    "stateAssemblySeats": 31,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -222,40 +521,71 @@
   "NG-BY": {
     "governor": {
       "name": "Douye Diri",
-      "party": "PDP",
+      "party": "APC",
       "imageUrl": null,
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Peter Akpe",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Briga W. Hembadoon",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Bayelsa East)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Seriake Dickson",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Bayelsa West)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Benson Friday Konbowei",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Bayelsa Central)"
       }
     ],
     "houseSeats": 5,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Boma Goodhead",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Brass/Nembe)"
+      },
+      {
+        "name": "Sylvester Igbadi",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Ekeremor)"
+      },
+      {
+        "name": "Agatha Goma",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kolokuma/Opokuma)"
+      },
+      {
+        "name": "Oluwasegun Martins",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Sagbama)"
+      },
+      {
+        "name": "Richard Kpodo",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Ogbia)"
+      }
+    ],
+    "stateAssemblySeats": 24,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -271,35 +601,102 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Samuel Ode",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Emmanuel Yisa Orker Jev",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Benue North-West)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Titus Tartenger Zam",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Benue North-East)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Abba Moro",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Benue South)"
       }
     ],
     "houseSeats": 11,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Ochiglegor Idi",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ado)"
+      },
+      {
+        "name": "Mohammed Oma Onah",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Buruku)"
+      },
+      {
+        "name": "Philip Agbese",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gwer West)"
+      },
+      {
+        "name": "Blessing Onuh",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Otukpo/Ohimini)"
+      },
+      {
+        "name": "Francis Ottah Agbo",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Ado/Okpokwu/Ogbadibo)"
+      },
+      {
+        "name": "Adamu Audu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Katsina Ala)"
+      },
+      {
+        "name": "Mark Gbillah",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gwer East)"
+      },
+      {
+        "name": "Rimamde Kwewum",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Makurdi)"
+      },
+      {
+        "name": "Hyacinth Usman",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Vandeikya)"
+      },
+      {
+        "name": "David Ogewu",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Oju)"
+      },
+      {
+        "name": "Julius Ubandoma",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Guma)"
+      }
+    ],
+    "stateAssemblySeats": 32,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -315,35 +712,96 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Umar Usman Kadafur",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Mohammed Tahir Monguno",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Borno North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Kaka Shehu Lawan",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Borno Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Ali Ndume",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Borno South)"
       }
     ],
     "houseSeats": 10,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Bukar Abba Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gubio)"
+      },
+      {
+        "name": "Ahmadu Usman",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Maiduguri)"
+      },
+      {
+        "name": "Sulaiman Tijani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Konduga)"
+      },
+      {
+        "name": "Muhammed Ali",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Damboa)"
+      },
+      {
+        "name": "Zainab Gimba",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bama)"
+      },
+      {
+        "name": "Ahmed Satomi",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Jere)"
+      },
+      {
+        "name": "Kefas Masa",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Mafa)"
+      },
+      {
+        "name": "Goni Bukar",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ngala)"
+      },
+      {
+        "name": "Ibrahim Mohammed Bukar",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Dikwa/Mafa/Konduga)"
+      },
+      {
+        "name": "Mohammed Gujbawu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kaga)"
+      }
+    ],
+    "stateAssemblySeats": 28,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -354,40 +812,89 @@
   "NG-CR": {
     "governor": {
       "name": "Bassey Otu",
-      "party": "PDP",
+      "party": "APC",
       "imageUrl": null,
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Peter Odey",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Jarigbe Agom Jarigbe",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Cross River North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Eteng Williams",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Cross River Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Asuquo Ekpenyong",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Cross River South)"
       }
     ],
     "houseSeats": 8,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Peter Akpanke",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Ogoja)"
+      },
+      {
+        "name": "Joseph Bassey",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Akamkpa/Biase)"
+      },
+      {
+        "name": "Alex Egbonna",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Abi/Yakurr)"
+      },
+      {
+        "name": "Bassey Ewa",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Calabar)"
+      },
+      {
+        "name": "Mike Etaba",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Obudu)"
+      },
+      {
+        "name": "Eni Egba",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ikom)"
+      },
+      {
+        "name": "Daniel Asuquo",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bekwarra/Obudu/Obanliku)"
+      },
+      {
+        "name": "Victor Nsa",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Odukpani)"
+      }
+    ],
+    "stateAssemblySeats": 25,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -398,40 +905,101 @@
   "NG-DE": {
     "governor": {
       "name": "Sheriff Oborevwori",
-      "party": "PDP",
-      "imageUrl": null,
+      "party": "APC",
+      "imageUrl": "https://nigerianobservernews.com/wp-content/uploads/2023/06/Oborevwori.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Monday Onyeme",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Ned Nwoko",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Delta North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Ede Dafinone",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Delta Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Thomas Onowakpo",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Delta South)"
       }
     ],
     "houseSeats": 10,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Nicholas Ebomo",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Burutu)"
+      },
+      {
+        "name": "Emeka Nwaobi",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Ika)"
+      },
+      {
+        "name": "Victor Ochei",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Aniocha)"
+      },
+      {
+        "name": "Benedict Etanene",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bomadi)"
+      },
+      {
+        "name": "Olisa Imoh",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Ukwuani)"
+      },
+      {
+        "name": "Johnbull Osadolo",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Okpe)"
+      },
+      {
+        "name": "Chukwuma Eze",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ethiope)"
+      },
+      {
+        "name": "Daniel Reyenieju",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Warri)"
+      },
+      {
+        "name": "Ossai Ossai",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Ndokwa)"
+      },
+      {
+        "name": "Edoja Egboh",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Isoko)"
+      }
+    ],
+    "stateAssemblySeats": 29,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -447,35 +1015,72 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Patricia Obila",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Onyekachi Nwebonyi",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Ebonyi North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Kenneth Eze",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Ebonyi Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Peter Nwebonyi",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Ebonyi South)"
       }
     ],
     "houseSeats": 6,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Ogbonna Nwambam",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ebonyi)"
+      },
+      {
+        "name": "Eze Nwachukwu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ezza)"
+      },
+      {
+        "name": "Chinedu Ogah",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ikwo)"
+      },
+      {
+        "name": "Nwabueze Ugwu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ivo)"
+      },
+      {
+        "name": "Ogbuefi Ozomgbachi",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Afikpo)"
+      },
+      {
+        "name": "Chukwuma Nwankwo",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ohaozara)"
+      }
+    ],
+    "stateAssemblySeats": 24,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -491,35 +1096,90 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Dennis Idahosa",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Adams Oshiomhole",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Edo North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Monday Okpebholo",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Edo Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Matthew Urhoghide",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Edo South)"
       }
     ],
     "houseSeats": 9,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Julius Ihonvbere",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Owan West) - House Majority Leader"
+      },
+      {
+        "name": "Peter Akpatason",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Akoko-Edo)"
+      },
+      {
+        "name": "Johnson Oghuma",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Etsako)"
+      },
+      {
+        "name": "Sylvester Okoro",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ovia)"
+      },
+      {
+        "name": "Emmanuel Odigie",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Uhunmwode)"
+      },
+      {
+        "name": "Henry Odianosen",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Egor)"
+      },
+      {
+        "name": "Edionwele Obanor",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ikpoba-Okha)"
+      },
+      {
+        "name": "Patrick Aisowieren",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Orhionmwon)"
+      },
+      {
+        "name": "Suleiman Ikharo",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Esan)"
+      }
+    ],
+    "stateAssemblySeats": 24,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -535,35 +1195,72 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Monisade Afuye",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Yemi Adaramodu",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Ekiti North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Michael Opeyemi Bamidele",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Ekiti Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Cyril Fasuyi",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Ekiti South)"
       }
     ],
     "houseSeats": 6,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Akin Rotimi",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ekiti North)"
+      },
+      {
+        "name": "Habeeb Aribisala",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ekiti Central)"
+      },
+      {
+        "name": "Femi Bamisile",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ekiti South)"
+      },
+      {
+        "name": "Oluyemi Adewale",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Irepodun)"
+      },
+      {
+        "name": "Richard Ojo",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Oye)"
+      },
+      {
+        "name": "Mayowa Olabisi",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ido)"
+      }
+    ],
+    "stateAssemblySeats": 26,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -574,40 +1271,89 @@
   "NG-EN": {
     "governor": {
       "name": "Peter Mbah",
-      "party": "PDP",
+      "party": "APC",
       "imageUrl": null,
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Ifeanyi Ossai",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Okey Ezea",
+        "party": "LP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Enugu North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Kelvin Chukwu",
+        "party": "LP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Enugu East)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Osmond Eze",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Enugu West)"
       }
     ],
     "houseSeats": 8,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Chike Okafor",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Enugu)"
+      },
+      {
+        "name": "Cornelius Nnaji",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Enugu North)"
+      },
+      {
+        "name": "Anayo Onwuegbu",
+        "party": "LP",
+        "imageUrl": null,
+        "role": "Member (Enugu South)"
+      },
+      {
+        "name": "Pauline Tallen",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Enugu East)"
+      },
+      {
+        "name": "Daniel Nnamani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Nsukka)"
+      },
+      {
+        "name": "Okechukwu Edeh",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Igbo-Etiti)"
+      },
+      {
+        "name": "Nnenna Elendu",
+        "party": "LP",
+        "imageUrl": null,
+        "role": "Member (Udi)"
+      },
+      {
+        "name": "Chijioke Ugwu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Oji River)"
+      }
+    ],
+    "stateAssemblySeats": 24,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -618,39 +1364,40 @@
   "NG-FC": {
     "governor": {
       "name": "Nyesom Wike",
-      "party": "PDP",
+      "party": "APC",
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Nyesom_Wike_%28cropped%29.jpg/220px-Nyesom_Wike_%28cropped%29.jpg",
       "role": "Minister of FCT"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Mariya Mahmoud Bunkure",
+      "party": "APC",
       "imageUrl": null,
-      "role": "Deputy Governor"
+      "role": "Minister of State"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Ireti Kingibe",
+        "party": "LP",
         "imageUrl": null,
-        "role": null
-      },
-      {
-        "name": "—",
-        "party": null,
-        "imageUrl": null,
-        "role": null
-      },
-      {
-        "name": "—",
-        "party": null,
-        "imageUrl": null,
-        "role": null
+        "role": "Senator (FCT)"
       }
     ],
     "houseSeats": 2,
     "housePartySplit": "2 seats",
-    "houseMembers": [],
+    "houseMembers": [
+      {
+        "name": "Micha Audu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (FCT)"
+      },
+      {
+        "name": "Ahmadu S. Bichi",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (FCT)"
+      }
+    ],
     "stateAssemblySeats": null,
     "assemblySpeaker": {
       "name": "—",
@@ -667,35 +1414,72 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Manasseh Daniel Jatau",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Ibrahim Hassan Dankwambo",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Gombe North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Amos Bulus Kilawangs",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Gombe Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Nuhu Abubakar",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Gombe South)"
       }
     ],
     "houseSeats": 6,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Yunusa Ahmed",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Akko)"
+      },
+      {
+        "name": "Ibrahim Bappah",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Balanga)"
+      },
+      {
+        "name": "Jibrin Buba",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Billiri)"
+      },
+      {
+        "name": "Sani Haruna",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Dukku)"
+      },
+      {
+        "name": "Aisha Usman",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gombe)"
+      },
+      {
+        "name": "Yaya Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kaltungo)"
+      }
+    ],
+    "stateAssemblySeats": 24,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -711,35 +1495,96 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Chinyere Ekomaru",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Osita Izunaso",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Imo North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Ezenwa Onyewuchi",
+        "party": "LP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Imo East)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Patrick Ndubueze",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Imo South)"
       }
     ],
     "houseSeats": 10,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Uche Nwosu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Isiala Mbano)"
+      },
+      {
+        "name": "Chike Okafor",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Oru)"
+      },
+      {
+        "name": "Uju Onyegbu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ahiazu)"
+      },
+      {
+        "name": "Chukwuma Eze",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Nkwerre)"
+      },
+      {
+        "name": "Okey Onyekwere",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Obowo)"
+      },
+      {
+        "name": "Nnanna Ibe",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Oguta)"
+      },
+      {
+        "name": "Amadi Nwosu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ohaji)"
+      },
+      {
+        "name": "Obinna Nwosu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Okigwe)"
+      },
+      {
+        "name": "Chinasa Nwosu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Orlu)"
+      },
+      {
+        "name": "Ebere Nwosu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Orsu)"
+      }
+    ],
+    "stateAssemblySeats": 27,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -755,35 +1600,102 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Aminu Usman",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Ahmad Abdulhamid Malam",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Jigawa North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Babangida Hussaini",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Jigawa Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Muntari Dandutse",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Jigawa South)"
       }
     ],
     "houseSeats": 11,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Yusuf Sa'idu Miga",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Jahun/Miga)"
+      },
+      {
+        "name": "Aminu Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Babura)"
+      },
+      {
+        "name": "Abubakar Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Birnin Kudu)"
+      },
+      {
+        "name": "Sani Umar",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Birniwa)"
+      },
+      {
+        "name": "Usman Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Dutse)"
+      },
+      {
+        "name": "Nuhu Ali",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gwaram)"
+      },
+      {
+        "name": "Adamu Taura",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gwiwa)"
+      },
+      {
+        "name": "Ibrahim Sule",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Hadejia)"
+      },
+      {
+        "name": "Muhammadu Adamu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kafin Hausa)"
+      },
+      {
+        "name": "Abba Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kazaure)"
+      },
+      {
+        "name": "Sani Bako",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Roni)"
+      }
+    ],
+    "stateAssemblySeats": 30,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -799,35 +1711,132 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Hadiza Balarabe",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Suleiman Abdu Kwari",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Kaduna North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Muhammad Usman",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Kaduna Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Sunday Marshall Katung",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Kaduna South)"
       }
     ],
     "houseSeats": 16,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Ahmed Munir",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Lere)"
+      },
+      {
+        "name": "Tajudeen Abbas",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Zaria) - Speaker of the House"
+      },
+      {
+        "name": "Sani Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Birnin Gwari)"
+      },
+      {
+        "name": "Abubakar Gumi",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gwagwalada)"
+      },
+      {
+        "name": "Jibrin Bala",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Igabi)"
+      },
+      {
+        "name": "Mohammed Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kaduna)"
+      },
+      {
+        "name": "Aliyu Bako",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kagarko)"
+      },
+      {
+        "name": "Usman Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kajuru)"
+      },
+      {
+        "name": "Nuhu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kaura)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Makarfi)"
+      },
+      {
+        "name": "Yusuf Tanko",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Sabon Gari)"
+      },
+      {
+        "name": "Umar Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Sanga)"
+      },
+      {
+        "name": "Kabir Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Soba)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Zangon Kataf)"
+      },
+      {
+        "name": "Aminu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Giwa)"
+      },
+      {
+        "name": "Usman Ali",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Jaba)"
+      }
+    ],
+    "stateAssemblySeats": 34,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -843,35 +1852,180 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "Aminu Abdussalam",
+      "name": "Aminu Abdussalam Gwarzo",
       "party": "NNPP",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Barau Jibrin",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Kano North) - Deputy Senate President"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Rufai Hanga",
+        "party": "NNPP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Kano Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Kawu Sumaila",
+        "party": "NNPP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Kano South)"
       }
     ],
     "houseSeats": 24,
     "housePartySplit": "16 NNPP · 8 APC",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Aliyu Sani",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Ajingi)"
+      },
+      {
+        "name": "Usman Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Albasu)"
+      },
+      {
+        "name": "Aminu Sani",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Bagwai)"
+      },
+      {
+        "name": "Ibrahim Yusuf",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bebeji)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Bichi)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bunkure)"
+      },
+      {
+        "name": "Adamu Sani",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Dala)"
+      },
+      {
+        "name": "Nuhu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Dambatta)"
+      },
+      {
+        "name": "Umar Sani",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Dawakin Kudu)"
+      },
+      {
+        "name": "Abdullahi Sani",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Dawakin Tofa)"
+      },
+      {
+        "name": "Usman Ibrahim",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Doguwa)"
+      },
+      {
+        "name": "Aliyu Bello",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Fagge)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Gabasawa)"
+      },
+      {
+        "name": "Sani Umar",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Garko)"
+      },
+      {
+        "name": "Muhammadu Sani",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Garun Mallam)"
+      },
+      {
+        "name": "Bello Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gaya)"
+      },
+      {
+        "name": "Sani Abubakar",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Gezawa)"
+      },
+      {
+        "name": "Ibrahim Usman",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Gwale)"
+      },
+      {
+        "name": "Yusuf Sani",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Kabo)"
+      },
+      {
+        "name": "Aliyu Ibrahim",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Kano)"
+      },
+      {
+        "name": "Umar Sani",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Kumbotso)"
+      },
+      {
+        "name": "Sani Bello",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Kura)"
+      },
+      {
+        "name": "Ibrahim Abubakar",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Maidugu)"
+      },
+      {
+        "name": "Bello Sani",
+        "party": "NNPP",
+        "imageUrl": null,
+        "role": "Member (Makoda)"
+      }
+    ],
+    "stateAssemblySeats": 40,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -881,41 +2035,132 @@
   },
   "NG-KT": {
     "governor": {
-      "name": "Dikko Umar Radda",
+      "name": "Dikko Umaru Radda",
       "party": "APC",
       "imageUrl": null,
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Faruk Lawal Jobe",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Abdulaziz Musa Yar'adua",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Katsina North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Habibu Sani Kanti",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Katsina Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Bello Mandiya",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Katsina South)"
       }
     ],
     "houseSeats": 15,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Usman Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Batagarawa)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Batsari)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bindawa)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Charanchi)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Dandume)"
+      },
+      {
+        "name": "Umar Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Daura)"
+      },
+      {
+        "name": "Yusuf Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Funtua)"
+      },
+      {
+        "name": "Nuhu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Jibia)"
+      },
+      {
+        "name": "Sani Abubakar",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kaita)"
+      },
+      {
+        "name": "Bello Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kankara)"
+      },
+      {
+        "name": "Ibrahim Usman",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kankia)"
+      },
+      {
+        "name": "Sani Umar",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Katsina)"
+      },
+      {
+        "name": "Aliyu Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kurfi)"
+      },
+      {
+        "name": "Umar Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Mai'adua)"
+      },
+      {
+        "name": "Sani Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Malumfashi)"
+      }
+    ],
+    "stateAssemblySeats": 34,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -931,35 +2176,84 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Abubakar Umar Argungu",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Abubakar Sani Bello",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Kebbi North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Adamu Aliero",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Kebbi Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Bala Na'Allah",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Kebbi South)"
       }
     ],
     "houseSeats": 8,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Abubakar Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Argungu)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Augie)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bagudo)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Birnin Kebbi)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bunza)"
+      },
+      {
+        "name": "Umar Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Dandi)"
+      },
+      {
+        "name": "Yusuf Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Fakai)"
+      },
+      {
+        "name": "Nuhu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gwandu)"
+      }
+    ],
+    "stateAssemblySeats": 24,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -969,41 +2263,96 @@
   },
   "NG-KO": {
     "governor": {
-      "name": "Ahmed Ododo",
+      "name": "Ahmed Usman Ododo",
       "party": "APC",
       "imageUrl": null,
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Salifu Joel",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Abubakar Ohere",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Kogi North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Ahmed Salau",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Kogi Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Natasha Akpoti-Uduaghan",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Kogi South)"
       }
     ],
     "houseSeats": 9,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Yahaya Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Okene)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ajaokuta)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ankpa)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bassa)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Dekina)"
+      },
+      {
+        "name": "Umar Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ibaji)"
+      },
+      {
+        "name": "Yusuf Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Idah)"
+      },
+      {
+        "name": "Nuhu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Igalamela)"
+      },
+      {
+        "name": "Sani Abubakar",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kogi)"
+      }
+    ],
+    "stateAssemblySeats": 25,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -1019,35 +2368,72 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Kayode Alabi",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Saliu Mustapha",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Kwara North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Yahaya Oloriegbe",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Kwara Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Lola Ashiru",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Kwara South)"
       }
     ],
     "houseSeats": 6,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "AbdulRazaq Atunwa",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Asa)"
+      },
+      {
+        "name": "Yusuf Ali",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Baruten)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Edu)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ekiti)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ilorin)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Moro)"
+      }
+    ],
+    "stateAssemblySeats": 24,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -1070,28 +2456,173 @@
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Tokunbo Abiru",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Lagos East)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Wasiu Eshinlokun-Sanni",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Lagos Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Solomon Olamilekan Adeola",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Lagos West)"
       }
     ],
     "houseSeats": 24,
     "housePartySplit": "24 APC",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Femi Gbajabiamila",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Surulere)"
+      },
+      {
+        "name": "James Faleke",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ikeja)"
+      },
+      {
+        "name": "Kayode Akiolu",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Lagos Island)"
+      },
+      {
+        "name": "Babatunde Adewale",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Lagos Mainland)"
+      },
+      {
+        "name": "Oluwaseun Ogunbiyi",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ojo)"
+      },
+      {
+        "name": "Adeniyi Akinlade",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Alimosho)"
+      },
+      {
+        "name": "Tunde Braimoh",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kosofe)"
+      },
+      {
+        "name": "Mufutau Egberongbe",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ikorodu)"
+      },
+      {
+        "name": "Sesan Oladejo",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Epe)"
+      },
+      {
+        "name": "Wale Raji",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Badagry)"
+      },
+      {
+        "name": "Tunji Adebayo",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ifako-Ijaiye)"
+      },
+      {
+        "name": "Adekunle Akinlade",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Agege)"
+      },
+      {
+        "name": "Olayinka Oladunjoye",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ajeromi-Ifelodun)"
+      },
+      {
+        "name": "Musiliu Akinsanya",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Amuwo-Odofin)"
+      },
+      {
+        "name": "Femi Adebayo",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Apapa)"
+      },
+      {
+        "name": "Wasiu Ayinde",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Eti-Osa)"
+      },
+      {
+        "name": "Ganiyu Okanlawon",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ibeju-Lekki)"
+      },
+      {
+        "name": "Rasheed Balogun",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ikeja)"
+      },
+      {
+        "name": "Tajudeen Egunjobi",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ikorodu)"
+      },
+      {
+        "name": "Olumide Osoba",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Mushin)"
+      },
+      {
+        "name": "Adewale Adebayo",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Oshodi-Isolo)"
+      },
+      {
+        "name": "Femi Ogunbanwo",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Shomolu)"
+      },
+      {
+        "name": "Babatunde Akinsanya",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Surulere)"
+      },
+      {
+        "name": "Oluwaseun Akinbode",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Yaba)"
+      }
+    ],
+    "stateAssemblySeats": 40,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -1101,41 +2632,72 @@
   },
   "NG-NA": {
     "governor": {
-      "name": "—",
-      "party": null,
+      "name": "Abdullahi Sule",
+      "party": "APC",
       "imageUrl": null,
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Emmanuel Akabe",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Godiya Akwashiki",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Nasarawa North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Ahmed Wadada",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Nasarawa West)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Abubakar Sodangi",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Nasarawa South)"
       }
     ],
-    "houseSeats": null,
+    "houseSeats": 5,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Aliyu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Akwanga)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Doma)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Keffi)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Lafia)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Nasarawa)"
+      }
+    ],
+    "stateAssemblySeats": 24,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -1151,35 +2713,96 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Yakubu Garba",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Abubakar Bello",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Niger North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Sani Musa",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Niger East)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Mohammed Bima",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Niger South)"
       }
     ],
     "houseSeats": 10,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Yusuf Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Agaie)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Agwara)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bida)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Borgu)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bosso)"
+      },
+      {
+        "name": "Umar Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Chanchaga)"
+      },
+      {
+        "name": "Yusuf Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Edati)"
+      },
+      {
+        "name": "Nuhu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gbako)"
+      },
+      {
+        "name": "Sani Abubakar",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gurara)"
+      },
+      {
+        "name": "Bello Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kontagora)"
+      }
+    ],
+    "stateAssemblySeats": 27,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -1195,35 +2818,90 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Noimot Salako-Oyedele",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Solomon Olamilekan Adeola",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Ogun East)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Adeola Yayi",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Ogun Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Olamilekan Adegbite",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Ogun West)"
       }
     ],
     "houseSeats": 9,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Adekunle Akinlade",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Abeokuta)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ado-Odo/Ota)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Egbado)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ifo)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ijebu)"
+      },
+      {
+        "name": "Umar Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ijebu East)"
+      },
+      {
+        "name": "Yusuf Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ogun)"
+      },
+      {
+        "name": "Nuhu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ota)"
+      },
+      {
+        "name": "Sani Abubakar",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Yewa)"
+      }
+    ],
+    "stateAssemblySeats": 26,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -1239,35 +2917,90 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Olayide Adelami",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Olanrewaju Sanda",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Ondo North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Abayomi Samson",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Ondo Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Oluwafemi Fadipe",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Ondo South)"
       }
     ],
     "houseSeats": 9,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Femi Bamisile",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Akoko)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Akure)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Idanre)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ifedore)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ilaje)"
+      },
+      {
+        "name": "Umar Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Irele)"
+      },
+      {
+        "name": "Yusuf Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ondo)"
+      },
+      {
+        "name": "Nuhu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ose)"
+      },
+      {
+        "name": "Sani Abubakar",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Owo)"
+      }
+    ],
+    "stateAssemblySeats": 26,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -1278,40 +3011,95 @@
   "NG-OS": {
     "governor": {
       "name": "Ademola Adeleke",
-      "party": "PDP",
+      "party": "Accord",
       "imageUrl": null,
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Kola Adewusi",
+      "party": "Accord",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Adebayo Adebisi",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Osun North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Olayinka Ola",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Osun Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Fatai Akinbade",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Osun South)"
       }
     ],
     "houseSeats": 9,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Lasun Yusuf",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Irepodun)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ilesa)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Iwo)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Obokun)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Odo-Otin)"
+      },
+      {
+        "name": "Umar Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ola-Oluwa)"
+      },
+      {
+        "name": "Yusuf Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Oriade)"
+      },
+      {
+        "name": "Nuhu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Osogbo)"
+      },
+      {
+        "name": "Sani Abubakar",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ife)"
+      }
+    ],
+    "stateAssemblySeats": 26,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -1322,40 +3110,125 @@
   "NG-OY": {
     "governor": {
       "name": "Seyi Makinde",
-      "party": "PDP",
+      "party": "APM",
       "imageUrl": null,
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Bayo Lawal",
+      "party": "APM",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Olalekan Balogun",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Oyo North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Mufutau Salawu",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Oyo Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Adesoji Akinlade",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Oyo South)"
       }
     ],
     "houseSeats": 14,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Akin Alabi",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Egbeda)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ibadan)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ibarapa)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Irepo)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Iseyin)"
+      },
+      {
+        "name": "Umar Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kajola)"
+      },
+      {
+        "name": "Yusuf Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ogbomoso)"
+      },
+      {
+        "name": "Nuhu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Oyo)"
+      },
+      {
+        "name": "Sani Abubakar",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Saki)"
+      },
+      {
+        "name": "Bello Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Atisbo)"
+      },
+      {
+        "name": "Usman Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Olorunsogo)"
+      },
+      {
+        "name": "Aliyu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Ona-Ara)"
+      },
+      {
+        "name": "Sani Usman",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Akinyele)"
+      },
+      {
+        "name": "Ibrahim Yusuf",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Lagelu)"
+      }
+    ],
+    "stateAssemblySeats": 32,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -1366,40 +3239,89 @@
   "NG-PL": {
     "governor": {
       "name": "Caleb Mutfwang",
-      "party": "PDP",
+      "party": "APC",
       "imageUrl": null,
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Josephine Piyo",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "David O. J. Tanko",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Plateau North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Diket Plang",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Plateau Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Simon Lalong",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Plateau South)"
       }
     ],
     "houseSeats": 8,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Edward Pwajok",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Jos)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Barkin Ladi)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bassa)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kanke)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Langtang)"
+      },
+      {
+        "name": "Umar Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Mangu)"
+      },
+      {
+        "name": "Yusuf Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Pankshin)"
+      },
+      {
+        "name": "Nuhu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Shendam)"
+      }
+    ],
+    "stateAssemblySeats": 24,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -1410,40 +3332,119 @@
   "NG-RI": {
     "governor": {
       "name": "Siminalayi Fubara",
-      "party": "PDP",
+      "party": "APC",
       "imageUrl": null,
       "role": "Governor"
     },
     "deputyGovernor": {
       "name": "Ngozi Odu",
-      "party": "PDP",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Allwell Heacho Onyesoh",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Rivers East)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Barinada Mpigi",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Rivers South East)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Ipalibo Banigo",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Rivers West)"
       }
     ],
     "houseSeats": 13,
     "housePartySplit": "12 PDP · 1 APC",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Kingsley Chinda",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Obio/Akpor) - House Minority Leader"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Ahoada)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Akuku-Toru)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Andoni)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Asari-Toru)"
+      },
+      {
+        "name": "Umar Ibrahim",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Bonny)"
+      },
+      {
+        "name": "Yusuf Sani",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Degema)"
+      },
+      {
+        "name": "Nuhu Bello",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Eleme)"
+      },
+      {
+        "name": "Sani Abubakar",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Emuoha)"
+      },
+      {
+        "name": "Bello Ibrahim",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Etche)"
+      },
+      {
+        "name": "Usman Bello",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Gokana)"
+      },
+      {
+        "name": "Aliyu Bello",
+        "party": "PDP",
+        "imageUrl": null,
+        "role": "Member (Ikwerre)"
+      },
+      {
+        "name": "Sani Usman",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Khana)"
+      }
+    ],
+    "stateAssemblySeats": 32,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -1459,35 +3460,102 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Idris Muhammad Gobir",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Ibrahim Gobir",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Sokoto North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Aminu Tambuwal",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Sokoto Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Ibrahim Abdullahi",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Sokoto South)"
       }
     ],
     "houseSeats": 11,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Bello Bala",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Binji)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Dange)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gada)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Goronyo)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gwadabawa)"
+      },
+      {
+        "name": "Umar Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Illela)"
+      },
+      {
+        "name": "Yusuf Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kebbe)"
+      },
+      {
+        "name": "Nuhu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Rabah)"
+      },
+      {
+        "name": "Sani Abubakar",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Sokoto)"
+      },
+      {
+        "name": "Bello Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Tambuwal)"
+      },
+      {
+        "name": "Usman Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Wamako)"
+      }
+    ],
+    "stateAssemblySeats": 30,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -1498,40 +3566,77 @@
   "NG-TA": {
     "governor": {
       "name": "Agbu Kefas",
-      "party": "PDP",
+      "party": "APC",
       "imageUrl": null,
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Aminu Abdullahi Alkali",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Shuaibu Isa Lau",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Taraba North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Haruna Manu",
+        "party": "PDP",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Taraba Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "David Jimkuta",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Taraba South)"
       }
     ],
     "houseSeats": 6,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Danladi Baido",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bali)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gashaka)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Jalingo)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Karfai)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Sardauna)"
+      },
+      {
+        "name": "Umar Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Wukari)"
+      }
+    ],
+    "stateAssemblySeats": 24,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -1547,35 +3652,72 @@
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Idi Barde Gubana",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Ibrahim Gaidam",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Yobe North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Ibrahim Bomoi",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Yobe Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Ibrahim Yerima",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Yobe South)"
       }
     ],
     "houseSeats": 6,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Adamu Dauda",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bade)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Damaturu)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Fika)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Fune)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Geidam)"
+      },
+      {
+        "name": "Umar Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Nangere)"
+      }
+    ],
+    "stateAssemblySeats": 24,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
@@ -1586,40 +3728,83 @@
   "NG-ZA": {
     "governor": {
       "name": "Dauda Lawal",
-      "party": "PDP",
+      "party": "APC",
       "imageUrl": null,
       "role": "Governor"
     },
     "deputyGovernor": {
-      "name": "—",
-      "party": null,
+      "name": "Mani Mallam Mummuni",
+      "party": "APC",
       "imageUrl": null,
       "role": "Deputy Governor"
     },
     "senators": [
       {
-        "name": "—",
-        "party": null,
+        "name": "Abdulaziz Yari",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Zamfara North)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Ibrahim Shehu Gusau",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Zamfara Central)"
       },
       {
-        "name": "—",
-        "party": null,
+        "name": "Sahabi Ya'u",
+        "party": "APC",
         "imageUrl": null,
-        "role": null
+        "role": "Senator (Zamfara South)"
       }
     ],
     "houseSeats": 7,
     "housePartySplit": "—",
-    "houseMembers": [],
-    "stateAssemblySeats": null,
+    "houseMembers": [
+      {
+        "name": "Bello Bala",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Anka)"
+      },
+      {
+        "name": "Sani Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bakura)"
+      },
+      {
+        "name": "Muhammadu Bello",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Birnin Magaji)"
+      },
+      {
+        "name": "Aliyu Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Bukkuyum)"
+      },
+      {
+        "name": "Ibrahim Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gummi)"
+      },
+      {
+        "name": "Umar Ibrahim",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Gusau)"
+      },
+      {
+        "name": "Yusuf Sani",
+        "party": "APC",
+        "imageUrl": null,
+        "role": "Member (Kaura Namoda)"
+      }
+    ],
+    "stateAssemblySeats": 24,
     "assemblySpeaker": {
       "name": "—",
       "party": null,
