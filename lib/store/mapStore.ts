@@ -25,10 +25,10 @@ export interface MapSelectionState {
   reset: () => void;
 }
 
-function withMobilePeek(
-  patch: Partial<MapSelectionState>
-): Partial<MapSelectionState> {
-  return { ...patch, mobileSheet: "peek" as const };
+function mobileSheetForSelection(count: number): MobileSheetMode {
+  if (count === 0) return "hidden";
+  if (count === 1) return "open";
+  return "peek";
 }
 
 export const useMapStore = create<MapSelectionState>((set, get) => ({
@@ -60,29 +60,25 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       }
       next.add(id);
     }
-    set(
-      withMobilePeek({
-        selectedStateIds: next,
-        lgaVisibleStateIds: lgaVisible,
-        selectedLgaId: null,
-        panelOpen: next.size > 0,
-        activeRegionId: null,
-        mobileSheet: next.size > 0 ? "peek" : "hidden",
-      })
-    );
+    set({
+      selectedStateIds: next,
+      lgaVisibleStateIds: lgaVisible,
+      selectedLgaId: null,
+      panelOpen: next.size > 0,
+      activeRegionId: null,
+      mobileSheet: mobileSheetForSelection(next.size),
+    });
   },
 
   selectStates: (ids) => {
-    set(
-      withMobilePeek({
-        selectedStateIds: new Set(ids),
-        lgaVisibleStateIds: new Set(ids),
-        selectedLgaId: null,
-        panelOpen: ids.length > 0,
-        activeRegionId: null,
-        mobileSheet: ids.length > 0 ? "peek" : "hidden",
-      })
-    );
+    set({
+      selectedStateIds: new Set(ids),
+      lgaVisibleStateIds: new Set(ids),
+      selectedLgaId: null,
+      panelOpen: ids.length > 0,
+      activeRegionId: null,
+      mobileSheet: mobileSheetForSelection(ids.length),
+    });
   },
 
   showLgas: (id) => {
@@ -99,16 +95,14 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       }
       selected.add(id);
     }
-    set(
-      withMobilePeek({
-        lgaVisibleStateIds: lgaVisible,
-        selectedStateIds: selected,
-        selectedLgaId: null,
-        panelOpen: true,
-        activeRegionId: null,
-        mobileSheet: "open",
-      })
-    );
+    set({
+      lgaVisibleStateIds: lgaVisible,
+      selectedStateIds: selected,
+      selectedLgaId: null,
+      panelOpen: true,
+      activeRegionId: null,
+      mobileSheet: "open",
+    });
   },
 
   hideLgas: (id) => {
@@ -118,16 +112,14 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   },
 
   showLgasForStates: (ids) => {
-    set(
-      withMobilePeek({
-        lgaVisibleStateIds: new Set(ids),
-        selectedStateIds: new Set(ids),
-        selectedLgaId: null,
-        panelOpen: ids.length > 0,
-        activeRegionId: null,
-        mobileSheet: ids.length > 0 ? "open" : "hidden",
-      })
-    );
+    set({
+      lgaVisibleStateIds: new Set(ids),
+      selectedStateIds: new Set(ids),
+      selectedLgaId: null,
+      panelOpen: ids.length > 0,
+      activeRegionId: null,
+      mobileSheet: mobileSheetForSelection(ids.length),
+    });
   },
 
   setSelectedLga: (id) =>

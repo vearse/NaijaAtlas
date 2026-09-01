@@ -15,7 +15,7 @@ export default function MapControls() {
       <button
         type="button"
         onClick={handleReset}
-        className="rounded-lg bg-white/95 backdrop-blur px-4 py-2 text-sm font-medium text-slate-800 shadow-lg border border-slate-200 hover:bg-white transition-colors"
+        className="rounded-lg bg-white/95 backdrop-blur px-4 py-2 text-sm font-medium text-slate-800 shadow-lg border border-slate-200 hover:bg-white transition-all hover:shadow-xl active:scale-[0.98]"
         aria-label="Reset map to Nigeria view"
       >
         Reset map

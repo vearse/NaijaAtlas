@@ -1,0 +1,298 @@
+{
+  "NG-AB": {
+    "population": 4100000,
+    "populationDensity": 837,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-AD": {
+    "population": 5200000,
+    "populationDensity": 136,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-AK": {
+    "population": 5500000,
+    "populationDensity": 814,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-AN": {
+    "population": 6400000,
+    "populationDensity": 1336,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-BA": {
+    "population": 8200000,
+    "populationDensity": 169,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-BY": {
+    "population": 2700000,
+    "populationDensity": 287,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-BE": {
+    "population": 6200000,
+    "populationDensity": 201,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-BO": {
+    "population": 6800000,
+    "populationDensity": 93,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-CR": {
+    "population": 4300000,
+    "populationDensity": 204,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-DE": {
+    "population": 6200000,
+    "populationDensity": 361,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-EB": {
+    "population": 3200000,
+    "populationDensity": 501,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-ED": {
+    "population": 4900000,
+    "populationDensity": 250,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-EK": {
+    "population": 3400000,
+    "populationDensity": 586,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-EN": {
+    "population": 4900000,
+    "populationDensity": 645,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-FC": {
+    "population": 3800000,
+    "populationDensity": 502,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-GO": {
+    "population": 4100000,
+    "populationDensity": 234,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-IM": {
+    "population": 5900000,
+    "populationDensity": 1148,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-JI": {
+    "population": 7200000,
+    "populationDensity": 306,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-KD": {
+    "population": 9800000,
+    "populationDensity": 221,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-KN": {
+    "population": 16000000,
+    "populationDensity": 782,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-KT": {
+    "population": 9300000,
+    "populationDensity": 388,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-KE": {
+    "population": 5200000,
+    "populationDensity": 144,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-KO": {
+    "population": 5100000,
+    "populationDensity": 175,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-KW": {
+    "population": 3900000,
+    "populationDensity": 116,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-LA": {
+    "population": 21000000,
+    "populationDensity": 5710,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-NA": {
+    "population": null,
+    "populationDensity": null,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-NI": {
+    "population": 6800000,
+    "populationDensity": 94,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-OG": {
+    "population": 6200000,
+    "populationDensity": 371,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-ON": {
+    "population": 5200000,
+    "populationDensity": 345,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-OS": {
+    "population": 5200000,
+    "populationDensity": 606,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-OY": {
+    "population": 9400000,
+    "populationDensity": 338,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-PL": {
+    "population": 5200000,
+    "populationDensity": 195,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-RI": {
+    "population": 8200000,
+    "populationDensity": 794,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-SO": {
+    "population": 6200000,
+    "populationDensity": 192,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-TA": {
+    "population": 3800000,
+    "populationDensity": 64,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-YO": {
+    "population": 3800000,
+    "populationDensity": 85,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  },
+  "NG-ZA": {
+    "population": 5800000,
+    "populationDensity": 172,
+    "urbanPercent": "—",
+    "genderRatio": "—",
+    "growthRate": "—",
+    "medianAge": "—"
+  }
+}

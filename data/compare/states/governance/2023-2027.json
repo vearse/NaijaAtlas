@@ -1,0 +1,1630 @@
+{
+  "NG-AB": {
+    "governor": {
+      "name": "Alex Otti",
+      "party": "LP",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "Ikechi Aaron",
+      "party": "LP",
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 8,
+    "housePartySplit": "5 LP · 2 APC · 1 APGA",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-AD": {
+    "governor": {
+      "name": "Ahmadu Fintiri",
+      "party": "PDP",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 8,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-AK": {
+    "governor": {
+      "name": "Umo Eno",
+      "party": "PDP",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 10,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-AN": {
+    "governor": {
+      "name": "Charles Soludo",
+      "party": "APGA",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 11,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-BA": {
+    "governor": {
+      "name": "Bala Mohammed",
+      "party": "PDP",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 12,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-BY": {
+    "governor": {
+      "name": "Douye Diri",
+      "party": "PDP",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 5,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-BE": {
+    "governor": {
+      "name": "Hyacinth Alia",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 11,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-BO": {
+    "governor": {
+      "name": "Babagana Zulum",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 10,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-CR": {
+    "governor": {
+      "name": "Bassey Otu",
+      "party": "PDP",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 8,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-DE": {
+    "governor": {
+      "name": "Sheriff Oborevwori",
+      "party": "PDP",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 10,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-EB": {
+    "governor": {
+      "name": "Francis Nwifuru",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 6,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-ED": {
+    "governor": {
+      "name": "Monday Okpebholo",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 9,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-EK": {
+    "governor": {
+      "name": "Biodun Oyebanji",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 6,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-EN": {
+    "governor": {
+      "name": "Peter Mbah",
+      "party": "PDP",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 8,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-FC": {
+    "governor": {
+      "name": "Nyesom Wike",
+      "party": "PDP",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Nyesom_Wike_%28cropped%29.jpg/220px-Nyesom_Wike_%28cropped%29.jpg",
+      "role": "Minister of FCT"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 2,
+    "housePartySplit": "2 seats",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-GO": {
+    "governor": {
+      "name": "Muhammad Inuwa Yahaya",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 6,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-IM": {
+    "governor": {
+      "name": "Hope Uzodinma",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 10,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-JI": {
+    "governor": {
+      "name": "Umar Namadi",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 11,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-KD": {
+    "governor": {
+      "name": "Uba Sani",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 16,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-KN": {
+    "governor": {
+      "name": "Abba Kabir Yusuf",
+      "party": "NNPP",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "Aminu Abdussalam",
+      "party": "NNPP",
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 24,
+    "housePartySplit": "16 NNPP · 8 APC",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-KT": {
+    "governor": {
+      "name": "Dikko Umar Radda",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 15,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-KE": {
+    "governor": {
+      "name": "Nasir Idris",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 8,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-KO": {
+    "governor": {
+      "name": "Ahmed Ododo",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 9,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-KW": {
+    "governor": {
+      "name": "AbdulRahman AbdulRazaq",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 6,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-LA": {
+    "governor": {
+      "name": "Babajide Sanwo-Olu",
+      "party": "APC",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Babajide_Olawale_Sanwo-Olu.jpg/220px-Babajide_Olawale_Sanwo-Olu.jpg",
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "Kadri Obafemi Hamzat",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 24,
+    "housePartySplit": "24 APC",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-NA": {
+    "governor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": null,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-NI": {
+    "governor": {
+      "name": "Mohammed Umar Bago",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 10,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-OG": {
+    "governor": {
+      "name": "Dapo Abiodun",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 9,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-ON": {
+    "governor": {
+      "name": "Lucky Aiyedatiwa",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 9,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-OS": {
+    "governor": {
+      "name": "Ademola Adeleke",
+      "party": "PDP",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 9,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-OY": {
+    "governor": {
+      "name": "Seyi Makinde",
+      "party": "PDP",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 14,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-PL": {
+    "governor": {
+      "name": "Caleb Mutfwang",
+      "party": "PDP",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 8,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-RI": {
+    "governor": {
+      "name": "Siminalayi Fubara",
+      "party": "PDP",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "Ngozi Odu",
+      "party": "PDP",
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 13,
+    "housePartySplit": "12 PDP · 1 APC",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-SO": {
+    "governor": {
+      "name": "Ahmad Aliyu",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 11,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-TA": {
+    "governor": {
+      "name": "Agbu Kefas",
+      "party": "PDP",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 6,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-YO": {
+    "governor": {
+      "name": "Mai Mala Buni",
+      "party": "APC",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 6,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  },
+  "NG-ZA": {
+    "governor": {
+      "name": "Dauda Lawal",
+      "party": "PDP",
+      "imageUrl": null,
+      "role": "Governor"
+    },
+    "deputyGovernor": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Deputy Governor"
+    },
+    "senators": [
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      }
+    ],
+    "houseSeats": 7,
+    "housePartySplit": "—",
+    "houseMembers": [],
+    "stateAssemblySeats": null,
+    "assemblySpeaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": "Assembly Speaker"
+    }
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "stateCategories": [
+    {
+      "id": "general",
+      "label": "General",
+      "temporal": false,
+      "dataFile": "general.json",
+      "sourceNote": "Boundaries © UN SALB / OSGoF · Hierarchy © temikeezy",
+      "fields": [
+        { "key": "region", "label": "Region", "type": "text", "source": "computed" },
+        { "key": "capital", "label": "Capital", "type": "text", "source": "data" },
+        { "key": "landAreaKm2", "label": "Land area (km²)", "type": "number", "source": "data", "highlight": "max" },
+        { "key": "yearCreated", "label": "Year created", "type": "text", "source": "data" },
+        { "key": "majorCities", "label": "Major cities", "type": "text", "source": "data" },
+        { "key": "languages", "label": "Languages", "type": "text", "source": "data" },
+        { "key": "nickname", "label": "Nickname", "type": "text", "source": "data" },
+        { "key": "lgaCount", "label": "LGAs", "type": "number", "source": "computed", "highlight": "max" },
+        { "key": "wardTotal", "label": "Total wards", "type": "number", "source": "computed", "highlight": "max" },
+        { "key": "wardsPerLga", "label": "Wards / LGA (avg)", "type": "number", "source": "computed", "highlight": "max" }
+      ]
+    },
+    {
+      "id": "geography",
+      "label": "Geography",
+      "temporal": false,
+      "dataFile": "geography.json",
+      "sourceNote": "Land area © UN SALB · Adjacency & distance computed from geo pipeline",
+      "fields": [
+        { "key": "hasCoastline", "label": "Coastline access", "type": "text", "source": "data" },
+        { "key": "hasIntlBorder", "label": "International border", "type": "text", "source": "data" },
+        { "key": "borderingStates", "label": "Bordering states", "type": "text", "source": "data" },
+        { "key": "distanceToAbujaKm", "label": "Distance to Abuja (km)", "type": "number", "source": "data", "highlight": "min" },
+        { "key": "largestLga", "label": "Largest LGA (est.)", "type": "text", "source": "data" },
+        { "key": "smallestLga", "label": "Smallest LGA (est.)", "type": "text", "source": "data" },
+        { "key": "nationalPopRank", "label": "National pop. rank", "type": "number", "source": "data", "highlight": "min" }
+      ]
+    },
+    {
+      "id": "demographics",
+      "label": "Demographics",
+      "temporal": true,
+      "defaultPeriod": "2023",
+      "periods": [
+        { "id": "2006", "label": "2006 Census" },
+        { "id": "2016", "label": "2016 Projection" },
+        { "id": "2023", "label": "2023 Projection" }
+      ],
+      "dataPath": "demographics/{period}.json",
+      "sourceNote": "Population © NPC / NBS",
+      "fields": [
+        { "key": "population", "label": "Population", "type": "number", "source": "data", "highlight": "max" },
+        { "key": "populationDensity", "label": "Density (per km²)", "type": "number", "source": "data", "highlight": "max" },
+        { "key": "urbanPercent", "label": "Urban population", "type": "text", "source": "data" },
+        { "key": "genderRatio", "label": "Male / female ratio", "type": "text", "source": "data" },
+        { "key": "growthRate", "label": "Growth rate", "type": "text", "source": "data" },
+        { "key": "medianAge", "label": "Median age", "type": "text", "source": "data" }
+      ]
+    },
+    {
+      "id": "governance",
+      "label": "Governance",
+      "temporal": true,
+      "defaultPeriod": "2023-2027",
+      "periods": [
+        { "id": "2019-2023", "label": "2019–2023 Term" },
+        { "id": "2023-2027", "label": "2023–2027 Term" }
+      ],
+      "dataPath": "governance/{period}.json",
+      "sourceNote": "Officeholders © INEC / NASS",
+      "fields": [
+        { "key": "governor", "label": "Governor", "type": "person", "source": "data" },
+        { "key": "deputyGovernor", "label": "Deputy Governor", "type": "person", "source": "data" },
+        { "key": "senators", "label": "Senators", "type": "personList", "source": "data" },
+        { "key": "houseSeats", "label": "House of Reps seats", "type": "number", "source": "data", "highlight": "max" },
+        { "key": "housePartySplit", "label": "House party split", "type": "partySplit", "source": "data" },
+        { "key": "houseMembers", "label": "House members", "type": "personList", "source": "data" },
+        { "key": "stateAssemblySeats", "label": "State assembly seats", "type": "number", "source": "data" },
+        { "key": "assemblySpeaker", "label": "Assembly speaker", "type": "person", "source": "data" }
+      ]
+    },
+    {
+      "id": "economy",
+      "label": "Economy",
+      "temporal": true,
+      "defaultPeriod": "2023",
+      "periods": [
+        { "id": "2022", "label": "FY 2022" },
+        { "id": "2023", "label": "FY 2023" },
+        { "id": "2024", "label": "FY 2024" }
+      ],
+      "dataPath": "economy/{period}.json",
+      "sourceNote": "IGR & indicators © NBS / BudgIT",
+      "fields": [
+        { "key": "igr", "label": "Internally Generated Revenue", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "igrPerCapita", "label": "IGR per capita", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "faacAllocation", "label": "FAAC allocation", "type": "text", "source": "data" },
+        { "key": "totalRevenue", "label": "Total revenue", "type": "text", "source": "data" },
+        { "key": "igrShareOfRevenue", "label": "IGR share of revenue", "type": "text", "source": "data" },
+        { "key": "unemploymentRate", "label": "Unemployment rate", "type": "text", "source": "data", "highlight": "min" },
+        { "key": "povertyRate", "label": "Poverty rate", "type": "text", "source": "data", "highlight": "min" }
+      ]
+    },
+    {
+      "id": "social",
+      "label": "Social",
+      "temporal": true,
+      "defaultPeriod": "2021",
+      "periods": [{ "id": "2021", "label": "2021 NDHS" }],
+      "dataPath": "social/{period}.json",
+      "sourceNote": "Social indicators © NBS / NDHS",
+      "fields": [
+        { "key": "literacyRate", "label": "Literacy rate", "type": "text", "source": "data" },
+        { "key": "primaryEnrollment", "label": "Primary enrollment", "type": "text", "source": "data" },
+        { "key": "secondaryEnrollment", "label": "Secondary enrollment", "type": "text", "source": "data" },
+        { "key": "infantMortality", "label": "Infant mortality", "type": "text", "source": "data", "highlight": "min" },
+        { "key": "electricityAccess", "label": "Electricity access", "type": "text", "source": "data" },
+        { "key": "improvedWaterAccess", "label": "Improved water access", "type": "text", "source": "data" },
+        { "key": "internetPenetration", "label": "Internet penetration", "type": "text", "source": "data" }
+      ]
+    }
+  ],
+  "countryCategories": [
+    {
+      "id": "general",
+      "label": "General",
+      "temporal": false,
+      "dataFile": "general.json",
+      "sourceNote": "Federal summary · Boundaries © UN SALB",
+      "fields": [
+        { "key": "officialName", "label": "Official name", "type": "text", "source": "data" },
+        { "key": "capital", "label": "Capital", "type": "text", "source": "data" },
+        { "key": "governmentType", "label": "Government", "type": "text", "source": "data" },
+        { "key": "independence", "label": "Independence", "type": "text", "source": "data" },
+        { "key": "currency", "label": "Currency", "type": "text", "source": "data" },
+        { "key": "languages", "label": "Official languages", "type": "text", "source": "data" },
+        { "key": "timezone", "label": "Time zone", "type": "text", "source": "data" },
+        { "key": "callingCode", "label": "Calling code", "type": "text", "source": "data" }
+      ]
+    },
+    {
+      "id": "demographics",
+      "label": "Demographics",
+      "temporal": true,
+      "defaultPeriod": "2023",
+      "periods": [
+        { "id": "2006", "label": "2006 Census" },
+        { "id": "2016", "label": "2016 Projection" },
+        { "id": "2023", "label": "2023 Projection" }
+      ],
+      "dataPath": "demographics/{period}.json",
+      "sourceNote": "Population © NPC / NBS",
+      "fields": [
+        { "key": "population", "label": "Population", "type": "number", "source": "data" },
+        { "key": "populationRank", "label": "Global rank", "type": "text", "source": "data" },
+        { "key": "medianAge", "label": "Median age", "type": "text", "source": "data" },
+        { "key": "urbanPercent", "label": "Urban population", "type": "text", "source": "data" },
+        { "key": "literacyRate", "label": "Literacy rate", "type": "text", "source": "data" },
+        { "key": "growthRate", "label": "Growth rate", "type": "text", "source": "data" },
+        { "key": "genderRatio", "label": "Male / female ratio", "type": "text", "source": "data" }
+      ]
+    },
+    {
+      "id": "governance",
+      "label": "Governance",
+      "temporal": true,
+      "defaultPeriod": "2023-2027",
+      "periods": [
+        { "id": "2019-2023", "label": "2019–2023 Term" },
+        { "id": "2023-2027", "label": "2023–2027 Term" }
+      ],
+      "dataPath": "governance/{period}.json",
+      "sourceNote": "Federal officeholders © INEC / NASS",
+      "fields": [
+        { "key": "president", "label": "President", "type": "person", "source": "data" },
+        { "key": "vicePresident", "label": "Vice President", "type": "person", "source": "data" },
+        { "key": "senatePresident", "label": "Senate President", "type": "person", "source": "data" },
+        { "key": "speaker", "label": "Speaker of the House", "type": "person", "source": "data" },
+        { "key": "senateSeats", "label": "Senate seats", "type": "number", "source": "data" },
+        { "key": "houseSeats", "label": "House seats", "type": "number", "source": "data" }
+      ]
+    },
+    {
+      "id": "economy",
+      "label": "Economy",
+      "temporal": true,
+      "defaultPeriod": "2023",
+      "periods": [
+        { "id": "2022", "label": "FY 2022" },
+        { "id": "2023", "label": "FY 2023" },
+        { "id": "2024", "label": "FY 2024" }
+      ],
+      "dataPath": "economy/{period}.json",
+      "sourceNote": "Macro indicators © NBS / BudgIT",
+      "fields": [
+        { "key": "gdpNominal", "label": "GDP (nominal)", "type": "text", "source": "data" },
+        { "key": "gdpPerCapita", "label": "GDP per capita", "type": "text", "source": "data" },
+        { "key": "inflationRate", "label": "Inflation rate", "type": "text", "source": "data" },
+        { "key": "nationalDebt", "label": "National debt", "type": "text", "source": "data" },
+        { "key": "oilRevenueShare", "label": "Oil revenue share", "type": "text", "source": "data" }
+      ]
+    }
+  ]
+}

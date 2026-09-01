@@ -1,0 +1,335 @@
+{
+  "NG-AB": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Akwa Ibom · Anambra · Cross River · Ebonyi · Enugu · Imo · Rivers",
+    "distanceToAbujaKm": 389,
+    "largestLga": "Arochukwu",
+    "smallestLga": "Aba South",
+    "nationalPopRank": 28
+  },
+  "NG-AD": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "Yes",
+    "borderingStates": "Borno · Gombe · Taraba",
+    "distanceToAbujaKm": 574,
+    "largestLga": "Fufore",
+    "smallestLga": "Yola South",
+    "nationalPopRank": 19
+  },
+  "NG-AK": {
+    "hasCoastline": "Yes",
+    "hasIntlBorder": "No",
+    "borderingStates": "Abia · Cross River · Rivers",
+    "distanceToAbujaKm": 430,
+    "largestLga": "Oruk Anam",
+    "smallestLga": "Udung Uko",
+    "nationalPopRank": 18
+  },
+  "NG-AN": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Abia · Delta · Edo · Enugu · Imo · Kogi · Rivers",
+    "distanceToAbujaKm": 319,
+    "largestLga": "Anambra West",
+    "smallestLga": "Onitsha South",
+    "nationalPopRank": 11
+  },
+  "NG-BA": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Gombe · Jigawa · Kaduna · Kano · Plateau · Taraba · Yobe",
+    "distanceToAbujaKm": 380,
+    "largestLga": "Toro",
+    "smallestLga": "Dass",
+    "nationalPopRank": 6
+  },
+  "NG-BY": {
+    "hasCoastline": "Yes",
+    "hasIntlBorder": "No",
+    "borderingStates": "Delta · Rivers",
+    "distanceToAbujaKm": 467,
+    "largestLga": "Southern Ijaw",
+    "smallestLga": "Kolokuma/Opokuma",
+    "nationalPopRank": 36
+  },
+  "NG-BE": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "Yes",
+    "borderingStates": "Cross River · Ebonyi · Enugu · Kogi · Nassarawa · Taraba",
+    "distanceToAbujaKm": 253,
+    "largestLga": "Kwande",
+    "smallestLga": "Tarka",
+    "nationalPopRank": 12
+  },
+  "NG-BO": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "Yes",
+    "borderingStates": "Adamawa · Gombe · Yobe",
+    "distanceToAbujaKm": 698,
+    "largestLga": "Konduga",
+    "smallestLga": "Maiduguri",
+    "nationalPopRank": 9
+  },
+  "NG-CR": {
+    "hasCoastline": "Yes",
+    "hasIntlBorder": "Yes",
+    "borderingStates": "Abia · Akwa Ibom · Benue · Ebonyi",
+    "distanceToAbujaKm": 358,
+    "largestLga": "Akamkpa",
+    "smallestLga": "Calabar-Municipal",
+    "nationalPopRank": 27
+  },
+  "NG-DE": {
+    "hasCoastline": "Yes",
+    "hasIntlBorder": "No",
+    "borderingStates": "Anambra · Bayelsa · Edo · Ondo · Rivers",
+    "distanceToAbujaKm": 388,
+    "largestLga": "Warri South West",
+    "smallestLga": "Uvwie",
+    "nationalPopRank": 13
+  },
+  "NG-EB": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Abia · Benue · Cross River · Enugu",
+    "distanceToAbujaKm": 309,
+    "largestLga": "Izzi",
+    "smallestLga": "Afikpo North",
+    "nationalPopRank": 35
+  },
+  "NG-ED": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Anambra · Delta · Kogi · Ondo",
+    "distanceToAbujaKm": 297,
+    "largestLga": "Ovia North East",
+    "smallestLga": "Egor",
+    "nationalPopRank": 25
+  },
+  "NG-EK": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Kogi · Kwara · Ondo · Osun",
+    "distanceToAbujaKm": 257,
+    "largestLga": "Ikole",
+    "smallestLga": "Ilemeji",
+    "nationalPopRank": 34
+  },
+  "NG-EN": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Abia · Anambra · Benue · Ebonyi · Kogi",
+    "distanceToAbujaKm": 261,
+    "largestLga": "Uzo-Uwani",
+    "smallestLga": "Enugu South",
+    "nationalPopRank": 26
+  },
+  "NG-FC": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Kaduna · Nassarawa · Niger",
+    "distanceToAbujaKm": 0,
+    "largestLga": "Abuja Municipal",
+    "smallestLga": "Gwagwalada",
+    "nationalPopRank": 31
+  },
+  "NG-GO": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Adamawa · Bauchi · Borno · Taraba · Yobe",
+    "distanceToAbujaKm": 465,
+    "largestLga": "Dukku",
+    "smallestLga": "Gombe",
+    "nationalPopRank": 29
+  },
+  "NG-IM": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Abia · Anambra · Rivers",
+    "distanceToAbujaKm": 368,
+    "largestLga": "Ohaji/Egbema",
+    "smallestLga": "Isu",
+    "nationalPopRank": 16
+  },
+  "NG-JI": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "Yes",
+    "borderingStates": "Bauchi · Kano · Katsina · Yobe",
+    "distanceToAbujaKm": 423,
+    "largestLga": "Gwaram",
+    "smallestLga": "Hadejia",
+    "nationalPopRank": 8
+  },
+  "NG-KD": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Bauchi · Federal Capital Territory · Kano · Katsina · Nassarawa · Niger · Plateau · Zamfara",
+    "distanceToAbujaKm": 169,
+    "largestLga": "Birnin-Gwari",
+    "smallestLga": "Kaduna North",
+    "nationalPopRank": 3
+  },
+  "NG-KN": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "Yes",
+    "borderingStates": "Bauchi · Jigawa · Kaduna · Katsina",
+    "distanceToAbujaKm": 355,
+    "largestLga": "Tudun Wada",
+    "smallestLga": "Kano Municipal",
+    "nationalPopRank": 2
+  },
+  "NG-KT": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "Yes",
+    "borderingStates": "Jigawa · Kaduna · Kano · Zamfara",
+    "distanceToAbujaKm": 367,
+    "largestLga": "Kankara",
+    "smallestLga": "Katsina",
+    "nationalPopRank": 5
+  },
+  "NG-KE": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "Yes",
+    "borderingStates": "Niger · Sokoto · Zamfara",
+    "distanceToAbujaKm": 395,
+    "largestLga": "Arewa-Dandi",
+    "smallestLga": "Aleiro",
+    "nationalPopRank": 20
+  },
+  "NG-KO": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Anambra · Benue · Edo · Ekiti · Enugu · Kwara · Nassarawa · Niger · Ondo",
+    "distanceToAbujaKm": 168,
+    "largestLga": "Lokoja",
+    "smallestLga": "Idah",
+    "nationalPopRank": 24
+  },
+  "NG-KW": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "Yes",
+    "borderingStates": "Ekiti · Kogi · Niger · Osun · Oyo",
+    "distanceToAbujaKm": 324,
+    "largestLga": "Baruten",
+    "smallestLga": "Offa",
+    "nationalPopRank": 30
+  },
+  "NG-LA": {
+    "hasCoastline": "Yes",
+    "hasIntlBorder": "No",
+    "borderingStates": "Ogun",
+    "distanceToAbujaKm": 488,
+    "largestLga": "Epe",
+    "smallestLga": "Lagos Island",
+    "nationalPopRank": 1
+  },
+  "NG-NA": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Benue · Federal Capital Territory · Kaduna · Kogi · Plateau · Taraba",
+    "distanceToAbujaKm": 146,
+    "largestLga": "Nasarawa",
+    "smallestLga": "Keffi",
+    "nationalPopRank": null
+  },
+  "NG-NI": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "Yes",
+    "borderingStates": "Federal Capital Territory · Kaduna · Kebbi · Kogi · Kwara · Zamfara",
+    "distanceToAbujaKm": 234,
+    "largestLga": "Borgu",
+    "smallestLga": "Bida",
+    "nationalPopRank": 10
+  },
+  "NG-OG": {
+    "hasCoastline": "Yes",
+    "hasIntlBorder": "Yes",
+    "borderingStates": "Lagos · Ondo · Osun · Oyo",
+    "distanceToAbujaKm": 459,
+    "largestLga": "Ijebu East",
+    "smallestLga": "Abeokuta South",
+    "nationalPopRank": 14
+  },
+  "NG-ON": {
+    "hasCoastline": "Yes",
+    "hasIntlBorder": "No",
+    "borderingStates": "Delta · Edo · Ekiti · Kogi · Ogun · Osun",
+    "distanceToAbujaKm": 323,
+    "largestLga": "Ilaje",
+    "smallestLga": "Akoko South East",
+    "nationalPopRank": 21
+  },
+  "NG-OS": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Ekiti · Kwara · Ogun · Ondo · Oyo",
+    "distanceToAbujaKm": 343,
+    "largestLga": "Aiyedade",
+    "smallestLga": "Osogbo",
+    "nationalPopRank": 22
+  },
+  "NG-OY": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Kwara · Ogun · Osun",
+    "distanceToAbujaKm": 444,
+    "largestLga": "Atigbo",
+    "smallestLga": "Ibadan South East",
+    "nationalPopRank": 4
+  },
+  "NG-PL": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Bauchi · Kaduna · Nassarawa · Taraba",
+    "distanceToAbujaKm": 230,
+    "largestLga": "Wase",
+    "smallestLga": "Jos North",
+    "nationalPopRank": 23
+  },
+  "NG-RI": {
+    "hasCoastline": "Yes",
+    "hasIntlBorder": "No",
+    "borderingStates": "Abia · Akwa Ibom · Anambra · Bayelsa · Delta · Imo",
+    "distanceToAbujaKm": 448,
+    "largestLga": "Ogba/Egbema/Ndoni",
+    "smallestLga": "Ogu/Bolo",
+    "nationalPopRank": 7
+  },
+  "NG-SO": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "Yes",
+    "borderingStates": "Kebbi · Zamfara",
+    "distanceToAbujaKm": 476,
+    "largestLga": "Gudu",
+    "smallestLga": "Sokoto North",
+    "nationalPopRank": 15
+  },
+  "NG-TA": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "Yes",
+    "borderingStates": "Adamawa · Bauchi · Benue · Gombe · Nassarawa · Plateau",
+    "distanceToAbujaKm": 399,
+    "largestLga": "Bali",
+    "smallestLga": "Jalingo",
+    "nationalPopRank": 32
+  },
+  "NG-YO": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "No",
+    "borderingStates": "Bauchi · Borno · Gombe · Jigawa",
+    "distanceToAbujaKm": 559,
+    "largestLga": "Fune",
+    "smallestLga": "Potiskum",
+    "nationalPopRank": 33
+  },
+  "NG-ZA": {
+    "hasCoastline": "No",
+    "hasIntlBorder": "Yes",
+    "borderingStates": "Kaduna · Katsina · Kebbi · Niger · Sokoto",
+    "distanceToAbujaKm": 351,
+    "largestLga": "Maru",
+    "smallestLga": "Shinkafi",
+    "nationalPopRank": 17
+  }
+}

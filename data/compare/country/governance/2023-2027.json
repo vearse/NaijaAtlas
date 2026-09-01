@@ -1,0 +1,30 @@
+{
+  "NG": {
+    "president": {
+      "name": "Bola Ahmed Tinubu",
+      "party": "APC",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Bola_Tinubu_%28cropped%29.jpg/220px-Bola_Tinubu_%28cropped%29.jpg",
+      "role": null
+    },
+    "vicePresident": {
+      "name": "Kashim Shettima",
+      "party": "APC",
+      "imageUrl": null,
+      "role": null
+    },
+    "senatePresident": {
+      "name": "Godswill Akpabio",
+      "party": "APC",
+      "imageUrl": null,
+      "role": null
+    },
+    "speaker": {
+      "name": "Tajudeen Abbas",
+      "party": "APC",
+      "imageUrl": null,
+      "role": null
+    },
+    "senateSeats": 109,
+    "houseSeats": 360
+  }
+}

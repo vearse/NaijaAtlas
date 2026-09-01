@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/verify-geo.mjs",
+    "prebuild": "npm run build:compare && node scripts/verify-geo.mjs && node scripts/verify-compare.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "build:geo": "tsx scripts/geo-processing/fetch-neighbors.ts && tsx scripts/geo-processing/build-all.ts",
+    "build:compare": "tsx scripts/geo-processing/build-compare.ts",
     "download:geo": "tsx scripts/geo-processing/download-sources.ts"
   },
   "dependencies": {

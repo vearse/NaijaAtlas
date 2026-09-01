@@ -6,9 +6,16 @@ const FILL_TRANSITION = {
   "fill-color-transition": { duration: 300 },
 };
 
+const LGA_LINE = {
+  default: "#94a3b8",
+  hover: "#64748b",
+  selected: "#475569",
+} as const;
+
 const LINE_TRANSITION = {
   "line-opacity-transition": { duration: 300 },
   "line-color-transition": { duration: 300 },
+  "line-width-transition": { duration: 300 },
 };
 
 export const BASE_STYLE = {
@@ -336,20 +343,35 @@ export function createLgaFillLineLayers(stateId: string): LayerSpecification[] {
         "line-color": [
           "case",
           ["boolean", ["feature-state", "hover"], false],
-          "#0f172a",
+          LGA_LINE.hover,
           ["boolean", ["feature-state", "selected"], false],
-          "#7f1d1d",
-          "#1e293b",
+          LGA_LINE.selected,
+          LGA_LINE.default,
         ],
         "line-width": [
           "case",
           ["boolean", ["feature-state", "hover"], false],
-          2.5,
+          1.25,
           ["boolean", ["feature-state", "selected"], false],
-          2,
-          1.4,
+          1.5,
+          0.75,
         ],
-        "line-opacity": 1,
+        "line-opacity": [
+          "case",
+          ["boolean", ["feature-state", "hover"], false],
+          1,
+          ["boolean", ["feature-state", "selected"], false],
+          0.95,
+          0.72,
+        ],
+        "line-dasharray": [
+          "case",
+          ["boolean", ["feature-state", "hover"], false],
+          ["literal", [1, 0]],
+          ["boolean", ["feature-state", "selected"], false],
+          ["literal", [1, 0]],
+          ["literal", [4, 3]],
+        ],
         ...LINE_TRANSITION,
       },
     },

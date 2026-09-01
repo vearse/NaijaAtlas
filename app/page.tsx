@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import ExplorerShell from "@/components/ExplorerShell";
+import { loadCompareBundle } from "@/lib/compare/loadCompareBundle";
 import type {
   StateLocation,
   LgaLocation,
@@ -34,6 +35,7 @@ export default function HomePage() {
   const wardsByLga = loadJson<WardsByLga>(
     path.join(root, "data/locations/wards-by-lga.json")
   );
+  const compareBundle = loadCompareBundle(root);
 
   return (
     <ExplorerShell
@@ -43,6 +45,7 @@ export default function HomePage() {
       stateContent={stateContent}
       lgaContent={lgaContent}
       wardsByLga={wardsByLga}
+      compareBundle={compareBundle}
     />
   );
 }

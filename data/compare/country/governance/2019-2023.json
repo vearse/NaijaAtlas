@@ -1,0 +1,30 @@
+{
+  "NG": {
+    "president": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": null
+    },
+    "vicePresident": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": null
+    },
+    "senatePresident": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": null
+    },
+    "speaker": {
+      "name": "—",
+      "party": null,
+      "imageUrl": null,
+      "role": null
+    },
+    "senateSeats": 109,
+    "houseSeats": 360
+  }
+}

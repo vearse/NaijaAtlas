@@ -113,6 +113,8 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
       map.fitBounds(bounds, {
         padding,
         duration: reducedMotion ? 0 : 1400,
+        pitch: 0,
+        bearing: 0,
         easing: (t) =>
           t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2,
       });
@@ -561,8 +563,20 @@ export default function NigeriaMap({ states, regions, lgas }: NigeriaMapProps) {
 
   useEffect(() => {
     if (resetCounter > 0) {
+      const map = mapRef.current;
       lastFlyKeyRef.current = "";
       loadedLgaRef.current.clear();
+      if (map) {
+        const reducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+        map.stop();
+        map.easeTo({
+          pitch: 0,
+          bearing: 0,
+          duration: reducedMotion ? 0 : 600,
+        });
+      }
       flyToBounds(NIGERIA_BOUNDS, 40);
     }
   }, [resetCounter, flyToBounds]);
