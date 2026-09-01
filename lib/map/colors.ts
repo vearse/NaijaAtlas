@@ -8,30 +8,51 @@ export const REGION_FILL: Record<string, string> = {
   "NG-SW": "#fffbeb",
 };
 
-/** Earth-tone palette — assigned cyclically to LGAs */
+/**
+ * Earth-tone palette for LGA fills — hues interleaved so neighbours
+ * cycling through the pool stay visually distinct (green / tan / blue / ochre).
+ */
 export const LGA_PALETTE = [
-  "#7cb87c",
-  "#8fbc8f",
-  "#a8c686",
-  "#c2b280",
-  "#9bb898",
-  "#6ba3be",
-  "#89a96d",
-  "#b5c99a",
-  "#d4a574",
-  "#5a9e6f",
-  "#84b882",
-  "#c9b896",
-  "#7eb09a",
-  "#a4c4a0",
-  "#96b57c",
-  "#6eae8a",
-  "#b8a878",
-  "#8aab76",
-  "#7ec4a3",
-  "#c5d4a0",
-];
+  "#6BA368", // sage green
+  "#C4A574", // wheat tan
+  "#5B8FA8", // dusty blue
+  "#A8BF7A", // yellow-green
+  "#B8956B", // warm brown
+  "#6AADA3", // teal
+  "#8FAF6E", // olive
+  "#D4C4A0", // cream
+  "#688EB5", // slate blue
+  "#7CB087", // mint
+  "#C9B896", // sand
+  "#5E9E78", // pine
+  "#94B86A", // grass
+  "#C2A882", // camel
+  "#72A898", // seafoam
+  "#D4896A", // terracotta
+  "#9B8B72", // stone
+  "#A3C986", // light olive
+  "#8AAB76", // chartreuse
+  "#BFA882", // gold tan
+] as const;
 
 export function colorForIndex(index: number, palette = LGA_PALETTE): string {
   return palette[index % palette.length];
+}
+
+/** Stable palette assignment sorted by LGA name within a state. */
+export function assignLgaPaletteColors(
+  features: GeoJSON.Feature[]
+): Map<string, string> {
+  const sorted = [...features].sort((a, b) => {
+    const na = String(a.properties?.name ?? "");
+    const nb = String(b.properties?.name ?? "");
+    return na.localeCompare(nb);
+  });
+
+  const colorById = new Map<string, string>();
+  sorted.forEach((feature, index) => {
+    const id = String(feature.properties?.id ?? `idx-${index}`);
+    colorById.set(id, colorForIndex(index));
+  });
+  return colorById;
 }

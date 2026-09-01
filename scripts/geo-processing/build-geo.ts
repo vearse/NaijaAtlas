@@ -18,7 +18,7 @@ import {
   type GeoFeature,
 } from "./shp-utils";
 import type { FeatureCollection } from "geojson";
-import { REGION_FILL, LGA_PALETTE, colorForIndex } from "../../lib/map/colors";
+import { REGION_FILL, assignLgaPaletteColors } from "../../lib/map/colors";
 
 interface TemiWard {
   State: string;
@@ -232,14 +232,12 @@ export async function buildGeo() {
         normalizeName(w.LGA) === normalizeName(lgaName)
     ).length;
     if (!lgasByState.has(sid)) lgasByState.set(sid, []);
-    const lgaIndex = lgasByState.get(sid)!.length;
     const feat = attachProps(f, {
       id,
       name: lgaName,
       parentId: sid,
       stateName,
       regionId: region.id,
-      fillColor: colorForIndex(lgaIndex, LGA_PALETTE),
     });
     lgasByState.get(sid)!.push(feat);
     lgas.push({
@@ -336,9 +334,16 @@ export async function buildGeo() {
   );
 
   for (const [sid, feats] of lgasByState) {
+    const colorById = assignLgaPaletteColors(feats);
+    const colored = feats.map((feature, index) => {
+      const id = String(feature.properties?.id ?? `idx-${index}`);
+      return attachProps(feature, {
+        fillColor: colorById.get(id),
+      });
+    });
     writeGeoJson(
       projectRoot(`public/geo/lgas/${sid}.geojson`),
-      simplifyFc({ type: "FeatureCollection", features: feats }, 0.003)
+      simplifyFc({ type: "FeatureCollection", features: colored }, 0.003)
     );
   }
 

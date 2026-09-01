@@ -254,6 +254,85 @@ type PersonField = {
   role: string | null;
 };
 
+function mergePersonField(
+  built: PersonField,
+  existing: PersonField | undefined
+): PersonField {
+  if (!existing) return built;
+  return {
+    name: existing.name !== "—" ? existing.name : built.name,
+    party: existing.party ?? built.party,
+    imageUrl: existing.imageUrl ?? built.imageUrl,
+    role: existing.role ?? built.role,
+  };
+}
+
+/** Keep hand-edited governance rows (images, house lists) when rebuilding compare bundles. */
+function mergeGovernanceWithExisting(
+  built: Record<string, Record<string, unknown>>,
+  relPath: string
+): Record<string, Record<string, unknown>> {
+  const existingPath = out(relPath);
+  if (!fs.existsSync(existingPath)) return built;
+
+  try {
+    const existing = JSON.parse(
+      fs.readFileSync(existingPath, "utf-8")
+    ) as Record<string, Record<string, unknown>>;
+    const merged: Record<string, Record<string, unknown>> = { ...built };
+
+    for (const [sid, existingRow] of Object.entries(existing)) {
+      const builtRow = merged[sid];
+      if (!builtRow) {
+        merged[sid] = existingRow;
+        continue;
+      }
+
+      const row = { ...builtRow };
+      for (const key of [
+        "governor",
+        "deputyGovernor",
+        "assemblySpeaker",
+      ] as const) {
+        if (builtRow[key] && existingRow[key]) {
+          row[key] = mergePersonField(
+            builtRow[key] as PersonField,
+            existingRow[key] as PersonField
+          );
+        }
+      }
+
+      const existingSenators = existingRow.senators as PersonField[] | undefined;
+      if (
+        Array.isArray(existingSenators) &&
+        existingSenators.some((s) => s.imageUrl || s.name !== "—")
+      ) {
+        row.senators = existingSenators;
+      }
+
+      const existingHouse = existingRow.houseMembers as PersonField[] | undefined;
+      if (Array.isArray(existingHouse) && existingHouse.length > 0) {
+        row.houseMembers = existingHouse;
+      }
+
+      for (const key of [
+        "housePartySplit",
+        "houseSeats",
+        "stateAssemblySeats",
+      ] as const) {
+        const value = existingRow[key];
+        if (value != null && value !== "—") row[key] = value;
+      }
+
+      merged[sid] = row;
+    }
+
+    return merged;
+  } catch {
+    return built;
+  }
+}
+
 function preservePersonImageUrls<T extends Record<string, unknown>>(
   built: T,
   relPath: string,
@@ -580,7 +659,10 @@ function buildGovernance(states: StateRecord[], term: string) {
     };
   }
 
-  writeJson(`data/compare/states/governance/${term}.json`, data);
+  const rel = `data/compare/states/governance/${term}.json`;
+  const merged =
+    term === "2023-2027" ? mergeGovernanceWithExisting(data, rel) : data;
+  writeJson(rel, merged);
 }
 
 function buildEconomy(states: StateRecord[], period: string) {

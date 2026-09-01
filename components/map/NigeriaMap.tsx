@@ -17,8 +17,8 @@ import {
   addLgaStateLayers,
   removeLgaStateLayers,
   stackLgaLayers,
-  stackAllLgaLayers,
   lgaLayersReady,
+  enrichLgaColors,
   geoSourceUrl,
   lgaSourceId,
 } from "./mapLayers";
@@ -319,6 +319,9 @@ export default function NigeriaMap({
     [clearDraggedSource]
   );
 
+  const liftStateForDragRef = useRef(liftStateForDrag);
+  liftStateForDragRef.current = liftStateForDrag;
+
   const setupDragLayers = useCallback(
     (map: maplibregl.Map) => {
       if (!map.getSource(DRAGGED_STATE_SOURCE)) {
@@ -329,9 +332,6 @@ export default function NigeriaMap({
         });
         for (const layer of createDraggedStateLayers()) {
           map.addLayer(layer);
-        }
-        if (loadedLgaRef.current.size > 0) {
-          stackAllLgaLayers(map, loadedLgaRef.current);
         }
       }
 
@@ -353,7 +353,7 @@ export default function NigeriaMap({
 
           e.preventDefault();
           if (store.draggedStateId !== id) {
-            liftStateForDrag(map, id);
+            liftStateForDragRef.current(map, id);
           }
           map.dragPan.disable();
           dragSessionRef.current = {
@@ -414,8 +414,18 @@ export default function NigeriaMap({
         })
         .catch((err) => console.warn("ADM1 preload for drag failed:", err));
     },
-    [liftStateForDrag]
+    []
   );
+
+  const handleMapClickRef = useRef(handleMapClick);
+  const handleMapDblClickRef = useRef(handleMapDblClick);
+  const handleMapMoveRef = useRef(handleMapMove);
+  const setupDragLayersRef = useRef(setupDragLayers);
+
+  handleMapClickRef.current = handleMapClick;
+  handleMapDblClickRef.current = handleMapDblClick;
+  handleMapMoveRef.current = handleMapMove;
+  setupDragLayersRef.current = setupDragLayers;
 
   // ——— Map init (once) ———
   useEffect(() => {
@@ -441,10 +451,12 @@ export default function NigeriaMap({
 
     map.doubleClickZoom.disable();
 
-    const onClick = (e: maplibregl.MapMouseEvent) => handleMapClick(map, e);
+    const onClick = (e: maplibregl.MapMouseEvent) =>
+      handleMapClickRef.current(map, e);
     const onDblClick = (e: maplibregl.MapMouseEvent) =>
-      handleMapDblClick(map, e);
-    const onMove = (e: maplibregl.MapMouseEvent) => handleMapMove(map, e);
+      handleMapDblClickRef.current(map, e);
+    const onMove = (e: maplibregl.MapMouseEvent) =>
+      handleMapMoveRef.current(map, e);
     const onLeave = () => {
       map.getCanvas().style.cursor = "";
       hoverRef.current?.clear();
@@ -472,7 +484,7 @@ export default function NigeriaMap({
       hoverRef.current = createHoverController(map);
       mapReadyRef.current = true;
       setMapReady(true);
-      setupDragLayers(map);
+      setupDragLayersRef.current(map);
 
       const pending = useMapStore.getState().lgaVisibleStateIds;
       for (const stateId of pending) {
@@ -489,6 +501,8 @@ export default function NigeriaMap({
     return () => {
       mapReadyRef.current = false;
       setMapReady(false);
+      loadedLgaRef.current.clear();
+      loadingLgaRef.current.clear();
       map.off("click", onClick);
       map.off("dblclick", onDblClick);
       map.off("mousemove", onMove);
@@ -498,7 +512,9 @@ export default function NigeriaMap({
       hoverRef.current = null;
       dragHandlersBoundRef.current = false;
     };
-  }, [handleMapClick, handleMapDblClick, handleMapMove, setupDragLayers]);
+    // Map instance must init once — handler refs keep listeners up to date.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // ——— Clear lifted state when drag id cleared ———
   useEffect(() => {
@@ -659,12 +675,6 @@ export default function NigeriaMap({
     const map = mapRef.current;
     if (!map?.isStyleLoaded()) return;
 
-    if (lgaLayersReady(map, stateId)) {
-      loadedLgaRef.current.add(stateId);
-      stackLgaLayers(map, stateId);
-      return;
-    }
-
     if (loadingLgaRef.current.has(stateId)) return;
 
     loadingLgaRef.current.add(stateId);
@@ -677,11 +687,21 @@ export default function NigeriaMap({
         return;
       }
       const data = (await res.json()) as GeoJSON.FeatureCollection;
+      const colored = enrichLgaColors(data);
 
       const liveMap = mapRef.current;
       if (!liveMap?.isStyleLoaded()) return;
 
-      addLgaStateLayers(liveMap, stateId, data);
+      if (lgaLayersReady(liveMap, stateId)) {
+        const source = liveMap.getSource(lgaSourceId(stateId)) as
+          | maplibregl.GeoJSONSource
+          | undefined;
+        source?.setData(colored);
+        stackLgaLayers(liveMap, stateId);
+      } else {
+        addLgaStateLayers(liveMap, stateId, data);
+      }
+
       loadedLgaRef.current.add(stateId);
     } finally {
       loadingLgaRef.current.delete(stateId);
@@ -714,13 +734,6 @@ export default function NigeriaMap({
       }
     }
   }, [lgaVisibleKey, mapReady, loadLgaLayer, removeLgaLayer, lgaVisibleStateIds]);
-
-  // Keep LGA lines above fills after drag layer changes
-  useEffect(() => {
-    const map = mapRef.current;
-    if (!map?.isStyleLoaded() || loadedLgaRef.current.size === 0) return;
-    stackAllLgaLayers(map, loadedLgaRef.current);
-  }, [lgaVisibleKey, mapReady, draggedStateId]);
 
   // ——— Fly to selection ———
   useEffect(() => {

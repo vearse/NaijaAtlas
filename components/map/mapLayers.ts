@@ -1,6 +1,6 @@
 import type { LayerSpecification, Map, SourceSpecification } from "maplibre-gl";
 import { MAP_GLYPHS, MAP_FONT, MAP_FONT_EMPHASIS } from "@/lib/map/interaction";
-import { LGA_PALETTE, colorForIndex } from "@/lib/map/colors";
+import { LGA_PALETTE, assignLgaPaletteColors, colorForIndex } from "@/lib/map/colors";
 
 const FILL_TRANSITION = {
   "fill-opacity-transition": { duration: 300 },
@@ -83,19 +83,23 @@ export function lgaLayersReady(map: Map, stateId: string): boolean {
   );
 }
 
-/** Assign cyclical earth-tone fills when geo props are missing or uniform. */
+/** Apply cyclical earth-tone fills from {@link LGA_PALETTE} (sorted by LGA name). */
 export function enrichLgaColors(
   data: GeoJSON.FeatureCollection
 ): GeoJSON.FeatureCollection {
+  const colorById = assignLgaPaletteColors(data.features);
   return {
     type: "FeatureCollection",
-    features: data.features.map((feature, index) => ({
-      ...feature,
-      properties: {
-        ...feature.properties,
-        fillColor: colorForIndex(index, LGA_PALETTE),
-      },
-    })),
+    features: data.features.map((feature, index) => {
+      const id = String(feature.properties?.id ?? `idx-${index}`);
+      return {
+        ...feature,
+        properties: {
+          ...feature.properties,
+          fillColor: colorById.get(id) ?? colorForIndex(index, LGA_PALETTE),
+        },
+      };
+    }),
   };
 }
 
@@ -112,7 +116,7 @@ export function removeLgaStateLayers(map: Map, stateId: string): void {
   if (map.getSource(srcId)) map.removeSource(srcId);
 }
 
-/** Line above fill, labels on top — matches last known-good map behaviour. */
+/** Line above fill, labels on top — matches e9f9074 map behaviour. */
 export function stackLgaLayers(map: Map, stateId: string): void {
   const lineId = lgaLineLayerId(stateId);
   const labelId = lgaLabelLayerId(stateId);
@@ -445,10 +449,10 @@ export function createLgaFillLineLayers(stateId: string): LayerSpecification[] {
         "fill-opacity": [
           "case",
           ["boolean", ["feature-state", "selected"], false],
-          0.72,
+          0.78,
           ["boolean", ["feature-state", "hover"], false],
-          0.62,
-          0.58,
+          0.68,
+          0.65,
         ],
         "fill-outline-color": LGA_LINE.default,
         ...FILL_TRANSITION,
@@ -458,10 +462,6 @@ export function createLgaFillLineLayers(stateId: string): LayerSpecification[] {
       id: lgaLineLayerId(stateId),
       source: src,
       type: "line",
-      layout: {
-        "line-join": "round",
-        "line-cap": "round",
-      },
       paint: {
         "line-color": [
           "case",
@@ -474,10 +474,10 @@ export function createLgaFillLineLayers(stateId: string): LayerSpecification[] {
         "line-width": [
           "case",
           ["boolean", ["feature-state", "hover"], false],
-          2.5,
-          ["boolean", ["feature-state", "selected"], false],
-          2.75,
           2,
+          ["boolean", ["feature-state", "selected"], false],
+          2.25,
+          1.75,
         ],
         "line-opacity": [
           "case",
