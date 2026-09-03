@@ -83,8 +83,12 @@ function classifyFeature(layerId: string): HitKind | null {
 }
 
 /** MapLibre isStyleLoaded() flickers false during paint/filter updates — wait for idle. */
+function styleIsReady(map: maplibregl.Map): boolean {
+  return map.isStyleLoaded() === true;
+}
+
 function waitForStyleReady(map: maplibregl.Map, timeoutMs = 8000): Promise<boolean> {
-  if (map.isStyleLoaded()) return Promise.resolve(true);
+  if (styleIsReady(map)) return Promise.resolve(true);
   return new Promise((resolve) => {
     let settled = false;
     const finish = (ok: boolean) => {
@@ -94,8 +98,8 @@ function waitForStyleReady(map: maplibregl.Map, timeoutMs = 8000): Promise<boole
       map.off("idle", onIdle);
       resolve(ok);
     };
-    const onIdle = () => finish(map.isStyleLoaded());
-    const timer = setTimeout(() => finish(map.isStyleLoaded()), timeoutMs);
+    const onIdle = () => finish(styleIsReady(map));
+    const timer = setTimeout(() => finish(styleIsReady(map)), timeoutMs);
     map.once("idle", onIdle);
   });
 }
@@ -726,6 +730,9 @@ export default function NigeriaMap({
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
 
+    const loadedLga = loadedLgaRef.current;
+    const loadingLga = loadingLgaRef.current;
+
     const map = new maplibregl.Map({
       container: containerRef.current,
       style: BASE_STYLE as maplibregl.StyleSpecification,
@@ -831,8 +838,8 @@ export default function NigeriaMap({
       mapReadyRef.current = false;
       setMapReady(false);
       useMapStore.getState().registerMap(null);
-      loadedLgaRef.current.clear();
-      loadingLgaRef.current.clear();
+      loadedLga.clear();
+      loadingLga.clear();
       map.off("click", onClick);
       map.off("dblclick", onDblClick);
       map.off("mousemove", onMove);

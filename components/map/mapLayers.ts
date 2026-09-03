@@ -259,6 +259,7 @@ export function applyStateSelectionPaint(
     ready.length > 0
       ? (["in", ["get", "id"], ["literal", ready]] as const)
       : (["==", ["get", "id"], ""] as const);
+  const selectedWithLga = ["all", isSelected, lgaCoversState] as const;
 
   if (map.getLayer("states-fill")) {
     map.setPaintProperty("states-fill", "fill-color", [
@@ -284,6 +285,8 @@ export function applyStateSelectionPaint(
   if (map.getLayer("states-line")) {
     map.setPaintProperty("states-line", "line-color", [
       "case",
+      selectedWithLga,
+      "#003322",
       isSelected,
       "#006b40",
       ["boolean", ["feature-state", "hover"], false],
@@ -292,11 +295,23 @@ export function applyStateSelectionPaint(
     ]);
     map.setPaintProperty("states-line", "line-width", [
       "case",
+      selectedWithLga,
+      4.5,
       isSelected,
       3,
       ["boolean", ["feature-state", "hover"], false],
       2,
       1.1,
+    ]);
+    map.setPaintProperty("states-line", "line-opacity", [
+      "case",
+      selectedWithLga,
+      1,
+      isSelected,
+      1,
+      ["boolean", ["feature-state", "hover"], false],
+      0.95,
+      0.85,
     ]);
   }
 }

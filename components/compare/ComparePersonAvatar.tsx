@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import type { ComparePerson } from "@/types/compare";
 
 interface ComparePersonAvatarProps {
@@ -23,16 +24,18 @@ export default function ComparePersonAvatar({
 }: ComparePersonAvatarProps) {
   const [failed, setFailed] = useState(false);
   const dim = size === "md" ? "h-12 w-12" : "h-10 w-10";
+  const px = size === "md" ? 48 : 40;
   const text = size === "md" ? "text-xs" : "text-[10px]";
 
   if (person.imageUrl && !failed) {
     return (
-      <img
+      <Image
         src={person.imageUrl}
         alt={person.name}
+        width={px}
+        height={px}
+        unoptimized
         referrerPolicy="no-referrer"
-        loading="lazy"
-        decoding="async"
         onError={() => setFailed(true)}
         className={`${dim} rounded-full object-cover shrink-0 ring-2 ring-white shadow-sm`}
       />
