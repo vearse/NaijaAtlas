@@ -82,6 +82,24 @@ function classifyFeature(layerId: string): HitKind | null {
   return null;
 }
 
+/** MapLibre isStyleLoaded() flickers false during paint/filter updates — wait for idle. */
+function waitForStyleReady(map: maplibregl.Map, timeoutMs = 8000): Promise<boolean> {
+  if (map.isStyleLoaded()) return Promise.resolve(true);
+  return new Promise((resolve) => {
+    let settled = false;
+    const finish = (ok: boolean) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      map.off("idle", onIdle);
+      resolve(ok);
+    };
+    const onIdle = () => finish(map.isStyleLoaded());
+    const timer = setTimeout(() => finish(map.isStyleLoaded()), timeoutMs);
+    map.once("idle", onIdle);
+  });
+}
+
 export default function NigeriaMap({
   states,
   regions,
@@ -223,7 +241,13 @@ export default function NigeriaMap({
   const syncLgaVisibilityOnMap = useCallback(
     (visible: Set<string>) => {
       const map = mapRef.current;
-      if (!map?.isStyleLoaded()) return;
+      if (!map) return;
+      if (!map.isStyleLoaded()) {
+        void waitForStyleReady(map).then((ok) => {
+          if (ok) syncLgaVisibilityOnMapRef.current(visible);
+        });
+        return;
+      }
 
       const dragged = useMapStore.getState().draggedStateId;
       const readyVisible = readyLgaStateIds(map, visible);
@@ -960,7 +984,11 @@ export default function NigeriaMap({
 
   const loadLgaLayer = useCallback(async (stateId: string) => {
     const map = mapRef.current;
-    if (!map?.isStyleLoaded()) return;
+    if (!map) return;
+    if (!map.isStyleLoaded()) {
+      const ready = await waitForStyleReady(map);
+      if (!ready) return;
+    }
 
     if (
       loadedLgaRef.current.has(stateId) &&
@@ -990,8 +1018,14 @@ export default function NigeriaMap({
       const data = await fetchLgaGeo(stateId);
       if (!data) return;
 
-      const liveMap = mapRef.current;
-      if (!liveMap?.isStyleLoaded()) return;
+      let liveMap = mapRef.current;
+      if (!liveMap) return;
+      if (!liveMap.isStyleLoaded()) {
+        const ready = await waitForStyleReady(liveMap);
+        if (!ready) return;
+        liveMap = mapRef.current;
+        if (!liveMap) return;
+      }
 
       addLgaStateLayers(liveMap, stateId, data);
 

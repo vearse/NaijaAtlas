@@ -1,3 +1,6 @@
+"use client";
+
+import { useMapStore } from "@/lib/store/mapStore";
 import type { LgaContent, LgaLocation } from "@/types/location";
 
 interface LgaDetailsProps {
@@ -13,16 +16,27 @@ export default function LgaDetails({
   regionName,
   wards = [],
 }: LgaDetailsProps) {
+  const setSelectedLga = useMapStore((s) => s.setSelectedLga);
   const [lon, lat] = location.centroid;
   const wardList = wards.length > 0 ? wards : [];
 
   return (
     <div className="space-y-5">
-      <div>
-        <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
-          {content.stateName} State · LGA
-        </p>
-        <h2 className="text-2xl font-bold text-slate-900">{content.name}</h2>
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+            {content.stateName} State · LGA
+          </p>
+          <h2 className="text-2xl font-bold text-slate-900">{content.name}</h2>
+        </div>
+        <button
+          type="button"
+          onClick={() => setSelectedLga(null)}
+          className="shrink-0 rounded-lg border border-slate-200 px-2.5 py-1 text-xs font-medium text-slate-500 hover:bg-slate-50 hover:text-slate-700 transition-colors"
+          aria-label="Close LGA details"
+        >
+          Close
+        </button>
       </div>
 
       <dl className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">

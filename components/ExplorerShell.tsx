@@ -74,6 +74,7 @@ export default function ExplorerShell({
   const selectedStates = states.filter((s) => selectedStateIds.has(s.id));
   const singleStateSelected =
     !selectedLgaId && selectedStateIds.size === 1;
+  const lgaSelected = selectedLgaId !== null;
   const showCompare =
     !selectedLgaId &&
     selectedStates.length >= 2 &&
@@ -137,7 +138,9 @@ export default function ExplorerShell({
           </button>
         )}
 
-        {isMobile && singleStateSelected && mobileSheet === "open" && (
+        {isMobile &&
+          (singleStateSelected || lgaSelected) &&
+          mobileSheet === "open" && (
           <button
             type="button"
             onClick={() => closeMobileSheet()}

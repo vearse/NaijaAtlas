@@ -8,11 +8,11 @@ const FILL_TRANSITION = {
   "fill-color-transition": { duration: 300 },
 };
 
-/** LGA boundary strokes — dark brown for high contrast over earth-tone fills */
+/** LGA boundary strokes — lighter than state borders for hierarchy */
 const LGA_LINE = {
-  default: "#2c1810",
-  hover: "#1a0f0a",
-  selected: "#0f0705",
+  default: "#cbd5e1",
+  hover: "#94a3b8",
+  selected: "#64748b",
 } as const;
 
 const LINE_TRANSITION = {
@@ -649,8 +649,22 @@ export function createLgaFillLineLayers(stateId: string): LayerSpecification[] {
           LGA_LINE.selected,
           LGA_LINE.default,
         ],
-        "line-width": 2.5,
-        "line-opacity": 1,
+        "line-width": [
+          "case",
+          ["boolean", ["feature-state", "hover"], false],
+          1.35,
+          ["boolean", ["feature-state", "selected"], false],
+          1.5,
+          1,
+        ],
+        "line-opacity": [
+          "case",
+          ["boolean", ["feature-state", "selected"], false],
+          0.95,
+          ["boolean", ["feature-state", "hover"], false],
+          0.9,
+          0.72,
+        ],
       },
     },
   ];
