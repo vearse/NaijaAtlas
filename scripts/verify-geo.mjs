@@ -6,6 +6,12 @@ const required = [
   "public/geo/nigeria-adm1.geojson",
   "public/geo/regions.geojson",
   "public/geo/neighbors.geojson",
+  "public/geo/overlays/rivers.geojson",
+  "public/geo/overlays/lakes.geojson",
+  "public/geo/overlays/creeks.geojson",
+  "public/geo/overlays/coast.geojson",
+  "public/geo/overlays/landforms.geojson",
+  "public/geo/overlays/cities.geojson",
   "public/geo/lgas/NG-LA.geojson",
 ];
 

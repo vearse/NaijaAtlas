@@ -1,0 +1,16 @@
+[
+  {
+    "id": "coastline-ng",
+    "name": "Nigeria Coastline",
+    "type": "Atlantic / Gulf of Guinea coast",
+    "summary": "About 853 km of Gulf of Guinea shoreline from the Badagry creek system to the Bakassi / Cross River estuary.",
+    "description": "The Nigerian coast is a mix of barrier islands (Lagos–Mahin), the Niger Delta mouths, and the eastern estuary around Calabar. It carries the bulk of seaborne trade, offshore oil, artisanal fisheries, and mangrove carbon stores. Coastal erosion, sea-level rise, and pollution are national planning issues.",
+    "coastalStates": ["Lagos", "Ondo", "Delta", "Bayelsa", "Rivers", "Akwa Ibom", "Cross River"],
+    "lengthNote": "~853 km (commonly cited official figure)",
+    "economy": "Ports, offshore oil and gas, fisheries, coastal tourism, sand mining.",
+    "ecology": "Mangrove, barrier lagoon, turtles, and heavily pressured urban shores at Lagos.",
+    "significance": "Atlantic trade, oil terminals, fishing, mangrove ecosystems.",
+    "highlights": ["Gulf of Guinea", "Niger Delta outlets", "Lagos barrier islands"],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Geography_of_Nigeria"
+  }
+]

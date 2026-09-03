@@ -1,0 +1,45 @@
+[
+  {
+    "id": "lake-chad",
+    "name": "Lake Chad",
+    "type": "Endorheic freshwater lake (shared)",
+    "summary": "Shallow endorheic lake shared with Chad, Niger, and Cameroon; size varies seasonally and has shrunk dramatically since the 1960s.",
+    "description": "Lake Chad once covered more than 25,000 km²; open water is now a fraction of that, replaced by marshes and receding shorelines. Nigerian shoreline is mainly in Borno (and historically Yobe). The lake still supports fishing, recession agriculture, and transhumant pastoralism, and is a focus of the Lake Chad Basin Commission.",
+    "areaNote": "~1,350 km² open water (highly variable; far below 1960s extent)",
+    "statesCrossed": ["Borno", "Yobe"],
+    "usage": "Fishing, pastoralism, flood-recession farming, cross-border trade.",
+    "ecology": "Wetland birds, seasonal inundation, desertification pressure, invasive typha in some channels.",
+    "climate": "Sahel; rainfall decline and irrigation upstream affect inflows (Chari–Logone dominate).",
+    "significance": "UNESCO concern over shrinkage; security and livelihood hotspot of the basin.",
+    "highlights": ["Shared by four countries", "Severe 20th-century shrinkage", "Livelihoods for millions in the basin"],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lake_Chad"
+  },
+  {
+    "id": "lake-kainji",
+    "name": "Kainji Lake",
+    "type": "Reservoir",
+    "summary": "Reservoir on the Niger created by Kainji Dam (1968); Nigeria's largest man-made lake.",
+    "description": "Kainji Dam was a flagship independent-era hydropower project. The lake drowned settlements and created a fishery and a national park (Kainji Lake National Park) on adjoining shores. Generation has varied with river flow and plant maintenance.",
+    "areaNote": "~1,300 km² at full supply",
+    "statesCrossed": ["Niger", "Kebbi"],
+    "usage": "Hydroelectric power, fishing, limited navigation, tourism (park).",
+    "ecology": "Reservoir fishery; drawdown agriculture; wildlife in the national park.",
+    "significance": "First large Nigerian hydro dam; Power State identity of Niger.",
+    "highlights": ["1968 Kainji Dam", "Largest reservoir in Nigeria", "National park shoreline"],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kainji_Dam"
+  },
+  {
+    "id": "lake-lagos-lagoon",
+    "name": "Lagos Lagoon",
+    "type": "Coastal lagoon",
+    "summary": "Barrier-island lagoon behind Lagos; linked to the Atlantic through creeks and the harbour.",
+    "description": "The lagoon is the water body that made Lagos a port city. It receives Ogun/Osun drainage, urban wastewater, and sand-mining pressure. Water transport (Lagos Waterways) and fishing remain active despite pollution and siltation.",
+    "areaNote": "~250 km² (complex of lagoon and creeks)",
+    "statesCrossed": ["Lagos", "Ogun"],
+    "usage": "Fishing, sand mining, urban drainage, ferry transport, port access.",
+    "ecology": "Brackish water, mangroves (degraded), urban pollution hotspots.",
+    "significance": "Historic harbour of Eko; Lekki–Lagos urban waterfront.",
+    "highlights": ["Made Lagos a port", "Ferry network", "Urban environmental pressure"],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lagos_Lagoon"
+  }
+]

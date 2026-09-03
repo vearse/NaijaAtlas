@@ -61,6 +61,21 @@ export function withExcludeState(
   return ["all", exclude, filter] as FilterSpecification;
 }
 
+/** Hide state polygons when their LGA layer is active (so fills/borders show). */
+export function withExcludeStates(
+  filter: FilterSpecification | null | undefined,
+  excludedStateIds: Iterable<string>
+): FilterSpecification | null {
+  const ids = [...excludedStateIds];
+  if (ids.length === 0) return filter ?? null;
+  const exclude: FilterSpecification = [
+    "!",
+    ["in", ["get", "id"], ["literal", ids]],
+  ];
+  if (!filter) return exclude;
+  return ["all", exclude, filter] as FilterSpecification;
+}
+
 /** Drag-layer colours — only the lifted state uses these. */
 export const DRAG_STATE_FILL = "#fbbf24";
 export const DRAG_STATE_LINE = "#b45309";

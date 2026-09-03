@@ -40,7 +40,9 @@ export default function MobileBottomSheet({
             ? "translate-y-full pointer-events-none"
             : "translate-y-0"
         }`}
-        style={{ maxHeight: isOpen ? "min(46vh, 420px)" : "3.25rem" }}
+        style={{
+          maxHeight: isOpen ? "min(78vh, 680px)" : "3.25rem",
+        }}
       >
         {/* Peek bar — always tappable */}
         <div className="relative shrink-0 flex items-center gap-2 px-3 pb-2 pt-3 border-b border-slate-100 min-h-[3.25rem]">

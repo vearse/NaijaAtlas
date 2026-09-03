@@ -8,6 +8,9 @@ export const MAP_FONT_EMPHASIS = "Open Sans Semibold";
 
 export { LGA_PALETTE, REGION_FILL, colorForIndex } from "./colors";
 
+import type { OverlayLayerId } from "@/types/overlay";
+import { interactiveLayersForActive } from "@/lib/map/overlayRegistry";
+
 /** Layers that receive pointer events — fills first so hover works on area, not just borders */
 export const INTERACTIVE_LAYERS = {
   lgaFill: (stateId: string) => `lgas-${stateId}-fill`,
@@ -30,11 +33,33 @@ export function collectLgaLayerIds(
   return ids;
 }
 
-export function queryPriorityLayers(lgaVisibleStateIds: Set<string>): string[] {
-  return [
+export function queryOverlayLayers(activeOverlays: Set<OverlayLayerId>): string[] {
+  return interactiveLayersForActive(activeOverlays);
+}
+
+export function queryPriorityLayers(
+  lgaVisibleStateIds: Set<string>,
+  selectedStateIds?: Set<string>
+): string[] {
+  const layers = [
     ...collectLgaLayerIds(lgaVisibleStateIds),
     INTERACTIVE_LAYERS.stateFill,
     INTERACTIVE_LAYERS.stateLabel,
-    INTERACTIVE_LAYERS.regionFill,
+  ];
+  if (!selectedStateIds || selectedStateIds.size === 0) {
+    layers.push(INTERACTIVE_LAYERS.regionFill);
+  }
+  return layers;
+}
+
+/** Overlay layers first (when active), then admin stack. */
+export function queryAllMapLayers(
+  activeOverlays: Set<OverlayLayerId>,
+  lgaVisibleStateIds: Set<string>,
+  selectedStateIds?: Set<string>
+): string[] {
+  return [
+    ...queryOverlayLayers(activeOverlays),
+    ...queryPriorityLayers(lgaVisibleStateIds, selectedStateIds),
   ];
 }

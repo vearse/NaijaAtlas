@@ -1,17 +1,18 @@
 import type { LayerSpecification, Map, SourceSpecification } from "maplibre-gl";
 import { MAP_GLYPHS, MAP_FONT, MAP_FONT_EMPHASIS } from "@/lib/map/interaction";
 import { LGA_PALETTE, assignLgaPaletteColors, colorForIndex } from "@/lib/map/colors";
+import { withExcludeState, withExcludeStates } from "@/lib/map/dragStateGeometry";
 
 const FILL_TRANSITION = {
   "fill-opacity-transition": { duration: 300 },
   "fill-color-transition": { duration: 300 },
 };
 
-/** LGA boundary strokes — warm stone/brown so they read clearly over green fills */
+/** LGA boundary strokes — dark brown for high contrast over earth-tone fills */
 const LGA_LINE = {
-  default: "#8B7355",
-  hover: "#6B5344",
-  selected: "#5C4033",
+  default: "#2c1810",
+  hover: "#1a0f0a",
+  selected: "#0f0705",
 } as const;
 
 const LINE_TRANSITION = {
@@ -62,6 +63,10 @@ export function lgaSourceId(stateId: string) {
   return `lgas-${stateId}`;
 }
 
+export function lgaOutlineSourceId(stateId: string) {
+  return `${lgaSourceId(stateId)}-outlines`;
+}
+
 export function lgaFillLayerId(stateId: string) {
   return `${lgaSourceId(stateId)}-fill`;
 }
@@ -77,10 +82,47 @@ export function lgaLabelLayerId(stateId: string) {
 export function lgaLayersReady(map: Map, stateId: string): boolean {
   return (
     !!map.getSource(lgaSourceId(stateId)) &&
+    !!map.getSource(lgaOutlineSourceId(stateId)) &&
     !!map.getLayer(lgaFillLayerId(stateId)) &&
     !!map.getLayer(lgaLineLayerId(stateId)) &&
     !!map.getLayer(lgaLabelLayerId(stateId))
   );
+}
+
+/** Polygon rings as LineString/MultiLineString so MapLibre actually draws LGA borders. */
+export function polygonRingsToLineGeometry(
+  geometry: GeoJSON.Geometry | null
+): GeoJSON.LineString | GeoJSON.MultiLineString | null {
+  if (!geometry) return null;
+  const rings: GeoJSON.Position[][] = [];
+  if (geometry.type === "Polygon") {
+    rings.push(...geometry.coordinates);
+  } else if (geometry.type === "MultiPolygon") {
+    for (const polygon of geometry.coordinates) rings.push(...polygon);
+  } else if (geometry.type === "LineString" || geometry.type === "MultiLineString") {
+    return geometry;
+  }
+  if (rings.length === 0) return null;
+  if (rings.length === 1) {
+    return { type: "LineString", coordinates: rings[0] };
+  }
+  return { type: "MultiLineString", coordinates: rings };
+}
+
+export function toLgaOutlineCollection(
+  data: GeoJSON.FeatureCollection
+): GeoJSON.FeatureCollection {
+  const features: GeoJSON.Feature[] = [];
+  for (const feature of data.features) {
+    const lineGeom = polygonRingsToLineGeometry(feature.geometry);
+    if (!lineGeom) continue;
+    features.push({
+      type: "Feature",
+      properties: feature.properties ?? {},
+      geometry: lineGeom,
+    });
+  }
+  return { type: "FeatureCollection", features };
 }
 
 /** Apply cyclical earth-tone fills from {@link LGA_PALETTE} (sorted by LGA name). */
@@ -105,14 +147,15 @@ export function enrichLgaColors(
 
 export function removeLgaStateLayers(map: Map, stateId: string): void {
   const srcId = lgaSourceId(stateId);
+  const outlineId = lgaOutlineSourceId(stateId);
   for (const lid of [
     lgaLabelLayerId(stateId),
     lgaLineLayerId(stateId),
     lgaFillLayerId(stateId),
-    `${srcId}-boundaries`,
   ]) {
     if (map.getLayer(lid)) map.removeLayer(lid);
   }
+  if (map.getSource(outlineId)) map.removeSource(outlineId);
   if (map.getSource(srcId)) map.removeSource(srcId);
 }
 
@@ -125,6 +168,136 @@ export function stackLgaLayers(map: Map, stateId: string): void {
   }
   if (map.getLayer(labelId)) {
     map.moveLayer(labelId);
+  }
+}
+
+/** Insert LGA stack just below state outlines (above state fill). */
+export const LGA_STACK_BEFORE = "states-line";
+
+function lgaStackAnchor(map: Map): string | undefined {
+  if (map.getLayer("dragged-state-fill")) return "dragged-state-fill";
+  if (map.getLayer(LGA_STACK_BEFORE)) return LGA_STACK_BEFORE;
+  return undefined;
+}
+
+/** Ensure LGA stack sits above state fill (borders stay visible). */
+export function raiseLgaLayersForState(map: Map, stateId: string): void {
+  restackLgaStack(map, [stateId]);
+}
+
+export function raiseAllLgaLayers(map: Map, stateIds: Iterable<string>): void {
+  globalStackLgaLayers(map, stateIds);
+}
+
+/**
+ * LGA stack (bottom → top): state fill → LGA fills → state outline → LGA borders → labels.
+ */
+export function restackLgaStack(map: Map, stateIds: Iterable<string>): void {
+  const ids = [...stateIds].sort();
+  const anchor = lgaStackAnchor(map);
+
+  for (const stateId of ids) {
+    const fillId = lgaFillLayerId(stateId);
+    if (map.getLayer(fillId)) map.moveLayer(fillId, anchor);
+  }
+
+  const firstLgaLine = ids.map(lgaLineLayerId).find((id) => map.getLayer(id));
+  if (map.getLayer("states-line")) {
+    if (firstLgaLine) map.moveLayer("states-line", firstLgaLine);
+    else if (map.getLayer("country-outline")) {
+      map.moveLayer("states-line", "country-outline");
+    }
+  }
+
+  for (const stateId of ids) {
+    const lineId = lgaLineLayerId(stateId);
+    if (map.getLayer(lineId)) map.moveLayer(lineId);
+  }
+  for (const stateId of ids) {
+    const labelId = lgaLabelLayerId(stateId);
+    if (map.getLayer(labelId)) map.moveLayer(labelId);
+  }
+  if (map.getLayer("dragged-state-fill")) map.moveLayer("dragged-state-fill");
+  if (map.getLayer("dragged-state-line")) map.moveLayer("dragged-state-line");
+  if (map.getLayer("dragged-state-labels")) map.moveLayer("dragged-state-labels");
+}
+
+/** @deprecated Use restackLgaStack */
+export function globalStackLgaLayers(map: Map, stateIds: Iterable<string>): void {
+  restackLgaStack(map, stateIds);
+}
+
+/** Hide state fill (not outlines) so LGA polygons show; keep state borders as fallback. */
+export function applyStateMaskForLgaVisibility(
+  map: Map,
+  lgaVisibleStateIds: Iterable<string>,
+  draggedStateId: string | null
+): void {
+  const mask = withExcludeStates(
+    withExcludeState(null, draggedStateId),
+    lgaVisibleStateIds
+  );
+  if (map.getLayer("states-fill")) map.setFilter("states-fill", mask);
+  if (map.getLayer("states-line")) {
+    map.setFilter("states-line", withExcludeState(null, draggedStateId));
+  }
+}
+
+/** Selection color from feature ids — not sticky feature-state. */
+export function applyStateSelectionPaint(
+  map: Map,
+  selectedIds: Iterable<string>,
+  readyLgaStateIds: Iterable<string>
+): void {
+  const ids = [...selectedIds];
+  const ready = [...readyLgaStateIds];
+  const isSelected =
+    ids.length > 0
+      ? (["in", ["get", "id"], ["literal", ids]] as const)
+      : (["==", ["get", "id"], ""] as const);
+  const lgaCoversState =
+    ready.length > 0
+      ? (["in", ["get", "id"], ["literal", ready]] as const)
+      : (["==", ["get", "id"], ""] as const);
+
+  if (map.getLayer("states-fill")) {
+    map.setPaintProperty("states-fill", "fill-color", [
+      "case",
+      isSelected,
+      "#008751",
+      ["boolean", ["feature-state", "hover"], false],
+      "#fbbf24",
+      ["coalesce", ["get", "regionColor"], "#f1f5f9"],
+    ]);
+    map.setPaintProperty("states-fill", "fill-opacity", [
+      "case",
+      ["all", isSelected, ["!", lgaCoversState]],
+      0.55,
+      isSelected,
+      0.55,
+      ["boolean", ["feature-state", "hover"], false],
+      0.42,
+      ids.length > 0 ? 0.18 : 0.92,
+    ]);
+  }
+
+  if (map.getLayer("states-line")) {
+    map.setPaintProperty("states-line", "line-color", [
+      "case",
+      isSelected,
+      "#006b40",
+      ["boolean", ["feature-state", "hover"], false],
+      "#b45309",
+      "#475569",
+    ]);
+    map.setPaintProperty("states-line", "line-width", [
+      "case",
+      isSelected,
+      3,
+      ["boolean", ["feature-state", "hover"], false],
+      2,
+      1.1,
+    ]);
   }
 }
 
@@ -432,12 +605,14 @@ export function createCountryLabelLayer(): LayerSpecification {
 
 export function createLgaFillLineLayers(stateId: string): LayerSpecification[] {
   const src = lgaSourceId(stateId);
+  const outlineSrc = lgaOutlineSourceId(stateId);
   return [
     {
       id: lgaFillLayerId(stateId),
       source: src,
       type: "fill",
       paint: {
+        "fill-antialias": true,
         "fill-color": [
           "case",
           ["boolean", ["feature-state", "selected"], false],
@@ -452,16 +627,19 @@ export function createLgaFillLineLayers(stateId: string): LayerSpecification[] {
           0.78,
           ["boolean", ["feature-state", "hover"], false],
           0.68,
-          0.65,
+          0.72,
         ],
-        "fill-outline-color": LGA_LINE.default,
-        ...FILL_TRANSITION,
       },
     },
     {
       id: lgaLineLayerId(stateId),
-      source: src,
+      source: outlineSrc,
       type: "line",
+      layout: {
+        "line-cap": "butt",
+        "line-join": "round",
+        visibility: "visible",
+      },
       paint: {
         "line-color": [
           "case",
@@ -471,23 +649,8 @@ export function createLgaFillLineLayers(stateId: string): LayerSpecification[] {
           LGA_LINE.selected,
           LGA_LINE.default,
         ],
-        "line-width": [
-          "case",
-          ["boolean", ["feature-state", "hover"], false],
-          2,
-          ["boolean", ["feature-state", "selected"], false],
-          2.25,
-          1.75,
-        ],
-        "line-opacity": [
-          "case",
-          ["boolean", ["feature-state", "hover"], false],
-          1,
-          ["boolean", ["feature-state", "selected"], false],
-          1,
-          0.95,
-        ],
-        ...LINE_TRANSITION,
+        "line-width": 2.5,
+        "line-opacity": 1,
       },
     },
   ];
@@ -498,6 +661,7 @@ export function createLgaLabelLayer(stateId: string): LayerSpecification {
     id: lgaLabelLayerId(stateId),
     source: lgaSourceId(stateId),
     type: "symbol",
+    filter: ["==", ["get", "id"], ""],
     layout: {
       "text-field": ["get", "name"],
       "text-size": 11,
@@ -517,6 +681,21 @@ export function createLgaLabelLayer(stateId: string): LayerSpecification {
   };
 }
 
+/** Show labels only for LGAs in `visibleIds` (progressive reveal). */
+export function updateLgaLabelFilter(
+  map: Map,
+  stateId: string,
+  visibleIds: string[]
+): void {
+  const layerId = lgaLabelLayerId(stateId);
+  if (!map.getLayer(layerId)) return;
+  if (visibleIds.length === 0) {
+    map.setFilter(layerId, ["==", ["get", "id"], ""]);
+    return;
+  }
+  map.setFilter(layerId, ["in", ["get", "id"], ["literal", visibleIds]]);
+}
+
 export function createLgaLayers(stateId: string): LayerSpecification[] {
   return [...createLgaFillLineLayers(stateId), createLgaLabelLayer(stateId)];
 }
@@ -528,11 +707,16 @@ export function addLgaStateLayers(
   data: GeoJSON.FeatureCollection
 ): void {
   removeLgaStateLayers(map, stateId);
-  const srcId = lgaSourceId(stateId);
-  map.addSource(srcId, lgaSourceSpec(enrichLgaColors(data)));
-  for (const layer of createLgaFillLineLayers(stateId)) {
-    map.addLayer(layer);
-  }
+  const filled = enrichLgaColors(data);
+  map.addSource(lgaSourceId(stateId), lgaSourceSpec(filled));
+  map.addSource(
+    lgaOutlineSourceId(stateId),
+    lgaSourceSpec(toLgaOutlineCollection(filled))
+  );
+  const [fillLayer, lineLayer] = createLgaFillLineLayers(stateId);
+  const anchor = lgaStackAnchor(map);
+  map.addLayer(fillLayer, anchor);
+  map.addLayer(lineLayer);
   map.addLayer(createLgaLabelLayer(stateId));
   stackLgaLayers(map, stateId);
 }

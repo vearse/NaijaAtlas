@@ -10,6 +10,7 @@ import RegionDetails from "./RegionDetails";
 import NigeriaOverview from "./NigeriaOverview";
 import MobileBottomSheet from "./MobileBottomSheet";
 import DesktopCompareModal from "@/components/compare/DesktopCompareModal";
+import OverlayFeaturePanel from "@/components/map/OverlayFeaturePanel";
 import FadeIn from "@/components/ui/FadeIn";
 import { useIsMobile } from "@/hooks/useMediaQuery";
 import type {
@@ -21,6 +22,7 @@ import type {
   WardsByLga,
 } from "@/types/location";
 import type { CompareBundle } from "@/types/compare";
+import { OVERLAY_LAYER_LABELS } from "@/types/overlay";
 import { resolveStateContent } from "@/lib/location/stateContent";
 
 interface LocationPanelProps {
@@ -44,7 +46,7 @@ export default function LocationPanel({
 }: LocationPanelProps) {
   const isMobile = useIsMobile();
   const [desktopCompareOpen, setDesktopCompareOpen] = useState(false);
-  const { selectedStateIds, selectedLgaId, activeRegionId, setSelectedLga, mobileSheet } =
+  const { selectedStateIds, selectedLgaId, activeRegionId, setSelectedLga, mobileSheet, selectedOverlay } =
     useMapStore();
 
   const toggleLgaSelection = (id: string) => {
@@ -72,15 +74,18 @@ export default function LocationPanel({
 
   const hasMapSelection =
     selectedStateIds.size > 0 || selectedLgaId !== null;
-  const showOverview = !hasMapSelection && !activeRegionId;
-  const showRegion = activeRegion && !hasMapSelection;
+  const showOverlay = selectedOverlay !== null;
+  const showOverview = !hasMapSelection && !activeRegionId && !showOverlay;
+  const showRegion = activeRegion && !hasMapSelection && !showOverlay;
   const showCompare =
+    !showOverlay &&
     !lgaC &&
     !singleState &&
     selectedStates.length >= 2 &&
     selectedStates.length <= MAX_COMPARE_STATES;
 
   const panelContentKey =
+    selectedOverlay?.id ??
     lgaLoc?.id ??
     singleState?.id ??
     (showCompare ? `compare-${selectedStates.map((s) => s.id).sort().join(",")}` : null) ??
@@ -93,7 +98,9 @@ export default function LocationPanel({
 
   const wards = selectedLgaId ? wardsByLga[selectedLgaId] ?? [] : [];
 
-  const sheetTitle = lgaLoc
+  const sheetTitle = selectedOverlay
+    ? selectedOverlay.name
+    : lgaLoc
     ? lgaLoc.name
     : singleState
       ? singleState.name
@@ -103,7 +110,9 @@ export default function LocationPanel({
           ? activeRegion.name
           : "NaijaAtlas";
 
-  const sheetSubtitle = lgaLoc
+  const sheetSubtitle = selectedOverlay
+    ? `${OVERLAY_LAYER_LABELS[selectedOverlay.layerId].label} · Map feature`
+    : lgaLoc
     ? `${lgaLoc.stateName} · LGA`
     : singleState
       ? `${singleState.regionName} · State`
@@ -117,7 +126,13 @@ export default function LocationPanel({
     <div className="flex flex-col h-full">
       <div className="p-4 border-b border-slate-100 bg-gradient-to-r from-white to-slate-50/80 lg:block hidden">
         <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
-          {hasMapSelection ? "Location" : activeRegionId ? "Region" : "Overview"}
+          {showOverlay
+            ? "Map feature"
+            : hasMapSelection
+              ? "Location"
+              : activeRegionId
+                ? "Region"
+                : "Overview"}
         </p>
         <Breadcrumbs states={states} lgas={lgas} />
       </div>
@@ -129,6 +144,10 @@ export default function LocationPanel({
         )}
 
         <FadeIn animationKey={panelContentKey}>
+          {showOverlay && selectedOverlay && (
+            <OverlayFeaturePanel feature={selectedOverlay} states={states} />
+          )}
+
           {showOverview && (
             <NigeriaOverview states={states} compareBundle={compareBundle} />
           )}
@@ -141,7 +160,7 @@ export default function LocationPanel({
             />
           )}
 
-          {lgaC && lgaLoc && (
+          {lgaC && lgaLoc && !showOverlay && (
             <LgaDetails
               content={lgaC}
               location={lgaLoc}
@@ -152,7 +171,7 @@ export default function LocationPanel({
             />
           )}
 
-          {!lgaC && singleState && singleStateContent && (
+          {!lgaC && singleState && singleStateContent && !showOverlay && (
             <StateDetails
               content={singleStateContent}
               location={singleState}
@@ -220,7 +239,7 @@ export default function LocationPanel({
     </div>
   );
 
-  const hasSheetContent = hasMapSelection || !!activeRegionId;
+  const hasSheetContent = hasMapSelection || !!activeRegionId || showOverlay;
 
   if (isMobile) {
     if (mobileSheet === "hidden" && hasSheetContent) {

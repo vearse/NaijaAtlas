@@ -1,7 +1,9 @@
 import { buildGeo } from "./build-geo";
+import { buildOverlays } from "./build-overlays";
 
 buildGeo()
-  .then((v) => {
+  .then(async (v) => {
+    await buildOverlays();
     console.log("Geo build complete.", v.pass ? "PASSED" : "WITH WARNINGS");
     process.exit(0);
   })

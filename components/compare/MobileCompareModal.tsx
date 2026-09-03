@@ -32,7 +32,7 @@ export default function MobileCompareModal({
         onClick={onClose}
       />
       <div
-        className="fixed inset-x-3 top-14 bottom-3 z-50 lg:hidden flex flex-col bg-white rounded-2xl shadow-2xl border border-slate-200/80 overflow-hidden animate-scale-in"
+        className="fixed inset-x-2 top-10 bottom-1.5 sm:inset-x-3 sm:top-14 sm:bottom-3 z-50 lg:hidden flex flex-col bg-white rounded-2xl shadow-2xl border border-slate-200/80 overflow-hidden animate-scale-in"
         role="dialog"
         aria-modal="true"
         aria-label="State comparison"

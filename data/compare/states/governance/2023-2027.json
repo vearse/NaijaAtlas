@@ -189,7 +189,7 @@
     "governor": {
       "name": "Umo Eno",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Umo_Eno_%28cropped%29.jpg/220px-Umo_Eno_%28cropped%29.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -294,7 +294,7 @@
     "governor": {
       "name": "Charles Soludo",
       "party": "APGA",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Charles_Soludo_%28cropped%29.jpg/220px-Charles_Soludo_%28cropped%29.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -405,7 +405,7 @@
     "governor": {
       "name": "Bala Abdulkadir Mohammed",
       "party": "APM",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Bala_Mohammed_%28cropped%29.jpg/220px-Bala_Mohammed_%28cropped%29.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -522,7 +522,7 @@
     "governor": {
       "name": "Douye Diri",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Douye_Diri.jpg/220px-Douye_Diri.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -597,7 +597,7 @@
     "governor": {
       "name": "Hyacinth Alia",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Hyacinth_Ikeapere_Alia.jpg/220px-Hyacinth_Ikeapere_Alia.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -708,7 +708,7 @@
     "governor": {
       "name": "Babagana Zulum",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Babagana_Zulum_%28cropped%29.jpg/220px-Babagana_Zulum_%28cropped%29.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -813,7 +813,7 @@
     "governor": {
       "name": "Bassey Otu",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Bassey_Otu.jpg/220px-Bassey_Otu.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -1011,7 +1011,7 @@
     "governor": {
       "name": "Francis Nwifuru",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Francis_Nwifuru.jpg/220px-Francis_Nwifuru.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -1092,7 +1092,7 @@
     "governor": {
       "name": "Monday Okpebholo",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Monday_Okpebholo.jpg/220px-Monday_Okpebholo.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -1191,7 +1191,7 @@
     "governor": {
       "name": "Biodun Oyebanji",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Biodun_Oyebanji.jpg/220px-Biodun_Oyebanji.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -1272,7 +1272,7 @@
     "governor": {
       "name": "Peter Mbah",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Peter_Mbah.jpg/220px-Peter_Mbah.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -1380,6 +1380,18 @@
         "party": "LP",
         "imageUrl": null,
         "role": "Senator (FCT)"
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
+      },
+      {
+        "name": "—",
+        "party": null,
+        "imageUrl": null,
+        "role": null
       }
     ],
     "houseSeats": 2,
@@ -1410,7 +1422,7 @@
     "governor": {
       "name": "Muhammad Inuwa Yahaya",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Muhammad_Inuwa_Yahaya.jpg/220px-Muhammad_Inuwa_Yahaya.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -1491,7 +1503,7 @@
     "governor": {
       "name": "Hope Uzodinma",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Hope_Uzodinma.jpg/220px-Hope_Uzodinma.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -1596,7 +1608,7 @@
     "governor": {
       "name": "Umar Namadi",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Umar_Namadi.jpg/220px-Umar_Namadi.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -1707,7 +1719,7 @@
     "governor": {
       "name": "Uba Sani",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Uba_Sani.jpg/220px-Uba_Sani.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -1848,7 +1860,7 @@
     "governor": {
       "name": "Abba Kabir Yusuf",
       "party": "NNPP",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Abba_Kabir_Yusuf.jpg/220px-Abba_Kabir_Yusuf.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -2037,7 +2049,7 @@
     "governor": {
       "name": "Dikko Umaru Radda",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Dikko_Umaru_Radda.jpg/220px-Dikko_Umaru_Radda.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -2172,7 +2184,7 @@
     "governor": {
       "name": "Nasir Idris",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Nasir_Idris.jpg/220px-Nasir_Idris.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -2265,7 +2277,7 @@
     "governor": {
       "name": "Ahmed Usman Ododo",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ahmed_Ododo.jpg/220px-Ahmed_Ododo.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -2364,7 +2376,7 @@
     "governor": {
       "name": "AbdulRahman AbdulRazaq",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/AbdulRahman_AbdulRazaq.jpg/220px-AbdulRahman_AbdulRazaq.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -2709,7 +2721,7 @@
     "governor": {
       "name": "Mohammed Umar Bago",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mohammed_Umar_Bago.jpg/220px-Mohammed_Umar_Bago.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -2814,7 +2826,7 @@
     "governor": {
       "name": "Dapo Abiodun",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Dapo_Abiodun.jpg/220px-Dapo_Abiodun.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -2913,7 +2925,7 @@
     "governor": {
       "name": "Lucky Aiyedatiwa",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Lucky_Aiyedatiwa.jpg/220px-Lucky_Aiyedatiwa.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -3012,7 +3024,7 @@
     "governor": {
       "name": "Ademola Adeleke",
       "party": "Accord",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Ademola_Adeleke.jpg/220px-Ademola_Adeleke.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -3111,7 +3123,7 @@
     "governor": {
       "name": "Seyi Makinde",
       "party": "APM",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Seyi_Makinde.jpg/220px-Seyi_Makinde.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -3240,7 +3252,7 @@
     "governor": {
       "name": "Caleb Mutfwang",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Caleb_Mutfwang.jpg/220px-Caleb_Mutfwang.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -3333,7 +3345,7 @@
     "governor": {
       "name": "Siminalayi Fubara",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Siminalayi_Fubara.jpg/220px-Siminalayi_Fubara.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -3456,7 +3468,7 @@
     "governor": {
       "name": "Ahmad Aliyu",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Ahmad_Aliyu_Sokoto.jpg/220px-Ahmad_Aliyu_Sokoto.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -3567,7 +3579,7 @@
     "governor": {
       "name": "Agbu Kefas",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Agbu_Kefas.jpg/220px-Agbu_Kefas.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -3648,7 +3660,7 @@
     "governor": {
       "name": "Mai Mala Buni",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Mai_Mala_Buni.jpg/220px-Mai_Mala_Buni.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {
@@ -3729,7 +3741,7 @@
     "governor": {
       "name": "Dauda Lawal",
       "party": "APC",
-      "imageUrl": null,
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Dauda_Lawal.jpg/220px-Dauda_Lawal.jpg",
       "role": "Governor"
     },
     "deputyGovernor": {

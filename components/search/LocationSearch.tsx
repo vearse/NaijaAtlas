@@ -51,7 +51,7 @@ export default function LocationSearch() {
   };
 
   return (
-    <div className="relative w-full max-w-md">
+    <div className="relative w-full">
       <label htmlFor="location-search" className="sr-only">
         Search states and LGAs
       </label>
@@ -66,7 +66,7 @@ export default function LocationSearch() {
           value={query}
           onChange={(e) => search(e.target.value)}
           onFocus={() => query && setOpen(true)}
-          className="w-full rounded-xl border border-slate-200 bg-white/95 backdrop-blur pl-10 pr-4 py-2.5 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-ng-green/40"
+          className="w-full rounded-xl border border-slate-200 bg-white/95 backdrop-blur pl-10 pr-4 py-2.5 text-sm shadow-sm min-h-[42px] focus:outline-none focus:ring-2 focus:ring-ng-green/40"
           autoComplete="off"
         />
       </div>

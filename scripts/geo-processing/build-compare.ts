@@ -25,6 +25,10 @@ const root = path.join(__dirname, "../..");
 const out = (rel: string) => path.join(root, rel);
 const sourcesDir = out("data/compare/sources");
 
+const GOVERNOR_IMAGES: Record<string, string> = JSON.parse(
+  fs.readFileSync(out("data/compare/seeds/governor-images.json"), "utf-8")
+);
+
 const STATE_NAMES = Object.keys(STATE_CODES);
 
 function stateId(name: string): string {
@@ -267,6 +271,25 @@ function mergePersonField(
   };
 }
 
+function mergePersonArrays(
+  built: PersonField[],
+  existing: PersonField[] | undefined
+): PersonField[] {
+  if (!existing?.length) return built;
+  const maxLen = Math.max(built.length, existing.length);
+  const merged: PersonField[] = [];
+  for (let i = 0; i < maxLen; i++) {
+    const b = built[i] ?? {
+      name: "—",
+      party: null,
+      imageUrl: null,
+      role: null,
+    };
+    merged.push(mergePersonField(b, existing[i]));
+  }
+  return merged;
+}
+
 /** Keep hand-edited governance rows (images, house lists) when rebuilding compare bundles. */
 function mergeGovernanceWithExisting(
   built: Record<string, Record<string, unknown>>,
@@ -303,16 +326,19 @@ function mergeGovernanceWithExisting(
       }
 
       const existingSenators = existingRow.senators as PersonField[] | undefined;
-      if (
-        Array.isArray(existingSenators) &&
-        existingSenators.some((s) => s.imageUrl || s.name !== "—")
-      ) {
-        row.senators = existingSenators;
+      if (Array.isArray(existingSenators) && existingSenators.length > 0) {
+        row.senators = mergePersonArrays(
+          (builtRow.senators as PersonField[]) ?? [],
+          existingSenators
+        );
       }
 
       const existingHouse = existingRow.houseMembers as PersonField[] | undefined;
       if (Array.isArray(existingHouse) && existingHouse.length > 0) {
-        row.houseMembers = existingHouse;
+        row.houseMembers = mergePersonArrays(
+          (builtRow.houseMembers as PersonField[]) ?? [],
+          existingHouse
+        );
       }
 
       for (const key of [
@@ -622,7 +648,7 @@ function buildGovernance(states: StateRecord[], term: string) {
     const governor = personOrDash(
       row.governorName || seed?.governor || fallback?.name,
       row.governorParty || seed?.party || fallback?.party,
-      row.governorImageUrl || seed?.imageUrl,
+      row.governorImageUrl || seed?.imageUrl || GOVERNOR_IMAGES[s.id],
       s.name === "Federal Capital Territory" ? "Minister of FCT" : "Governor"
     );
 

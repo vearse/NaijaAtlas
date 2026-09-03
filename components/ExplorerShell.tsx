@@ -7,6 +7,8 @@ import PoweredByIseOwo from "@/components/PoweredByIseOwo";
 import RegionFilter from "@/components/map/RegionFilter";
 import SelectedStatesBar from "@/components/map/SelectedStatesBar";
 import MapControls from "@/components/map/MapControls";
+import MapHints from "@/components/map/MapHints";
+import MapBottomToolbar from "@/components/map/MapBottomToolbar";
 import LocationPanel from "@/components/location/LocationPanel";
 import MobileCompareModal from "@/components/compare/MobileCompareModal";
 import MobileInfoModal from "@/components/compare/MobileInfoModal";
@@ -22,6 +24,7 @@ import type {
   WardsByLga,
 } from "@/types/location";
 import type { CompareBundle } from "@/types/compare";
+import { buildCapitalLgaIdMap } from "@/lib/map/capitalLga";
 
 const NigeriaMap = dynamic(() => import("@/components/map/NigeriaMap"), {
   ssr: false,
@@ -63,6 +66,11 @@ export default function ExplorerShell({
   const [compareModalOpen, setCompareModalOpen] = useState(false);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
 
+  const capitalLgaByState = useMemo(
+    () => buildCapitalLgaIdMap(lgas, compareBundle),
+    [lgas, compareBundle]
+  );
+
   const selectedStates = states.filter((s) => selectedStateIds.has(s.id));
   const singleStateSelected =
     !selectedLgaId && selectedStateIds.size === 1;
@@ -77,31 +85,34 @@ export default function ExplorerShell({
       <header className="shrink-0 z-20 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl shadow-sm relative">
         <div className="max-w-[1600px] mx-auto px-3 lg:px-6 py-2.5 lg:py-4">
           <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4 justify-between">
-            <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 lg:h-10 lg:w-10 items-center justify-center rounded-xl bg-ng-green text-lg lg:text-xl shadow-sm">
-                🇳🇬
+            <div className="flex flex-col items-start gap-1.5 shrink-0">
+              <div className="flex items-center gap-2.5">
+                <div className="flex h-9 w-9 lg:h-10 lg:w-10 items-center justify-center rounded-xl bg-ng-green text-lg lg:text-xl shadow-sm">
+                  🇳🇬
+                </div>
+                <div>
+                  <h1 className="text-lg lg:text-xl font-bold text-slate-900 tracking-tight leading-none">
+                    NaijaAtlas
+                  </h1>
+                  <p className="text-[11px] lg:text-xs text-slate-500 mt-0.5 hidden sm:block">
+                    36 states · 774 LGAs · 6 regions
+                  </p>
+                </div>
               </div>
-              <div>
-                <h1 className="text-lg lg:text-xl font-bold text-slate-900 tracking-tight leading-none">
-                  NaijaAtlas
-                </h1>
-                <p className="text-[11px] lg:text-xs text-slate-500 mt-0.5 hidden sm:block">
-                  36 states · 774 LGAs · 6 regions
-                </p>
-              </div>
+              <PoweredByIseOwo />
             </div>
-            <div className="flex flex-col items-stretch lg:items-end gap-1.5 w-full lg:w-auto lg:max-w-md">
+            <div className="flex flex-col items-stretch gap-1.5 w-full lg:flex-1 lg:max-w-md">
               <LocationSearch />
-              <div className="flex justify-end">
-                <PoweredByIseOwo />
-              </div>
+              <MapHints />
             </div>
           </div>
           <div className="mt-2 lg:mt-4 space-y-1.5 lg:space-y-2">
             <p className="hidden lg:block text-[10px] font-semibold uppercase tracking-widest text-slate-400">
               Geopolitical regions
             </p>
-            <RegionFilter regions={regions} />
+            <div className="hidden lg:block">
+              <RegionFilter regions={regions} />
+            </div>
             <SelectedStatesBar states={states} />
           </div>
         </div>
@@ -195,21 +206,14 @@ export default function ExplorerShell({
       <main className="flex-1 flex flex-col lg:flex-row min-h-0 max-w-[1600px] mx-auto w-full">
         <div className="flex-1 relative p-2 lg:p-5 min-h-0 flex flex-col">
           <div className="relative flex-1 min-h-0">
-            <NigeriaMap states={states} regions={regions} lgas={lgas} />
+            <NigeriaMap
+              states={states}
+              regions={regions}
+              lgas={lgas}
+              capitalLgaByState={capitalLgaByState}
+            />
+            <MapBottomToolbar />
             <MapControls />
-            {selectedStateIds.size === 0 &&
-              !activeRegionId &&
-              mobileSheet !== "open" && (
-                <div className="pointer-events-none absolute bottom-14 lg:bottom-8 left-1/2 -translate-x-1/2 z-10 max-w-[90%]">
-                  <div className="rounded-full bg-white/95 backdrop-blur-md px-4 lg:px-5 py-2 text-xs lg:text-sm text-slate-600 shadow-lg border border-slate-200/80 flex items-center gap-2">
-                    <span className="inline-block h-2 w-2 rounded-full bg-ng-green animate-pulse shrink-0" />
-                    <span className="hidden sm:inline">
-                      Click a state to select · double-click or use the panel button to show LGAs
-                    </span>
-                    <span className="sm:hidden">Tap a state to explore</span>
-                  </div>
-                </div>
-              )}
           </div>
         </div>
         <LocationPanel
