@@ -82,5 +82,44 @@
     "significance": "Energy logistics hub, free zone, large land take.",
     "highlights": ["Oil & gas free zone", "Deep-water terminals", "Largest port by area"],
     "wikiUrl": "https://en.wikipedia.org/wiki/Onne"
+  },
+  {
+    "id": "navy-western-command",
+    "name": "Western Naval Command (Lagos)",
+    "coastCategory": "navy-base",
+    "type": "Nigerian Navy Western Command HQ",
+    "summary": "Headquarters of the Nigerian Navy Western Naval Command; controls the Lagos barrier coast and adjoining maritime area.",
+    "description": "The Western Naval Command is one of the Nigerian Navy's three principal formations, based in the Lagos area with responsibility for the entire western maritime flank including the Lagos Lagoon, Lekki approaches, and Badagry creeks. It hosts key naval bases, jetties, and security assets for the nation's premier port cluster.",
+    "coastalStates": ["Lagos", "Ogun", "Ondo"],
+    "economy": "Maritime security, naval base infrastructure, coastal patrol.",
+    "significance": "Defence of Lagos ports, maritime domain awareness, western coast security.",
+    "highlights": ["Western Command HQ", "Lagos naval jetties", "Apapa / Lekki port defence"],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Navy"
+  },
+  {
+    "id": "navy-central-command",
+    "name": "Central Naval Command (Yenagoa / Warri)",
+    "coastCategory": "navy-base",
+    "type": "Nigerian Navy Central Command HQ",
+    "summary": "Headquarters of the Nigerian Navy Central Naval Command; responsible for the Niger Delta maritime flank and delta creeks.",
+    "description": "The Central Naval Command is the Nigerian Navy's delta-facing formation, operating across the Niger Delta creeks from the Escravos/Forcados terminals to Bonny and the central delta waterways. It coordinates JTF maritime components, anti-piracy, and oil-and-gas infrastructure protection.",
+    "coastalStates": ["Delta", "Bayelsa", "Rivers (western sectors)", "Edo"],
+    "economy": "Delta maritime security, anti-piracy patrols, oil infrastructure defence.",
+    "significance": "Niger Delta maritime domain and oil-terminal security command.",
+    "highlights": ["Central Command HQ", "Escravos / Forcados sector", "Delta creek patrols"],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Navy"
+  },
+  {
+    "id": "navy-eastern-command",
+    "name": "Eastern Naval Command (Calabar)",
+    "coastCategory": "navy-base",
+    "type": "Nigerian Navy Eastern Command HQ",
+    "summary": "Headquarters of the Nigerian Navy Eastern Naval Command; covers the Cross River estuary, eastern seaboard, and Cameroon border maritime approaches.",
+    "description": "The Eastern Naval Command is the Nigerian Navy's formation for the eastern coast, including the Cross River estuary at Calabar, Akwa Ibom coast, and the Bakassi/Cameroon maritime frontier. It supports Calabar Port security and joint border maritime operations.",
+    "coastalStates": ["Cross River", "Akwa Ibom", "Rivers (eastern sectors)"],
+    "economy": "Eastern seaboard maritime security, Calabar port defence, Cameroon border patrol.",
+    "significance": "Defence of the eastern coast, Cross River estuary, and Calabar harbour.",
+    "highlights": ["Eastern Command HQ", "Calabar naval base", "Bakassi / Cameroon frontier"],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Navy"
   }
 ]

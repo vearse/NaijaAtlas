@@ -53,12 +53,25 @@ function drawColumn(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: nu
   ctx.closePath();
 }
 
+function drawShip(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: number) {
+  ctx.beginPath();
+  ctx.moveTo(cx - r * 0.95, cy + r * 0.15);
+  ctx.lineTo(cx - r * 0.55, cy + r * 0.72);
+  ctx.lineTo(cx + r * 0.55, cy + r * 0.72);
+  ctx.lineTo(cx + r * 0.95, cy + r * 0.15);
+  ctx.closePath();
+  ctx.rect(cx - r * 0.22, cy - r * 0.55, r * 0.44, r * 0.7);
+  ctx.moveTo(cx, cy - r * 0.55);
+  ctx.lineTo(cx, cy - r * 0.95);
+}
+
 const DRAW: Record<CoastCategory, DrawFn> = {
   seaport: drawAnchor,
   "oil-terminal": drawDroplet,
   estuary: drawWaves,
   environment: drawLeaf,
   historic: drawColumn,
+  "navy-base": drawShip,
 };
 
 const FILL: Record<CoastCategory, string> = {
@@ -67,6 +80,7 @@ const FILL: Record<CoastCategory, string> = {
   estuary: "#0891b2",
   environment: "#059669",
   historic: "#92400e",
+  "navy-base": "#0f172a",
 };
 
 function iconImage(category: CoastCategory): ImageData {
@@ -96,6 +110,12 @@ function iconImage(category: CoastCategory): ImageData {
   DRAW[category](ctx, cx, cy, r);
   if (category === "estuary") ctx.stroke();
   else ctx.fill();
+
+  if (category === "navy-base") {
+    ctx.strokeStyle = FILL[category];
+    ctx.lineWidth = 2.4;
+    ctx.stroke();
+  }
 
   return ctx.getImageData(0, 0, SIZE, SIZE);
 }

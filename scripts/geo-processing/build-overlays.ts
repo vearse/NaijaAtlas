@@ -271,18 +271,23 @@ function landformAreaFeature(row: CatalogRow): Feature | null {
   return null;
 }
 
-function markerCountFor(sizeTier: string, polygon?: Feature<Polygon>): number {
+function markerCountFor(
+  sizeTier: string,
+  landformType: string,
+  polygon?: Feature<Polygon>
+): number {
+  if (landformType === "hill") return 1;
   const areaKm2 = polygon ? turf.area(polygon) / 1e6 : 0;
+  let base = 1;
   if (sizeTier === "major") {
-    if (areaKm2 > 80_000) return 18;
-    if (areaKm2 > 35_000) return 14;
-    return 10;
+    if (areaKm2 > 80_000) base = 18;
+    else if (areaKm2 > 35_000) base = 14;
+    else base = 10;
+  } else if (sizeTier === "medium") {
+    if (areaKm2 > 12_000) base = 8;
+    else base = 6;
   }
-  if (sizeTier === "medium") {
-    if (areaKm2 > 12_000) return 8;
-    return 6;
-  }
-  return 1;
+  return Math.max(1, Math.ceil(base / 2));
 }
 
 function scatterPointsInInterior(
@@ -406,7 +411,8 @@ function buildLandforms(catalog: CatalogRow[]): Feature[] {
       continue;
     }
 
-    const count = markerCountFor(sizeTier, area as Feature<Polygon>);
+    const lfType = String(row.landformType ?? "hill");
+    const count = markerCountFor(sizeTier, lfType, area as Feature<Polygon>);
     const points = scatterLandformMarkers(
       area as Feature<Polygon>,
       count,
@@ -460,6 +466,9 @@ const PORT_COORDS: Record<string, [number, number]> = {
   "port-calabar": [8.34, 4.96],
   "port-warri": [5.52, 5.52],
   "port-onne": [7.08, 4.72],
+  "navy-western-command": [3.32, 6.45],
+  "navy-central-command": [5.82, 4.92],
+  "navy-eastern-command": [8.32, 4.97],
 };
 
 /** Clickable coast-zone segments along the national shoreline. */

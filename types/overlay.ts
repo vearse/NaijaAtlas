@@ -35,6 +35,7 @@ export const CITY_CATEGORIES = [
   "industrial",
   "university",
   "regional",
+  "army-division",
 ] as const;
 
 export type CityCategory = (typeof CITY_CATEGORIES)[number];
@@ -52,6 +53,7 @@ export const CITY_CATEGORY_LABELS: Record<
   industrial: { label: "Industrial centre", color: "#475569" },
   university: { label: "University town", color: "#0f766e" },
   regional: { label: "Regional city", color: "#64748b" },
+  "army-division": { label: "Army division", color: "#3f6212" },
 };
 
 export const LAKE_CATEGORIES = ["natural", "reservoir", "lagoon"] as const;
@@ -83,6 +85,7 @@ export const COAST_CATEGORIES = [
   "estuary",
   "environment",
   "historic",
+  "navy-base",
 ] as const;
 export type CoastCategory = (typeof COAST_CATEGORIES)[number];
 
@@ -95,6 +98,7 @@ export const COAST_CATEGORY_LABELS: Record<
   estuary: { label: "Estuary / lagoon", color: "#0891b2" },
   environment: { label: "Coastal environment", color: "#059669" },
   historic: { label: "Historic coast", color: "#92400e" },
+  "navy-base": { label: "Navy base", color: "#0f172a" },
 };
 
 export const COAST_ZONE_LABELS: Record<
@@ -163,7 +167,7 @@ export const LANDFORM_MAP_LEGEND = [
   { emoji: "🏜", icon: "sand", label: "sand = dry basin" },
   { emoji: "💧", icon: "delta", label: "delta = wetland" },
   { emoji: "🌲", icon: "forest", label: "trees = forest" },
-  { emoji: "🏞", icon: "reserve", label: "trees = reserve / park" },
+  { emoji: "🏞", icon: "reserve", label: "park = reserve / park" },
   { emoji: "⛰", icon: "highland", label: "peaks & hills = highlands" },
 ] as const;
 
@@ -190,22 +194,24 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
     title: "Coast & ports",
     summary: "Atlantic ocean, coastline zones, seaports, delta terminals, estuaries, and coastal environment.",
     description:
-      "Light blue shows the Gulf of Guinea offshore. The dark national coastline and coloured zone traces divide Lagos barrier coast, Niger Delta, and the eastern Cross River shore. Icons by category: anchor = seaport, droplet = oil terminal, waves = estuary, leaf = environment, column = historic coast.",
+      "Light blue shows the Gulf of Guinea offshore. A thick dark national coastline and coloured zone traces divide Lagos barrier coast, Niger Delta, and the eastern Cross River shore. Icons match this legend: ⚓ seaport, 💧 oil terminal, ~ estuary, 🍃 environment, 🏛 historic coast, 🚢 navy base.",
     includes: [
       "853 km national coastline & three coast zones",
       "Apapa, Lekki, Port Harcourt, Calabar, Warri, Onne",
+      "Western, Eastern & Central Naval Commands",
       "Forcados, Bonny, Escravos terminals",
       "Lagos Lagoon, Niger Delta & Cross River estuaries",
-      "Erosion, mangrove, and Bakassi environment sites",
     ],
     legend: [
       "Light blue = ocean",
-      "Dark line = national coast",
+      "Thick dark line = national coast",
       "Teal / green / purple = coast zones",
       "⚓ navy = seaport",
       "💧 amber = oil terminal",
       "~ cyan = estuary",
       "🍃 green = environment",
+      "🏛 brown = historic coast",
+      "🚢 slate = navy base",
     ],
     tip: "Tap any coast line or icon for trade, ecology, and environment notes.",
   },
@@ -213,7 +219,7 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
     title: "Landforms & relief",
     summary: "Plateaus, hills, peaks, inselbergs, deltas, and landscape belts — styled by type and size.",
     description:
-      "Type-specific icons mark each landform on the map — grass for savanna, sand for basins, blue delta for wetlands, trees for forests and reserves, peaks for mountains, and rock icons for inselbergs. Large regions show several icons spread across the actual geography. Tap any icon for details.",
+      "Icons match the map legend: 🌿 grass for savanna, 🏜 sand for dry basins, 💧 for delta wetlands, 🌲 trees for forest, 🏞 park for reserves, and ⛰ for peaks and hills. Hills show one icon; larger belts use fewer spread markers. Tap any icon for details.",
     includes: ["Jos, Mambilla, Obudu & Bauchi plateaus", "Sambisa, Cross River NP, Yankari & Okomu", "Idanre, Shebshi, Gashaka highlands", "Aso Rock, Zuma Rock, Mount Patti"],
     legend: LANDFORM_MAP_LEGEND.map((item) => `${item.emoji} ${item.label}`),
     tip: "Multiple icons in one region show the extent of large landforms — tap any of them.",
@@ -222,10 +228,20 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
     title: "Cities",
     summary: "Major and regional cities with category icons by economic and administrative role.",
     description:
-      "Each city has a shape-coded icon: star for Abuja, diamond for state capitals, red circle for Lagos-scale megacity, and other shapes for commercial, historic, port, and university towns.",
-    includes: ["63 cities from megacities to regional centres", "State capitals and economic hubs", "Port cities and university towns"],
-    legend: ["★ federal capital", "◆ state capital", "● megacity", "Other shapes = commercial, historic, port…"],
-    tip: "Tap any city icon for population notes, economy, and landmarks.",
+      "Each city has a shape-coded icon: star for Abuja, diamond for state capitals, red circle for Lagos-scale megacity, and other shapes for commercial, historic, port, and university towns. Olive 🪖 army shields mark Nigerian Army divisions with the states they cover.",
+    includes: [
+      "63 cities from megacities to regional centres",
+      "State capitals and economic hubs",
+      "1, 2, 3, 6, 7, 8, 81 & 82 Divisions plus Guards Brigade",
+    ],
+    legend: [
+      "★ federal capital",
+      "◆ state capital",
+      "● megacity",
+      "🪖 olive = army division",
+      "Other shapes = commercial, historic, port…",
+    ],
+    tip: "Tap any city or army icon for notes, economy, or area of responsibility.",
   },
 };
 

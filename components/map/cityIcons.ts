@@ -98,6 +98,17 @@ function drawRounded(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: n
   ctx.closePath();
 }
 
+function drawArmy(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: number) {
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - r);
+  ctx.lineTo(cx + r * 0.85, cy - r * 0.35);
+  ctx.lineTo(cx + r * 0.72, cy + r * 0.55);
+  ctx.lineTo(cx, cy + r);
+  ctx.lineTo(cx - r * 0.72, cy + r * 0.55);
+  ctx.lineTo(cx - r * 0.85, cy - r * 0.35);
+  ctx.closePath();
+}
+
 function drawMega(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: number) {
   ctx.beginPath();
   ctx.arc(cx, cy, r, 0, Math.PI * 2);
@@ -113,6 +124,7 @@ const DRAW: Record<CityCategory, DrawFn> = {
   industrial: drawSquare,
   university: drawPlus,
   regional: drawRounded,
+  "army-division": drawArmy,
 };
 
 const FILL: Record<CityCategory, string> = {
@@ -125,6 +137,7 @@ const FILL: Record<CityCategory, string> = {
   industrial: "#475569",
   university: "#0f766e",
   regional: "#64748b",
+  "army-division": "#3f6212",
 };
 
 function iconImage(category: CityCategory): ImageData {
@@ -150,6 +163,20 @@ function iconImage(category: CityCategory): ImageData {
   if (category === "mega-city") {
     ctx.beginPath();
     ctx.arc(cx, cy, r * 0.42, 0, Math.PI * 2);
+    ctx.fillStyle = "#ffffff";
+    ctx.fill();
+  }
+
+  if (category === "army-division") {
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - r * 0.28);
+    ctx.lineTo(cx + r * 0.22, cy + r * 0.08);
+    ctx.lineTo(cx + r * 0.08, cy + r * 0.08);
+    ctx.lineTo(cx + r * 0.28, cy + r * 0.42);
+    ctx.lineTo(cx - r * 0.28, cy + r * 0.42);
+    ctx.lineTo(cx - r * 0.08, cy + r * 0.08);
+    ctx.lineTo(cx - r * 0.22, cy + r * 0.08);
+    ctx.closePath();
     ctx.fillStyle = "#ffffff";
     ctx.fill();
   }
