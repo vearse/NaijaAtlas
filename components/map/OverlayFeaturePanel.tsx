@@ -10,7 +10,10 @@ import {
   LANDFORM_TYPE_LABELS,
   OVERLAY_LAYER_LABELS,
   POWER_PLANT_CATEGORY_LABELS,
+  COAST_CATEGORY_LABELS,
+  COAST_ZONE_LABELS,
   type CityCategory,
+  type CoastCategory,
   type LakeCategory,
   type LandformSizeTier,
   type LandformType,
@@ -119,6 +122,20 @@ function powerPlantCategoryMeta(value: unknown) {
   return POWER_PLANT_CATEGORY_LABELS[value as PowerPlantCategory] ?? null;
 }
 
+function coastCategoryMeta(value: unknown) {
+  if (typeof value !== "string") return null;
+  return COAST_CATEGORY_LABELS[value as CoastCategory] ?? null;
+}
+
+function coastZoneMeta(id: unknown, category: unknown) {
+  if (category === "national") return COAST_ZONE_LABELS.national;
+  if (category === "coast-zone") return COAST_ZONE_LABELS["coast-zone"];
+  if (typeof id === "string" && id.startsWith("zone-")) {
+    return COAST_ZONE_LABELS["coast-zone"];
+  }
+  return null;
+}
+
 function landformTypeMeta(value: unknown) {
   if (typeof value !== "string") return null;
   return LANDFORM_TYPE_LABELS[value as LandformType] ?? null;
@@ -146,6 +163,8 @@ export default function OverlayFeaturePanel({
   const cityCat = cityCategoryMeta(props.category);
   const lakeCat = lakeCategoryMeta(props.lakeCategory);
   const plantCat = powerPlantCategoryMeta(props.plantCategory);
+  const coastCat = coastCategoryMeta(props.coastCategory);
+  const coastZone = coastZoneMeta(props.id, props.coastCategory);
   const landformType = landformTypeMeta(props.landformType);
   const landformSize = landformSizeMeta(props.sizeTier);
   const featureKind = text(props.featureKind);
@@ -222,6 +241,22 @@ export default function OverlayFeaturePanel({
                 {plantCat.label}
               </span>
             )}
+            {coastCat && (
+              <span
+                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white"
+                style={{ backgroundColor: coastCat.color }}
+              >
+                {coastCat.label}
+              </span>
+            )}
+            {coastZone && !coastCat && (
+              <span
+                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white"
+                style={{ backgroundColor: coastZone.color }}
+              >
+                {coastZone.label}
+              </span>
+            )}
             {featureKind === "power-station" && !plantCat && (
               <span className="inline-flex items-center rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-[11px] font-medium text-amber-900">
                 Power station
@@ -267,6 +302,8 @@ export default function OverlayFeaturePanel({
         <DetailRow label="Area" value={text(props.areaNote)} />
         <DetailRow label="Population" value={text(props.populationNote)} />
         <DetailRow label="Elevation" value={text(props.elevationNote)} />
+        <DetailRow label="Cargo / trade" value={text(props.cargoNote)} />
+        <DetailRow label="Environment" value={text(props.environment)} />
         <DetailRow label="Climate" value={text(props.climate)} />
         <DetailRow label="Economy" value={text(props.economy)} />
         <DetailRow label="Ecology" value={text(props.ecology)} />

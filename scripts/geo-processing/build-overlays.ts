@@ -165,49 +165,127 @@ const LANDFORM_POLYGONS: Record<string, [number, number][]> = {
     [3.45, 7.45], [8.05, 7.5], [8.08, 10.05], [3.48, 10.0], [3.45, 7.45],
   ],
   "landform-idanre": [
-    [4.68, 7.02], [4.82, 7.04], [4.84, 7.14], [4.78, 7.18], [4.66, 7.16], [4.68, 7.02],
+    [4.58, 6.96], [4.94, 6.98], [4.98, 7.24], [4.82, 7.32], [4.56, 7.26], [4.58, 6.96],
   ],
   "landform-shere-hills": [
-    [8.82, 9.82], [8.98, 9.84], [9.0, 9.98], [8.88, 10.02], [8.78, 9.94], [8.82, 9.82],
+    [8.78, 9.78], [9.05, 9.82], [9.08, 10.08], [8.92, 10.12], [8.72, 10.02], [8.78, 9.78],
   ],
   "landform-udi-escarpment": [
-    [7.35, 6.28], [7.62, 6.3], [7.65, 6.58], [7.38, 6.56], [7.35, 6.28],
+    [7.28, 6.22], [7.72, 6.25], [7.78, 6.68], [7.32, 6.65], [7.28, 6.22],
   ],
   "landform-oban-hills": [
-    [8.55, 5.15], [9.05, 5.18], [9.08, 5.65], [8.58, 5.62], [8.55, 5.15],
+    [8.48, 5.08], [9.15, 5.12], [9.18, 5.72], [8.52, 5.68], [8.48, 5.08],
+  ],
+  "landform-obudu-plateau": [
+    [9.42, 6.52], [9.78, 6.55], [9.82, 6.88], [9.45, 6.92], [9.42, 6.52],
+  ],
+  "landform-gashaka-highlands": [
+    [11.05, 6.95], [12.35, 7.0], [12.4, 8.35], [11.0, 8.28], [11.05, 6.95],
+  ],
+  "landform-shebshi": [
+    [9.05, 8.05], [10.15, 8.1], [10.18, 9.15], [9.02, 9.1], [9.05, 8.05],
+  ],
+  "landform-alantika": [
+    [13.05, 9.85], [13.95, 9.88], [13.98, 10.65], [13.02, 10.6], [13.05, 9.85],
+  ],
+  "landform-bauchi-plateau": [
+    [9.42, 9.85], [10.35, 9.88], [10.38, 10.95], [9.38, 10.9], [9.42, 9.85],
+  ],
+  "landform-gotels": [
+    [11.72, 9.35], [12.65, 9.38], [12.68, 10.35], [11.68, 10.3], [11.72, 9.35],
   ],
 };
 
+/** Circular footprint for hill clusters without a hand-traced polygon. */
+const LANDFORM_BUFFERS: Record<
+  string,
+  { center: [number, number]; radiusKm: number }
+> = {
+  "landform-kabwir": { center: [9.72, 9.02], radiusKm: 22 },
+  "landform-kufena-hills": { center: [7.48, 10.38], radiusKm: 14 },
+  "landform-erin-ijesha": { center: [4.85, 7.58], radiusKm: 12 },
+  "landform-ezeagu-hills": { center: [7.22, 6.38], radiusKm: 16 },
+  "landform-farin-ruwa": { center: [8.72, 9.42], radiusKm: 18 },
+};
+
 function landformAreaFeature(row: CatalogRow): Feature | null {
-  const ring = LANDFORM_POLYGONS[row.id];
-  if (!ring?.length) return null;
-  return {
-    type: "Feature",
-    properties: {
-      id: row.id,
-      name: row.name,
-      featureKind: "area",
-      landformType: row.landformType ?? "hill",
-      sizeTier: row.sizeTier ?? "medium",
-    },
-    geometry: { type: "Polygon", coordinates: [ring] },
+  const props = {
+    id: row.id,
+    name: row.name,
+    featureKind: "area",
+    landformType: row.landformType ?? "hill",
+    sizeTier: row.sizeTier ?? "medium",
   };
+
+  const ring = LANDFORM_POLYGONS[row.id];
+  if (ring?.length) {
+    return {
+      type: "Feature",
+      properties: props,
+      geometry: { type: "Polygon", coordinates: [ring] },
+    };
+  }
+
+  const buf = LANDFORM_BUFFERS[row.id];
+  if (buf) {
+    const buffered = turf.buffer(turf.point(buf.center), buf.radiusKm, {
+      units: "kilometers",
+    });
+    if (!buffered?.geometry) return null;
+    return {
+      type: "Feature",
+      properties: props,
+      geometry: buffered.geometry as Polygon,
+    };
+  }
+
+  return null;
 }
 
-function landformPointFeature(row: CatalogRow): Feature | null {
-  const lon = Number(row.lon);
-  const lat = Number(row.lat);
-  if (!Number.isFinite(lon) || !Number.isFinite(lat)) return null;
+function landformPointFeature(_row: CatalogRow): Feature | null {
+  return null;
+}
+
+function markerCountFor(sizeTier: string): number {
+  if (sizeTier === "major") return 10;
+  if (sizeTier === "medium") return 4;
+  return 1;
+}
+
+function scatterPointsInPolygon(
+  polygon: Feature<Polygon>,
+  count: number
+): [number, number][] {
+  const bbox = turf.bbox(polygon);
+  const width = bbox[2] - bbox[0];
+  const height = bbox[3] - bbox[1];
+  const cellSide = Math.max(width, height) / Math.max(2, Math.sqrt(count) * 0.9);
+  const grid = turf.pointGrid(bbox, cellSide, { units: "degrees" });
+  const inside = turf.pointsWithinPolygon(grid, polygon);
+  if (inside.features.length === 0) {
+    const c = turf.centroid(polygon).geometry.coordinates as [number, number];
+    return [c];
+  }
+  const step = Math.max(1, Math.floor(inside.features.length / count));
+  const coords: [number, number][] = [];
+  for (
+    let i = 0;
+    i < inside.features.length && coords.length < count;
+    i += step
+  ) {
+    coords.push(inside.features[i].geometry.coordinates as [number, number]);
+  }
+  return coords.length > 0 ? coords : [inside.features[0].geometry.coordinates as [number, number]];
+}
+
+function landformMarkerProps(row: CatalogRow, isLabelAnchor = false) {
   return {
-    type: "Feature",
-    properties: {
-      id: row.id,
-      name: row.name,
-      featureKind: "point",
-      landformType: row.landformType ?? "peak",
-      sizeTier: row.sizeTier ?? "minor",
-    },
-    geometry: { type: "Point", coordinates: [lon, lat] },
+    id: row.id,
+    name: row.name,
+    featureKind: "marker",
+    landformType: row.landformType ?? "hill",
+    sizeTier: row.sizeTier ?? "medium",
+    isLabelAnchor,
   };
 }
 
@@ -217,10 +295,52 @@ function buildLandforms(catalog: CatalogRow[]): Feature[] {
 
   for (const row of catalog) {
     const kind = String(row.featureKind ?? "area");
-    const feature =
-      kind === "point" ? landformPointFeature(row) : landformAreaFeature(row);
-    if (feature) features.push(feature);
-    else missing.push(row.id);
+    const sizeTier = String(row.sizeTier ?? "medium");
+
+    if (kind === "point") {
+      const lon = Number(row.lon);
+      const lat = Number(row.lat);
+      if (!Number.isFinite(lon) || !Number.isFinite(lat)) {
+        missing.push(row.id);
+        continue;
+      }
+      features.push({
+        type: "Feature",
+        properties: landformMarkerProps(row, true),
+        geometry: { type: "Point", coordinates: [lon, lat] },
+      });
+      continue;
+    }
+
+    const area = landformAreaFeature(row);
+    if (!area?.geometry) {
+      missing.push(row.id);
+      continue;
+    }
+
+    const count = markerCountFor(sizeTier);
+    const points = scatterPointsInPolygon(area as Feature<Polygon>, count);
+    const centroid = turf.centroid(area).geometry.coordinates as [number, number];
+
+    let anchorIdx = 0;
+    let bestDist = Infinity;
+    points.forEach((coord, index) => {
+      const d = turf.distance(turf.point(coord), turf.point(centroid), {
+        units: "kilometers",
+      });
+      if (d < bestDist) {
+        bestDist = d;
+        anchorIdx = index;
+      }
+    });
+
+    points.forEach((coord, index) => {
+      features.push({
+        type: "Feature",
+        properties: landformMarkerProps(row, index === anchorIdx),
+        geometry: { type: "Point", coordinates: coord },
+      });
+    });
   }
 
   if (missing.length > 0) {
@@ -243,10 +363,42 @@ const CITY_COORDS: Record<string, [number, number]> = {
 
 const PORT_COORDS: Record<string, [number, number]> = {
   "port-lagos-apapa": [3.37, 6.44],
+  "port-lekki": [3.92, 6.42],
   "port-port-harcourt": [7.0, 4.77],
   "port-calabar": [8.34, 4.96],
   "port-warri": [5.52, 5.52],
   "port-onne": [7.08, 4.72],
+};
+
+/** Clickable coast-zone segments along the national shoreline. */
+const COAST_ZONE_LINES: Record<string, [number, number][]> = {
+  "zone-lagos-barrier": [
+    [2.88, 6.42], [3.05, 6.38], [3.22, 6.32], [3.38, 6.28], [3.55, 6.22],
+    [3.72, 6.15], [3.92, 6.08], [4.15, 6.02], [4.38, 5.96], [4.62, 5.92],
+    [4.85, 5.88],
+  ],
+  "zone-niger-delta": [
+    [4.95, 5.85], [5.18, 5.72], [5.42, 5.55], [5.65, 5.38], [5.88, 5.18],
+    [6.08, 4.98], [6.28, 4.82], [6.48, 4.68], [6.68, 4.55], [6.88, 4.45],
+    [7.05, 4.38],
+  ],
+  "zone-cross-river-east": [
+    [7.15, 4.35], [7.45, 4.48], [7.75, 4.65], [8.05, 4.82], [8.35, 4.95],
+    [8.62, 5.05], [8.82, 5.12], [8.95, 5.18],
+  ],
+};
+
+const COAST_FEATURE_COORDS: Record<string, [number, number]> = {
+  "estuary-lagos-lagoon": [3.38, 6.4],
+  "estuary-niger-delta": [5.75, 4.82],
+  "estuary-cross-river": [8.42, 4.94],
+  "terminal-forcados": [5.32, 5.28],
+  "terminal-bonny": [6.72, 4.58],
+  "terminal-escravos": [5.45, 5.38],
+  "env-lagos-erosion": [3.42, 6.46],
+  "env-delta-mangrove": [6.15, 4.52],
+  "env-bakassi": [8.72, 4.68],
+  "historic-badagry": [2.88, 6.42],
 };
 
 function normalizeWaterwayName(name: string): string {
@@ -476,9 +628,43 @@ function coastlineFromAdm0(adm0: FeatureCollection): Feature | null {
   }
 }
 
+function coastZoneLineFeature(row: CatalogRow): Feature | null {
+  const coords = COAST_ZONE_LINES[row.id];
+  if (!coords?.length) return null;
+  return {
+    type: "Feature",
+    properties: {
+      id: row.id,
+      name: row.name,
+      featureKind: "line",
+      coastCategory: row.coastCategory ?? "coast-zone",
+    },
+    geometry: { type: "LineString", coordinates: coords },
+  };
+}
+
+function coastPointFeature(
+  row: CatalogRow,
+  coords: Record<string, [number, number]>
+): Feature | null {
+  const point = coords[row.id];
+  if (!point) return null;
+  return {
+    type: "Feature",
+    properties: {
+      id: row.id,
+      name: row.name,
+      featureKind: "point",
+      coastCategory: row.coastCategory ?? "seaport",
+    },
+    geometry: { type: "Point", coordinates: point },
+  };
+}
+
 function buildCoast(
   coastCatalog: CatalogRow[],
   portsCatalog: CatalogRow[],
+  coastFeaturesCatalog: CatalogRow[],
   adm0: FeatureCollection
 ): Feature[] {
   const features: Feature[] = [atlanticOcean()];
@@ -489,19 +675,28 @@ function buildCoast(
       ...coast.properties,
       id: "coastline-ng",
       name: row?.name ?? "Nigeria Coastline",
+      featureKind: "line",
+      coastCategory: "national",
     };
     features.push(coast);
   }
-  for (const port of portsCatalog) {
-    features.push({
-      type: "Feature",
-      properties: { id: port.id, name: port.name, subkind: "port" },
-      geometry: {
-        type: "Point",
-        coordinates: PORT_COORDS[port.id] ?? [0, 0],
-      } as Point,
-    });
+
+  for (const row of coastCatalog) {
+    if (row.id === "coastline-ng") continue;
+    const zone = coastZoneLineFeature(row);
+    if (zone) features.push(zone);
   }
+
+  for (const port of portsCatalog) {
+    const feature = coastPointFeature(port, PORT_COORDS);
+    if (feature) features.push(feature);
+  }
+
+  for (const row of coastFeaturesCatalog) {
+    const feature = coastPointFeature(row, COAST_FEATURE_COORDS);
+    if (feature) features.push(feature);
+  }
+
   return features;
 }
 
@@ -512,6 +707,7 @@ export async function buildOverlays(): Promise<void> {
   const citiesCatalog = readCatalog("cities");
   const coastCatalog = readCatalog("coast");
   const portsCatalog = readCatalog("ports");
+  const coastFeaturesCatalog = readCatalog("coast-features");
 
   const adm0 = readGeoJson("public/geo/nigeria-adm0.geojson");
 
@@ -534,16 +730,24 @@ export async function buildOverlays(): Promise<void> {
     fc(buildCities(citiesCatalog), citiesCatalog, "cities")
   );
 
-  const coastFeatures = buildCoast(coastCatalog, portsCatalog, adm0);
+  const coastFeatures = buildCoast(
+    coastCatalog,
+    portsCatalog,
+    coastFeaturesCatalog,
+    adm0
+  );
   const coastMerged = coastFeatures.map((f) => {
-    if (f.properties?.subkind === "port") {
-      const row = portsCatalog.find((c) => c.id === f.properties?.id);
-      return mergeCatalog(f, portsCatalog, "coast");
+    const id = String(f.properties?.id ?? "");
+    if (f.properties?.kind === "ocean") {
+      return { ...f, properties: { ...f.properties, layerId: "coast", kind: "ocean" } };
     }
-    if (f.properties?.id === "coastline-ng") {
-      return mergeCatalog(f, coastCatalog, "coast");
-    }
-    return { ...f, properties: { ...f.properties, layerId: "coast", kind: "ocean" } };
+    const portRow = portsCatalog.find((c) => c.id === id);
+    if (portRow) return mergeCatalog(f, portsCatalog, "coast");
+    const featureRow = coastFeaturesCatalog.find((c) => c.id === id);
+    if (featureRow) return mergeCatalog(f, coastFeaturesCatalog, "coast");
+    const coastRow = coastCatalog.find((c) => c.id === id);
+    if (coastRow) return mergeCatalog(f, coastCatalog, "coast");
+    return { ...f, properties: { ...f.properties, layerId: "coast" } };
   });
   writeGeoJson(projectRoot("public/geo/overlays/coast.geojson"), {
     type: "FeatureCollection",

@@ -2,6 +2,7 @@
   {
     "id": "coastline-ng",
     "name": "Nigeria Coastline",
+    "coastCategory": "national",
     "type": "Atlantic / Gulf of Guinea coast",
     "summary": "About 853 km of Gulf of Guinea shoreline from the Badagry creek system to the Bakassi / Cross River estuary.",
     "description": "The Nigerian coast is a mix of barrier islands (Lagos–Mahin), the Niger Delta mouths, and the eastern estuary around Calabar. It carries the bulk of seaborne trade, offshore oil, artisanal fisheries, and mangrove carbon stores. Coastal erosion, sea-level rise, and pollution are national planning issues.",
@@ -12,5 +13,53 @@
     "significance": "Atlantic trade, oil terminals, fishing, mangrove ecosystems.",
     "highlights": ["Gulf of Guinea", "Niger Delta outlets", "Lagos barrier islands"],
     "wikiUrl": "https://en.wikipedia.org/wiki/Geography_of_Nigeria"
+  },
+  {
+    "id": "zone-lagos-barrier",
+    "name": "Lagos–Mahin Barrier Coast",
+    "coastCategory": "coast-zone",
+    "type": "Barrier islands & lagoon coast",
+    "summary": "Urbanised barrier-island coast from Badagry through Lagos to the Lekki peninsula and Mahin mud coast.",
+    "description": "Sand spits and barrier islands shelter Lagos Lagoon. The zone hosts Apapa and Lekki ports, dense urban waterfront, and chronic erosion. Ondo’s Mahin coast continues the barrier-lagoon pattern west of the delta.",
+    "coastalStates": ["Lagos", "Ogun", "Ondo"],
+    "lengthNote": "~250 km (Lagos–Ondo barrier and lagoon shore)",
+    "economy": "Container ports, sand mining, real estate, fisheries, tourism.",
+    "ecology": "Lagoon, mangrove patches, urban pollution, turtle nesting (remaining beaches).",
+    "environment": "Erosion on Victoria Island and Lekki; wastewater and dredging.",
+    "significance": "National trade gateway; most populated coastal strip.",
+    "highlights": ["Lagos Lagoon", "Lekki Deep Sea Port", "Badagry heritage coast"],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lagos_Lagoon"
+  },
+  {
+    "id": "zone-niger-delta",
+    "name": "Niger Delta Coast",
+    "coastCategory": "coast-zone",
+    "type": "Deltaic mangrove coast",
+    "summary": "Mangrove-fringed delta mouths from Ondo through Delta and Bayelsa to eastern Rivers.",
+    "description": "The Niger River and its distributaries create a low, tidal coast of creeks, mudflats, and mangrove. Oil terminals at Forcados, Escravos, and Bonny dominate export infrastructure; artisanal fishing sustains riverine communities.",
+    "coastalStates": ["Ondo", "Delta", "Bayelsa", "Rivers"],
+    "lengthNote": "~450 km of deltaic shoreline and creek mouths",
+    "economy": "Oil and gas export, fishing, palm produce, river transport.",
+    "ecology": "West Africa’s largest mangrove tract; high biodiversity; spill-sensitive.",
+    "environment": "Oil spills, gas flaring, mangrove loss, subsidence.",
+    "significance": "National oil wealth; blue-carbon and fisheries asset.",
+    "highlights": ["Forcados & Escravos mouths", "Bonny Island", "Mangrove belt"],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Niger_Delta"
+  },
+  {
+    "id": "zone-cross-river-east",
+    "name": "Cross River & Eastern Coast",
+    "coastCategory": "coast-zone",
+    "type": "Estuary and open-coast east",
+    "summary": "Cross River estuary at Calabar through Akwa Ibom to the Bakassi / Cameroon border.",
+    "description": "Higher rainfall and clearer estuaries characterise the eastern coast. Calabar port serves the southeast; beaches at Ibeno and Bakassi mark the maritime frontier with Cameroon.",
+    "coastalStates": ["Cross River", "Akwa Ibom"],
+    "lengthNote": "~150 km (Calabar to Bakassi)",
+    "economy": "General cargo, regional export, fishing, emerging tourism.",
+    "ecology": "Estuarine mangrove, turtle beaches, lower oil impact than delta core.",
+    "environment": "Beach erosion; Bakassi transboundary wetland issues.",
+    "significance": "Eastern seaport; ICJ Bakassi boundary.",
+    "highlights": ["Calabar estuary", "Qua Iboe terminal area", "Bakassi peninsula"],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Calabar"
   }
 ]

@@ -77,6 +77,34 @@ export const POWER_PLANT_CATEGORY_LABELS: Record<
   "regional-hydro": { label: "Regional hydro / dam", color: "#64748b" },
 };
 
+export const COAST_CATEGORIES = [
+  "seaport",
+  "oil-terminal",
+  "estuary",
+  "environment",
+  "historic",
+] as const;
+export type CoastCategory = (typeof COAST_CATEGORIES)[number];
+
+export const COAST_CATEGORY_LABELS: Record<
+  CoastCategory,
+  { label: string; color: string }
+> = {
+  seaport: { label: "Seaport", color: "#1e3a8a" },
+  "oil-terminal": { label: "Oil & gas terminal", color: "#d97706" },
+  estuary: { label: "Estuary / lagoon", color: "#0891b2" },
+  environment: { label: "Coastal environment", color: "#059669" },
+  historic: { label: "Historic coast", color: "#92400e" },
+};
+
+export const COAST_ZONE_LABELS: Record<
+  string,
+  { label: string; color: string }
+> = {
+  national: { label: "National coastline", color: "#1e3a5f" },
+  "coast-zone": { label: "Coast zone", color: "#0d9488" },
+};
+
 export const LANDFORM_TYPES = [
   "plateau",
   "mountain-range",
@@ -87,6 +115,7 @@ export const LANDFORM_TYPES = [
   "delta",
   "basin",
   "savanna",
+  "forest",
 ] as const;
 export type LandformType = (typeof LANDFORM_TYPES)[number];
 
@@ -106,6 +135,7 @@ export const LANDFORM_TYPE_LABELS: Record<
   delta: { label: "Delta / lowland", color: "#15803d" },
   basin: { label: "Basin / plains", color: "#ca8a04" },
   savanna: { label: "Savanna belt", color: "#65a30d" },
+  forest: { label: "Forest highland", color: "#15803d" },
 };
 
 export const LANDFORM_SIZE_LABELS: Record<
@@ -147,21 +177,35 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
   },
   coast: {
     title: "Coast & ports",
-    summary: "Atlantic ocean tint, Nigeria's coastline, and major seaports.",
+    summary: "Atlantic ocean, coastline zones, seaports, delta terminals, estuaries, and coastal environment.",
     description:
-      "Ocean fill appears offshore. The coastline trace follows Nigeria's ADM0 boundary. Black port dots mark Apapa/Lagos, Port Harcourt, Calabar, Warri, and Onne.",
-    includes: ["Gulf of Guinea ocean mask", "National coastline", "Five major ports"],
-    legend: ["Light blue = ocean", "Dark line = coastline", "Black dot = port"],
-    tip: "Tap a port dot for trade and harbour notes.",
+      "Light blue shows the Gulf of Guinea offshore. The dark national coastline and coloured zone traces divide Lagos barrier coast, Niger Delta, and the eastern Cross River shore. Icons by category: anchor = seaport, droplet = oil terminal, waves = estuary, leaf = environment, column = historic coast.",
+    includes: [
+      "853 km national coastline & three coast zones",
+      "Apapa, Lekki, Port Harcourt, Calabar, Warri, Onne",
+      "Forcados, Bonny, Escravos terminals",
+      "Lagos Lagoon, Niger Delta & Cross River estuaries",
+      "Erosion, mangrove, and Bakassi environment sites",
+    ],
+    legend: [
+      "Light blue = ocean",
+      "Dark line = national coast",
+      "Teal / green / purple = coast zones",
+      "⚓ navy = seaport",
+      "💧 amber = oil terminal",
+      "~ cyan = estuary",
+      "🍃 green = environment",
+    ],
+    tip: "Tap any coast line or icon for trade, ecology, and environment notes.",
   },
   landforms: {
     title: "Landforms & relief",
     summary: "Plateaus, hills, peaks, inselbergs, deltas, and landscape belts — styled by type and size.",
     description:
-      "Large tinted areas are plateaus, basins, savanna belts, and the Niger Delta. Smaller patches are hill groups like Idanre. Triangle markers are peaks; monolith icons are inselbergs (Aso Rock, Zuma Rock, Olumo). Darker, larger fills = major features; lighter fills = regional hills.",
-    includes: ["Jos & Mambilla plateaus", "Idanre Hills, Mandara range", "Aso Rock, Zuma Rock, Chappal Waddi peak", "Niger Delta & Guinea savanna belt"],
-    legend: ["Brown = plateau / hills", "Green = delta / savanna", "▲ dark = peak", "◆ brown = inselberg"],
-    tip: "Compare fill size and colour to distinguish national plateaus from local hills.",
+      "Type-specific icons mark each landform on the map — grass for savanna, sand for basins, blue delta for wetlands, trees for forest hills, peaks for mountains, and rock icons for inselbergs. Large regions show several icons spread across the actual geography. Tap any icon for details.",
+    includes: ["Jos, Mambilla, Obudu & Bauchi plateaus", "Idanre, Shebshi, Gashaka highlands", "Aso Rock, Zuma Rock, Mount Patti", "Chappal Waddi — highest peak"],
+    legend: ["🌿 grass = savanna", "🏜 sand = dry basin", "💧 delta = wetland", "🌲 trees = forest hills", "⛰ peaks & hills = highlands"],
+    tip: "Multiple icons in one region show the extent of large landforms — tap any of them.",
   },
   cities: {
     title: "Cities",

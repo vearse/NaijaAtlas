@@ -8,6 +8,7 @@ import {
 import type { OverlayLayerId } from "@/types/overlay";
 import { OVERLAY_LAYER_IDS } from "@/types/overlay";
 import { registerCityIcons } from "./cityIcons";
+import { registerCoastIcons } from "./coastIcons";
 import { registerLakeIcons } from "./lakeIcons";
 import { registerLandformIcons } from "./landformIcons";
 
@@ -48,6 +49,7 @@ export function mountOverlayLayersFor(map: Map, layerId: OverlayLayerId): void {
 /** Mount all overlay layer slots (hidden by default). */
 export function addOverlayLayers(map: Map): void {
   registerCityIcons(map);
+  registerCoastIcons(map);
   registerLakeIcons(map);
   registerLandformIcons(map);
   for (const layerId of OVERLAY_LAYER_IDS) {
@@ -61,6 +63,7 @@ export function setOverlayVisibility(
   visible: boolean
 ): void {
   if (layerId === "cities") registerCityIcons(map);
+  if (layerId === "coast") registerCoastIcons(map);
   if (layerId === "lakes") registerLakeIcons(map);
   if (layerId === "landforms") registerLandformIcons(map);
   mountOverlayLayersFor(map, layerId);
