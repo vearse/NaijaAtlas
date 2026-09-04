@@ -74,12 +74,12 @@ function mergeCatalog(
 ): Feature {
   const id = String(feature.properties?.id ?? "");
   const row = catalog.find((c) => c.id === id);
-  const base = {
-    layerId,
-    kind: layerId,
-    ...(feature.properties ?? {}),
-  };
-  if (!row) return { ...feature, properties: base };
+  if (!row) {
+    return {
+      ...feature,
+      properties: { layerId, kind: layerId, ...(feature.properties ?? {}) },
+    };
+  }
   const flattened: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(row)) {
     flattened[key] = Array.isArray(value) ? JSON.stringify(value) : value;
@@ -87,8 +87,10 @@ function mergeCatalog(
   return {
     ...feature,
     properties: {
-      ...base,
+      layerId,
+      kind: layerId,
       ...flattened,
+      ...(feature.properties ?? {}),
     },
   };
 }
@@ -194,6 +196,33 @@ const LANDFORM_POLYGONS: Record<string, [number, number][]> = {
   "landform-gotels": [
     [11.72, 9.35], [12.65, 9.38], [12.68, 10.35], [11.68, 10.3], [11.72, 9.35],
   ],
+  "landform-sambisa-forest": [
+    [11.55, 10.35], [13.35, 10.38], [13.38, 11.55], [11.52, 11.52], [11.55, 10.35],
+  ],
+  "landform-cross-river-np": [
+    [8.35, 5.05], [9.55, 5.08], [9.58, 6.55], [8.32, 6.52], [8.35, 5.05],
+  ],
+  "landform-yankari-reserve": [
+    [9.65, 9.65], [10.25, 9.68], [10.28, 10.15], [9.62, 10.12], [9.65, 9.65],
+  ],
+  "landform-okomu-forest": [
+    [5.18, 6.18], [5.65, 6.2], [5.68, 6.55], [5.15, 6.52], [5.18, 6.18],
+  ],
+  "landform-kamuku-forest": [
+    [6.72, 10.45], [7.35, 10.48], [7.38, 11.05], [6.68, 11.02], [6.72, 10.45],
+  ],
+  "landform-old-oyo-park": [
+    [3.72, 8.05], [4.35, 8.08], [4.38, 8.55], [3.68, 8.52], [3.72, 8.05],
+  ],
+  "landform-kainji-park": [
+    [4.05, 9.55], [4.85, 9.58], [4.88, 10.25], [4.02, 10.22], [4.05, 9.55],
+  ],
+  "landform-chad-basin-park": [
+    [12.45, 12.35], [13.55, 12.38], [13.58, 13.35], [12.42, 13.32], [12.45, 12.35],
+  ],
+  "landform-edumanom-forest": [
+    [6.35, 4.85], [6.85, 4.88], [6.88, 5.25], [6.32, 5.22], [6.35, 4.85],
+  ],
 };
 
 /** Circular footprint for hill clusters without a hand-traced polygon. */
@@ -242,30 +271,32 @@ function landformAreaFeature(row: CatalogRow): Feature | null {
   return null;
 }
 
-function landformPointFeature(_row: CatalogRow): Feature | null {
-  return null;
-}
-
-function markerCountFor(sizeTier: string): number {
-  if (sizeTier === "major") return 10;
-  if (sizeTier === "medium") return 4;
+function markerCountFor(sizeTier: string, polygon?: Feature<Polygon>): number {
+  const areaKm2 = polygon ? turf.area(polygon) / 1e6 : 0;
+  if (sizeTier === "major") {
+    if (areaKm2 > 80_000) return 18;
+    if (areaKm2 > 35_000) return 14;
+    return 10;
+  }
+  if (sizeTier === "medium") {
+    if (areaKm2 > 12_000) return 8;
+    return 6;
+  }
   return 1;
 }
 
-function scatterPointsInPolygon(
+function scatterPointsInInterior(
   polygon: Feature<Polygon>,
   count: number
 ): [number, number][] {
   const bbox = turf.bbox(polygon);
   const width = bbox[2] - bbox[0];
   const height = bbox[3] - bbox[1];
-  const cellSide = Math.max(width, height) / Math.max(2, Math.sqrt(count) * 0.9);
+  const cellSide =
+    Math.max(width, height) / Math.max(2, Math.sqrt(count) * 0.85);
   const grid = turf.pointGrid(bbox, cellSide, { units: "degrees" });
   const inside = turf.pointsWithinPolygon(grid, polygon);
-  if (inside.features.length === 0) {
-    const c = turf.centroid(polygon).geometry.coordinates as [number, number];
-    return [c];
-  }
+  if (inside.features.length === 0) return [];
   const step = Math.max(1, Math.floor(inside.features.length / count));
   const coords: [number, number][] = [];
   for (
@@ -275,7 +306,64 @@ function scatterPointsInPolygon(
   ) {
     coords.push(inside.features[i].geometry.coordinates as [number, number]);
   }
-  return coords.length > 0 ? coords : [inside.features[0].geometry.coordinates as [number, number]];
+  return coords;
+}
+
+/** Boundary markers plus interior scatter for very large regions. */
+function scatterLandformMarkers(
+  polygon: Feature<Polygon>,
+  count: number,
+  sizeTier: string
+): [number, number][] {
+  const boundary = scatterPointsNearBoundary(polygon, count, sizeTier);
+  const areaKm2 = turf.area(polygon) / 1e6;
+  if (sizeTier === "major" || areaKm2 > 20_000) {
+    const extra = sizeTier === "major" ? Math.ceil(count * 0.65) : 3;
+    const interior = scatterPointsInInterior(polygon, extra);
+    return [...boundary, ...interior];
+  }
+  return boundary;
+}
+
+/** Place markers on the landform edge, nudged slightly outward from the footprint. */
+function scatterPointsNearBoundary(
+  polygon: Feature<Polygon>,
+  count: number,
+  sizeTier: string
+): [number, number][] {
+  const centroid = turf.centroid(polygon);
+  const nudgeKm = sizeTier === "major" ? 10 : sizeTier === "medium" ? 6 : 3;
+
+  const line = turf.polygonToLine(polygon);
+  const lineFeature =
+    line.type === "Feature"
+      ? line
+      : { type: "Feature" as const, properties: {}, geometry: line };
+  const length = turf.length(lineFeature, { units: "kilometers" });
+  if (length <= 0) {
+    const c = centroid.geometry.coordinates as [number, number];
+    const bearing = turf.bearing(centroid, turf.point([c[0] + 0.01, c[1]]));
+    return [
+      turf.destination(centroid, nudgeKm, bearing, { units: "kilometers" })
+        .geometry.coordinates as [number, number],
+    ];
+  }
+
+  const coords: [number, number][] = [];
+  for (let i = 0; i < count; i++) {
+    const dist =
+      count === 1 ? length * 0.5 : (length * (i + 0.5)) / count;
+    const along = turf.along(lineFeature, Math.min(dist, length * 0.999), {
+      units: "kilometers",
+    });
+    const pt = along.geometry.coordinates as [number, number];
+    const bearing = turf.bearing(centroid, turf.point(pt));
+    const outward = turf.destination(turf.point(pt), nudgeKm, bearing, {
+      units: "kilometers",
+    });
+    coords.push(outward.geometry.coordinates as [number, number]);
+  }
+  return coords;
 }
 
 function landformMarkerProps(row: CatalogRow, isLabelAnchor = false) {
@@ -318,8 +406,12 @@ function buildLandforms(catalog: CatalogRow[]): Feature[] {
       continue;
     }
 
-    const count = markerCountFor(sizeTier);
-    const points = scatterPointsInPolygon(area as Feature<Polygon>, count);
+    const count = markerCountFor(sizeTier, area as Feature<Polygon>);
+    const points = scatterLandformMarkers(
+      area as Feature<Polygon>,
+      count,
+      sizeTier
+    );
     const centroid = turf.centroid(area).geometry.coordinates as [number, number];
 
     let anchorIdx = 0;

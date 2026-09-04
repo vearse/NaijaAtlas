@@ -116,6 +116,7 @@ export const LANDFORM_TYPES = [
   "basin",
   "savanna",
   "forest",
+  "reserve",
 ] as const;
 export type LandformType = (typeof LANDFORM_TYPES)[number];
 
@@ -135,7 +136,8 @@ export const LANDFORM_TYPE_LABELS: Record<
   delta: { label: "Delta / lowland", color: "#15803d" },
   basin: { label: "Basin / plains", color: "#ca8a04" },
   savanna: { label: "Savanna belt", color: "#65a30d" },
-  forest: { label: "Forest highland", color: "#15803d" },
+  forest: { label: "Forest", color: "#15803d" },
+  reserve: { label: "Game reserve / park", color: "#166534" },
 };
 
 export const LANDFORM_SIZE_LABELS: Record<
@@ -155,6 +157,15 @@ export interface OverlayLayerGuide {
   legend: string[];
   tip: string;
 }
+
+export const LANDFORM_MAP_LEGEND = [
+  { emoji: "🌿", icon: "grass", label: "grass = savanna" },
+  { emoji: "🏜", icon: "sand", label: "sand = dry basin" },
+  { emoji: "💧", icon: "delta", label: "delta = wetland" },
+  { emoji: "🌲", icon: "forest", label: "trees = forest" },
+  { emoji: "🏞", icon: "reserve", label: "trees = reserve / park" },
+  { emoji: "⛰", icon: "highland", label: "peaks & hills = highlands" },
+] as const;
 
 export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
   waterways: {
@@ -202,9 +213,9 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
     title: "Landforms & relief",
     summary: "Plateaus, hills, peaks, inselbergs, deltas, and landscape belts — styled by type and size.",
     description:
-      "Type-specific icons mark each landform on the map — grass for savanna, sand for basins, blue delta for wetlands, trees for forest hills, peaks for mountains, and rock icons for inselbergs. Large regions show several icons spread across the actual geography. Tap any icon for details.",
-    includes: ["Jos, Mambilla, Obudu & Bauchi plateaus", "Idanre, Shebshi, Gashaka highlands", "Aso Rock, Zuma Rock, Mount Patti", "Chappal Waddi — highest peak"],
-    legend: ["🌿 grass = savanna", "🏜 sand = dry basin", "💧 delta = wetland", "🌲 trees = forest hills", "⛰ peaks & hills = highlands"],
+      "Type-specific icons mark each landform on the map — grass for savanna, sand for basins, blue delta for wetlands, trees for forests and reserves, peaks for mountains, and rock icons for inselbergs. Large regions show several icons spread across the actual geography. Tap any icon for details.",
+    includes: ["Jos, Mambilla, Obudu & Bauchi plateaus", "Sambisa, Cross River NP, Yankari & Okomu", "Idanre, Shebshi, Gashaka highlands", "Aso Rock, Zuma Rock, Mount Patti"],
+    legend: LANDFORM_MAP_LEGEND.map((item) => `${item.emoji} ${item.label}`),
     tip: "Multiple icons in one region show the extent of large landforms — tap any of them.",
   },
   cities: {

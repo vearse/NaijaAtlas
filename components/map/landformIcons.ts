@@ -4,11 +4,12 @@ import type { LandformType } from "@/types/overlay";
 const SIZE = 48;
 
 /** Map catalog landformType → canvas icon id */
-export const LANDFORM_ICON_BY_TYPE: Record<LandformType | "forest", string> = {
+export const LANDFORM_ICON_BY_TYPE: Record<LandformType, string> = {
   savanna: "grass",
   basin: "sand",
   delta: "delta",
   forest: "forest",
+  reserve: "reserve",
   hill: "hill",
   "mountain-range": "mountain",
   plateau: "plateau",
@@ -109,16 +110,31 @@ function drawDelta(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: num
 
 function drawForest(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: number) {
   ctx.beginPath();
-  ctx.arc(cx, cy + r * 0.55, r * 0.42, 0, Math.PI * 2);
-  ctx.moveTo(cx, cy + r * 0.15);
-  ctx.lineTo(cx, cy - r * 0.75);
-  for (const ox of [-0.35, 0, 0.35]) {
-    ctx.moveTo(cx + r * ox, cy + r * 0.05);
-    ctx.lineTo(cx + r * ox, cy - r * 0.55);
-    ctx.lineTo(cx + r * (ox - 0.35), cy + r * 0.05);
-    ctx.lineTo(cx + r * (ox + 0.35), cy + r * 0.05);
+  ctx.arc(cx, cy + r * 0.62, r * 0.38, 0, Math.PI * 2);
+  ctx.moveTo(cx, cy + r * 0.22);
+  ctx.lineTo(cx, cy - r * 0.82);
+  for (const ox of [-0.42, 0, 0.42]) {
+    ctx.moveTo(cx + r * ox, cy + r * 0.08);
+    ctx.lineTo(cx + r * ox, cy - r * 0.62);
+    ctx.lineTo(cx + r * (ox - 0.38), cy + r * 0.12);
+    ctx.lineTo(cx + r * (ox + 0.38), cy + r * 0.12);
     ctx.closePath();
   }
+}
+
+function drawReserve(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: number) {
+  ctx.beginPath();
+  ctx.moveTo(cx - r * 0.55, cy + r * 0.82);
+  ctx.lineTo(cx - r * 0.08, cy - r * 0.72);
+  ctx.lineTo(cx + r * 0.55, cy + r * 0.82);
+  ctx.closePath();
+  ctx.moveTo(cx + r * 0.08, cy - r * 0.72);
+  ctx.lineTo(cx + r * 0.62, cy + r * 0.82);
+  ctx.lineTo(cx + r * 1.05, cy + r * 0.82);
+  ctx.lineTo(cx + r * 0.55, cy + r * 0.82);
+  ctx.closePath();
+  ctx.beginPath();
+  ctx.rect(cx - r * 0.95, cy + r * 0.72, r * 1.9, r * 0.18);
 }
 
 const DRAW: Record<IconKind, (ctx: CanvasRenderingContext2D, cx: number, cy: number, r: number) => void> = {
@@ -132,6 +148,7 @@ const DRAW: Record<IconKind, (ctx: CanvasRenderingContext2D, cx: number, cy: num
   sand: drawSand,
   delta: drawDelta,
   forest: drawForest,
+  reserve: drawReserve,
 };
 
 const FILL: Record<IconKind, string> = {
@@ -145,6 +162,7 @@ const FILL: Record<IconKind, string> = {
   sand: "#ca8a04",
   delta: "#0891b2",
   forest: "#15803d",
+  reserve: "#166534",
 };
 
 function iconImage(kind: IconKind): ImageData {
@@ -156,13 +174,21 @@ function iconImage(kind: IconKind): ImageData {
 
   const cx = SIZE / 2;
   const cy = SIZE / 2 + 2;
-  const r = 14;
+  const r = 13;
+
+  ctx.beginPath();
+  ctx.arc(cx, cy, r + 7, 0, Math.PI * 2);
+  ctx.fillStyle = "#ffffff";
+  ctx.fill();
+  ctx.strokeStyle = FILL[kind];
+  ctx.lineWidth = 3;
+  ctx.stroke();
 
   DRAW[kind](ctx, cx, cy, r);
   ctx.fillStyle = FILL[kind];
   ctx.fill();
   ctx.strokeStyle = "#ffffff";
-  ctx.lineWidth = 3;
+  ctx.lineWidth = 2;
   ctx.stroke();
 
   return ctx.getImageData(0, 0, SIZE, SIZE);
@@ -172,19 +198,31 @@ export function landformIconId(kind: IconKind): string {
   return `landform-icon-${kind}`;
 }
 
+const ICON_KINDS = [...new Set(Object.values(LANDFORM_ICON_BY_TYPE))] as IconKind[];
+
+export function registerLandformIcon(map: Map, kind: IconKind): void {
+  const id = landformIconId(kind);
+  if (map.hasImage(id)) return;
+  const image = iconImage(kind);
+  map.addImage(
+    id,
+    {
+      width: SIZE,
+      height: SIZE,
+      data: new Uint8Array(image.data),
+    },
+    { pixelRatio: 2 }
+  );
+}
+
 export function registerLandformIcons(map: Map): void {
-  for (const kind of Object.values(LANDFORM_ICON_BY_TYPE)) {
-    const id = landformIconId(kind);
-    if (map.hasImage(id)) continue;
-    const image = iconImage(kind);
-    map.addImage(
-      id,
-      {
-        width: SIZE,
-        height: SIZE,
-        data: new Uint8Array(image.data),
-      },
-      { pixelRatio: 2 }
-    );
+  for (const kind of ICON_KINDS) {
+    registerLandformIcon(map, kind);
   }
+}
+
+export function landformKindFromImageId(imageId: string): IconKind | null {
+  if (!imageId.startsWith("landform-icon-")) return null;
+  const kind = imageId.slice("landform-icon-".length) as IconKind;
+  return ICON_KINDS.includes(kind) ? kind : null;
 }

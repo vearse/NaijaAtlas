@@ -16,6 +16,7 @@ export function useMediaQuery(query: string): boolean {
   return matches;
 }
 
+/** Matches Tailwind `lg:` (1024px) — phones & tablets share the mobile shell. */
 export function useIsMobile() {
-  return useMediaQuery("(max-width: 768px)");
+  return useMediaQuery("(max-width: 1023px)");
 }

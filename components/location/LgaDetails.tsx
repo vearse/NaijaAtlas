@@ -42,6 +42,14 @@ export default function LgaDetails({
       <dl className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
         <dt className="text-slate-500">State</dt>
         <dd className="font-medium">{content.stateName}</dd>
+        <dt className="text-slate-500">Land area</dt>
+        <dd className="font-medium">
+          {location.areaKm2 != null
+            ? `${location.areaKm2.toLocaleString()} km²`
+            : content.areaKm2 != null
+              ? `${content.areaKm2.toLocaleString()} km²`
+              : "—"}
+        </dd>
         <dt className="text-slate-500">Wards</dt>
         <dd className="font-medium">{wardList.length || content.wardCount || "—"}</dd>
         <dt className="text-slate-500">Region</dt>

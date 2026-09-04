@@ -27,6 +27,7 @@ export interface LgaLocation {
   stateName: string;
   regionId: string;
   wardCount: number;
+  areaKm2?: number;
   bbox: [number, number, number, number];
   centroid: [number, number];
 }
@@ -64,6 +65,7 @@ export interface LgaContent {
   name: string;
   stateName: string;
   wardCount: number;
+  areaKm2?: number;
   description: string;
 }
 

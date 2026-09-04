@@ -76,7 +76,9 @@ export default function LocationPanel({
   const hasMapSelection =
     selectedStateIds.size > 0 || selectedLgaId !== null;
   const showOverlay = selectedOverlay !== null;
-  const showOverlayGuide = overlayGuideLayer !== null && !showOverlay;
+  const guideLayer =
+    overlayGuideLayer === "landforms" ? null : overlayGuideLayer;
+  const showOverlayGuide = guideLayer !== null && !showOverlay;
   const showOverview = !hasMapSelection && !activeRegionId && !showOverlay && !showOverlayGuide;
   const showRegion = activeRegion && !hasMapSelection && !showOverlay;
   const showCompare =
@@ -88,7 +90,7 @@ export default function LocationPanel({
 
   const panelContentKey =
     selectedOverlay?.id ??
-    overlayGuideLayer ??
+    guideLayer ??
     lgaLoc?.id ??
     singleState?.id ??
     (showCompare ? `compare-${selectedStates.map((s) => s.id).sort().join(",")}` : null) ??
@@ -103,8 +105,8 @@ export default function LocationPanel({
 
   const sheetTitle = selectedOverlay
     ? selectedOverlay.name
-    : overlayGuideLayer
-      ? OVERLAY_LAYER_LABELS[overlayGuideLayer].label
+    : guideLayer
+      ? OVERLAY_LAYER_LABELS[guideLayer].label
     : lgaLoc
     ? lgaLoc.name
     : singleState
@@ -117,7 +119,7 @@ export default function LocationPanel({
 
   const sheetSubtitle = selectedOverlay
     ? `${OVERLAY_LAYER_LABELS[selectedOverlay.layerId].label} · Map feature`
-    : overlayGuideLayer
+    : guideLayer
       ? "Layer guide · tap features on the map"
     : lgaLoc
     ? `${lgaLoc.stateName} · LGA`
@@ -157,8 +159,8 @@ export default function LocationPanel({
             <OverlayFeaturePanel feature={selectedOverlay} states={states} />
           )}
 
-          {showOverlayGuide && overlayGuideLayer && (
-            <OverlayLayerGuidePanel layerId={overlayGuideLayer} />
+          {showOverlayGuide && guideLayer && (
+            <OverlayLayerGuidePanel layerId={guideLayer} />
           )}
 
           {showOverview && (

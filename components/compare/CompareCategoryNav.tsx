@@ -23,7 +23,7 @@ export default function CompareCategoryNav({
   return (
     <div className="space-y-2.5">
       <div
-        className="flex flex-wrap gap-1.5"
+        className="flex gap-1.5 overflow-x-auto pb-0.5 -mx-0.5 px-0.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         role="tablist"
         aria-label="Compare categories"
       >
@@ -36,9 +36,9 @@ export default function CompareCategoryNav({
               role="tab"
               aria-selected={isActive}
               onClick={() => onCategoryChange(cat.id)}
-              className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-200 min-h-[32px] ${
+              className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-200 min-h-[32px] ${
                 isActive
-                  ? "bg-ng-green text-white shadow-sm scale-[1.02]"
+                  ? "bg-ng-green text-white shadow-sm"
                   : "bg-slate-100 text-slate-600 hover:bg-slate-200"
               }`}
             >

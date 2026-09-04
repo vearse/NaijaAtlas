@@ -127,16 +127,18 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     const state = get();
     const next = new Set(state.activeOverlays);
     const turningOn = !next.has(id);
+    const mapLegendOnly = id === "landforms";
     if (turningOn) {
       next.add(id);
       set({
         activeOverlays: next,
-        overlayGuideLayer: id,
+        overlayGuideLayer: mapLegendOnly ? null : id,
         selectedOverlay: null,
         selectedLgaId: null,
         activeRegionId: null,
-        panelOpen: true,
-        mobileSheet: "open",
+        ...(mapLegendOnly
+          ? {}
+          : { panelOpen: true, mobileSheet: "open" as MobileSheetMode }),
       });
     } else {
       next.delete(id);

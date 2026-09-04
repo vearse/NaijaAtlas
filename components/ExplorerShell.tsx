@@ -10,7 +10,7 @@ import MapControls from "@/components/map/MapControls";
 import MapHints from "@/components/map/MapHints";
 import MapBottomToolbar from "@/components/map/MapBottomToolbar";
 import LocationPanel from "@/components/location/LocationPanel";
-import MobileCompareModal from "@/components/compare/MobileCompareModal";
+import CompareModal from "@/components/compare/CompareModal";
 import MobileInfoModal from "@/components/compare/MobileInfoModal";
 import WikipediaReaderModal from "@/components/map/WikipediaReaderModal";
 import UrlSync from "@/components/UrlSync";
@@ -232,7 +232,7 @@ export default function ExplorerShell({
       </main>
 
       {isMobile && showCompare && (
-        <MobileCompareModal
+        <CompareModal
           open={compareModalOpen}
           onClose={() => setCompareModalOpen(false)}
           states={selectedStates}

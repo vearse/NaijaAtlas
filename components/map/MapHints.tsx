@@ -34,6 +34,10 @@ export default function MapHints() {
       return "Cities layer — coloured icons by type (capital, port, historic…). Click a city for the panel";
     }
 
+    if (activeOverlays.has("landforms")) {
+      return "Landforms layer — icons show savanna, basins, wetlands, forests & highlands. Click any icon for details";
+    }
+
     if (activeOverlays.has("waterways")) {
       return "Waterways layer active — click Niger, Benue, delta channels and other rivers for details";
     }

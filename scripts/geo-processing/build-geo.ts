@@ -48,6 +48,7 @@ interface LgaRecord {
   stateName: string;
   regionId: string;
   wardCount: number;
+  areaKm2: number;
   bbox: [number, number, number, number];
   centroid: [number, number];
 }
@@ -249,6 +250,7 @@ export async function buildGeo() {
       stateName,
       regionId: region.id,
       wardCount,
+      areaKm2: Math.round((turf.area(feat) / 1e6) * 10) / 10,
       bbox: bboxOf(feat),
       centroid: turf.centroid(feat).geometry.coordinates as [number, number],
     });
@@ -411,6 +413,7 @@ export async function buildGeo() {
       name: l.name,
       stateName: l.stateName,
       wardCount: l.wardCount,
+      areaKm2: l.areaKm2,
       description: `${l.name} is a Local Government Area in ${l.stateName} State.`,
     }))
   );
