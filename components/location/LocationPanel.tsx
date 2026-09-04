@@ -11,6 +11,7 @@ import NigeriaOverview from "./NigeriaOverview";
 import MobileBottomSheet from "./MobileBottomSheet";
 import DesktopCompareModal from "@/components/compare/DesktopCompareModal";
 import OverlayFeaturePanel from "@/components/map/OverlayFeaturePanel";
+import OverlayLayerGuidePanel from "@/components/map/OverlayLayerGuidePanel";
 import FadeIn from "@/components/ui/FadeIn";
 import { useIsMobile } from "@/hooks/useMediaQuery";
 import type {
@@ -46,7 +47,7 @@ export default function LocationPanel({
 }: LocationPanelProps) {
   const isMobile = useIsMobile();
   const [desktopCompareOpen, setDesktopCompareOpen] = useState(false);
-  const { selectedStateIds, selectedLgaId, activeRegionId, setSelectedLga, mobileSheet, selectedOverlay } =
+  const { selectedStateIds, selectedLgaId, activeRegionId, setSelectedLga, mobileSheet, selectedOverlay, overlayGuideLayer } =
     useMapStore();
 
   const toggleLgaSelection = (id: string) => {
@@ -75,7 +76,8 @@ export default function LocationPanel({
   const hasMapSelection =
     selectedStateIds.size > 0 || selectedLgaId !== null;
   const showOverlay = selectedOverlay !== null;
-  const showOverview = !hasMapSelection && !activeRegionId && !showOverlay;
+  const showOverlayGuide = overlayGuideLayer !== null && !showOverlay;
+  const showOverview = !hasMapSelection && !activeRegionId && !showOverlay && !showOverlayGuide;
   const showRegion = activeRegion && !hasMapSelection && !showOverlay;
   const showCompare =
     !showOverlay &&
@@ -86,6 +88,7 @@ export default function LocationPanel({
 
   const panelContentKey =
     selectedOverlay?.id ??
+    overlayGuideLayer ??
     lgaLoc?.id ??
     singleState?.id ??
     (showCompare ? `compare-${selectedStates.map((s) => s.id).sort().join(",")}` : null) ??
@@ -100,6 +103,8 @@ export default function LocationPanel({
 
   const sheetTitle = selectedOverlay
     ? selectedOverlay.name
+    : overlayGuideLayer
+      ? OVERLAY_LAYER_LABELS[overlayGuideLayer].label
     : lgaLoc
     ? lgaLoc.name
     : singleState
@@ -112,6 +117,8 @@ export default function LocationPanel({
 
   const sheetSubtitle = selectedOverlay
     ? `${OVERLAY_LAYER_LABELS[selectedOverlay.layerId].label} · Map feature`
+    : overlayGuideLayer
+      ? "Layer guide · tap features on the map"
     : lgaLoc
     ? `${lgaLoc.stateName} · LGA`
     : singleState
@@ -128,16 +135,18 @@ export default function LocationPanel({
         <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
           {showOverlay
             ? "Map feature"
+            : showOverlayGuide
+              ? "Layer guide"
             : hasMapSelection
               ? "Location"
               : activeRegionId
                 ? "Region"
                 : "Overview"}
         </p>
-        <Breadcrumbs states={states} lgas={lgas} />
+        {!showOverlay && <Breadcrumbs states={states} lgas={lgas} />}
       </div>
       <div className="flex-1 overflow-y-auto p-4">
-        {isMobile && hasMapSelection && (
+        {isMobile && hasMapSelection && !showOverlay && (
           <div className="mb-3 lg:hidden">
             <Breadcrumbs states={states} lgas={lgas} />
           </div>
@@ -146,6 +155,10 @@ export default function LocationPanel({
         <FadeIn animationKey={panelContentKey}>
           {showOverlay && selectedOverlay && (
             <OverlayFeaturePanel feature={selectedOverlay} states={states} />
+          )}
+
+          {showOverlayGuide && overlayGuideLayer && (
+            <OverlayLayerGuidePanel layerId={overlayGuideLayer} />
           )}
 
           {showOverview && (
@@ -239,7 +252,7 @@ export default function LocationPanel({
     </div>
   );
 
-  const hasSheetContent = hasMapSelection || !!activeRegionId || showOverlay;
+  const hasSheetContent = hasMapSelection || !!activeRegionId || showOverlay || showOverlayGuide;
 
   if (isMobile) {
     if (mobileSheet === "hidden" && hasSheetContent) {

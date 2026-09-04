@@ -104,60 +104,131 @@ function fc(
   };
 }
 
-const RIVER_COORDS: Record<string, [number, number][]> = {
-  "river-niger": [
-    [4.35, 13.15], [4.85, 12.2], [5.4, 11.0], [5.9, 9.8], [6.15, 8.5],
-    [6.35, 7.2], [6.45, 6.4], [6.35, 5.8], [6.0, 5.3], [5.5, 5.0], [5.0, 4.85],
-  ],
-  "river-benue": [
-    [13.6, 7.9], [12.5, 8.1], [11.2, 8.3], [10.0, 8.35], [9.0, 8.2],
-    [8.2, 8.0], [7.5, 7.85], [6.9, 7.6], [6.5, 7.2], [6.35, 6.75],
-  ],
+const NE_RIVERS_SOURCE = "data/overlays/sources/ne_10m_rivers_lake_centerlines.geojson";
+
+/** Hand-traced paths where Natural Earth 10m lacks geometry (delta creeks, Cross, Imo, Osun, Anambra). */
+const MANUAL_WATERWAY_COORDS: Record<string, [number, number][]> = {
   "river-cross": [
-    [8.85, 6.1], [8.55, 5.65], [8.35, 5.25], [8.15, 4.95],
+    [9.35, 6.25], [9.15, 6.05], [8.95, 5.85], [8.75, 5.65], [8.55, 5.45],
+    [8.38, 5.25], [8.22, 5.05], [8.12, 4.92], [8.05, 4.85],
   ],
   "river-imo": [
-    [7.2, 5.8], [7.0, 5.5], [6.85, 5.2], [6.7, 4.95],
+    [7.35, 5.95], [7.22, 5.75], [7.08, 5.55], [6.95, 5.35], [6.82, 5.15],
+    [6.72, 4.98], [6.65, 4.88],
   ],
   "river-oshun": [
-    [4.5, 7.8], [4.3, 7.2], [4.1, 6.6], [3.9, 6.2],
+    [4.65, 7.85], [4.52, 7.55], [4.38, 7.25], [4.22, 6.95], [4.05, 6.65],
+    [3.88, 6.38], [3.72, 6.18], [3.55, 6.02],
   ],
-  "river-kaduna": [
-    [7.4, 10.5], [7.2, 9.5], [7.0, 8.5], [6.8, 7.5],
+  "waterway-anambra": [
+    [7.15, 6.55], [7.05, 6.42], [6.92, 6.28], [6.78, 6.15], [6.62, 6.05],
+    [6.48, 5.95], [6.38, 5.88], [6.32, 5.82],
   ],
-  "river-sokoto": [
-    [4.0, 13.0], [5.0, 12.0], [6.0, 11.0], [6.5, 10.0],
+  "creek-nun": [
+    [6.45, 5.52], [6.38, 5.35], [6.28, 5.15], [6.15, 4.98], [6.02, 4.82],
+    [5.88, 4.68], [5.75, 4.55], [5.62, 4.45],
+  ],
+  "creek-forcados": [
+    [5.55, 5.35], [5.42, 5.18], [5.28, 5.02], [5.12, 4.88], [4.95, 4.78],
+    [4.78, 4.68], [4.62, 4.58],
+  ],
+  "creek-escravos": [
+    [5.72, 5.48], [5.58, 5.32], [5.45, 5.15], [5.32, 4.98], [5.18, 4.82],
+    [5.05, 4.68],
+  ],
+  "creek-bonny": [
+    [6.95, 4.92], [6.82, 4.78], [6.68, 4.62], [6.55, 4.48], [6.42, 4.38],
+    [6.28, 4.32],
+  ],
+  "creek-new-calabar": [
+    [6.88, 4.88], [6.78, 4.78], [6.68, 4.68], [6.58, 4.58], [6.48, 4.52],
   ],
 };
 
-const CREEK_COORDS: Record<string, [number, number][]> = {
-  "creek-nun": [[6.4, 4.9], [6.2, 4.7], [6.0, 4.55], [5.8, 4.45]],
-  "creek-forcados": [[5.4, 5.2], [5.2, 5.0], [5.0, 4.85], [4.8, 4.75]],
-  "creek-escravos": [[5.6, 5.4], [5.4, 5.2], [5.2, 5.0]],
-  "creek-bonny": [[7.0, 4.7], [6.8, 4.55], [6.6, 4.45], [6.4, 4.35]],
-  "creek-new-calabar": [[6.9, 4.85], [6.7, 4.75], [6.5, 4.65]],
-};
-
-const LANDFORM_RINGS: Record<string, [number, number][]> = {
+const LANDFORM_POLYGONS: Record<string, [number, number][]> = {
   "landform-jos-plateau": [
-    [8.5, 9.0], [9.8, 9.0], [9.8, 10.2], [8.5, 10.2], [8.5, 9.0],
+    [8.5, 9.0], [9.85, 9.05], [9.9, 10.25], [8.55, 10.2], [8.5, 9.0],
   ],
   "landform-mambilla": [
-    [10.5, 6.8], [11.5, 6.8], [11.5, 7.5], [10.5, 7.5], [10.5, 6.8],
+    [10.45, 6.75], [11.55, 6.78], [11.58, 7.55], [10.48, 7.52], [10.45, 6.75],
   ],
   "landform-mandara": [
-    [13.0, 10.5], [14.0, 10.5], [14.0, 11.2], [13.0, 11.2], [13.0, 10.5],
+    [13.0, 10.45], [14.05, 10.48], [14.08, 11.25], [13.02, 11.22], [13.0, 10.45],
   ],
   "landform-niger-delta": [
-    [5.0, 4.5], [7.0, 4.5], [7.0, 5.5], [5.0, 5.5], [5.0, 4.5],
+    [5.0, 4.45], [7.05, 4.48], [7.08, 5.55], [5.02, 5.52], [5.0, 4.45],
   ],
   "landform-sokoto-basin": [
-    [4.5, 12.0], [6.5, 12.0], [6.5, 13.5], [4.5, 13.5], [4.5, 12.0],
+    [4.45, 11.95], [6.55, 12.0], [6.58, 13.55], [4.48, 13.5], [4.45, 11.95],
   ],
   "landform-guinea-savanna": [
-    [3.5, 7.5], [8.0, 7.5], [8.0, 10.0], [3.5, 10.0], [3.5, 7.5],
+    [3.45, 7.45], [8.05, 7.5], [8.08, 10.05], [3.48, 10.0], [3.45, 7.45],
+  ],
+  "landform-idanre": [
+    [4.68, 7.02], [4.82, 7.04], [4.84, 7.14], [4.78, 7.18], [4.66, 7.16], [4.68, 7.02],
+  ],
+  "landform-shere-hills": [
+    [8.82, 9.82], [8.98, 9.84], [9.0, 9.98], [8.88, 10.02], [8.78, 9.94], [8.82, 9.82],
+  ],
+  "landform-udi-escarpment": [
+    [7.35, 6.28], [7.62, 6.3], [7.65, 6.58], [7.38, 6.56], [7.35, 6.28],
+  ],
+  "landform-oban-hills": [
+    [8.55, 5.15], [9.05, 5.18], [9.08, 5.65], [8.58, 5.62], [8.55, 5.15],
   ],
 };
+
+function landformAreaFeature(row: CatalogRow): Feature | null {
+  const ring = LANDFORM_POLYGONS[row.id];
+  if (!ring?.length) return null;
+  return {
+    type: "Feature",
+    properties: {
+      id: row.id,
+      name: row.name,
+      featureKind: "area",
+      landformType: row.landformType ?? "hill",
+      sizeTier: row.sizeTier ?? "medium",
+    },
+    geometry: { type: "Polygon", coordinates: [ring] },
+  };
+}
+
+function landformPointFeature(row: CatalogRow): Feature | null {
+  const lon = Number(row.lon);
+  const lat = Number(row.lat);
+  if (!Number.isFinite(lon) || !Number.isFinite(lat)) return null;
+  return {
+    type: "Feature",
+    properties: {
+      id: row.id,
+      name: row.name,
+      featureKind: "point",
+      landformType: row.landformType ?? "peak",
+      sizeTier: row.sizeTier ?? "minor",
+    },
+    geometry: { type: "Point", coordinates: [lon, lat] },
+  };
+}
+
+function buildLandforms(catalog: CatalogRow[]): Feature[] {
+  const features: Feature[] = [];
+  const missing: string[] = [];
+
+  for (const row of catalog) {
+    const kind = String(row.featureKind ?? "area");
+    const feature =
+      kind === "point" ? landformPointFeature(row) : landformAreaFeature(row);
+    if (feature) features.push(feature);
+    else missing.push(row.id);
+  }
+
+  if (missing.length > 0) {
+    console.warn(`⚠ Landforms missing geometry: ${missing.join(", ")}`);
+  }
+
+  return features;
+}
 
 const CITY_COORDS: Record<string, [number, number]> = {
   "city-lagos": [3.39, 6.45],
@@ -178,68 +249,185 @@ const PORT_COORDS: Record<string, [number, number]> = {
   "port-onne": [7.08, 4.72],
 };
 
-function lineFromCatalog(catalog: CatalogRow[], coordsMap: Record<string, [number, number][]>): Feature[] {
-  return catalog.map((row) => ({
-    type: "Feature" as const,
+function normalizeWaterwayName(name: string): string {
+  return name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim()
+    .toLowerCase();
+}
+
+function buildNeNameIndex(catalog: CatalogRow[]): Map<string, string> {
+  const index = new Map<string, string>();
+  for (const row of catalog) {
+    const aliases = [
+      String(row.name ?? ""),
+      ...(Array.isArray(row.neNames) ? row.neNames.map(String) : []),
+    ];
+    for (const alias of aliases) {
+      const key = normalizeWaterwayName(alias);
+      if (key) index.set(key, row.id);
+    }
+  }
+  return index;
+}
+
+function featureLineLengthKm(feature: Feature): number {
+  try {
+    return turf.length(feature, { units: "kilometers" });
+  } catch {
+    return 0;
+  }
+}
+
+function manualWaterwayFeature(row: CatalogRow): Feature | null {
+  const coords = MANUAL_WATERWAY_COORDS[row.id];
+  if (!coords?.length) return null;
+  return {
+    type: "Feature",
     properties: { id: row.id, name: row.name },
-    geometry: {
-      type: "LineString" as const,
-      coordinates: coordsMap[row.id] ?? [],
-    },
-  }));
-}
-
-function buildRivers(catalog: CatalogRow[]): Feature[] {
-  return lineFromCatalog(catalog, RIVER_COORDS);
-}
-
-function buildCreeks(catalog: CatalogRow[]): Feature[] {
-  return lineFromCatalog(catalog, CREEK_COORDS);
-}
-
-function buildLakes(catalog: CatalogRow[]): Feature[] {
-  const geoms: Record<string, () => Feature> = {
-    "lake-chad": () => {
-      const center: [number, number] = [13.45, 13.1];
-      return turf.feature(
-        turf.buffer(turf.point(center), 70, { units: "kilometers" })!.geometry as Polygon,
-        { id: "lake-chad", name: "Lake Chad" }
-      );
-    },
-    "lake-kainji": () => ({
-      type: "Feature",
-      properties: { id: "lake-kainji", name: "Kainji Lake" },
-      geometry: {
-        type: "Polygon",
-        coordinates: [[[4.2, 10.45], [5.05, 10.45], [5.05, 10.95], [4.2, 10.95], [4.2, 10.45]]],
-      },
-    }),
-    "lake-lagos-lagoon": () => ({
-      type: "Feature",
-      properties: { id: "lake-lagos-lagoon", name: "Lagos Lagoon" },
-      geometry: {
-        type: "Polygon",
-        coordinates: [[[3.2, 6.42], [3.55, 6.42], [3.55, 6.58], [3.2, 6.58], [3.2, 6.42]]],
-      },
-    }),
+    geometry: { type: "LineString", coordinates: coords },
   };
-  return catalog.map((row) => geoms[row.id]?.() ?? turf.feature(turf.point([0, 0]), { id: row.id }));
 }
 
-function buildLandforms(catalog: CatalogRow[]): Feature[] {
-  return catalog.map((row) => ({
-    type: "Feature" as const,
+function buildWaterways(catalog: CatalogRow[]): Feature[] {
+  const nePath = projectRoot(NE_RIVERS_SOURCE);
+  if (!fs.existsSync(nePath)) {
+    throw new Error(`Missing Natural Earth rivers source: ${NE_RIVERS_SOURCE}`);
+  }
+  const ne = JSON.parse(fs.readFileSync(nePath, "utf-8")) as FeatureCollection;
+  const nameIndex = buildNeNameIndex(catalog);
+  const byCatalogId = new Map<string, Feature>();
+
+  for (const raw of ne.features) {
+    if (raw.properties?.featurecla !== "River") continue;
+    const clipped = clipToNigeria(raw);
+    if (!clipped?.geometry) continue;
+    if (featureLineLengthKm(clipped) < 8) continue;
+
+    const rawName = String(raw.properties?.name ?? raw.properties?.name_en ?? "");
+    const catalogId = rawName ? nameIndex.get(normalizeWaterwayName(rawName)) : undefined;
+    if (!catalogId) continue;
+
+    const row = catalog.find((c) => c.id === catalogId);
+    const candidate: Feature = {
+      ...clipped,
+      properties: {
+        id: catalogId,
+        name: row?.name ?? rawName,
+        waterwayClass: row?.waterwayClass ?? "tributary",
+      },
+    };
+
+    const existing = byCatalogId.get(catalogId);
+    if (!existing || featureLineLengthKm(candidate) > featureLineLengthKm(existing)) {
+      byCatalogId.set(catalogId, candidate);
+    }
+  }
+
+  for (const row of catalog) {
+    if (byCatalogId.has(row.id)) continue;
+    const manual = manualWaterwayFeature(row);
+    if (manual) byCatalogId.set(row.id, manual);
+  }
+
+  const missing = catalog.filter((row) => !byCatalogId.has(row.id));
+  if (missing.length > 0) {
+    console.warn(
+      `⚠ Waterways missing geometry: ${missing.map((r) => r.id).join(", ")}`
+    );
+  }
+
+  return catalog
+    .map((row) => byCatalogId.get(row.id))
+    .filter((f): f is Feature => f != null);
+}
+
+const LAKE_POLYGONS: Record<string, [number, number][]> = {
+  "lake-chad": [
+    [13.05, 13.45], [13.35, 13.55], [13.85, 13.48], [14.25, 13.25], [14.35, 13.0],
+    [14.15, 12.85], [13.65, 12.88], [13.25, 12.95], [13.05, 13.15], [13.05, 13.45],
+  ],
+  "lake-kainji": [
+    [4.45, 10.35], [4.75, 10.32], [4.95, 10.38], [4.98, 10.62], [4.92, 10.88],
+    [4.78, 11.0], [4.55, 10.98], [4.38, 10.82], [4.35, 10.58], [4.42, 10.42], [4.45, 10.35],
+  ],
+  "lake-lagos-lagoon": [
+    [3.05, 6.48], [3.25, 6.52], [3.45, 6.54], [3.65, 6.52], [3.85, 6.48], [4.05, 6.44],
+    [4.15, 6.4], [4.05, 6.36], [3.85, 6.38], [3.65, 6.4], [3.45, 6.42], [3.25, 6.4],
+    [3.05, 6.42], [3.05, 6.48],
+  ],
+  "lake-oguta": [
+    [6.68, 5.74], [6.74, 5.76], [6.76, 5.72], [6.74, 5.68], [6.68, 5.67], [6.64, 5.69],
+    [6.63, 5.72], [6.68, 5.74],
+  ],
+  "lake-goronyo": [
+    [5.62, 13.0], [5.72, 13.02], [5.74, 13.06], [5.7, 13.1], [5.64, 13.11], [5.58, 13.08],
+    [5.58, 13.03], [5.62, 13.0],
+  ],
+  "lake-dadin-kowa": [
+    [11.42, 10.22], [11.52, 10.24], [11.54, 10.3], [11.5, 10.34], [11.44, 10.33], [11.4, 10.28],
+    [11.42, 10.22],
+  ],
+  "lake-asejire": [
+    [3.95, 7.42], [4.08, 7.43], [4.1, 7.5], [4.05, 7.53], [3.96, 7.52], [3.93, 7.46], [3.95, 7.42],
+  ],
+  "lake-challawa": [
+    [8.48, 11.38], [8.56, 11.4], [8.58, 11.46], [8.54, 11.5], [8.48, 11.49], [8.45, 11.43],
+    [8.48, 11.38],
+  ],
+};
+
+function lakePolygonFeature(row: CatalogRow): Feature | null {
+  const ring = LAKE_POLYGONS[row.id];
+  if (!ring?.length) return null;
+  return {
+    type: "Feature",
     properties: {
       id: row.id,
       name: row.name,
-      tier: row.tier ?? "mid",
+      featureKind: "lake",
+      lakeCategory: row.lakeCategory ?? "natural",
     },
-    geometry: {
-      type: "Polygon" as const,
-      coordinates: [LANDFORM_RINGS[row.id] ?? []],
-    },
-  }));
+    geometry: { type: "Polygon", coordinates: [ring] },
+  };
 }
+
+function powerStationFeature(row: CatalogRow): Feature | null {
+  const lon = Number(row.lon);
+  const lat = Number(row.lat);
+  if (!Number.isFinite(lon) || !Number.isFinite(lat)) return null;
+  return {
+    type: "Feature",
+    properties: {
+      id: row.id,
+      name: row.name,
+      featureKind: "power-station",
+      plantCategory: row.plantCategory ?? "regional-hydro",
+    },
+    geometry: { type: "Point", coordinates: [lon, lat] },
+  };
+}
+
+function buildLakes(catalog: CatalogRow[]): Feature[] {
+  const features: Feature[] = [];
+  const missing: string[] = [];
+
+  for (const row of catalog) {
+    const kind = String(row.featureKind ?? "lake");
+    const feature =
+      kind === "power-station" ? powerStationFeature(row) : lakePolygonFeature(row);
+    if (feature) features.push(feature);
+    else missing.push(row.id);
+  }
+
+  if (missing.length > 0) {
+    console.warn(`⚠ Lakes layer missing geometry: ${missing.join(", ")}`);
+  }
+
+  return features;
+}
+
 
 function buildCities(catalog: CatalogRow[]): Feature[] {
   return catalog.map((row) => {
@@ -318,9 +506,8 @@ function buildCoast(
 }
 
 export async function buildOverlays(): Promise<void> {
-  const riversCatalog = readCatalog("rivers");
+  const waterwaysCatalog = readCatalog("waterways");
   const lakesCatalog = readCatalog("lakes");
-  const creeksCatalog = readCatalog("creeks");
   const landformsCatalog = readCatalog("landforms");
   const citiesCatalog = readCatalog("cities");
   const coastCatalog = readCatalog("coast");
@@ -331,16 +518,12 @@ export async function buildOverlays(): Promise<void> {
   ensureDir(projectRoot("public/geo/overlays"));
 
   writeGeoJson(
-    projectRoot("public/geo/overlays/rivers.geojson"),
-    fc(buildRivers(riversCatalog), riversCatalog, "rivers")
+    projectRoot("public/geo/overlays/waterways.geojson"),
+    fc(buildWaterways(waterwaysCatalog), waterwaysCatalog, "waterways")
   );
   writeGeoJson(
     projectRoot("public/geo/overlays/lakes.geojson"),
     fc(buildLakes(lakesCatalog), lakesCatalog, "lakes")
-  );
-  writeGeoJson(
-    projectRoot("public/geo/overlays/creeks.geojson"),
-    fc(buildCreeks(creeksCatalog), creeksCatalog, "creeks")
   );
   writeGeoJson(
     projectRoot("public/geo/overlays/landforms.geojson"),
@@ -368,7 +551,7 @@ export async function buildOverlays(): Promise<void> {
   });
 
   console.log(
-    `✓ Overlays: rivers(${riversCatalog.length}) lakes(${lakesCatalog.length}) creeks(${creeksCatalog.length}) landforms(${landformsCatalog.length}) cities(${citiesCatalog.length}) coast(${coastMerged.length})`
+    `✓ Overlays: waterways(${waterwaysCatalog.length}) lakes(${lakesCatalog.length}) landforms(${landformsCatalog.length}) cities(${citiesCatalog.length}) coast(${coastMerged.length})`
   );
 }
 

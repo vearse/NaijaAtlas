@@ -9,10 +9,9 @@ import {
 } from "@/types/overlay";
 
 const LAYER_ACTIVE: Record<OverlayLayerId, string> = {
-  rivers: "bg-sky-100 text-sky-900 ring-1 ring-sky-300/80",
+  waterways: "bg-sky-100 text-sky-900 ring-1 ring-sky-300/80",
   lakes: "bg-cyan-100 text-cyan-900 ring-1 ring-cyan-300/80",
   coast: "bg-blue-100 text-blue-900 ring-1 ring-blue-300/80",
-  creeks: "bg-teal-100 text-teal-900 ring-1 ring-teal-300/80",
   landforms: "bg-amber-100 text-amber-900 ring-1 ring-amber-300/80",
   cities: "bg-slate-200 text-slate-900 ring-1 ring-slate-300/80",
 };
@@ -20,7 +19,7 @@ const LAYER_ACTIVE: Record<OverlayLayerId, string> = {
 function LayerIcon({ id }: { id: OverlayLayerId }) {
   const cls = "h-4 w-4 shrink-0";
   switch (id) {
-    case "rivers":
+    case "waterways":
       return (
         <svg viewBox="0 0 20 20" fill="none" className={cls} aria-hidden>
           <path
@@ -28,6 +27,13 @@ function LayerIcon({ id }: { id: OverlayLayerId }) {
             stroke="currentColor"
             strokeWidth="1.75"
             strokeLinecap="round"
+          />
+          <path
+            d="M5 12c1-1 2-1 3 0"
+            stroke="currentColor"
+            strokeWidth="1.25"
+            strokeLinecap="round"
+            opacity="0.7"
           />
         </svg>
       );
@@ -53,24 +59,6 @@ function LayerIcon({ id }: { id: OverlayLayerId }) {
             strokeLinecap="round"
           />
           <path d="M2 16h16" stroke="currentColor" strokeWidth="1.25" opacity="0.4" />
-        </svg>
-      );
-    case "creeks":
-      return (
-        <svg viewBox="0 0 20 20" fill="none" className={cls} aria-hidden>
-          <path
-            d="M4 15c1-2 2-3 3-4s2-2 3-3 2-2 3-3"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-          <path
-            d="M6 12c1-1 2-1 3 0"
-            stroke="currentColor"
-            strokeWidth="1.25"
-            strokeLinecap="round"
-            opacity="0.7"
-          />
         </svg>
       );
     case "landforms":

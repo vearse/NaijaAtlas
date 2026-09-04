@@ -2,6 +2,7 @@
 
 import { useMapStore, MAX_COMPARE_STATES } from "@/lib/store/mapStore";
 import type { StateLocation } from "@/types/location";
+import { MapLayersIcon } from "@/components/map/ShowLgasButton";
 
 interface SelectedStatesBarProps {
   states: StateLocation[];
@@ -13,26 +14,20 @@ const CHIP_STYLES = [
   "bg-violet-50 text-violet-800 border-violet-200/80",
 ];
 
-const DRAG_ARMED_CHIP =
-  "bg-amber-50 text-amber-900 border-amber-300 ring-2 ring-amber-400/40";
-
-const DRAG_LIFTED_CHIP =
-  "bg-amber-100 text-amber-900 border-amber-400 ring-1 ring-amber-500/50";
+const LGA_VISIBLE_CHIP =
+  "bg-emerald-100 text-emerald-900 border-emerald-400 ring-1 ring-emerald-500/40";
 
 export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
   const {
     selectedStateIds,
-    draggedStateId,
-    dragModeStateId,
+    lgaVisibleStateIds,
     toggleState,
-    toggleDragMode,
+    showLgas,
+    hideLgas,
     openMobileSheet,
   } = useMapStore();
 
   const selected = states.filter((s) => selectedStateIds.has(s.id));
-  const dragModeState = dragModeStateId
-    ? states.find((s) => s.id === dragModeStateId)
-    : null;
 
   return (
     <div className="flex flex-wrap items-center gap-2 pt-1">
@@ -42,13 +37,10 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
           : "Selected"}
       </span>
       {selected.map((s, i) => {
-        const isLifted = draggedStateId === s.id;
-        const isDragMode = dragModeStateId === s.id;
-        const chipStyle = isLifted
-          ? DRAG_LIFTED_CHIP
-          : isDragMode
-            ? DRAG_ARMED_CHIP
-            : CHIP_STYLES[i] ?? CHIP_STYLES[0];
+        const lgaVisible = lgaVisibleStateIds.has(s.id);
+        const chipStyle = lgaVisible
+          ? LGA_VISIBLE_CHIP
+          : CHIP_STYLES[i] ?? CHIP_STYLES[0];
 
         return (
           <span
@@ -65,20 +57,22 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
             <button
               type="button"
               aria-label={
-                isDragMode
-                  ? `Stop drag mode for ${s.name}`
-                  : `Enable drag mode for ${s.name}`
+                lgaVisible
+                  ? `Hide ${s.name} LGAs on map`
+                  : `Show ${s.name} LGAs on map`
               }
-              aria-pressed={isDragMode}
-              title={isDragMode ? "Drag mode on — drag on map" : "Enable drag"}
-              onClick={() => toggleDragMode(s.id)}
-              className={`rounded-full w-6 h-6 flex items-center justify-center text-[11px] leading-none transition-colors ${
-                isDragMode
-                  ? "bg-amber-500 text-white shadow-sm"
+              aria-pressed={lgaVisible}
+              title={lgaVisible ? "LGAs visible on map" : "Show LGAs on map"}
+              onClick={() =>
+                lgaVisible ? hideLgas(s.id) : showLgas(s.id)
+              }
+              className={`rounded-full w-6 h-6 flex items-center justify-center transition-colors ${
+                lgaVisible
+                  ? "bg-ng-green text-white shadow-sm"
                   : "hover:bg-black/10 text-current"
               }`}
             >
-              ↔
+              <MapLayersIcon active={lgaVisible} />
             </button>
             <button
               type="button"
@@ -94,11 +88,6 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
       {selected.length >= 1 && selected.length < MAX_COMPARE_STATES && (
         <span className="text-[10px] text-slate-400">
           · add up to {MAX_COMPARE_STATES - selected.length} more to compare
-        </span>
-      )}
-      {dragModeState && (
-        <span className="text-[10px] font-medium text-amber-700">
-          · drag {dragModeState.name} on the map
         </span>
       )}
     </div>

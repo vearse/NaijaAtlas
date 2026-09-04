@@ -8,6 +8,8 @@ import {
 import type { OverlayLayerId } from "@/types/overlay";
 import { OVERLAY_LAYER_IDS } from "@/types/overlay";
 import { registerCityIcons } from "./cityIcons";
+import { registerLakeIcons } from "./lakeIcons";
+import { registerLandformIcons } from "./landformIcons";
 
 const INSERT_BELOW_NEIGHBORS = "neighbors-fill";
 const INSERT_ABOVE_STATES = "states-line";
@@ -46,6 +48,8 @@ export function mountOverlayLayersFor(map: Map, layerId: OverlayLayerId): void {
 /** Mount all overlay layer slots (hidden by default). */
 export function addOverlayLayers(map: Map): void {
   registerCityIcons(map);
+  registerLakeIcons(map);
+  registerLandformIcons(map);
   for (const layerId of OVERLAY_LAYER_IDS) {
     mountOverlayLayersFor(map, layerId);
   }
@@ -57,6 +61,8 @@ export function setOverlayVisibility(
   visible: boolean
 ): void {
   if (layerId === "cities") registerCityIcons(map);
+  if (layerId === "lakes") registerLakeIcons(map);
+  if (layerId === "landforms") registerLandformIcons(map);
   mountOverlayLayersFor(map, layerId);
   const vis = visible ? "visible" : "none";
   for (const lid of overlayLayerIdsForToggle(layerId)) {
@@ -74,30 +80,25 @@ export function syncAllOverlayVisibility(
     setOverlayVisibility(map, layerId, active.has(layerId));
   }
   restackOverlayLayers(map);
-  restackCityLayers(map);
+  restackTopOverlayLayers(map);
 }
 
 /**
- * Overlay-only z-order. Never moves LGA layers — call restackLgaStack after this.
+ * Ocean + mid overlays. Lakes/landforms/cities are restacked on top separately.
  */
 export function restackOverlayLayers(map: Map): void {
-  const lowOverlayIds = [
-    "overlay-ocean-fill",
-    ...OVERLAY_REGISTRY.lakes.layers.map((l) => l.id),
-    ...OVERLAY_REGISTRY.landforms.layers.map((l) => l.id),
-  ];
-  for (const id of lowOverlayIds) {
-    if (map.getLayer(id)) {
-      map.moveLayer(id, map.getLayer("states-fill") ? "states-fill" : undefined);
-    }
+  if (map.getLayer("overlay-ocean-fill")) {
+    map.moveLayer(
+      "overlay-ocean-fill",
+      map.getLayer("states-fill") ? "states-fill" : undefined
+    );
   }
 
   const aboveStates = map.getLayer(INSERT_ABOVE_STATES)
     ? INSERT_ABOVE_STATES
     : undefined;
   const midOverlayIds = [
-    ...OVERLAY_REGISTRY.rivers.layers.map((l) => l.id),
-    ...OVERLAY_REGISTRY.creeks.layers.map((l) => l.id),
+    ...OVERLAY_REGISTRY.waterways.layers.map((l) => l.id),
     ...OVERLAY_REGISTRY.coast.layers
       .filter((l) => l.id !== "overlay-ocean-fill")
       .map((l) => l.id),
@@ -107,19 +108,31 @@ export function restackOverlayLayers(map: Map): void {
   }
 }
 
-/** Keep city icons above LGA polygons so types stay visible and clickable. */
-export function restackCityLayers(map: Map): void {
-  for (const layer of OVERLAY_REGISTRY.cities.layers) {
-    if (map.getLayer(layer.id)) map.moveLayer(layer.id);
+/** Lakes, landforms, cities — always above states and LGA fills. */
+export function restackTopOverlayLayers(map: Map): void {
+  const topIds = [
+    ...OVERLAY_REGISTRY.lakes.layers.map((l) => l.id),
+    ...OVERLAY_REGISTRY.landforms.layers.map((l) => l.id),
+    ...OVERLAY_REGISTRY.cities.layers.map((l) => l.id),
+  ];
+  for (const id of topIds) {
+    if (map.getLayer(id)) map.moveLayer(id);
   }
+}
+
+/** @deprecated Use restackTopOverlayLayers */
+export function restackCityLayers(map: Map): void {
+  restackTopOverlayLayers(map);
 }
 
 /** @deprecated Use restackOverlayLayers */
 export function restackMapLayers(map: Map): void {
   restackOverlayLayers(map);
+  restackTopOverlayLayers(map);
 }
 
 /** @deprecated Use restackOverlayLayers */
 export function restackOverlayHighLayers(map: Map): void {
   restackOverlayLayers(map);
+  restackTopOverlayLayers(map);
 }

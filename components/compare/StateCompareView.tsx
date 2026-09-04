@@ -120,7 +120,12 @@ export default function StateCompareView({
                   {areas[i]}
                 </p>
               </div>
-              <ShowLgasButton stateId={s.id} stateName={s.name} compact />
+              <ShowLgasButton
+                stateId={s.id}
+                stateName={s.name}
+                compact
+                hideDrag
+              />
             </div>
           </div>
         ))}

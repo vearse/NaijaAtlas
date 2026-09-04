@@ -12,6 +12,7 @@ import MapBottomToolbar from "@/components/map/MapBottomToolbar";
 import LocationPanel from "@/components/location/LocationPanel";
 import MobileCompareModal from "@/components/compare/MobileCompareModal";
 import MobileInfoModal from "@/components/compare/MobileInfoModal";
+import WikipediaReaderModal from "@/components/map/WikipediaReaderModal";
 import UrlSync from "@/components/UrlSync";
 import { useMapStore, MAX_COMPARE_STATES } from "@/lib/store/mapStore";
 import { useIsMobile } from "@/hooks/useMediaQuery";
@@ -249,6 +250,8 @@ export default function ExplorerShell({
           compareBundle={compareBundle}
         />
       )}
+
+      <WikipediaReaderModal />
     </div>
   );
 }

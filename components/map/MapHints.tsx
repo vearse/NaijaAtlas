@@ -34,8 +34,8 @@ export default function MapHints() {
       return "Cities layer — coloured icons by type (capital, port, historic…). Click a city for the panel";
     }
 
-    if (activeOverlays.has("rivers")) {
-      return "Rivers layer active — click Niger, Benue, and other rivers for details";
+    if (activeOverlays.has("waterways")) {
+      return "Waterways layer active — click Niger, Benue, delta channels and other rivers for details";
     }
 
     if (activeOverlays.size > 0) {
@@ -47,7 +47,7 @@ export default function MapHints() {
     }
 
     if (selectedStateIds.size > 0) {
-      return "Show LGAs from the panel · right-click (or long-press) a state to drag";
+      return "Tap the map icon on a selected state to show LGAs · long-press a state on the map to drag";
     }
 
     if (activeRegionId) {
@@ -71,7 +71,7 @@ export default function MapHints() {
     if (selectedOverlay) return "Overlay details in panel";
     if (activeOverlays.size > 0) return "Tap a highlighted feature for details";
     if (lgaVisibleStateIds.size > 0) return "Tap an LGA for its name";
-    if (selectedStateIds.size > 0) return "Long-press state to drag";
+    if (selectedStateIds.size > 0) return "Tap the map icon on a selected state to show LGAs";
     return "Tap a state to explore";
   }, [
     mapActionHint,

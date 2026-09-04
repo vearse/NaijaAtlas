@@ -2,10 +2,19 @@
 
 import type { ReactNode } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
+import WikiDeepDiveLink from "@/components/map/WikiDeepDiveLink";
 import {
   CITY_CATEGORY_LABELS,
+  LAKE_CATEGORY_LABELS,
+  LANDFORM_SIZE_LABELS,
+  LANDFORM_TYPE_LABELS,
   OVERLAY_LAYER_LABELS,
+  POWER_PLANT_CATEGORY_LABELS,
   type CityCategory,
+  type LakeCategory,
+  type LandformSizeTier,
+  type LandformType,
+  type PowerPlantCategory,
   type SelectedOverlayFeature,
 } from "@/types/overlay";
 import type { StateLocation } from "@/types/location";
@@ -100,6 +109,33 @@ function cityCategoryMeta(value: unknown) {
   return CITY_CATEGORY_LABELS[value as CityCategory] ?? null;
 }
 
+function lakeCategoryMeta(value: unknown) {
+  if (typeof value !== "string") return null;
+  return LAKE_CATEGORY_LABELS[value as LakeCategory] ?? null;
+}
+
+function powerPlantCategoryMeta(value: unknown) {
+  if (typeof value !== "string") return null;
+  return POWER_PLANT_CATEGORY_LABELS[value as PowerPlantCategory] ?? null;
+}
+
+function landformTypeMeta(value: unknown) {
+  if (typeof value !== "string") return null;
+  return LANDFORM_TYPE_LABELS[value as LandformType] ?? null;
+}
+
+function landformSizeMeta(value: unknown) {
+  if (typeof value !== "string") return null;
+  return LANDFORM_SIZE_LABELS[value as LandformSizeTier] ?? null;
+}
+
+function capacityLabel(value: unknown): string | null {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return value > 0 ? `${value.toLocaleString()} MW` : "Multipurpose (no generation)";
+  }
+  return text(value);
+}
+
 export default function OverlayFeaturePanel({
   feature,
   states,
@@ -108,6 +144,11 @@ export default function OverlayFeaturePanel({
   const { layerId, name, properties: props } = feature;
   const meta = OVERLAY_LAYER_LABELS[layerId];
   const cityCat = cityCategoryMeta(props.category);
+  const lakeCat = lakeCategoryMeta(props.lakeCategory);
+  const plantCat = powerPlantCategoryMeta(props.plantCategory);
+  const landformType = landformTypeMeta(props.landformType);
+  const landformSize = landformSizeMeta(props.sizeTier);
+  const featureKind = text(props.featureKind);
 
   const relatedStateNames = [
     ...parseStringArray(props.statesCrossed),
@@ -152,6 +193,40 @@ export default function OverlayFeaturePanel({
                 {cityCat.label}
               </span>
             )}
+            {lakeCat && (
+              <span
+                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white"
+                style={{ backgroundColor: lakeCat.color }}
+              >
+                {lakeCat.label}
+              </span>
+            )}
+            {landformType && (
+              <span
+                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white"
+                style={{ backgroundColor: landformType.color }}
+              >
+                {landformType.label}
+              </span>
+            )}
+            {landformSize && (
+              <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-[11px] font-medium text-slate-600">
+                {landformSize.label} · {landformSize.description}
+              </span>
+            )}
+            {plantCat && (
+              <span
+                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white"
+                style={{ backgroundColor: plantCat.color }}
+              >
+                {plantCat.label}
+              </span>
+            )}
+            {featureKind === "power-station" && !plantCat && (
+              <span className="inline-flex items-center rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-[11px] font-medium text-amber-900">
+                Power station
+              </span>
+            )}
             {text(props.type) && (
               <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-[11px] font-medium text-slate-600">
                 {text(props.type)}
@@ -180,6 +255,12 @@ export default function OverlayFeaturePanel({
       <dl className="space-y-3 rounded-xl border border-slate-100 bg-slate-50/80 p-4">
         <DetailRow label="Founded" value={text(props.founded)} />
         <DetailRow label="Length" value={lengthKm} />
+        <DetailRow label="Installed capacity" value={capacityLabel(props.capacityMw)} />
+        <DetailRow label="Commissioned" value={text(props.commissioned)} />
+        <DetailRow label="Operator" value={text(props.operator)} />
+        <DetailRow label="River" value={text(props.riverName)} />
+        <DetailRow label="Dam" value={text(props.damName)} />
+        <DetailRow label="Max depth" value={text(props.maxDepthNote)} />
         <DetailRow label="Course in Nigeria" value={text(props.lengthNote)} />
         <DetailRow label="Source" value={text(props.sourceNote)} />
         <DetailRow label="Mouth / outlet" value={text(props.mouthNote)} />
@@ -237,14 +318,7 @@ export default function OverlayFeaturePanel({
           <p className="text-xs text-slate-600 mb-2">
             Wikipedia has longer history, demographics, and references than this map card.
           </p>
-          <a
-            href={wikiUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex text-sm font-medium text-sky-800 hover:text-sky-950 underline underline-offset-2"
-          >
-            Open Wikipedia
-          </a>
+          <WikiDeepDiveLink wikiUrl={wikiUrl} title={name} />
         </div>
       )}
     </div>

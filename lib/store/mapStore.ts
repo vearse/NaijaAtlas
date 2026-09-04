@@ -22,7 +22,10 @@ export interface MapSelectionState {
   mobileSheet: MobileSheetMode;
   resetCounter: number;
   activeOverlays: Set<OverlayLayerId>;
+  /** Layer guide shown in the panel when a toolbar layer is toggled on. */
+  overlayGuideLayer: OverlayLayerId | null;
   selectedOverlay: SelectedOverlayFeature | null;
+  wikiModal: { url: string; title?: string } | null;
   /** LGA ids with visible map labels (click-to-label, no cap). */
   labeledLgaOrder: string[];
   /** Transient toast-style hint from map actions (e.g. drag armed). */
@@ -44,8 +47,11 @@ export interface MapSelectionState {
   toggleDragMode: (stateId: string) => void;
   enableDragMode: (stateId: string, hint?: string) => void;
   toggleOverlay: (id: OverlayLayerId) => void;
+  clearOverlayGuide: () => void;
   setSelectedOverlay: (feature: SelectedOverlayFeature | null) => void;
   clearSelectedOverlay: () => void;
+  openWikiModal: (url: string, title?: string) => void;
+  closeWikiModal: () => void;
   addLabeledLga: (id: string) => boolean;
   seedCapitalLabel: (lgaId: string) => void;
   clearLabelsForState: (stateId: string, lgaIdsInState: string[]) => void;
@@ -92,7 +98,9 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   mobileSheet: "hidden",
   resetCounter: 0,
   activeOverlays: new Set(DEFAULT_ACTIVE_OVERLAYS),
+  overlayGuideLayer: null,
   selectedOverlay: null,
+  wikiModal: null,
   labeledLgaOrder: [],
   mapActionHint: null,
   mapInstance: null,
@@ -116,20 +124,50 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   closeMobileSheet: () => set({ mobileSheet: "hidden" }),
 
   toggleOverlay: (id) => {
-    const next = new Set(get().activeOverlays);
-    if (next.has(id)) next.delete(id);
-    else next.add(id);
-    set({ activeOverlays: next });
+    const state = get();
+    const next = new Set(state.activeOverlays);
+    const turningOn = !next.has(id);
+    if (turningOn) {
+      next.add(id);
+      set({
+        activeOverlays: next,
+        overlayGuideLayer: id,
+        selectedOverlay: null,
+        selectedLgaId: null,
+        activeRegionId: null,
+        panelOpen: true,
+        mobileSheet: "open",
+      });
+    } else {
+      next.delete(id);
+      set({
+        activeOverlays: next,
+        overlayGuideLayer:
+          state.overlayGuideLayer === id ? null : state.overlayGuideLayer,
+      });
+    }
   },
+
+  clearOverlayGuide: () => set({ overlayGuideLayer: null }),
 
   setSelectedOverlay: (feature) =>
     set({
       selectedOverlay: feature,
-      panelOpen: feature !== null || get().selectedStateIds.size > 0,
+      overlayGuideLayer: feature ? null : get().overlayGuideLayer,
+      selectedLgaId: feature ? null : get().selectedLgaId,
+      activeRegionId: feature ? null : get().activeRegionId,
+      panelOpen:
+        feature !== null ||
+        get().selectedStateIds.size > 0 ||
+        get().selectedLgaId !== null,
       mobileSheet: feature !== null ? "open" : get().mobileSheet,
     }),
 
   clearSelectedOverlay: () => set({ selectedOverlay: null }),
+
+  openWikiModal: (url, title) => set({ wikiModal: { url, title } }),
+
+  closeWikiModal: () => set({ wikiModal: null }),
 
   addLabeledLga: (id) => {
     const order = [...get().labeledLgaOrder];
@@ -177,6 +215,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         labeledLgaOrder,
         panelOpen: next.size > 0,
         activeRegionId: null,
+        selectedOverlay: null,
         mobileSheet: mobileSheetForSelection(next.size),
       });
       notifyLgaVisibility(get);
@@ -190,7 +229,6 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       }
     }
     next.add(id);
-    lgaVisible.add(id);
     set({
       selectedStateIds: next,
       lgaVisibleStateIds: lgaVisible,
@@ -199,6 +237,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       dragModeStateId,
       panelOpen: next.size > 0,
       activeRegionId: null,
+      selectedOverlay: null,
       mobileSheet: mobileSheetForSelection(next.size),
     });
     notifyLgaVisibility(get);
@@ -206,15 +245,8 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
 
   addSelectedState: (id) => {
     const next = new Set(get().selectedStateIds);
+    if (next.has(id)) return;
     const lgaVisible = new Set(get().lgaVisibleStateIds);
-    if (next.has(id)) {
-      if (!lgaVisible.has(id)) {
-        lgaVisible.add(id);
-        set({ lgaVisibleStateIds: lgaVisible });
-        notifyLgaVisibility(get);
-      }
-      return;
-    }
     if (next.size >= MAX_COMPARE_STATES) {
       const oldest = next.values().next().value;
       if (oldest) {
@@ -223,26 +255,31 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       }
     }
     next.add(id);
-    lgaVisible.add(id);
     set({
       selectedStateIds: next,
       lgaVisibleStateIds: lgaVisible,
       panelOpen: true,
       activeRegionId: null,
+      selectedOverlay: null,
       mobileSheet: mobileSheetForSelection(next.size),
     });
     notifyLgaVisibility(get);
   },
 
   selectStates: (ids) => {
+    const idSet = new Set(ids);
+    const lgaVisible = new Set(
+      [...get().lgaVisibleStateIds].filter((sid) => idSet.has(sid))
+    );
     set({
-      selectedStateIds: new Set(ids),
-      lgaVisibleStateIds: new Set(ids),
+      selectedStateIds: idSet,
+      lgaVisibleStateIds: lgaVisible,
       selectedLgaId: null,
       draggedStateId: null,
       dragModeStateId: null,
       panelOpen: ids.length > 0,
       activeRegionId: null,
+      selectedOverlay: null,
       mobileSheet: mobileSheetForSelection(ids.length),
     });
     notifyLgaVisibility(get);
@@ -268,6 +305,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       selectedLgaId: null,
       panelOpen: true,
       activeRegionId: null,
+      selectedOverlay: null,
       mobileSheet: "open",
     });
     notifyLgaVisibility(get);
@@ -314,6 +352,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       selectedLgaId: null,
       panelOpen: ids.length > 0,
       activeRegionId: null,
+      selectedOverlay: null,
       mobileSheet: mobileSheetForSelection(ids.length),
     });
     notifyLgaVisibility(get);
@@ -323,6 +362,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     if (id) get().addLabeledLga(id);
     set({
       selectedLgaId: id,
+      selectedOverlay: id ? null : get().selectedOverlay,
       panelOpen: id !== null || get().selectedStateIds.size > 0,
       mobileSheet: id !== null ? "open" : get().mobileSheet,
     });
@@ -337,6 +377,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       draggedStateId: null,
       dragModeStateId: null,
       panelOpen: false,
+      selectedOverlay: null,
       mobileSheet: id ? "peek" : "hidden",
       labeledLgaOrder: [],
     });
@@ -356,6 +397,8 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       labeledLgaOrder: [],
       mapActionHint: null,
       selectedOverlay: null,
+      overlayGuideLayer: null,
+      wikiModal: null,
       activeOverlays: new Set(DEFAULT_ACTIVE_OVERLAYS),
       resetCounter: get().resetCounter + 1,
     });

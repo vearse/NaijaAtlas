@@ -7,9 +7,10 @@ interface ShowLgasButtonProps {
   stateId: string;
   stateName: string;
   compact?: boolean;
+  hideDrag?: boolean;
 }
 
-function MapLayersIcon({ active }: { active: boolean }) {
+export function MapLayersIcon({ active }: { active: boolean }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -35,6 +36,7 @@ export default function ShowLgasButton({
   stateId,
   stateName,
   compact = false,
+  hideDrag = false,
 }: ShowLgasButtonProps) {
   const { lgaVisibleStateIds, showLgas, hideLgas } = useMapStore();
   const visible = lgaVisibleStateIds.has(stateId);
@@ -75,6 +77,10 @@ export default function ShowLgasButton({
         : `Show ${stateName} LGAs on map`}
     </button>
   );
+
+  if (hideDrag) {
+    return lgaButton;
+  }
 
   return (
     <div className="grid grid-cols-[1fr_auto] gap-2 items-stretch">

@@ -30,6 +30,7 @@ import {
   addOverlayLayers,
   syncAllOverlayVisibility,
   restackOverlayLayers,
+  restackTopOverlayLayers,
   restackCityLayers,
 } from "./overlayLayers";
 import MapTooltip from "./MapTooltip";
@@ -270,7 +271,7 @@ export default function NigeriaMap({
 
       restackOverlayLayers(map);
       restackLgaStack(map, readyVisible);
-      restackCityLayers(map);
+      restackTopOverlayLayers(map);
       syncLgaLabelFilters(map);
       refreshSelectionPaint(map);
     },
@@ -1010,7 +1011,7 @@ export default function NigeriaMap({
       );
       restackOverlayLayers(map);
       restackLgaStack(map, readyVisible);
-      restackCityLayers(map);
+      restackTopOverlayLayers(map);
       syncLgaLabelFilters(map);
       refreshSelectionPaint(map);
       return;
@@ -1053,7 +1054,7 @@ export default function NigeriaMap({
       syncLgaLabelFilters(liveMap);
       restackOverlayLayers(liveMap);
       restackLgaStack(liveMap, readyVisible);
-      restackCityLayers(liveMap);
+      restackTopOverlayLayers(liveMap);
       refreshSelectionPaint(liveMap);
       setLgaReadyKey((k) => k + 1);
     } finally {
@@ -1098,7 +1099,7 @@ export default function NigeriaMap({
     if (!map?.isStyleLoaded() || !mapReady) return;
     syncAllOverlayVisibility(map, activeOverlays);
     restackLgaStack(map, readyLgaStateIds(map, lgaVisibleStateIds));
-    restackCityLayers(map);
+    restackTopOverlayLayers(map);
   }, [activeOverlaysKey, mapReady, activeOverlays, lgaVisibleStateIds, readyLgaStateIds]);
 
   const labeledLgaKey = labeledLgaOrder.join(",");
