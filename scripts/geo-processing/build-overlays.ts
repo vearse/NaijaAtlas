@@ -375,7 +375,7 @@ function landformMarkerProps(row: CatalogRow, isLabelAnchor = false) {
   return {
     id: row.id,
     name: row.name,
-    featureKind: "marker",
+    featureKind: "point",
     landformType: row.landformType ?? "hill",
     sizeTier: row.sizeTier ?? "medium",
     isLabelAnchor,
@@ -433,10 +433,14 @@ function buildLandforms(catalog: CatalogRow[]): Feature[] {
     });
 
     points.forEach((coord, index) => {
+      const [lon, lat] = coord;
       features.push({
         type: "Feature",
         properties: landformMarkerProps(row, index === anchorIdx),
-        geometry: { type: "Point", coordinates: coord },
+        geometry: {
+          type: "Point",
+          coordinates: [lon - 0.06, lat - 0.04],
+        },
       });
     });
   }
