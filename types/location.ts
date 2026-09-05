@@ -56,6 +56,11 @@ export interface SearchEntry {
   summary?: string;
 }
 
+export interface StateLanguage {
+  name: string;
+  wikiUrl: string;
+}
+
 export interface StateContent {
   id: string;
   name: string;
@@ -63,6 +68,7 @@ export interface StateContent {
   capital: string | null;
   lgaCount: number;
   description: string;
+  languages: StateLanguage[];
 }
 
 export interface LgaContent {

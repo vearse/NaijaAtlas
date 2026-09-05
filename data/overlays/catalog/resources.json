@@ -549,5 +549,398 @@
       "Water softening & de-icing salts – industrial boilers, highway maintenance",
       "Food preservation, curing brines, fermentation, and dyeing textiles"
     ]
+  },
+  {
+    "id": "resource-bitumen",
+    "name": "Bitumen & Tar Sands (Ondo, Edo, Ogun, Lagos Belt)",
+    "resourceType": "bitumen",
+    "summary": "Africa's 2nd-largest bitumen deposits in the Dahomey (Benin) Basin east of Lagos — road asphalt & future upgrading target.",
+    "description": "Nigeria holds Africa's second-largest bitumen (tar-sand / heavy-oil) deposit belt stretching along the Dahomey Basin from the Lagos coast through Ogun, Ondo, and into northern Edo. Estimated in-place volumes rival the crude-oil reserve base. Currently small-scale extraction supplies road asphalt, while MoUs with Canadian, Chinese, and Nigerian investors target future SAGD and solvent-based upgrading to syncrude.",
+    "lon": 4.9,
+    "lat": 6.5,
+    "statesCrossed": [
+      "Ondo",
+      "Edo",
+      "Ogun",
+      "Lagos"
+    ],
+    "reserveNote": "~42 billion barrels oil-equivalent in-place (NEITI / DPR estimates); Dahomey Belt",
+    "productionNote": "Small-scale surface mining for road asphalt; large SAGD / solvent projects in feasibility",
+    "type": "Extra-heavy oil / tar-sand bitumen; Cretaceous Agbada & Dahomey Basin formations",
+    "economy": "Road paving asphalt; potential syncrude, carbon fibre, and specialised bitumen products.",
+    "climate": "Tropical coastal–rainforest fringe; shallow alluvial bitumen horizons.",
+    "landmarks": [
+      "Ondo Agbabu bitumen fields (type locality)",
+      "Ogun/Ondo coastal tar-sand outcrops",
+      "Dangote/Lafarge asphalt blending terminals"
+    ],
+    "highlights": [
+      "Africa's 2nd-largest bitumen belt",
+      "Road asphalt current output",
+      "Future SAGD / syncrude potential"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Bitumen",
+    "products": [
+      "Paving-grade bitumen (PG 64/22, 80/100) – asphalt concrete for federal & state highways",
+      "Cutback & emulsion bitumen – surface dressing, tack coats, slurry seals, and pothole repair",
+      "Modified bitumen (SBS/EVA polymer) – airport runways, bridge decks, heavy-traffic roads",
+      "Roofing shingles & waterproofing membranes – house roofing, building damp-proofing",
+      "Syncrude (future) – via SAGD + solvent deasphalting → refinery cracker feed",
+      "Carbon fibre precursors – pitch-based from heavy bitumen fractions (aerospace & wind energy)",
+      "Pipe-coating & anti-corrosion wrap – steel pipeline bituminous enamel coatings",
+      "Printer's ink, electrical cable compound, and battery sealants"
+    ]
+  },
+  {
+    "id": "resource-bauxite",
+    "name": "Bauxite & Alumina (Mambilla / Adamawa Plateau Belt)",
+    "resourceType": "bauxite",
+    "summary": "Lateritic bauxite plateaus in Taraba, Adamawa, and Ekiti — feedstock for Nigerian aluminium smelters and export.",
+    "description": "Nigeria's bauxite occurs as duricrust lateritic caps on the Mambilla Plateau, the Adamawa highlands, the Jos Plateau outliers, and smaller deposits in Ekiti. Current small-scale production feeds the local aluminium extrusion industry, while NSIA-backed feasibility studies target a 1–2 Mtpa bauxite mine + integrated alumina refinery paired with Mambilla hydropower.",
+    "lon": 11.3,
+    "lat": 6.8,
+    "statesCrossed": [
+      "Taraba",
+      "Adamawa",
+      "Plateau",
+      "Nasarawa",
+      "Ekiti",
+      "Kogi"
+    ],
+    "reserveNote": "~900 Mt lateritic bauxite indicated; Mambilla alone ~350 Mt",
+    "productionNote": "Artisanal + small crushing; NSIA Mambilla bauxite–alumina projects in pre-FEED",
+    "type": "Gibbsite-boehmite lateritic bauxite on plateau surfaces; export-grade alumina potential",
+    "economy": "Aluminium metal feedstock, alumina refining, construction extrusion, and export concentrate.",
+    "climate": "Highland tropical; bauxite laterites require seasonal wet–dry leaching.",
+    "landmarks": [
+      "Mambilla Plateau bauxite laterites (Taraba)",
+      "Adamawa (Numan/Shelleng) bauxite caps",
+      "Aluminium extrusion smelters (Ikeja, Port Harcourt)"
+    ],
+    "highlights": [
+      "Mambilla Plateau bauxite belt",
+      "NSIA alumina refinery (planned)",
+      "Domestic aluminium extrusion supply"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Bauxite",
+    "products": [
+      "Alumina (Al₂O₃) – Bayer process refinery output → feed for aluminium smelters",
+      "Primary aluminium ingots (99.5–99.8%) – Hall–Héroult electrolytic smelting",
+      "Aluminium extrusion profiles – window frames, doors, curtain walls, roofing, furniture",
+      "Aluminium sheets & coils – beverage cans, foil, automotive panels, appliances",
+      "Aluminium casting alloys (AlSi, AlMg) – engine blocks, transmission housings, wheels",
+      "Calcined bauxite / refractory grade – high-alumina cement, ladle linings, kilns",
+      "Aluminium chemicals (alums, aluminium sulphate) – water treatment, paper sizing, tanning",
+      "Abrasives & polishing compounds – fused alumina for sandpapers & grinding wheels"
+    ]
+  },
+  {
+    "id": "resource-gemstones",
+    "name": "Gemstones (Sapphire, Ruby, Aquamarine, Tourmaline — Plateau & Kaduna)",
+    "resourceType": "gemstones",
+    "summary": "High-value coloured gemstone fields in Plateau, Kaduna, and Nasarawa — sapphire, ruby, aquamarine, tourmaline.",
+    "description": "Nigeria is an emerging coloured-gemstone producer. The Jos Plateau and neighbouring Kaduna/Nasarawa pegmatites and schists produce aquamarine, emerald, tourmaline, topaz, garnet, zircon, and pink/blue sapphire, with ruby deposits in the Mambilla (Taraba). Gemstone cutting is informal in Kaduna's lapidaries, but the Federal Ministry of Mines & Steel Development operates a gemstone certification lab to formalise the value chain.",
+    "lon": 8.9,
+    "lat": 10.0,
+    "statesCrossed": [
+      "Plateau",
+      "Kaduna",
+      "Nasarawa",
+      "Taraba",
+      "Ekiti",
+      "Oyo",
+      "Kano"
+    ],
+    "reserveNote": "Gemstone-grade deposits widespread; not conventionally quantified as reserves",
+    "productionNote": "Artisanal small-scale mining + Kaduna lapidaries; formal certification growing",
+    "type": "Beryl (aquamarine/emerald), corundum (sapphire/ruby), tourmaline, topaz, garnet, zircon",
+    "economy": "Gemstone cutting, jewellery manufacturing, export of rough & cut stones, certification lab.",
+    "climate": "Highland tropical (Jos Plateau) to Sudan savanna; pegmatite and alluvial fields.",
+    "landmarks": [
+      "Plateau Shendam / Bokkos aquamarine fields",
+      "Kaduna gemstone lapidary district",
+      "Federal Mines Gemstone Certification Laboratory (Abuja/Kaduna)",
+      "Taraba Mambilla ruby occurrences"
+    ],
+    "highlights": [
+      "Sapphire, ruby & aquamarine fields",
+      "Jos Plateau pegmatite gem belt",
+      "Kaduna lapidary & cutting hub"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Gemstone",
+    "products": [
+      "Faceted cut gemstones (sapphire, ruby, emerald, aquamarine, tourmaline, topaz)",
+      "Fine jewellery – rings, necklaces, earrings, bracelets, wedding sets (gold + gems)",
+      "Cabochons – opaque/translucent stones (star sapphire, garnet, jasper) set in jewellery",
+      "Gemstone beads – Nigerian traditional coral & gem beadwork for regalia",
+      "Industrial / collector specimens – mineral crystal collections & museum-grade pieces",
+      "Semi-precious inlay & mosaic tiles – decorative architectural stone cladding",
+      "Certified rough exports – IGI/MGS-graded rough stones for overseas cutters",
+      "Watch dials & luxury accessories – hardstone inlays for premium timepieces"
+    ]
+  },
+  {
+    "id": "resource-kaolin",
+    "name": "Kaolin & Ball Clays (Ajaokuta, Warri, Abakaliki, Bauchi)",
+    "resourceType": "kaolin",
+    "summary": "Sedimentary kaolin and refractory ball-clay deposits for ceramics, paper coating, and drilling muds.",
+    "description": "Nigeria's kaolin deposits occur in Cretaceous/Tertiary sedimentary basins: Ajaokuta–Okene (Kogi), Warri southern flank (Delta), Abakaliki (Ebonyi), and the Bauchi/Gombe formation clays. Ball clays also outcrop in the Ilesha schist belt (Osun/Ekiti). Uses span ceramics tableware, paper coating, and oil-drilling mud additives, with Dangote & Bua cement plants also consuming raw clays.",
+    "lon": 6.7,
+    "lat": 7.8,
+    "statesCrossed": [
+      "Kogi",
+      "Delta",
+      "Ebonyi",
+      "Enugu",
+      "Bauchi",
+      "Gombe",
+      "Osun",
+      "Ekiti",
+      "Ogun"
+    ],
+    "reserveNote": "~2.5 Bt kaolin indicated (Mining Cadastre Office estimates); vast clay belts",
+    "productionNote": "Small-scale beneficiated kaolin + raw clays; large paper-grade projects proposed",
+    "type": "Kaolinite kaolin, ball clay, bentonitic clays; refractory and paper-coating grades",
+    "economy": "Ceramics, paper filler/coating, drilling muds, paint extenders, rubber compounding.",
+    "climate": "Guinea savanna and deltaic sedimentary basins with thick clay sequences.",
+    "landmarks": [
+      "Ajaokuta–Okene kaolin belt (Kogi)",
+      "Abakaliki shale-clay formations (Ebonyi)",
+      "Osun Ekiti Ilesha schist ball-clay deposits"
+    ],
+    "highlights": [
+      "Ajaokuta + Abakaliki kaolin",
+      "Ceramics & paper coating grade",
+      "Drilling mud bentonite/kaolin"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kaolinite",
+    "products": [
+      "Ceramic tableware & sanitaryware – vitreous china, tiles, wash basins, toilets",
+      "Paper coating & filler – glossy magazine & book paper (No. 1 & No. 2 coating clays)",
+      "Water-based paint extender – TiO₂ spacer, rheology modifier for emulsion paints",
+      "Oil-well drilling mud – kaolin / bentonite viscosifier & fluid-loss control additive",
+      "Rubber compounding filler – low-abrasion kaolin for tyre sidewalls, hoses, footwear",
+      "Fibreglass E-glass batch kaolin – Al₂O₃ + SiO₂ source for continuous glass strands",
+      "Refractory mortars & kiln furniture – fireclay bricks for steel, cement, and ceramics kilns",
+      "Cosmetic & pharmaceutical kaolin USP – facial masks, baby powder, antidiarrheal excipients"
+    ]
+  },
+  {
+    "id": "resource-phosphate",
+    "name": "Phosphate Rock (Sokoto Embayment & Cross River Basin)",
+    "resourceType": "phosphate",
+    "summary": "Sokoto marine phosphorites and Cross River phosphate shales — fertiliser and animal-feed mineral.",
+    "description": "Nigeria's phosphate deposits occur principally in the Upper Cretaceous Maastrichtian Sokoto embayment (Gwandu, Illela, and Isa formations) and in phosphorite nodules and shales along the Cross River basin (Odukpani, Ikom). Current output feeds local single-superphosphate (SSP) blending, with a Morocco-backed Sokoto greenfield fertiliser complex under negotiation.",
+    "lon": 5.2,
+    "lat": 13.3,
+    "statesCrossed": [
+      "Sokoto",
+      "Kebbi",
+      "Zamfara",
+      "Cross River",
+      "Benue",
+      "Borno"
+    ],
+    "reserveNote": "Sokoto embayment indicated ~250 Mt phosphate rock equivalent; Cross River ~50 Mt",
+    "productionNote": "Small artisanal + SSP blending; Sokoto Morocco-JV DAP/NPK fertiliser plant planned",
+    "type": "Marine sedimentary phosphorites, shale-hosted phosphate nodules; DAP/NPK fertiliser grades",
+    "economy": "Fertiliser (SSP, DAP, NPK blends), animal-feed dicalcium phosphate, industrial acid.",
+    "climate": "Sahelian Sokoto plains + tropical Cross River; both marine transgression sequences.",
+    "landmarks": [
+      "Sokoto Gwandu / Illela phosphorite deposits",
+      "Cross River Odukpani/Ikom phosphate nodules",
+      "National Fertiliser Company of Nigeria (NAFCON) blending terminals"
+    ],
+    "highlights": [
+      "Sokoto marine phosphorite belt",
+      "NAFCON fertiliser feedstock",
+      "Morocco JV Sokoto DAP plant (MOU)"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Phosphate_rock",
+    "products": [
+      "Single Superphosphate (SSP) fertiliser – P₂O₅ + gypsum soil amendment",
+      "Di-ammonium Phosphate (DAP) & Mono-ammonium Phosphate (MAP) – granular NPK fertilisers",
+      "NPK compound blends (15-15-15, 20-10-10) – cocoa, maize, rice, oil palm nutrition",
+      "Phosphoric acid (wet process) – H₃PO₄ for DAP + food-grade derivatives",
+      "Dicalcium phosphate (DCP) & Monocalcium phosphate (MCP) – poultry & livestock feed minerals",
+      "Triple Superphosphate (TSP) – high-concentration P₂O₅ direct-application fertiliser",
+      "Industrial phosphate chemicals – STPP detergents, food emulsifiers, flame retardants",
+      "Superphosphate of lime (SSP) byproduct gypsum – plasterboard & cement retarder"
+    ]
+  },
+  {
+    "id": "resource-gypsum",
+    "name": "Gypsum & Anhydrite (Sokoto, Niger, Benue, Gombe)",
+    "resourceType": "gypsum",
+    "summary": "Evaporitic gypsum deposits supplying cement retarder, plasterboard, and agricultural soil conditioner.",
+    "description": "Nigeria's gypsum deposits are predominantly evaporitic in the Sokoto embayment, the Benue trough, southern Niger State, and the Gombe sub-basin. The overwhelming bulk of output feeds the cement industry (5% gypsum added to clinker as set retarder), with the remainder used in wallboard, plaster, agriculture, and dental plasters.",
+    "lon": 5.3,
+    "lat": 12.8,
+    "statesCrossed": [
+      "Sokoto",
+      "Niger",
+      "Benue",
+      "Gombe",
+      "Kebbi",
+      "Bauchi",
+      "Adamawa"
+    ],
+    "reserveNote": "~1.5 Bt gypsum/anhydrite indicated (MCO Nigeria estimates)",
+    "productionNote": "Mined for cement retarder; small plaster/moulding gypsum grades; plasterboard plants planned",
+    "type": "Gypsum (CaSO₄·2H₂O) + anhydrite; primary cement-grade + secondary plaster-board grade",
+    "economy": "Cement retarder (largest demand), plasterboard, agricultural gypsum (soil amendment).",
+    "climate": "Sahelian–Sudan evaporitic lake basins with Cretaceous–Tertiary marine sequences.",
+    "landmarks": [
+      "Sokoto–Argungu gypsum deposits",
+      "Benue Makurdi/Lafia gypsum sub-basins",
+      "Dangote/Lafarge cement blending & clinker grinding lines"
+    ],
+    "highlights": [
+      "Cement clinker retarder (primary)",
+      "Sokoto + Benue gypsum belts",
+      "Plasterboard demand from construction boom"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Gypsum",
+    "products": [
+      "Cement retarder – 4–5 wt% raw gypsum ground with Portland cement clinker (controls set time)",
+      "Plaster of Paris (calcined gypsum / stucco) – internal wall plaster, cornices, mouldings",
+      "Gypsum wallboard / drywall / plasterboard – interior partitions, ceilings, fire-rated panels",
+      "Agricultural gypsum – soil amendment (sodic soil reclamation), sulphur + calcium nutrition",
+      "Dental & medical plaster – dental impressions, orthopaedic casts, surgical splints",
+      "Gypsum moulds for ceramics & pottery – jiggering & slip-casting tableware",
+      "Alpha-grade high-strength gypsum – precision casting, tile adhesive, flooring underlayment",
+      "Desulphurisation gypsum analogue – potential use from future flue-gas desulphurisation"
+    ]
+  },
+  {
+    "id": "resource-graphite",
+    "name": "Graphite (Nasarawa, Ondo, Ekiti Schist Belts)",
+    "resourceType": "graphite",
+    "summary": "Flake & vein graphite in the Nigerian schist belts — emerging lithium-ion battery anode material.",
+    "description": "Nigeria contains graphite-bearing metasediments within the Proterozoic schist belts running through Nasarawa, Ondo, Ekiti, and Kwara. Flake graphite concentrates command premium prices for refractories and expandable graphite, while the electric-vehicle era has drawn attention to high-purity spheroidised graphite for Li-ion anodes. Junior explorers active since 2021 have delineated maiden resource estimates.",
+    "lon": 5.0,
+    "lat": 8.5,
+    "statesCrossed": [
+      "Nasarawa",
+      "Ondo",
+      "Ekiti",
+      "Kwara",
+      "Kogi",
+      "Osun"
+    ],
+    "reserveNote": "Indicated maiden resources >50 Mt at multiple projects; upgradeable to battery-grade",
+    "productionNote": "Early-stage; artisanal flake + junior pre-production; graphite spheroidisation plants studied",
+    "type": "Flake graphite (+ vein graphite) in schist metasediments; expandable + battery grades",
+    "economy": "Refractories, steel recarburising, Li-ion battery anodes, graphene feedstock.",
+    "climate": "Tropical highland; schist-belt basement terrains with weathered outcrops.",
+    "landmarks": [
+      "Nasarawa graphite schist belts (Akwanga, Lafia)",
+      "Ondo/Ekiti Ife–Ilesha schist graphite occurrences",
+      "Nigerian Coal Corporation (NCC) graphite diversification research"
+    ],
+    "highlights": [
+      "Schist-belt flake graphite",
+      "Li-ion battery anode (future)",
+      "Expandable graphite & refractories"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Graphite",
+    "products": [
+      "Natural flake graphite (80–98% C) – refractory crucibles, brake linings, foundry facings",
+      "Battery-grade spheroidised & coated graphite – Li-ion battery anodes (EVs, grid storage)",
+      "Expandable graphite (EG) – intumescent fire-retardant, thermal interface sheets, gaskets",
+      "Graphite electrodes (artificial from needle coke) – electric arc furnace steelmaking",
+      "Steelmaking recarburiser – low-sulphur graphite for carbon addition to ladles",
+      "Pencil leads & lubricants – bonded clay/graphite for writing & industrial lubrication",
+      "Graphene precursor – high-purity graphite feed for CVD & liquid exfoliation",
+      "Nuclear graphite (speciality) – pebbles & moderator blocks for next-gen HTGRs"
+    ]
+  },
+  {
+    "id": "resource-tungsten",
+    "name": "Tungsten & Tin-Wolfram (Plateau, Bauchi, Nasarawa, Oyo)",
+    "resourceType": "tungsten",
+    "summary": "Scheelite and wolframite within the Jos Plateau tin fields and southwestern lode systems.",
+    "description": "Nigeria's tungsten (wolframite / scheelite) deposits occur as byproduct minerals within the Jos Plateau tin–columbite alluvial fields and in quartz-vein lodes in the Bauchi, Nasarawa, and Ibadan schist belts. Production today is almost entirely artisanal small-scale, with tungsten concentrates exported into the global Chinese and EU market for hardmetals.",
+    "lon": 9.0,
+    "lat": 10.2,
+    "statesCrossed": [
+      "Plateau",
+      "Bauchi",
+      "Nasarawa",
+      "Oyo",
+      "Osun",
+      "Kaduna"
+    ],
+    "reserveNote": "Byproduct within alluvial tin fields; lode deposits under-explored",
+    "productionNote": "Artisanal byproduct concentrate; future DMS + flotation plants for lodes",
+    "type": "Wolframite ((Fe,Mn)WO₄) + scheelite (CaWO₄); tin-tungsten byproduct vein & alluvial",
+    "economy": "Hardmetals / WC tooling, mining drill bits, defence penetrators, lighting filaments.",
+    "climate": "Highland tropical plateau; hardrock lodes + alluvial gravels.",
+    "landmarks": [
+      "Jos Plateau Barikin Ladi tungsten-bearing alluvials",
+      "Bauchi lode scheelite prospects (Bogoro, Tafawa Balewa)",
+      "Ibadan Oyo schist-belt tungsten lodes"
+    ],
+    "highlights": [
+      "Tin-columbite byproduct W",
+      "Jos Plateau + Bauchi lodes",
+      "WC-hardmetal concentrates"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Tungsten",
+    "products": [
+      "Tungsten carbide (WC) cemented carbide – mining drill bits, turning tools, milling inserts",
+      "Tungsten metal powder & ingots – wire drawing, sintered alloys, defence penetrators",
+      "Incandescent & halogen lamp filaments, X-ray tube anodes, heating elements",
+      "Tungsten heavy alloys (W-Ni-Fe / W-Ni-Cu) – counterweights, ordnance, radiation shielding",
+      "Ammonium paratungstate (APT) & tungsten oxides – precursor powders for metallurgy",
+      "Tungsten welding electrodes (GTAW / TIG) – thoriated, ceriated, lanthanated grades",
+      "Ferro-tungsten (FeW) master alloy – steelmaking addition for high-speed & tool steels",
+      "Superalloys (Waspaloy, Hastelloy X) – jet engine hot-section components & turbine blades"
+    ]
+  },
+  {
+    "id": "resource-feldspar-mica",
+    "name": "Feldspar, Mica & Industrial Minerals (Nasarawa-Kwara, Ogun-Ekiti)",
+    "resourceType": "feldspar-mica",
+    "summary": "Industrial silica, feldspar, kaolin & mica assemblage powering Nigerian ceramics, glass, and paint industries.",
+    "description": "A full ceramic-grade industrial-mineral assemblage crops out in the Nigerian basement: potash feldspar in Nasarawa and Kwara, soda feldspar in the Ogun-Ekiti crystalline basement, muscovite mica in the Ibadan schists, and silica sands in the Niger-Benue delta fringes. Together with the abundant kaolin clays, they underpin Nigeria's rapidly growing domestic tile, sanitaryware, float-glass, and bottle-glass industries.",
+    "lon": 7.2,
+    "lat": 8.3,
+    "statesCrossed": [
+      "Nasarawa",
+      "Kwara",
+      "Ogun",
+      "Ekiti",
+      "Oyo",
+      "Kogi",
+      "Delta",
+      "Edo"
+    ],
+    "reserveNote": "Vast pegmatite feldspar + alluvial silica sands; mica widespread",
+    "productionNote": "Small-scale pegmatite mining + river silica; ceramic-grade beneficiation growing",
+    "type": "K-feldspar (microcline), Na-feldspar (albite), muscovite mica, silica sand; ceramic/glass grades",
+    "economy": "Ceramic tile flux, glass batch, filler extenders, cosmetics, electrical insulation.",
+    "climate": "Basement-craton tropical highlands + deltaic alluvial silica terrains.",
+    "landmarks": [
+      "Nasarawa Lafia/Akwanga pegmatite feldspar belts",
+      "Ogun–Ewekoro silica sands (west of Abeokuta)",
+      "Niger–Benue delta fringe silica-sand dredges (Warri, Onitsha)"
+    ],
+    "highlights": [
+      "Ceramic-grade feldspar + silica",
+      "Pegmatite K-feldspar belt Nasarawa",
+      "Mica for electrical & cosmetic grades"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Feldspar",
+    "products": [
+      "Ceramic tile flux (K-feldspar) – vitrified & porcelain floor/wall tiles vitrification",
+      "Glass batch feldspar + silica sand – soda-lime float-glass (windows, mirrors) & bottles",
+      "Dinnerware sanitaryware vitreous china batch – feldspar + kaolin + silica + ball clay",
+      "Muscovite mica sheet – high-voltage electrical insulation, capacitor dielectrics, furnace windows",
+      "Mica powder (wet- & dry-ground) – paint extender, pearlescent pigment substrate, cosmetics",
+      "Silica-sand foundry moulds (AFS 45–55 grade) – green-sand iron & steel casting",
+      "Filler extenders – ground silica & feldspar powder for paints, plastics, rubber, adhesives",
+      "Speciality low-iron silica (SiO₂ >99.5%) – solar PV glass, ultra-clear optical glass, fibre optics"
+    ]
   }
 ]

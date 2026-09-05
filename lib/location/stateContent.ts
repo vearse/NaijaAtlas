@@ -9,6 +9,7 @@ export function fallbackStateContent(location: StateLocation): StateContent {
     capital: null,
     lgaCount: location.lgaCount,
     description: `${location.name} is a state in Nigeria's ${location.regionName} geopolitical zone.`,
+    languages: [],
   };
 }
 

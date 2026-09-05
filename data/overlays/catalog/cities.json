@@ -2242,5 +2242,459 @@
       "Cameroon border coast"
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Bakassi"
+  },
+  {
+    "id": "city-ijebu-ode",
+    "name": "Ijebu-Ode",
+    "category": "historic",
+    "stateName": "Ogun",
+    "stateId": "NG-OG",
+    "lon": 3.93,
+    "lat": 6.82,
+    "nickname": "Ijebu Kingdom capital · Ojude Oba festival home",
+    "founded": "Pre-15th century; ancient Ijebu Kingdom capital",
+    "summary": "Historic capital of the Ijebu Kingdom — famed for the Ojude Oba festival and the Awujale stool.",
+    "description": "Ijebu-Ode is the traditional capital of the Ijebu Yoruba subgroup and seat of the Awujale of Ijebuland, one of Nigeria's oldest monarchies. It hosts the annual Ojude Oba festival, a spectacular cultural gathering of age-grades, masquerades, and royal processions that draws tens of thousands of visitors.",
+    "populationNote": "~350,000 urban + metro (est.)",
+    "economy": "Trade, kola nut history, festival tourism, sawmilling, cassava and maize agribusiness.",
+    "climate": "Tropical wet-and-dry; rainforest–savanna transition.",
+    "landmarks": [
+      "Awujale Palace",
+      "Ojude Oba festival arena",
+      "Ijebu National Museum",
+      "Sungbo's Eredo (nearby — ancient walls & moats)"
+    ],
+    "highlights": [
+      "Capital of the Ijebu Kingdom",
+      "Ojude Oba annual festival",
+      "Awujale royal stool",
+      "Sungbo's Eredo ancient earthworks"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ijebu-Ode"
+  },
+  {
+    "id": "city-ijebu-igbo",
+    "name": "Ijebu-Igbo",
+    "category": "historic",
+    "stateName": "Ogun",
+    "stateId": "NG-OG",
+    "lon": 4.13,
+    "lat": 6.96,
+    "nickname": "Eastern Ijebu · home of the Agemo festival",
+    "founded": "16th century; Ijebu eastern provincial town",
+    "summary": "Eastern Ijebu historic town and centre of the Agemo (masked spirit) festival cycle.",
+    "description": "Ijebu-Igbo is the principal town of the Eastern Ijebu and home of the Olomowewe of Ijebu-Igbo. It is famous for hosting the Agemo festival cycle, a Yoruba masked-spirit tradition where sixteen principal Agemo masquerades of Ijebuland process through the town during festivals.",
+    "populationNote": "~180,000 (est.)",
+    "economy": "Timber, agricultural trade (cocoa, kola, cassava), sawmills, festival tourism.",
+    "climate": "Tropical wet-and-dry; forest–savanna mosaic.",
+    "landmarks": [
+      "Olomowewe Palace",
+      "Agemo festival shrines & groves",
+      "Ijebu-Igbo Central Mosque"
+    ],
+    "highlights": [
+      "Eastern Ijebu historic capital",
+      "Agemo masquerade festival centre",
+      "Cocoa & timber trading town"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ijebu-Igbo"
+  },
+  {
+    "id": "city-sagamu",
+    "name": "Sagamu (Remo)",
+    "category": "historic",
+    "stateName": "Ogun",
+    "stateId": "NG-OG",
+    "lon": 3.65,
+    "lat": 6.84,
+    "nickname": "Remo capital · kola nut trading hub",
+    "founded": "19th century; consolidation of Remo towns",
+    "summary": "Capital of the Remo Ijebu subgroup and historic kola-nut trading town between Ibadan and Lagos.",
+    "description": "Sagamu is the capital of Remoland (the Remo subgroup of the Ijebu) and seat of the Akarigbo of Remo. It grew as a 19th-century kola-nut entrepôt on the Lagos–Ibadan route and hosts the Remo Day festival and the annual Sagamu Day cultural carnival.",
+    "populationNote": "~280,000 metro (est.)",
+    "economy": "Historic kola nut trade, cement industries, cocoa, quarrying, Nollywood production studios.",
+    "climate": "Tropical wet-and-dry; derived savanna fringe.",
+    "landmarks": [
+      "Akarigbo Palace",
+      "Remo cultural centre",
+      "Sagamu quarry & cement precinct"
+    ],
+    "highlights": [
+      "Capital of Remoland",
+      "Historic kola nut trade hub",
+      "Akarigbo royal stool"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Sagamu"
+  },
+  {
+    "id": "city-ede",
+    "name": "Ede",
+    "category": "historic",
+    "stateName": "Osun",
+    "stateId": "NG-OS",
+    "lon": 4.41,
+    "lat": 7.73,
+    "nickname": "Home of the Oshun river · Timi of Ede",
+    "founded": "Early 16th century (legendary founding by Timi Agbale)",
+    "summary": "Historic Yoruba town of the Oshun river, famed for the Timi of Ede and the Ede Muslim community.",
+    "description": "Ede is a historic Yoruba town on the Oshun (Osun) river with one of the oldest continuous Yoruba monarchies — the Timi of Ede. It has long been a centre of Islamic scholarship in Yorubaland (attributed to scholar Imam Bello of Ede) alongside traditional Yoruba religion, and is famed for textile dyeing and weaving.",
+    "populationNote": "~200,000 (est.)",
+    "economy": "Agricultural trade (yam, cassava, maize), traditional weaving & adire dyeing, Islamic scholarship.",
+    "climate": "Tropical wet-and-dry; savanna fringe.",
+    "landmarks": [
+      "Timi of Ede Palace",
+      "Ede Central Mosque",
+      "Oshun river fords & groves",
+      "Ede weaving markets"
+    ],
+    "highlights": [
+      "Timi of Ede ancient monarchy",
+      "Historic centre of Islamic scholarship in Yorubaland",
+      "Traditional adire & weaving"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ede,_Nigeria"
+  },
+  {
+    "id": "city-offa",
+    "name": "Offa",
+    "category": "historic",
+    "stateName": "Kwara",
+    "stateId": "NG-KW",
+    "lon": 4.75,
+    "lat": 8.15,
+    "nickname": "Home of Offa Wrestling (Gidigbo) · Olofa stool",
+    "founded": "Late 14th/early 15th century; Yoruba northern frontier town",
+    "summary": "Historic northern Yoruba town — home of the Olofa, the Gidigbo wrestling festival, and Offa ivory.",
+    "description": "Offa is the seat of the Olofa of Offa and a historic Yoruba frontier town at the transition to the Middle Belt. It is famed across Yorubaland for the Gidigbo annual wrestling contest, where age-grades compete with traditional music, and for a heritage of ivory carvers and dyers.",
+    "populationNote": "~180,000 (est.)",
+    "economy": "Agriculture (sorghum, yam, rice, soya), traditional wrestling tourism, crafts, grain trade.",
+    "climate": "Guinea savanna; moderate rainfall.",
+    "landmarks": [
+      "Olofa Palace",
+      "Gidigbo wrestling arena",
+      "Offa Central Mosque"
+    ],
+    "highlights": [
+      "Olofa of Offa ancient monarchy",
+      "Gidigbo (Offa Wrestling) festival",
+      "Ivory carving & weaving heritage"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Offa,_Kwara"
+  },
+  {
+    "id": "city-owo",
+    "name": "Owo",
+    "category": "historic",
+    "stateName": "Ondo",
+    "stateId": "NG-ON",
+    "lon": 5.58,
+    "lat": 7.21,
+    "nickname": "Land of terracotta & bronze heads · Olowo of Owo",
+    "founded": "11th–14th century; Ife-influenced Yoruba kingdom",
+    "summary": "Historic Yoruba kingdom city — famed for Owo terracotta art and the Olowo palace.",
+    "description": "Owo was a powerful Yoruba kingdom between Ife and Benin, producing a distinctive Ife-Benin fusion sculptural style. The Olowo Palace (Aafin Olowo) has been described as 'Africa's most beautiful palace' and is a National Monument. Owo remains a major timber and cocoa trading town in Ondo State.",
+    "populationNote": "~250,000 urban (est.)",
+    "economy": "Timber, cocoa, oil-palm, cultural heritage tourism, agricultural processing.",
+    "climate": "Tropical wet-and-dry; rainforest fringe.",
+    "landmarks": [
+      "Olowo Palace (Aafin — National Monument)",
+      "Owo Museum (terracotta & bronze heads)",
+      "Owo groves & shrines",
+      "Ondo State University of Medical Sciences"
+    ],
+    "highlights": [
+      "Owo terracotta & bronze art (Ife–Benin fusion)",
+      "Aafin Olowo royal palace",
+      "Cocoa & timber capital of Ondo"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Owo"
+  },
+  {
+    "id": "city-iseyin",
+    "name": "Iseyin",
+    "category": "historic",
+    "stateName": "Oyo",
+    "stateId": "NG-OY",
+    "lon": 3.60,
+    "lat": 7.97,
+    "nickname": "Home of Aso-Ofi weaving · Aseyin of Iseyin",
+    "founded": "17th century; Oyo Empire provincial town",
+    "summary": "Proud Oyo-Yoruba town famed as Nigeria's Aso-Ofi (Aso-Oke) weaving capital.",
+    "description": "Iseyin is Nigeria's premier centre for the hand-weaving of Aso-Ofi / Aso-Oke cloth — the narrow-strip textile worn by Yoruba men and women for weddings, chieftaincy and festivals. The Aseyin of Iseyin is a senior Oyo-Yoruba monarch, and the town also hosts the Oke-Ogun Polytechnic and annual Aso-Ofi festival.",
+    "populationNote": "~220,000 (est.)",
+    "economy": "Aso-Ofi weaving & textile exports, tobacco, yam/maize/cotton agriculture, tertiary education.",
+    "climate": "Tropical wet-and-dry; Guinea savanna edge.",
+    "landmarks": [
+      "Aseyin Palace",
+      "Aso-Ofi weaving collective centres",
+      "Oke-Ogun Polytechnic campus"
+    ],
+    "highlights": [
+      "Nigeria's Aso-Ofi / Aso-Oke capital",
+      "Aseyin of Iseyin monarchy",
+      "Cotton & tobacco farming"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Iseyin"
+  },
+  {
+    "id": "city-kukawa",
+    "name": "Kukawa (Old Kuka)",
+    "category": "historic",
+    "stateName": "Borno",
+    "stateId": "NG-BO",
+    "lon": 13.18,
+    "lat": 12.97,
+    "nickname": "Lake Chad capital · Bornu Empire seat",
+    "founded": "1814; founded by al-Kanemi as capital of the Bornu Empire",
+    "summary": "Historic capital of the Bornu Empire on Lake Chad — seat of the Shehu of Bornu until 1907.",
+    "description": "Kukawa (Kuka) was founded in 1814 by Muhammad al-Amin al-Kanemi, who refounded the Bornu (Kanem-Bornu) Empire after the Fulani Jihad. It was the principal city of the Lake Chad region for the 19th century — visited by Heinrich Barth, Gustav Nachtigal, and other European explorers. It remained the Shehu's seat until the move to Yerwa (Maiduguri) in 1907.",
+    "populationNote": "Historic site; fishing & pastoral communities; town declined since the 19th century",
+    "economy": "Lake Chad fishing, transhumant pastoralism, heritage tourism.",
+    "climate": "Sahel; hot, long dry season, Lake Chad influence.",
+    "landmarks": [
+      "Old Shehu's palace site (earthen remains)",
+      "Lake Chad shoreline / Yedseram",
+      "Heinrich Barth / explorer memorials"
+    ],
+    "highlights": [
+      "19th-century Bornu Empire capital",
+      "al-Kanemi founding city",
+      "Lake Chad heritage town"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kukawa"
+  },
+  {
+    "id": "city-dukutse",
+    "name": "Dukku",
+    "category": "historic",
+    "stateName": "Gombe",
+    "stateId": "NG-GO",
+    "lon": 10.59,
+    "lat": 10.81,
+    "nickname": "Bolewa historic kingdom · salt wells",
+    "founded": "Pre-18th century; Bolewa kingdom town",
+    "summary": "Historic Bolewa kingdom town famed for its traditional salt wells and iron-working.",
+    "description": "Dukku is the seat of the Bolewa (or Bolawa) kingdom, a pre-Jihad Hausa–Fulani–Kanuri mixed polity famed across the northeast for its traditional salt extraction from brine wells and pit-type iron smelting furnaces. The Dukku salt festival and the traditional ruler (Laamido of Dukku) draw regional visitors.",
+    "populationNote": "~150,000 (est.)",
+    "economy": "Traditional salt extraction, iron-working heritage, agriculture (sorghum, millet), livestock trade.",
+    "climate": "Sudan–Guinea savanna transition.",
+    "landmarks": [
+      "Laamido Palace",
+      "Dukku traditional salt wells",
+      "Iron-smelting furnace heritage sites"
+    ],
+    "highlights": [
+      "Bolewa kingdom historic seat",
+      "Traditional salt wells & festival",
+      "Ancient iron-working heritage"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Dukku"
+  },
+  {
+    "id": "city-bida",
+    "name": "Bida",
+    "category": "historic",
+    "stateName": "Niger",
+    "stateId": "NG-NI",
+    "lon": 6.02,
+    "lat": 9.08,
+    "nickname": "Nupe Kingdom capital · Etsu Nupe stool",
+    "founded": "1531 (Nupe kingdom); 19th century Fulani-led Bida Emirate",
+    "summary": "Historic Nupe capital and emirate — famed for Bida brass/bronze casting, glass beads, and Nupe canoe culture.",
+    "description": "Bida is the seat of the Etsu Nupe and the traditional heartland of the Nupe people. It is legendary across Nigeria for its lost-wax brass casting (Bida bronzes — leopard figures, royal vessels, staffs), Nupe glass beadmaking, and annual Bida Durbar. The town sits on the Niger–Kaduna confluence corridor with strong riverine canoe traditions.",
+    "populationNote": "~280,000 (est.)",
+    "economy": "Brass/bronze metalcasting, glass-bead crafts, agriculture (rice, yam, guinea-corn), fishing, durbar tourism.",
+    "climate": "Southern Guinea savanna; humid with brief dry season.",
+    "landmarks": [
+      "Etsu Nupe Palace",
+      "Bida bronze-casting quarters",
+      "Nupe glass bead workshops",
+      "Bida Durbar arena",
+      "Niger River ferry landings"
+    ],
+    "highlights": [
+      "Nupe Kingdom / Bida Emirate capital",
+      "Famed Bida brass & bronze lost-wax casting",
+      "Nupe glass beadmaking heritage",
+      "Annual Bida Durbar festival"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Bida"
+  },
+  {
+    "id": "city-lokoja",
+    "name": "Lokoja",
+    "category": "historic",
+    "stateName": "Kogi",
+    "stateId": "NG-KG",
+    "lon": 6.74,
+    "lat": 7.80,
+    "nickname": "Confluence City · Nigeria's first federal capital (1900)",
+    "founded": "Pre-colonial multi-ethnic town; 1830s Lander brothers landmark; 1900 Southern Nigeria HQ",
+    "summary": "Historic town at the Niger–Benue confluence — Nigeria's first seat of British administration and founding site of the Nigerian nation.",
+    "description": "Lokoja sits at the meeting of the Niger and Benue rivers. It has enormous national significance: the Lander brothers confirmed the Niger estuary here (1830–33), the first British 'Niger' protectorate was proclaimed here (1900), and the name 'Nigeria' was coined by Flora Shaw writing from Lokoja environs. Landmarks include Lord Lugard's Residence, the confluence view, Mount Patti, the Iron of Liberty, and the cenotaph of explorer Nana.",
+    "populationNote": "~250,000 (est.)",
+    "economy": "Confluence river trade, government, cement, tourism, fishing, iron & steel industry (Ajaokuta vicinity).",
+    "climate": "Guinea savanna with Niger–Benue riverine humidity.",
+    "landmarks": [
+      "Niger–Benue Confluence Point",
+      "Lord Lugard's Residence / Museum of Colonial Administration",
+      "Mount Patti (Patti Hill — view over the rivers)",
+      "Iron of Liberty (proclamation marker)",
+      "Lokoja river port & ferry terminal"
+    ],
+    "highlights": [
+      "Nigeria's first Southern Protectorate capital (1900)",
+      "Niger–Benue confluence",
+      "Place where the name 'Nigeria' was coined",
+      "Lugard & Lander brothers heritage"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lokoja"
+  },
+  {
+    "id": "city-arochukwu",
+    "name": "Arochukwu",
+    "category": "historic",
+    "stateName": "Abia",
+    "stateId": "NG-AB",
+    "lon": 7.78,
+    "lat": 5.43,
+    "nickname": "Aro Confederacy capital · Long Juju (Ibini Ukpabi) oracle",
+    "founded": "16th–17th century; founding of the Aro-Igbo trading-military state",
+    "summary": "Spiritual and political capital of the Aro Confederacy — the famed Ibini Ukpabi oracle and pre-colonial Aro trading network.",
+    "description": "Arochukwu was the seat of the Aro Confederacy, a pre-colonial Igbo trading, judicial, and military state whose influence stretched across Igboland, the Lower Niger, and Cross River hinterlands. Its Ibini Ukpabi (Long Juju) oracle was a major judicial-pilgrimage site for eastern peoples. Aro traders also became deeply involved in the Atlantic slave trade; colonial military conquest ended Aro power in 1902 (Aro Expedition).",
+    "populationNote": "~140,000 (est.)",
+    "economy": "Heritage tourism, Aro cultural festivals, agriculture (yam, cassava, palm, cocoa).",
+    "climate": "Tropical rainforest fringe; high rainfall.",
+    "landmarks": [
+      "Ibini Ukpabi (Long Juju) Oracle Grotto",
+      "Aro Confederacy palace & shrines",
+      "Arochukwu Heritage Museum",
+      "Okigwe–Umuahia–Arochukwu 'Aro hills' scenic drive"
+    ],
+    "highlights": [
+      "Capital of the Aro Confederacy",
+      "Ibini Ukpabi (Long Juju) oracle grotto",
+      "Pre-colonial Igbo cultural landmark",
+      "Aro historical-heritage tourism"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Arochukwu"
+  },
+  {
+    "id": "city-okene",
+    "name": "Okene",
+    "category": "historic",
+    "stateName": "Kogi",
+    "stateId": "NG-KG",
+    "lon": 6.23,
+    "lat": 7.58,
+    "nickname": "Ebira (Igbirra) homeland · Ohinoyi of Ebiraland",
+    "founded": "Pre-17th century; consolidation of Ebira clans in the Niger-Benue trough",
+    "summary": "Cultural capital of the Ebira (Igbirra) people — famed for the Okene cloth weaving, music, and the Ohinoyi monarchy.",
+    "description": "Okene is the heartland of the Ebira (Igbirra, Ebira Tao) people of the central Nigeria Middle Belt. It is the seat of the Ohinoyi of Ebiraland and is famed across Nigeria for its distinctive Aso-Ofi weaving tradition of Ebira, its traditional Ekuechi masked festival, and its landmark Central Mosque on a hill overlooking the town. The district was also a late-colonial tin and columbite mining area.",
+    "populationNote": "~250,000 metro (est.)",
+    "economy": "Traditional weaving, textile exports, local government, agriculture (yam, cassava, guinea-corn, soybean), marble & mineral prospecting (Okene deposits).",
+    "climate": "Guinea savanna; slightly cooler at altitude.",
+    "landmarks": [
+      "Ohinoyi of Ebiraland Palace",
+      "Okene Central Mosque (hilltop landmark)",
+      "Ebira Ekuechi festival masked dances",
+      "Okene weaving quarters & textile markets"
+    ],
+    "highlights": [
+      "Cultural capital of Ebiraland",
+      "Ohinoyi of Ebiraland monarchy",
+      "Ekuechi masked festival",
+      "Ebira Aso-Ofi weaving heritage"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Okene"
+  },
+  {
+    "id": "city-daura",
+    "name": "Daura",
+    "category": "historic",
+    "stateName": "Katsina",
+    "stateId": "NG-KT",
+    "lon": 8.33,
+    "lat": 13.17,
+    "nickname": "Hausa Bakwai leading city · Bayajidda legend · Magajiya Daurama",
+    "founded": "c. 9th–10th century CE; foremost of the original Hausa Bakwai city-states",
+    "summary": "Legendary founding city of the Hausa civilisation — the Bayajidda/Serpent/Daura Wells origin myth and the Magajiya queen-mothers.",
+    "description": "Daura ranks as the spiritual cradle of Hausaland: the Bayajidda legend says a stranger from the east killed a snake (Sarki) who blocked the Kusugu Well, married Magajiya Daurama, and fathered the rulers of the seven Hausa Bakwai city-states. Daura was also the homeland of later Fulani clerical dynasties; the annual Daura Durbar is among Nigeria's grandest.",
+    "populationNote": "~120,000 historic centre (est.)",
+    "economy": "Durbar tourism, Islamic scholarship, agriculture (millet, sorghum, groundnut, cowpea), animal husbandry, handicrafts, traditional dye pits.",
+    "climate": "Sahel; hot, intense harmattan; very short rainy season.",
+    "landmarks": [
+      "Kusugu Well (Bayajidda snake-slayer shrine)",
+      "Emir of Daura's Palace (Sarkin Daura)",
+      "Daura Central Mosque",
+      "Daura Durbar parade ground",
+      "Magajiya Daurama historic quarter"
+    ],
+    "highlights": [
+      "Foremost Hausa Bakwai city-state",
+      "Bayajidda legend & Kusugu Well shrine",
+      "Daura Durbar — one of Nigeria's finest",
+      "Spiritual cradle of Hausaland"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Daura"
+  },
+  {
+    "id": "city-nguru",
+    "name": "Nguru",
+    "category": "historic",
+    "stateName": "Yobe",
+    "stateId": "NG-YO",
+    "lon": 10.27,
+    "lat": 12.88,
+    "nickname": "Trans-Saharan caravan city · Hadejia–Nguru wetlands",
+    "founded": "Pre-15th century; Kanuri–Hausa mixed caravan emporium",
+    "summary": "Historic trans-Saharan trade entrepot on the northern marches of Kanem–Bornu, famed for indigo dyeing and Nguru leather crafts.",
+    "description": "Nguru is a historic desert-edge city on the old Kanem–Bornu side of present-day Yobe State. It was a key stop for trans-Saharan caravans bringing salt, cloth, leather, and kola between Tripoli/Fez and the central Sudan. It is famed across the north for Nguru leatherwork (Moroccan-influenced embroidered slippers and leatherware) and the Hadejia–Nguru wetland (a RAMSAR migratory bird site).",
+    "populationNote": "~180,000 (est.)",
+    "economy": "Trans-sudanese market & handicrafts (Nguru leather, indigo dyeing), livestock, sorghum/millet agriculture, Hadejia–Nguru wetlands fishing, wildlife tourism.",
+    "climate": "Sahel; hot with brief rains.",
+    "landmarks": [
+      "Nguru Emir's Palace",
+      "Historic dye pits & tanneries",
+      "Hadejia–Nguru wetlands (RAMSAR)",
+      "Trans-Saharan caravan route memorials"
+    ],
+    "highlights": [
+      "Kanem–Bornu trans-Saharan caravan city",
+      "Nguru leather embroidery crafts",
+      "Hadejia–Nguru wetland (RAMSAR bird site)",
+      "Indigo dyeing & tanning heritage"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Nguru,_Yobe"
+  },
+  {
+    "id": "city-yola",
+    "name": "Yola",
+    "category": "historic",
+    "stateName": "Adamawa",
+    "stateId": "NG-AD",
+    "lon": 12.48,
+    "lat": 9.20,
+    "nickname": "Adamawa Emirate capital · Lamido of Adamawa · Benue headwaters",
+    "founded": "1841 (foundation of the Adamawa Fulani emirate by Modibo Adama)",
+    "summary": "Historic Fulani Adamawa emirate capital at the Benue headwaters, gateway to the Mambilla and Cameroon border highlands.",
+    "description": "Yola was founded as the capital of the great Adamawa Emirate (Fombina) — Modibo Adama's theocratic Fulani state that once stretched across the Cameroon–Nigeria border highlands. It is still the seat of the Lamido of Adamawa. Yola sits on the Benue river's upper reaches, with access to the Mambilla Plateau, Mandara Mountains, Gashaka-Gumti National Park, and trade routes into Cameroon and Central Africa.",
+    "populationNote": "~400,000 metro (Jimeta–Yola conurbation; est.)",
+    "economy": "State government, Benue river trade, livestock, agriculture (millet, guinea-corn, yams, soya), Mambilla coffee & highland produce, border commerce, eco-tourism (Gashaka Gumti & Mambilla).",
+    "climate": "Guinea–Sudan savanna transition; Benue river & highland influence.",
+    "landmarks": [
+      "Lamido of Adamawa Palace",
+      "Jimeta-Yola Benue river bridge & port",
+      "Mambilla Plateau access route",
+      "Gashaka-Gumti National Park gateway",
+      "Modibo Adama University"
+    ],
+    "highlights": [
+      "Capital of the Adamawa Emirate (Fombina)",
+      "Lamido of Adamawa royal seat",
+      "Gateway to Mambilla Plateau & Cameroon Highlands",
+      "Benue upper-reaches river trade"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Yola"
   }
 ]
