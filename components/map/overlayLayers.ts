@@ -15,6 +15,8 @@ import {
   registerLandformIcon,
   registerLandformIcons,
 } from "./landformIcons";
+import { registerWaterwayIcons } from "./waterwayIcons";
+import { registerResourceIcons } from "./resourceIcons";
 
 const INSERT_BELOW_NEIGHBORS = "neighbors-fill";
 const INSERT_ABOVE_STATES = "states-line";
@@ -86,6 +88,8 @@ export function addOverlayLayers(map: Map): void {
   registerCoastIcons(map);
   registerLakeIcons(map);
   registerLandformIcons(map);
+  registerWaterwayIcons(map);
+  registerResourceIcons(map);
   for (const layerId of OVERLAY_LAYER_IDS) {
     mountOverlayLayersFor(map, layerId);
   }
@@ -100,6 +104,8 @@ export function setOverlayVisibility(
   if (layerId === "cities") registerCityIcons(map);
   if (layerId === "coast") registerCoastIcons(map);
   if (layerId === "lakes") registerLakeIcons(map);
+  if (layerId === "waterways") registerWaterwayIcons(map);
+  if (layerId === "resources") registerResourceIcons(map);
   if (layerId === "landforms") {
     registerLandformIcons(map);
     removeStaleLandformLayers(map);
@@ -153,12 +159,13 @@ export function restackOverlayLayers(map: Map): void {
   }
 }
 
-/** Lakes, landforms, cities — always above states and LGA fills. */
+/** Lakes, landforms, cities, resources — always above states and LGA fills. */
 export function restackTopOverlayLayers(map: Map): void {
   const topIds = [
     ...OVERLAY_REGISTRY.lakes.layers.map((l) => l.id),
     ...OVERLAY_REGISTRY.landforms.layers.map((l) => l.id),
     ...OVERLAY_REGISTRY.cities.layers.map((l) => l.id),
+    ...OVERLAY_REGISTRY.resources.layers.map((l) => l.id),
   ];
   for (const id of topIds) {
     if (map.getLayer(id)) map.moveLayer(id);

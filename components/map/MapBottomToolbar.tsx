@@ -14,6 +14,7 @@ const LAYER_ACTIVE: Record<OverlayLayerId, string> = {
   coast: "bg-blue-100 text-blue-900 ring-1 ring-blue-300/80",
   landforms: "bg-amber-100 text-amber-900 ring-1 ring-amber-300/80",
   cities: "bg-slate-200 text-slate-900 ring-1 ring-slate-300/80",
+  resources: "bg-orange-100 text-orange-900 ring-1 ring-orange-300/80",
 };
 
 function LayerIcon({ id }: { id: OverlayLayerId }) {
@@ -80,6 +81,19 @@ function LayerIcon({ id }: { id: OverlayLayerId }) {
           <rect x="4" y="10" width="3" height="6" rx="0.5" opacity="0.85" />
           <rect x="8.5" y="6" width="3.5" height="10" rx="0.5" />
           <rect x="13.5" y="9" width="2.5" height="7" rx="0.5" opacity="0.85" />
+        </svg>
+      );
+    case "resources":
+      return (
+        <svg viewBox="0 0 20 20" fill="none" className={cls} aria-hidden>
+          <path
+            d="M10 2l2.2 4.47 4.93.72-3.57 3.48.84 4.91L10 13.77l-4.4 2.33.84-4.91L2.87 7.19l4.93-.72L10 2z"
+            fill="currentColor"
+            opacity="0.3"
+            stroke="currentColor"
+            strokeWidth="1.25"
+            strokeLinejoin="round"
+          />
         </svg>
       );
   }

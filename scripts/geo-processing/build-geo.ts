@@ -371,12 +371,132 @@ export async function buildGeo() {
     states,
   });
 
+  interface CatalogRow {
+    id: string;
+    name: string;
+    lon?: number;
+    lat?: number;
+    summary?: string;
+    resourceType?: string;
+    landformType?: string;
+    category?: string;
+    lakeCategory?: string;
+    type?: string;
+    statesCrossed?: string[];
+    landformLabel?: string;
+    resourceLabel?: string;
+  }
+
+  function readCatalog<T extends CatalogRow>(name: string): T[] {
+    const p = projectRoot(`data/overlays/catalog/${name}.json`);
+    if (!fs.existsSync(p)) return [];
+    return JSON.parse(fs.readFileSync(p, "utf-8")) as T[];
+  }
+
+  function centroidOf(
+    row: CatalogRow,
+    fallback?: [number, number]
+  ): [number, number] | undefined {
+    if (typeof row.lon === "number" && typeof row.lat === "number") {
+      return [row.lon, row.lat];
+    }
+    return fallback;
+  }
+
+  const landformsCatalog = readCatalog<CatalogRow>("landforms");
+  const resourcesCatalog = readCatalog<CatalogRow>("resources");
+  const citiesCatalog = readCatalog<CatalogRow>("cities");
+  const lakesCatalog = readCatalog<CatalogRow>("lakes");
+
+  const landformTypeLabels: Record<string, string> = {
+    plateau: "Plateau",
+    "mountain-range": "Mountain range",
+    hill: "Hills",
+    escarpment: "Escarpment",
+    inselberg: "Monolith",
+    peak: "Peak",
+    delta: "Delta",
+    basin: "Basin",
+    savanna: "Savanna",
+    forest: "Forest",
+    reserve: "Game reserve / Park",
+  };
+
+  const resourceTypeLabels: Record<string, string> = {
+    "crude-oil": "Crude oil",
+    "natural-gas": "Natural gas",
+    coal: "Coal",
+    "tin-columbite": "Tin & columbite",
+    "iron-ore": "Iron ore",
+    gold: "Gold",
+    limestone: "Limestone",
+    bitumen: "Bitumen",
+    "lead-zinc": "Lead & zinc",
+    "lithium-rare": "Lithium / rare earths",
+    marble: "Marble",
+    "salt-potash": "Salt & potash",
+  };
+
+  const cityCategoryLabels: Record<string, string> = {
+    "federal-capital": "Federal capital",
+    "mega-city": "Megacity",
+    "state-capital": "State capital",
+    commercial: "Commercial hub",
+    historic: "Historic city",
+    "port-city": "Port city",
+    industrial: "Industrial centre",
+    university: "University town",
+    regional: "Regional city",
+  };
+
+  const lakeCategoryLabels: Record<string, string> = {
+    natural: "Natural lake",
+    reservoir: "Reservoir / dam",
+    lagoon: "Coastal lagoon",
+    "power-station": "Hydro power station",
+  };
+
+  const landformCentroids: Record<string, [number, number]> = {
+    "landform-jos-plateau": [8.9, 9.6],
+    "landform-mambilla": [11.0, 7.0],
+    "landform-mandara": [13.55, 10.9],
+    "landform-niger-delta": [6.0, 5.0],
+    "landform-sokoto-basin": [5.5, 12.8],
+    "landform-guinea-savanna": [5.8, 8.8],
+    "landform-sudan-savanna": [8.0, 11.3],
+    "landform-sahel-savanna": [9.5, 13.2],
+    "landform-idanre": [4.75, 7.15],
+    "landform-shere-hills": [8.9, 9.95],
+    "landform-udi-escarpment": [7.5, 6.45],
+    "landform-oban-hills": [8.8, 5.4],
+    "landform-obudu-plateau": [9.6, 6.7],
+    "landform-gashaka-highlands": [11.6, 7.6],
+    "landform-shebshi": [9.6, 8.6],
+    "landform-alantika": [13.5, 10.2],
+    "landform-bauchi-plateau": [9.9, 10.4],
+    "landform-gotels": [12.15, 9.85],
+    "landform-kabwir": [9.72, 9.02],
+    "landform-kufena-hills": [7.48, 10.38],
+    "landform-erin-ijesha": [4.85, 7.58],
+    "landform-ezeagu-hills": [7.22, 6.38],
+    "landform-farin-ruwa": [8.72, 9.42],
+    "landform-sambisa-forest": [12.5, 11.0],
+    "landform-cross-river-np": [8.9, 5.8],
+    "landform-yankari-reserve": [9.95, 9.9],
+    "landform-okomu-forest": [5.4, 6.35],
+    "landform-kamuku-forest": [7.05, 10.75],
+    "landform-old-oyo-park": [4.05, 8.3],
+    "landform-kainji-park": [4.45, 9.9],
+    "landform-chad-basin-park": [13.0, 12.85],
+    "landform-edumanom-forest": [6.6, 5.05],
+  };
+
   const searchIndex = [
-    { id: "NG", name: "Nigeria", level: "country", parentId: null },
+    { id: "NG", name: "Nigeria", level: "country" as const, parentId: null },
     ...states.map((s) => ({
       id: s.id,
       name: s.name,
-      level: "state",
+      level: "state" as const,
       parentId: "NG",
       regionId: s.regionId,
       regionName: s.regionName,
@@ -385,12 +505,61 @@ export async function buildGeo() {
     ...lgas.map((l) => ({
       id: l.id,
       name: l.name,
-      level: "lga",
+      level: "lga" as const,
       parentId: l.parentId,
       stateName: l.stateName,
       regionId: l.regionId,
       bbox: l.bbox,
     })),
+    ...landformsCatalog.map((row) => {
+      const lfType = String(row.landformType ?? "hill");
+      return {
+        id: row.id,
+        name: row.name,
+        level: "landform" as const,
+        parentId: null,
+        layerId: "landforms" as const,
+        typeLabel: landformTypeLabels[lfType] ?? lfType,
+        stateName: row.statesCrossed?.[0],
+        centroid: centroidOf(row, landformCentroids[row.id]),
+        summary: row.summary,
+      };
+    }),
+    ...resourcesCatalog.map((row) => ({
+      id: row.id,
+      name: row.name,
+      level: "resource" as const,
+      parentId: null,
+      layerId: "resources" as const,
+      typeLabel: resourceTypeLabels[String(row.resourceType ?? "")] ?? "Mineral",
+      stateName: row.statesCrossed?.[0],
+      centroid: centroidOf(row),
+      summary: row.summary,
+    })),
+    ...citiesCatalog.map((row) => ({
+      id: row.id,
+      name: row.name,
+      level: "city" as const,
+      parentId: null,
+      layerId: "cities" as const,
+      typeLabel: cityCategoryLabels[String(row.category ?? "regional")] ?? "City",
+      centroid: centroidOf(row),
+      summary: row.summary,
+    })),
+    ...lakesCatalog.map((row) => {
+      const kind = row.type === "power-station" ? "power-station" : String(row.lakeCategory ?? "natural");
+      return {
+        id: row.id,
+        name: row.name,
+        level: "lake" as const,
+        parentId: null,
+        layerId: "lakes" as const,
+        typeLabel: lakeCategoryLabels[kind] ?? "Lake / hydro",
+        stateName: row.statesCrossed?.[0],
+        centroid: centroidOf(row),
+        summary: row.summary,
+      };
+    }),
   ];
   writeJson(projectRoot("public/search-index.json"), searchIndex);
 

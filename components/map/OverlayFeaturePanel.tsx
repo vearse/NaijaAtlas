@@ -12,13 +12,17 @@ import {
   POWER_PLANT_CATEGORY_LABELS,
   COAST_CATEGORY_LABELS,
   COAST_ZONE_LABELS,
+  RESOURCE_TYPE_LABELS,
+  WATERWAY_MILITARY_CATEGORY_LABELS,
   type CityCategory,
   type CoastCategory,
   type LakeCategory,
   type LandformSizeTier,
   type LandformType,
   type PowerPlantCategory,
+  type ResourceType,
   type SelectedOverlayFeature,
+  type WaterwayMilitaryCategory,
 } from "@/types/overlay";
 import type { StateLocation } from "@/types/location";
 
@@ -146,6 +150,16 @@ function landformSizeMeta(value: unknown) {
   return LANDFORM_SIZE_LABELS[value as LandformSizeTier] ?? null;
 }
 
+function resourceTypeMeta(value: unknown) {
+  if (typeof value !== "string") return null;
+  return RESOURCE_TYPE_LABELS[value as ResourceType] ?? null;
+}
+
+function militaryCategoryMeta(value: unknown) {
+  if (typeof value !== "string") return null;
+  return WATERWAY_MILITARY_CATEGORY_LABELS[value as WaterwayMilitaryCategory] ?? null;
+}
+
 function capacityLabel(value: unknown): string | null {
   if (typeof value === "number" && Number.isFinite(value)) {
     return value > 0 ? `${value.toLocaleString()} MW` : "Multipurpose (no generation)";
@@ -167,6 +181,8 @@ export default function OverlayFeaturePanel({
   const coastZone = coastZoneMeta(props.id, props.coastCategory);
   const landformType = landformTypeMeta(props.landformType);
   const landformSize = landformSizeMeta(props.sizeTier);
+  const resourceType = resourceTypeMeta(props.resourceType);
+  const militaryCat = militaryCategoryMeta(props.militaryCategory);
   const featureKind = text(props.featureKind);
 
   const relatedStateNames = [
@@ -231,6 +247,22 @@ export default function OverlayFeaturePanel({
             {landformSize && (
               <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-[11px] font-medium text-slate-600">
                 {landformSize.label} · {landformSize.description}
+              </span>
+            )}
+            {resourceType && (
+              <span
+                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white"
+                style={{ backgroundColor: resourceType.color }}
+              >
+                {resourceType.label}
+              </span>
+            )}
+            {militaryCat && (
+              <span
+                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white"
+                style={{ backgroundColor: militaryCat.color }}
+              >
+                {militaryCat.branch} · {militaryCat.label}
               </span>
             )}
             {plantCat && (
@@ -302,6 +334,9 @@ export default function OverlayFeaturePanel({
         <DetailRow label="Area" value={text(props.areaNote)} />
         <DetailRow label="Population" value={text(props.populationNote)} />
         <DetailRow label="Elevation" value={text(props.elevationNote)} />
+        <DetailRow label="Mineral type" value={text(props.type)} />
+        <DetailRow label="Proven reserves" value={text(props.reserveNote)} />
+        <DetailRow label="Production" value={text(props.productionNote)} />
         <DetailRow label="Cargo / trade" value={text(props.cargoNote)} />
         <DetailRow label="Environment" value={text(props.environment)} />
         <DetailRow label="Climate" value={text(props.climate)} />
@@ -309,10 +344,14 @@ export default function OverlayFeaturePanel({
         <DetailRow label="Ecology" value={text(props.ecology)} />
         <DetailRow label="Usage" value={text(props.usage)} />
         <DetailRow label="Landscape" value={text(props.character)} />
+        <DetailRow label="Soil & agriculture" value={text(props.agriculture)} />
         <DetailRow label="Significance" value={text(props.significance)} />
       </dl>
 
       <BulletList label="Highlights" items={parseStringArray(props.highlights)} />
+      <BulletList label="Downstream products" items={parseStringArray(props.products)} />
+      <BulletList label="Major crops & vegetation" items={parseStringArray(props.crops)} />
+      <BulletList label="Planting notes" items={parseStringArray(props.planting)} />
       <ChipList label="Landmarks" items={parseStringArray(props.landmarks)} />
       <ChipList label="Tributaries" items={parseStringArray(props.tributaries)} />
 

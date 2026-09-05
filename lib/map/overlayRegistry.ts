@@ -152,17 +152,24 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
     sourceId: "overlays-waterways",
     geoPath: "/geo/overlays/waterways.geojson",
     slot: "aboveStates",
-    interactiveLayerIds: ["overlay-waterways-line", "overlay-waterways-labels"],
+    interactiveLayerIds: [
+      "overlay-waterways-line",
+      "overlay-waterways-labels",
+      "overlay-waterways-mil-icons",
+      "overlay-waterways-mil-labels",
+    ],
     layers: [
       {
         id: "overlay-waterways-line",
         type: "line",
+        filter: ["==", ["get", "featureKind"], "line"],
         paint: WATERWAY_LINE_PAINT,
         layout: { visibility: "none", "line-cap": "round", "line-join": "round" },
       },
       {
         id: "overlay-waterways-labels",
         type: "symbol",
+        filter: ["==", ["get", "featureKind"], "line"],
         minzoom: 6,
         layout: {
           visibility: "none",
@@ -181,6 +188,58 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
         },
         paint: {
           "text-color": "#1e40af",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 2,
+        },
+      },
+      {
+        id: "overlay-waterways-mil-icons",
+        type: "symbol",
+        filter: ["==", ["get", "featureKind"], "point"],
+        minzoom: 4,
+        layout: {
+          visibility: "none",
+          "icon-image": [
+            "concat",
+            "waterway-icon-",
+            ["coalesce", ["get", "militaryCategory"], "army-division"],
+          ],
+          "icon-size": ["interpolate", ["linear"], ["zoom"], 4, 0.68, 7, 0.9, 11, 1.15],
+          "icon-allow-overlap": true,
+          "icon-ignore-placement": true,
+          "icon-padding": 10,
+          "icon-anchor": "center",
+        },
+      },
+      {
+        id: "overlay-waterways-mil-labels",
+        type: "symbol",
+        filter: ["==", ["get", "featureKind"], "point"],
+        minzoom: 6,
+        layout: {
+          visibility: "none",
+          "text-field": ["get", "name"],
+          "text-size": 10,
+          "text-offset": [0, 1.4],
+          "text-font": ["Open Sans Semibold"],
+          "text-anchor": "top",
+          "text-optional": true,
+          "text-allow-overlap": false,
+        },
+        paint: {
+          "text-color": [
+            "match",
+            ["coalesce", ["get", "militaryCategory"], "army-division"],
+            "army-division",
+            "#365314",
+            "navy-base",
+            "#0f172a",
+            "airforce-hq",
+            "#075985",
+            "airforce-base",
+            "#1e3a8a",
+            "#0f172a",
+          ],
           "text-halo-color": "#ffffff",
           "text-halo-width": 2,
         },
@@ -635,8 +694,6 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
             "city-icon-industrial",
             "university",
             "city-icon-university",
-            "army-division",
-            "city-icon-army-division",
             "city-icon-regional",
           ],
           "icon-size": ["interpolate", ["linear"], ["zoom"], 4, 0.55, 7, 0.78, 11, 1],
@@ -668,6 +725,81 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
       },
     ],
   },
+  resources: {
+    id: "resources",
+    sourceId: "overlays-resources",
+    geoPath: "/geo/overlays/resources.geojson",
+    slot: "aboveLgas",
+    interactiveLayerIds: ["overlay-resources-icons", "overlay-resources-labels"],
+    layers: [
+      {
+        id: "overlay-resources-icons",
+        type: "symbol",
+        minzoom: 4,
+        layout: {
+          visibility: "none",
+          "icon-image": [
+            "concat",
+            "resource-icon-",
+            ["coalesce", ["get", "resourceType"], "crude-oil"],
+          ],
+          "icon-size": ["interpolate", ["linear"], ["zoom"], 4, 0.72, 7, 0.95, 11, 1.2],
+          "icon-allow-overlap": true,
+          "icon-ignore-placement": true,
+          "icon-padding": 8,
+          "icon-anchor": "center",
+        },
+      },
+      {
+        id: "overlay-resources-labels",
+        type: "symbol",
+        minzoom: 6,
+        layout: {
+          visibility: "none",
+          "text-field": ["get", "name"],
+          "text-size": 10,
+          "text-offset": [0, 1.45],
+          "text-font": ["Open Sans Semibold"],
+          "text-anchor": "top",
+          "text-optional": true,
+          "text-allow-overlap": false,
+        },
+        paint: {
+          "text-color": [
+            "match",
+            ["coalesce", ["get", "resourceType"], "crude-oil"],
+            "crude-oil",
+            "#1c1917",
+            "natural-gas",
+            "#b45309",
+            "coal",
+            "#292524",
+            "tin-columbite",
+            "#475569",
+            "iron-ore",
+            "#78350f",
+            "gold",
+            "#92400e",
+            "limestone",
+            "#57534e",
+            "bitumen",
+            "#44403c",
+            "lead-zinc",
+            "#334155",
+            "lithium-rare",
+            "#0369a1",
+            "marble",
+            "#44403c",
+            "salt-potash",
+            "#92400e",
+            "#0f172a",
+          ],
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 2,
+        },
+      },
+    ],
+  },
 };
 
 export function allOverlayLayerIds(): string[] {
@@ -680,7 +812,7 @@ export function interactiveLayersForActive(
   active: Set<OverlayLayerId>
 ): string[] {
   const ids: string[] = [];
-  for (const layerId of ["cities", "waterways", "coast", "lakes", "landforms"] as OverlayLayerId[]) {
+  for (const layerId of ["cities", "waterways", "coast", "lakes", "landforms", "resources"] as OverlayLayerId[]) {
     if (!active.has(layerId)) continue;
     ids.push(...OVERLAY_REGISTRY[layerId].interactiveLayerIds);
   }

@@ -166,6 +166,12 @@ const LANDFORM_POLYGONS: Record<string, [number, number][]> = {
   "landform-guinea-savanna": [
     [3.45, 7.45], [8.05, 7.5], [8.08, 10.05], [3.48, 10.0], [3.45, 7.45],
   ],
+  "landform-sudan-savanna": [
+    [5.55, 10.05], [9.85, 10.08], [10.2, 12.55], [4.5, 12.52], [5.55, 10.05],
+  ],
+  "landform-sahel-savanna": [
+    [4.5, 12.55], [12.25, 12.58], [14.2, 13.85], [3.2, 13.8], [4.5, 12.55],
+  ],
   "landform-idanre": [
     [4.58, 6.96], [4.94, 6.98], [4.98, 7.24], [4.82, 7.32], [4.56, 7.26], [4.58, 6.96],
   ],
@@ -542,7 +548,7 @@ function manualWaterwayFeature(row: CatalogRow): Feature | null {
   if (!coords?.length) return null;
   return {
     type: "Feature",
-    properties: { id: row.id, name: row.name },
+    properties: { id: row.id, name: row.name, featureKind: "line" },
     geometry: { type: "LineString", coordinates: coords },
   };
 }
@@ -573,6 +579,7 @@ function buildWaterways(catalog: CatalogRow[]): Feature[] {
         id: catalogId,
         name: row?.name ?? rawName,
         waterwayClass: row?.waterwayClass ?? "tributary",
+        featureKind: "line",
       },
     };
 
@@ -588,16 +595,40 @@ function buildWaterways(catalog: CatalogRow[]): Feature[] {
     if (manual) byCatalogId.set(row.id, manual);
   }
 
-  const missing = catalog.filter((row) => !byCatalogId.has(row.id));
-  if (missing.length > 0) {
+  const lineFeatures = catalog
+    .map((row) => byCatalogId.get(row.id))
+    .filter((f): f is Feature => f != null);
+
+  const missingLineRows = catalog.filter(
+    (row) => row.waterwayClass !== "military" && !byCatalogId.has(row.id)
+  );
+  if (missingLineRows.length > 0) {
     console.warn(
-      `⚠ Waterways missing geometry: ${missing.map((r) => r.id).join(", ")}`
+      `⚠ Waterways missing line geometry: ${missingLineRows.map((r) => r.id).join(", ")}`
     );
   }
 
-  return catalog
-    .map((row) => byCatalogId.get(row.id))
-    .filter((f): f is Feature => f != null);
+  const pointFeatures: Feature[] = [];
+  for (const row of catalog) {
+    if (row.waterwayClass !== "military") continue;
+    const lon = Number(row.lon);
+    const lat = Number(row.lat);
+    if (!Number.isFinite(lon) || !Number.isFinite(lat)) continue;
+    pointFeatures.push({
+      type: "Feature",
+      properties: {
+        id: row.id,
+        name: row.name,
+        featureKind: "point",
+        waterwayClass: "military",
+        militaryBranch: row.militaryBranch,
+        militaryCategory: row.militaryCategory,
+      },
+      geometry: { type: "Point", coordinates: [lon, lat] },
+    });
+  }
+
+  return [...lineFeatures, ...pointFeatures];
 }
 
 const LAKE_POLYGONS: Record<string, [number, number][]> = {
@@ -805,6 +836,26 @@ function buildCoast(
   return features;
 }
 
+function buildResources(catalog: CatalogRow[]): Feature[] {
+  const features: Feature[] = [];
+  for (const row of catalog) {
+    const lon = Number(row.lon);
+    const lat = Number(row.lat);
+    if (!Number.isFinite(lon) || !Number.isFinite(lat)) continue;
+    features.push({
+      type: "Feature",
+      properties: {
+        id: row.id,
+        name: row.name,
+        featureKind: "point",
+        resourceType: row.resourceType,
+      },
+      geometry: { type: "Point", coordinates: [lon, lat] },
+    });
+  }
+  return features;
+}
+
 export async function buildOverlays(): Promise<void> {
   const waterwaysCatalog = readCatalog("waterways");
   const lakesCatalog = readCatalog("lakes");
@@ -813,6 +864,7 @@ export async function buildOverlays(): Promise<void> {
   const coastCatalog = readCatalog("coast");
   const portsCatalog = readCatalog("ports");
   const coastFeaturesCatalog = readCatalog("coast-features");
+  const resourcesCatalog = readCatalog("resources");
 
   const adm0 = readGeoJson("public/geo/nigeria-adm0.geojson");
 
@@ -833,6 +885,10 @@ export async function buildOverlays(): Promise<void> {
   writeGeoJson(
     projectRoot("public/geo/overlays/cities.geojson"),
     fc(buildCities(citiesCatalog), citiesCatalog, "cities")
+  );
+  writeGeoJson(
+    projectRoot("public/geo/overlays/resources.geojson"),
+    fc(buildResources(resourcesCatalog), resourcesCatalog, "resources")
   );
 
   const coastFeatures = buildCoast(
@@ -860,7 +916,7 @@ export async function buildOverlays(): Promise<void> {
   });
 
   console.log(
-    `✓ Overlays: waterways(${waterwaysCatalog.length}) lakes(${lakesCatalog.length}) landforms(${landformsCatalog.length}) cities(${citiesCatalog.length}) coast(${coastMerged.length})`
+    `✓ Overlays: waterways(${waterwaysCatalog.length}) lakes(${lakesCatalog.length}) landforms(${landformsCatalog.length}) cities(${citiesCatalog.length}) coast(${coastMerged.length}) resources(${resourcesCatalog.length})`
   );
 }
 

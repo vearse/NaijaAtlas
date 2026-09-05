@@ -4,8 +4,19 @@ import PopulationBarChart from "@/components/charts/PopulationBarChart";
 import CountryProfile from "@/components/compare/CountryProfile";
 import { totalLandAreaKm2 } from "@/lib/compare/landArea";
 import { formatAreaKm2 } from "@/lib/map/metrics";
+import { useMapStore } from "@/lib/store/mapStore";
 import type { CompareBundle } from "@/types/compare";
 import type { StateLocation } from "@/types/location";
+import generalData from "@/data/compare/country/general.json";
+
+interface LanguageEntry {
+  name: string;
+  role: string;
+  wikiUrl: string;
+}
+
+const ngGeneral = (generalData as { NG: { languagesList?: LanguageEntry[] } }).NG;
+const languagesList = ngGeneral.languagesList ?? [];
 
 interface NigeriaOverviewProps {
   states: StateLocation[];
@@ -21,6 +32,7 @@ export default function NigeriaOverview({
     compareBundle,
     states.map((s) => s.id)
   );
+  const openWikiModal = useMapStore((s) => s.openWikiModal);
 
   return (
     <div className="space-y-6">
@@ -66,6 +78,52 @@ export default function NigeriaOverview({
           <dd className="text-2xl font-bold text-ng-green mt-0.5">6</dd>
         </div>
       </dl>
+
+      <div>
+        <label
+          htmlFor="country-language-select"
+          className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 mb-2 flex items-center justify-between"
+        >
+          <span>Languages</span>
+          <span className="text-slate-400/80 font-normal normal-case tracking-normal text-[10px]">
+            Select a language to read more
+          </span>
+        </label>
+        <div className="flex gap-2 items-stretch">
+          <div className="relative flex-1">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm" aria-hidden>
+              🗣️
+            </span>
+            <select
+              id="country-language-select"
+              onChange={(e) => {
+                const url = e.target.value;
+                if (!url) return;
+                const entry = languagesList.find((l) => l.wikiUrl === url);
+                openWikiModal(
+                  url,
+                  entry ? `${entry.name} language` : "Language"
+                );
+                e.target.value = "";
+              }}
+              defaultValue=""
+              className="w-full rounded-xl border border-slate-200 bg-white pl-9 pr-8 py-2.5 text-sm shadow-sm min-h-[42px] focus:outline-none focus:ring-2 focus:ring-ng-green/40 appearance-none cursor-pointer"
+            >
+              <option value="" disabled>
+                Select a language…
+              </option>
+              {languagesList.map((lang) => (
+                <option key={lang.wikiUrl} value={lang.wikiUrl}>
+                  {lang.name} — {lang.role}
+                </option>
+              ))}
+            </select>
+            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none" aria-hidden>
+              ▾
+            </span>
+          </div>
+        </div>
+      </div>
 
       <div>
         <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">

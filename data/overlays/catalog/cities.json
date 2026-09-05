@@ -14,8 +14,18 @@
     "populationNote": "~3.8 million metro (est.)",
     "economy": "Public administration, construction, services, diplomacy, and a growing private-sector corridor along the airport road.",
     "climate": "Guinea savanna; marked wet and dry seasons, cooler nights than the coast.",
-    "landmarks": ["Aso Rock", "National Mosque", "National Christian Centre", "Millennium Park", "Zuma Rock (nearby)"],
-    "highlights": ["Federal capital since 1991", "Purpose-built planned city", "Seat of the Three Arms Zone"],
+    "landmarks": [
+      "Aso Rock",
+      "National Mosque",
+      "National Christian Centre",
+      "Millennium Park",
+      "Zuma Rock (nearby)"
+    ],
+    "highlights": [
+      "Federal capital since 1991",
+      "Purpose-built planned city",
+      "Seat of the Three Arms Zone"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Abuja"
   },
   {
@@ -33,8 +43,17 @@
     "populationNote": "~21 million metro (est.)",
     "economy": "Finance, trade, ports, entertainment, manufacturing, and the largest consumer market in West Africa.",
     "climate": "Tropical monsoon; high humidity, two rainfall peaks.",
-    "landmarks": ["Lagos Lagoon", "National Theatre", "Tarkwa Bay", "Lekki Conservation Centre"],
-    "highlights": ["Former capital (until 1991)", "Apapa container hub", "Nollywood and Afrobeats centre"],
+    "landmarks": [
+      "Lagos Lagoon",
+      "National Theatre",
+      "Tarkwa Bay",
+      "Lekki Conservation Centre"
+    ],
+    "highlights": [
+      "Former capital (until 1991)",
+      "Apapa container hub",
+      "Nollywood and Afrobeats centre"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Lagos"
   },
   {
@@ -44,7 +63,7 @@
     "stateName": "Kano",
     "stateId": "NG-KN",
     "lon": 8.52,
-    "lat": 12.0,
+    "lat": 12,
     "nickname": "Centre of Commerce",
     "founded": "c. 999 (Kano Chronicle); walled Hausa city-state",
     "summary": "Historic Hausa commercial capital of the north; still Nigeria's largest city by traditional urban core after Lagos.",
@@ -52,8 +71,17 @@
     "populationNote": "~4 million+ urban (est.)",
     "economy": "Wholesale trade, leather, textiles, groundnuts, and agro-processing.",
     "climate": "Sudano-Sahelian; long dry season, brief intense rains.",
-    "landmarks": ["Kurmi Market", "Gidan Rumfa (Emir's Palace)", "ancient city walls", "Dala Hill"],
-    "highlights": ["Hausa city-state heritage", "Trans-Saharan trade node", "Kano State capital"],
+    "landmarks": [
+      "Kurmi Market",
+      "Gidan Rumfa (Emir's Palace)",
+      "ancient city walls",
+      "Dala Hill"
+    ],
+    "highlights": [
+      "Hausa city-state heritage",
+      "Trans-Saharan trade node",
+      "Kano State capital"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Kano_(city)"
   },
   {
@@ -71,8 +99,17 @@
     "populationNote": "~3.6 million (est.)",
     "economy": "Government, cocoa and food trade, publishing, education, and services.",
     "climate": "Tropical wet-and-dry; rainforest–savanna transition.",
-    "landmarks": ["University of Ibadan", "Cocoa House", "Mapo Hall", "Bower's Tower"],
-    "highlights": ["Oyo State capital", "First university in Nigeria", "Western Region capital historically"],
+    "landmarks": [
+      "University of Ibadan",
+      "Cocoa House",
+      "Mapo Hall",
+      "Bower's Tower"
+    ],
+    "highlights": [
+      "Oyo State capital",
+      "First university in Nigeria",
+      "Western Region capital historically"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Ibadan"
   },
   {
@@ -90,8 +127,16 @@
     "populationNote": "~3 million metro (est.)",
     "economy": "Petroleum, shipping, fabrication, and services.",
     "climate": "Equatorial; heavy rainfall and mangrove hinterland.",
-    "landmarks": ["Port Harcourt Port", "Isaac Boro Park", "Bonny River approaches"],
-    "highlights": ["Rivers State capital", "Oil & gas headquarters", "Eastern seaport"],
+    "landmarks": [
+      "Port Harcourt Port",
+      "Isaac Boro Park",
+      "Bonny River approaches"
+    ],
+    "highlights": [
+      "Rivers State capital",
+      "Oil & gas headquarters",
+      "Eastern seaport"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Port_Harcourt"
   },
   {
@@ -109,8 +154,16 @@
     "populationNote": "~1.8 million (est.)",
     "economy": "Government, rubber, oil-palm, crafts, and regional trade.",
     "climate": "Tropical rainforest edge; humid.",
-    "landmarks": ["Oba's Palace", "Benin Moat (Iya)", "National Museum Benin"],
-    "highlights": ["Benin bronzes heritage", "Edo State capital", "Historic earthworks"],
+    "landmarks": [
+      "Oba's Palace",
+      "Benin Moat (Iya)",
+      "National Museum Benin"
+    ],
+    "highlights": [
+      "Benin bronzes heritage",
+      "Edo State capital",
+      "Historic earthworks"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Benin_City"
   },
   {
@@ -128,8 +181,16 @@
     "populationNote": "~1.6 million (est.)",
     "economy": "Manufacturing, refining (historically), defence, rail, and agriculture trade.",
     "climate": "Guinea savanna; distinct harmattan.",
-    "landmarks": ["Kaduna River", "Murtala Square", "railway junction"],
-    "highlights": ["Kaduna State capital", "Former Northern Region capital", "Industrial & military centre"],
+    "landmarks": [
+      "Kaduna River",
+      "Murtala Square",
+      "railway junction"
+    ],
+    "highlights": [
+      "Kaduna State capital",
+      "Former Northern Region capital",
+      "Industrial & military centre"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Kaduna"
   },
   {
@@ -147,8 +208,16 @@
     "populationNote": "~800,000 (est.)",
     "economy": "Government, services, remnant mining heritage, and regional commerce.",
     "climate": "Tropical; hills and escarpment.",
-    "landmarks": ["Ngwo Pine Forest", "coal mines heritage", "Nike Lake (nearby)"],
-    "highlights": ["Enugu State capital", "Eastern Region capital historically", "Coal heritage"],
+    "landmarks": [
+      "Ngwo Pine Forest",
+      "coal mines heritage",
+      "Nike Lake (nearby)"
+    ],
+    "highlights": [
+      "Enugu State capital",
+      "Eastern Region capital historically",
+      "Coal heritage"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Enugu"
   },
   {
@@ -166,8 +235,16 @@
     "populationNote": "~1.1 million+ (est., highly variable)",
     "economy": "Livestock, trade with Chad/Cameroon/Niger, services.",
     "climate": "Sahel; very hot dry season.",
-    "landmarks": ["Shehu's Palace", "Lake Chad hinterland", "University of Maiduguri"],
-    "highlights": ["Borno State capital", "Kanem-Borno heritage", "Sahel trade node"],
+    "landmarks": [
+      "Shehu's Palace",
+      "Lake Chad hinterland",
+      "University of Maiduguri"
+    ],
+    "highlights": [
+      "Borno State capital",
+      "Kanem-Borno heritage",
+      "Sahel trade node"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Maiduguri"
   },
   {
@@ -185,8 +262,17 @@
     "populationNote": "~900,000 (est.)",
     "economy": "Mining heritage, tourism, education, brewing, and services.",
     "climate": "Highland; cooler than the plains, wet summers.",
-    "landmarks": ["Jos Museum", "Shere Hills", "Riyom Rock", "Jos Wildlife Park"],
-    "highlights": ["Plateau State capital", "Tin mining history", "Tourism highland"],
+    "landmarks": [
+      "Jos Museum",
+      "Shere Hills",
+      "Riyom Rock",
+      "Jos Wildlife Park"
+    ],
+    "highlights": [
+      "Plateau State capital",
+      "Tin mining history",
+      "Tourism highland"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Jos"
   },
   {
@@ -204,8 +290,16 @@
     "populationNote": "~1 million (est.)",
     "economy": "Government, education, agriculture trade, crafts.",
     "climate": "Guinea savanna.",
-    "landmarks": ["Emir's Palace", "Sobi Hill", "University of Ilorin"],
-    "highlights": ["Kwara State capital", "Cultural crossroads", "Major university city"],
+    "landmarks": [
+      "Emir's Palace",
+      "Sobi Hill",
+      "University of Ilorin"
+    ],
+    "highlights": [
+      "Kwara State capital",
+      "Cultural crossroads",
+      "Major university city"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Ilorin"
   },
   {
@@ -223,8 +317,16 @@
     "populationNote": "~600,000 (est.)",
     "economy": "Cement, brewing, government, and Lagos hinterland industry.",
     "climate": "Tropical; rainforest–savanna mix.",
-    "landmarks": ["Olumo Rock", "Centenary Hall", "Alake's Palace"],
-    "highlights": ["Ogun State capital", "Egba heritage", "Olumo Rock"],
+    "landmarks": [
+      "Olumo Rock",
+      "Centenary Hall",
+      "Alake's Palace"
+    ],
+    "highlights": [
+      "Ogun State capital",
+      "Egba heritage",
+      "Olumo Rock"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Abeokuta"
   },
   {
@@ -242,8 +344,16 @@
     "populationNote": "~500,000 (est.)",
     "economy": "Port, tourism, government, and cross-border trade with Cameroon.",
     "climate": "Equatorial rainforest; very wet.",
-    "landmarks": ["Calabar Carnival", "Old Residency Museum", "Marina resort"],
-    "highlights": ["Cross River State capital", "Historic seaport", "Carnival city"],
+    "landmarks": [
+      "Calabar Carnival",
+      "Old Residency Museum",
+      "Marina resort"
+    ],
+    "highlights": [
+      "Cross River State capital",
+      "Historic seaport",
+      "Carnival city"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Calabar"
   },
   {
@@ -261,8 +371,16 @@
     "populationNote": "~600,000 (est.)",
     "economy": "Livestock, grains, leather, government, and religious pilgrimage-related services.",
     "climate": "Sahel; short rains, intense harmattan.",
-    "landmarks": ["Sultan's Palace", "Hubbare (Shehu's tomb)", "Sokoto River"],
-    "highlights": ["Sokoto State capital", "Caliphate capital", "Sultanate seat"],
+    "landmarks": [
+      "Sultan's Palace",
+      "Hubbare (Shehu's tomb)",
+      "Sokoto River"
+    ],
+    "highlights": [
+      "Sokoto State capital",
+      "Caliphate capital",
+      "Sultanate seat"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Sokoto"
   },
   {
@@ -280,8 +398,16 @@
     "populationNote": "~500,000 (est.)",
     "economy": "Agriculture trade, government, river and rail logistics.",
     "climate": "Guinea savanna; riverine flooding risk.",
-    "landmarks": ["Benue River bridge", "Makurdi beachfront", "University of Agriculture"],
-    "highlights": ["Benue State capital", "Benue River crossing", "Agricultural market"],
+    "landmarks": [
+      "Benue River bridge",
+      "Makurdi beachfront",
+      "University of Agriculture"
+    ],
+    "highlights": [
+      "Benue State capital",
+      "Benue River crossing",
+      "Agricultural market"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Makurdi"
   },
   {
@@ -299,8 +425,14 @@
     "populationNote": "~500,000+ (est.)",
     "economy": "Government, oil-state services, construction, and trade.",
     "climate": "Equatorial; high rainfall.",
-    "landmarks": ["Ibom Tropicana", "Godswill Akpabio International Stadium"],
-    "highlights": ["Akwa Ibom State capital", "Late-20th-century planned capital"],
+    "landmarks": [
+      "Ibom Tropicana",
+      "Godswill Akpabio International Stadium"
+    ],
+    "highlights": [
+      "Akwa Ibom State capital",
+      "Late-20th-century planned capital"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Uyo"
   },
   {
@@ -318,8 +450,14 @@
     "populationNote": "~500,000 (est.)",
     "economy": "Government, hospitality, trade, and small manufacturing.",
     "climate": "Tropical rainforest.",
-    "landmarks": ["Mbari cultural centres", "Otamiri River"],
-    "highlights": ["Imo State capital", "Hospitality hub"],
+    "landmarks": [
+      "Mbari cultural centres",
+      "Otamiri River"
+    ],
+    "highlights": [
+      "Imo State capital",
+      "Hospitality hub"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Owerri"
   },
   {
@@ -337,8 +475,14 @@
     "populationNote": "~400,000 (est.)",
     "economy": "Government, education, crafts heritage, and services.",
     "climate": "Tropical.",
-    "landmarks": ["Awka traditional smithing heritage", "UNIZIK campus"],
-    "highlights": ["Anambra State capital", "Historic blacksmithing"],
+    "landmarks": [
+      "Awka traditional smithing heritage",
+      "UNIZIK campus"
+    ],
+    "highlights": [
+      "Anambra State capital",
+      "Historic blacksmithing"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Awka"
   },
   {
@@ -356,8 +500,15 @@
     "populationNote": "~400,000 (est.)",
     "economy": "Government, hospitality, Nollywood production, and Niger-crossing trade.",
     "climate": "Tropical; riverine.",
-    "landmarks": ["River Niger", "Niger Bridge", "Asaba International Airport"],
-    "highlights": ["Delta State capital", "Niger River crossing"],
+    "landmarks": [
+      "River Niger",
+      "Niger Bridge",
+      "Asaba International Airport"
+    ],
+    "highlights": [
+      "Delta State capital",
+      "Niger River crossing"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Asaba,_Delta"
   },
   {
@@ -375,8 +526,14 @@
     "populationNote": "~350,000 (est.)",
     "economy": "Oil-state government, services, and river transport.",
     "climate": "Equatorial delta; flooding.",
-    "landmarks": ["Epie Creek", "Oxbow lake parks"],
-    "highlights": ["Bayelsa State capital", "Delta wetland city"],
+    "landmarks": [
+      "Epie Creek",
+      "Oxbow lake parks"
+    ],
+    "highlights": [
+      "Bayelsa State capital",
+      "Delta wetland city"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Yenagoa"
   },
   {
@@ -394,8 +551,14 @@
     "populationNote": "~350,000 (est.)",
     "economy": "Government, rail, agriculture trade, hydro hinterland.",
     "climate": "Guinea savanna.",
-    "landmarks": ["Minna railway", "nearby Gurara Falls"],
-    "highlights": ["Niger State capital", "Railway junction"],
+    "landmarks": [
+      "Minna railway",
+      "nearby Gurara Falls"
+    ],
+    "highlights": [
+      "Niger State capital",
+      "Railway junction"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Minna"
   },
   {
@@ -413,8 +576,16 @@
     "populationNote": "~200,000 (est.)",
     "economy": "Government, river trade, transport, and tourism potential.",
     "climate": "Riverine guinea savanna; hot.",
-    "landmarks": ["Niger–Benue confluence", "Mount Patti", "Lord Lugard House"],
-    "highlights": ["Kogi State capital", "Confluence of Nigeria's two great rivers", "Early colonial capital"],
+    "landmarks": [
+      "Niger–Benue confluence",
+      "Mount Patti",
+      "Lord Lugard House"
+    ],
+    "highlights": [
+      "Kogi State capital",
+      "Confluence of Nigeria's two great rivers",
+      "Early colonial capital"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Lokoja"
   },
   {
@@ -432,8 +603,16 @@
     "populationNote": "~1.5 million metro (est.)",
     "economy": "Wholesale and retail trade, river port remnants, manufacturing hinterland.",
     "climate": "Tropical; riverine.",
-    "landmarks": ["Onitsha Main Market", "Niger River waterfront", "Holy Trinity Cathedral"],
-    "highlights": ["Largest market complex in West Africa", "Niger trading city", "Igbo commercial capital"],
+    "landmarks": [
+      "Onitsha Main Market",
+      "Niger River waterfront",
+      "Holy Trinity Cathedral"
+    ],
+    "highlights": [
+      "Largest market complex in West Africa",
+      "Niger trading city",
+      "Igbo commercial capital"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Onitsha"
   },
   {
@@ -451,8 +630,16 @@
     "populationNote": "~1 million+ (est.)",
     "economy": "Light manufacturing, leather, textiles, and wholesale markets.",
     "climate": "Tropical rainforest.",
-    "landmarks": ["Ariaria Market", "Aba River", "Enyimba Stadium"],
-    "highlights": ["Made-in-Aba manufacturing", "Ariaria Market", "Not the state capital"],
+    "landmarks": [
+      "Ariaria Market",
+      "Aba River",
+      "Enyimba Stadium"
+    ],
+    "highlights": [
+      "Made-in-Aba manufacturing",
+      "Ariaria Market",
+      "Not the state capital"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Aba,_Nigeria"
   },
   {
@@ -470,8 +657,16 @@
     "populationNote": "~800,000 metro (est.)",
     "economy": "Petroleum refining and services, port, and commerce.",
     "climate": "Equatorial delta.",
-    "landmarks": ["Warri Port", "refinery complex", "Warri Kingdom heritage"],
-    "highlights": ["Oil-city agglomeration", "Warri Port", "Refinery town"],
+    "landmarks": [
+      "Warri Port",
+      "refinery complex",
+      "Warri Kingdom heritage"
+    ],
+    "highlights": [
+      "Oil-city agglomeration",
+      "Warri Port",
+      "Refinery town"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Warri"
   },
   {
@@ -489,8 +684,17 @@
     "populationNote": "~700,000 (est.)",
     "economy": "Education, agriculture, traditional crafts, and services.",
     "climate": "Guinea savanna / northern Guinea.",
-    "landmarks": ["Ahmadu Bello University", "Zaria city walls", "Emir's Palace", "dye pits"],
-    "highlights": ["Hausa city-state of Zazzau", "Ahmadu Bello University", "Aviation college"],
+    "landmarks": [
+      "Ahmadu Bello University",
+      "Zaria city walls",
+      "Emir's Palace",
+      "dye pits"
+    ],
+    "highlights": [
+      "Hausa city-state of Zazzau",
+      "Ahmadu Bello University",
+      "Aviation college"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Zaria"
   },
   {
@@ -508,8 +712,16 @@
     "populationNote": "~500,000 (est.)",
     "economy": "Education, pilgrimage/tourism, cocoa hinterland, crafts.",
     "climate": "Tropical forest–savanna.",
-    "landmarks": ["Ooni's Palace", "Ife Museum", "Obafemi Awolowo University"],
-    "highlights": ["Yoruba origin city", "Ife bronzes", "Ooni of Ife"],
+    "landmarks": [
+      "Ooni's Palace",
+      "Ife Museum",
+      "Obafemi Awolowo University"
+    ],
+    "highlights": [
+      "Yoruba origin city",
+      "Ife bronzes",
+      "Ooni of Ife"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/If%C4%99"
   },
   {
@@ -527,8 +739,15 @@
     "populationNote": "~300,000 including campus (est.)",
     "economy": "Higher education, services, and hill agriculture.",
     "climate": "Tropical highland edge.",
-    "landmarks": ["University of Nigeria", "Nsukka hills"],
-    "highlights": ["First indigenous university", "Literary heritage", "Hill campus town"],
+    "landmarks": [
+      "University of Nigeria",
+      "Nsukka hills"
+    ],
+    "highlights": [
+      "First indigenous university",
+      "Literary heritage",
+      "Hill campus town"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Nsukka"
   },
   {
@@ -546,8 +765,14 @@
     "populationNote": "~400,000 (est.)",
     "economy": "Auto parts, manufacturing, and trade.",
     "climate": "Tropical.",
-    "landmarks": ["Nnewi industrial layouts", "Nkwo Nnewi market"],
-    "highlights": ["Indigenous manufacturing", "Auto-parts hub"],
+    "landmarks": [
+      "Nnewi industrial layouts",
+      "Nkwo Nnewi market"
+    ],
+    "highlights": [
+      "Indigenous manufacturing",
+      "Auto-parts hub"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Nnewi"
   },
   {
@@ -565,8 +790,14 @@
     "populationNote": "~1 million (est., metro disputed)",
     "economy": "Education, trade, and agriculture hinterland.",
     "climate": "Derived savanna.",
-    "landmarks": ["Soun's Palace", "LAUTECH campus"],
-    "highlights": ["Major Yoruba city", "North Oyo gateway"],
+    "landmarks": [
+      "Soun's Palace",
+      "LAUTECH campus"
+    ],
+    "highlights": [
+      "Major Yoruba city",
+      "North Oyo gateway"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Ogbomosho"
   },
   {
@@ -584,8 +815,14 @@
     "populationNote": "~400,000 (est.)",
     "economy": "Government, tourism gateway, agriculture.",
     "climate": "Sudan savanna.",
-    "landmarks": ["Yankari (nearby)", "Emir's Palace"],
-    "highlights": ["Bauchi State capital", "Yankari gateway"],
+    "landmarks": [
+      "Yankari (nearby)",
+      "Emir's Palace"
+    ],
+    "highlights": [
+      "Bauchi State capital",
+      "Yankari gateway"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Bauchi"
   },
   {
@@ -603,8 +840,14 @@
     "populationNote": "~400,000 (est.)",
     "economy": "Government, grain trade, and services.",
     "climate": "Sudan savanna.",
-    "landmarks": ["Gombe urban core", "nearby Tangale hills"],
-    "highlights": ["Gombe State capital", "Northeast corridor town"],
+    "landmarks": [
+      "Gombe urban core",
+      "nearby Tangale hills"
+    ],
+    "highlights": [
+      "Gombe State capital",
+      "Northeast corridor town"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Gombe,_Nigeria"
   },
   {
@@ -622,8 +865,16 @@
     "populationNote": "~400,000 twin-city (est.)",
     "economy": "Government, river trade, cattle, and cross-border commerce.",
     "climate": "Sudan savanna; Benue valley.",
-    "landmarks": ["Benue River", "Lamido's Palace", "Jimeta modern town"],
-    "highlights": ["Adamawa State capital", "Yola–Jimeta twin city", "Cameroon border hinterland"],
+    "landmarks": [
+      "Benue River",
+      "Lamido's Palace",
+      "Jimeta modern town"
+    ],
+    "highlights": [
+      "Adamawa State capital",
+      "Yola–Jimeta twin city",
+      "Cameroon border hinterland"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Yola,_Adamawa"
   },
   {
@@ -641,8 +892,16 @@
     "populationNote": "~500,000 (est.)",
     "economy": "Agriculture trade, livestock, government, border commerce.",
     "climate": "Sahel.",
-    "landmarks": ["Gobarau Minaret", "city walls remnants", "Emir's Palace"],
-    "highlights": ["Hausa city-state", "Katsina State capital", "Trans-Saharan heritage"],
+    "landmarks": [
+      "Gobarau Minaret",
+      "city walls remnants",
+      "Emir's Palace"
+    ],
+    "highlights": [
+      "Hausa city-state",
+      "Katsina State capital",
+      "Trans-Saharan heritage"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Katsina"
   },
   {
@@ -660,8 +919,16 @@
     "populationNote": "~750,000 (est.)",
     "economy": "Government, culture/tourism, crafts, and trade.",
     "climate": "Tropical forest–savanna.",
-    "landmarks": ["Osun-Osogbo Sacred Grove", "Ataoja's Palace", "Nike Art Centre"],
-    "highlights": ["UNESCO Sacred Grove", "Osun State capital", "Art and festival city"],
+    "landmarks": [
+      "Osun-Osogbo Sacred Grove",
+      "Ataoja's Palace",
+      "Nike Art Centre"
+    ],
+    "highlights": [
+      "UNESCO Sacred Grove",
+      "Osun State capital",
+      "Art and festival city"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Osogbo"
   },
   {
@@ -678,8 +945,16 @@
     "populationNote": "~700,000 (est.)",
     "economy": "Cocoa trade, government, education, and services.",
     "climate": "Tropical wet-and-dry; rainforest fringe.",
-    "landmarks": ["Deji of Akure Palace", "FUTA", "Idanre Hills (nearby)"],
-    "highlights": ["Ondo State capital", "Cocoa hinterland", "Idanre access"],
+    "landmarks": [
+      "Deji of Akure Palace",
+      "FUTA",
+      "Idanre Hills (nearby)"
+    ],
+    "highlights": [
+      "Ondo State capital",
+      "Cocoa hinterland",
+      "Idanre access"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Akure"
   },
   {
@@ -696,8 +971,14 @@
     "populationNote": "~450,000 (est.)",
     "economy": "Government, education, agriculture, and quarrying.",
     "climate": "Highland tropical; cooler than the coast.",
-    "landmarks": ["Fountain of Knowledge", "Ewi's Palace"],
-    "highlights": ["Ekiti State capital", "Yoruba highland city"],
+    "landmarks": [
+      "Fountain of Knowledge",
+      "Ewi's Palace"
+    ],
+    "highlights": [
+      "Ekiti State capital",
+      "Yoruba highland city"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Ado-Ekiti"
   },
   {
@@ -714,8 +995,15 @@
     "populationNote": "~500,000 (est.)",
     "economy": "Government, education, light industry, and trade.",
     "climate": "Humid tropical; rainforest.",
-    "landmarks": ["National War Museum", "Abia Tower", "Aba Road corridor"],
-    "highlights": ["Abia State capital", "Biafra heritage museum"],
+    "landmarks": [
+      "National War Museum",
+      "Abia Tower",
+      "Aba Road corridor"
+    ],
+    "highlights": [
+      "Abia State capital",
+      "Biafra heritage museum"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Umuahia"
   },
   {
@@ -732,8 +1020,14 @@
     "populationNote": "~350,000 (est.)",
     "economy": "Government, agriculture, and Abuja commuter trade.",
     "climate": "Guinea savanna.",
-    "landmarks": ["Nasarawa State University", "Lafia modern township"],
-    "highlights": ["Nasarawa State capital", "Abuja corridor"],
+    "landmarks": [
+      "Nasarawa State University",
+      "Lafia modern township"
+    ],
+    "highlights": [
+      "Nasarawa State capital",
+      "Abuja corridor"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Lafia"
   },
   {
@@ -750,8 +1044,14 @@
     "populationNote": "~250,000 (est.)",
     "economy": "Government, agriculture, and highland trade.",
     "climate": "Sudan savanna; wet season May–October.",
-    "landmarks": ["Taraba State Government House", "Mambilla roadhead"],
-    "highlights": ["Taraba State capital", "Gateway to Mambilla"],
+    "landmarks": [
+      "Taraba State Government House",
+      "Mambilla roadhead"
+    ],
+    "highlights": [
+      "Taraba State capital",
+      "Gateway to Mambilla"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Jalingo"
   },
   {
@@ -768,8 +1068,14 @@
     "populationNote": "~150,000 (est.)",
     "economy": "Government, farming, and livestock.",
     "climate": "Sahel; short rainy season.",
-    "landmarks": ["Yobe State secretariat", "Damaturu central market"],
-    "highlights": ["Yobe State capital", "Sahel administrative centre"],
+    "landmarks": [
+      "Yobe State secretariat",
+      "Damaturu central market"
+    ],
+    "highlights": [
+      "Yobe State capital",
+      "Sahel administrative centre"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Damaturu"
   },
   {
@@ -786,8 +1092,14 @@
     "populationNote": "~300,000 (est.)",
     "economy": "Government, rice irrigation, and Kano hinterland trade.",
     "climate": "Sudano-Sahelian.",
-    "landmarks": ["Dutse Rock", "Jigawa State University"],
-    "highlights": ["Purpose-built state capital", "Irrigation schemes"],
+    "landmarks": [
+      "Dutse Rock",
+      "Jigawa State University"
+    ],
+    "highlights": [
+      "Purpose-built state capital",
+      "Irrigation schemes"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Dutse"
   },
   {
@@ -796,7 +1108,7 @@
     "category": "state-capital",
     "stateName": "Kebbi",
     "stateId": "NG-KE",
-    "lon": 4.20,
+    "lon": 4.2,
     "lat": 12.45,
     "nickname": "Land of Equity capital",
     "summary": "Kebbi State capital on the Sokoto–Rima river system.",
@@ -804,8 +1116,14 @@
     "populationNote": "~400,000 (est.)",
     "economy": "Rice, fishing festival tourism, government, and border trade.",
     "climate": "Sahel fringe; seasonal flooding on Rima.",
-    "landmarks": ["Argungu festival (nearby)", "Kebbi State secretariat"],
-    "highlights": ["Kebbi State capital", "Argungu heritage"],
+    "landmarks": [
+      "Argungu festival (nearby)",
+      "Kebbi State secretariat"
+    ],
+    "highlights": [
+      "Kebbi State capital",
+      "Argungu heritage"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Birnin_Kebbi"
   },
   {
@@ -822,8 +1140,14 @@
     "populationNote": "~350,000 (est.)",
     "economy": "Agriculture, informal gold, government.",
     "climate": "Sudan savanna.",
-    "landmarks": ["Gusau emirate", "Federal University Gusau"],
-    "highlights": ["Zamfara State capital", "Gold-mining state"],
+    "landmarks": [
+      "Gusau emirate",
+      "Federal University Gusau"
+    ],
+    "highlights": [
+      "Zamfara State capital",
+      "Gold-mining state"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Gusau"
   },
   {
@@ -833,15 +1157,23 @@
     "stateName": "Lagos",
     "stateId": "NG-LA",
     "lon": 3.35,
-    "lat": 6.60,
+    "lat": 6.6,
     "nickname": "Lagos State capital",
     "summary": "Lagos State capital and main airport city of the megacity.",
     "description": "Ikeja is the official capital of Lagos State and home to Murtala Muhammed International Airport, Computer Village (Africa's largest electronics market), and Alausa secretariat. It is the administrative counterpart to commercial Lagos Island.",
     "populationNote": "~800,000+ (est.)",
     "economy": "Government, aviation, electronics trade, and services.",
     "climate": "Tropical monsoon.",
-    "landmarks": ["MMIA Airport", "Computer Village", "Ikeja City Mall"],
-    "highlights": ["Lagos State capital", "Main international airport", "Computer Village"],
+    "landmarks": [
+      "MMIA Airport",
+      "Computer Village",
+      "Ikeja City Mall"
+    ],
+    "highlights": [
+      "Lagos State capital",
+      "Main international airport",
+      "Computer Village"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Ikeja"
   },
   {
@@ -858,8 +1190,14 @@
     "populationNote": "~250,000 (est.)",
     "economy": "Raffia crafts, trade, and services.",
     "climate": "Humid tropical.",
-    "landmarks": ["Ikot Ekpene craft markets", "Raffia workshops"],
-    "highlights": ["Raffia City", "Craft export hub"],
+    "landmarks": [
+      "Ikot Ekpene craft markets",
+      "Raffia workshops"
+    ],
+    "highlights": [
+      "Raffia City",
+      "Craft export hub"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Ikot_Ekpene"
   },
   {
@@ -876,8 +1214,14 @@
     "populationNote": "~400,000 (est.)",
     "economy": "Oil and gas, fishing, and services.",
     "climate": "Coastal tropical; mangrove fringe.",
-    "landmarks": ["Qua Iboe Terminal", "Eket main market"],
-    "highlights": ["Major oil terminal", "Qua Iboe estuary"],
+    "landmarks": [
+      "Qua Iboe Terminal",
+      "Eket main market"
+    ],
+    "highlights": [
+      "Major oil terminal",
+      "Qua Iboe estuary"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Eket"
   },
   {
@@ -894,8 +1238,15 @@
     "populationNote": "~300,000 (est.)",
     "economy": "LNG, oil services, fishing, and shipping.",
     "climate": "Coastal equatorial.",
-    "landmarks": ["NLNG plant", "Bonny Island", "King's palace"],
-    "highlights": ["NLNG Bonny", "Historic Ibani kingdom"],
+    "landmarks": [
+      "NLNG plant",
+      "Bonny Island",
+      "King's palace"
+    ],
+    "highlights": [
+      "NLNG Bonny",
+      "Historic Ibani kingdom"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Bonny,_Nigeria"
   },
   {
@@ -912,8 +1263,14 @@
     "populationNote": "~350,000 (est.)",
     "economy": "Timber, rubber, paper, and delta logistics.",
     "climate": "Tropical; high rainfall.",
-    "landmarks": ["Sapele port", "Ethiope River"],
-    "highlights": ["Colonial timber port", "Urhobo commercial centre"],
+    "landmarks": [
+      "Sapele port",
+      "Ethiope River"
+    ],
+    "highlights": [
+      "Colonial timber port",
+      "Urhobo commercial centre"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Sapele,_Nigeria"
   },
   {
@@ -930,8 +1287,13 @@
     "populationNote": "~500,000 (est.)",
     "economy": "Trade, education, and services.",
     "climate": "Humid tropical.",
-    "landmarks": ["Orlu junction markets", "Imo State University teaching hospital zone"],
-    "highlights": ["Interior Igbo commercial hub"],
+    "landmarks": [
+      "Orlu junction markets",
+      "Imo State University teaching hospital zone"
+    ],
+    "highlights": [
+      "Interior Igbo commercial hub"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Orlu,_Nigeria"
   },
   {
@@ -948,8 +1310,14 @@
     "populationNote": "~400,000 (est.)",
     "economy": "Motor parts, general trade, and logistics.",
     "climate": "Tropical; Niger floodplain humidity.",
-    "landmarks": ["Nkpor main market", "Enugu–Onitsha expressway corridor"],
-    "highlights": ["Onitsha metro trade belt", "Motor parts hub"],
+    "landmarks": [
+      "Nkpor main market",
+      "Enugu–Onitsha expressway corridor"
+    ],
+    "highlights": [
+      "Onitsha metro trade belt",
+      "Motor parts hub"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Nkpor"
   },
   {
@@ -966,8 +1334,15 @@
     "populationNote": "~750,000 (est.)",
     "economy": "Weaving, mining, agriculture, and trade.",
     "climate": "Guinea savanna.",
-    "landmarks": ["Okene cloth markets", "Azad's Palace", "Itakpe iron ore (nearby)"],
-    "highlights": ["Ebira cultural centre", "Okene cloth"],
+    "landmarks": [
+      "Okene cloth markets",
+      "Azad's Palace",
+      "Itakpe iron ore (nearby)"
+    ],
+    "highlights": [
+      "Ebira cultural centre",
+      "Okene cloth"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Okene"
   },
   {
@@ -984,8 +1359,14 @@
     "populationNote": "~300,000 (est.)",
     "economy": "Cross-border trade, agriculture, and services.",
     "climate": "Sudan savanna; cooler than Maiduguri.",
-    "landmarks": ["Mubi market", "Cameroon border road"],
-    "highlights": ["Border trade gateway", "Northern Adamawa hub"],
+    "landmarks": [
+      "Mubi market",
+      "Cameroon border road"
+    ],
+    "highlights": [
+      "Border trade gateway",
+      "Northern Adamawa hub"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Mubi"
   },
   {
@@ -1002,8 +1383,14 @@
     "populationNote": "~350,000 (est.)",
     "economy": "Livestock, grain trade, and services.",
     "climate": "Sahel.",
-    "landmarks": ["Potiskum cattle market", "Friday market"],
-    "highlights": ["West Africa cattle market", "Sahel trade node"],
+    "landmarks": [
+      "Potiskum cattle market",
+      "Friday market"
+    ],
+    "highlights": [
+      "West Africa cattle market",
+      "Sahel trade node"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Potiskum"
   },
   {
@@ -1012,7 +1399,7 @@
     "category": "commercial",
     "stateName": "Benue",
     "stateId": "NG-BE",
-    "lon": 9.0,
+    "lon": 9,
     "lat": 7.32,
     "nickname": "Yam warehouse of Nigeria",
     "summary": "Tiv commercial centre and major yam market of Benue.",
@@ -1020,8 +1407,14 @@
     "populationNote": "~500,000 (est.)",
     "economy": "Yam trade, cement, and agriculture.",
     "climate": "Guinea savanna; seasonal floods on tributaries.",
-    "landmarks": ["Gboko yam market", "Dangote Cement plant"],
-    "highlights": ["Major yam market", "Tiv commercial centre"],
+    "landmarks": [
+      "Gboko yam market",
+      "Dangote Cement plant"
+    ],
+    "highlights": [
+      "Major yam market",
+      "Tiv commercial centre"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Gboko"
   },
   {
@@ -1038,8 +1431,14 @@
     "populationNote": "~1 million (est.)",
     "economy": "Commuter housing, fishing, and local services.",
     "climate": "Tropical monsoon.",
-    "landmarks": ["Ikorodu Lagoon", "Lagos–Ikorodu road corridor"],
-    "highlights": ["Lagos sprawl corridor", "Lagoon fishing"],
+    "landmarks": [
+      "Ikorodu Lagoon",
+      "Lagos–Ikorodu road corridor"
+    ],
+    "highlights": [
+      "Lagos sprawl corridor",
+      "Lagoon fishing"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Ikorodu"
   },
   {
@@ -1056,8 +1455,15 @@
     "populationNote": "~250,000 (est.)",
     "economy": "Heritage tourism, fishing, and border trade.",
     "climate": "Coastal tropical.",
-    "landmarks": ["Point of No Return", "Badagry Heritage Museum", "First Storey Building"],
-    "highlights": ["Slave-trade heritage", "Border tourism"],
+    "landmarks": [
+      "Point of No Return",
+      "Badagry Heritage Museum",
+      "First Storey Building"
+    ],
+    "highlights": [
+      "Slave-trade heritage",
+      "Border tourism"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Badagry"
   },
   {
@@ -1074,8 +1480,14 @@
     "populationNote": "~350,000 (est.)",
     "economy": "Fishing, Lekki corridor services, and agriculture.",
     "climate": "Coastal lagoon tropical.",
-    "landmarks": ["Epe fish market", "Lekki–Epe expressway"],
-    "highlights": ["Fish market heritage", "Lekki corridor"],
+    "landmarks": [
+      "Epe fish market",
+      "Lekki–Epe expressway"
+    ],
+    "highlights": [
+      "Fish market heritage",
+      "Lekki corridor"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Epe,_Lagos"
   },
   {
@@ -1092,8 +1504,15 @@
     "populationNote": "~400,000 (est.)",
     "economy": "Commuter services, pottery, and trade.",
     "climate": "Guinea savanna.",
-    "landmarks": ["Zuma Rock (nearby)", "Suleja pottery", "Abuja–Kaduna road"],
-    "highlights": ["Abuja commuter hub", "Pottery heritage"],
+    "landmarks": [
+      "Zuma Rock (nearby)",
+      "Suleja pottery",
+      "Abuja–Kaduna road"
+    ],
+    "highlights": [
+      "Abuja commuter hub",
+      "Pottery heritage"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Suleja"
   },
   {
@@ -1110,8 +1529,14 @@
     "populationNote": "~400,000 (est.)",
     "economy": "Grain trade, livestock, and education.",
     "climate": "Sudan savanna.",
-    "landmarks": ["Azare emirate", "ATBU Azare"],
-    "highlights": ["Northern Bauchi hub", "Grain market"],
+    "landmarks": [
+      "Azare emirate",
+      "ATBU Azare"
+    ],
+    "highlights": [
+      "Northern Bauchi hub",
+      "Grain market"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Azare"
   },
   {
@@ -1128,8 +1553,14 @@
     "populationNote": "~250,000 (est.)",
     "economy": "Agriculture, trade, and transport.",
     "climate": "Tropical; transition to savanna northward.",
-    "landmarks": ["Ogoja market", "Obudu road junction"],
-    "highlights": ["Northern Cross River gateway", "Obudu access"],
+    "landmarks": [
+      "Ogoja market",
+      "Obudu road junction"
+    ],
+    "highlights": [
+      "Northern Cross River gateway",
+      "Obudu access"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Ogoja"
   },
   {
@@ -1146,8 +1577,14 @@
     "populationNote": "~350,000 (est.)",
     "economy": "Cotton, grain, and trade.",
     "climate": "Sudan savanna.",
-    "landmarks": ["Funtua cotton gins", "Central market"],
-    "highlights": ["Cotton ginning centre", "Southern Katsina hub"],
+    "landmarks": [
+      "Funtua cotton gins",
+      "Central market"
+    ],
+    "highlights": [
+      "Cotton ginning centre",
+      "Southern Katsina hub"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Funtua"
   },
   {
@@ -1164,180 +1601,15 @@
     "populationNote": "~200,000 (est.)",
     "economy": "Agriculture, emirate administration, and border trade.",
     "climate": "Sahel fringe.",
-    "landmarks": ["Daura emirate palace", "Kusugu well (legend site)"],
-    "highlights": ["Hausa bakwai heritage", "Bayajidda legend"],
+    "landmarks": [
+      "Daura emirate palace",
+      "Kusugu well (legend site)"
+    ],
+    "highlights": [
+      "Hausa bakwai heritage",
+      "Bayajidda legend"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Daura"
-  },
-  {
-    "id": "army-1-division",
-    "name": "1 Division (Kaduna)",
-    "category": "army-division",
-    "stateName": "Kaduna",
-    "stateId": "NG-KD",
-    "lon": 7.495,
-    "lat": 10.56,
-    "nickname": "Northwest Command",
-    "founded": "1960s (post-independence restructuring)",
-    "summary": "Headquarters in Kaduna; area of responsibility covers the northwest and parts of the north-central belt.",
-    "description": "The 1 Division is one of the Nigerian Army's oldest fighting formations. Based in Kaduna, its AOR traditionally covers the northwest states and adjoining north-central areas, including internal security deployments and border defence along the Niger frontier.",
-    "coversStates": ["Kaduna", "Kano", "Jigawa", "Katsina", "Sokoto", "Zamfara", "Kebbi", "Niger"],
-    "economy": "Defence garrison, barracks infrastructure, and military logistics hub.",
-    "climate": "Guinea savanna with distinct harmattan season.",
-    "landmarks": ["1 Division Hqs, Kaduna", "Kaduna cantonments", "Nigerian Defence Academy nearby"],
-    "highlights": ["Kaduna-based Division", "NW + Niger AOR", "Historic infantry formation"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Army"
-  },
-  {
-    "id": "army-2-division",
-    "name": "2 Division (Ibadan)",
-    "category": "army-division",
-    "stateName": "Oyo",
-    "stateId": "NG-OY",
-    "lon": 3.9,
-    "lat": 7.4,
-    "nickname": "Southwest Command",
-    "founded": "1970s reorganisation after the civil war",
-    "summary": "Headquarters at Ibadan; responsible for the southwest geo-political zone and Kwara.",
-    "description": "The 2 Division is the Nigerian Army's southwest-facing formation. Its area of responsibility spans the six southwest states plus Kwara, supporting internal security, border patrols with Benin, and national rapid-reaction tasking from Army HQ.",
-    "coversStates": ["Oyo", "Ogun", "Osun", "Ekiti", "Ondo", "Lagos", "Kwara"],
-    "economy": "Defence garrison and cantonment services for the southwest region.",
-    "climate": "Tropical wet-and-dry; rainforest–savanna transition.",
-    "landmarks": ["2 Division Hqs, Ibadan", "Dodan Barracks links", "Southwest cantonments"],
-    "highlights": ["Ibadan-based Division", "SW + Kwara AOR", "Benin border flank"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Army"
-  },
-  {
-    "id": "army-3-division",
-    "name": "3 Division (Jos)",
-    "category": "army-division",
-    "stateName": "Plateau",
-    "stateId": "NG-PL",
-    "lon": 8.945,
-    "lat": 9.99,
-    "nickname": "North-Central & Northeast Command",
-    "founded": "Post-civil-war ground forces restructure",
-    "summary": "Headquarters near Jos; covers the north-central plateau and parts of the northeast interior.",
-    "description": "3 Division operates from the Jos Plateau, with brigades and forward operating bases extending across Plateau, Nasarawa, Benue, and parts of the northeast corridor. It has historically been engaged in plateau crisis management and Middle Belt internal security.",
-    "coversStates": ["Plateau", "Nasarawa", "Benue", "Bauchi", "Gombe", "Taraba", "Adamawa"],
-    "economy": "Defence cantonments, peace-support logistics, and Middle Belt garrison network.",
-    "climate": "Highland climate on the Jos Plateau; warmer southern sectors.",
-    "landmarks": ["3 Division Hqs, Jos", "Plateau barracks", "Benue valley deployments"],
-    "highlights": ["Jos-based Division", "Middle Belt AOR", "Plateau crisis deployments"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Army"
-  },
-  {
-    "id": "army-6-division",
-    "name": "6 Division (Port Harcourt)",
-    "category": "army-division",
-    "stateName": "Rivers",
-    "stateId": "NG-RI",
-    "lon": 7.055,
-    "lat": 4.82,
-    "nickname": "South-South Command",
-    "founded": "Created to secure the Niger Delta theatre",
-    "summary": "Headquarters in Port Harcourt; area of responsibility covers the Niger Delta states.",
-    "description": "6 Division is the Nigerian Army's dedicated formation for the Niger Delta. It supports Joint Task Force (JTF) operations in the oil-producing states, providing internal security and pipeline protection across the south-south.",
-    "coversStates": ["Rivers", "Bayelsa", "Delta", "Edo"],
-    "economy": "Oil-region security, JTF deployments, delta logistics support.",
-    "climate": "Equatorial; heavy rainfall and mangrove delta.",
-    "landmarks": ["6 Division Hqs, Port Harcourt", "Delta cantonments", "Bonny / Escravos sector coverage"],
-    "highlights": ["Port Harcourt-based Division", "Delta oil-region AOR", "JTF support formation"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Army"
-  },
-  {
-    "id": "army-7-division",
-    "name": "7 Division (Maiduguri)",
-    "category": "army-division",
-    "stateName": "Borno",
-    "stateId": "NG-BO",
-    "lon": 13.36,
-    "lat": 11.85,
-    "nickname": "Northeast Counter-Insurgency Command",
-    "founded": "2010s during the insurgency-era expansion",
-    "summary": "Headquarters in Maiduguri; frontline counter-insurgency division for Borno and Yobe.",
-    "description": "7 Division was raised specifically for the northeast counter-insurgency theatre. It is the Nigerian Army's principal fighting formation against insurgent groups in Borno, Yobe, and adjoining Lake Chad basin areas, with extensive forward operating bases.",
-    "coversStates": ["Borno", "Yobe"],
-    "economy": "Counter-insurgency garrison, theatre logistics, military-civilian aid coordination.",
-    "climate": "Sahel; very hot dry season with short rains.",
-    "landmarks": ["7 Division Hqs, Maiduguri", "Lake Chad sector bases", "Northeast theatre FOBs"],
-    "highlights": ["Maiduguri-based Division", "Borno + Yobe AOR", "Lead counter-insurgency formation"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Army"
-  },
-  {
-    "id": "army-8-division",
-    "name": "8 Division (Sokoto)",
-    "category": "army-division",
-    "stateName": "Sokoto",
-    "stateId": "NG-SO",
-    "lon": 5.63,
-    "lat": 13.06,
-    "nickname": "Far-Northwest & Niger Border Command",
-    "founded": "Restructured to cover the far northwest frontier and border security corridor",
-    "summary": "Headquarters in Sokoto; area of responsibility for the far northwest states and Niger border arc.",
-    "description": "8 Division is tasked with the far-northwest corridor, covering the Sokoto caliphate heartland and contiguous border states facing Niger. Responsibilities include border defence, anti-banditry operations, and coordination with regional security forces.",
-    "coversStates": ["Sokoto", "Kebbi", "Zamfara", "Katsina", "Niger (western sectors)"],
-    "economy": "Border security, anti-banditry deployments, caliphate-region garrison.",
-    "climate": "Sahel; short rains and intense harmattan.",
-    "landmarks": ["8 Division Hqs, Sokoto", "Niger border FOBs", "Far NW cantonments"],
-    "highlights": ["Sokoto-based Division", "Far NW border AOR", "Anti-banditry sector"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Army"
-  },
-  {
-    "id": "army-81-division",
-    "name": "81 Division (Lagos)",
-    "category": "army-division",
-    "stateName": "Lagos",
-    "stateId": "NG-LA",
-    "lon": 3.70,
-    "lat": 6.75,
-    "nickname": "Lagos Garrison & Southwest Quick Reaction",
-    "founded": "Lagos garrison restructured as a division-level formation",
-    "summary": "Headquarters in Lagos; defends the federal economic capital, seaports, and southwest maritime flank.",
-    "description": "81 Division is the Nigerian Army's Lagos-based formation, responsible for the defence of the Lagos metropolis, Apapa and Lekki ports, and the immediate southwest maritime hinterland. It also provides ceremonial and national-capital standby roles.",
-    "coversStates": ["Lagos", "Ogun", "Oyo (western corridor)"],
-    "economy": "Lagos garrison, port security forces, state ceremonial duties.",
-    "climate": "Tropical monsoon; high humidity year-round.",
-    "landmarks": ["81 Division Hqs, Lagos", "Dodan Barracks heritage", "Lekki + Apapa port sectors"],
-    "highlights": ["Lagos-based Division", "Economic capital defence", "Port + ceremonial role"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Army"
-  },
-  {
-    "id": "army-82-division",
-    "name": "82 Division (Enugu)",
-    "category": "army-division",
-    "stateName": "Enugu",
-    "stateId": "NG-EN",
-    "lon": 7.855,
-    "lat": 6.4,
-    "nickname": "Southeast & South-South East Command",
-    "founded": "Post-civil-war reorganisation for the eastern theatre",
-    "summary": "Headquarters in Enugu; area of responsibility covers the southeast and eastern south-south states.",
-    "description": "82 Division is the Nigerian Army's formation for the southeast. Based in Enugu, it extends across the five southeast states plus the eastern south-south corridor, handling internal security and the Cameroon border flank near Cross River.",
-    "coversStates": ["Enugu", "Abia", "Imo", "Anambra", "Ebonyi", "Cross River", "Akwa Ibom"],
-    "economy": "Southeast garrison, border security near Cameroon, eastern corridor deployments.",
-    "climate": "Tropical; escarpment hills and rainforest fringe.",
-    "landmarks": ["82 Division Hqs, Enugu", "Southeast cantonments", "Cameroon border sector"],
-    "highlights": ["Enugu-based Division", "SE + eastern SS AOR", "Cameroon border flank"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Army"
-  },
-  {
-    "id": "army-guards-brigade",
-    "name": "Guards Brigade (Abuja)",
-    "category": "army-division",
-    "stateName": "Federal Capital Territory",
-    "stateId": "NG-FC",
-    "lon": 7.49,
-    "lat": 9.06,
-    "nickname": "Presidential & Federal Capital Guard",
-    "founded": "FCT-era elite brigade for Abuja and federal institutions",
-    "summary": "Headquarters in Abuja; elite formation protecting the FCT, presidential villa, and federal institutions.",
-    "description": "The Guards Brigade is the Nigerian Army's elite capital-guard formation. It is responsible for protecting the Presidential Villa (Aso Rock), National Assembly, Supreme Court, foreign missions, and the wider Abuja Federal Capital Territory. It also mounts state ceremonial parades.",
-    "coversStates": ["Federal Capital Territory", "Niger (Abuja environs)", "Nasarawa (Abuja environs)", "Kogi (confluence corridor)"],
-    "economy": "FCT defence, federal institutions protection, state ceremonial events.",
-    "climate": "Guinea savanna with cooler nights than the coast.",
-    "landmarks": ["Guards Brigade Hqs, Abuja", "Aso Rock Presidential Villa", "Three Arms Zone coverage"],
-    "highlights": ["Abuja-based Elite Brigade", "FCT + federal institutions AOR", "State ceremonial role"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Army"
   },
   {
     "id": "city-ibadan-ui",
@@ -1354,8 +1626,16 @@
     "populationNote": "~45,000 students + 8,000 staff (est.)",
     "economy": "Research, higher education, academic publishing, agriculture R&D (IITA adjacent).",
     "climate": "Rainforest–savanna transition.",
-    "landmarks": ["UI Senate Building", "Kenneth Dike Library", "IITA (nearby)"],
-    "highlights": ["First Nigerian university", "Nigeria's top-ranked research university", "Africa's first publishing press (UCP)"],
+    "landmarks": [
+      "UI Senate Building",
+      "Kenneth Dike Library",
+      "IITA (nearby)"
+    ],
+    "highlights": [
+      "First Nigerian university",
+      "Nigeria's top-ranked research university",
+      "Africa's first publishing press (UCP)"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/University_of_Ibadan"
   },
   {
@@ -1373,8 +1653,16 @@
     "populationNote": "~40,000 students (est.)",
     "economy": "Higher education, student commerce, Yoruba culture centre.",
     "climate": "Tropical forest–savanna.",
-    "landmarks": ["OAU Amphitheatre", "Oluwasanmi Library", "Waterfalls (on campus)"],
-    "highlights": ["Pan-African heritage", "Landmark modernist campus", "Great Ife alumni"],
+    "landmarks": [
+      "OAU Amphitheatre",
+      "Oluwasanmi Library",
+      "Waterfalls (on campus)"
+    ],
+    "highlights": [
+      "Pan-African heritage",
+      "Landmark modernist campus",
+      "Great Ife alumni"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Obafemi_Awolowo_University"
   },
   {
@@ -1392,8 +1680,16 @@
     "populationNote": "~70,000 students (est. across campuses)",
     "economy": "Higher education, agriculture extension, northern-Nigeria research hub.",
     "climate": "Northern Guinea savanna.",
-    "landmarks": ["Samaru Campus", "ABU Senate", "Institute for Agricultural Research"],
-    "highlights": ["Largest Nigerian university", "Premier northern university", "Agriculture R&D legacy"],
+    "landmarks": [
+      "Samaru Campus",
+      "ABU Senate",
+      "Institute for Agricultural Research"
+    ],
+    "highlights": [
+      "Largest Nigerian university",
+      "Premier northern university",
+      "Agriculture R&D legacy"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Ahmadu_Bello_University"
   },
   {
@@ -1411,8 +1707,16 @@
     "populationNote": "~60,000 students (est.)",
     "economy": "Higher education, innovation/tech hub, professional training.",
     "climate": "Tropical monsoon; lagoon frontage.",
-    "landmarks": ["UNILAG Lagoon Front", "Akoka Campus", "Lagos Business School (affiliate)"],
-    "highlights": ["Top Lagos-based research university", "Lagoon waterfront campus", "Entrepreneurship legacy"],
+    "landmarks": [
+      "UNILAG Lagoon Front",
+      "Akoka Campus",
+      "Lagos Business School (affiliate)"
+    ],
+    "highlights": [
+      "Top Lagos-based research university",
+      "Lagoon waterfront campus",
+      "Entrepreneurship legacy"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/University_of_Lagos"
   },
   {
@@ -1430,8 +1734,16 @@
     "populationNote": "~45,000 students (est.)",
     "economy": "Higher education, literature hub, southeast research, hill agriculture.",
     "climate": "Highland edge, milder than the delta.",
-    "landmarks": ["Nnamdi Azikiwe Library", "UNN Hill Campus", "Institute of African Studies"],
-    "highlights": ["First indigenous university", "Southeast flagship", "Literary heritage (Achebe)"],
+    "landmarks": [
+      "Nnamdi Azikiwe Library",
+      "UNN Hill Campus",
+      "Institute of African Studies"
+    ],
+    "highlights": [
+      "First indigenous university",
+      "Southeast flagship",
+      "Literary heritage (Achebe)"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/University_of_Nigeria"
   },
   {
@@ -1449,8 +1761,16 @@
     "populationNote": "~50,000 students (est.)",
     "economy": "Higher education, professional training, hospital services (UBTH).",
     "climate": "Rainforest fringe; high rainfall.",
-    "landmarks": ["UNIBEN Main Gate", "University of Benin Teaching Hospital", "Benin City campus"],
-    "highlights": ["South-south flagship", "Petroleum + medicine strengths", "UBTH"],
+    "landmarks": [
+      "UNIBEN Main Gate",
+      "University of Benin Teaching Hospital",
+      "Benin City campus"
+    ],
+    "highlights": [
+      "South-south flagship",
+      "Petroleum + medicine strengths",
+      "UBTH"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/University_of_Benin"
   },
   {
@@ -1468,8 +1788,16 @@
     "populationNote": "~55,000 students (est.)",
     "economy": "Higher education, agriculture extension, central-Nigerian student town.",
     "climate": "Guinea savanna; dry climate.",
-    "landmarks": ["UNILORIN Main Campus", "Senate Building", "School of Agriculture"],
-    "highlights": ["Highly subscribed federal university", "Central-Nigeria flagship", "Better by far motto"],
+    "landmarks": [
+      "UNILORIN Main Campus",
+      "Senate Building",
+      "School of Agriculture"
+    ],
+    "highlights": [
+      "Highly subscribed federal university",
+      "Central-Nigeria flagship",
+      "Better by far motto"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/University_of_Ilorin"
   },
   {
@@ -1487,8 +1815,16 @@
     "populationNote": "~35,000 students (est.)",
     "economy": "Higher education, Lake Chad research, agriculture extension.",
     "climate": "Sahel fringe; intense dry season.",
-    "landmarks": ["UNIMAID Campus", "Lake Chad Research Institute", "Maiduguri Teaching Hospital"],
-    "highlights": ["Northeast flagship", "Lake Chad studies", "Livestock agriculture research"],
+    "landmarks": [
+      "UNIMAID Campus",
+      "Lake Chad Research Institute",
+      "Maiduguri Teaching Hospital"
+    ],
+    "highlights": [
+      "Northeast flagship",
+      "Lake Chad studies",
+      "Livestock agriculture research"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/University_of_Maiduguri"
   },
   {
@@ -1506,8 +1842,16 @@
     "populationNote": "Archaeological site (historic)",
     "economy": "Heritage tourism, archaeology, rural farming village overlay.",
     "climate": "Guinea savanna, drier than southern Yoruba areas.",
-    "landmarks": ["Old Oyo walls & palace ruins", "Archaeological site museum", "Aafin groundplans"],
-    "highlights": ["Oyo Empire capital", "Major Yoruba heritage site", "Archaeology site"],
+    "landmarks": [
+      "Old Oyo walls & palace ruins",
+      "Archaeological site museum",
+      "Aafin groundplans"
+    ],
+    "highlights": [
+      "Oyo Empire capital",
+      "Major Yoruba heritage site",
+      "Archaeology site"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Oyo_Empire"
   },
   {
@@ -1525,8 +1869,16 @@
     "populationNote": "Inhabited old city within Kano metro (~4M+)",
     "economy": "Historic trade (leather, textiles), heritage, Kurmi market commerce.",
     "climate": "Sudan savanna, hot and dry.",
-    "landmarks": ["Kurmi Market", "Kano city walls (14 km)", "Gidan Makama Museum"],
-    "highlights": ["Hausa bakwai city-state", "Trans-Saharan trade hub", "Kurmi market"],
+    "landmarks": [
+      "Kurmi Market",
+      "Kano city walls (14 km)",
+      "Gidan Makama Museum"
+    ],
+    "highlights": [
+      "Hausa bakwai city-state",
+      "Trans-Saharan trade hub",
+      "Kurmi market"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Kano"
   },
   {
@@ -1544,8 +1896,16 @@
     "populationNote": "Historic core of Calabar metro (~1M+)",
     "economy": "Heritage tourism, port heritage, Calabar Carnival city.",
     "climate": "Equatorial rainforest; very high rainfall.",
-    "landmarks": ["Marina Residence", "Slave History Museum", "Hope Waddell Training Institution"],
-    "highlights": ["Efik city-state", "First protectorate capital", "Marina & slave heritage"],
+    "landmarks": [
+      "Marina Residence",
+      "Slave History Museum",
+      "Hope Waddell Training Institution"
+    ],
+    "highlights": [
+      "Efik city-state",
+      "First protectorate capital",
+      "Marina & slave heritage"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Calabar"
   },
   {
@@ -1562,8 +1922,16 @@
     "populationNote": "~900,000 metro (est.)",
     "economy": "Garments, footwear, leather goods, metalworks, Ariaria market trade.",
     "climate": "Equatorial rainforest fringe.",
-    "landmarks": ["Ariaria International Market", "Aba shoe clusters", "Aba Textile Mills precinct"],
-    "highlights": ["Aba Made manufacturing", "Southeast commercial hub", "Ariaria market"],
+    "landmarks": [
+      "Ariaria International Market",
+      "Aba shoe clusters",
+      "Aba Textile Mills precinct"
+    ],
+    "highlights": [
+      "Aba Made manufacturing",
+      "Southeast commercial hub",
+      "Ariaria market"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Aba,_Nigeria"
   },
   {
@@ -1580,8 +1948,16 @@
     "populationNote": "~700,000 metro (est.)",
     "economy": "Open-air commerce, import/wholesale, river transit, Igbo enterprise hub.",
     "climate": "Tropical; river-belt high humidity.",
-    "landmarks": ["Onitsha Main Market", "Niger Bridge", "Ogbunike Caves nearby"],
-    "highlights": ["Largest open-air market in WA", "Niger bridgehead", "Igbo commerce hub"],
+    "landmarks": [
+      "Onitsha Main Market",
+      "Niger Bridge",
+      "Ogbunike Caves nearby"
+    ],
+    "highlights": [
+      "Largest open-air market in WA",
+      "Niger bridgehead",
+      "Igbo commerce hub"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Onitsha"
   },
   {
@@ -1598,8 +1974,15 @@
     "populationNote": "Embedded within Lagos metro (~20M+)",
     "economy": "Wholesale electronics, building materials, Lagos trade logistics.",
     "climate": "Tropical monsoon; coastal.",
-    "landmarks": ["Alaba International Market", "Ojo Barracks", "Badagry express corridor"],
-    "highlights": ["Electronics wholesale capital", "Lagos Badagry trade corridor"],
+    "landmarks": [
+      "Alaba International Market",
+      "Ojo Barracks",
+      "Badagry express corridor"
+    ],
+    "highlights": [
+      "Electronics wholesale capital",
+      "Lagos Badagry trade corridor"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Alaba_International_Market"
   },
   {
@@ -1616,8 +1999,15 @@
     "populationNote": "~300,000 metro (est.)",
     "economy": "Cement, ceramics, tiles, construction materials, Abuja support services.",
     "climate": "Guinea savanna; FCT-like climate.",
-    "landmarks": ["Suleja Cement Plant", "Ceramic & Tile Industries", "Suleja Emirate Palace"],
-    "highlights": ["Abuja industrial satellite", "Cement + ceramics cluster"],
+    "landmarks": [
+      "Suleja Cement Plant",
+      "Ceramic & Tile Industries",
+      "Suleja Emirate Palace"
+    ],
+    "highlights": [
+      "Abuja industrial satellite",
+      "Cement + ceramics cluster"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Suleja"
   },
   {
@@ -1634,8 +2024,15 @@
     "populationNote": "~120,000 (est.)",
     "economy": "Steel (infrastructure), river transport logistics, confluence port services.",
     "climate": "Confluence tropical climate, seasonal flooding.",
-    "landmarks": ["Ajaokuta Steel Complex", "Niger river jetties", "Confluence zone"],
-    "highlights": ["Ajaokuta Steel Co.", "Niger-Benue confluence industry"],
+    "landmarks": [
+      "Ajaokuta Steel Complex",
+      "Niger river jetties",
+      "Confluence zone"
+    ],
+    "highlights": [
+      "Ajaokuta Steel Co.",
+      "Niger-Benue confluence industry"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Ajaokuta"
   },
   {
@@ -1652,8 +2049,16 @@
     "populationNote": "~170,000 metro (est.)",
     "economy": "Oil & gas services, QIT logistics, coastal fishing.",
     "climate": "Equatorial mangrove coast.",
-    "landmarks": ["Qua Iboe Terminal precinct", "Eket waterfront", "Gas processing hubs"],
-    "highlights": ["Eastern deepwater oil hub", "Qua Iboe Terminal", "Eket refinery precinct"],
+    "landmarks": [
+      "Qua Iboe Terminal precinct",
+      "Eket waterfront",
+      "Gas processing hubs"
+    ],
+    "highlights": [
+      "Eastern deepwater oil hub",
+      "Qua Iboe Terminal",
+      "Eket refinery precinct"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Eket"
   },
   {
@@ -1670,8 +2075,16 @@
     "populationNote": "~350,000 metro (est.)",
     "economy": "Agriculture (rice, sorghum), fishing, trade, tourism (Argungu).",
     "climate": "Sudan–Sahel fringe.",
-    "landmarks": ["Argungu Fishing Festival site", "Kebbi State Govt House", "Gwandu emirate links"],
-    "highlights": ["Kebbi capital", "Argungu festival gateway", "Kainji lake region"],
+    "landmarks": [
+      "Argungu Fishing Festival site",
+      "Kebbi State Govt House",
+      "Gwandu emirate links"
+    ],
+    "highlights": [
+      "Kebbi capital",
+      "Argungu festival gateway",
+      "Kainji lake region"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Birnin_Kebbi"
   },
   {
@@ -1688,8 +2101,16 @@
     "populationNote": "~350,000 metro (est.)",
     "economy": "State administration, agribusiness (palm, cassava), highway commerce.",
     "climate": "Tropical rainforest fringe.",
-    "landmarks": ["National War Museum (Biafra)", "Abia State Secretariat", "Azumini Blue River nearby"],
-    "highlights": ["Abia capital", "Biafran wartime seat", "War Museum"],
+    "landmarks": [
+      "National War Museum (Biafra)",
+      "Abia State Secretariat",
+      "Azumini Blue River nearby"
+    ],
+    "highlights": [
+      "Abia capital",
+      "Biafran wartime seat",
+      "War Museum"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Umuahia"
   },
   {
@@ -1706,8 +2127,16 @@
     "populationNote": "~450,000 metro (est.)",
     "economy": "Government, hydropower sector services, grain/cotton trade.",
     "climate": "Guinea savanna, dry.",
-    "landmarks": ["Shiroro / Kainji dams region", "Minna Government House", "Niger State Secretariat"],
-    "highlights": ["Capital of Niger State", "Gateway to Kainji NP & dams", "Power sector hub"],
+    "landmarks": [
+      "Shiroro / Kainji dams region",
+      "Minna Government House",
+      "Niger State Secretariat"
+    ],
+    "highlights": [
+      "Capital of Niger State",
+      "Gateway to Kainji NP & dams",
+      "Power sector hub"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Minna"
   },
   {
@@ -1724,8 +2153,16 @@
     "populationNote": "~300,000 metro (est.)",
     "economy": "Agriculture (sorghum, sesame, livestock), regional commerce, railway logistics.",
     "climate": "Guinea savanna; hot, with a brief rainy season.",
-    "landmarks": ["Gombe Emirate Palace", "Eastern railway terminus", "Gombe State Secretariat"],
-    "highlights": ["Gombe State capital", "Eastern railway terminus", "Jewel in the Savannah"],
+    "landmarks": [
+      "Gombe Emirate Palace",
+      "Eastern railway terminus",
+      "Gombe State Secretariat"
+    ],
+    "highlights": [
+      "Gombe State capital",
+      "Eastern railway terminus",
+      "Jewel in the Savannah"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Gombe,_Nigeria"
   },
   {
@@ -1742,8 +2179,16 @@
     "populationNote": "~120,000 (island + metro est.)",
     "economy": "LNG export, oil terminals, coastal fishing, historic kingdom heritage.",
     "climate": "Equatorial mangrove delta.",
-    "landmarks": ["NLNG Bonny Terminal", "Bonny Kingdom Palace", "Bonny Deep-Sea Terminal"],
-    "highlights": ["Nigeria's LNG export port", "Historic Bonny Kingdom", "Deep-sea terminal"],
+    "landmarks": [
+      "NLNG Bonny Terminal",
+      "Bonny Kingdom Palace",
+      "Bonny Deep-Sea Terminal"
+    ],
+    "highlights": [
+      "Nigeria's LNG export port",
+      "Historic Bonny Kingdom",
+      "Deep-sea terminal"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Bonny,_Nigeria"
   },
   {
@@ -1760,8 +2205,16 @@
     "populationNote": "Delta port precincts; resident staff settlements",
     "economy": "Crude export, Escravos GTL, midstream gas, offshore services.",
     "climate": "Equatorial mangrove delta.",
-    "landmarks": ["Forcados Terminal", "Escravos GTL Plant", "Warri estuary"],
-    "highlights": ["Forcados crude terminal", "Escravos GTL", "Midstream delta hub"],
+    "landmarks": [
+      "Forcados Terminal",
+      "Escravos GTL Plant",
+      "Warri estuary"
+    ],
+    "highlights": [
+      "Forcados crude terminal",
+      "Escravos GTL",
+      "Midstream delta hub"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Forcados"
   },
   {
@@ -1778,8 +2231,16 @@
     "populationNote": "Rural coastal + fishing communities; port staff settlements",
     "economy": "Fishing, coastal trade, deep-sea port development zone.",
     "climate": "Mangrove/equatorial, very wet.",
-    "landmarks": ["Bakassi coast", "Eastern maritime corridor", "Cameroon border estuary"],
-    "highlights": ["Easternmost maritime flank", "Bakassi deep-sea port plans", "Cameroon border coast"],
+    "landmarks": [
+      "Bakassi coast",
+      "Eastern maritime corridor",
+      "Cameroon border estuary"
+    ],
+    "highlights": [
+      "Easternmost maritime flank",
+      "Bakassi deep-sea port plans",
+      "Cameroon border coast"
+    ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Bakassi"
   }
 ]

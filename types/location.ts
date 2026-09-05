@@ -1,4 +1,5 @@
 export type LocationLevel = "country" | "state" | "lga";
+export type OverlayLevel = "landform" | "resource" | "city" | "lake" | "waterway" | "coast";
 
 export interface BBox {
   minLon: number;
@@ -43,12 +44,16 @@ export interface RegionLocation {
 export interface SearchEntry {
   id: string;
   name: string;
-  level: LocationLevel | "country";
+  level: LocationLevel | "country" | OverlayLevel;
   parentId: string | null;
   stateName?: string;
   regionId?: string;
   regionName?: string;
   bbox?: [number, number, number, number];
+  layerId?: "landforms" | "resources" | "cities" | "lakes" | "waterways" | "coast";
+  typeLabel?: string;
+  centroid?: [number, number];
+  summary?: string;
 }
 
 export interface StateContent {

@@ -71,7 +71,6 @@ const DRAW: Record<CoastCategory, DrawFn> = {
   estuary: drawWaves,
   environment: drawLeaf,
   historic: drawColumn,
-  "navy-base": drawShip,
 };
 
 const FILL: Record<CoastCategory, string> = {
@@ -80,7 +79,6 @@ const FILL: Record<CoastCategory, string> = {
   estuary: "#0891b2",
   environment: "#059669",
   historic: "#92400e",
-  "navy-base": "#0f172a",
 };
 
 function iconImage(category: CoastCategory): ImageData {
@@ -110,12 +108,6 @@ function iconImage(category: CoastCategory): ImageData {
   DRAW[category](ctx, cx, cy, r);
   if (category === "estuary") ctx.stroke();
   else ctx.fill();
-
-  if (category === "navy-base") {
-    ctx.strokeStyle = FILL[category];
-    ctx.lineWidth = 2.4;
-    ctx.stroke();
-  }
 
   return ctx.getImageData(0, 0, SIZE, SIZE);
 }

@@ -4,7 +4,8 @@ export type OverlayLayerId =
   | "lakes"
   | "coast"
   | "landforms"
-  | "cities";
+  | "cities"
+  | "resources";
 
 export const OVERLAY_LAYER_IDS: OverlayLayerId[] = [
   "waterways",
@@ -12,6 +13,7 @@ export const OVERLAY_LAYER_IDS: OverlayLayerId[] = [
   "coast",
   "landforms",
   "cities",
+  "resources",
 ];
 
 export const OVERLAY_LAYER_LABELS: Record<
@@ -23,6 +25,7 @@ export const OVERLAY_LAYER_LABELS: Record<
   coast: { label: "Coast", short: "Coast", category: "Coast" },
   landforms: { label: "Landforms", short: "Relief", category: "Landform" },
   cities: { label: "Cities", short: "Cities", category: "City" },
+  resources: { label: "Resources", short: "Minerals", category: "Resource" },
 };
 
 export const CITY_CATEGORIES = [
@@ -35,7 +38,6 @@ export const CITY_CATEGORIES = [
   "industrial",
   "university",
   "regional",
-  "army-division",
 ] as const;
 
 export type CityCategory = (typeof CITY_CATEGORIES)[number];
@@ -53,7 +55,24 @@ export const CITY_CATEGORY_LABELS: Record<
   industrial: { label: "Industrial centre", color: "#475569" },
   university: { label: "University town", color: "#0f766e" },
   regional: { label: "Regional city", color: "#64748b" },
-  "army-division": { label: "Army division", color: "#3f6212" },
+};
+
+export const WATERWAY_MILITARY_CATEGORIES = [
+  "army-division",
+  "navy-base",
+  "airforce-hq",
+  "airforce-base",
+] as const;
+export type WaterwayMilitaryCategory = (typeof WATERWAY_MILITARY_CATEGORIES)[number];
+
+export const WATERWAY_MILITARY_CATEGORY_LABELS: Record<
+  WaterwayMilitaryCategory,
+  { label: string; color: string; branch: string }
+> = {
+  "army-division": { label: "Army division", color: "#3f6212", branch: "Nigerian Army" },
+  "navy-base": { label: "Navy command", color: "#0f172a", branch: "Nigerian Navy" },
+  "airforce-hq": { label: "Air Force HQ", color: "#0369a1", branch: "Nigerian Air Force" },
+  "airforce-base": { label: "Air Force base", color: "#1e40af", branch: "Nigerian Air Force" },
 };
 
 export const LAKE_CATEGORIES = ["natural", "reservoir", "lagoon"] as const;
@@ -85,7 +104,6 @@ export const COAST_CATEGORIES = [
   "estuary",
   "environment",
   "historic",
-  "navy-base",
 ] as const;
 export type CoastCategory = (typeof COAST_CATEGORIES)[number];
 
@@ -98,7 +116,40 @@ export const COAST_CATEGORY_LABELS: Record<
   estuary: { label: "Estuary / lagoon", color: "#0891b2" },
   environment: { label: "Coastal environment", color: "#059669" },
   historic: { label: "Historic coast", color: "#92400e" },
-  "navy-base": { label: "Navy base", color: "#0f172a" },
+};
+
+export const RESOURCE_TYPES = [
+  "crude-oil",
+  "natural-gas",
+  "coal",
+  "tin-columbite",
+  "iron-ore",
+  "gold",
+  "limestone",
+  "bitumen",
+  "lead-zinc",
+  "lithium-rare",
+  "marble",
+  "salt-potash",
+] as const;
+export type ResourceType = (typeof RESOURCE_TYPES)[number];
+
+export const RESOURCE_TYPE_LABELS: Record<
+  ResourceType,
+  { label: string; color: string }
+> = {
+  "crude-oil": { label: "Crude oil", color: "#1c1917" },
+  "natural-gas": { label: "Natural gas", color: "#ea580c" },
+  coal: { label: "Coal", color: "#292524" },
+  "tin-columbite": { label: "Tin & columbite", color: "#64748b" },
+  "iron-ore": { label: "Iron ore", color: "#92400e" },
+  gold: { label: "Gold", color: "#ca8a04" },
+  limestone: { label: "Limestone", color: "#a8a29e" },
+  bitumen: { label: "Bitumen / tar sands", color: "#44403c" },
+  "lead-zinc": { label: "Lead & zinc", color: "#475569" },
+  "lithium-rare": { label: "Lithium & rare earths", color: "#0ea5e9" },
+  marble: { label: "Marble", color: "#d6d3d1" },
+  "salt-potash": { label: "Salt & potash", color: "#f59e0b" },
 };
 
 export const COAST_ZONE_LABELS: Record<
@@ -174,12 +225,12 @@ export const LANDFORM_MAP_LEGEND = [
 export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
   waterways: {
     title: "Waterways",
-    summary: "Major rivers, tributaries, and Niger Delta creeks traced from Natural Earth data.",
+    summary: "Major rivers, tributaries, Niger Delta creeks, and Armed Forces formations.",
     description:
-      "Blue lines show permanent waterways. Thicker dark blue lines are major rivers (Niger, Benue); lighter lines are tributaries and delta creeks. Tap any labelled reach for length, basin, and economy notes.",
-    includes: ["Niger & Benue main stems", "Kaduna, Cross, Osun, Imo rivers", "Delta creeks (Nun, Forcados, Bonny)"],
-    legend: ["Thick blue = major river", "Medium blue = tributary", "Light cyan = delta creek"],
-    tip: "Zoom in to read river names along the line.",
+      "Blue lines show permanent waterways. Thicker dark blue lines are major rivers (Niger, Benue); lighter lines are tributaries and delta creeks. Military markers show Army divisions (olive shields), Navy commands (slate ships), and Air Force bases (sky roundels/deltas). Tap any line or marker for details.",
+    includes: ["Niger & Benue main stems", "Kaduna, Cross, Osun, Imo rivers", "Delta creeks (Nun, Forcados, Bonny)", "9 Army divisions, 3 Navy commands, 5 Air Force formations"],
+    legend: ["Thick blue = major river", "Medium blue = tributary", "Light cyan = delta creek", "🪖 olive shield = Army division", "🚢 slate ship = Navy command", "🎯 sky roundel = Air Force HQ", "✈️ indigo delta = Air Force base"],
+    tip: "Zoom in to read river names and see military formation labels.",
   },
   lakes: {
     title: "Lakes & hydro",
@@ -194,11 +245,10 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
     title: "Coast & ports",
     summary: "Atlantic ocean, coastline zones, seaports, delta terminals, estuaries, and coastal environment.",
     description:
-      "Light blue shows the Gulf of Guinea offshore. A thick dark national coastline and coloured zone traces divide Lagos barrier coast, Niger Delta, and the eastern Cross River shore. Icons match this legend: ⚓ seaport, 💧 oil terminal, ~ estuary, 🍃 environment, 🏛 historic coast, 🚢 navy base.",
+      "Light blue shows the Gulf of Guinea offshore. A thick dark national coastline and coloured zone traces divide Lagos barrier coast, Niger Delta, and the eastern Cross River shore. Icons match this legend: ⚓ seaport, 💧 oil terminal, ~ estuary, 🍃 environment, 🏛 historic coast.",
     includes: [
       "853 km national coastline & three coast zones",
       "Apapa, Lekki, Port Harcourt, Calabar, Warri, Onne",
-      "Western, Eastern & Central Naval Commands",
       "Forcados, Bonny, Escravos terminals",
       "Lagos Lagoon, Niger Delta & Cross River estuaries",
     ],
@@ -211,37 +261,63 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
       "~ cyan = estuary",
       "🍃 green = environment",
       "🏛 brown = historic coast",
-      "🚢 slate = navy base",
     ],
-    tip: "Tap any coast line or icon for trade, ecology, and environment notes.",
+    tip: "Tap any coast line or icon for trade, ecology, and environment notes. Navy commands are now on the Waterways layer.",
   },
   landforms: {
     title: "Landforms & relief",
     summary: "Plateaus, hills, peaks, inselbergs, deltas, and landscape belts — styled by type and size.",
     description:
-      "Icons match the map legend: 🌿 grass for savanna, 🏜 sand for dry basins, 💧 for delta wetlands, 🌲 trees for forest, 🏞 park for reserves, and ⛰ for peaks and hills. Hills show one icon; larger belts use fewer spread markers. Tap any icon for details.",
-    includes: ["Jos, Mambilla, Obudu & Bauchi plateaus", "Sambisa, Cross River NP, Yankari & Okomu", "Idanre, Shebshi, Gashaka highlands", "Aso Rock, Zuma Rock, Mount Patti"],
+      "Icons match the map legend: 🌿 grass for savanna, 🏜 sand for dry basins, 💧 for delta wetlands, 🌲 trees for forest, 🏞 park for reserves, and ⛰ for peaks and hills. Hills show one icon; larger belts use fewer spread markers. Tap any icon for soil/planting notes and landform details.",
+    includes: ["Jos, Mambilla, Obudu & Bauchi plateaus", "Sambisa, Cross River NP, Yankari & Okomu", "Idanre, Shebshi, Gashaka highlands", "Aso Rock, Zuma Rock, Mount Patti", "Guinea & Sudan savanna belts, Sokoto Basin, Niger Delta"],
     legend: LANDFORM_MAP_LEGEND.map((item) => `${item.emoji} ${item.label}`),
-    tip: "Multiple icons in one region show the extent of large landforms — tap any of them.",
+    tip: "Multiple icons in one region show the extent of large landforms — tap any for planting guidance.",
   },
   cities: {
     title: "Cities",
     summary: "Major and regional cities with category icons by economic and administrative role.",
     description:
-      "Each city has a shape-coded icon: star for Abuja, diamond for state capitals, red circle for Lagos-scale megacity, and other shapes for commercial, historic, port, and university towns. Olive 🪖 army shields mark Nigerian Army divisions with the states they cover.",
+      "Each city has a shape-coded icon: star for Abuja, diamond for state capitals, red circle for Lagos-scale megacity, and other shapes for commercial, historic, port, and university towns. Military formations (Army, Navy, Air Force) are now on the Waterways layer.",
     includes: [
-      "63 cities from megacities to regional centres",
+      "87 cities from megacities to regional centres",
       "State capitals and economic hubs",
-      "1, 2, 3, 6, 7, 8, 81 & 82 Divisions plus Guards Brigade",
+      "University towns and historic settlements",
     ],
     legend: [
       "★ federal capital",
       "◆ state capital",
       "● megacity",
-      "🪖 olive = army division",
-      "Other shapes = commercial, historic, port…",
+      "Other shapes = commercial, historic, port, university…",
     ],
-    tip: "Tap any city or army icon for notes, economy, or area of responsibility.",
+    tip: "Tap any city for notes, economy, or linked institutions. Military formations are on the Waterways layer.",
+  },
+  resources: {
+    title: "Mineral resources",
+    summary: "Major minerals and energy deposits — oil, gas, coal, metals, and industrial minerals.",
+    description:
+      "Coded icons mark where Nigeria's mineral reserves are concentrated. Oil/gas are in the Niger Delta; tin, columbite, and gold are on the Jos Plateau and southwest; limestone belts span the central states. Each entry lists reserves, production notes, and what the mineral is used to produce.",
+    includes: [
+      "Crude oil & natural gas fields (Niger Delta)",
+      "Enugu coal, Jos Plateau tin-columbite",
+      "Kogi/Ajaokuta iron ore, Iperindo gold, limestone belts",
+      "Bitumen (Ondo/Edo), lithium & rare earths (Nasarawa/Kaduna)",
+      "Marble (Kwara/Sokoto), salt & potash (Lagos/Sokoto)",
+    ],
+    legend: [
+      "🛢️ dark barrel = crude oil",
+      "🔥 orange flame = natural gas",
+      "⛏️ black cube = coal",
+      "⚙️ grey spark = tin / columbite",
+      "⛓️ brown pick = iron ore",
+      "🪙 gold coin = gold",
+      "🟦 light tank = limestone",
+      "⬛ dark block = bitumen",
+      "🔩 grey zinc = lead / zinc",
+      "🔋 sky battery = lithium / rare earths",
+      "🔲 white tile = marble",
+      "🧂 amber jar = salt / potash",
+    ],
+    tip: "Tap any resource icon to see reserves, production notes, and downstream products.",
   },
 };
 
