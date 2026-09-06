@@ -1,38 +1,38 @@
 stateName,capital,yearCreated,majorCities,languages,nickname
-Abia,Umuahia,,,,
-Adamawa,Yola,,,,
-Akwa Ibom,Uyo,,,,
-Anambra,Awka,,,,
-Bauchi,Bauchi,,,,
-Bayelsa,Yenagoa,,,,
-Benue,Makurdi,,,,
-Borno,Maiduguri,,,,
-Cross River,Calabar,,,,
-Delta,Asaba,,,,
-Ebonyi,Abakaliki,,,,
-Edo,Benin City,,,,
-Ekiti,Ado-Ekiti,,,,
-Enugu,Enugu,,,,
-Federal Capital Territory,Abuja,,,,
-Gombe,Gombe,,,,
-Imo,Owerri,,,,
-Jigawa,Dutse,,,,
-Kaduna,Kaduna,,,,
-Kano,Kano,,,,
-Katsina,Katsina,,,,
-Kebbi,Birnin Kebbi,,,,
-Kogi,Lokoja,,,,
-Kwara,Ilorin,,,,
-Lagos,Ikeja,,,,
-Nassarawa,,,,,
-Niger,Minna,,,,
-Ogun,Abeokuta,,,,
-Ondo,Akure,,,,
-Osun,Osogbo,,,,
-Oyo,Ibadan,,,,
-Plateau,Jos,,,,
-Rivers,Port Harcourt,,,,
-Sokoto,Sokoto,,,,
-Taraba,Jalingo,,,,
-Yobe,Damaturu,,,,
-Zamfara,Gusau,,,,
+Abia,Umuahia,1991,"Umuahia;Aba;Arochukwu","Igbo","God's Own State"
+Adamawa,Yola,1991,"Yola;Mubi;Numan","Fulfulde;Hausa;Bura;Mumuye","Land of Beauty"
+Akwa Ibom,Uyo,1987,"Uyo;Eket;Ikot Ekpene","Ibibio;Annang;Oro","Land of Promise"
+Anambra,Awka,1976,"Awka;Onitsha;Nnewi","Igbo","Light of the Nation"
+Bauchi,Bauchi,1976,"Bauchi;Azare;Misau","Hausa;Fulfulde;Sayawa","Pearl of Tourism"
+Bayelsa,Yenagoa,1996,"Yenagoa;Ogbia;Brass","Ijaw (Izon);Ogbia","Glory of All Lands"
+Benue,Makurdi,1976,"Makurdi;Gboko;Otukpo","Tiv;Idoma","Food Basket of the Nation"
+Borno,Maiduguri,1976,"Maiduguri;Bama;Dikwa","Kanuri;Shuwa Arabic;Hausa","Home of Peace"
+Cross River,Calabar,1967,"Calabar;Ogoja;Ikom","Efik;Ejagham;Bekwarra","The People's Paradise"
+Delta,Asaba,1991,"Asaba;Warri;Sapele","Urhobo;Igbo (Anioma);Ijaw;Isoko;Itsekiri","The Big Heart"
+Ebonyi,Abakaliki,1996,"Abakaliki;Afikpo","Igbo","Salt of the Nation"
+Edo,Benin City,1991,"Benin City;Auchi;Ekpoma","Edo (Bini);Esan;Afemai","Heartbeat of Nigeria"
+Ekiti,Ado-Ekiti,1996,"Ado-Ekiti;Ikere-Ekiti;Ikole-Ekiti","Yoruba (Ekiti)","Land of Honour and Integrity"
+Enugu,Enugu,1991,"Enugu;Nsukka;Awgu","Igbo","Coal City State"
+Federal Capital Territory,Abuja,1976,"Abuja;Gwagwalada;Kuje","Gbagyi (Gwari);Hausa","Centre of Unity"
+Gombe,Gombe,1996,"Gombe;Kaltungo;Billiri","Hausa;Fulfulde;Tangale","Jewel in the Savannah"
+Imo,Owerri,1976,"Owerri;Orlu;Okigwe","Igbo","Eastern Heartland"
+Jigawa,Dutse,1991,"Dutse;Hadejia;Gumel","Hausa;Fulfulde","The New World"
+Kaduna,Kaduna,1967,"Kaduna;Zaria;Kafanchan","Hausa;Fulfulde;Atyap","Centre of Learning"
+Kano,Kano,1967,"Kano;Wudil;Gaya","Hausa;Fulfulde","Centre of Commerce"
+Katsina,Katsina,1987,"Katsina;Funtua;Daura","Hausa;Fulfulde","Home of Hospitality"
+Kebbi,Birnin Kebbi,1991,"Birnin Kebbi;Argungu;Yauri","Hausa;Fulfulde;Kambari","Land of Equity"
+Kogi,Lokoja,1991,"Lokoja;Okene;Idah","Igala;Ebira;Yoruba (Okun)","The Confluence State"
+Kwara,Ilorin,1967,"Ilorin;Offa;Omu-Aran","Yoruba;Nupe;Baruba","State of Harmony"
+Lagos,Ikeja,1967,"Lagos Island;Ikeja;Lekki;Surulere","Yoruba","Centre of Excellence"
+Nassarawa,Lafia,1996,"Lafia;Keffi;Akwanga","Hausa;Eggon;Tiv","Home of Solid Minerals"
+Niger,Minna,1976,"Minna;Bida;Suleja","Nupe;Hausa;Gbagyi","The Power State"
+Ogun,Abeokuta,1976,"Abeokuta;Sagamu;Ijebu-Ode","Yoruba (Egba;Ijebu;Remo)","Gateway State"
+Ondo,Akure,1976,"Akure;Ondo;Owo","Yoruba","Sunshine State"
+Osun,Osogbo,1991,"Osogbo;Ile-Ife;Ilesa","Yoruba","State of the Living Spring"
+Oyo,Ibadan,1976,"Ibadan;Ogbomoso;Oyo","Yoruba","Pace-Setter State"
+Plateau,Jos,1976,"Jos;Bukuru;Pankshin","Berom;Hausa;Ngas","Home of Peace and Tourism"
+Rivers,Port Harcourt,1967,"Port Harcourt;Bonny;Okrika","Ikwerre;Ijaw;Ogoni;Kalabari","Treasure Base of the Nation"
+Sokoto,Sokoto,1976,"Sokoto;Tambuwal;Wurno","Hausa;Fulfulde","Seat of the Caliphate"
+Taraba,Jalingo,1991,"Jalingo;Wukari;Bali","Fulfulde;Hausa;Mumuye;Jukun","Nature's Gift to the Nation"
+Yobe,Damaturu,1991,"Damaturu;Potiskum;Nguru","Hausa;Kanuri;Bade","Pride of the Sahel"
+Zamfara,Gusau,1996,"Gusau;Kaura Namoda;Talata Mafara","Hausa;Fulfulde","Farming is Our Pride"

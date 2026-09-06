@@ -1,26 +1,26 @@
 {
   "NG": {
     "president": {
-      "name": "—",
-      "party": null,
+      "name": "Muhammadu Buhari",
+      "party": "All Progressives Congress (APC)",
       "imageUrl": null,
       "role": null
     },
     "vicePresident": {
-      "name": "—",
-      "party": null,
+      "name": "Yemi Osinbajo",
+      "party": "All Progressives Congress (APC)",
       "imageUrl": null,
       "role": null
     },
     "senatePresident": {
-      "name": "—",
-      "party": null,
+      "name": "Ahmad Lawan",
+      "party": "All Progressives Congress (APC)",
       "imageUrl": null,
       "role": null
     },
     "speaker": {
-      "name": "—",
-      "party": null,
+      "name": "Femi Gbajabiamila",
+      "party": "All Progressives Congress (APC)",
       "imageUrl": null,
       "role": null
     },
