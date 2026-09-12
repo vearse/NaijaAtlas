@@ -352,4 +352,5 @@ export interface SelectedOverlayFeature {
   layerId: OverlayLayerId;
   name: string;
   properties: Record<string, unknown>;
+  geometry?: GeoJSON.Geometry | null;
 }

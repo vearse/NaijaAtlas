@@ -177,6 +177,7 @@ export default function LocationSearch() {
               layerId: resolvedLayer,
               name: String(hit.properties?.name ?? entry.name),
               properties: (hit.properties as Record<string, unknown>) ?? props,
+              geometry: hit.geometry,
             });
           }
         }

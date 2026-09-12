@@ -646,13 +646,7 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
           "text-offset": [0, 1.35],
           "text-anchor": "top",
           "text-optional": false,
-          "text-allow-overlap": [
-            "match",
-            ["coalesce", ["get", "sizeTier"], "medium"],
-            "major",
-            true,
-            false,
-          ],
+          "text-allow-overlap": true,
         },
         paint: {
           "text-color": "#44403c",

@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
 import WikiDeepDiveLink from "@/components/map/WikiDeepDiveLink";
+import VisitDirectionsControl from "@/components/directions/VisitDirectionsControl";
 import {
   CITY_CATEGORY_LABELS,
   LAKE_CATEGORY_LABELS,
@@ -167,6 +168,64 @@ function capacityLabel(value: unknown): string | null {
   return text(value);
 }
 
+function finitePair(a: unknown, b: unknown): [number, number] | null {
+  const lon = Number(a);
+  const lat = Number(b);
+  if (Number.isFinite(lon) && Number.isFinite(lat)) return [lon, lat];
+  return null;
+}
+
+function coordsFromGeometry(geometry: GeoJSON.Geometry | null | undefined): [number, number] | null {
+  if (!geometry) return null;
+  const ring = (
+    geom: GeoJSON.Geometry
+  ): (GeoJSON.Position)[] | null => {
+    if (geom.type === "Point") {
+      return geom.coordinates.length >= 2 ? [geom.coordinates] : null;
+    }
+    if (geom.type === "LineString") {
+      return geom.coordinates.length >= 2 ? geom.coordinates : null;
+    }
+    if (geom.type === "MultiLineString") {
+      return geom.coordinates.flat();
+    }
+    if (geom.type === "Polygon") {
+      return geom.coordinates[0] ?? null;
+    }
+    if (geom.type === "MultiPolygon") {
+      return geom.coordinates.flat().flat();
+    }
+    if (geom.type === "MultiPoint") {
+      return geom.coordinates;
+    }
+    if (geom.type === "GeometryCollection") {
+      for (const child of geom.geometries) {
+        const found = ring(child);
+        if (found && found.length) return found;
+      }
+    }
+    return null;
+  };
+
+  const coords = ring(geometry);
+  if (!coords || coords.length === 0) return null;
+  let lonSum = 0;
+  let latSum = 0;
+  let count = 0;
+  for (const c of coords) {
+    if (!Array.isArray(c) || c.length < 2) continue;
+    const lon = Number(c[0]);
+    const lat = Number(c[1]);
+    if (Number.isFinite(lon) && Number.isFinite(lat)) {
+      lonSum += lon;
+      latSum += lat;
+      count += 1;
+    }
+  }
+  if (count === 0) return null;
+  return [lonSum / count, latSum / count];
+}
+
 export default function OverlayFeaturePanel({
   feature,
   states,
@@ -207,6 +266,16 @@ export default function OverlayFeaturePanel({
     typeof props.lengthKm === "number"
       ? `${props.lengthKm.toLocaleString()} km`
       : text(props.lengthKm);
+
+  let toLonLat: [number, number] | null = null;
+  {
+    const geom = feature.geometry ?? props.geometry;
+    toLonLat =
+      finitePair(props.longitude, props.latitude) ??
+      finitePair(props.lon, props.lat) ??
+      coordsFromGeometry(geom as GeoJSON.Geometry | null | undefined) ??
+      null;
+  }
 
   return (
     <div className="space-y-5">
@@ -310,6 +379,14 @@ export default function OverlayFeaturePanel({
           Close
         </button>
       </div>
+
+      <VisitDirectionsControl
+        feature={{
+          name,
+          lonLat: toLonLat,
+          kind: "overlay",
+        }}
+      />
 
       {text(props.summary) && (
         <p className="text-sm text-slate-600 leading-relaxed">{text(props.summary)}</p>

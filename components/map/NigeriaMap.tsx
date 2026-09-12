@@ -7,6 +7,7 @@ import {
   BASE_STYLE,
   GEO_SOURCES,
   DRAGGED_STATE_SOURCE,
+  getMapStyle,
   createNeighborLayers,
   createRegionLayers,
   createStateLayers,
@@ -25,7 +26,13 @@ import {
   lgaLineLayerId,
   lgaLayersReady,
   updateLgaLabelFilter,
+  applyNeighborLayersMapTypeTuning,
+  DIRECTIONS_ROUTE_SOURCE,
+  createDirectionsRouteLayers,
+  ensureCoreMapSourcesAndLayers,
 } from "./mapLayers";
+import type { MapTypeId } from "@/lib/store/mapStore";
+import type { StyleSpecification } from "maplibre-gl";
 import {
   addOverlayLayers,
   syncAllOverlayVisibility,
@@ -161,6 +168,8 @@ export default function NigeriaMap({
   const resetCounter = useMapStore((s) => s.resetCounter);
   const activeOverlays = useMapStore((s) => s.activeOverlays);
   const labeledLgaOrder = useMapStore((s) => s.labeledLgaOrder);
+  const mapType: MapTypeId = useMapStore((s) => s.mapType);
+  const directions = useMapStore((s) => s.directions);
   const loadedLgaRef = useRef(new Set<string>());
   const [lgaReadyKey, setLgaReadyKey] = useState(0);
 
@@ -215,6 +224,57 @@ export default function NigeriaMap({
     },
     []
   );
+
+  /** Write the current directions state into the runtime geojson source. */
+  const applyDirectionsState = useCallback((map: maplibregl.Map) => {
+    const { directions } = useMapStore.getState();
+    const features: GeoJSON.Feature[] = [];
+
+    if (directions.from) {
+      features.push({
+        type: "Feature",
+        properties: { kind: "from", name: directions.from.name },
+        geometry: {
+          type: "Point",
+          coordinates: directions.from.lonLat,
+        },
+      });
+    }
+    if (directions.to) {
+      features.push({
+        type: "Feature",
+        properties: { kind: "to", name: directions.to.name },
+        geometry: {
+          type: "Point",
+          coordinates: directions.to.lonLat,
+        },
+      });
+    }
+    if (directions.routeGeoJSON && directions.active) {
+      features.push({
+        type: "Feature",
+        properties: {},
+        geometry: directions.routeGeoJSON,
+      });
+    }
+
+    const source = map.getSource(DIRECTIONS_ROUTE_SOURCE) as
+      | maplibregl.GeoJSONSource
+      | undefined;
+    if (!source) return;
+    source.setData({
+      type: "FeatureCollection",
+      features,
+    });
+
+    for (const lid of [
+      "directions-route-line-casing",
+      "directions-route-line",
+      "directions-endpoints",
+    ]) {
+      if (map.getLayer(lid)) map.moveLayer(lid);
+    }
+  }, []);
 
   const syncLgaLabelFilters = useCallback((map: maplibregl.Map) => {
     const store = useMapStore.getState();
@@ -296,6 +356,7 @@ export default function NigeriaMap({
         id,
         name: getFeatureName(props),
         props,
+        geometry: feature.geometry,
       };
     },
     []
@@ -304,13 +365,19 @@ export default function NigeriaMap({
   const selectOverlayHit = useCallback(
     (
       overlayLayerId: OverlayLayerId,
-      hit: { id: string; name: string; props: Record<string, unknown> }
+      hit: {
+        id: string;
+        name: string;
+        props: Record<string, unknown>;
+        geometry?: GeoJSON.Geometry | null;
+      }
     ) => {
       useMapStore.getState().setSelectedOverlay({
         id: hit.id,
         layerId: overlayLayerId,
         name: hit.name,
         properties: hit.props,
+        geometry: hit.geometry,
       });
     },
     []
@@ -338,7 +405,7 @@ export default function NigeriaMap({
       const id = getFeatureId(props) ?? String(props.id ?? "");
       const name = getFeatureName(props);
 
-      return { feature, overlayLayerId, id, name, props };
+      return { feature, overlayLayerId, id, name, props, geometry: feature.geometry };
     },
     []
   );
@@ -382,6 +449,7 @@ export default function NigeriaMap({
           id: overlayHit.id,
           name: overlayHit.name,
           props: overlayHit.props,
+          geometry: overlayHit.geometry,
         });
         return;
       }
@@ -719,6 +787,10 @@ export default function NigeriaMap({
   const handleContextMenuRef = useRef(handleContextMenu);
   const setupDragLayersRef = useRef(setupDragLayers);
   const armDragForStateRef = useRef(armDragForState);
+  const refreshSelectionPaintRef = useRef(refreshSelectionPaint);
+  const readyLgaStateIdsRef = useRef(readyLgaStateIds);
+  const syncLgaLabelFiltersRef = useRef(syncLgaLabelFilters);
+  const syncLgaVisibilityOnMapRef2 = useRef(syncLgaVisibilityOnMap);
 
   handleMapClickRef.current = handleMapClick;
   handleMapDblClickRef.current = handleMapDblClick;
@@ -726,6 +798,10 @@ export default function NigeriaMap({
   handleContextMenuRef.current = handleContextMenu;
   setupDragLayersRef.current = setupDragLayers;
   armDragForStateRef.current = armDragForState;
+  refreshSelectionPaintRef.current = refreshSelectionPaint;
+  readyLgaStateIdsRef.current = readyLgaStateIds;
+  syncLgaLabelFiltersRef.current = syncLgaLabelFilters;
+  syncLgaVisibilityOnMapRef2.current = syncLgaVisibilityOnMap;
 
   // ——— Map init (once) ———
   useEffect(() => {
@@ -785,7 +861,17 @@ export default function NigeriaMap({
 
       addOverlayLayers(map);
 
+      map.addSource(DIRECTIONS_ROUTE_SOURCE, {
+        type: "geojson",
+        data: { type: "FeatureCollection", features: [] },
+      });
+      for (const layer of createDirectionsRouteLayers()) {
+        map.addLayer(layer);
+      }
+
       syncAllOverlayVisibility(map, useMapStore.getState().activeOverlays);
+
+      applyNeighborLayersMapTypeTuning(map, useMapStore.getState().mapType);
 
       hoverRef.current = createHoverController(map);
       mapReadyRef.current = true;
@@ -858,6 +944,110 @@ export default function NigeriaMap({
     // Map instance must init once — handler refs keep listeners up to date.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // ——— MapType base-style swap (setStyle + diff:true + reconcile) ———
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapReadyRef.current) return;
+
+    // IDENTITY SHORT-CIRCUIT: prevent setStyle entirely when no raster layer
+    // is present and we're going to minimal (i.e. already minimal).
+    // This guarantees Minimal mode === the identity pass and eliminates
+    // "Minimal stopped working" reports caused by diff-style reapplying
+    // paint/layout to runtime-added layers when there was nothing to swap.
+    const hasOsmLayer = Boolean(map.getLayer("osm-tiles"));
+    if (mapType === "minimal" && !hasOsmLayer) return;
+    // Also skip if OSM already loaded + OSM requested (no re-fetch of tiles).
+    if (mapType === "osm" && hasOsmLayer) return;
+
+    let cancelled = false;
+    void (async () => {
+      try {
+        map.setStyle(getMapStyle(mapType) as StyleSpecification, {
+          diff: true,
+        });
+
+        const ready = await waitForStyleReady(map, 10000);
+        if (cancelled || !ready) return;
+
+        // 0. Re-ensure core geo + directions sources/layers that
+        //    `setStyle({ diff: true })` may have stripped (base styles declare
+        //    zero runtime sources → diff drops all of them). Overlay sources
+        //    are re-added implicitly by syncAllOverlayVisibility below.
+        ensureCoreMapSourcesAndLayers(map);
+
+        const store = useMapStore.getState();
+        const readyLgas = readyLgaStateIds(map, store.lgaVisibleStateIds);
+
+        // 1. Overlay toggles (cities / resources / landforms / etc.)
+        syncAllOverlayVisibility(map, store.activeOverlays);
+
+        // 2. Selection paint + LGA masking (state fill colors & dragged state)
+        applyStateMaskForLgaVisibility(
+          map,
+          readyLgas,
+          store.draggedStateId
+        );
+        applyStateSelectionPaint(
+          map,
+          store.selectedStateIds,
+          readyLgas
+        );
+
+        // 3. Z-order restacking
+        restackOverlayLayers(map);
+        restackLgaStack(map, readyLgas);
+        restackTopOverlayLayers(map);
+
+        // 4. Progressive LGA label filters (click-to-label)
+        syncLgaLabelFilters(map);
+
+        // 5. Idempotent LGA layer ensure — re-masks + re-stacks for any visible states
+        syncLgaVisibilityOnMapRef.current(store.lgaVisibleStateIds);
+
+        // 6. Neighbor-layer tuning per MapType (OSM: less data, minimal: full)
+        applyNeighborLayersMapTypeTuning(map, mapType);
+
+        // 7. Re-apply the directions route + endpoints, because
+        //    `setStyle({ diff: true })` wiped the runtime geojson source data.
+        //    Re-stacks the route line on top.
+        applyDirectionsState(map);
+      } catch (err) {
+        console.warn("MapType style swap failed:", err);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+    // Delegate to the *Ref mirrors for callbacks so identity is not a concern.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mapType, mapReady]);
+
+  // ——— Directions route + endpoints sync to map source ———
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapReadyRef.current) return;
+    // Ensure directions source + layers exist (a concurrent style swap may
+    // have just stripped them and reconciliation hasn't finished yet, or
+    // directions were activated triggering a fresh swap that hasn't resolved).
+    ensureCoreMapSourcesAndLayers(map);
+    applyDirectionsState(map);
+
+    const { active, routeGeoJSON, from, to } = useMapStore.getState().directions;
+    if (active && routeGeoJSON && from && to) {
+      useMapStore.getState().flyToDirectionsRoute();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    directions.routeGeoJSON,
+    directions.from?.lonLat[0],
+    directions.from?.lonLat[1],
+    directions.to?.lonLat[0],
+    directions.to?.lonLat[1],
+    directions.active,
+    mapReady,
+  ]);
 
   // ——— Clear lifted state when drag id cleared ———
   useEffect(() => {

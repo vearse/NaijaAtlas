@@ -9,6 +9,7 @@ import SelectedStatesBar from "@/components/map/SelectedStatesBar";
 import MapControls from "@/components/map/MapControls";
 import MapHints from "@/components/map/MapHints";
 import MapBottomToolbar from "@/components/map/MapBottomToolbar";
+import MapTypeToggle from "@/components/map/MapTypeToggle";
 import LocationPanel from "@/components/location/LocationPanel";
 import CompareModal from "@/components/compare/CompareModal";
 import MobileInfoModal from "@/components/compare/MobileInfoModal";
@@ -109,11 +110,25 @@ export default function ExplorerShell({
             </div>
           </div>
           <div className="mt-2 lg:mt-4 space-y-1.5 lg:space-y-2">
-            <p className="hidden lg:block text-[10px] font-semibold uppercase tracking-widest text-slate-400">
-              Geopolitical regions
-            </p>
-            <div className="hidden lg:block">
+            <div className="hidden lg:flex lg:items-start lg:justify-between lg:gap-3">
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                  Geopolitical regions
+                </p>
+                <RegionFilter regions={regions} />
+              </div>
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 lg:text-right mb-1">
+                  Map type
+                </p>
+                <MapTypeToggle />
+              </div>
+            </div>
+            <div className="lg:hidden space-y-2">
               <RegionFilter regions={regions} />
+              <div className="flex justify-end">
+                <MapTypeToggle />
+              </div>
             </div>
             <SelectedStatesBar states={states} />
           </div>

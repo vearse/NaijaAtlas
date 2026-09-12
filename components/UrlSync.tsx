@@ -10,10 +10,18 @@ export default function UrlSync() {
   const lgaVisibleStateIds = useMapStore((s) => s.lgaVisibleStateIds);
   const selectedLgaId = useMapStore((s) => s.selectedLgaId);
   const activeRegionId = useMapStore((s) => s.activeRegionId);
+  const mapType = useMapStore((s) => s.mapType);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const store = useMapStore.getState();
+
+    // Set base map style FIRST so overlays/selections are painted onto the correct canvas.
+    const mapParam = params.get("map");
+    if (mapParam === "osm") {
+      store.setMapType("osm");
+    }
+    // Any other value (including undefined / "minimal" / garbage) → no-op: stays default 'minimal'.
 
     const region = params.get("region");
     const states = params.get("states")?.split(",").filter(Boolean);
@@ -46,6 +54,8 @@ export default function UrlSync() {
       if (lgaVisibleStateIds.size > 0) params.set("lgas", "1");
     }
     if (selectedLgaId) params.set("lga", selectedLgaId);
+    // Always emit the map type so deep-links preserve the user's preferred base canvas.
+    params.set("map", mapType);
 
     const qs = params.toString();
     const next = qs
@@ -61,6 +71,7 @@ export default function UrlSync() {
     lgaVisibleStateIds,
     selectedLgaId,
     activeRegionId,
+    mapType,
   ]);
 
   return null;

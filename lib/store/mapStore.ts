@@ -4,6 +4,20 @@ import type { Map as MaplibreMap } from "maplibre-gl";
 const MAX_COMPARE_STATES = 3;
 
 export type MobileSheetMode = "hidden" | "peek" | "open";
+export type MapTypeId = "minimal" | "osm";
+
+export interface DirectionsTarget {
+  name: string;
+  lonLat: [number, number];
+  kind: "state" | "lga" | "overlay" | "custom";
+}
+
+export interface DirectionsState {
+  from: DirectionsTarget | null;
+  to: DirectionsTarget | null;
+  routeGeoJSON: GeoJSON.LineString | null;
+  active: boolean;
+}
 
 import type { OverlayLayerId, SelectedOverlayFeature } from "@/types/overlay";
 
@@ -64,6 +78,15 @@ export interface MapSelectionState {
   peekMobileSheet: () => void;
   closeMobileSheet: () => void;
   reset: () => void;
+  mapType: MapTypeId;
+  setMapType: (id: MapTypeId) => void;
+  directions: DirectionsState;
+  setDirectionsFrom: (f: DirectionsTarget | null) => void;
+  setDirectionsTo: (t: DirectionsTarget | null) => void;
+  setDirectionsRoute: (r: GeoJSON.LineString | null) => void;
+  toggleDirections: (active: boolean) => void;
+  clearDirections: () => void;
+  flyToDirectionsRoute: () => void;
 }
 
 function mobileSheetForSelection(count: number): MobileSheetMode {
@@ -105,8 +128,73 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   mapActionHint: null,
   mapInstance: null,
   lgaVisibilityHandler: null,
+  mapType: "minimal",
+  directions: {
+    from: null,
+    to: null,
+    routeGeoJSON: null,
+    active: false,
+  },
 
   registerMap: (map) => set({ mapInstance: map }),
+  setMapType: (id) => set({ mapType: id }),
+
+  setDirectionsFrom: (from) =>
+    set((state) => ({
+      directions: { ...state.directions, from },
+    })),
+  setDirectionsTo: (to) =>
+    set((state) => ({
+      directions: { ...state.directions, to },
+    })),
+  setDirectionsRoute: (routeGeoJSON) =>
+    set((state) => ({
+      directions: { ...state.directions, routeGeoJSON },
+    })),
+  toggleDirections: (active) => {
+    const state = get();
+    set({
+      directions: { ...state.directions, active },
+    });
+    if (active) {
+      // Auto-switch to Street Map view when activating directions
+      // so the route line renders on top of real streets.
+      state.setMapType("osm");
+    }
+  },
+  clearDirections: () =>
+    set((state) => ({
+      directions: {
+        ...state.directions,
+        from: null,
+        to: null,
+        routeGeoJSON: null,
+        active: false,
+      },
+    })),
+  flyToDirectionsRoute: () => {
+    const state = get();
+    const map = state.mapInstance;
+    const from = state.directions.from;
+    const to = state.directions.to;
+    if (!map || !from || !to) return;
+    const lons = [from.lonLat[0], to.lonLat[0]];
+    const lats = [from.lonLat[1], to.lonLat[1]];
+    const minLon = Math.min(...lons);
+    const maxLon = Math.max(...lons);
+    const minLat = Math.min(...lats);
+    const maxLat = Math.max(...lats);
+    // Expand bbox by ~25% on each side for padding.
+    const dx = (maxLon - minLon) * 0.25;
+    const dy = (maxLat - minLat) * 0.25;
+    map.fitBounds(
+      [
+        [minLon - dx, minLat - dy],
+        [maxLon + dx, maxLat + dy],
+      ] as [[number, number], [number, number]],
+      { padding: 80, duration: 900 }
+    );
+  },
 
   registerLgaVisibilityHandler: (handler) =>
     set({ lgaVisibilityHandler: handler }),

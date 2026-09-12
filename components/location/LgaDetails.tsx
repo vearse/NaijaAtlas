@@ -2,6 +2,7 @@
 
 import { useMapStore } from "@/lib/store/mapStore";
 import type { LgaContent, LgaLocation } from "@/types/location";
+import VisitDirectionsControl from "@/components/directions/VisitDirectionsControl";
 
 interface LgaDetailsProps {
   content: LgaContent;
@@ -63,6 +64,14 @@ export default function LgaDetails({
           {lat.toFixed(4)}°N, {lon.toFixed(4)}°E
         </dd>
       </dl>
+
+      <VisitDirectionsControl
+        feature={{
+          name: content.name,
+          lonLat: location.centroid,
+          kind: "lga",
+        }}
+      />
 
       <p className="text-sm text-slate-600 leading-relaxed">
         {content.description}

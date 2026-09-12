@@ -1,7 +1,8 @@
-import type { LayerSpecification, Map, SourceSpecification } from "maplibre-gl";
+import type { LayerSpecification, Map, SourceSpecification, StyleSpecification } from "maplibre-gl";
 import { MAP_GLYPHS, MAP_FONT, MAP_FONT_EMPHASIS } from "@/lib/map/interaction";
 import { LGA_PALETTE, assignLgaPaletteColors, colorForIndex } from "@/lib/map/colors";
 import { withExcludeState, withExcludeStates } from "@/lib/map/dragStateGeometry";
+import type { MapTypeId } from "@/lib/store/mapStore";
 
 const FILL_TRANSITION = {
   "fill-opacity-transition": { duration: 300 },
@@ -33,6 +34,60 @@ export const BASE_STYLE = {
     },
   ],
 };
+
+/**
+ * Resolve the full MapLibre StyleSpecification per MapType.
+ *
+ * - `minimal` = "Less Distractive", byte-identical to BASE_STYLE (flat blue background).
+ * - `osm` = OpenStreetMap raster tiles as the single base layer.
+ *
+ * IMPORTANT: these style objects intentionally declare NO runtime-added sources
+ * (neighbors / adm0 / adm1 / regions / LGAs / overlays). Those sources and their
+ * layers are added procedurally after style load via `map.addSource / map.addLayer`.
+ * Declaring them here would cause duplicate-source conflicts and break the
+ * `map.setStyle({ diff: true })` swap used in NigeriaMap.
+ */
+export function getMapStyle(mapType: MapTypeId): StyleSpecification {
+  switch (mapType) {
+    case "osm":
+      return {
+        version: 8,
+        glyphs: MAP_GLYPHS,
+        sources: {
+          "osm-raster": {
+            type: "raster",
+            tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+            tileSize: 256,
+            attribution: "© OpenStreetMap contributors",
+            maxzoom: 19,
+          },
+        },
+        layers: [
+          {
+            id: "osm-tiles",
+            type: "raster",
+            source: "osm-raster",
+            minzoom: 0,
+            maxzoom: 22,
+          },
+        ],
+      };
+    case "minimal":
+    default:
+      return {
+        version: 8,
+        glyphs: MAP_GLYPHS,
+        sources: {},
+        layers: [
+          {
+            id: "background",
+            type: "background",
+            paint: { "background-color": "#c5d4e3" },
+          },
+        ],
+      };
+  }
+}
 
 export const GEO_SOURCES = {
   neighbors: "neighbors",
@@ -372,6 +427,100 @@ export function createNeighborLayers(): LayerSpecification[] {
         "text-halo-color": "#f1f5f9",
         "text-halo-width": 2,
         "text-opacity": 0.85,
+      },
+    },
+  ];
+}
+
+/**
+ * Apply neighbor-layer visual tweaks per MapType.
+ *
+ * - `minimal`: neighbors are essential context → full fill + lines + labels.
+ * - `osm`: OSM tiles already render neighboring countries with full street
+ *   detail, so our custom neighbor layers are redundant and create visual
+ *   noise. Hide fill entirely, thin lines to a subtle stroke, and remove
+ *   duplicate labels (OSM has its own). This guarantees zero conflict
+ *   between our overlays and the OSM raster.
+ */
+export function applyNeighborLayersMapTypeTuning(
+  map: Map,
+  mapType: "minimal" | "osm"
+): void {
+  const osm = mapType === "osm";
+
+  if (map.getLayer("neighbors-fill")) {
+    map.setPaintProperty(
+      "neighbors-fill",
+      "fill-opacity",
+      osm ? 0 : 0.45
+    );
+  }
+  if (map.getLayer("neighbors-line")) {
+    map.setPaintProperty(
+      "neighbors-line",
+      "line-opacity",
+      osm ? 0.2 : 0.6
+    );
+    map.setPaintProperty(
+      "neighbors-line",
+      "line-width",
+      osm ? 0.6 : 1
+    );
+  }
+  if (map.getLayer("neighbors-labels")) {
+    map.setLayoutProperty(
+      "neighbors-labels",
+      "visibility",
+      osm ? "none" : "visible"
+    );
+  }
+}
+
+export const DIRECTIONS_ROUTE_SOURCE = "directions-route";
+
+export function createDirectionsRouteLayers(): LayerSpecification[] {
+  return [
+    {
+      id: "directions-route-line-casing",
+      source: DIRECTIONS_ROUTE_SOURCE,
+      type: "line",
+      paint: {
+        "line-color": "#ffffff",
+        "line-width": 7,
+        "line-opacity": 0.9,
+        ...LINE_TRANSITION,
+      },
+    },
+    {
+      id: "directions-route-line",
+      source: DIRECTIONS_ROUTE_SOURCE,
+      type: "line",
+      paint: {
+        "line-color": "#008751",
+        "line-width": 5,
+        "line-opacity": 0.85,
+        "line-blur": 0.5,
+        ...LINE_TRANSITION,
+      },
+    },
+    {
+      id: "directions-endpoints",
+      source: DIRECTIONS_ROUTE_SOURCE,
+      type: "circle",
+      paint: {
+        "circle-radius": 6,
+        "circle-color": [
+          "case",
+          ["==", ["get", "kind"], "from"],
+          "#2563eb",
+          ["==", ["get", "kind"], "to"],
+          "#008751",
+          "#64748b",
+        ],
+        "circle-stroke-color": "#ffffff",
+        "circle-stroke-width": 2,
+        "circle-opacity": 1,
+        "circle-stroke-opacity": 1,
       },
     },
   ];
@@ -748,4 +897,72 @@ export function addLgaStateLayers(
   map.addLayer(lineLayer);
   map.addLayer(createLgaLabelLayer(stateId));
   stackLgaLayers(map, stateId);
+}
+
+/**
+ * Idempotently re-add any core geo / directions sources or layers that were
+ * dropped by a `map.setStyle(..., { diff: true })` swap.
+ *
+ * Because the base style specs (minimal / osm) intentionally declare zero
+ * runtime sources, `diff: true` will strip all sources/layers that were not
+ * re-declared in the incoming style (i.e. all of them). Calling this function
+ * after `waitForStyleReady` restores neighbors / adm0 / adm1 / regions /
+ * dragged-state / directions sources and their layers, which subsequent
+ * reconciliation steps assume already exist.
+ *
+ * Returns `true` if any sources or layers were re-added (callers may need to
+ * wait for geojson source fetches before applying paints/filters).
+ */
+export function ensureCoreMapSourcesAndLayers(map: Map): boolean {
+  let touched = false;
+
+  if (!map.getSource(GEO_SOURCES.neighbors)) {
+    map.addSource(GEO_SOURCES.neighbors, geoSourceUrl("/geo/neighbors.geojson"));
+    touched = true;
+  }
+  if (!map.getSource(GEO_SOURCES.adm0)) {
+    map.addSource(GEO_SOURCES.adm0, geoSourceUrl("/geo/nigeria-adm0.geojson"));
+    touched = true;
+  }
+  if (!map.getSource(GEO_SOURCES.adm1)) {
+    map.addSource(GEO_SOURCES.adm1, geoSourceUrl("/geo/nigeria-adm1.geojson"));
+    touched = true;
+  }
+  if (!map.getSource(GEO_SOURCES.regions)) {
+    map.addSource(GEO_SOURCES.regions, geoSourceUrl("/geo/regions.geojson"));
+    touched = true;
+  }
+
+  const addIfMissing = (layer: LayerSpecification) => {
+    if (!map.getLayer(layer.id)) {
+      map.addLayer(layer);
+      touched = true;
+    }
+  };
+
+  for (const layer of createNeighborLayers()) addIfMissing(layer);
+  for (const layer of createRegionLayers()) addIfMissing(layer);
+  for (const layer of createStateLayers()) addIfMissing(layer);
+  addIfMissing(createStateLabelLayer());
+  addIfMissing(createCountryLabelLayer());
+
+  if (!map.getSource(DRAGGED_STATE_SOURCE)) {
+    map.addSource(DRAGGED_STATE_SOURCE, {
+      type: "geojson",
+      data: { type: "FeatureCollection", features: [] },
+    });
+    touched = true;
+  }
+  for (const layer of createDraggedStateLayers()) addIfMissing(layer);
+
+  if (!map.getSource(DIRECTIONS_ROUTE_SOURCE)) {
+    map.addSource(DIRECTIONS_ROUTE_SOURCE, {
+      type: "geojson",
+      data: { type: "FeatureCollection", features: [] },
+    });
+    touched = true;
+  }
+  for (const layer of createDirectionsRouteLayers()) addIfMissing(layer);
+
+  return touched;
 }

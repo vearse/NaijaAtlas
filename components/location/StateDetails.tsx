@@ -2,6 +2,7 @@ import type { CompareBundle } from "@/types/compare";
 import type { StateContent, StateLocation, LgaLocation } from "@/types/location";
 import { formatStateLandArea } from "@/lib/compare/landArea";
 import ShowLgasButton from "@/components/map/ShowLgasButton";
+import VisitDirectionsControl from "@/components/directions/VisitDirectionsControl";
 import { useMapStore } from "@/lib/store/mapStore";
 
 interface StateDetailsProps {
@@ -84,7 +85,15 @@ export default function StateDetails({
 
       <ShowLgasButton stateId={location.id} stateName={location.name} />
 
-      <p className="text-xs text-slate-500 -mt-2 text-center leading-relaxed">
+      <VisitDirectionsControl
+        feature={{
+          name: content.name,
+          lonLat: location.centroid,
+          kind: "state",
+        }}
+      />
+
+      <p className="text-xs text-slate-500 text-center leading-relaxed">
         Double-click {location.name} on the map to show LGAs, or use the button
         above.
       </p>
