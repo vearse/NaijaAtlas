@@ -499,7 +499,7 @@ export function applyAdminLayersMapTypeTuning(
   if (mapType !== "osm") return;
 
   if (map.getLayer("states-fill")) {
-    map.setPaintProperty("states-fill", "fill-opacity", 0.04);
+    map.setPaintProperty("states-fill", "fill-opacity", 0);
   }
   if (map.getLayer("states-line")) {
     map.setPaintProperty("states-line", "line-width", 0.9);
@@ -519,6 +519,20 @@ export function applyAdminLayersMapTypeTuning(
   // Nigeria outline: thin it in OSM so it reads as context, not overlay.
   if (map.getLayer("country-outline")) {
     map.setPaintProperty("country-outline", "line-width", 1);
+  }
+  // LGA polygons (lazily loaded, e.g. via a selected state) must never cover
+  // the street tiles either — sweep every mounted LGA layer so a selected
+  // state doesn't show a filled "background" while the rest stays clean.
+  for (const layer of map.getStyle().layers) {
+    if (!layer.id.startsWith("lgas-")) continue;
+    if (layer.id.endsWith("-fill")) {
+      map.setPaintProperty(layer.id, "fill-opacity", 0);
+    } else if (layer.id.endsWith("-labels")) {
+      map.setLayoutProperty(layer.id, "visibility", "none");
+    } else if (layer.id.endsWith("-line")) {
+      map.setPaintProperty(layer.id, "line-opacity", 0.3);
+      map.setPaintProperty(layer.id, "line-width", 0.6);
+    }
   }
 }
 

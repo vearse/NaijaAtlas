@@ -300,6 +300,8 @@ export default function NigeriaMap({
       const ready = readyLgaStateIds(map, store.lgaVisibleStateIds);
       applyStateMaskForLgaVisibility(map, ready, store.draggedStateId);
       applyStateSelectionPaint(map, store.selectedStateIds, ready);
+      // Final writer: keep OSM free of admin/region/LGA fills.
+      applyAdminLayersMapTypeTuning(map, useMapStore.getState().mapType);
     },
     [readyLgaStateIds]
   );
