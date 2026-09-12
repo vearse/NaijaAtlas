@@ -1,0 +1,1397 @@
+[
+  {
+    "id": "place-yankari-national-park",
+    "name": "Yankari National Park",
+    "category": "national-park",
+    "stateName": "Bauchi",
+    "stateId": "NG-BA",
+    "lon": 10.5,
+    "lat": 9.75,
+    "nickname": "Nigeria's premier savanna reserve",
+    "established": "1956 (game reserve); national park status 1991",
+    "summary": "Nigeria's most visited wildlife park, famed for free-roaming elephants, the Wikki Warm Spring, and Gashaka-style savanna landscapes.",
+    "description": "Yankari spans roughly 2,244 sq km of Sudan-Guinea savanna along the Gaji River. It shelters elephants, baboons, hippos, crocodiles, and over 350 bird species, alongside the crystal-clear Wikki Warm Spring where visitors can bathe year-round. The park also holds rock-shelter sites with evidence of pre-colonial habitation.",
+    "visitorNote": "~2,244 sq km reserve; tens of thousands of visitors annually",
+    "significance": "Ecotourism revenue for Bauchi State, elephant conservation, and a flagship national park brand.",
+    "climate": "Sudan savanna; hot dry season, short rains.",
+    "landmarks": [
+      "Wikki Warm Spring",
+      "Marshall Caves",
+      "Gaji River",
+      "Yankari elephant herds"
+    ],
+    "highlights": [
+      "Free-roaming elephant herds",
+      "Wikki Warm Spring bathing pool",
+      "Ancient rock shelters"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Yankari_National_Park"
+  },
+  {
+    "id": "place-cross-river-national-park",
+    "name": "Cross River National Park",
+    "category": "national-park",
+    "stateName": "Cross River",
+    "stateId": "NG-CR",
+    "lon": 8.6,
+    "lat": 5.5,
+    "nickname": "Nigeria's rainforest ark",
+    "established": "1991",
+    "summary": "Nigeria's largest surviving tract of tropical rainforest, home to the Cross River gorilla and drill monkey.",
+    "description": "Made up of the Okwangwo and Oban divisions along the Cameroon border, the park protects one of Africa's oldest rainforests, harbouring critically endangered Cross River gorillas, chimpanzees, forest elephants, and drills. It is central to Nigeria's biodiversity-conservation and carbon-forest programmes.",
+    "visitorNote": "~4,000 sq km of primary rainforest across two divisions",
+    "significance": "Global biodiversity hotspot, carbon-sink forest, and eco-tourism/primate-conservation site.",
+    "climate": "Equatorial rainforest; very high rainfall year-round.",
+    "landmarks": [
+      "Okwangwo Division",
+      "Oban Division",
+      "Afi Mountain Wildlife Sanctuary (adjacent)"
+    ],
+    "highlights": [
+      "Cross River gorilla habitat",
+      "Nigeria's largest rainforest block",
+      "Drill monkey sanctuary"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Cross_River_National_Park"
+  },
+  {
+    "id": "place-gashaka-gumti-national-park",
+    "name": "Gashaka-Gumti National Park",
+    "category": "national-park",
+    "stateName": "Taraba",
+    "stateId": "NG-TA",
+    "lon": 11.7,
+    "lat": 7.35,
+    "nickname": "Nigeria's largest national park",
+    "established": "1991 (merger of Gashaka and Gumti reserves)",
+    "summary": "Nigeria's biggest and most rugged national park, straddling the Mambilla and Adamawa highlands and home to Chappal Waddi, the country's highest peak.",
+    "description": "Covering some 6,700 sq km across Taraba and Adamawa states, Gashaka-Gumti mixes montane grassland, forest, and savanna. It hosts chimpanzees, lions, and rare montane bird species, and its highland trails lead toward Chappal Waddi (Gangirwal), Nigeria's tallest mountain.",
+    "visitorNote": "~6,700 sq km; Nigeria's largest protected area",
+    "significance": "Primate research (notably wild chimpanzee studies), highland ecotourism, and watershed protection.",
+    "climate": "Highland tropical; cooler temperatures at altitude.",
+    "landmarks": [
+      "Chappal Waddi (Gangirwal)",
+      "Gashaka village",
+      "Mambilla foothills"
+    ],
+    "highlights": [
+      "Nigeria's highest mountain access point",
+      "Wild chimpanzee populations",
+      "Largest national park by area"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Gashaka-Gumti_National_Park"
+  },
+  {
+    "id": "place-kainji-lake-national-park",
+    "name": "Kainji Lake National Park",
+    "category": "national-park",
+    "stateName": "Niger",
+    "stateId": "NG-NI",
+    "lon": 4.6,
+    "lat": 9.85,
+    "nickname": "Nigeria's first national park",
+    "established": "1979",
+    "summary": "Nigeria's oldest national park, straddling Niger and Kwara states around the Kainji Reservoir, with the Borgu sector known for giraffe and buffalo.",
+    "description": "Created around the man-made Kainji Lake, the park combines the Borgu and Zugurma game sectors, sustaining West African savanna wildlife including roan antelope, buffalo, and the country's last wild giraffe population. It anchors hydropower-linked conservation in the Niger basin.",
+    "visitorNote": "~5,340 sq km including lake frontage",
+    "significance": "Watershed and hydropower catchment protection, savanna wildlife conservation.",
+    "climate": "Guinea savanna; wet and dry seasons.",
+    "landmarks": [
+      "Borgu game sector",
+      "Zugurma sector",
+      "Kainji Reservoir shoreline"
+    ],
+    "highlights": [
+      "Nigeria's first gazetted national park",
+      "Last wild giraffe range in Nigeria",
+      "Kainji Reservoir ecosystem"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kainji_National_Park"
+  },
+  {
+    "id": "place-chad-basin-national-park",
+    "name": "Chad Basin National Park",
+    "category": "national-park",
+    "stateName": "Borno",
+    "stateId": "NG-BO",
+    "lon": 14.2,
+    "lat": 12.5,
+    "nickname": "Sahel wetland sanctuary",
+    "established": "1991",
+    "summary": "A Sahel wetland and semi-desert park spanning the Chad Basin, valued for the Sambisa and Bade-Nguru wetland sectors and migratory waterfowl.",
+    "description": "Split into the Chingurmi-Duguma and Bade-Nguru sectors, the park preserves shrinking Sahelian wetlands feeding Lake Chad, supporting migratory birds, ostriches, and gazelle. Its Sambisa forest sector has drawn global attention for security reasons in recent years.",
+    "visitorNote": "~2,258 sq km across two non-contiguous sectors",
+    "significance": "Sahel wetland and migratory-bird conservation tied to the shrinking Lake Chad basin.",
+    "climate": "Sahel; arid with brief rains.",
+    "landmarks": [
+      "Chingurmi-Duguma sector",
+      "Bade-Nguru wetlands",
+      "Lake Chad hinterland"
+    ],
+    "highlights": [
+      "Sahel wetland ecosystem",
+      "Migratory bird corridor",
+      "Lake Chad basin conservation"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Chad_Basin_National_Park"
+  },
+  {
+    "id": "place-okomu-national-park",
+    "name": "Okomu National Park",
+    "category": "national-park",
+    "stateName": "Edo",
+    "stateId": "NG-ED",
+    "lon": 5.2,
+    "lat": 6.4,
+    "nickname": "Rainforest refuge of the white-throated monkey",
+    "established": "1999",
+    "summary": "A lowland rainforest park in Edo State protecting forest elephants, white-throated guenons, and rare butterflies close to Benin City.",
+    "description": "Okomu preserves one of the last substantial rainforest blocks in southern Nigeria, with canopy walkways, forest elephants, and the endemic white-throated guenon monkey. It sits within the wider Okomu Forest Reserve and is a popular short getaway from Benin City.",
+    "visitorNote": "~202 sq km core park within a larger forest reserve",
+    "significance": "Rainforest and forest-elephant conservation; ecotourism close to Benin City.",
+    "climate": "Tropical rainforest; heavy rainfall.",
+    "landmarks": [
+      "Okomu canopy walkway",
+      "Forest elephant trails",
+      "Okomu Forest Reserve buffer zone"
+    ],
+    "highlights": [
+      "White-throated guenon habitat",
+      "Forest canopy walkway",
+      "Southern Nigeria rainforest remnant"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Okomu_National_Park"
+  },
+  {
+    "id": "place-old-oyo-national-park",
+    "name": "Old Oyo National Park",
+    "category": "national-park",
+    "stateName": "Oyo",
+    "stateId": "NG-OY",
+    "lon": 3.9,
+    "lat": 8.9,
+    "nickname": "Ruins of the Oyo Empire in a wildlife park",
+    "established": "1991",
+    "summary": "A savanna park layered over the ruins of the old Oyo Empire capital, combining wildlife with pre-colonial Yoruba archaeology.",
+    "description": "Covering derelict walls, potsherd pavements, and shrine sites of the historic Oyo-Ile capital, the park also sustains baboons, hartebeest, and savanna birdlife along the Ogun and Mata rivers, making it a rare blend of archaeology and wildlife tourism.",
+    "visitorNote": "~2,512 sq km including archaeological zones",
+    "significance": "Archaeological heritage of the Oyo Empire plus Guinea-savanna wildlife conservation.",
+    "climate": "Guinea savanna; wet and dry seasons.",
+    "landmarks": [
+      "Oyo-Ile (Old Oyo) ruins",
+      "Mata River",
+      "Sango shrine sites"
+    ],
+    "highlights": [
+      "Oyo Empire capital ruins",
+      "Combined archaeology-and-wildlife park",
+      "Guinea savanna wildlife"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Old_Oyo_National_Park"
+  },
+  {
+    "id": "place-erin-ijesha-waterfalls",
+    "name": "Erin-Ijesha (Olumirin) Waterfalls",
+    "category": "waterfall",
+    "stateName": "Osun",
+    "stateId": "NG-OS",
+    "lon": 4.85,
+    "lat": 7.65,
+    "nickname": "Olumirin Waterfalls",
+    "established": "Natural site; developed for tourism from the 1970s",
+    "summary": "A seven-tiered waterfall near Erin-Ijesha that is one of southwestern Nigeria's most popular natural attractions.",
+    "description": "The falls descend in seven distinct levels down a forested hillside, with the lower tiers easily accessible and higher levels requiring a steep climb. Local tradition ties the falls to the deity Olumirin, and the surrounding rainforest is rich in bird and plant life.",
+    "visitorNote": "Seven cascading tiers; popular weekend and festive-season destination",
+    "significance": "Regional ecotourism draw and community-managed heritage site for Osun State.",
+    "climate": "Tropical rainforest fringe; humid.",
+    "landmarks": [
+      "Seven-tier cascade",
+      "Erin-Ijesha forest trail",
+      "Olumirin shrine"
+    ],
+    "highlights": [
+      "Seven-level waterfall climb",
+      "Rainforest hiking trail",
+      "Traditional Olumirin deity site"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Erin-Ijesha_Waterfalls"
+  },
+  {
+    "id": "place-owu-waterfalls",
+    "name": "Owu Waterfalls",
+    "category": "waterfall",
+    "stateName": "Kwara",
+    "stateId": "NG-KW",
+    "lon": 4.55,
+    "lat": 8.35,
+    "nickname": "Reputed tallest waterfall in West Africa",
+    "established": "Natural site near Owu village",
+    "summary": "A remote, dramatic waterfall near Isanlu-Isin often cited as the tallest in West Africa, reached through forest trekking.",
+    "description": "Owu Falls drops in a series of stepped cascades through dense forest, with an approach that requires a moderately demanding hike. Its height and relative inaccessibility have kept it less commercialised than Erin-Ijesha, appealing to adventure travellers.",
+    "visitorNote": "Reported height figures vary; among the tallest in the region",
+    "significance": "Adventure-tourism and eco-trekking destination for Kwara State.",
+    "climate": "Guinea savanna-forest transition; humid in wet season.",
+    "landmarks": [
+      "Owu village trailhead",
+      "Forest approach trail",
+      "Multi-tier cascade"
+    ],
+    "highlights": [
+      "Reputed tallest waterfall in West Africa",
+      "Forest trekking route",
+      "Undeveloped, scenic setting"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Owu_Falls"
+  },
+  {
+    "id": "place-farin-ruwa-falls",
+    "name": "Farin Ruwa Falls",
+    "category": "waterfall",
+    "stateName": "Nasarawa",
+    "stateId": "NG-NA",
+    "lon": 8.5,
+    "lat": 8.9,
+    "nickname": "White Water Falls",
+    "established": "Natural site on the Jos Plateau escarpment",
+    "summary": "One of Nigeria's tallest waterfalls, plunging off the Jos Plateau escarpment in Nasarawa State.",
+    "description": "Farin Ruwa (Hausa for 'white water') drops dramatically off the southern edge of the Jos Plateau, with a wide curtain of falling water especially striking in the rainy season. The surrounding highland scenery makes it a favourite for day-trippers from Abuja and Jos.",
+    "visitorNote": "One of the tallest single-drop waterfalls in Nigeria",
+    "significance": "Highland ecotourism site linking Nasarawa and Plateau states.",
+    "climate": "Highland tropical; cooler than surrounding lowlands.",
+    "landmarks": [
+      "Jos Plateau escarpment",
+      "Farin Ruwa viewpoint",
+      "Surrounding highland farmland"
+    ],
+    "highlights": [
+      "Tallest single-drop falls in the region",
+      "Dramatic escarpment setting",
+      "Popular Abuja/Jos day trip"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Farin_Ruwa"
+  },
+  {
+    "id": "place-gurara-falls",
+    "name": "Gurara Falls",
+    "category": "waterfall",
+    "stateName": "Niger",
+    "stateId": "NG-NI",
+    "lon": 7.25,
+    "lat": 9.35,
+    "nickname": "Abuja's nearest waterfall",
+    "established": "Natural site on the Gurara River",
+    "summary": "A wide, powerful waterfall on the Gurara River near Suleja, among the most-visited natural sites close to Abuja.",
+    "description": "Gurara Falls spreads across a broad rock face on the Gurara River, most spectacular in the rainy season when the full width thunders over the escarpment. Its proximity to Abuja and Minna makes it one of central Nigeria's most accessible natural landmarks.",
+    "visitorNote": "Wide multi-channel falls; strongest flow June-October",
+    "significance": "Leading day-trip ecotourism site for the Abuja-Niger corridor.",
+    "climate": "Guinea savanna; strongly seasonal flow.",
+    "landmarks": [
+      "Gurara River gorge",
+      "Falls viewing platform",
+      "Gurara town"
+    ],
+    "highlights": [
+      "Closest major waterfall to Abuja",
+      "Wide rainy-season cascade",
+      "Popular family and school excursion site"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Gurara_Falls"
+  },
+  {
+    "id": "place-kwa-falls",
+    "name": "Kwa Falls",
+    "category": "waterfall",
+    "stateName": "Cross River",
+    "stateId": "NG-CR",
+    "lon": 8.4,
+    "lat": 5.35,
+    "nickname": "Waterfall of the Calabar rainforest",
+    "established": "Natural site near Akamkpa",
+    "summary": "A rainforest waterfall near Calabar surrounded by dense forest and limestone caves, popular with visitors extending a Calabar trip.",
+    "description": "Kwa Falls tumbles into a natural pool through thick tropical forest in Akamkpa Local Government Area, with cool water year-round and nearby caves adding to its appeal as a nature excursion from Calabar.",
+    "visitorNote": "Forest pool suitable for swimming; short trek from the road",
+    "significance": "Nature-tourism complement to Calabar's cultural attractions.",
+    "climate": "Equatorial rainforest; consistently high rainfall.",
+    "landmarks": [
+      "Kwa Falls pool",
+      "Nearby limestone caves",
+      "Akamkpa forest trail"
+    ],
+    "highlights": [
+      "Swimmable forest pool",
+      "Easy access from Calabar",
+      "Dense rainforest setting"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kwa_Falls"
+  },
+  {
+    "id": "place-assop-falls",
+    "name": "Assop Falls",
+    "category": "waterfall",
+    "stateName": "Plateau",
+    "stateId": "NG-PL",
+    "lon": 8.95,
+    "lat": 9.45,
+    "nickname": "Plateau's roadside waterfall",
+    "established": "Natural site along the Jos-Abuja road",
+    "summary": "A scenic waterfall visible from the Jos-Abuja highway, one of the most photographed natural stops on the Plateau.",
+    "description": "Assop Falls cascades down a rocky slope close to the highway linking Jos to Abuja, making it an easy, well-known stop for travellers and a popular subject for Plateau tourism promotion.",
+    "visitorNote": "Roadside accessibility; year-round modest flow, stronger in rains",
+    "significance": "Highway-accessible tourism landmark for Plateau State.",
+    "climate": "Highland tropical; cooler climate.",
+    "landmarks": [
+      "Jos-Abuja highway viewpoint",
+      "Rocky cascade face"
+    ],
+    "highlights": [
+      "Easy highway access",
+      "Iconic Plateau tourism image",
+      "Popular photo stop"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Assop_Falls"
+  },
+  {
+    "id": "place-agbokim-waterfalls",
+    "name": "Agbokim Waterfalls",
+    "category": "waterfall",
+    "stateName": "Cross River",
+    "stateId": "NG-CR",
+    "lon": 8.85,
+    "lat": 5.85,
+    "nickname": "Seven sisters of Etung",
+    "established": "Natural site near the Cameroon border",
+    "summary": "A cluster of seven separate cascades converging near the Nigeria-Cameroon border in Etung Local Government Area.",
+    "description": "Agbokim comprises multiple parallel streams tumbling over a common rock face into a shared river below, surrounded by lush rainforest. Its border-area location and multi-stream form make it a distinctive stop on Cross River's tourism circuit.",
+    "visitorNote": "Seven parallel cascades feeding one river below",
+    "significance": "Cross-border rainforest tourism site for Cross River State.",
+    "climate": "Equatorial rainforest; heavy year-round rainfall.",
+    "landmarks": [
+      "Seven parallel cascades",
+      "Etung forest border zone"
+    ],
+    "highlights": [
+      "Multiple simultaneous waterfalls",
+      "Rainforest border setting",
+      "Cross River tourism circuit stop"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Agbokim_Waterfalls"
+  },
+  {
+    "id": "place-matsirga-falls",
+    "name": "Matsirga (Kufana) Falls",
+    "category": "waterfall",
+    "stateName": "Kaduna",
+    "stateId": "NG-KD",
+    "lon": 8.35,
+    "lat": 9.6,
+    "nickname": "Kagoro highland waterfall",
+    "established": "Natural site in southern Kaduna highlands",
+    "summary": "A picturesque waterfall in the Kagoro/Godogodo hills of southern Kaduna State, popular for hiking and picnics.",
+    "description": "Matsirga Falls drops through granite outcrops in the cool southern Kaduna highlands, drawing weekend visitors from Kafanchan and Kaduna city for hiking, swimming, and rock climbing on the surrounding boulders.",
+    "visitorNote": "Highland setting with swimmable pool below the falls",
+    "significance": "Community ecotourism site for southern Kaduna.",
+    "climate": "Highland savanna; cooler and wetter than the Kaduna plains.",
+    "landmarks": [
+      "Kagoro hills",
+      "Matsirga pool",
+      "Granite boulder fields"
+    ],
+    "highlights": [
+      "Southern Kaduna highland hike",
+      "Swimmable falls pool",
+      "Rock-climbing boulders"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Matsirga_Falls"
+  },
+  {
+    "id": "place-ikogosi-warm-springs",
+    "name": "Ikogosi Warm Springs",
+    "category": "natural-wonder",
+    "stateName": "Ekiti",
+    "stateId": "NG-EK",
+    "lon": 4.95,
+    "lat": 7.6,
+    "nickname": "Where warm and cold waters meet",
+    "established": "Developed as a resort from the 1980s",
+    "summary": "A rare natural site where a warm spring and a cold spring converge without mixing temperatures, developed into a resort.",
+    "description": "At Ikogosi, a warm spring and a cold spring flow from the same hillside and meet in a single channel while remaining thermally distinct for a stretch downstream. The government-developed resort around the springs includes chalets, a canopy walkway, and hiking trails.",
+    "visitorNote": "Resort complex with spring-fed pools and hiking trails",
+    "significance": "Ekiti State's flagship tourism resort and geological curiosity.",
+    "climate": "Tropical rainforest fringe; humid.",
+    "landmarks": [
+      "Warm spring source",
+      "Cold spring source",
+      "Ikogosi canopy walkway"
+    ],
+    "highlights": [
+      "Warm and cold springs meeting point",
+      "Government-run resort",
+      "Canopy walkway over the valley"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ikogosi_Warm_Spring"
+  },
+  {
+    "id": "place-chappal-waddi",
+    "name": "Chappal Waddi (Gangirwal)",
+    "category": "mountain",
+    "stateName": "Taraba",
+    "stateId": "NG-TA",
+    "lon": 11.6,
+    "lat": 7.13,
+    "nickname": "Nigeria's rooftop",
+    "established": "Natural landform within Gashaka-Gumti National Park",
+    "summary": "Nigeria's highest peak at roughly 2,419 metres, sitting inside Gashaka-Gumti National Park near the Cameroon border.",
+    "description": "Chappal Waddi ('mountain of death' in the local Fulfulde-related tongue) rises within the Mambilla-Gashaka highlands and is the goal of a multi-day trekking expedition through savanna, forest, and montane grassland, with sightings of the park's chimpanzees and rare highland birds en route.",
+    "visitorNote": "~2,419 m; multi-day guided trek required",
+    "significance": "Nigeria's mountaineering benchmark and a highland-conservation icon.",
+    "climate": "Montane tropical; cold nights at altitude.",
+    "landmarks": [
+      "Gashaka-Gumti highland trail",
+      "Cameroon border ridge",
+      "Mambilla foothill villages"
+    ],
+    "highlights": [
+      "Nigeria's highest point",
+      "Multi-day trekking expedition",
+      "Border-ridge views into Cameroon"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Chappal_Waddi"
+  },
+  {
+    "id": "place-idanre-hills",
+    "name": "Idanre Hills",
+    "category": "mountain",
+    "stateName": "Ondo",
+    "stateId": "NG-ON",
+    "lon": 5.1,
+    "lat": 7.1,
+    "nickname": "Owa's ancient hilltop settlement",
+    "established": "Old Idanre town dates to pre-colonial era; steps added early 20th century",
+    "summary": "A dramatic hilltop complex above Idanre town, holding the ruins of the old settlement, the Owa's palace remains, and around 660 stone steps.",
+    "description": "Idanre Hills rise sharply above the modern town, with a winding staircase leading past shrines, the old Owa (king)'s court ruins, a burial ground, and a football field cut into rock, before reaching sweeping views over Ondo State's forested hills. It is a UNESCO Tentative List site.",
+    "visitorNote": "~660 stone steps to the summit; guided cultural tour available",
+    "significance": "Yoruba cultural heritage site and UNESCO World Heritage tentative listing.",
+    "climate": "Tropical rainforest-savanna transition.",
+    "landmarks": [
+      "Old Idanre ruins",
+      "Owa's Palace remains",
+      "Belfry and Aghara stream",
+      "Hilltop football field"
+    ],
+    "highlights": [
+      "UNESCO tentative World Heritage site",
+      "660-step ancient stairway",
+      "Panoramic Ondo hill views"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Idanre_Hills"
+  },
+  {
+    "id": "place-shere-hills",
+    "name": "Shere Hills",
+    "category": "mountain",
+    "stateName": "Plateau",
+    "stateId": "NG-PL",
+    "lon": 8.9,
+    "lat": 9.9,
+    "nickname": "Jos rock-climbing range",
+    "established": "Natural range on the Jos Plateau",
+    "summary": "A granite hill range on the edge of Jos city, popular for rock climbing, hiking, and paragliding.",
+    "description": "Shere Hills' weathered granite outcrops rise abruptly from the Jos Plateau, offering technical rock-climbing routes and wide views over Jos. The range has hosted domestic and international climbing and paragliding events.",
+    "visitorNote": "Granite climbing routes of varying difficulty",
+    "significance": "Adventure-sports hub for Jos and the wider Plateau tourism circuit.",
+    "climate": "Highland tropical; cool, dry harmattan season.",
+    "landmarks": [
+      "Shere summit",
+      "Granite climbing faces",
+      "Jos city viewpoint"
+    ],
+    "highlights": [
+      "Rock climbing and paragliding site",
+      "Panoramic views of Jos",
+      "Granite inselberg landscape"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Shere_Hills"
+  },
+  {
+    "id": "place-riyom-rock",
+    "name": "Riyom Rock (Assob Rocks)",
+    "category": "rock-formation",
+    "stateName": "Plateau",
+    "stateId": "NG-PL",
+    "lon": 8.7,
+    "lat": 9.65,
+    "nickname": "Balancing rocks of the Plateau",
+    "established": "Natural granite formation",
+    "summary": "A striking cluster of balancing granite boulders near Riyom town, one of the most photographed rock formations on the Jos Plateau.",
+    "description": "The Riyom rocks appear to balance precariously atop one another, sculpted over millennia by weathering of the Plateau's granite batholith. They are a favourite backdrop for photography and short excursions from Jos.",
+    "visitorNote": "Roadside natural formation, easy access from Jos-Kafanchan road",
+    "significance": "Geological landmark and tourism symbol for Plateau State.",
+    "climate": "Highland tropical; cool and dry for much of the year.",
+    "landmarks": [
+      "Balancing boulder cluster",
+      "Riyom town",
+      "Jos-Kafanchan roadside"
+    ],
+    "highlights": [
+      "Naturally balanced granite boulders",
+      "Iconic Plateau State image",
+      "Easy roadside access"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Riyom_Rock"
+  },
+  {
+    "id": "place-zuma-rock",
+    "name": "Zuma Rock",
+    "category": "rock-formation",
+    "stateName": "Niger",
+    "stateId": "NG-NI",
+    "lon": 7.2,
+    "lat": 9.13,
+    "nickname": "Gateway to Abuja · Aso Rock's cousin",
+    "established": "Natural monolith",
+    "summary": "A 725-metre monolith beside the Abuja-Kaduna expressway that has become an unofficial national symbol, appearing on the old 100-naira note.",
+    "description": "Zuma Rock rises abruptly from the plains near Madalla, its sheer granite face said to bear a natural 'face' pattern that has inspired local folklore. It is one of the most recognisable natural landmarks on the approach to the Federal Capital Territory.",
+    "visitorNote": "~725 m monolith; viewable from the Abuja-Kaduna expressway",
+    "significance": "National visual symbol and gateway landmark for the Federal Capital Territory.",
+    "climate": "Guinea savanna; hot dry season.",
+    "landmarks": [
+      "Zuma Rock face formation",
+      "Madalla township",
+      "Abuja-Kaduna expressway viewpoint"
+    ],
+    "highlights": [
+      "725 m granite monolith",
+      "Featured on former Nigerian currency",
+      "Iconic gateway to Abuja"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Zuma_Rock"
+  },
+  {
+    "id": "place-obudu-mountain-resort",
+    "name": "Obudu Mountain Resort (Obudu Cattle Ranch)",
+    "category": "resort",
+    "stateName": "Cross River",
+    "stateId": "NG-CR",
+    "lon": 9.4,
+    "lat": 6.85,
+    "nickname": "Nigeria's Switzerland",
+    "established": "1951 (as a cattle ranch); resort redevelopment 2003",
+    "summary": "A cool highland resort atop the Obudu Plateau on the Mambilla-Cameroon border zone, reached by Africa's longest cable car.",
+    "description": "Perched at over 1,500 metres, Obudu offers a temperate, misty climate rare in Nigeria, along with a cable car ascent, chalets, waterfalls, and a canopy walkway. Originally established by colonial ranchers, it was redeveloped as a resort destination and hosted Nigeria's presidential retreat and an annual mountain race.",
+    "visitorNote": "~1,500+ m elevation; cable car and chalet resort complex",
+    "significance": "Premier highland resort and honeymoon/eco-tourism destination for Cross River State.",
+    "climate": "Highland sub-temperate; cool and misty year-round.",
+    "landmarks": [
+      "Obudu cable car",
+      "Grasshopper cottages",
+      "Kwarra waterfalls",
+      "Presidential cottage"
+    ],
+    "highlights": [
+      "Africa's longest cable car ride",
+      "Cool highland 'Switzerland of Nigeria' climate",
+      "Former presidential retreat"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Obudu_Mountain_Resort"
+  },
+  {
+    "id": "place-ogbunike-caves",
+    "name": "Ogbunike Caves",
+    "category": "cave",
+    "stateName": "Anambra",
+    "stateId": "NG-AN",
+    "lon": 6.8,
+    "lat": 6.2,
+    "nickname": "UNESCO tentative-list Igbo cave shrine",
+    "established": "Traditional sacred site; formalised as a tourist attraction in the 20th century",
+    "summary": "A network of sacred limestone caves near Ogbunike town, reached by around 317 steps through rainforest, revered in Igbo tradition.",
+    "description": "The Ogbunike caves stretch across roughly 3 sq km underground, with streams, chambers, and stalactite formations considered sacred by the local community, who hold an annual Ogba Agu festival there. The site is on Nigeria's UNESCO World Heritage Tentative List.",
+    "visitorNote": "~317 steps down; underground stream network",
+    "significance": "Sacred Igbo heritage site and UNESCO tentative World Heritage listing.",
+    "climate": "Tropical rainforest; cool inside the cave system.",
+    "landmarks": [
+      "317-step descent",
+      "Underground stream chambers",
+      "Ogba Agu festival grounds"
+    ],
+    "highlights": [
+      "UNESCO tentative World Heritage site",
+      "Sacred cave-stream network",
+      "Annual Ogba Agu festival"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ogbunike_Caves"
+  },
+  {
+    "id": "place-osun-osogbo-sacred-grove",
+    "name": "Osun-Osogbo Sacred Grove",
+    "category": "heritage-site",
+    "stateName": "Osun",
+    "stateId": "NG-OS",
+    "lon": 4.55,
+    "lat": 7.75,
+    "nickname": "UNESCO World Heritage forest shrine",
+    "established": "Ancient grove; UNESCO-inscribed 2005",
+    "summary": "A dense forest shrine on the banks of the Osun River, one of the last surviving sacred groves in Yorubaland and a UNESCO World Heritage Site.",
+    "description": "The grove is dedicated to the river goddess Osun and dotted with sculptures and shrines by artist Susanne Wenger and local artisans. It hosts the annual Osun-Osogbo Festival, drawing worshippers and visitors from across the Yoruba diaspora, and stands as a rare intact example of traditional Yoruba sacred landscape.",
+    "visitorNote": "UNESCO World Heritage Site since 2005; annual August festival",
+    "significance": "Living Yoruba religious heritage and UNESCO-protected cultural landscape.",
+    "climate": "Tropical rainforest; humid riverside microclimate.",
+    "landmarks": [
+      "Osun River shrine sculptures",
+      "Ataoja's grove entrance",
+      "Susanne Wenger art installations"
+    ],
+    "highlights": [
+      "UNESCO World Heritage Site",
+      "Annual Osun-Osogbo Festival",
+      "Living Yoruba sacred grove"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Osun-Osogbo_Sacred_Grove"
+  },
+  {
+    "id": "place-sungbo-eredo",
+    "name": "Sungbo's Eredo",
+    "category": "heritage-site",
+    "stateName": "Ogun",
+    "stateId": "NG-OG",
+    "lon": 3.95,
+    "lat": 6.8,
+    "nickname": "Africa's largest single monument",
+    "established": "Estimated 800-1000 CE, Ijebu kingdom",
+    "summary": "A vast pre-colonial earthwork of walls and ditches encircling the historic Ijebu kingdom, among the largest single ancient monuments in Africa.",
+    "description": "Attributed to the legendary Bilikisu Sungbo, the Eredo comprises over 160 km of defensive walls and moats up to 20 metres deep, enclosing the old Ijebu kingdom around Ijebu-Ode. Though little developed for tourism, it is regarded by archaeologists as one of Africa's most significant earthworks.",
+    "visitorNote": "~160 km of walls/ditches; largely rural and forested today",
+    "significance": "Major pre-colonial African earthwork and Ijebu kingdom heritage.",
+    "climate": "Tropical rainforest; humid.",
+    "landmarks": [
+      "Eredo wall-and-ditch sections",
+      "Oke-Eiri shrine",
+      "Ijebu-Ode hinterland"
+    ],
+    "highlights": [
+      "One of Africa's largest ancient earthworks",
+      "Pre-colonial Ijebu boundary system",
+      "Legend of Bilikisu Sungbo"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Sungbo%27s_Eredo"
+  },
+  {
+    "id": "place-elegushi-beach",
+    "name": "Elegushi Beach",
+    "category": "beach",
+    "stateName": "Lagos",
+    "stateId": "NG-LA",
+    "lon": 3.53,
+    "lat": 6.43,
+    "nickname": "Lekki's royal beach",
+    "established": "Owned by the Elegushi royal family; developed for tourism",
+    "summary": "A privately managed beach on the Lekki peninsula known for weekend parties, beach football, and event hosting.",
+    "description": "Elegushi Beach is one of Lagos's most active recreational beaches, hosting concerts, beach soccer, horse rides, and food vendors along the Lekki shoreline. It is owned by the Elegushi royal family and is a hub of Lagos's beach-party culture.",
+    "visitorNote": "Managed private beach with entry fee; peak weekend crowds",
+    "significance": "Major Lagos recreation and events venue on the Atlantic coast.",
+    "climate": "Tropical monsoon; humid coastal climate.",
+    "landmarks": [
+      "Lekki shoreline",
+      "Beach event grounds",
+      "Horse-riding area"
+    ],
+    "highlights": [
+      "Popular weekend beach-party destination",
+      "Beach football and horse riding",
+      "Frequent concerts and events"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Elegushi_Beach"
+  },
+  {
+    "id": "place-alpha-beach",
+    "name": "Alpha Beach",
+    "category": "beach",
+    "stateName": "Lagos",
+    "stateId": "NG-LA",
+    "lon": 3.52,
+    "lat": 6.44,
+    "nickname": "Lekki's laid-back shore",
+    "established": "Developed as a public beach along the Lekki-Epe corridor",
+    "summary": "A relatively relaxed Lagos beach along the Lekki-Epe expressway, favoured for quieter visits and small gatherings.",
+    "description": "Alpha Beach offers a lower-key alternative to the busier Lekki beaches, with stretches of open sand, local food stalls, and simpler facilities, popular with residents seeking a quieter coastal outing.",
+    "visitorNote": "Public access beach with informal vendor stalls",
+    "significance": "Everyday coastal recreation spot for Lagos mainland and Lekki residents.",
+    "climate": "Tropical monsoon; humid coastal climate.",
+    "landmarks": [
+      "Lekki-Epe expressway beach access",
+      "Local food stalls"
+    ],
+    "highlights": [
+      "Quieter alternative to Elegushi/Landmark beaches",
+      "Affordable public access",
+      "Popular for casual outings"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Alpha_Beach"
+  },
+  {
+    "id": "place-eleko-beach",
+    "name": "Eleko Beach",
+    "category": "beach",
+    "stateName": "Lagos",
+    "stateId": "NG-LA",
+    "lon": 3.85,
+    "lat": 6.49,
+    "nickname": "Wide-sand escape past Lekki",
+    "established": "Long-standing coastal community beach",
+    "summary": "A broad, less-crowded stretch of Atlantic coastline further along the Lekki peninsula from central Lagos.",
+    "description": "Eleko Beach offers wider, quieter sands than the closer-in Lagos beaches, with palm-lined stretches favoured for camping, retreats, and day trips away from the busier Elegushi and Landmark beach crowds.",
+    "visitorNote": "Wide open beach, popular for camping and retreats",
+    "significance": "A quieter coastal-tourism alternative on the Lekki peninsula.",
+    "climate": "Tropical monsoon; humid coastal climate.",
+    "landmarks": [
+      "Palm-lined shoreline",
+      "Camping grounds"
+    ],
+    "highlights": [
+      "Wide, uncrowded sands",
+      "Popular for beach camping",
+      "Scenic Atlantic coastline"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Eleko_Beach"
+  },
+  {
+    "id": "place-ibeno-beach",
+    "name": "Ibeno Beach",
+    "category": "beach",
+    "stateName": "Akwa Ibom",
+    "stateId": "NG-AK",
+    "lon": 8.0,
+    "lat": 4.58,
+    "nickname": "Longest natural beach in West Africa (claimed)",
+    "established": "Coastal community shoreline near Qua Iboe oil terminal",
+    "summary": "A long stretch of Atlantic coastline in Akwa Ibom State, popularly cited as one of the longest natural beaches in West Africa.",
+    "description": "Ibeno Beach runs for several kilometres along the Atlantic coast near the Qua Iboe river mouth, with fishing communities, oil-industry infrastructure nearby, and stretches of open sand that draw visitors from Uyo and Eket for coastal outings.",
+    "visitorNote": "Several kilometres of open coastline; fishing-community access",
+    "significance": "A key coastal-tourism site for Akwa Ibom State.",
+    "climate": "Equatorial coastal; heavy rainfall.",
+    "landmarks": [
+      "Qua Iboe river mouth",
+      "Ibeno fishing settlements"
+    ],
+    "highlights": [
+      "One of West Africa's longest natural beaches",
+      "Fishing-community coastline",
+      "Popular Akwa Ibom day trip"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ibeno"
+  },
+  {
+    "id": "place-national-museum-lagos",
+    "name": "National Museum, Lagos (Onikan)",
+    "category": "museum",
+    "stateName": "Lagos",
+    "stateId": "NG-LA",
+    "lon": 3.39,
+    "lat": 6.45,
+    "nickname": "Nigeria's flagship national museum",
+    "established": "1957",
+    "summary": "Nigeria's foremost museum, holding Nok terracottas, Benin bronzes, and ethnographic collections from across the country.",
+    "description": "Located in the Onikan cultural quarter beside Tafawa Balewa Square, the museum houses archaeological and ethnographic collections including Nok culture terracottas, Benin court art, and Igbo-Ukwu bronzes, alongside a crafts village of artisan workshops.",
+    "visitorNote": "Nigeria's largest single museum collection",
+    "significance": "Central repository of Nigerian archaeological and cultural heritage.",
+    "climate": "Tropical monsoon; humid.",
+    "landmarks": [
+      "Onikan museum galleries",
+      "Museum crafts village",
+      "Tafawa Balewa Square (adjacent)"
+    ],
+    "highlights": [
+      "Nok terracotta collection",
+      "Benin and Igbo-Ukwu bronzes",
+      "On-site artisan crafts village"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/National_Museum,_Lagos"
+  },
+  {
+    "id": "place-national-museum-jos",
+    "name": "National Museum, Jos",
+    "category": "museum",
+    "stateName": "Plateau",
+    "stateId": "NG-PL",
+    "lon": 8.89,
+    "lat": 9.92,
+    "nickname": "Jos Museum & pottery/architecture complex",
+    "established": "1952",
+    "summary": "One of Nigeria's oldest museums, notable for its Nigerian traditional-architecture village and pottery collections.",
+    "description": "Founded by colonial archaeologist Bernard Fagg, the Jos Museum complex includes an open-air Nigerian traditional architecture exhibit, a large pottery gallery, and was historically linked to the discovery of Nok culture artefacts in the surrounding Plateau tin-mining areas.",
+    "visitorNote": "Includes an open-air traditional-architecture village",
+    "significance": "Key site in the discovery and study of Nok culture archaeology.",
+    "climate": "Highland tropical; cool and dry for much of the year.",
+    "landmarks": [
+      "Traditional architecture village",
+      "Pottery gallery",
+      "Jos Zoo (adjacent)"
+    ],
+    "highlights": [
+      "Historic link to Nok culture discoveries",
+      "Open-air architecture exhibit",
+      "One of Nigeria's oldest museums"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Jos_Museum"
+  },
+  {
+    "id": "place-national-war-museum-umuahia",
+    "name": "National War Museum, Umuahia",
+    "category": "museum",
+    "stateName": "Abia",
+    "stateId": "NG-AB",
+    "lon": 7.49,
+    "lat": 5.53,
+    "nickname": "Nigeria's Civil War memorial museum",
+    "established": "1985",
+    "summary": "A museum dedicated to the Nigerian Civil War (1967-1970), displaying Biafran armoured vehicles, weapons, and wartime relics.",
+    "description": "Built near Umuahia, a former Biafran wartime capital, the museum preserves locally fabricated armoured cars, a submarine mock-up, bunkers, and artefacts documenting the 1967-1970 conflict, serving as a site of historical reflection on the war.",
+    "visitorNote": "Outdoor and indoor exhibits of wartime hardware",
+    "significance": "Nigeria's principal memorial and archive of the Civil War era.",
+    "climate": "Tropical rainforest fringe; humid.",
+    "landmarks": [
+      "Biafran armoured-vehicle yard",
+      "Wartime bunker replica",
+      "Civil War relic galleries"
+    ],
+    "highlights": [
+      "Locally fabricated Biafran war vehicles",
+      "Civil War history exhibits",
+      "Former Biafran wartime capital area"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/National_War_Museum"
+  },
+  {
+    "id": "place-freedom-park-lagos",
+    "name": "Freedom Park, Lagos",
+    "category": "monument",
+    "stateName": "Lagos",
+    "stateId": "NG-LA",
+    "lon": 3.39,
+    "lat": 6.45,
+    "nickname": "From colonial prison to cultural park",
+    "established": "Colonial prison from 1882; reopened as a park in 2010",
+    "summary": "A former colonial-era prison on Broad Street transformed into a heritage and arts park marking Lagos's centenary in 2010.",
+    "description": "Freedom Park occupies the site of the old Broad Street Prison, preserving watchtowers and cell walls alongside performance spaces, an amphitheatre, and eateries, making it a hub for concerts, exhibitions, and civic history in central Lagos.",
+    "visitorNote": "Open-air cultural venue with preserved prison structures",
+    "significance": "Lagos's leading heritage-turned-cultural venue and civic memory site.",
+    "climate": "Tropical monsoon; humid.",
+    "landmarks": [
+      "Old prison watchtowers",
+      "Freedom Park amphitheatre",
+      "Broad Street heritage quarter"
+    ],
+    "highlights": [
+      "Repurposed colonial prison",
+      "Live music and arts venue",
+      "Lagos centenary heritage project"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Freedom_Park,_Lagos"
+  },
+  {
+    "id": "place-kainji-dam",
+    "name": "Kainji Dam",
+    "category": "dam",
+    "stateName": "Niger",
+    "stateId": "NG-NI",
+    "lon": 4.6,
+    "lat": 9.87,
+    "nickname": "Nigeria's first hydroelectric dam",
+    "established": "Completed 1968",
+    "summary": "Nigeria's first major hydroelectric dam, impounding the Niger River to create Kainji Lake and power a national hydropower station.",
+    "description": "Kainji Dam was central to Nigeria's post-independence industrialisation drive, creating one of Africa's largest reservoirs and enabling irrigation, fisheries, and hydroelectric generation that still supplies the national grid, alongside the adjoining Kainji Lake National Park.",
+    "visitorNote": "Kainji Lake is one of Africa's largest man-made lakes",
+    "significance": "Foundational national hydropower infrastructure and irrigation source.",
+    "climate": "Guinea savanna; hot dry season.",
+    "landmarks": [
+      "Kainji Lake reservoir",
+      "Hydroelectric power station",
+      "New Bussa resettlement town"
+    ],
+    "highlights": [
+      "Nigeria's first hydroelectric dam",
+      "One of Africa's largest reservoirs",
+      "Key national power source"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kainji_Dam"
+  },
+  {
+    "id": "place-shiroro-dam",
+    "name": "Shiroro Dam",
+    "category": "dam",
+    "stateName": "Niger",
+    "stateId": "NG-NI",
+    "lon": 6.85,
+    "lat": 9.98,
+    "nickname": "Niger State's power hub",
+    "established": "Completed 1990",
+    "summary": "A major hydroelectric dam on the Kaduna River supplying a significant share of Nigeria's grid electricity.",
+    "description": "Shiroro Dam impounds the Kaduna River to feed a 600 MW-capacity power station, one of Nigeria's three main hydroelectric plants alongside Kainji and Jebba, and its reservoir supports local fishing communities.",
+    "visitorNote": "600 MW installed hydroelectric capacity",
+    "significance": "One of Nigeria's three principal hydroelectric power stations.",
+    "climate": "Guinea savanna; wet and dry seasons.",
+    "landmarks": [
+      "Shiroro reservoir",
+      "Hydropower station",
+      "Kaduna River gorge"
+    ],
+    "highlights": [
+      "Major national hydroelectric plant",
+      "Kaduna River reservoir",
+      "Local fishing economy"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Shiroro_Dam"
+  },
+  {
+    "id": "place-jebba-dam",
+    "name": "Jebba Dam",
+    "category": "dam",
+    "stateName": "Kwara",
+    "stateId": "NG-KW",
+    "lon": 4.83,
+    "lat": 9.13,
+    "nickname": "Niger River's second hydro station",
+    "established": "Completed 1985",
+    "summary": "A hydroelectric dam on the Niger River downstream of Kainji, forming part of Nigeria's core hydropower network.",
+    "description": "Jebba Dam works in tandem with the upstream Kainji Dam to regulate the Niger River's flow and generate electricity, with the surrounding Jebba area also historically significant as a Niger River crossing point.",
+    "visitorNote": "Works in cascade with Kainji Dam upstream",
+    "significance": "Second major hydroelectric station on the Niger River cascade.",
+    "climate": "Guinea savanna; wet and dry seasons.",
+    "landmarks": [
+      "Jebba reservoir",
+      "Niger River crossing",
+      "Hydropower station"
+    ],
+    "highlights": [
+      "Part of the Kainji-Jebba hydro cascade",
+      "Historic Niger River crossing",
+      "National grid power source"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Jebba_Dam"
+  },
+  {
+    "id": "place-tiga-dam",
+    "name": "Tiga Dam",
+    "category": "dam",
+    "stateName": "Kano",
+    "stateId": "NG-KN",
+    "lon": 8.4,
+    "lat": 11.4,
+    "nickname": "Backbone of Kano's irrigation scheme",
+    "established": "Completed 1974",
+    "summary": "A major irrigation dam on the Kano River feeding the Hadejia-Jama'are river system and the Kano River Irrigation Project.",
+    "description": "Tiga Dam supplies water for one of Nigeria's largest irrigation schemes, supporting rice and wheat farming across the Kano River basin, and its reservoir is an important resource for fisheries and downstream wetlands.",
+    "visitorNote": "Feeds the Kano River Irrigation Project farmland",
+    "significance": "Backbone of northern Nigeria's dry-season irrigated agriculture.",
+    "climate": "Sudan savanna; semi-arid.",
+    "landmarks": [
+      "Tiga reservoir",
+      "Kano River Irrigation Project fields",
+      "Downstream wetlands"
+    ],
+    "highlights": [
+      "Major agricultural irrigation dam",
+      "Supports Kano's dry-season farming",
+      "Key Hadejia-Jama'are basin structure"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Tiga_Dam"
+  },
+  {
+    "id": "place-third-mainland-bridge",
+    "name": "Third Mainland Bridge",
+    "category": "bridge",
+    "stateName": "Lagos",
+    "stateId": "NG-LA",
+    "lon": 3.4,
+    "lat": 6.49,
+    "nickname": "Africa's longest bridge (for decades)",
+    "established": "Completed 1990",
+    "summary": "A roughly 11.8 km bridge linking Lagos Island to the mainland across the Lagos Lagoon, long considered one of Africa's longest bridges.",
+    "description": "Spanning the Lagos Lagoon between Oworonshoki and the island business district, the bridge is a critical daily commuter artery for millions of Lagosians and an iconic feature of the city's skyline, especially at sunset.",
+    "visitorNote": "~11.8 km span across the Lagos Lagoon",
+    "significance": "Critical transport artery and defining infrastructural landmark of Lagos.",
+    "climate": "Tropical monsoon; humid.",
+    "landmarks": [
+      "Lagos Lagoon crossing",
+      "Oworonshoki interchange",
+      "Lagos Island approach"
+    ],
+    "highlights": [
+      "One of Africa's longest bridges",
+      "Iconic Lagos skyline feature",
+      "Vital daily commuter route"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Third_Mainland_Bridge"
+  },
+  {
+    "id": "place-niger-bridge",
+    "name": "Niger Bridge (Onitsha-Asaba)",
+    "category": "bridge",
+    "stateName": "Anambra",
+    "stateId": "NG-AN",
+    "lon": 6.78,
+    "lat": 6.15,
+    "nickname": "East-west gateway across the Niger",
+    "established": "Old bridge completed 1965; second bridge added 2022",
+    "summary": "The key road bridge across the River Niger linking Onitsha and Asaba, connecting southeastern and southern Nigeria.",
+    "description": "The Niger Bridge is one of Nigeria's most strategically important crossings, carrying the bulk of road trade between the southeast and the rest of the country. A second parallel bridge was added to relieve chronic congestion on the historic 1965 span.",
+    "visitorNote": "Two parallel spans across the River Niger",
+    "significance": "Nigeria's principal east-west trade and transport crossing.",
+    "climate": "Tropical rainforest fringe; humid.",
+    "landmarks": [
+      "Onitsha approach",
+      "Asaba approach",
+      "River Niger crossing"
+    ],
+    "highlights": [
+      "Nigeria's busiest interstate river crossing",
+      "Historic 1965 span plus new second bridge",
+      "Vital southeast-Nigeria trade link"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Niger_Bridge"
+  },
+  {
+    "id": "place-moshood-abiola-national-stadium",
+    "name": "Moshood Abiola National Stadium",
+    "category": "stadium",
+    "stateName": "Federal Capital Territory",
+    "stateId": "NG-FC",
+    "lon": 7.4,
+    "lat": 9.0,
+    "nickname": "Abuja National Stadium",
+    "established": "Completed 2003",
+    "summary": "Nigeria's principal national stadium, built for the 2003 All-Africa Games and home to the Super Eagles' major fixtures.",
+    "description": "The Abuja stadium complex includes a roughly 60,000-seat main bowl plus indoor sports halls and an athletics track, and has hosted the national football team, major athletics meets, and large public events since opening for the 2003 All-Africa Games.",
+    "visitorNote": "~60,000-seat capacity main stadium",
+    "significance": "Nigeria's flagship national sports venue.",
+    "climate": "Guinea savanna; hot dry season.",
+    "landmarks": [
+      "Main stadium bowl",
+      "Indoor sports halls",
+      "Athletics complex"
+    ],
+    "highlights": [
+      "Built for the 2003 All-Africa Games",
+      "Home venue for major Super Eagles matches",
+      "Nigeria's largest stadium complex"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Moshood_Abiola_National_Stadium"
+  },
+  {
+    "id": "place-teslim-balogun-stadium",
+    "name": "Teslim Balogun Stadium",
+    "category": "stadium",
+    "stateName": "Lagos",
+    "stateId": "NG-LA",
+    "lon": 3.36,
+    "lat": 6.48,
+    "nickname": "Lagos's home football ground",
+    "established": "Rebuilt 2007",
+    "summary": "Lagos's principal football stadium in Surulere, regularly hosting Nigerian Premier League and national team matches.",
+    "description": "Named for Nigerian football pioneer Teslim Balogun, the stadium in Surulere seats around 24,000 and is one of the country's most active venues for domestic league football and occasional Super Eagles fixtures.",
+    "visitorNote": "~24,000-seat capacity",
+    "significance": "Lagos's main domestic football venue.",
+    "climate": "Tropical monsoon; humid.",
+    "landmarks": [
+      "Surulere sports complex",
+      "National Stadium Lagos (adjacent legacy site)"
+    ],
+    "highlights": [
+      "Named after football pioneer Teslim Balogun",
+      "Regular Nigerian Premier League venue",
+      "Occasional Super Eagles host ground"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Teslim_Balogun_Stadium"
+  },
+  {
+    "id": "place-murtala-muhammed-international-airport",
+    "name": "Murtala Muhammed International Airport",
+    "category": "airport",
+    "stateName": "Lagos",
+    "stateId": "NG-LA",
+    "lon": 3.32,
+    "lat": 6.58,
+    "nickname": "Lagos's main international gateway",
+    "established": "Opened 1979",
+    "summary": "Nigeria's busiest airport and principal gateway to Lagos, the country's commercial capital.",
+    "description": "Named after former head of state Murtala Muhammed, the airport comprises domestic (MMA2) and international terminals in Ikeja, handling the largest volume of passenger and cargo traffic in Nigeria and serving as the main hub for Lagos-based carriers.",
+    "visitorNote": "Nigeria's busiest airport by passenger volume",
+    "significance": "Primary international air gateway to Nigeria's commercial capital.",
+    "climate": "Tropical monsoon; humid.",
+    "landmarks": [
+      "International terminal",
+      "MMA2 domestic terminal",
+      "Ikeja GRA (adjacent)"
+    ],
+    "highlights": [
+      "Nigeria's busiest airport",
+      "Main hub for domestic carriers",
+      "Principal gateway to Lagos"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Murtala_Muhammed_International_Airport"
+  },
+  {
+    "id": "place-nnamdi-azikiwe-international-airport",
+    "name": "Nnamdi Azikiwe International Airport",
+    "category": "airport",
+    "stateName": "Federal Capital Territory",
+    "stateId": "NG-FC",
+    "lon": 7.27,
+    "lat": 9.0,
+    "nickname": "Abuja International Airport",
+    "established": "Opened 1982",
+    "summary": "Nigeria's second-busiest airport, serving the Federal Capital Territory and named after Nigeria's first president.",
+    "description": "Located southwest of central Abuja, the airport serves as the main air gateway for the seat of government, handling significant diplomatic, business, and domestic traffic, with a modern terminal completed in the 2010s.",
+    "visitorNote": "Nigeria's second-busiest airport",
+    "significance": "Main air gateway for Nigeria's federal capital and government traffic.",
+    "climate": "Guinea savanna; hot dry season.",
+    "landmarks": [
+      "International terminal",
+      "Domestic terminal",
+      "Airport expressway to Abuja"
+    ],
+    "highlights": [
+      "Named after Nigeria's first president",
+      "Gateway to the Federal Capital Territory",
+      "Major diplomatic and business traffic hub"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Nnamdi_Azikiwe_International_Airport"
+  },
+  {
+    "id": "place-port-harcourt-international-airport",
+    "name": "Port Harcourt International Airport",
+    "category": "airport",
+    "stateName": "Rivers",
+    "stateId": "NG-RI",
+    "lon": 6.95,
+    "lat": 5.02,
+    "nickname": "Gateway to the oil-rich Niger Delta",
+    "established": "Opened 1969",
+    "summary": "The main air gateway to the Niger Delta oil industry, located in Omagwa outside Port Harcourt.",
+    "description": "Serving Nigeria's oil and gas sector, the airport handles heavy business and expatriate traffic tied to the petroleum industry, alongside domestic and limited international connections into the Rivers State capital region.",
+    "visitorNote": "Key hub for Niger Delta oil-and-gas business travel",
+    "significance": "Principal air gateway for the Nigerian oil and gas industry.",
+    "climate": "Equatorial; heavy rainfall.",
+    "landmarks": [
+      "Omagwa terminal",
+      "Port Harcourt-Omagwa road corridor"
+    ],
+    "highlights": [
+      "Main gateway for Niger Delta oil industry",
+      "Heavy business and expatriate traffic",
+      "Serves Rivers State capital region"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Port_Harcourt_International_Airport"
+  },
+  {
+    "id": "place-mallam-aminu-kano-international-airport",
+    "name": "Mallam Aminu Kano International Airport",
+    "category": "airport",
+    "stateName": "Kano",
+    "stateId": "NG-KN",
+    "lon": 8.53,
+    "lat": 12.05,
+    "nickname": "Northern Nigeria's main air gateway",
+    "established": "Opened 1962",
+    "summary": "The principal international airport of northern Nigeria, serving Kano's historic commercial hub and pilgrimage traffic.",
+    "description": "Named after nationalist leader Aminu Kano, the airport is a key hub for domestic routes across the north and for seasonal Hajj and Umrah pilgrimage flights, reflecting Kano's role as northern Nigeria's commercial and religious travel centre.",
+    "visitorNote": "Major hub for Hajj/Umrah pilgrimage flights",
+    "significance": "Northern Nigeria's leading international air gateway.",
+    "climate": "Sudano-Sahelian; hot, dry for much of the year.",
+    "landmarks": [
+      "International terminal",
+      "Hajj camp facilities",
+      "Kano city approach road"
+    ],
+    "highlights": [
+      "Main gateway for northern Nigeria",
+      "Key Hajj/Umrah pilgrimage hub",
+      "Named after nationalist Aminu Kano"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Mallam_Aminu_Kano_International_Airport"
+  },
+  {
+    "id": "place-balogun-market",
+    "name": "Balogun Market",
+    "category": "market",
+    "stateName": "Lagos",
+    "stateId": "NG-LA",
+    "lon": 3.39,
+    "lat": 6.455,
+    "nickname": "Lagos Island's textile and fashion bazaar",
+    "established": "Colonial-era market, formalised mid-20th century",
+    "summary": "One of West Africa's largest textile and general-goods markets, sprawling across Lagos Island.",
+    "description": "Balogun Market is a dense maze of shops and stalls on Lagos Island specialising in fabrics, fashion accessories, electronics, and household goods, drawing traders and shoppers from across Nigeria and neighbouring West African countries.",
+    "visitorNote": "Thousands of shops across a multi-block market district",
+    "significance": "Major West African textile-and-trade hub and Lagos Island commercial anchor.",
+    "climate": "Tropical monsoon; humid.",
+    "landmarks": [
+      "Lagos Island market district",
+      "Nearby Idumota Market"
+    ],
+    "highlights": [
+      "One of West Africa's largest fabric markets",
+      "Dense multi-block trading district",
+      "Draws traders from across the region"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Balogun_Market"
+  },
+  {
+    "id": "place-onitsha-main-market",
+    "name": "Onitsha Main Market",
+    "category": "market",
+    "stateName": "Anambra",
+    "stateId": "NG-AN",
+    "lon": 6.78,
+    "lat": 6.15,
+    "nickname": "Largest market in West Africa (by some measures)",
+    "established": "Reconstructed after the 1970s Civil War-era rebuild",
+    "summary": "Reputed to be the largest market in West Africa by size and trader population, at the Niger River port town of Onitsha.",
+    "description": "Onitsha Main Market spans a vast riverside commercial zone trading in virtually every category of goods, from textiles to spare parts and books, leveraging Onitsha's position as a Niger River crossing and distribution point for the southeast.",
+    "visitorNote": "Estimated hundreds of thousands of daily traders and customers",
+    "significance": "One of Africa's largest wholesale-retail trading hubs.",
+    "climate": "Tropical rainforest fringe; humid.",
+    "landmarks": [
+      "Niger River port frontage",
+      "Onitsha Bridgehead market zone"
+    ],
+    "highlights": [
+      "Reputed largest market in West Africa",
+      "Major Niger River trading port",
+      "Key southeastern Nigeria distribution hub"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Onitsha_Main_Market"
+  },
+  {
+    "id": "place-ariaria-international-market",
+    "name": "Ariaria International Market",
+    "category": "market",
+    "stateName": "Abia",
+    "stateId": "NG-AB",
+    "lon": 7.35,
+    "lat": 5.1,
+    "nickname": "Home of 'Aba-made' goods",
+    "established": "Established 1970s",
+    "summary": "Nigeria's leading centre for locally manufactured leather goods, shoes, and garments, based in Aba.",
+    "description": "Ariaria Market anchors Aba's reputation as a manufacturing city, with thousands of small workshops producing shoes, bags, and clothing collectively branded 'Aba-made,' exported across Nigeria and West Africa.",
+    "visitorNote": "Thousands of small manufacturing workshops on-site",
+    "significance": "Nigeria's foremost light-manufacturing and leather-goods trading hub.",
+    "climate": "Tropical rainforest fringe; humid.",
+    "landmarks": [
+      "Shoe and leather workshop rows",
+      "Aba manufacturing district"
+    ],
+    "highlights": [
+      "Home of 'Aba-made' shoes and leather goods",
+      "Major light-manufacturing cluster",
+      "Exports across West Africa"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ariaria_International_Market"
+  },
+  {
+    "id": "place-dawanau-grain-market",
+    "name": "Dawanau International Grain Market",
+    "category": "market",
+    "stateName": "Kano",
+    "stateId": "NG-KN",
+    "lon": 8.45,
+    "lat": 12.07,
+    "nickname": "West Africa's largest grain market",
+    "established": "Established 1970s-80s",
+    "summary": "Reputed to be West Africa's largest grain market, trading millet, sorghum, maize, and beans from across the Sahel.",
+    "description": "Dawanau serves as a wholesale clearing point for grain moving between Nigeria's food-basket north and consumption centres to the south, as well as cross-border trade with Niger and Chad, making it central to regional food-security dynamics.",
+    "visitorNote": "Large-scale wholesale grain warehousing and trading",
+    "significance": "Key node in Nigerian and regional West African food-security and grain trade.",
+    "climate": "Sudano-Sahelian; hot, dry for much of the year.",
+    "landmarks": [
+      "Grain warehousing zone",
+      "Cross-border trade routes to Niger/Chad"
+    ],
+    "highlights": [
+      "Reputed largest grain market in West Africa",
+      "Cross-border Sahel food trade hub",
+      "Major wholesale distribution point"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Dawanau_International_Market"
+  },
+  {
+    "id": "place-ogba-zoological-garden",
+    "name": "Ogba Zoological Garden",
+    "category": "wildlife-reserve",
+    "stateName": "Edo",
+    "stateId": "NG-ED",
+    "lon": 5.63,
+    "lat": 6.34,
+    "nickname": "Benin City's zoo and forest reserve",
+    "established": "Established 1985 within an existing forest reserve",
+    "summary": "A zoo and forest-reserve complex on the outskirts of Benin City combining wildlife viewing with conservation education.",
+    "description": "Set within the Ogba Forest Reserve, the zoo houses primates, big cats, and reptiles alongside nature trails through surviving rainforest, functioning as both a family recreation site and a conservation-education venue for Edo State.",
+    "visitorNote": "Combined zoo and forest-reserve nature trails",
+    "significance": "Edo State's main wildlife-education and recreation venue.",
+    "climate": "Tropical rainforest; humid.",
+    "landmarks": [
+      "Ogba Forest Reserve trails",
+      "Zoo animal enclosures"
+    ],
+    "highlights": [
+      "Combined zoo and rainforest reserve",
+      "Family and school-trip destination",
+      "Conservation-education programming"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ogba_Zoo"
+  },
+  {
+    "id": "place-nike-lake-resort",
+    "name": "Nike Lake Resort",
+    "category": "resort",
+    "stateName": "Enugu",
+    "stateId": "NG-EN",
+    "lon": 7.55,
+    "lat": 6.45,
+    "nickname": "Enugu's lakeside getaway",
+    "established": "Developed around a natural lake from the 1980s",
+    "summary": "A lakeside resort and golf-course complex on the outskirts of Enugu, built around the naturally occurring Nike Lake.",
+    "description": "Nike Lake Resort combines a hotel, golf course, and recreational grounds around a scenic natural lake associated with local legend, making it a popular retreat and conference venue for visitors to Enugu.",
+    "visitorNote": "Hotel and golf-course resort around a natural lake",
+    "significance": "Enugu State's principal lakeside leisure and conference resort.",
+    "climate": "Tropical rainforest fringe; humid.",
+    "landmarks": [
+      "Nike Lake",
+      "Golf course grounds",
+      "Resort hotel complex"
+    ],
+    "highlights": [
+      "Scenic natural lake setting",
+      "Golf course and conference facilities",
+      "Popular Enugu leisure retreat"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Nike_Lake_Resort"
+  },
+  {
+    "id": "place-redemption-camp",
+    "name": "Redemption Camp (RCCG Camp)",
+    "category": "religious-site",
+    "stateName": "Ogun",
+    "stateId": "NG-OG",
+    "lon": 3.45,
+    "lat": 6.85,
+    "nickname": "Site of Nigeria's largest religious gatherings",
+    "established": "Camp developed from 1983",
+    "summary": "A sprawling church camp along the Lagos-Ibadan Expressway that hosts some of the largest recurring religious gatherings in the world.",
+    "description": "Headquarters of the Redeemed Christian Church of God's monthly Holy Ghost Service, the camp has grown into a small planned town with its own infrastructure, drawing crowds regularly reported in the hundreds of thousands to over a million for special conventions.",
+    "visitorNote": "Monthly gatherings regularly draw crowds in the hundreds of thousands",
+    "significance": "One of the largest recurring religious-gathering sites globally, and a major driver of traffic and commerce along the Lagos-Ibadan corridor.",
+    "climate": "Tropical rainforest fringe; humid.",
+    "landmarks": [
+      "Holy Ghost auditorium grounds",
+      "Camp planned township",
+      "Lagos-Ibadan Expressway frontage"
+    ],
+    "highlights": [
+      "Among the world's largest recurring religious gatherings",
+      "Self-contained planned camp town",
+      "Major Lagos-Ibadan corridor landmark"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Redemption_Camp"
+  }
+]

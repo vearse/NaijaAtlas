@@ -476,6 +476,52 @@ export function applyNeighborLayersMapTypeTuning(
   }
 }
 
+/**
+ * Declutter admin layers when the OSM basemap is active.
+ *
+ * OSM tiles already render the real map (streets, country boundaries, city
+ * labels), so our custom admin overlays must step out of the way or they
+ * obscure the street layer:
+ *   - `states-fill`: drop opacity to a whisper so the tiles show through.
+ *   - `states-line` / `regions-line`: thin to a subtle boundary stroke.
+ *   - `states-labels`: hide (OSM labels its own admin areas).
+ *   - `regions-fill`: hide the zone tint entirely.
+ *   - `country-outline`: thin so it reads as context, not an overlay.
+ *
+ * In `minimal` mode this is a no-op — the selection/mask effects already
+ * authored the correct paint expressions, and we must not clobber them
+ * with a plain opacity value.
+ */
+export function applyAdminLayersMapTypeTuning(
+  map: Map,
+  mapType: "minimal" | "osm"
+): void {
+  if (mapType !== "osm") return;
+
+  if (map.getLayer("states-fill")) {
+    map.setPaintProperty("states-fill", "fill-opacity", 0.04);
+  }
+  if (map.getLayer("states-line")) {
+    map.setPaintProperty("states-line", "line-width", 0.9);
+    map.setPaintProperty("states-line", "line-color", "#94a3b8");
+  }
+  if (map.getLayer("states-labels")) {
+    map.setLayoutProperty("states-labels", "visibility", "none");
+  }
+  // Geopolitical-zone regions: OSM draws its own, so drop the tint overlay.
+  if (map.getLayer("regions-fill")) {
+    map.setPaintProperty("regions-fill", "fill-opacity", 0);
+  }
+  if (map.getLayer("regions-line")) {
+    map.setPaintProperty("regions-line", "line-opacity", 0.15);
+    map.setPaintProperty("regions-line", "line-width", 0.6);
+  }
+  // Nigeria outline: thin it in OSM so it reads as context, not overlay.
+  if (map.getLayer("country-outline")) {
+    map.setPaintProperty("country-outline", "line-width", 1);
+  }
+}
+
 export const DIRECTIONS_ROUTE_SOURCE = "directions-route";
 
 export function createDirectionsRouteLayers(): LayerSpecification[] {

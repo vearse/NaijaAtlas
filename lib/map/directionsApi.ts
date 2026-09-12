@@ -19,6 +19,29 @@ export interface DrivingRouteResult {
   durationMin: number;
 }
 
+export interface DrivingStep {
+  instruction: string;
+  name: string;
+  maneuverType: string;
+  modifier?: string;
+  distanceM: number;
+  durationS: number;
+}
+
+export interface DrivingRouteResult {
+  route: GeoJSON.LineString;
+  distanceKm: number;
+  durationMin: number;
+  steps: DrivingStep[];
+}
+
+interface OsmStep {
+  maneuver?: { instruction?: string; type?: string; modifier?: string };
+  name?: string;
+  distance?: number;
+  duration?: number;
+}
+
 export async function fetchDrivingRoute(
   from: [number, number],
   to: [number, number],
@@ -45,6 +68,7 @@ export async function fetchDrivingRoute(
         geometry: GeoJSON.LineString;
         distance?: number;
         duration?: number;
+        legs?: Array<{ steps?: OsmStep[] }>;
       }>;
     };
     const route = data.routes?.[0];
@@ -53,10 +77,25 @@ export async function fetchDrivingRoute(
     }
     const distanceMeters = route.distance ?? 0;
     const durationSeconds = route.duration ?? 0;
+    const steps: DrivingStep[] = (route.legs?.[0]?.steps ?? [])
+      .map((step) => ({
+        instruction: step.maneuver?.instruction ?? "Continue",
+        name: step.name ?? "",
+        maneuverType: step.maneuver?.type ?? "depart",
+        modifier: step.maneuver?.modifier,
+        distanceM: step.distance ?? 0,
+        durationS: step.duration ?? 0,
+      }))
+      .filter(
+        (s) =>
+          (s.name || s.maneuverType !== "new name") &&
+          s.distanceM >= 5
+      );
     return {
       route: route.geometry,
       distanceKm: distanceMeters / 1000,
       durationMin: durationSeconds / 60,
+      steps,
     };
   } catch (err) {
     if (timeoutId) clearTimeout(timeoutId);

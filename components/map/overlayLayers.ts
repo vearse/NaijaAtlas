@@ -7,7 +7,7 @@ import {
 } from "@/lib/map/overlayRegistry";
 import type { OverlayLayerId } from "@/types/overlay";
 import { OVERLAY_LAYER_IDS } from "@/types/overlay";
-import { registerCityIcons } from "./cityIcons";
+import { registerCityIcons, registerTourIcon } from "./cityIcons";
 import { registerCoastIcons } from "./coastIcons";
 import { registerLakeIcons } from "./lakeIcons";
 import {
@@ -17,6 +17,12 @@ import {
 } from "./landformIcons";
 import { registerWaterwayIcons } from "./waterwayIcons";
 import { registerResourceIcons } from "./resourceIcons";
+import {
+  EMPTY_GEOJSON,
+  getTourGeoJSON,
+} from "@/lib/map/tourCatalog";
+
+export const CITY_TOURS_SOURCE = "overlays-tours";
 
 const INSERT_BELOW_NEIGHBORS = "neighbors-fill";
 const INSERT_ABOVE_STATES = "states-line";
@@ -58,7 +64,19 @@ function insertBeforeId(map: Map, slot: OverlayRegistryEntry["slot"]): string | 
 export function mountOverlaySource(map: Map, layerId: OverlayLayerId): void {
   const entry = OVERLAY_REGISTRY[layerId];
   if (!map.getSource(entry.sourceId)) {
-    map.addSource(entry.sourceId, geoSourceUrl(entry.geoPath));
+    if (layerId === "cities") {
+      map.addSource(entry.sourceId, geoSourceUrl(entry.geoPath));
+      // Tour catalog shares the Cities toggle: keep its data separate but
+      // mounted so visibility toggles and restacks apply identically.
+      if (!map.getSource(CITY_TOURS_SOURCE)) {
+        map.addSource(CITY_TOURS_SOURCE, {
+          type: "geojson",
+          data: EMPTY_GEOJSON,
+        });
+      }
+    } else {
+      map.addSource(entry.sourceId, geoSourceUrl(entry.geoPath));
+    }
   }
 }
 
@@ -69,11 +87,9 @@ export function mountOverlayLayersFor(map: Map, layerId: OverlayLayerId): void {
   const before = insertBeforeId(map, entry.slot);
   for (const layer of entry.layers) {
     if (map.getLayer(layer.id)) continue;
+    const source = layer.source ?? entry.sourceId;
     try {
-      map.addLayer(
-        { ...layer, source: entry.sourceId } as AddLayerObject,
-        before
-      );
+      map.addLayer({ ...layer, source } as AddLayerObject, before);
     } catch (error) {
       console.error(`Failed to add overlay layer ${layer.id}`, error);
     }
@@ -85,6 +101,7 @@ export function addOverlayLayers(map: Map): void {
   ensureStyleImageMissingHook(map);
   removeStaleLandformLayers(map);
   registerCityIcons(map);
+  registerTourIcon(map);
   registerCoastIcons(map);
   registerLakeIcons(map);
   registerLandformIcons(map);
@@ -101,7 +118,10 @@ export function setOverlayVisibility(
   layerId: OverlayLayerId,
   visible: boolean
 ): void {
-  if (layerId === "cities") registerCityIcons(map);
+  if (layerId === "cities") {
+    registerCityIcons(map);
+    registerTourIcon(map);
+  }
   if (layerId === "coast") registerCoastIcons(map);
   if (layerId === "lakes") registerLakeIcons(map);
   if (layerId === "waterways") registerWaterwayIcons(map);
@@ -116,6 +136,13 @@ export function setOverlayVisibility(
     if (map.getLayer(lid)) {
       map.setLayoutProperty(lid, "visibility", vis);
     }
+  }
+  // Tours ride along with the Cities toggle — hydrate the shared source.
+  if (layerId === "cities") {
+    const tourSource = map.getSource(CITY_TOURS_SOURCE) as
+      | { setData: (data: GeoJSON.GeoJSON) => void }
+      | undefined;
+    tourSource?.setData(visible ? getTourGeoJSON() : EMPTY_GEOJSON);
   }
   if (layerId === "landforms" && visible) {
     registerLandformIcons(map);

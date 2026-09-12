@@ -138,7 +138,13 @@ const FILL: Record<CityCategory, string> = {
   regional: "#64748b",
 };
 
-function iconImage(category: CityCategory): ImageData {
+export function cityIconId(category: string): string {
+  return `city-icon-${category}`;
+}
+
+export const TOUR_ICON_ID = "city-icon-tour";
+
+function makeIconShape(draw: DrawFn, fill: string, hole = false): ImageData {
   const canvas = document.createElement("canvas");
   canvas.width = SIZE;
   canvas.height = SIZE;
@@ -151,14 +157,14 @@ function iconImage(category: CityCategory): ImageData {
   ctx.lineJoin = "round";
   ctx.lineCap = "round";
 
-  DRAW[category](ctx, cx, cy, r);
-  ctx.fillStyle = FILL[category];
+  draw(ctx, cx, cy, r);
+  ctx.fillStyle = fill;
   ctx.fill();
   ctx.strokeStyle = "#ffffff";
   ctx.lineWidth = 3.5;
   ctx.stroke();
 
-  if (category === "mega-city") {
+  if (hole) {
     ctx.beginPath();
     ctx.arc(cx, cy, r * 0.42, 0, Math.PI * 2);
     ctx.fillStyle = "#ffffff";
@@ -168,8 +174,11 @@ function iconImage(category: CityCategory): ImageData {
   return ctx.getImageData(0, 0, SIZE, SIZE);
 }
 
-export function cityIconId(category: string): string {
-  return `city-icon-${category}`;
+function iconImage(category: CityCategory): ImageData {
+  if (category === "mega-city") {
+    return makeIconShape(DRAW["mega-city"], FILL["mega-city"], true);
+  }
+  return makeIconShape(DRAW[category], FILL[category]);
 }
 
 export function registerCityIcons(map: Map): void {
@@ -187,4 +196,18 @@ export function registerCityIcons(map: Map): void {
       { pixelRatio: 2 }
     );
   }
+}
+
+export function registerTourIcon(map: Map): void {
+  if (map.hasImage(TOUR_ICON_ID)) return;
+  const image = makeIconShape(drawStar, "#d97706");
+  map.addImage(
+    TOUR_ICON_ID,
+    {
+      width: SIZE,
+      height: SIZE,
+      data: new Uint8Array(image.data),
+    },
+    { pixelRatio: 2 }
+  );
 }

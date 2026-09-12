@@ -54,3 +54,34 @@ export function findCityCoordsByName(
 
   return null;
 }
+
+export interface CitySuggestion {
+  name: string;
+  lonLat: [number, number];
+  stateName?: string;
+}
+
+export function searchCitySuggestions(
+  query: string | null | undefined,
+  limit = 8
+): CitySuggestion[] {
+  if (!query) return [];
+  const q = query.trim().toLowerCase();
+  if (!q) return [];
+
+  const out: CitySuggestion[] = [];
+  for (const c of NORMALIZED) {
+    const match =
+      c.key.startsWith(q) ||
+      c.key.includes(q) ||
+      (c.entry.stateName ?? "").toLowerCase().includes(q);
+    if (!match) continue;
+    out.push({
+      name: c.entry.name,
+      lonLat: [c.lon, c.lat],
+      stateName: c.entry.stateName,
+    });
+    if (out.length >= limit) break;
+  }
+  return out;
+}

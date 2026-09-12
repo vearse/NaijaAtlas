@@ -27,6 +27,7 @@ import {
   lgaLayersReady,
   updateLgaLabelFilter,
   applyNeighborLayersMapTypeTuning,
+  applyAdminLayersMapTypeTuning,
   DIRECTIONS_ROUTE_SOURCE,
   createDirectionsRouteLayers,
   ensureCoreMapSourcesAndLayers,
@@ -454,6 +455,8 @@ export default function NigeriaMap({
         return;
       }
 
+      if (useMapStore.getState().mapType === "osm") return;
+
       const lineLayers = [...store.lgaVisibleStateIds]
         .map((sid) => lgaLineLayerId(sid))
         .filter((id) => map.getLayer(id));
@@ -627,6 +630,13 @@ export default function NigeriaMap({
       const hit = pickTopFeature(map, e.point);
 
       if (!hit) {
+        map.getCanvas().style.cursor = "";
+        hoverRef.current?.clear();
+        setTooltip(null);
+        return;
+      }
+
+      if (useMapStore.getState().mapType === "osm") {
         map.getCanvas().style.cursor = "";
         hoverRef.current?.clear();
         setTooltip(null);
@@ -872,6 +882,7 @@ export default function NigeriaMap({
       syncAllOverlayVisibility(map, useMapStore.getState().activeOverlays);
 
       applyNeighborLayersMapTypeTuning(map, useMapStore.getState().mapType);
+      applyAdminLayersMapTypeTuning(map, useMapStore.getState().mapType);
 
       hoverRef.current = createHoverController(map);
       mapReadyRef.current = true;
@@ -1007,6 +1018,7 @@ export default function NigeriaMap({
 
         // 6. Neighbor-layer tuning per MapType (OSM: less data, minimal: full)
         applyNeighborLayersMapTypeTuning(map, mapType);
+        applyAdminLayersMapTypeTuning(map, mapType);
 
         // 7. Re-apply the directions route + endpoints, because
         //    `setStyle({ diff: true })` wiped the runtime geojson source data.
@@ -1089,6 +1101,9 @@ export default function NigeriaMap({
 
     // Hide state names only while LGA polygons are on the map
     if (map.getLayer("states-labels")) {
+      if (useMapStore.getState().mapType === "osm") {
+        map.setLayoutProperty("states-labels", "visibility", "none");
+      } else {
       const hideLabels = lgaVisibleStateIds.size > 0;
       if (hideLabels) {
         map.setLayoutProperty("states-labels", "visibility", "none");
@@ -1111,6 +1126,7 @@ export default function NigeriaMap({
         );
         map.setPaintProperty("states-labels", "text-opacity", 1);
         map.moveLayer("states-labels");
+      }
       }
     }
 
@@ -1160,6 +1176,10 @@ export default function NigeriaMap({
         );
       }
     }
+
+    // Map-type tuning must be the final writer so OSM stays uncluttered
+    // no matter which selection/mask effect ran above.
+    applyAdminLayersMapTypeTuning(map, useMapStore.getState().mapType);
   }, [selectedKey, lgaVisibleKey, lgaReadyKey, activeRegionId, draggedStateId, states, regions, setFeatureState, mapReady, selectedStateIds, lgaVisibleStateIds, readyLgaStateIds]);
 
   // ——— LGA selected highlight ———
@@ -1396,6 +1416,10 @@ export default function NigeriaMap({
       if (map.getLayer("country-label")) {
         map.setLayoutProperty("country-label", "visibility", "visible");
       }
+
+      // Keep the basemap's map-type tuning intact (OSM stays subtle after reset).
+      applyNeighborLayersMapTypeTuning(map, useMapStore.getState().mapType);
+      applyAdminLayersMapTypeTuning(map, useMapStore.getState().mapType);
 
       const reducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)"

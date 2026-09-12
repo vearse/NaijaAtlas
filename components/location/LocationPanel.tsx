@@ -76,8 +76,7 @@ export default function LocationPanel({
   const hasMapSelection =
     selectedStateIds.size > 0 || selectedLgaId !== null;
   const showOverlay = selectedOverlay !== null;
-  const guideLayer =
-    overlayGuideLayer === "landforms" ? null : overlayGuideLayer;
+  const guideLayer = overlayGuideLayer;
   const showOverlayGuide = guideLayer !== null && !showOverlay;
   const showOverview = !hasMapSelection && !activeRegionId && !showOverlay && !showOverlayGuide;
   const showRegion = activeRegion && !hasMapSelection && !showOverlay;

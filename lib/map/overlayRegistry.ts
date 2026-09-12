@@ -17,10 +17,10 @@ export interface OverlayLayerDef {
 }
 
 export type OverlayLayerSpec =
-  | Omit<FillLayerSpecification, "source">
-  | Omit<LineLayerSpecification, "source">
-  | Omit<SymbolLayerSpecification, "source">
-  | Omit<CircleLayerSpecification, "source">;
+  | (Omit<FillLayerSpecification, "source"> & { source?: string })
+  | (Omit<LineLayerSpecification, "source"> & { source?: string })
+  | (Omit<SymbolLayerSpecification, "source"> & { source?: string })
+  | (Omit<CircleLayerSpecification, "source"> & { source?: string });
 
 export interface OverlayRegistryEntry {
   id: OverlayLayerId;
@@ -661,7 +661,12 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
     sourceId: "overlays-cities",
     geoPath: "/geo/overlays/cities.geojson",
     slot: "aboveLgas",
-    interactiveLayerIds: ["overlay-cities-icon", "overlay-cities-labels"],
+    interactiveLayerIds: [
+      "overlay-cities-icon",
+      "overlay-cities-labels",
+      "overlay-tours-icon",
+      "overlay-tours-labels",
+    ],
     layers: [
       {
         id: "overlay-cities-icon",
@@ -670,25 +675,30 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
         layout: {
           visibility: "none",
           "icon-image": [
-            "match",
-            ["coalesce", ["get", "category"], "regional"],
-            "federal-capital",
-            "city-icon-federal-capital",
-            "mega-city",
-            "city-icon-mega-city",
-            "state-capital",
-            "city-icon-state-capital",
-            "commercial",
-            "city-icon-commercial",
-            "historic",
-            "city-icon-historic",
-            "port-city",
-            "city-icon-port-city",
-            "industrial",
-            "city-icon-industrial",
-            "university",
-            "city-icon-university",
-            "city-icon-regional",
+            "case",
+            ["to-boolean", ["coalesce", ["get", "isTour"], false]],
+            "city-icon-tour",
+            [
+              "match",
+              ["coalesce", ["get", "category"], "regional"],
+              "federal-capital",
+              "city-icon-federal-capital",
+              "mega-city",
+              "city-icon-mega-city",
+              "state-capital",
+              "city-icon-state-capital",
+              "commercial",
+              "city-icon-commercial",
+              "historic",
+              "city-icon-historic",
+              "port-city",
+              "city-icon-port-city",
+              "industrial",
+              "city-icon-industrial",
+              "university",
+              "city-icon-university",
+              "city-icon-regional",
+            ],
           ],
           "icon-size": ["interpolate", ["linear"], ["zoom"], 4, 0.55, 7, 0.78, 11, 1],
           "icon-allow-overlap": true,
@@ -713,6 +723,42 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
         },
         paint: {
           "text-color": "#0f172a",
+          "text-halo-color": "#ffffff",
+          "text-halo-width": 2,
+        },
+      },
+      {
+        id: "overlay-tours-icon",
+        type: "symbol",
+        source: "overlays-tours",
+        minzoom: 4,
+        layout: {
+          visibility: "none",
+          "icon-image": "city-icon-tour",
+          "icon-size": ["interpolate", ["linear"], ["zoom"], 4, 0.55, 7, 0.78, 11, 1],
+          "icon-allow-overlap": true,
+          "icon-ignore-placement": true,
+          "icon-padding": 10,
+          "icon-anchor": "center",
+        },
+      },
+      {
+        id: "overlay-tours-labels",
+        type: "symbol",
+        source: "overlays-tours",
+        minzoom: 6,
+        layout: {
+          visibility: "none",
+          "text-field": ["get", "name"],
+          "text-size": 10.5,
+          "text-offset": [0, 1.35],
+          "text-font": ["Open Sans Semibold"],
+          "text-anchor": "top",
+          "text-optional": true,
+          "text-allow-overlap": false,
+        },
+        paint: {
+          "text-color": "#92400e",
           "text-halo-color": "#ffffff",
           "text-halo-width": 2,
         },

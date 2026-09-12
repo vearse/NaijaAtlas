@@ -16,10 +16,12 @@ export interface DirectionsState {
   from: DirectionsTarget | null;
   to: DirectionsTarget | null;
   routeGeoJSON: GeoJSON.LineString | null;
+  steps: DrivingStep[];
   active: boolean;
 }
 
 import type { OverlayLayerId, SelectedOverlayFeature } from "@/types/overlay";
+import type { DrivingStep } from "@/lib/map/directionsApi";
 
 const DEFAULT_ACTIVE_OVERLAYS = new Set<OverlayLayerId>(["cities"]);
 
@@ -84,6 +86,7 @@ export interface MapSelectionState {
   setDirectionsFrom: (f: DirectionsTarget | null) => void;
   setDirectionsTo: (t: DirectionsTarget | null) => void;
   setDirectionsRoute: (r: GeoJSON.LineString | null) => void;
+  setDirectionsSteps: (steps: DrivingStep[]) => void;
   toggleDirections: (active: boolean) => void;
   clearDirections: () => void;
   flyToDirectionsRoute: () => void;
@@ -133,6 +136,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     from: null,
     to: null,
     routeGeoJSON: null,
+    steps: [],
     active: false,
   },
 
@@ -150,6 +154,10 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   setDirectionsRoute: (routeGeoJSON) =>
     set((state) => ({
       directions: { ...state.directions, routeGeoJSON },
+    })),
+  setDirectionsSteps: (steps) =>
+    set((state) => ({
+      directions: { ...state.directions, steps },
     })),
   toggleDirections: (active) => {
     const state = get();
@@ -169,6 +177,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         from: null,
         to: null,
         routeGeoJSON: null,
+        steps: [],
         active: false,
       },
     })),
@@ -215,18 +224,16 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     const state = get();
     const next = new Set(state.activeOverlays);
     const turningOn = !next.has(id);
-    const mapLegendOnly = id === "landforms";
     if (turningOn) {
       next.add(id);
       set({
         activeOverlays: next,
-        overlayGuideLayer: mapLegendOnly ? null : id,
+        overlayGuideLayer: id,
         selectedOverlay: null,
         selectedLgaId: null,
         activeRegionId: null,
-        ...(mapLegendOnly
-          ? {}
-          : { panelOpen: true, mobileSheet: "open" as MobileSheetMode }),
+        panelOpen: true,
+        mobileSheet: "open" as MobileSheetMode,
       });
     } else {
       next.delete(id);

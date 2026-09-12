@@ -289,6 +289,14 @@ export default function OverlayFeaturePanel({
             <p className="text-sm text-slate-500 mt-1">{text(props.nickname)}</p>
           )}
           <div className="mt-2 flex flex-wrap gap-1.5">
+            {props.isTour === true && (
+              <span
+                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white"
+                style={{ backgroundColor: "#d97706" }}
+              >
+                Tourist attraction
+              </span>
+            )}
             {cityCat && (
               <span
                 className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white"
