@@ -131,6 +131,14 @@ export const RESOURCE_TYPES = [
   "lithium-rare",
   "marble",
   "salt-potash",
+  "bauxite",
+  "gemstones",
+  "kaolin",
+  "phosphate",
+  "gypsum",
+  "graphite",
+  "tungsten",
+  "feldspar-mica",
 ] as const;
 export type ResourceType = (typeof RESOURCE_TYPES)[number];
 
@@ -150,6 +158,14 @@ export const RESOURCE_TYPE_LABELS: Record<
   "lithium-rare": { label: "Lithium & rare earths", color: "#0ea5e9" },
   marble: { label: "Marble", color: "#d6d3d1" },
   "salt-potash": { label: "Salt & potash", color: "#f59e0b" },
+  bauxite: { label: "Bauxite / alumina", color: "#b91c1c" },
+  gemstones: { label: "Gemstones", color: "#7c3aed" },
+  kaolin: { label: "Kaolin & clays", color: "#a8a29e" },
+  phosphate: { label: "Phosphate", color: "#65a30d" },
+  gypsum: { label: "Gypsum", color: "#d6d3d1" },
+  graphite: { label: "Graphite", color: "#292524" },
+  tungsten: { label: "Tungsten", color: "#475569" },
+  "feldspar-mica": { label: "Feldspar & mica", color: "#6366f1" },
 };
 
 export const COAST_ZONE_LABELS: Record<
@@ -279,7 +295,7 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
     description:
       "Each city has a shape-coded icon: star for Abuja, diamond for state capitals, red circle for Lagos-scale megacity, and other shapes for commercial, historic, port, and university towns. Military formations (Army, Navy, Air Force) are now on the Waterways layer.",
     includes: [
-      "87 cities from megacities to regional centres",
+      "94 cities from megacities to regional centres",
       "State capitals and economic hubs",
       "University towns and historic settlements",
     ],
@@ -299,9 +315,10 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
     includes: [
       "Crude oil & natural gas fields (Niger Delta)",
       "Enugu coal, Jos Plateau tin-columbite",
-      "Kogi/Ajaokuta iron ore, Iperindo gold, limestone belts",
+      "Kogi/Ajaokuta iron ore, Osun–Ilesha & Iperindo gold, limestone belts",
       "Bitumen (Ondo/Edo), lithium & rare earths (Nasarawa/Kaduna)",
       "Marble (Kwara/Sokoto), salt & potash (Lagos/Sokoto)",
+      "Bauxite, phosphate, gypsum, graphite, kaolin, gemstone & tungsten prospects",
     ],
     legend: [
       "🛢️ dark barrel = crude oil",
@@ -310,6 +327,14 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
       "⚙️ grey spark = tin / columbite",
       "⛓️ brown pick = iron ore",
       "🪙 gold coin = gold",
+      "🦪 pale cube = bauxite",
+      "💎 violet spark = gemstones",
+      "⛰️ grey mountain = kaolin",
+      "🔻 lime jar = phosphate",
+      "⬜ white cube = gypsum",
+      "⬛ graphite cube = graphite",
+      "🔘 slate spark = tungsten",
+      "🍃 indigo leaf = feldspar / mica",
       "🟦 light tank = limestone",
       "⬛ dark block = bitumen",
       "🔩 grey zinc = lead / zinc",

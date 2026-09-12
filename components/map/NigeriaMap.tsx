@@ -862,7 +862,7 @@ export default function NigeriaMap({
   // ——— Clear lifted state when drag id cleared ———
   useEffect(() => {
     const map = mapRef.current;
-    if (!map?.isStyleLoaded() || draggedStateId) return;
+    if (!map || draggedStateId) return;
     clearDraggedSource(map);
   }, [draggedStateId, clearDraggedSource, mapReady]);
 
@@ -1155,8 +1155,15 @@ export default function NigeriaMap({
     hoverRef.current?.clear();
     setTooltip(null);
 
-    if (map?.isStyleLoaded()) {
+    if (map) {
       clearDraggedSource(map);
+      dragSessionRef.current = { active: false, startLngLat: null, moved: false };
+      map.dragPan.enable();
+      map.dragRotate.enable();
+      map.getCanvas().style.cursor = "";
+    }
+
+    if (map?.isStyleLoaded()) {
       syncAllOverlayVisibility(map, new Set());
       applyStateMaskForLgaVisibility(map, [], null);
       applyStateSelectionPaint(map, [], []);

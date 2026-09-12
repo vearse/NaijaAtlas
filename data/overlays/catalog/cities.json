@@ -1909,58 +1909,6 @@
     "wikiUrl": "https://en.wikipedia.org/wiki/Calabar"
   },
   {
-    "id": "city-nsukka-abi",
-    "name": "Aba",
-    "category": "commercial",
-    "stateName": "Abia",
-    "stateId": "NG-AB",
-    "lon": 7.37,
-    "lat": 5.12,
-    "nickname": "Japan of Africa · Aba Industrial Hub",
-    "summary": "The commercial and manufacturing capital of Abia State and southeast Nigeria.",
-    "description": "Aba is a densely populated manufacturing and trade city in Abia State. It is known for its 'Aba Made' garments, shoes, leather goods, and metal fabrication, earning it the nickname 'Japan of Africa'. The Ariaria International Market is one of West Africa's largest open-air markets.",
-    "populationNote": "~900,000 metro (est.)",
-    "economy": "Garments, footwear, leather goods, metalworks, Ariaria market trade.",
-    "climate": "Equatorial rainforest fringe.",
-    "landmarks": [
-      "Ariaria International Market",
-      "Aba shoe clusters",
-      "Aba Textile Mills precinct"
-    ],
-    "highlights": [
-      "Aba Made manufacturing",
-      "Southeast commercial hub",
-      "Ariaria market"
-    ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Aba,_Nigeria"
-  },
-  {
-    "id": "city-onitsha",
-    "name": "Onitsha",
-    "category": "commercial",
-    "stateName": "Anambra",
-    "stateId": "NG-AN",
-    "lon": 6.79,
-    "lat": 6.14,
-    "nickname": "The Onitsha Market · Niger bridgehead",
-    "summary": "Trans-Niger commercial bridgehead; home of West Africa's largest open-air market.",
-    "description": "Onitsha sits on the east bank of the Niger, directly across from Asaba, connected by the Niger Bridge. The Onitsha Main Market (Ose) is reputedly West Africa's largest open-air market, with a dominant import/import-substitution trade ecosystem.",
-    "populationNote": "~700,000 metro (est.)",
-    "economy": "Open-air commerce, import/wholesale, river transit, Igbo enterprise hub.",
-    "climate": "Tropical; river-belt high humidity.",
-    "landmarks": [
-      "Onitsha Main Market",
-      "Niger Bridge",
-      "Ogbunike Caves nearby"
-    ],
-    "highlights": [
-      "Largest open-air market in WA",
-      "Niger bridgehead",
-      "Igbo commerce hub"
-    ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Onitsha"
-  },
-  {
     "id": "city-alaba",
     "name": "Ojo (Alaba & Lagos Trade)",
     "category": "commercial",
@@ -1986,31 +1934,6 @@
     "wikiUrl": "https://en.wikipedia.org/wiki/Alaba_International_Market"
   },
   {
-    "id": "city-suleja",
-    "name": "Suleja",
-    "category": "industrial",
-    "stateName": "Niger",
-    "stateId": "NG-NI",
-    "lon": 7.15,
-    "lat": 9.22,
-    "nickname": "ABUJA Industrial Satellite · NINLAN",
-    "summary": "Industrial satellite of Abuja — cement, ceramics, and Nigeria's linoleum/tiles centre.",
-    "description": "Suleja (old Abuja Emirate headquarters) was deliberately developed as Abuja's industrial satellite because of its proximity and lower land costs. It hosts a big cement plant, ceramics, tiles, and NINLAN (linguistics/languages centre).",
-    "populationNote": "~300,000 metro (est.)",
-    "economy": "Cement, ceramics, tiles, construction materials, Abuja support services.",
-    "climate": "Guinea savanna; FCT-like climate.",
-    "landmarks": [
-      "Suleja Cement Plant",
-      "Ceramic & Tile Industries",
-      "Suleja Emirate Palace"
-    ],
-    "highlights": [
-      "Abuja industrial satellite",
-      "Cement + ceramics cluster"
-    ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Suleja"
-  },
-  {
     "id": "city-ogbele",
     "name": "Ajaokuta",
     "category": "industrial",
@@ -2034,162 +1957,6 @@
       "Niger-Benue confluence industry"
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Ajaokuta"
-  },
-  {
-    "id": "city-eket",
-    "name": "Eket",
-    "category": "industrial",
-    "stateName": "Akwa Ibom",
-    "stateId": "NG-AK",
-    "lon": 7.94,
-    "lat": 4.64,
-    "nickname": "Eket Refinery & Gas City",
-    "summary": "Akwa Ibom's oil-service and refining hub on the Qua Iboe estuary.",
-    "description": "Eket is Akwa Ibom's main oil-service and gas-processing town, near ExxonMobil's Qua Iboe Terminal (QIT). DPR operations, gas processing, and logistics for the eastern deepwater support the local economy.",
-    "populationNote": "~170,000 metro (est.)",
-    "economy": "Oil & gas services, QIT logistics, coastal fishing.",
-    "climate": "Equatorial mangrove coast.",
-    "landmarks": [
-      "Qua Iboe Terminal precinct",
-      "Eket waterfront",
-      "Gas processing hubs"
-    ],
-    "highlights": [
-      "Eastern deepwater oil hub",
-      "Qua Iboe Terminal",
-      "Eket refinery precinct"
-    ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Eket"
-  },
-  {
-    "id": "city-birnin-koni",
-    "name": "Birnin Kebbi",
-    "category": "regional",
-    "stateName": "Kebbi",
-    "stateId": "NG-KE",
-    "lon": 4.2,
-    "lat": 12.46,
-    "nickname": "Argungu Fishing Festival town",
-    "summary": "Capital of Kebbi State and gateway to the Argungu festival & Kainji Lake region.",
-    "description": "Birnin Kebbi is the capital of Kebbi State, a Hausa–Fulani town on the Sokoto-Rima plains, west of Kainji Lake. The Argungu International Fishing Festival is held nearby.",
-    "populationNote": "~350,000 metro (est.)",
-    "economy": "Agriculture (rice, sorghum), fishing, trade, tourism (Argungu).",
-    "climate": "Sudan–Sahel fringe.",
-    "landmarks": [
-      "Argungu Fishing Festival site",
-      "Kebbi State Govt House",
-      "Gwandu emirate links"
-    ],
-    "highlights": [
-      "Kebbi capital",
-      "Argungu festival gateway",
-      "Kainji lake region"
-    ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Birnin_Kebbi"
-  },
-  {
-    "id": "city-umuahia",
-    "name": "Umuahia",
-    "category": "regional",
-    "stateName": "Abia",
-    "stateId": "NG-AB",
-    "lon": 7.49,
-    "lat": 5.53,
-    "nickname": "God's Own State capital",
-    "summary": "Capital of Abia State; Biafran wartime capital; eastern highway node.",
-    "description": "Umuahia is the administrative capital of Abia State, on the Enugu–Port Harcourt highway. It is remembered as the seat of Biafra's breakaway government and hosts the National War Museum.",
-    "populationNote": "~350,000 metro (est.)",
-    "economy": "State administration, agribusiness (palm, cassava), highway commerce.",
-    "climate": "Tropical rainforest fringe.",
-    "landmarks": [
-      "National War Museum (Biafra)",
-      "Abia State Secretariat",
-      "Azumini Blue River nearby"
-    ],
-    "highlights": [
-      "Abia capital",
-      "Biafran wartime seat",
-      "War Museum"
-    ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Umuahia"
-  },
-  {
-    "id": "city-ilorin-north",
-    "name": "Minna",
-    "category": "regional",
-    "stateName": "Niger",
-    "stateId": "NG-NI",
-    "lon": 6.56,
-    "lat": 9.61,
-    "nickname": "Nuclear Power State capital",
-    "summary": "Capital of Niger State; gateway to Kainji, Jebba, and Shiroro dams.",
-    "description": "Minna is the capital of Nigeria's largest state by land area. It is the gateway to the Kainji National Park and Nigeria's three large hydroelectric power stations (Kainji, Jebba, Shiroro).",
-    "populationNote": "~450,000 metro (est.)",
-    "economy": "Government, hydropower sector services, grain/cotton trade.",
-    "climate": "Guinea savanna, dry.",
-    "landmarks": [
-      "Shiroro / Kainji dams region",
-      "Minna Government House",
-      "Niger State Secretariat"
-    ],
-    "highlights": [
-      "Capital of Niger State",
-      "Gateway to Kainji NP & dams",
-      "Power sector hub"
-    ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Minna"
-  },
-  {
-    "id": "city-gombe",
-    "name": "Gombe",
-    "category": "regional",
-    "stateName": "Gombe",
-    "stateId": "NG-GO",
-    "lon": 11.05,
-    "lat": 10.3,
-    "nickname": "Jewel in the Savannah",
-    "summary": "Capital of Gombe State and terminus of the eastern narrow-gauge railway.",
-    "description": "Gombe is the capital of Gombe State, sited in the eastern Bauchi plains. The Gombe Lawanti airstrip and the terminus of the Port Harcourt–Maiduguri railway (eastern line) made it a regional transport hub.",
-    "populationNote": "~300,000 metro (est.)",
-    "economy": "Agriculture (sorghum, sesame, livestock), regional commerce, railway logistics.",
-    "climate": "Guinea savanna; hot, with a brief rainy season.",
-    "landmarks": [
-      "Gombe Emirate Palace",
-      "Eastern railway terminus",
-      "Gombe State Secretariat"
-    ],
-    "highlights": [
-      "Gombe State capital",
-      "Eastern railway terminus",
-      "Jewel in the Savannah"
-    ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Gombe,_Nigeria"
-  },
-  {
-    "id": "city-bonny",
-    "name": "Bonny",
-    "category": "port-city",
-    "stateName": "Rivers",
-    "stateId": "NG-RI",
-    "lon": 7.17,
-    "lat": 4.44,
-    "nickname": "Bonny Island · NLNG Terminal",
-    "summary": "Historic trading kingdom; Nigeria's LNG export port on Bonny Island.",
-    "description": "Bonny Kingdom is a historic Ijaw trading state and major Niger Delta port. The Bonny Island Liquefied Natural Gas (NLNG) terminal is Nigeria's largest LNG export facility.",
-    "populationNote": "~120,000 (island + metro est.)",
-    "economy": "LNG export, oil terminals, coastal fishing, historic kingdom heritage.",
-    "climate": "Equatorial mangrove delta.",
-    "landmarks": [
-      "NLNG Bonny Terminal",
-      "Bonny Kingdom Palace",
-      "Bonny Deep-Sea Terminal"
-    ],
-    "highlights": [
-      "Nigeria's LNG export port",
-      "Historic Bonny Kingdom",
-      "Deep-sea terminal"
-    ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Bonny,_Nigeria"
   },
   {
     "id": "city-forcados",
@@ -2271,33 +2038,6 @@
       "Sungbo's Eredo ancient earthworks"
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Ijebu-Ode"
-  },
-  {
-    "id": "city-ijebu-igbo",
-    "name": "Ijebu-Igbo",
-    "category": "historic",
-    "stateName": "Ogun",
-    "stateId": "NG-OG",
-    "lon": 4.13,
-    "lat": 6.96,
-    "nickname": "Eastern Ijebu · home of the Agemo festival",
-    "founded": "16th century; Ijebu eastern provincial town",
-    "summary": "Eastern Ijebu historic town and centre of the Agemo (masked spirit) festival cycle.",
-    "description": "Ijebu-Igbo is the principal town of the Eastern Ijebu and home of the Olomowewe of Ijebu-Igbo. It is famous for hosting the Agemo festival cycle, a Yoruba masked-spirit tradition where sixteen principal Agemo masquerades of Ijebuland process through the town during festivals.",
-    "populationNote": "~180,000 (est.)",
-    "economy": "Timber, agricultural trade (cocoa, kola, cassava), sawmills, festival tourism.",
-    "climate": "Tropical wet-and-dry; forest–savanna mosaic.",
-    "landmarks": [
-      "Olomowewe Palace",
-      "Agemo festival shrines & groves",
-      "Ijebu-Igbo Central Mosque"
-    ],
-    "highlights": [
-      "Eastern Ijebu historic capital",
-      "Agemo masquerade festival centre",
-      "Cocoa & timber trading town"
-    ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Ijebu-Igbo"
   },
   {
     "id": "city-sagamu",
@@ -2415,7 +2155,7 @@
     "category": "historic",
     "stateName": "Oyo",
     "stateId": "NG-OY",
-    "lon": 3.60,
+    "lon": 3.6,
     "lat": 7.97,
     "nickname": "Home of Aso-Ofi weaving · Aseyin of Iseyin",
     "founded": "17th century; Oyo Empire provincial town",
@@ -2521,36 +2261,6 @@
     "wikiUrl": "https://en.wikipedia.org/wiki/Bida"
   },
   {
-    "id": "city-lokoja",
-    "name": "Lokoja",
-    "category": "historic",
-    "stateName": "Kogi",
-    "stateId": "NG-KG",
-    "lon": 6.74,
-    "lat": 7.80,
-    "nickname": "Confluence City · Nigeria's first federal capital (1900)",
-    "founded": "Pre-colonial multi-ethnic town; 1830s Lander brothers landmark; 1900 Southern Nigeria HQ",
-    "summary": "Historic town at the Niger–Benue confluence — Nigeria's first seat of British administration and founding site of the Nigerian nation.",
-    "description": "Lokoja sits at the meeting of the Niger and Benue rivers. It has enormous national significance: the Lander brothers confirmed the Niger estuary here (1830–33), the first British 'Niger' protectorate was proclaimed here (1900), and the name 'Nigeria' was coined by Flora Shaw writing from Lokoja environs. Landmarks include Lord Lugard's Residence, the confluence view, Mount Patti, the Iron of Liberty, and the cenotaph of explorer Nana.",
-    "populationNote": "~250,000 (est.)",
-    "economy": "Confluence river trade, government, cement, tourism, fishing, iron & steel industry (Ajaokuta vicinity).",
-    "climate": "Guinea savanna with Niger–Benue riverine humidity.",
-    "landmarks": [
-      "Niger–Benue Confluence Point",
-      "Lord Lugard's Residence / Museum of Colonial Administration",
-      "Mount Patti (Patti Hill — view over the rivers)",
-      "Iron of Liberty (proclamation marker)",
-      "Lokoja river port & ferry terminal"
-    ],
-    "highlights": [
-      "Nigeria's first Southern Protectorate capital (1900)",
-      "Niger–Benue confluence",
-      "Place where the name 'Nigeria' was coined",
-      "Lugard & Lander brothers heritage"
-    ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Lokoja"
-  },
-  {
     "id": "city-arochukwu",
     "name": "Arochukwu",
     "category": "historic",
@@ -2578,65 +2288,6 @@
       "Aro historical-heritage tourism"
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Arochukwu"
-  },
-  {
-    "id": "city-okene",
-    "name": "Okene",
-    "category": "historic",
-    "stateName": "Kogi",
-    "stateId": "NG-KG",
-    "lon": 6.23,
-    "lat": 7.58,
-    "nickname": "Ebira (Igbirra) homeland · Ohinoyi of Ebiraland",
-    "founded": "Pre-17th century; consolidation of Ebira clans in the Niger-Benue trough",
-    "summary": "Cultural capital of the Ebira (Igbirra) people — famed for the Okene cloth weaving, music, and the Ohinoyi monarchy.",
-    "description": "Okene is the heartland of the Ebira (Igbirra, Ebira Tao) people of the central Nigeria Middle Belt. It is the seat of the Ohinoyi of Ebiraland and is famed across Nigeria for its distinctive Aso-Ofi weaving tradition of Ebira, its traditional Ekuechi masked festival, and its landmark Central Mosque on a hill overlooking the town. The district was also a late-colonial tin and columbite mining area.",
-    "populationNote": "~250,000 metro (est.)",
-    "economy": "Traditional weaving, textile exports, local government, agriculture (yam, cassava, guinea-corn, soybean), marble & mineral prospecting (Okene deposits).",
-    "climate": "Guinea savanna; slightly cooler at altitude.",
-    "landmarks": [
-      "Ohinoyi of Ebiraland Palace",
-      "Okene Central Mosque (hilltop landmark)",
-      "Ebira Ekuechi festival masked dances",
-      "Okene weaving quarters & textile markets"
-    ],
-    "highlights": [
-      "Cultural capital of Ebiraland",
-      "Ohinoyi of Ebiraland monarchy",
-      "Ekuechi masked festival",
-      "Ebira Aso-Ofi weaving heritage"
-    ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Okene"
-  },
-  {
-    "id": "city-daura",
-    "name": "Daura",
-    "category": "historic",
-    "stateName": "Katsina",
-    "stateId": "NG-KT",
-    "lon": 8.33,
-    "lat": 13.17,
-    "nickname": "Hausa Bakwai leading city · Bayajidda legend · Magajiya Daurama",
-    "founded": "c. 9th–10th century CE; foremost of the original Hausa Bakwai city-states",
-    "summary": "Legendary founding city of the Hausa civilisation — the Bayajidda/Serpent/Daura Wells origin myth and the Magajiya queen-mothers.",
-    "description": "Daura ranks as the spiritual cradle of Hausaland: the Bayajidda legend says a stranger from the east killed a snake (Sarki) who blocked the Kusugu Well, married Magajiya Daurama, and fathered the rulers of the seven Hausa Bakwai city-states. Daura was also the homeland of later Fulani clerical dynasties; the annual Daura Durbar is among Nigeria's grandest.",
-    "populationNote": "~120,000 historic centre (est.)",
-    "economy": "Durbar tourism, Islamic scholarship, agriculture (millet, sorghum, groundnut, cowpea), animal husbandry, handicrafts, traditional dye pits.",
-    "climate": "Sahel; hot, intense harmattan; very short rainy season.",
-    "landmarks": [
-      "Kusugu Well (Bayajidda snake-slayer shrine)",
-      "Emir of Daura's Palace (Sarkin Daura)",
-      "Daura Central Mosque",
-      "Daura Durbar parade ground",
-      "Magajiya Daurama historic quarter"
-    ],
-    "highlights": [
-      "Foremost Hausa Bakwai city-state",
-      "Bayajidda legend & Kusugu Well shrine",
-      "Daura Durbar — one of Nigeria's finest",
-      "Spiritual cradle of Hausaland"
-    ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Daura"
   },
   {
     "id": "city-nguru",
@@ -2668,33 +2319,138 @@
     "wikiUrl": "https://en.wikipedia.org/wiki/Nguru,_Yobe"
   },
   {
-    "id": "city-yola",
-    "name": "Yola",
+    "id": "city-idah",
+    "name": "Idah",
     "category": "historic",
-    "stateName": "Adamawa",
-    "stateId": "NG-AD",
-    "lon": 12.48,
-    "lat": 9.20,
-    "nickname": "Adamawa Emirate capital · Lamido of Adamawa · Benue headwaters",
-    "founded": "1841 (foundation of the Adamawa Fulani emirate by Modibo Adama)",
-    "summary": "Historic Fulani Adamawa emirate capital at the Benue headwaters, gateway to the Mambilla and Cameroon border highlands.",
-    "description": "Yola was founded as the capital of the great Adamawa Emirate (Fombina) — Modibo Adama's theocratic Fulani state that once stretched across the Cameroon–Nigeria border highlands. It is still the seat of the Lamido of Adamawa. Yola sits on the Benue river's upper reaches, with access to the Mambilla Plateau, Mandara Mountains, Gashaka-Gumti National Park, and trade routes into Cameroon and Central Africa.",
-    "populationNote": "~400,000 metro (Jimeta–Yola conurbation; est.)",
-    "economy": "State government, Benue river trade, livestock, agriculture (millet, guinea-corn, yams, soya), Mambilla coffee & highland produce, border commerce, eco-tourism (Gashaka Gumti & Mambilla).",
-    "climate": "Guinea–Sudan savanna transition; Benue river & highland influence.",
+    "stateName": "Kogi",
+    "stateId": "NG-KO",
+    "lon": 6.74,
+    "lat": 7.11,
+    "nickname": "Attah of Igala's seat",
+    "founded": "Pre-17th century; Igala Kingdom capital",
+    "summary": "Time-honoured capital of the Igala Kingdom on the east bank of the Niger, seat of the Attah of Igala.",
+    "description": "Idah has ruled the Igala people for centuries and was a hinge between the Niger-Benue confluence and the middle-belt trade routes. The sprawling Attah Palace and the annual Igala cultural programmes reflect the monarchy's unbroken lineage. The town is a river port with ferry links to Lokoja across the Niger.",
+    "populationNote": "~200,000 urban + metro (est.)",
+    "economy": "River port trade, yam and rice farming, fishing, royal-court tourism.",
+    "climate": "Tropical wet-dry; Guinea savanna.",
     "landmarks": [
-      "Lamido of Adamawa Palace",
-      "Jimeta-Yola Benue river bridge & port",
-      "Mambilla Plateau access route",
-      "Gashaka-Gumti National Park gateway",
-      "Modibo Adama University"
+      "Attah of Igala Palace",
+      "Niger River jetty",
+      "Igala cultural festival grounds"
     ],
     "highlights": [
-      "Capital of the Adamawa Emirate (Fombina)",
-      "Lamido of Adamawa royal seat",
-      "Gateway to Mambilla Plateau & Cameroon Highlands",
-      "Benue upper-reaches river trade"
+      "Igala Kingdom capital",
+      "Attah royal stool",
+      "Niger river port"
     ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Yola"
+    "wikiUrl": "https://en.wikipedia.org/wiki/Idah"
+  },
+  {
+    "id": "city-wukari",
+    "name": "Wukari",
+    "category": "historic",
+    "stateName": "Taraba",
+    "stateId": "NG-TA",
+    "lon": 9.78,
+    "lat": 7.87,
+    "nickname": "Jukun heartland",
+    "founded": "Pre-17th century; Kwararafa confederacy era",
+    "summary": "Historic centre of the Jukun people and its Kwararafa legacy in the Benue Valley.",
+    "description": "Wukari is the traditional seat of the Jukun (Kwararafa) in the Benue trough, recalling a confederacy that influenced much of the middle belt from pre-colonial times. The Jukun new-yam festival, royal dance circles, and palace compounds preserve the heritage at the crossroads of Taraba and Benue states.",
+    "populationNote": "~180,000 LASG metro (est.)",
+    "economy": "Groundnut and soap factory heritage, farming, riverine trade.",
+    "climate": "Tropical wet-dry; Guinea savanna.",
+    "landmarks": [
+      "Jukun palace & ethnic compounds",
+      "Kwararafa festival grounds",
+      "River Jakara environs"
+    ],
+    "highlights": [
+      "Jukun Kwararafa legacy",
+      "Traditional new-yam festival",
+      "Middle-belt crossroads"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Wukari"
+  },
+  {
+    "id": "city-argungu",
+    "name": "Argungu",
+    "category": "historic",
+    "stateName": "Kebbi",
+    "stateId": "NG-KE",
+    "lon": 4.52,
+    "lat": 12.74,
+    "nickname": "Home of the Argungu Fishing Festival",
+    "founded": "16th-century emirate town",
+    "summary": "Ancient emirate town on the Sokoto River famed for the world-renowned Argungu Fishing Festival.",
+    "description": "Argungu is the historic capital of the Argungu Emirate and host of Nigeria's most famous traditional spectacle, the Argungu Fishing Festival, where thousands wade into the Sokoto River to catch the 'dangaladi' fish with calabash floats. The event, suspended for years and revived, is a national tourism draw symbolising peace between the Sokoto Caliphate and Kebbi forces.",
+    "populationNote": "~90,000 (est.)",
+    "economy": "Fishing festival tourism, rice and onion farming, river trade.",
+    "climate": "Hot semi-arid; Sudan savanna.",
+    "landmarks": [
+      "Argungu Emirate Palace",
+      "Sokoto River festival banks",
+      "Matan Fada rock"
+    ],
+    "highlights": [
+      "Argungu Fishing Festival",
+      "Emirate heritage",
+      "Kebbi riverine economy"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Argungu"
+  },
+  {
+    "id": "city-nembe",
+    "name": "Opu Nembe",
+    "category": "historic",
+    "stateName": "Bayelsa",
+    "stateId": "NG-BY",
+    "lon": 6.31,
+    "lat": 4.54,
+    "nickname": "Kingdom of the Niger Delta",
+    "founded": "Pre-15th century; Nembe Kingdom capital",
+    "summary": "Traditional capital of the Nembe Kingdom, an ancient Ijaw state of the eastern Niger Delta.",
+    "description": "Opu Nembe is the royal seat of the Nembe Kingdom (also 'Brass'), one of the oldest Ijaw city-states, known for its seafaring, trade with European merchants, and the annual Ogu festival. The kingdom's brass-and-coastal heritage, chiefs' courts, and creek-side life link Nembe to the wider Niger Delta oil economy that surrounds it.",
+    "populationNote": "~60,000 (est.)",
+    "economy": "Fishing, tributary oil wealth, festival tourism, canoe transport.",
+    "climate": "Tropical rainforest; mangrove creeks.",
+    "landmarks": [
+      "King Koko Square",
+      "Nembe royal palace",
+      "Brass creeks and mangroves"
+    ],
+    "highlights": [
+      "Nembe Kingdom seat",
+      "Ogu festival",
+      "Ijaw seafaring heritage"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Nembe"
+  },
+  {
+    "id": "city-afikpo",
+    "name": "Afikpo",
+    "category": "historic",
+    "stateName": "Ebonyi",
+    "stateId": "NG-EB",
+    "lon": 5.78,
+    "lat": 5.89,
+    "nickname": "Pottery capital of Igboland",
+    "founded": "Ancient Igbo settlement; protects a long-standing pottery craft",
+    "summary": "Historic Igbo town famed for its age-old ceramic and masquerade traditions at the foot of the Cross River basin.",
+    "description": "Afikpo is one of the oldest known pottery centres in Igboland, with terracotta and ceramic craft handed down across generations from the leru hills. Its sacred shrines, masquerade societies (especially the senior Egwu age-grade masquerades), and the Okpoha festival keep pre-colonial traditions alive, while the town anchors the southern Ebonyi agro-economy near the Cross River.",
+    "populationNote": "~150,000 urban + metro (est.)",
+    "economy": "Pottery and ceramics, yam and rice farming, rural trade.",
+    "climate": "Tropical wet-dry; rainforest–savanna fringe.",
+    "landmarks": [
+      "Leru hills pottery villages",
+      "Afikpo masquerade precinct",
+      "Cross River basin escarpment"
+    ],
+    "highlights": [
+      "Ancient pottery centre",
+      "Igbo masquerade heritage",
+      "South-eastern agro-town"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Afikpo"
   }
 ]

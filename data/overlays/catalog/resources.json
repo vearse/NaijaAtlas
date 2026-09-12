@@ -551,47 +551,6 @@
     ]
   },
   {
-    "id": "resource-bitumen",
-    "name": "Bitumen & Tar Sands (Ondo, Edo, Ogun, Lagos Belt)",
-    "resourceType": "bitumen",
-    "summary": "Africa's 2nd-largest bitumen deposits in the Dahomey (Benin) Basin east of Lagos — road asphalt & future upgrading target.",
-    "description": "Nigeria holds Africa's second-largest bitumen (tar-sand / heavy-oil) deposit belt stretching along the Dahomey Basin from the Lagos coast through Ogun, Ondo, and into northern Edo. Estimated in-place volumes rival the crude-oil reserve base. Currently small-scale extraction supplies road asphalt, while MoUs with Canadian, Chinese, and Nigerian investors target future SAGD and solvent-based upgrading to syncrude.",
-    "lon": 4.9,
-    "lat": 6.5,
-    "statesCrossed": [
-      "Ondo",
-      "Edo",
-      "Ogun",
-      "Lagos"
-    ],
-    "reserveNote": "~42 billion barrels oil-equivalent in-place (NEITI / DPR estimates); Dahomey Belt",
-    "productionNote": "Small-scale surface mining for road asphalt; large SAGD / solvent projects in feasibility",
-    "type": "Extra-heavy oil / tar-sand bitumen; Cretaceous Agbada & Dahomey Basin formations",
-    "economy": "Road paving asphalt; potential syncrude, carbon fibre, and specialised bitumen products.",
-    "climate": "Tropical coastal–rainforest fringe; shallow alluvial bitumen horizons.",
-    "landmarks": [
-      "Ondo Agbabu bitumen fields (type locality)",
-      "Ogun/Ondo coastal tar-sand outcrops",
-      "Dangote/Lafarge asphalt blending terminals"
-    ],
-    "highlights": [
-      "Africa's 2nd-largest bitumen belt",
-      "Road asphalt current output",
-      "Future SAGD / syncrude potential"
-    ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Bitumen",
-    "products": [
-      "Paving-grade bitumen (PG 64/22, 80/100) – asphalt concrete for federal & state highways",
-      "Cutback & emulsion bitumen – surface dressing, tack coats, slurry seals, and pothole repair",
-      "Modified bitumen (SBS/EVA polymer) – airport runways, bridge decks, heavy-traffic roads",
-      "Roofing shingles & waterproofing membranes – house roofing, building damp-proofing",
-      "Syncrude (future) – via SAGD + solvent deasphalting → refinery cracker feed",
-      "Carbon fibre precursors – pitch-based from heavy bitumen fractions (aerospace & wind energy)",
-      "Pipe-coating & anti-corrosion wrap – steel pipeline bituminous enamel coatings",
-      "Printer's ink, electrical cable compound, and battery sealants"
-    ]
-  },
-  {
     "id": "resource-bauxite",
     "name": "Bauxite & Alumina (Mambilla / Adamawa Plateau Belt)",
     "resourceType": "bauxite",
@@ -641,7 +600,7 @@
     "summary": "High-value coloured gemstone fields in Plateau, Kaduna, and Nasarawa — sapphire, ruby, aquamarine, tourmaline.",
     "description": "Nigeria is an emerging coloured-gemstone producer. The Jos Plateau and neighbouring Kaduna/Nasarawa pegmatites and schists produce aquamarine, emerald, tourmaline, topaz, garnet, zircon, and pink/blue sapphire, with ruby deposits in the Mambilla (Taraba). Gemstone cutting is informal in Kaduna's lapidaries, but the Federal Ministry of Mines & Steel Development operates a gemstone certification lab to formalise the value chain.",
     "lon": 8.9,
-    "lat": 10.0,
+    "lat": 10,
     "statesCrossed": [
       "Plateau",
       "Kaduna",
@@ -818,7 +777,7 @@
     "resourceType": "graphite",
     "summary": "Flake & vein graphite in the Nigerian schist belts — emerging lithium-ion battery anode material.",
     "description": "Nigeria contains graphite-bearing metasediments within the Proterozoic schist belts running through Nasarawa, Ondo, Ekiti, and Kwara. Flake graphite concentrates command premium prices for refractories and expandable graphite, while the electric-vehicle era has drawn attention to high-purity spheroidised graphite for Li-ion anodes. Junior explorers active since 2021 have delineated maiden resource estimates.",
-    "lon": 5.0,
+    "lon": 5,
     "lat": 8.5,
     "statesCrossed": [
       "Nasarawa",
@@ -861,7 +820,7 @@
     "resourceType": "tungsten",
     "summary": "Scheelite and wolframite within the Jos Plateau tin fields and southwestern lode systems.",
     "description": "Nigeria's tungsten (wolframite / scheelite) deposits occur as byproduct minerals within the Jos Plateau tin–columbite alluvial fields and in quartz-vein lodes in the Bauchi, Nasarawa, and Ibadan schist belts. Production today is almost entirely artisanal small-scale, with tungsten concentrates exported into the global Chinese and EU market for hardmetals.",
-    "lon": 9.0,
+    "lon": 9,
     "lat": 10.2,
     "statesCrossed": [
       "Plateau",
@@ -942,5 +901,101 @@
       "Filler extenders – ground silica & feldspar powder for paints, plastics, rubber, adhesives",
       "Speciality low-iron silica (SiO₂ >99.5%) – solar PV glass, ultra-clear optical glass, fibre optics"
     ]
+  },
+  {
+    "id": "resource-gold-osun",
+    "name": "Gold (Osun–Ilesha Schist Belt)",
+    "resourceType": "gold",
+    "summary": "Lode and alluvial gold around Ife, Ilesha and Osu at the heart of the southwest schist belt.",
+    "description": "The Ife-Ilesha (or Ilesha-Osu) schist belt is Nigeria's best-known southwest gold province, with auriferous quartz veins at Itagunmodi, Iperindo, and around Osu. Activity is largely artisanal and small-scale, with junior mining companies targeting hard-rock deposits near the old Ile-Ife gold workings.",
+    "lon": 4.72,
+    "lat": 7.55,
+    "statesCrossed": [
+      "Osun",
+      "Ekiti"
+    ],
+    "reserveNote": "Auriferous quartz vein + alluvial deposits documented at Itagunmodi and Iperindo",
+    "productionNote": "ASGM active across the belt; formal development under study",
+    "type": "Lode & alluvial gold in the Ife-Ilesha schist belt",
+    "economy": "Artisanal goldsmithing, ASGM livelihoods, junior mining exploration.",
+    "climate": "Tropical wet-and-dry; evergreen rainforest fringe to the south.",
+    "landmarks": [
+      "Ilesha gold belt",
+      "Itagunmodi workings",
+      "Ife-ile gold district"
+    ],
+    "highlights": [
+      "Southwest lode gold",
+      "ASGM economy",
+      "Ife-Ilesha schist belt"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Gold_mining",
+    "products": [
+      "Jewellery & artisanal goldsmithing",
+      "Investment gold & bullion",
+      "Electronics contacts & bonding wire",
+      "Dental alloys",
+      "Decorative gilding & traditional regalia"
+    ]
+  },
+  {
+    "id": "resource-gas-anambra",
+    "name": "Natural Gas (Anambra Basin)",
+    "resourceType": "natural-gas",
+    "summary": "Gas discoveries and CNG/power prospects across the Anambra basin interior basin between the Niger and the lower Benue trough.",
+    "description": "The Anambra Basin, spanning Anambra, Enugu, Imo and fringes of Kogi and Benue, hosts non-associated gas accumulations and the Agbada-FF facies outlook west of the Niger. It is the focus of midstream gas-to-power and CNG projects feeding eastern and north-central load centres.",
+    "lon": 6.82,
+    "lat": 6.32,
+    "statesCrossed": [
+      "Anambra",
+      "Enugu",
+      "Imo",
+      "Kogi",
+      "Benue"
+    ],
+    "reserveNote": "Prospectivity from non-associated gas windows of the basin",
+    "productionNote": "Developmental CNG & gas-to-power projects emerging",
+    "type": "Non-associated and shallow gas, Anambra basin",
+    "economy": "Gas-to-power, CNG feedstock, industrial heat, fertiliser potential.",
+    "climate": "Tropical rainforest fringe to the south; wet-and-dry to the north.",
+    "landmarks": [
+      "Anambra basin gas plays",
+      "Onitsha industrial axis",
+      "Enugu power corridor"
+    ],
+    "highlights": [
+      "Eastern gas frontier",
+      "CNG & power projects",
+      "Niger–Benue transition"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Anambra_Basin"
+  },
+  {
+    "id": "resource-gas-akwa",
+    "name": "Natural Gas (Uquo Greenfield, Akwa Ibom)",
+    "resourceType": "natural-gas",
+    "summary": "Greenfield non-associated gas field feeding the Ibom (Seven Energy) hub and eastern power plants.",
+    "description": "The Uquo gas field in the Ikot Abasi axis of Akwa Ibom is a flagship non-associated gas development serving the Ibom Power Station and industrial users, with condensates supporting eastern gas grid flexibility.",
+    "lon": 7.85,
+    "lat": 4.66,
+    "statesCrossed": [
+      "Akwa Ibom"
+    ],
+    "reserveNote": "Proven non-associated reserves at Uquo & environs",
+    "productionNote": "Supplies Ibom power & eastern consumers",
+    "type": "Non-associated gas field, eastern delta margin",
+    "economy": "Gas-to-power, condensate revenue, industrial supply.",
+    "climate": "Tropical rainforest; mangrove fringe on coastal margin.",
+    "landmarks": [
+      "Uquo field",
+      "Ibom Power Station hub",
+      "Ikot Abasi industrial corridor"
+    ],
+    "highlights": [
+      "Greenfield gas hub",
+      "Eastern power feedstock",
+      "Akwa Ibom energy"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ikot_Abasi"
   }
 ]

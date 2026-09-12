@@ -133,19 +133,5 @@
     "significance": "ICJ boundary case; eastern maritime frontier.",
     "highlights": ["Nigeria–Cameroon border", "Cross River approach", "Fishing communities"],
     "wikiUrl": "https://en.wikipedia.org/wiki/Bakassi"
-  },
-  {
-    "id": "historic-badagry",
-    "name": "Badagry Heritage Coast",
-    "coastCategory": "historic",
-    "type": "Historic slave-trade port",
-    "summary": "Badagry was a major 18th–19th century slave-export port; heritage sites line the lagoon coast.",
-    "description": "Badagry's wharf, museum, and Point of No Return memorial mark the transatlantic slave trade era. The town sits on the western lagoon coast near the Benin border and remains a domestic tourism destination.",
-    "coastalStates": ["Lagos"],
-    "economy": "Heritage tourism, fishing, border trade.",
-    "ecology": "Lagoon and creek fisheries; mangrove patches.",
-    "significance": "UNESCO memory route interest; national heritage tourism.",
-    "highlights": ["Point of No Return", "Badagry Heritage Museum", "First storey building"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Badagry"
   }
 ]

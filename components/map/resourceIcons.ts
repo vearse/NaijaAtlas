@@ -13,6 +13,14 @@ export const RESOURCE_TYPES = [
   "lithium-rare",
   "marble",
   "salt-potash",
+  "bauxite",
+  "gemstones",
+  "kaolin",
+  "phosphate",
+  "gypsum",
+  "graphite",
+  "tungsten",
+  "feldspar-mica",
 ] as const;
 export type ResourceType = (typeof RESOURCE_TYPES)[number];
 
@@ -173,6 +181,14 @@ const DRAW: Record<ResourceType, DrawFn> = {
   "lithium-rare": drawSpark,
   marble: drawMountain,
   "salt-potash": drawShaker,
+  bauxite: drawCube,
+  gemstones: drawSpark,
+  kaolin: drawMountain,
+  phosphate: drawShaker,
+  gypsum: drawCube,
+  graphite: drawCube,
+  tungsten: drawSpark,
+  "feldspar-mica": drawLeaf,
 };
 
 const FILL: Record<ResourceType, string> = {
@@ -188,6 +204,14 @@ const FILL: Record<ResourceType, string> = {
   "lithium-rare": "#0ea5e9",
   marble: "#a8a29e",
   "salt-potash": "#0891b2",
+  bauxite: "#b91c1c",
+  gemstones: "#7c3aed",
+  kaolin: "#d6d3d1",
+  phosphate: "#65a30d",
+  gypsum: "#e7e5e4",
+  graphite: "#18181b",
+  tungsten: "#475569",
+  "feldspar-mica": "#6366f1",
 };
 
 const STROKE: Record<ResourceType, string> = {
@@ -203,6 +227,14 @@ const STROKE: Record<ResourceType, string> = {
   "lithium-rare": "#bae6fd",
   marble: "#fafaf9",
   "salt-potash": "#cffafe",
+  bauxite: "#fecaca",
+  gemstones: "#e9d5ff",
+  kaolin: "#f5f5f4",
+  phosphate: "#d9f99d",
+  gypsum: "#fafaf9",
+  graphite: "#e2e8f0",
+  tungsten: "#cbd5e1",
+  "feldspar-mica": "#c7d2fe",
 };
 
 function iconImage(type: ResourceType): ImageData {
