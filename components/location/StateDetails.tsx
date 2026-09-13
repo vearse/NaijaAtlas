@@ -3,7 +3,7 @@ import type { CompareBundle } from "@/types/compare";
 import type { StateContent, StateLocation, LgaLocation } from "@/types/location";
 import { formatStateLandArea } from "@/lib/compare/landArea";
 import { getCategoryData } from "@/lib/compare/compareUtils";
-import { buildCityOverlayFeature } from "@/lib/map/cityCoordsLookup";
+import { openCityOnMap } from "@/lib/map/cityCoordsLookup";
 import ShowLgasButton from "@/components/map/ShowLgasButton";
 import VisitDirectionsControl from "@/components/directions/VisitDirectionsControl";
 import { useMapStore } from "@/lib/store/mapStore";
@@ -91,23 +91,7 @@ export default function StateDetails({
     : [];
 
   const openMajorCity = (cityName: string) => {
-    const store = useMapStore.getState();
-    const feature = buildCityOverlayFeature(cityName);
-    if (!feature) return;
-    if (!store.activeOverlays.has("cities")) store.toggleOverlay("cities");
-    store.setSelectedOverlay(feature);
-    const map = store.mapInstance;
-    const coords =
-      feature.geometry?.type === "Point"
-        ? (feature.geometry.coordinates as [number, number])
-        : null;
-    if (map && coords) {
-      map.flyTo({
-        center: coords,
-        zoom: Math.max(map.getZoom() ?? 5, 7),
-        speed: 0.9,
-      });
-    }
+    openCityOnMap(cityName);
   };
 
   return (
@@ -137,7 +121,7 @@ export default function StateDetails({
                   key={city}
                   type="button"
                   onClick={() => openMajorCity(city)}
-                  className="text-ng-green underline underline-offset-2 hover:text-emerald-700"
+                  className="text-slate-800 underline underline-offset-2 hover:text-ng-green"
                 >
                   {city}
                 </button>

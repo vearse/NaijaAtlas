@@ -5,6 +5,7 @@ import {
   ComparePersonList,
 } from "./ComparePersonAvatar";
 import { useMapStore } from "@/lib/store/mapStore";
+import { openCityOnMap } from "@/lib/map/cityCoordsLookup";
 import type { StateLanguage } from "@/types/location";
 
 interface CompareMetricsTableProps {
@@ -32,6 +33,28 @@ function LanguageChips({ languages }: { languages: StateLanguage[] }) {
         >
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" aria-hidden />
           <span>{lang.name}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function MajorCityLinks({ display }: { display: string }) {
+  const cities = display
+    .split(";")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (cities.length === 0) return null;
+  return (
+    <div className="flex flex-wrap justify-end gap-x-3 gap-y-1">
+      {cities.map((city) => (
+        <button
+          key={city}
+          type="button"
+          onClick={() => openCityOnMap(city)}
+          className="text-slate-800 underline underline-offset-2 hover:text-ng-green"
+        >
+          {city}
         </button>
       ))}
     </div>
@@ -105,22 +128,31 @@ export default function CompareMetricsTable({
                 <td className="px-3 py-2.5 text-slate-500 align-top sticky left-0 bg-white">
                   {row.label}
                 </td>
-                {row.values.map((_, i) => (
-                  <td
-                    key={i}
-                    className={`px-3 py-2.5 text-right align-top font-medium min-w-[88px] ${
-                      hi.has(i) ? "text-ng-green" : "text-slate-800"
-                    } ${row.type === "person" || row.type === "personList" ? "text-left" : ""}`}
-                  >
-                    {row.key === "languages" &&
-                    languageLinks &&
-                    languageLinks[columns[i]]?.length ? (
-                      <LanguageChips languages={languageLinks[columns[i]]!} />
-                    ) : (
-                      renderCell(row, i)
-                    )}
-                  </td>
-                ))}
+                {row.values.map((_, i) => {
+                  const cell = row.values[i];
+                  const languages =
+                    row.key === "languages" && languageLinks
+                      ? languageLinks[columns[i]]
+                      : null;
+                  const majorCities =
+                    row.key === "majorCities" ? cell?.display ?? "" : "";
+                  return (
+                    <td
+                      key={i}
+                      className={`px-3 py-2.5 text-right align-top font-medium min-w-[88px] ${
+                        hi.has(i) ? "text-ng-green" : "text-slate-800"
+                      } ${row.type === "person" || row.type === "personList" ? "text-left" : ""}`}
+                    >
+                      {languages?.length ? (
+                        <LanguageChips languages={languages} />
+                      ) : majorCities ? (
+                        <MajorCityLinks display={majorCities} />
+                      ) : (
+                        renderCell(row, i)
+                      )}
+                    </td>
+                  );
+                })}
               </tr>
             );
           })}

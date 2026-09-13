@@ -53,6 +53,28 @@ function parseStringArray(value: unknown): string[] {
   return [];
 }
 
+function parseObjectArray<T>(value: unknown): T[] {
+  if (typeof value !== "string" || !value.trim()) return [];
+  try {
+    const parsed = JSON.parse(value) as unknown;
+    if (Array.isArray(parsed)) return parsed as T[];
+  } catch {
+    // ignore malformed strings
+  }
+  return [];
+}
+
+interface ResourceSite {
+  state?: string;
+  siteName?: string;
+  lon?: number;
+  lat?: number;
+}
+
+function truthy(value: string | null | undefined): value is string {
+  return value != null && value !== "";
+}
+
 function text(value: unknown): string | null {
   if (typeof value === "number" && Number.isFinite(value)) {
     return String(value);
@@ -269,6 +291,12 @@ export default function OverlayFeaturePanel({
   );
 
   const wikiUrl = text(props.wikiUrl);
+  const siteName = text(props.siteName);
+  const resourceSites: ResourceSite[] =
+    layerId === "resources"
+      ? parseObjectArray<ResourceSite>(props.locations)
+      : [];
+  const resourceId = text(props.resourceId) ?? text(props.id) ?? name;
   const lengthKm =
     typeof props.lengthKm === "number"
       ? `${props.lengthKm.toLocaleString()} km`
@@ -284,6 +312,37 @@ export default function OverlayFeaturePanel({
       null;
   }
 
+  const openResourceLocation = (site: ResourceSite, index: number) => {
+    const lon = Number(site.lon);
+    const lat = Number(site.lat);
+    if (!Number.isFinite(lon) || !Number.isFinite(lat)) return;
+    const siteId = `${resourceId}-${index}`;
+    const store = useMapStore.getState();
+    store.setSelectedOverlay({
+      id: siteId,
+      layerId,
+      name,
+      properties: {
+        ...props,
+        id: siteId,
+        resourceId,
+        lon,
+        lat,
+        ...(site.state ? { stateName: site.state } : {}),
+        ...(site.siteName ? { siteName: site.siteName } : {}),
+      },
+      geometry: { type: "Point", coordinates: [lon, lat] },
+    });
+    const map = store.mapInstance;
+    if (map) {
+      map.flyTo({
+        center: [lon, lat],
+        zoom: Math.max(map.getZoom() ?? 5, 9),
+        speed: 0.9,
+      });
+    }
+  };
+
   return (
     <div className="space-y-5">
       <div className="flex items-start justify-between gap-3">
@@ -292,9 +351,11 @@ export default function OverlayFeaturePanel({
             {meta.label} layer
           </p>
           <h2 className="text-2xl font-bold text-slate-900">{name}</h2>
-          {text(props.nickname) && (
-            <p className="text-sm text-slate-500 mt-1">{text(props.nickname)}</p>
-          )}
+          {text(props.nickname) || siteName ? (
+            <p className="text-sm text-slate-500 mt-1">
+              {[text(props.nickname), siteName].filter(truthy).join(" · ")}
+            </p>
+          ) : null}
           <div className="mt-2 flex flex-wrap gap-1.5">
             {tourCat && (
               <span
@@ -401,6 +462,38 @@ export default function OverlayFeaturePanel({
 
       {text(props.description) && (
         <p className="text-sm text-slate-700 leading-relaxed">{text(props.description)}</p>
+      )}
+
+      {resourceSites.length > 0 && (
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+            Locations ({resourceSites.length})
+          </p>
+          <div className="rounded-xl border border-slate-100 divide-y divide-slate-100">
+            {resourceSites.map((site, i) => {
+              const active =
+                siteName === site.siteName ||
+                String(text(props.id) ?? "") === `${resourceId}-${i}`;
+              return (
+                <button
+                  key={`${i}-${site.siteName ?? site.state ?? ""}`}
+                  type="button"
+                  onClick={() => openResourceLocation(site, i)}
+                  className={`w-full text-left px-3 py-2 text-sm transition-colors hover:bg-emerald-50 flex items-center justify-between gap-3 ${
+                    active ? "bg-emerald-50" : ""
+                  }`}
+                >
+                  <span className="text-slate-800 font-medium">
+                    {site.siteName ?? site.state ?? "Site"}
+                  </span>
+                  <span className="text-xs text-slate-500 shrink-0">
+                    {site.state ?? ""}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
       )}
 
       <button

@@ -50,6 +50,62 @@
       "Petrochemical feedstock – ethylene, propylene, benzene",
       "Plastics, synthetic fibres, synthetic rubber",
       "Fertiliser (carbon black, sulphur byproducts)"
+    ],
+    "locations": [
+      {
+        "state": "Rivers",
+        "siteName": "Bonny Terminal",
+        "lon": 7.15,
+        "lat": 4.45
+      },
+      {
+        "state": "Bayelsa",
+        "siteName": "Brass Terminal",
+        "lon": 6.24,
+        "lat": 4.32
+      },
+      {
+        "state": "Delta",
+        "siteName": "Forcados/Escravos Terminal",
+        "lon": 5.16,
+        "lat": 5.33
+      },
+      {
+        "state": "Akwa Ibom",
+        "siteName": "Qua Iboe Terminal (QIT)",
+        "lon": 7.94,
+        "lat": 4.52
+      },
+      {
+        "state": "Cross River",
+        "siteName": "Bakassi offshore fields",
+        "lon": 8.7,
+        "lat": 4.55
+      },
+      {
+        "state": "Edo",
+        "siteName": "Edo onshore oilfields",
+        "lon": 6.05,
+        "lat": 6.1
+      },
+      {
+        "state": "Ondo",
+        "siteName": "Aje offshore field",
+        "lon": 4.6,
+        "lat": 5.85
+      },
+      {
+        "state": "Abia",
+        "siteName": "Abia onshore oilfields",
+        "lon": 7.4,
+        "lat": 5.05
+      },
+      {
+        "state": "Imo",
+        "siteName": "Egbema oilfields",
+        "lon": 6.8,
+        "lat": 5.4
+      }
     ]
   },
   {
@@ -104,6 +160,80 @@
       "Gas-to-Liquids (GTL) diesel & naphtha (Escravos GTL)",
       "Pipeline gas – cement, steel, glass, ceramics, food processing",
       "Carbon black, acetic acid, formaldehyde, and downstream chemical intermediates"
+    ],
+    "locations": [
+      {
+        "state": "Rivers",
+        "siteName": "NLNG Bonny Terminal",
+        "lon": 7.15,
+        "lat": 4.45
+      },
+      {
+        "state": "Bayelsa",
+        "siteName": "Bayelsa gas fields",
+        "lon": 6.2,
+        "lat": 4.85
+      },
+      {
+        "state": "Delta",
+        "siteName": "Escravos GTL precinct",
+        "lon": 5.11,
+        "lat": 5.6
+      },
+      {
+        "state": "Edo",
+        "siteName": "Oben gas plant",
+        "lon": 6.0,
+        "lat": 6.9
+      },
+      {
+        "state": "Ondo",
+        "siteName": "Ondo offshore gas",
+        "lon": 4.8,
+        "lat": 5.95
+      },
+      {
+        "state": "Cross River",
+        "siteName": "Cross River gas prospects",
+        "lon": 8.3,
+        "lat": 5.6
+      },
+      {
+        "state": "Akwa Ibom",
+        "siteName": "Ibom Power / Uquo hub",
+        "lon": 7.85,
+        "lat": 4.66
+      },
+      {
+        "state": "Imo",
+        "siteName": "Assa/Owaza gas fields",
+        "lon": 6.9,
+        "lat": 5.4
+      },
+      {
+        "state": "Kogi",
+        "siteName": "Ajaokuta gas corridor",
+        "lon": 6.66,
+        "lat": 7.57
+      },
+      {
+        "state": "Abuja-FCT",
+        "siteName": "AKK pipeline node, Abuja",
+        "lon": 7.4,
+        "lat": 9.05
+      },
+      {
+        "state": "Kaduna",
+        "siteName": "Kaduna refinery/pipeline hub",
+        "lon": 7.44,
+        "lat": 10.52
+      },
+      {
+        "state": "Kano",
+        "siteName": "Kano pipeline terminus",
+        "lon": 8.52,
+        "lat": 11.92
+      }
     ]
   },
   {
@@ -147,6 +277,44 @@
       "Industrial process heat – food, tobacco, textiles, brick kilns",
       "Activated carbon – water purification & gold recovery",
       "Coal-bed methane (CBM) – gas production from coal seams"
+    ],
+    "locations": [
+      {
+        "state": "Enugu",
+        "siteName": "Ogbete/Udi Coalfields",
+        "lon": 7.5,
+        "lat": 6.45
+      },
+      {
+        "state": "Kogi",
+        "siteName": "Okaba/Ogboyaga coal",
+        "lon": 7.65,
+        "lat": 7.6
+      },
+      {
+        "state": "Benue",
+        "siteName": "Owukpa coal",
+        "lon": 8.13,
+        "lat": 7.0
+      },
+      {
+        "state": "Nasarawa",
+        "siteName": "Obi coal",
+        "lon": 8.4,
+        "lat": 8.5
+      },
+      {
+        "state": "Ebonyi",
+        "siteName": "Ebonyi coal occurrences",
+        "lon": 8.08,
+        "lat": 6.27
+      },
+      {
+        "state": "Imo",
+        "siteName": "Imo lignite occurrences",
+        "lon": 7.03,
+        "lat": 5.5
+      }
     ]
   },
   {
@@ -188,6 +356,32 @@
       "Tantalum (from columbite-tantalite ores) – electrolytic capacitors for phones & EVs",
       "Lithium byproducts (from Jos pegmatites) – Li-ion battery precursor salts",
       "Tin chemicals – PVC heat stabilisers, plating, catalysts, glass polishing"
+    ],
+    "locations": [
+      {
+        "state": "Plateau",
+        "siteName": "Jos tin fields",
+        "lon": 8.89,
+        "lat": 9.92
+      },
+      {
+        "state": "Nasarawa",
+        "siteName": "Wamba/Akwanga tin",
+        "lon": 8.4,
+        "lat": 8.9
+      },
+      {
+        "state": "Kaduna",
+        "siteName": "Kagoro tin belt",
+        "lon": 8.3,
+        "lat": 9.6
+      },
+      {
+        "state": "Bauchi",
+        "siteName": "Bununu/Tafawa Balewa tin",
+        "lon": 9.7,
+        "lat": 9.9
+      }
     ]
   },
   {
@@ -232,6 +426,44 @@
       "Direct Reduced Iron (DRI / sponge iron) – EAF steelmaking feed",
       "Wire rods & drawn wire – nails, welding electrodes, mesh, fencing",
       "Cast iron & ductile iron – pipes, manhole covers, engine blocks, cookware"
+    ],
+    "locations": [
+      {
+        "state": "Kogi",
+        "siteName": "Itakpe iron ore mine",
+        "lon": 6.31,
+        "lat": 7.53
+      },
+      {
+        "state": "Enugu",
+        "siteName": "Enugu iron occurrences",
+        "lon": 7.5,
+        "lat": 6.5
+      },
+      {
+        "state": "Anambra",
+        "siteName": "Anambra iron occurrences",
+        "lon": 6.94,
+        "lat": 6.21
+      },
+      {
+        "state": "Federal Capital Territory",
+        "siteName": "Gwagwalada iron occurrence",
+        "lon": 7.08,
+        "lat": 8.94
+      },
+      {
+        "state": "Nasarawa",
+        "siteName": "Nasarawa iron occurrence",
+        "lon": 8.53,
+        "lat": 8.53
+      },
+      {
+        "state": "Benue",
+        "siteName": "Benue iron occurrence",
+        "lon": 8.7,
+        "lat": 7.3
+      }
     ]
   },
   {
@@ -278,6 +510,62 @@
       "Aerospace & defence – gold-coated reflectors, infrared shielding, radar",
       "Catalysts – gold catalysts for vinyl acetate monomer (VAM) & pollution control",
       "Decorative gilding – architectural leaf, textiles, traditional regalia"
+    ],
+    "locations": [
+      {
+        "state": "Zamfara",
+        "siteName": "Anka/Maru gold belt",
+        "lon": 6.1,
+        "lat": 12.3
+      },
+      {
+        "state": "Kebbi",
+        "siteName": "Kebbi gold occurrences",
+        "lon": 4.2,
+        "lat": 11.5
+      },
+      {
+        "state": "Kaduna",
+        "siteName": "Birnin Gwari gold",
+        "lon": 6.78,
+        "lat": 11.0
+      },
+      {
+        "state": "Katsina",
+        "siteName": "Katsina gold occurrences",
+        "lon": 7.6,
+        "lat": 12.9
+      },
+      {
+        "state": "Niger",
+        "siteName": "Kontagora gold occurrences",
+        "lon": 5.47,
+        "lat": 10.4
+      },
+      {
+        "state": "Osun",
+        "siteName": "Osun gold occurrences",
+        "lon": 4.5,
+        "lat": 7.6
+      },
+      {
+        "state": "Ekiti",
+        "siteName": "Ekiti gold occurrences",
+        "lon": 5.22,
+        "lat": 7.66
+      },
+      {
+        "state": "Kwara",
+        "siteName": "Kwara gold occurrences",
+        "lon": 4.55,
+        "lat": 8.5
+      },
+      {
+        "state": "Kogi",
+        "siteName": "Kogi gold occurrences",
+        "lon": 6.74,
+        "lat": 7.73
+      }
     ]
   },
   {
@@ -329,6 +617,74 @@
       "Flux material – iron & steelmaking blast furnaces and smelting",
       "Glass manufacturing – soda-lime glass for bottles, windows, tableware",
       "Filler in rubber, pharmaceuticals (calcium supplements), toothpaste, cosmetics"
+    ],
+    "locations": [
+      {
+        "state": "Kogi",
+        "siteName": "Obajana limestone",
+        "lon": 6.35,
+        "lat": 7.83
+      },
+      {
+        "state": "Sokoto",
+        "siteName": "Kalambaina limestone",
+        "lon": 5.2,
+        "lat": 13.0
+      },
+      {
+        "state": "Kebbi",
+        "siteName": "Kebbi limestone",
+        "lon": 4.2,
+        "lat": 11.5
+      },
+      {
+        "state": "Cross River",
+        "siteName": "Mfamosing/Calabar limestone",
+        "lon": 8.42,
+        "lat": 4.98
+      },
+      {
+        "state": "Enugu",
+        "siteName": "Nkalagu limestone",
+        "lon": 7.78,
+        "lat": 6.45
+      },
+      {
+        "state": "Ebonyi",
+        "siteName": "Ebonyi limestone",
+        "lon": 7.8,
+        "lat": 6.42
+      },
+      {
+        "state": "Abia",
+        "siteName": "Abia limestone",
+        "lon": 7.52,
+        "lat": 5.43
+      },
+      {
+        "state": "Ogun",
+        "siteName": "Ewekoro/Sagamu limestone",
+        "lon": 3.47,
+        "lat": 6.9
+      },
+      {
+        "state": "Gombe",
+        "siteName": "Ashaka limestone",
+        "lon": 11.5,
+        "lat": 10.2
+      },
+      {
+        "state": "Borno",
+        "siteName": "Borno limestone",
+        "lon": 13.15,
+        "lat": 11.83
+      },
+      {
+        "state": "Zamfara",
+        "siteName": "Zamfara limestone",
+        "lon": 6.23,
+        "lat": 12.1
+      }
     ]
   },
   {
@@ -370,6 +726,32 @@
       "Roofing shingles, roofing felts, built-up roof (BUR) systems",
       "Industrial binders – briquettes, carbon electrodes, pipe joint compounds",
       "Asphalt for airport runways, port pavements, racetracks, parking areas"
+    ],
+    "locations": [
+      {
+        "state": "Ondo",
+        "siteName": "Agbabu/Loda bitumen seeps",
+        "lon": 4.85,
+        "lat": 6.9
+      },
+      {
+        "state": "Edo",
+        "siteName": "Siluko bitumen belt",
+        "lon": 5.6,
+        "lat": 6.4
+      },
+      {
+        "state": "Ogun",
+        "siteName": "Ogun bitumen belt",
+        "lon": 4.0,
+        "lat": 6.95
+      },
+      {
+        "state": "Lagos (vicinity)",
+        "siteName": "Lagos coastal bitumen vicinity",
+        "lon": 3.9,
+        "lat": 6.45
+      }
     ]
   },
   {
@@ -414,6 +796,50 @@
       "Cadmium plating & battery byproducts – historically, now restricted but still relevant",
       "Zinc oxide (ZnO) – tyres (vulcanising activator), pharmaceuticals, sunscreen, ceramics",
       "Zinc chemicals – dry-cell batteries, fertilisers (Zn micronutrient), pigments"
+    ],
+    "locations": [
+      {
+        "state": "Ebonyi",
+        "siteName": "Enyigba lead-zinc mine",
+        "lon": 8.08,
+        "lat": 6.3
+      },
+      {
+        "state": "Benue",
+        "siteName": "Benue lead-zinc occurrences",
+        "lon": 8.76,
+        "lat": 7.33
+      },
+      {
+        "state": "Taraba",
+        "siteName": "Wukari-Zurak lead-zinc",
+        "lon": 9.78,
+        "lat": 7.87
+      },
+      {
+        "state": "Plateau",
+        "siteName": "Plateau lead-zinc occurrences",
+        "lon": 9.22,
+        "lat": 9.22
+      },
+      {
+        "state": "Nasarawa",
+        "siteName": "Arufu lead-zinc",
+        "lon": 8.5,
+        "lat": 8.2
+      },
+      {
+        "state": "Cross River",
+        "siteName": "Cross River lead-zinc",
+        "lon": 8.6,
+        "lat": 5.87
+      },
+      {
+        "state": "Enugu",
+        "siteName": "Abakaliki fold-belt lead-zinc",
+        "lon": 7.51,
+        "lat": 6.52
+      }
     ]
   },
   {
@@ -459,6 +885,56 @@
       "Spodumene / lepidolite concentrates – feedstock for lithium refineries",
       "Rare-earth magnets (NdFeB) – EV motors, wind turbines, hard-disk drives, speakers",
       "Cerium / lanthanum catalysts – fluid catalytic cracking (FCC), automotive three-way catalysts"
+    ],
+    "locations": [
+      {
+        "state": "Nasarawa",
+        "siteName": "Asaka lithium pegmatites",
+        "lon": 8.32,
+        "lat": 8.65
+      },
+      {
+        "state": "Kogi",
+        "siteName": "Kogi lithium pegmatites",
+        "lon": 6.74,
+        "lat": 7.73
+      },
+      {
+        "state": "Kwara",
+        "siteName": "Kwara lithium pegmatites",
+        "lon": 4.55,
+        "lat": 8.5
+      },
+      {
+        "state": "Oyo",
+        "siteName": "Iseyin lithium pegmatites",
+        "lon": 3.6,
+        "lat": 7.97
+      },
+      {
+        "state": "Ogun",
+        "siteName": "Ogun lithium pegmatites",
+        "lon": 3.35,
+        "lat": 7.0
+      },
+      {
+        "state": "Ekiti",
+        "siteName": "Ekiti lithium pegmatites",
+        "lon": 5.22,
+        "lat": 7.66
+      },
+      {
+        "state": "Ondo",
+        "siteName": "Ondo lithium pegmatites",
+        "lon": 5.1,
+        "lat": 7.1
+      },
+      {
+        "state": "Plateau",
+        "siteName": "Plateau lithium pegmatites",
+        "lon": 9.22,
+        "lat": 9.22
+      }
     ]
   },
   {
@@ -502,6 +978,44 @@
       "Soda ash (sodium carbonate) projects – glass and detergent feedstock",
       "Whiting / filler for rubber, adhesives, sealants, and cosmetic powders",
       "Table tops, window sills, facade panels, and mosaic / tile murals"
+    ],
+    "locations": [
+      {
+        "state": "Kwara",
+        "siteName": "Igbetti/Jebba marble",
+        "lon": 4.5,
+        "lat": 9.13
+      },
+      {
+        "state": "Kogi",
+        "siteName": "Jakura marble",
+        "lon": 6.3,
+        "lat": 7.9
+      },
+      {
+        "state": "Ondo",
+        "siteName": "Ondo marble",
+        "lon": 5.1,
+        "lat": 7.1
+      },
+      {
+        "state": "Bauchi",
+        "siteName": "Bauchi marble",
+        "lon": 9.84,
+        "lat": 10.5
+      },
+      {
+        "state": "Gombe",
+        "siteName": "Gombe marble",
+        "lon": 11.22,
+        "lat": 10.29
+      },
+      {
+        "state": "Yobe",
+        "siteName": "Yobe marble",
+        "lon": 11.72,
+        "lat": 12.0
+      }
     ]
   },
   {
@@ -548,6 +1062,62 @@
       "Soap & detergent manufacturing – soda ash feedstock and salt-based surfactants",
       "Water softening & de-icing salts – industrial boilers, highway maintenance",
       "Food preservation, curing brines, fermentation, and dyeing textiles"
+    ],
+    "locations": [
+      {
+        "state": "Borno",
+        "siteName": "Lake Chad basin salt",
+        "lon": 13.15,
+        "lat": 11.83
+      },
+      {
+        "state": "Yobe",
+        "siteName": "Yobe salt flats",
+        "lon": 11.72,
+        "lat": 12.0
+      },
+      {
+        "state": "Nasarawa",
+        "siteName": "Keana/Awe salt",
+        "lon": 8.4,
+        "lat": 8.15
+      },
+      {
+        "state": "Benue",
+        "siteName": "Benue salt occurrences",
+        "lon": 8.76,
+        "lat": 7.33
+      },
+      {
+        "state": "Plateau",
+        "siteName": "Plateau salt occurrences",
+        "lon": 9.22,
+        "lat": 9.22
+      },
+      {
+        "state": "Lagos",
+        "siteName": "Lagos lagoon salt evaporation",
+        "lon": 3.4,
+        "lat": 6.45
+      },
+      {
+        "state": "Ogun",
+        "siteName": "Ogun salt evaporation",
+        "lon": 3.35,
+        "lat": 7.0
+      },
+      {
+        "state": "Rivers",
+        "siteName": "Rivers mangrove salt evaporation",
+        "lon": 6.9,
+        "lat": 4.8
+      },
+      {
+        "state": "Akwa Ibom",
+        "siteName": "Akwa Ibom salt evaporation",
+        "lon": 7.85,
+        "lat": 4.9
+      }
     ]
   },
   {
@@ -591,6 +1161,44 @@
       "Calcined bauxite / refractory grade – high-alumina cement, ladle linings, kilns",
       "Aluminium chemicals (alums, aluminium sulphate) – water treatment, paper sizing, tanning",
       "Abrasives & polishing compounds – fused alumina for sandpapers & grinding wheels"
+    ],
+    "locations": [
+      {
+        "state": "Taraba",
+        "siteName": "Mambilla Plateau bauxite",
+        "lon": 11.3,
+        "lat": 6.9
+      },
+      {
+        "state": "Adamawa",
+        "siteName": "Adamawa/Mambilla fringe bauxite",
+        "lon": 12.0,
+        "lat": 7.2
+      },
+      {
+        "state": "Plateau",
+        "siteName": "Plateau bauxite",
+        "lon": 9.22,
+        "lat": 9.22
+      },
+      {
+        "state": "Nasarawa",
+        "siteName": "Nasarawa bauxite",
+        "lon": 8.53,
+        "lat": 8.53
+      },
+      {
+        "state": "Ekiti",
+        "siteName": "Awo bauxite (Ekiti)",
+        "lon": 5.22,
+        "lat": 7.66
+      },
+      {
+        "state": "Kogi",
+        "siteName": "Kogi bauxite",
+        "lon": 6.74,
+        "lat": 7.73
+      }
     ]
   },
   {
@@ -636,6 +1244,50 @@
       "Semi-precious inlay & mosaic tiles – decorative architectural stone cladding",
       "Certified rough exports – IGI/MGS-graded rough stones for overseas cutters",
       "Watch dials & luxury accessories – hardstone inlays for premium timepieces"
+    ],
+    "locations": [
+      {
+        "state": "Plateau",
+        "siteName": "Jos/Mangu gemstone fields",
+        "lon": 8.89,
+        "lat": 9.5
+      },
+      {
+        "state": "Kaduna",
+        "siteName": "Kafanchan gemstone belt",
+        "lon": 8.3,
+        "lat": 9.58
+      },
+      {
+        "state": "Nasarawa",
+        "siteName": "Akwanga gemstones",
+        "lon": 8.4,
+        "lat": 8.92
+      },
+      {
+        "state": "Taraba",
+        "siteName": "Ibi gemstones",
+        "lon": 9.75,
+        "lat": 8.18
+      },
+      {
+        "state": "Ekiti",
+        "siteName": "Ekiti gemstones",
+        "lon": 5.22,
+        "lat": 7.66
+      },
+      {
+        "state": "Oyo",
+        "siteName": "Igbeti/Iseyin gemstones",
+        "lon": 3.85,
+        "lat": 8.2
+      },
+      {
+        "state": "Kano",
+        "siteName": "Kano gemstones",
+        "lon": 8.52,
+        "lat": 11.92
+      }
     ]
   },
   {
@@ -682,6 +1334,62 @@
       "Fibreglass E-glass batch kaolin – Al₂O₃ + SiO₂ source for continuous glass strands",
       "Refractory mortars & kiln furniture – fireclay bricks for steel, cement, and ceramics kilns",
       "Cosmetic & pharmaceutical kaolin USP – facial masks, baby powder, antidiarrheal excipients"
+    ],
+    "locations": [
+      {
+        "state": "Kogi",
+        "siteName": "Ajaokuta kaolin",
+        "lon": 6.66,
+        "lat": 7.57
+      },
+      {
+        "state": "Delta",
+        "siteName": "Ubulu/Warri kaolin",
+        "lon": 5.75,
+        "lat": 5.6
+      },
+      {
+        "state": "Ebonyi",
+        "siteName": "Abakaliki kaolin",
+        "lon": 8.11,
+        "lat": 6.32
+      },
+      {
+        "state": "Enugu",
+        "siteName": "Enugu kaolin",
+        "lon": 7.51,
+        "lat": 6.52
+      },
+      {
+        "state": "Bauchi",
+        "siteName": "Alkaleri kaolin",
+        "lon": 10.3,
+        "lat": 10.3
+      },
+      {
+        "state": "Gombe",
+        "siteName": "Gombe kaolin",
+        "lon": 11.22,
+        "lat": 10.29
+      },
+      {
+        "state": "Osun",
+        "siteName": "Ile-Ife kaolin",
+        "lon": 4.56,
+        "lat": 7.48
+      },
+      {
+        "state": "Ekiti",
+        "siteName": "Ekiti kaolin",
+        "lon": 5.22,
+        "lat": 7.66
+      },
+      {
+        "state": "Ogun",
+        "siteName": "Ogun kaolin",
+        "lon": 3.35,
+        "lat": 7.0
+      }
     ]
   },
   {
@@ -725,6 +1433,44 @@
       "Triple Superphosphate (TSP) – high-concentration P₂O₅ direct-application fertiliser",
       "Industrial phosphate chemicals – STPP detergents, food emulsifiers, flame retardants",
       "Superphosphate of lime (SSP) byproduct gypsum – plasterboard & cement retarder"
+    ],
+    "locations": [
+      {
+        "state": "Sokoto",
+        "siteName": "Dange/Gusau embayment phosphate",
+        "lon": 5.5,
+        "lat": 13.05
+      },
+      {
+        "state": "Kebbi",
+        "siteName": "Kebbi phosphate",
+        "lon": 4.2,
+        "lat": 11.5
+      },
+      {
+        "state": "Zamfara",
+        "siteName": "Zamfara phosphate",
+        "lon": 6.23,
+        "lat": 12.1
+      },
+      {
+        "state": "Cross River",
+        "siteName": "Calabar Flank phosphate",
+        "lon": 8.42,
+        "lat": 4.98
+      },
+      {
+        "state": "Benue",
+        "siteName": "Benue phosphate",
+        "lon": 8.76,
+        "lat": 7.33
+      },
+      {
+        "state": "Borno",
+        "siteName": "Chad basin phosphate",
+        "lon": 13.15,
+        "lat": 11.83
+      }
     ]
   },
   {
@@ -769,6 +1515,50 @@
       "Gypsum moulds for ceramics & pottery – jiggering & slip-casting tableware",
       "Alpha-grade high-strength gypsum – precision casting, tile adhesive, flooring underlayment",
       "Desulphurisation gypsum analogue – potential use from future flue-gas desulphurisation"
+    ],
+    "locations": [
+      {
+        "state": "Sokoto",
+        "siteName": "Kalambaina/Wurno gypsum",
+        "lon": 5.3,
+        "lat": 13.15
+      },
+      {
+        "state": "Niger",
+        "siteName": "Niger gypsum",
+        "lon": 6.0,
+        "lat": 9.93
+      },
+      {
+        "state": "Benue",
+        "siteName": "Benue gypsum",
+        "lon": 8.76,
+        "lat": 7.33
+      },
+      {
+        "state": "Gombe",
+        "siteName": "Gombe gypsum",
+        "lon": 11.22,
+        "lat": 10.29
+      },
+      {
+        "state": "Kebbi",
+        "siteName": "Kebbi gypsum",
+        "lon": 4.2,
+        "lat": 11.5
+      },
+      {
+        "state": "Bauchi",
+        "siteName": "Bauchi gypsum",
+        "lon": 9.84,
+        "lat": 10.5
+      },
+      {
+        "state": "Adamawa",
+        "siteName": "Yola gypsum",
+        "lon": 12.48,
+        "lat": 9.2
+      }
     ]
   },
   {
@@ -812,6 +1602,44 @@
       "Pencil leads & lubricants – bonded clay/graphite for writing & industrial lubrication",
       "Graphene precursor – high-purity graphite feed for CVD & liquid exfoliation",
       "Nuclear graphite (speciality) – pebbles & moderator blocks for next-gen HTGRs"
+    ],
+    "locations": [
+      {
+        "state": "Nasarawa",
+        "siteName": "Nasarawa graphite",
+        "lon": 8.53,
+        "lat": 8.53
+      },
+      {
+        "state": "Ondo",
+        "siteName": "Ondo graphite",
+        "lon": 5.1,
+        "lat": 7.1
+      },
+      {
+        "state": "Ekiti",
+        "siteName": "Ikere-Ekiti graphite",
+        "lon": 5.23,
+        "lat": 7.5
+      },
+      {
+        "state": "Kwara",
+        "siteName": "Kwara graphite",
+        "lon": 4.55,
+        "lat": 8.5
+      },
+      {
+        "state": "Kogi",
+        "siteName": "Kogi graphite",
+        "lon": 6.74,
+        "lat": 7.73
+      },
+      {
+        "state": "Osun",
+        "siteName": "Osun graphite",
+        "lon": 4.5,
+        "lat": 7.6
+      }
     ]
   },
   {
@@ -855,6 +1683,44 @@
       "Tungsten welding electrodes (GTAW / TIG) – thoriated, ceriated, lanthanated grades",
       "Ferro-tungsten (FeW) master alloy – steelmaking addition for high-speed & tool steels",
       "Superalloys (Waspaloy, Hastelloy X) – jet engine hot-section components & turbine blades"
+    ],
+    "locations": [
+      {
+        "state": "Plateau",
+        "siteName": "Barikin Ladi tungsten",
+        "lon": 8.9,
+        "lat": 9.5
+      },
+      {
+        "state": "Bauchi",
+        "siteName": "Bogoro/Tafawa Balewa scheelite",
+        "lon": 9.9,
+        "lat": 9.9
+      },
+      {
+        "state": "Nasarawa",
+        "siteName": "Nasarawa tungsten",
+        "lon": 8.53,
+        "lat": 8.53
+      },
+      {
+        "state": "Oyo",
+        "siteName": "Ibadan schist-belt tungsten",
+        "lon": 3.9,
+        "lat": 7.4
+      },
+      {
+        "state": "Osun",
+        "siteName": "Osun tungsten",
+        "lon": 4.5,
+        "lat": 7.6
+      },
+      {
+        "state": "Kaduna",
+        "siteName": "Kaduna tungsten",
+        "lon": 7.44,
+        "lat": 10.52
+      }
     ]
   },
   {
@@ -900,6 +1766,56 @@
       "Silica-sand foundry moulds (AFS 45–55 grade) – green-sand iron & steel casting",
       "Filler extenders – ground silica & feldspar powder for paints, plastics, rubber, adhesives",
       "Speciality low-iron silica (SiO₂ >99.5%) – solar PV glass, ultra-clear optical glass, fibre optics"
+    ],
+    "locations": [
+      {
+        "state": "Nasarawa",
+        "siteName": "Lafia/Akwanga pegmatite feldspar",
+        "lon": 8.5,
+        "lat": 8.6
+      },
+      {
+        "state": "Kwara",
+        "siteName": "Kwara feldspar",
+        "lon": 4.55,
+        "lat": 8.5
+      },
+      {
+        "state": "Ogun",
+        "siteName": "Ewekoro silica sands",
+        "lon": 3.2,
+        "lat": 6.95
+      },
+      {
+        "state": "Ekiti",
+        "siteName": "Ekiti feldspar/mica",
+        "lon": 5.22,
+        "lat": 7.66
+      },
+      {
+        "state": "Oyo",
+        "siteName": "Ibadan mica schists",
+        "lon": 3.9,
+        "lat": 7.4
+      },
+      {
+        "state": "Kogi",
+        "siteName": "Kogi feldspar",
+        "lon": 6.74,
+        "lat": 7.73
+      },
+      {
+        "state": "Delta",
+        "siteName": "Warri silica-sand dredges",
+        "lon": 5.75,
+        "lat": 5.52
+      },
+      {
+        "state": "Edo",
+        "siteName": "Edo feldspar/silica",
+        "lon": 6.0,
+        "lat": 6.63
+      }
     ]
   },
   {
@@ -936,6 +1852,20 @@
       "Electronics contacts & bonding wire",
       "Dental alloys",
       "Decorative gilding & traditional regalia"
+    ],
+    "locations": [
+      {
+        "state": "Osun",
+        "siteName": "Ilesha/Itagunmodi gold",
+        "lon": 4.73,
+        "lat": 7.62
+      },
+      {
+        "state": "Ekiti",
+        "siteName": "Ise/Emure gold",
+        "lon": 5.4,
+        "lat": 7.5
+      }
     ]
   },
   {
@@ -968,7 +1898,39 @@
       "CNG & power projects",
       "Niger–Benue transition"
     ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Anambra_Basin"
+    "wikiUrl": "https://en.wikipedia.org/wiki/Anambra_Basin",
+    "locations": [
+      {
+        "state": "Anambra",
+        "siteName": "Ojoto/Ihiala gas plays",
+        "lon": 6.85,
+        "lat": 6.0
+      },
+      {
+        "state": "Enugu",
+        "siteName": "Enugu gas prospects",
+        "lon": 7.51,
+        "lat": 6.52
+      },
+      {
+        "state": "Imo",
+        "siteName": "Owerri gas prospects",
+        "lon": 7.03,
+        "lat": 5.48
+      },
+      {
+        "state": "Kogi",
+        "siteName": "Kogi confluence gas prospects",
+        "lon": 6.74,
+        "lat": 7.73
+      },
+      {
+        "state": "Benue",
+        "siteName": "Benue gas prospects",
+        "lon": 8.76,
+        "lat": 7.33
+      }
+    ]
   },
   {
     "id": "resource-gas-akwa",
@@ -996,6 +1958,732 @@
       "Eastern power feedstock",
       "Akwa Ibom energy"
     ],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Ikot_Abasi"
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ikot_Abasi",
+    "locations": [
+      {
+        "state": "Akwa Ibom",
+        "siteName": "Uquo gas field",
+        "lon": 7.85,
+        "lat": 4.66
+      }
+    ]
+  },
+  {
+    "id": "resource-barite",
+    "name": "Barite / Baryte (Benue Trough)",
+    "resourceType": "barite",
+    "summary": "Africa's largest known barite deposits, centred on Azara (Nasarawa) and the Benue Trough — the key domestic drilling-mud feedstock.",
+    "description": "Barite (barium sulfate) occurs as vein and residual deposits along the Benue Trough, most notably the large Azara deposit in Nasarawa State plus occurrences around Katsina-Ala (Benue), Wukari (Taraba), and parts of Cross River. Nigeria's oil and gas sector has historically imported most of its drilling-mud barite despite these reserves, making Azara a flagship import-substitution project for the upstream sector.",
+    "lon": 8.63,
+    "lat": 8.4,
+    "statesCrossed": [
+      "Nasarawa",
+      "Benue",
+      "Taraba",
+      "Cross River",
+      "Plateau"
+    ],
+    "reserveNote": "Hundreds of millions of tonnes indicated; Azara ranked among Africa's largest barite deposits",
+    "productionNote": "Small-to-medium scale mining supplying domestic drilling-mud demand; import substitution drive ongoing",
+    "type": "Barite (barium sulfate) vein and residual/eluvial deposits",
+    "economy": "Oilfield drilling-mud weighting agent import substitution; paint, rubber, and radiation-shielding fillers.",
+    "climate": "Guinea savanna, Benue Trough basement-sediment terrain.",
+    "landmarks": [
+      "Azara Barite Mine (Nasarawa)",
+      "Katsina-Ala barite belt",
+      "Cross River barite occurrences"
+    ],
+    "highlights": [
+      "Africa's largest known barite reserves",
+      "Oil & gas drilling-mud import substitution",
+      "Benue Trough mineral belt"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Barite",
+    "products": [
+      "Oil & gas drilling mud – weighting agent for well control",
+      "Paint, rubber & plastics fillers",
+      "Radiation-shielding concrete aggregate",
+      "Barium chemicals – barium carbonate, blanc fixe (barium sulfate pigment)",
+      "Glass & ceramics – flux and brightening agent"
+    ],
+    "locations": [
+      {
+        "state": "Nasarawa",
+        "siteName": "Azara Barite Mine",
+        "lon": 8.63,
+        "lat": 8.4
+      },
+      {
+        "state": "Benue",
+        "siteName": "Katsina-Ala barite",
+        "lon": 9.28,
+        "lat": 7.1
+      },
+      {
+        "state": "Taraba",
+        "siteName": "Wukari barite",
+        "lon": 9.78,
+        "lat": 7.87
+      },
+      {
+        "state": "Cross River",
+        "siteName": "Ikom barite",
+        "lon": 8.71,
+        "lat": 5.97
+      },
+      {
+        "state": "Plateau",
+        "siteName": "Plateau barite",
+        "lon": 9.22,
+        "lat": 9.22
+      }
+    ]
+  },
+  {
+    "id": "resource-talc",
+    "name": "Talc & Soapstone (Niger, Kogi, Osun)",
+    "resourceType": "talc",
+    "summary": "Talc-chlorite schist and soapstone deposits feeding Nigeria's ceramics, cosmetics, and paint industries.",
+    "description": "Talc occurs as talc-chlorite schist and soapstone bodies within the Precambrian basement complex, notably around Niger State (Rafin Gora/Mashegu axis), Kogi, and Osun (Ejigbo). Small-scale mining supplies local ceramics, paint filler, and cosmetics-grade processors, with beneficiation quality improving as demand from tile and paint manufacturers grows.",
+    "lon": 6.5,
+    "lat": 9.6,
+    "statesCrossed": [
+      "Niger",
+      "Kogi",
+      "Osun",
+      "Kwara"
+    ],
+    "reserveNote": "Multiple basement-hosted talc-chlorite schist and soapstone bodies",
+    "productionNote": "Small-scale mining and beneficiation for domestic ceramics/cosmetics/paint markets",
+    "type": "Talc-chlorite schist and soapstone",
+    "economy": "Ceramics, cosmetics, paint and paper-coating filler feedstock.",
+    "climate": "Guinea savanna basement terrain.",
+    "landmarks": [
+      "Rafin Gora talc belt (Niger)",
+      "Ejigbo talc occurrences (Osun)",
+      "Kogi soapstone bodies"
+    ],
+    "highlights": [
+      "Ceramics and cosmetics-grade talc",
+      "Growing paint-filler demand",
+      "Basement-complex soapstone bodies"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Talc",
+    "products": [
+      "Talcum powder & cosmetics",
+      "Ceramic tile body and glaze additive",
+      "Paint, plastic & rubber fillers",
+      "Paper coating and filler",
+      "Rubber compounding agent"
+    ],
+    "locations": [
+      {
+        "state": "Niger",
+        "siteName": "Rafin Gora talc",
+        "lon": 6.3,
+        "lat": 9.75
+      },
+      {
+        "state": "Kogi",
+        "siteName": "Kogi soapstone",
+        "lon": 6.74,
+        "lat": 7.73
+      },
+      {
+        "state": "Osun",
+        "siteName": "Ejigbo talc",
+        "lon": 4.3,
+        "lat": 7.9
+      },
+      {
+        "state": "Kwara",
+        "siteName": "Kwara talc",
+        "lon": 4.55,
+        "lat": 8.5
+      }
+    ]
+  },
+  {
+    "id": "resource-manganese",
+    "name": "Manganese (Zamfara-Katsina-Plateau Belts)",
+    "resourceType": "manganese",
+    "summary": "Manganese oxide and silicate ore occurrences across the northern basement complex, targeted for domestic ferro-alloy and battery feedstock.",
+    "description": "Manganese ores occur in scattered basement-hosted deposits across Zamfara (Kwatarkwashi axis), Katsina, and the Jos Plateau (Bukuru area), historically noted as a tin-mining byproduct on the Plateau. Renewed exploration interest ties to Nigeria's steel-industry ferro-manganese needs and dry-cell battery manufacturing.",
+    "lon": 6.5,
+    "lat": 11.5,
+    "statesCrossed": [
+      "Zamfara",
+      "Katsina",
+      "Plateau",
+      "Kaduna"
+    ],
+    "reserveNote": "Scattered basement-hosted manganese oxide/silicate deposits, moderate scale",
+    "productionNote": "Artisanal and small-scale mining; ferro-alloy demand driving renewed exploration",
+    "type": "Manganese oxide and silicate ore in basement complex",
+    "economy": "Ferro-manganese for steelmaking; battery and agro-chemical feedstock potential.",
+    "climate": "Sudan-Guinea savanna basement terrain.",
+    "landmarks": [
+      "Kwatarkwashi manganese belt (Zamfara)",
+      "Bukuru manganese occurrences (Plateau)",
+      "Katsina basement manganese"
+    ],
+    "highlights": [
+      "Ferro-alloy feedstock for domestic steel",
+      "Tin-mining byproduct on Jos Plateau",
+      "Renewed exploration interest"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Manganese",
+    "products": [
+      "Ferromanganese/silico-manganese for steelmaking",
+      "Manganese dioxide for dry-cell batteries",
+      "Manganese sulfate for fertiliser and animal feed",
+      "Manganese-based pigments",
+      "Potassium permanganate feedstock for water treatment"
+    ],
+    "locations": [
+      {
+        "state": "Zamfara",
+        "siteName": "Kwatarkwashi manganese",
+        "lon": 6.4,
+        "lat": 12.35
+      },
+      {
+        "state": "Katsina",
+        "siteName": "Katsina manganese",
+        "lon": 7.6,
+        "lat": 12.9
+      },
+      {
+        "state": "Plateau",
+        "siteName": "Bukuru manganese",
+        "lon": 8.86,
+        "lat": 9.79
+      },
+      {
+        "state": "Kaduna",
+        "siteName": "Kaduna manganese",
+        "lon": 7.44,
+        "lat": 10.52
+      }
+    ]
+  },
+  {
+    "id": "resource-chromite",
+    "name": "Chromite (Kaduna-Bauchi Ultramafic Belt)",
+    "resourceType": "chromite",
+    "summary": "Chromite occurrences in ultramafic/serpentinite bodies across Kaduna, Bauchi, and Adamawa, eyed for ferrochrome and refractory use.",
+    "description": "Chromite (chrome ore) is found in podiform bodies within ultramafic and serpentinised basement rocks around Kaduna, Bauchi, and Adamawa states. While production has remained artisanal, the ore's suitability for ferrochrome and refractory-grade chromite has drawn renewed interest as Nigeria pursues local steel and foundry value chains.",
+    "lon": 8.2,
+    "lat": 9.5,
+    "statesCrossed": [
+      "Kaduna",
+      "Bauchi",
+      "Adamawa"
+    ],
+    "reserveNote": "Podiform chromite bodies in ultramafic/serpentinite basement rock",
+    "productionNote": "Artisanal and small-scale extraction; ferrochrome-grade beneficiation under study",
+    "type": "Chromite (chrome ore) in ultramafic/serpentinite basement bodies",
+    "economy": "Ferrochrome for stainless steel; refractory and foundry-sand feedstock.",
+    "climate": "Sudan-Guinea savanna basement terrain.",
+    "landmarks": [
+      "Kaduna ultramafic chromite bodies",
+      "Bauchi serpentinite belt",
+      "Adamawa chromite occurrences"
+    ],
+    "highlights": [
+      "Ferrochrome and stainless-steel feedstock",
+      "Refractory-grade chromite potential",
+      "Basement ultramafic host rocks"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Chromite",
+    "products": [
+      "Ferrochrome for stainless steel production",
+      "Refractory bricks and chromite foundry sand",
+      "Chromium chemicals for leather tanning and pigments",
+      "Chrome plating feedstock"
+    ],
+    "locations": [
+      {
+        "state": "Kaduna",
+        "siteName": "Kaduna chromite",
+        "lon": 7.44,
+        "lat": 10.52
+      },
+      {
+        "state": "Bauchi",
+        "siteName": "Bauchi serpentinite chromite",
+        "lon": 9.9,
+        "lat": 10.3
+      },
+      {
+        "state": "Adamawa",
+        "siteName": "Adamawa chromite",
+        "lon": 12.39,
+        "lat": 9.33
+      }
+    ]
+  },
+  {
+    "id": "resource-copper",
+    "name": "Copper (Zamfara-Bauchi Basement Belt)",
+    "resourceType": "copper",
+    "summary": "Copper sulfide and oxide vein occurrences within the northern basement complex, at an early exploration stage.",
+    "description": "Copper mineralisation occurs in quartz-vein and shear-zone systems within the Precambrian basement of Zamfara (Maru axis) and Bauchi/Plateau, generally associated with base-metal and gold prospects. Exploration remains at an early stage, with no major mine yet in production, though junior miners have flagged the belt as prospective.",
+    "lon": 6.3,
+    "lat": 12.2,
+    "statesCrossed": [
+      "Zamfara",
+      "Bauchi",
+      "Plateau",
+      "Kaduna"
+    ],
+    "reserveNote": "Early-stage exploration; vein and shear-hosted copper sulfide/oxide showings",
+    "productionNote": "No major production yet; artisanal panning and junior-exploration stage",
+    "type": "Copper sulfide/oxide veins in basement shear zones",
+    "economy": "Nascent; potential feedstock for electrical-cable and alloy manufacturing if developed.",
+    "climate": "Sudan-Guinea savanna basement terrain.",
+    "landmarks": [
+      "Maru copper-gold belt (Zamfara)",
+      "Bauchi basement copper showings"
+    ],
+    "highlights": [
+      "Early-stage exploration belt",
+      "Associated with gold and base-metal prospects",
+      "Potential electrical-cable feedstock"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Copper",
+    "products": [
+      "Copper wire and cable for electrical use",
+      "Brass and bronze alloys",
+      "Roofing sheets and plumbing pipe",
+      "Copper sulfate for agrochemicals"
+    ],
+    "locations": [
+      {
+        "state": "Zamfara",
+        "siteName": "Maru copper-gold belt",
+        "lon": 6.1,
+        "lat": 12.3
+      },
+      {
+        "state": "Bauchi",
+        "siteName": "Bauchi copper",
+        "lon": 9.84,
+        "lat": 10.5
+      },
+      {
+        "state": "Plateau",
+        "siteName": "Plateau copper",
+        "lon": 9.22,
+        "lat": 9.22
+      },
+      {
+        "state": "Kaduna",
+        "siteName": "Kaduna copper",
+        "lon": 7.44,
+        "lat": 10.52
+      }
+    ]
+  },
+  {
+    "id": "resource-uranium",
+    "name": "Uranium (Cross River-Adamawa Occurrences)",
+    "resourceType": "uranium",
+    "summary": "Exploratory uranium-bearing sandstone and granite occurrences in the Mamfe basin margin and northeast basement, at pre-development stage.",
+    "description": "Uranium anomalies have been mapped in sandstone and granite-hosted settings around the Mamfe basin margin in Cross River, and in parts of Adamawa and Bauchi, largely through legacy geological surveys. No commercial mine has been developed; the occurrences remain exploratory and are periodically revisited amid global nuclear-fuel interest.",
+    "lon": 9.3,
+    "lat": 6.0,
+    "statesCrossed": [
+      "Cross River",
+      "Adamawa",
+      "Bauchi",
+      "Taraba"
+    ],
+    "reserveNote": "Exploratory-stage uranium anomalies; no confirmed commercial reserve yet",
+    "productionNote": "No production; periodic legacy-survey follow-up exploration only",
+    "type": "Uranium-bearing sandstone and granite occurrences",
+    "economy": "Potential nuclear-fuel feedstock if developed; currently exploration-stage only.",
+    "climate": "Rainforest fringe (Cross River) to Sudan savanna (Adamawa/Bauchi).",
+    "landmarks": [
+      "Mamfe basin margin uranium anomalies (Cross River)",
+      "Adamawa/Bauchi granite-hosted showings"
+    ],
+    "highlights": [
+      "Exploration-stage uranium anomalies",
+      "Potential nuclear-fuel feedstock",
+      "Legacy geological survey targets"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Uranium",
+    "products": [
+      "Nuclear fuel (uranium oxide/yellowcake) – potential, undeveloped",
+      "Medical and industrial radioisotopes – potential, undeveloped"
+    ],
+    "locations": [
+      {
+        "state": "Cross River",
+        "siteName": "Mamfe basin uranium anomalies",
+        "lon": 9.3,
+        "lat": 6.0
+      },
+      {
+        "state": "Adamawa",
+        "siteName": "Adamawa uranium anomalies",
+        "lon": 12.39,
+        "lat": 9.33
+      },
+      {
+        "state": "Bauchi",
+        "siteName": "Bauchi uranium anomalies",
+        "lon": 9.84,
+        "lat": 10.5
+      },
+      {
+        "state": "Taraba",
+        "siteName": "Taraba uranium anomalies",
+        "lon": 10.77,
+        "lat": 7.99
+      }
+    ]
+  },
+  {
+    "id": "resource-diatomite",
+    "name": "Diatomite (Borno / Lake Chad Basin)",
+    "resourceType": "diatomite",
+    "summary": "Diatomaceous-earth deposits in the Lake Chad basin, valued for filtration, insulation, and absorbent applications.",
+    "description": "Diatomite (diatomaceous earth) occurs in fossil lakebed deposits across the Lake Chad basin in Borno and Yobe states, formed from ancient diatom accumulations. The deposits are of interest for filtration media, thermal insulation, and agricultural/industrial absorbent uses, though development has been constrained by regional security conditions in recent years.",
+    "lon": 13.5,
+    "lat": 13.0,
+    "statesCrossed": [
+      "Borno",
+      "Yobe"
+    ],
+    "reserveNote": "Substantial lakebed diatomite deposits across the Lake Chad basin margin",
+    "productionNote": "Limited development; constrained by regional access and security conditions",
+    "type": "Diatomaceous earth (fossil diatom silica) lakebed deposits",
+    "economy": "Filtration media, insulation, and industrial absorbent feedstock potential.",
+    "climate": "Sahel; arid lakebed and basin terrain.",
+    "landmarks": [
+      "Lake Chad basin diatomite deposits (Borno)",
+      "Yobe diatomite occurrences"
+    ],
+    "highlights": [
+      "Sahel lakebed diatomite deposits",
+      "Filtration and insulation feedstock",
+      "Development constrained by regional access"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Diatomaceous_earth",
+    "products": [
+      "Filter aids for beverages and pharmaceuticals",
+      "Thermal and acoustic insulation",
+      "Diatomaceous-earth insecticide carrier",
+      "Abrasive and polishing compounds",
+      "Industrial spill absorbent"
+    ],
+    "locations": [
+      {
+        "state": "Borno",
+        "siteName": "Lake Chad basin diatomite",
+        "lon": 13.8,
+        "lat": 13.2
+      },
+      {
+        "state": "Yobe",
+        "siteName": "Yobe diatomite",
+        "lon": 11.72,
+        "lat": 12.0
+      }
+    ]
+  },
+  {
+    "id": "resource-bentonite",
+    "name": "Bentonite (Borno-Yobe Basin)",
+    "resourceType": "bentonite",
+    "summary": "Sodium/calcium bentonite clay deposits in the Chad basin margin, supplying drilling-mud and foundry-binder markets.",
+    "description": "Bentonite clay occurs in the sedimentary basins of Borno and Yobe states, formed from altered volcanic ash. It is targeted as a domestic substitute for imported drilling-mud viscosifiers used in oil and water-well drilling, as well as for foundry sand binding and iron-ore pelletising.",
+    "lon": 11.7,
+    "lat": 11.8,
+    "statesCrossed": [
+      "Borno",
+      "Yobe"
+    ],
+    "reserveNote": "Sedimentary bentonite clay beds across the Chad basin margin",
+    "productionNote": "Small-scale mining for drilling-mud and foundry-binder substitution",
+    "type": "Sodium/calcium bentonite clay (montmorillonite)",
+    "economy": "Drilling-mud viscosifier import substitution; foundry and iron-pelletising binder.",
+    "climate": "Sahel; semi-arid sedimentary basin.",
+    "landmarks": [
+      "Borno bentonite clay beds",
+      "Yobe bentonite occurrences"
+    ],
+    "highlights": [
+      "Drilling-mud import substitution",
+      "Foundry sand binder feedstock",
+      "Chad basin sedimentary clay"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Bentonite",
+    "products": [
+      "Oil & gas / water-well drilling mud viscosifier",
+      "Foundry sand binder",
+      "Iron-ore pelletising binder",
+      "Cat litter",
+      "Geosynthetic clay liners for waterproofing"
+    ],
+    "locations": [
+      {
+        "state": "Borno",
+        "siteName": "Borno bentonite clay beds",
+        "lon": 13.15,
+        "lat": 11.83
+      },
+      {
+        "state": "Yobe",
+        "siteName": "Potiskum bentonite",
+        "lon": 11.07,
+        "lat": 11.71
+      }
+    ]
+  },
+  {
+    "id": "resource-heavy-mineral-sands",
+    "name": "Rutile, Ilmenite & Zircon (Coastal Heavy Mineral Sands)",
+    "resourceType": "heavy-mineral-sands",
+    "summary": "Titanium-zirconium-bearing beach and alluvial placer sands along the Atlantic coast, a prospective titanium-pigment feedstock.",
+    "description": "Heavy mineral sand placers containing rutile, ilmenite, and zircon occur along stretches of Nigeria's Atlantic coastline, notably in Ogun, Lagos, and Akwa Ibom, as well as alluvial occurrences further inland. These titanium- and zirconium-bearing sands are of growing interest for titanium-dioxide pigment production and zircon refractories, though large-scale mining has yet to be established.",
+    "lon": 4.6,
+    "lat": 7.8,
+    "statesCrossed": [
+      "Ogun",
+      "Lagos",
+      "Akwa Ibom",
+      "Cross River"
+    ],
+    "reserveNote": "Coastal and alluvial placer occurrences of rutile, ilmenite, and zircon",
+    "productionNote": "Exploration and small-scale prospecting; no major operating mine yet",
+    "type": "Titanium-zirconium heavy mineral sand placers (rutile, ilmenite, zircon)",
+    "economy": "Titanium-dioxide pigment feedstock; zirconium refractories and foundry sand potential.",
+    "climate": "Tropical coastal and estuarine terrain.",
+    "landmarks": [
+      "Ogun/Lagos coastal heavy-sand occurrences",
+      "Akwa Ibom beach placer sands"
+    ],
+    "highlights": [
+      "Titanium-dioxide pigment feedstock potential",
+      "Zircon refractory-grade sands",
+      "Atlantic coastal placer deposits"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Rutile",
+    "products": [
+      "Titanium-dioxide pigment for paints, plastics, and paper",
+      "Welding-rod flux coatings (rutile)",
+      "Zirconia refractories and ceramics",
+      "Zircon foundry sand",
+      "Titanium metal feedstock (aerospace) – potential"
+    ],
+    "locations": [
+      {
+        "state": "Ogun",
+        "siteName": "Ogun coastal heavy sands",
+        "lon": 4.0,
+        "lat": 6.4
+      },
+      {
+        "state": "Lagos",
+        "siteName": "Badagry coastal heavy sands",
+        "lon": 2.88,
+        "lat": 6.42
+      },
+      {
+        "state": "Akwa Ibom",
+        "siteName": "Ibeno beach placer sands",
+        "lon": 8.0,
+        "lat": 4.58
+      },
+      {
+        "state": "Cross River",
+        "siteName": "Cross River coastal sands",
+        "lon": 8.6,
+        "lat": 4.6
+      }
+    ]
+  },
+  {
+    "id": "resource-dolomite",
+    "name": "Dolomite (Kogi-Cross River Belts)",
+    "resourceType": "dolomite",
+    "summary": "Calcium-magnesium carbonate dolomite deposits supplying refractory, agricultural-lime, and glass industries.",
+    "description": "Dolomite deposits are found alongside limestone formations in Kogi State and the Cross River (Mfamosing/Calabar) belt, as well as smaller occurrences in Sokoto. The mineral is processed into refractory bricks for steel-furnace linings, agricultural lime, and magnesium-chemical feedstock, complementing Nigeria's broader limestone-cement belt.",
+    "lon": 6.7,
+    "lat": 7.9,
+    "statesCrossed": [
+      "Kogi",
+      "Cross River",
+      "Sokoto"
+    ],
+    "reserveNote": "Substantial dolomitic limestone deposits alongside cement-grade limestone belts",
+    "productionNote": "Mined alongside limestone; refractory and agri-lime grade beneficiation",
+    "type": "Dolomitic limestone (calcium-magnesium carbonate)",
+    "economy": "Refractory bricks, agricultural lime, magnesium chemicals, and glass flux.",
+    "climate": "Guinea savanna to rainforest-fringe carbonate terrain.",
+    "landmarks": [
+      "Kogi dolomite/limestone belt",
+      "Mfamosing dolomite occurrences (Cross River)"
+    ],
+    "highlights": [
+      "Refractory-grade dolomite for steel furnaces",
+      "Agricultural lime feedstock",
+      "Paired with cement-belt limestone"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Dolomite_(rock)",
+    "products": [
+      "Refractory bricks for steel-furnace linings",
+      "Agricultural lime for soil pH correction",
+      "Magnesium metal and magnesium-oxide production feedstock",
+      "Glass and ceramics flux",
+      "Road-construction aggregate"
+    ],
+    "locations": [
+      {
+        "state": "Kogi",
+        "siteName": "Kogi dolomite",
+        "lon": 6.74,
+        "lat": 7.73
+      },
+      {
+        "state": "Cross River",
+        "siteName": "Mfamosing dolomite",
+        "lon": 8.42,
+        "lat": 4.98
+      },
+      {
+        "state": "Sokoto",
+        "siteName": "Sokoto dolomite",
+        "lon": 5.2,
+        "lat": 13.0
+      }
+    ]
+  },
+  {
+    "id": "resource-granite-dimension-stone",
+    "name": "Granite & Dimension Stone (Ogun-Nasarawa-Ekiti Quarry Belts)",
+    "resourceType": "granite-dimension-stone",
+    "summary": "Widespread basement-complex granite and gneiss quarry belts supplying aggregate and dimension stone for Nigeria's construction industry.",
+    "description": "Granite and gneiss outcrops of the Precambrian basement complex are quarried extensively around Ogun (Abeokuta's rock outcrops), Nasarawa, Kwara, Ekiti, and Delta states for crushed aggregate and decorative dimension stone. These quarry belts underpin the bulk of Nigeria's road, rail, and building-construction aggregate supply.",
+    "lon": 3.35,
+    "lat": 7.15,
+    "statesCrossed": [
+      "Ogun",
+      "Nasarawa",
+      "Kwara",
+      "Ekiti",
+      "Delta",
+      "Oyo"
+    ],
+    "reserveNote": "Extensive basement-complex granite/gneiss outcrops nationwide",
+    "productionNote": "Widespread active quarrying for crushed aggregate and dimension stone",
+    "type": "Granite and gneiss basement rock; crushed aggregate and dimension stone grades",
+    "economy": "Construction aggregate, road/rail ballast, and decorative dimension stone.",
+    "climate": "Basement-complex terrain spanning rainforest to Guinea savanna.",
+    "landmarks": [
+      "Abeokuta rock outcrops (Ogun)",
+      "Nasarawa granite quarry belt",
+      "Ekiti/Kwara dimension-stone quarries"
+    ],
+    "highlights": [
+      "Nationwide construction aggregate supply",
+      "Decorative dimension stone for buildings",
+      "Abeokuta's iconic granite outcrops"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Granite",
+    "products": [
+      "Crushed granite aggregate for concrete and road base",
+      "Dimension/decorative stone for building facades and monuments",
+      "Railway ballast",
+      "Kerbstones and paving setts"
+    ],
+    "locations": [
+      {
+        "state": "Ogun",
+        "siteName": "Abeokuta granite outcrops",
+        "lon": 3.35,
+        "lat": 7.15
+      },
+      {
+        "state": "Nasarawa",
+        "siteName": "Nasarawa granite quarries",
+        "lon": 8.53,
+        "lat": 8.53
+      },
+      {
+        "state": "Kwara",
+        "siteName": "Kwara granite quarries",
+        "lon": 4.55,
+        "lat": 8.5
+      },
+      {
+        "state": "Ekiti",
+        "siteName": "Ekiti granite quarries",
+        "lon": 5.22,
+        "lat": 7.66
+      },
+      {
+        "state": "Delta",
+        "siteName": "Delta granite quarries",
+        "lon": 6.0,
+        "lat": 5.6
+      },
+      {
+        "state": "Oyo",
+        "siteName": "Oyo granite quarries",
+        "lon": 3.93,
+        "lat": 8.0
+      }
+    ]
+  },
+  {
+    "id": "resource-fluorspar",
+    "name": "Fluorspar (Taraba Belt)",
+    "resourceType": "fluorspar",
+    "summary": "Fluorspar (calcium fluoride) vein occurrences in the Taraba basement belt, prospective flux feedstock for steel and aluminium industries.",
+    "description": "Fluorspar veins occur within the basement complex of Taraba State around the Wukari-Kentu axis, offering a potential domestic source of the fluxing agent used in steelmaking and aluminium smelting. Development remains at an early exploration stage, with artisanal collection the main current activity.",
+    "lon": 9.8,
+    "lat": 7.6,
+    "statesCrossed": [
+      "Taraba",
+      "Adamawa"
+    ],
+    "reserveNote": "Vein-hosted fluorspar occurrences in the basement complex; early exploration stage",
+    "productionNote": "Artisanal-scale collection; no major processing plant yet",
+    "type": "Fluorspar (calcium fluoride) vein deposits",
+    "economy": "Steelmaking and aluminium-smelting flux feedstock potential.",
+    "climate": "Guinea savanna basement terrain.",
+    "landmarks": [
+      "Wukari-Kentu fluorspar belt (Taraba)"
+    ],
+    "highlights": [
+      "Steel and aluminium flux feedstock potential",
+      "Basement vein-hosted deposits",
+      "Early-stage exploration"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Fluorite",
+    "products": [
+      "Steelmaking flux",
+      "Aluminium-smelting flux",
+      "Hydrofluoric acid (HF) feedstock",
+      "Glass and enamel opacifier"
+    ],
+    "locations": [
+      {
+        "state": "Taraba",
+        "siteName": "Wukari-Kentu fluorspar belt",
+        "lon": 9.8,
+        "lat": 7.6
+      },
+      {
+        "state": "Adamawa",
+        "siteName": "Adamawa fluorspar",
+        "lon": 12.39,
+        "lat": 9.33
+      }
+    ]
   }
 ]

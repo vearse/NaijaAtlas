@@ -168,6 +168,18 @@ export const RESOURCE_TYPES = [
   "graphite",
   "tungsten",
   "feldspar-mica",
+  "barite",
+  "talc",
+  "manganese",
+  "chromite",
+  "copper",
+  "uranium",
+  "diatomite",
+  "bentonite",
+  "heavy-mineral-sands",
+  "dolomite",
+  "granite-dimension-stone",
+  "fluorspar",
 ] as const;
 export type ResourceType = (typeof RESOURCE_TYPES)[number];
 
@@ -195,6 +207,21 @@ export const RESOURCE_TYPE_LABELS: Record<
   graphite: { label: "Graphite", color: "#292524" },
   tungsten: { label: "Tungsten", color: "#475569" },
   "feldspar-mica": { label: "Feldspar & mica", color: "#6366f1" },
+  barite: { label: "Barite", color: "#64748b" },
+  talc: { label: "Talc & soapstone", color: "#d6d3d1" },
+  manganese: { label: "Manganese", color: "#57534e" },
+  chromite: { label: "Chromite", color: "#7c2d12" },
+  copper: { label: "Copper", color: "#b45309" },
+  uranium: { label: "Uranium", color: "#16a34a" },
+  diatomite: { label: "Diatomite", color: "#e7e5e4" },
+  bentonite: { label: "Bentonite", color: "#78716c" },
+  "heavy-mineral-sands": { label: "Heavy mineral sands", color: "#92400e" },
+  dolomite: { label: "Dolomite", color: "#a8a29e" },
+  "granite-dimension-stone": {
+    label: "Granite & dimension stone",
+    color: "#334155",
+  },
+  fluorspar: { label: "Fluorspar", color: "#8b5cf6" },
 };
 
 export const COAST_ZONE_LABELS: Record<

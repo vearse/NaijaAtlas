@@ -21,6 +21,18 @@ export const RESOURCE_TYPES = [
   "graphite",
   "tungsten",
   "feldspar-mica",
+  "barite",
+  "talc",
+  "manganese",
+  "chromite",
+  "copper",
+  "uranium",
+  "diatomite",
+  "bentonite",
+  "heavy-mineral-sands",
+  "dolomite",
+  "granite-dimension-stone",
+  "fluorspar",
 ] as const;
 export type ResourceType = (typeof RESOURCE_TYPES)[number];
 
@@ -189,6 +201,18 @@ const DRAW: Record<ResourceType, DrawFn> = {
   graphite: drawCube,
   tungsten: drawSpark,
   "feldspar-mica": drawLeaf,
+  barite: drawBarrel,
+  talc: drawShaker,
+  manganese: drawPick,
+  chromite: drawCube,
+  copper: drawCoin,
+  uranium: drawSpark,
+  diatomite: drawMountain,
+  bentonite: drawCube,
+  "heavy-mineral-sands": drawSpark,
+  dolomite: drawMountain,
+  "granite-dimension-stone": drawCube,
+  fluorspar: drawLeaf,
 };
 
 const FILL: Record<ResourceType, string> = {
@@ -212,6 +236,18 @@ const FILL: Record<ResourceType, string> = {
   graphite: "#18181b",
   tungsten: "#475569",
   "feldspar-mica": "#6366f1",
+  barite: "#64748b",
+  talc: "#d6d3d1",
+  manganese: "#57534e",
+  chromite: "#7c2d12",
+  copper: "#b45309",
+  uranium: "#16a34a",
+  diatomite: "#e7e5e4",
+  bentonite: "#78716c",
+  "heavy-mineral-sands": "#92400e",
+  dolomite: "#a8a29e",
+  "granite-dimension-stone": "#334155",
+  fluorspar: "#8b5cf6",
 };
 
 const STROKE: Record<ResourceType, string> = {
@@ -235,6 +271,18 @@ const STROKE: Record<ResourceType, string> = {
   graphite: "#e2e8f0",
   tungsten: "#cbd5e1",
   "feldspar-mica": "#c7d2fe",
+  barite: "#e2e8f0",
+  talc: "#78716c",
+  manganese: "#e7e5e4",
+  chromite: "#fed7aa",
+  copper: "#fde68a",
+  uranium: "#dcfce7",
+  diatomite: "#a8a29e",
+  bentonite: "#e7e5e4",
+  "heavy-mineral-sands": "#fde68a",
+  dolomite: "#fafaf9",
+  "granite-dimension-stone": "#e2e8f0",
+  fluorspar: "#ede9fe",
 };
 
 function iconImage(type: ResourceType): ImageData {

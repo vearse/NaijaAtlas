@@ -1,4 +1,5 @@
 import citiesCatalog from "@/data/overlays/catalog/cities.json";
+import { useMapStore } from "@/lib/store/mapStore";
 import type { SelectedOverlayFeature } from "@/types/overlay";
 
 export interface CityCatalogEntry {
@@ -146,4 +147,28 @@ export function buildCityOverlayFeature(
     properties,
     geometry,
   };
+}
+
+/** Open a city on the map exactly like a map click: overlay on, feature panel, fly-to. */
+export function openCityOnMap(name: string): boolean {
+  const feature = buildCityOverlayFeature(name);
+  if (!feature) return false;
+
+  const store = useMapStore.getState();
+  if (!store.activeOverlays.has("cities")) store.toggleOverlay("cities");
+  store.setSelectedOverlay(feature);
+
+  const map = store.mapInstance;
+  const coords =
+    feature.geometry?.type === "Point"
+      ? (feature.geometry.coordinates as [number, number])
+      : null;
+  if (map && coords) {
+    map.flyTo({
+      center: coords,
+      zoom: Math.max(map.getZoom() ?? 5, 7),
+      speed: 0.9,
+    });
+  }
+  return true;
 }

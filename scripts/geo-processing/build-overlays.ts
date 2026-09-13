@@ -830,22 +830,61 @@ function buildCoast(
   return features;
 }
 
+interface ResourceSiteRow {
+  state?: unknown;
+  siteName?: unknown;
+  lon?: unknown;
+  lat?: unknown;
+}
+
+function flattenCatalogRow(row: CatalogRow): Record<string, unknown> {
+  const flat: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(row)) {
+    flat[key] = Array.isArray(value) ? JSON.stringify(value) : value;
+  }
+  return flat;
+}
+
 function buildResources(catalog: CatalogRow[]): Feature[] {
   const features: Feature[] = [];
   for (const row of catalog) {
-    const lon = Number(row.lon);
-    const lat = Number(row.lat);
-    if (!Number.isFinite(lon) || !Number.isFinite(lat)) continue;
-    features.push({
-      type: "Feature",
-      properties: {
-        id: row.id,
-        name: row.name,
-        featureKind: "point",
-        resourceType: row.resourceType,
-      },
-      geometry: { type: "Point", coordinates: [lon, lat] },
-    });
+    const locations = Array.isArray(row.locations)
+      ? (row.locations as ResourceSiteRow[])
+      : [];
+    const sites: ResourceSiteRow[] = locations.length
+      ? locations
+      : [{ state: row.stateName, siteName: row.siteName, lon: row.lon, lat: row.lat }];
+    const base = flattenCatalogRow(row);
+    for (let index = 0; index < sites.length; index += 1) {
+      const site = sites[index] ?? {};
+      const lon = Number(site.lon);
+      const lat = Number(site.lat);
+      if (!Number.isFinite(lon) || !Number.isFinite(lat)) continue;
+      const siteId =
+        locations.length > 0 ? `${row.id}-${index}` : `${row.id}`;
+      features.push({
+        type: "Feature",
+        properties: {
+          layerId: "resources",
+          kind: "resources",
+          ...base,
+          id: siteId,
+          resourceId: row.id,
+          name: row.name,
+          featureKind: "point",
+          resourceType: row.resourceType,
+          lon,
+          lat,
+          ...(typeof site.state === "string"
+            ? { stateName: site.state }
+            : {}),
+          ...(typeof site.siteName === "string"
+            ? { siteName: site.siteName }
+            : {}),
+        },
+        geometry: { type: "Point", coordinates: [lon, lat] },
+      });
+    }
   }
   return features;
 }
@@ -880,10 +919,11 @@ export async function buildOverlays(): Promise<void> {
     projectRoot("public/geo/overlays/cities.geojson"),
     fc(buildCities(citiesCatalog), citiesCatalog, "cities")
   );
-  writeGeoJson(
-    projectRoot("public/geo/overlays/resources.geojson"),
-    fc(buildResources(resourcesCatalog), resourcesCatalog, "resources")
-  );
+  const resourceFeatures = buildResources(resourcesCatalog);
+  writeGeoJson(projectRoot("public/geo/overlays/resources.geojson"), {
+    type: "FeatureCollection",
+    features: resourceFeatures,
+  });
 
   const coastFeatures = buildCoast(
     coastCatalog,
@@ -910,7 +950,7 @@ export async function buildOverlays(): Promise<void> {
   });
 
   console.log(
-    `✓ Overlays: waterways(${waterwaysCatalog.length}) lakes(${lakesCatalog.length}) landforms(${landformsCatalog.length}) cities(${citiesCatalog.length}) coast(${coastMerged.length}) resources(${resourcesCatalog.length})`
+    `✓ Overlays: waterways(${waterwaysCatalog.length}) lakes(${lakesCatalog.length}) landforms(${landformsCatalog.length}) cities(${citiesCatalog.length}) coast(${coastMerged.length}) resources(${resourceFeatures.length})`
   );
 }
 
