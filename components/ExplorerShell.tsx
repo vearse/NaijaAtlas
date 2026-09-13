@@ -118,9 +118,6 @@ export default function ExplorerShell({
                 <RegionFilter regions={regions} />
               </div>
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 lg:text-right mb-1">
-                  Map type
-                </p>
                 <MapTypeToggle />
               </div>
             </div>

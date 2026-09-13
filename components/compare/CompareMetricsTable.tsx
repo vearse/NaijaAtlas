@@ -4,6 +4,8 @@ import {
   ComparePersonBlock,
   ComparePersonList,
 } from "./ComparePersonAvatar";
+import { useMapStore } from "@/lib/store/mapStore";
+import type { StateLanguage } from "@/types/location";
 
 interface CompareMetricsTableProps {
   rows: CompareRow[];
@@ -11,6 +13,29 @@ interface CompareMetricsTableProps {
   columns: string[];
   /** Single-column key-value layout for country overview */
   layout?: "compare" | "profile";
+  /** Clickable Wikipedia languages keyed by column name (state language bundle) */
+  languageLinks?: Record<string, StateLanguage[]>;
+}
+
+function LanguageChips({ languages }: { languages: StateLanguage[] }) {
+  return (
+    <div className="flex flex-wrap justify-end gap-1.5">
+      {languages.map((lang) => (
+        <button
+          key={lang.name}
+          type="button"
+          onClick={() =>
+            useMapStore.getState().openWikiModal(lang.wikiUrl, lang.name)
+          }
+          className="inline-flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 hover:border-emerald-300 text-emerald-700 text-xs font-medium px-2 py-0.5 transition-colors"
+          title={`Open Wikipedia: ${lang.name}`}
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" aria-hidden />
+          <span>{lang.name}</span>
+        </button>
+      ))}
+    </div>
+  );
 }
 
 function renderCell(row: CompareRow, colIndex: number) {
@@ -32,6 +57,7 @@ export default function CompareMetricsTable({
   rows,
   columns,
   layout = "compare",
+  languageLinks,
 }: CompareMetricsTableProps) {
   if (layout === "profile") {
     return (
@@ -86,7 +112,13 @@ export default function CompareMetricsTable({
                       hi.has(i) ? "text-ng-green" : "text-slate-800"
                     } ${row.type === "person" || row.type === "personList" ? "text-left" : ""}`}
                   >
-                    {renderCell(row, i)}
+                    {row.key === "languages" &&
+                    languageLinks &&
+                    languageLinks[columns[i]]?.length ? (
+                      <LanguageChips languages={languageLinks[columns[i]]!} />
+                    ) : (
+                      renderCell(row, i)
+                    )}
                   </td>
                 ))}
               </tr>

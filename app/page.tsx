@@ -7,6 +7,7 @@ import type {
   LgaLocation,
   RegionLocation,
   StateContent,
+  StateLanguage,
   LgaContent,
   WardsByLga,
 } from "@/types/location";
@@ -26,9 +27,16 @@ export default function HomePage() {
   const regions = loadJson<RegionLocation[]>(
     path.join(root, "data/locations/regions.json")
   );
-  const stateContent = loadJson<StateContent[]>(
+  const stateContentRaw = loadJson<StateContent[]>(
     path.join(root, "data/content/states.json")
   );
+  const stateLanguages = loadJson<Record<string, StateLanguage[]>>(
+    path.join(root, "data/content/state-languages.json")
+  );
+  const stateContent = stateContentRaw.map((c) => ({
+    ...c,
+    languages: c.languages ?? stateLanguages[c.id] ?? [],
+  }));
   const lgaContent = loadJson<LgaContent[]>(
     path.join(root, "data/content/lgas.json")
   );

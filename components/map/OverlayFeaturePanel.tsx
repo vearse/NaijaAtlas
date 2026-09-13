@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
 import WikiDeepDiveLink from "@/components/map/WikiDeepDiveLink";
 import VisitDirectionsControl from "@/components/directions/VisitDirectionsControl";
@@ -14,6 +14,7 @@ import {
   COAST_CATEGORY_LABELS,
   COAST_ZONE_LABELS,
   RESOURCE_TYPE_LABELS,
+  TOUR_CATEGORY_LABELS,
   WATERWAY_MILITARY_CATEGORY_LABELS,
   type CityCategory,
   type CoastCategory,
@@ -231,9 +232,15 @@ export default function OverlayFeaturePanel({
   states,
 }: OverlayFeaturePanelProps) {
   const { clearSelectedOverlay, showLgas, addSelectedState } = useMapStore();
+  const [showPlanVisit, setShowPlanVisit] = useState(false);
   const { layerId, name, properties: props } = feature;
   const meta = OVERLAY_LAYER_LABELS[layerId];
   const cityCat = cityCategoryMeta(props.category);
+  const isTour = props.isTour === true;
+  const tourCat = isTour
+    ? (TOUR_CATEGORY_LABELS[String(props.category ?? "")] ??
+      TOUR_CATEGORY_LABELS["tour"])
+    : null;
   const lakeCat = lakeCategoryMeta(props.lakeCategory);
   const plantCat = powerPlantCategoryMeta(props.plantCategory);
   const coastCat = coastCategoryMeta(props.coastCategory);
@@ -289,15 +296,15 @@ export default function OverlayFeaturePanel({
             <p className="text-sm text-slate-500 mt-1">{text(props.nickname)}</p>
           )}
           <div className="mt-2 flex flex-wrap gap-1.5">
-            {props.isTour === true && (
+            {tourCat && (
               <span
                 className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white"
-                style={{ backgroundColor: "#d97706" }}
+                style={{ backgroundColor: tourCat.color }}
               >
-                Tourist attraction
+                {tourCat.label}
               </span>
             )}
-            {cityCat && (
+            {!isTour && cityCat && (
               <span
                 className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white"
                 style={{ backgroundColor: cityCat.color }}
@@ -388,20 +395,37 @@ export default function OverlayFeaturePanel({
         </button>
       </div>
 
-      <VisitDirectionsControl
-        feature={{
-          name,
-          lonLat: toLonLat,
-          kind: "overlay",
-        }}
-      />
-
       {text(props.summary) && (
         <p className="text-sm text-slate-600 leading-relaxed">{text(props.summary)}</p>
       )}
 
       {text(props.description) && (
         <p className="text-sm text-slate-700 leading-relaxed">{text(props.description)}</p>
+      )}
+
+      <button
+        type="button"
+        onClick={() => setShowPlanVisit((v) => !v)}
+        aria-expanded={showPlanVisit}
+        className={[
+          "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
+          showPlanVisit
+            ? "border-ng-green/40 bg-emerald-50 text-ng-green"
+            : "border-slate-200 bg-white text-slate-600 hover:border-ng-green/40 hover:text-ng-green",
+        ].join(" ")}
+      >
+        <span aria-hidden>🧭</span>
+        {showPlanVisit ? "Hide plan visit" : "Show plan visit"}
+      </button>
+
+      {showPlanVisit && (
+        <VisitDirectionsControl
+          feature={{
+            name,
+            lonLat: toLonLat,
+            kind: "overlay",
+          }}
+        />
       )}
 
       <dl className="space-y-3 rounded-xl border border-slate-100 bg-slate-50/80 p-4">

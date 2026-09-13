@@ -57,6 +57,35 @@ export const CITY_CATEGORY_LABELS: Record<
   regional: { label: "Regional city", color: "#64748b" },
 };
 
+export const TOUR_CATEGORY_LABELS: Record<
+  string,
+  { label: string; color: string }
+> = {
+  "national-park": { label: "National park", color: "#166534" },
+  "wildlife-reserve": { label: "Wildlife reserve", color: "#15803d" },
+  "natural-wonder": { label: "Natural wonder", color: "#0e7490" },
+  waterfall: { label: "Waterfall", color: "#0369a1" },
+  mountain: { label: "Mountain", color: "#57534e" },
+  "rock-formation": { label: "Rock formation", color: "#78350f" },
+  cave: { label: "Cave", color: "#44403c" },
+  resort: { label: "Resort", color: "#be185d" },
+  "heritage-site": { label: "Heritage site", color: "#92400e" },
+  beach: { label: "Beach", color: "#1d4ed8" },
+  museum: { label: "Museum", color: "#7c3aed" },
+  monument: { label: "Monument", color: "#6d28d9" },
+  dam: { label: "Dam", color: "#0f766e" },
+  bridge: { label: "Bridge", color: "#334155" },
+  stadium: { label: "Stadium", color: "#059669" },
+  airport: { label: "Airport", color: "#1e3a8a" },
+  hospital: { label: "Hospital", color: "#be123c" },
+  university: { label: "University", color: "#0f766e" },
+  school: { label: "School", color: "#4d7c0f" },
+  market: { label: "Market", color: "#ea580c" },
+  "religious-site": { label: "Religious site", color: "#7e22ce" },
+  city: { label: "City", color: "#dc2626" },
+  tour: { label: "Tourist site", color: "#92400e" },
+};
+
 export const WATERWAY_MILITARY_CATEGORIES = [
   "army-division",
   "navy-base",

@@ -1,4 +1,5 @@
 import citiesCatalog from "@/data/overlays/catalog/cities.json";
+import type { SelectedOverlayFeature } from "@/types/overlay";
 
 export interface CityCatalogEntry {
   id?: string;
@@ -84,4 +85,65 @@ export function searchCitySuggestions(
     if (out.length >= limit) break;
   }
   return out;
+}
+
+function findCatalogEntryByName(
+  name: string | null | undefined
+): CityCatalogEntry | null {
+  if (!name) return null;
+  const key = name.trim().toLowerCase();
+  if (!key) return null;
+  const exact = NORMALIZED.find((c) => c.key === key);
+  if (exact) return exact.entry;
+  const includes = NORMALIZED.find(
+    (c) => c.key.includes(key) || key.includes(c.key)
+  );
+  return includes?.entry ?? null;
+}
+
+function flattenCatalogEntry(entry: CityCatalogEntry): Record<string, unknown> {
+  const props: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(entry)) {
+    props[key] = Array.isArray(value) ? JSON.stringify(value) : value;
+  }
+  return props;
+}
+
+/** Build a Cities-layer overlay feature for a city name, for opening in the map detail panel. */
+export function buildCityOverlayFeature(
+  name: string
+): SelectedOverlayFeature | null {
+  const clean = name.trim();
+  if (!clean) return null;
+
+  const entry = findCatalogEntryByName(clean);
+  const lon = typeof entry?.lon === "number" ? entry.lon : null;
+  const lat = typeof entry?.lat === "number" ? entry.lat : null;
+  const id =
+    entry?.id ??
+    `city-${clean.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+
+  const properties: Record<string, unknown> = {
+    layerId: "cities",
+    kind: "cities",
+    ...(entry ? flattenCatalogEntry(entry) : {}),
+    id,
+    name: entry?.name ?? clean,
+    category: entry?.category ?? "regional",
+  };
+  if (entry?.stateName) properties.stateName = entry.stateName;
+  if (entry?.wikiUrl) properties.wikiUrl = entry.wikiUrl;
+
+  const geometry: GeoJSON.Point | null =
+    lon != null && lat != null
+      ? { type: "Point", coordinates: [lon, lat] }
+      : null;
+
+  return {
+    id,
+    layerId: "cities",
+    name: (entry?.name ?? clean) as string,
+    properties,
+    geometry,
+  };
 }

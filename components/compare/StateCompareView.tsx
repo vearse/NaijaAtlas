@@ -86,6 +86,13 @@ export default function StateCompareView({
     formatStateLandArea(bundle, s.id)
   );
 
+  const languagesByState = Object.fromEntries(
+    states.map((s) => [
+      s.name,
+      contents.find((c) => c.id === s.id)?.languages ?? [],
+    ])
+  );
+
   return (
     <div className={`space-y-5 ${compact ? "pb-4" : ""}`}>
       {!hideHeader && (
@@ -149,6 +156,7 @@ export default function StateCompareView({
           rows={rows}
           columns={states.map((s) => s.name)}
           layout="compare"
+          languageLinks={languagesByState}
         />
 
         {activeCategory?.sourceNote && (
