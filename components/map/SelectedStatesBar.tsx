@@ -25,6 +25,7 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
     showLgas,
     hideLgas,
     openMobileSheet,
+    selectStates,
   } = useMapStore();
 
   const selected = states.filter((s) => selectedStateIds.has(s.id));
@@ -89,6 +90,15 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
         <span className="text-[10px] text-slate-400">
           · add up to {MAX_COMPARE_STATES - selected.length} more to compare
         </span>
+      )}
+      {selected.length > 1 && (
+        <button
+          type="button"
+          onClick={() => selectStates([])}
+          className="ml-auto text-[10px] font-semibold uppercase tracking-widest text-slate-400 hover:text-ng-green transition-colors"
+        >
+          Clear all
+        </button>
       )}
     </div>
   );

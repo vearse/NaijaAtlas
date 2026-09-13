@@ -992,6 +992,18 @@ export default function NigeriaMap({
         const store = useMapStore.getState();
         const readyLgas = readyLgaStateIds(map, store.lgaVisibleStateIds);
 
+        // The dragged-state geojson source is recreated empty by
+        // ensureCoreMapSourcesAndLayers, so any armed/lifted drag highlight
+        // no longer exists after the swap. Cancel the drag instead of leaving
+        // it pointing at a vanished layer with a lingering "drag mode" hint.
+        if (store.draggedStateId || store.dragModeStateId) {
+          map.getCanvas().style.cursor = "";
+          dragSessionRef.current.active = false;
+          dragSessionRef.current.startLngLat = null;
+          map.dragPan.enable();
+          store.cancelDrag();
+        }
+
         // 1. Overlay toggles (cities / resources / landforms / etc.)
         syncAllOverlayVisibility(map, store.activeOverlays);
 
@@ -1028,6 +1040,11 @@ export default function NigeriaMap({
         applyDirectionsState(map);
       } catch (err) {
         console.warn("MapType style swap failed:", err);
+        const store = useMapStore.getState();
+        if (store.draggedStateId || store.dragModeStateId) {
+          map.getCanvas().style.cursor = "";
+          store.cancelDrag();
+        }
       }
     })();
 

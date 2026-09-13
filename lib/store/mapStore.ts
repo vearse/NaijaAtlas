@@ -60,6 +60,7 @@ export interface MapSelectionState {
   showLgasForStates: (ids: string[]) => void;
   setSelectedLga: (id: string | null) => void;
   setDraggedStateId: (id: string | null) => void;
+  cancelDrag: () => void;
   toggleDragMode: (stateId: string) => void;
   enableDragMode: (stateId: string, hint?: string) => void;
   toggleOverlay: (id: OverlayLayerId) => void;
@@ -419,6 +420,13 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   },
 
   setDraggedStateId: (id) => set({ draggedStateId: id }),
+
+  cancelDrag: () =>
+    set({
+      draggedStateId: null,
+      dragModeStateId: null,
+      mapActionHint: null,
+    }),
 
   toggleDragMode: (stateId) => {
     const current = get().dragModeStateId;

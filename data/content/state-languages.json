@@ -1,162 +1,178 @@
 {
   "NG-AB": [
-    { "name": "Igbo", "wikiUrl": "https://en.wikipedia.org/wiki/Igbo_language" }
+    {"name": "Igbo", "wikiUrl": "https://en.wikipedia.org/wiki/Igbo_language"}
   ],
   "NG-AD": [
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" },
-    { "name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language" },
-    { "name": "Bura", "wikiUrl": "https://en.wikipedia.org/wiki/Bura_language" },
-    { "name": "Mumuye", "wikiUrl": "https://en.wikipedia.org/wiki/Mumuye_language" }
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language"},
+    {"name": "Bura", "wikiUrl": "https://en.wikipedia.org/wiki/Bura_language"},
+    {"name": "Mumuye", "wikiUrl": "https://en.wikipedia.org/wiki/Mumuye_language"},
+    {"name": "Margi", "wikiUrl": "https://en.wikipedia.org/wiki/Margi_language"}
   ],
   "NG-AK": [
-    { "name": "Ibibio", "wikiUrl": "https://en.wikipedia.org/wiki/Ibibio_language" },
-    { "name": "Annang", "wikiUrl": "https://en.wikipedia.org/wiki/Anaang_language" },
-    { "name": "Oro", "wikiUrl": "https://en.wikipedia.org/wiki/Oro_language" }
+    {"name": "Ibibio", "wikiUrl": "https://en.wikipedia.org/wiki/Ibibio_language"},
+    {"name": "Annang", "wikiUrl": "https://en.wikipedia.org/wiki/Anaang_language"},
+    {"name": "Oro", "wikiUrl": "https://en.wikipedia.org/wiki/Oro_language"},
+    {"name": "Eket", "wikiUrl": "https://en.wikipedia.org/wiki/Eket_language"}
   ],
   "NG-AN": [
-    { "name": "Igbo", "wikiUrl": "https://en.wikipedia.org/wiki/Igbo_language" }
+    {"name": "Igbo", "wikiUrl": "https://en.wikipedia.org/wiki/Igbo_language"}
   ],
   "NG-BA": [
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" },
-    { "name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language" },
-    { "name": "Sayawa", "wikiUrl": "https://en.wikipedia.org/wiki/Zaar_language" }
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language"},
+    {"name": "Sayawa", "wikiUrl": "https://en.wikipedia.org/wiki/Zaar_language"}
   ],
   "NG-BY": [
-    { "name": "Ijaw (Izon)", "wikiUrl": "https://en.wikipedia.org/wiki/Izon_language" },
-    { "name": "Ogbia", "wikiUrl": "https://en.wikipedia.org/wiki/Ogbia_language" }
+    {"name": "Ijaw (Izon)", "wikiUrl": "https://en.wikipedia.org/wiki/Izon_language"},
+    {"name": "Ogbia", "wikiUrl": "https://en.wikipedia.org/wiki/Ogbia_language"}
   ],
   "NG-BE": [
-    { "name": "Tiv", "wikiUrl": "https://en.wikipedia.org/wiki/Tiv_language" },
-    { "name": "Idoma", "wikiUrl": "https://en.wikipedia.org/wiki/Idoma_language" }
+    {"name": "Tiv", "wikiUrl": "https://en.wikipedia.org/wiki/Tiv_language"},
+    {"name": "Idoma", "wikiUrl": "https://en.wikipedia.org/wiki/Idoma_language"},
+    {"name": "Igede", "wikiUrl": "https://en.wikipedia.org/wiki/Igede_language"}
   ],
   "NG-BO": [
-    { "name": "Kanuri", "wikiUrl": "https://en.wikipedia.org/wiki/Kanuri_language" },
-    { "name": "Shuwa Arabic", "wikiUrl": "https://en.wikipedia.org/wiki/Shuwa_Arabic" },
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" }
+    {"name": "Kanuri", "wikiUrl": "https://en.wikipedia.org/wiki/Kanuri_language"},
+    {"name": "Shuwa Arabic", "wikiUrl": "https://en.wikipedia.org/wiki/Shuwa_Arabic"},
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Bura", "wikiUrl": "https://en.wikipedia.org/wiki/Bura-Pabir_language"}
   ],
   "NG-CR": [
-    { "name": "Efik", "wikiUrl": "https://en.wikipedia.org/wiki/Efik_language" },
-    { "name": "Ejagham", "wikiUrl": "https://en.wikipedia.org/wiki/Ejagham_language" },
-    { "name": "Bekwarra", "wikiUrl": "https://en.wikipedia.org/wiki/Bekwarra_language" }
+    {"name": "Efik", "wikiUrl": "https://en.wikipedia.org/wiki/Efik_language"},
+    {"name": "Ejagham", "wikiUrl": "https://en.wikipedia.org/wiki/Ejagham_language"},
+    {"name": "Bekwarra", "wikiUrl": "https://en.wikipedia.org/wiki/Bekwarra_language"},
+    {"name": "Boki", "wikiUrl": "https://en.wikipedia.org/wiki/Boki_language"}
   ],
   "NG-DE": [
-    { "name": "Urhobo", "wikiUrl": "https://en.wikipedia.org/wiki/Urhobo_language" },
-    { "name": "Igbo", "wikiUrl": "https://en.wikipedia.org/wiki/Igbo_language" },
-    { "name": "Ijaw", "wikiUrl": "https://en.wikipedia.org/wiki/Ijaw_languages" },
-    { "name": "Isoko", "wikiUrl": "https://en.wikipedia.org/wiki/Isoko_language" },
-    { "name": "Itsekiri", "wikiUrl": "https://en.wikipedia.org/wiki/Itsekiri_language" }
+    {"name": "Urhobo", "wikiUrl": "https://en.wikipedia.org/wiki/Urhobo_language"},
+    {"name": "Igbo", "wikiUrl": "https://en.wikipedia.org/wiki/Igbo_language"},
+    {"name": "Ijaw", "wikiUrl": "https://en.wikipedia.org/wiki/Ijaw_languages"},
+    {"name": "Isoko", "wikiUrl": "https://en.wikipedia.org/wiki/Isoko_language"},
+    {"name": "Itsekiri", "wikiUrl": "https://en.wikipedia.org/wiki/Itsekiri_language"}
   ],
   "NG-EB": [
-    { "name": "Igbo", "wikiUrl": "https://en.wikipedia.org/wiki/Igbo_language" }
+    {"name": "Igbo", "wikiUrl": "https://en.wikipedia.org/wiki/Igbo_language"}
   ],
   "NG-ED": [
-    { "name": "Edo", "wikiUrl": "https://en.wikipedia.org/wiki/Edo_language" },
-    { "name": "Esan", "wikiUrl": "https://en.wikipedia.org/wiki/Esan_language" },
-    { "name": "Afemai", "wikiUrl": "https://en.wikipedia.org/wiki/Afemai_language" }
+    {"name": "Edo", "wikiUrl": "https://en.wikipedia.org/wiki/Edo_language"},
+    {"name": "Esan", "wikiUrl": "https://en.wikipedia.org/wiki/Esan_language"},
+    {"name": "Afemai", "wikiUrl": "https://en.wikipedia.org/wiki/Afemai_language"}
   ],
   "NG-EK": [
-    { "name": "Yoruba", "wikiUrl": "https://en.wikipedia.org/wiki/Yoruba_language" }
+    {"name": "Yoruba", "wikiUrl": "https://en.wikipedia.org/wiki/Yoruba_language"}
   ],
   "NG-EN": [
-    { "name": "Igbo", "wikiUrl": "https://en.wikipedia.org/wiki/Igbo_language" }
+    {"name": "Igbo", "wikiUrl": "https://en.wikipedia.org/wiki/Igbo_language"}
   ],
   "NG-FC": [
-    { "name": "Gbagyi", "wikiUrl": "https://en.wikipedia.org/wiki/Gbagyi_language" },
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" }
+    {"name": "Gbagyi", "wikiUrl": "https://en.wikipedia.org/wiki/Gbagyi_language"},
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Gwandara", "wikiUrl": "https://en.wikipedia.org/wiki/Gwandara_language"}
   ],
   "NG-GO": [
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" },
-    { "name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language" },
-    { "name": "Tangale", "wikiUrl": "https://en.wikipedia.org/wiki/Tangale_language" }
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language"},
+    {"name": "Tangale", "wikiUrl": "https://en.wikipedia.org/wiki/Tangale_language"},
+    {"name": "Tera", "wikiUrl": "https://en.wikipedia.org/wiki/Tera_language"}
   ],
   "NG-IM": [
-    { "name": "Igbo", "wikiUrl": "https://en.wikipedia.org/wiki/Igbo_language" }
+    {"name": "Igbo", "wikiUrl": "https://en.wikipedia.org/wiki/Igbo_language"}
   ],
   "NG-JI": [
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" },
-    { "name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language" }
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language"}
   ],
   "NG-KD": [
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" },
-    { "name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language" },
-    { "name": "Atyap", "wikiUrl": "https://en.wikipedia.org/wiki/Tyap_language" }
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language"},
+    {"name": "Atyap", "wikiUrl": "https://en.wikipedia.org/wiki/Tyap_language"},
+    {"name": "Adara", "wikiUrl": "https://en.wikipedia.org/wiki/Adara_language"}
   ],
   "NG-KN": [
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" },
-    { "name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language" }
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language"}
   ],
   "NG-KT": [
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" },
-    { "name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language" }
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language"}
   ],
   "NG-KE": [
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" },
-    { "name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language" },
-    { "name": "Kambari", "wikiUrl": "https://en.wikipedia.org/wiki/Kambari_language" }
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language"},
+    {"name": "Kambari", "wikiUrl": "https://en.wikipedia.org/wiki/Kambari_language"}
   ],
   "NG-KO": [
-    { "name": "Igala", "wikiUrl": "https://en.wikipedia.org/wiki/Igala_language" },
-    { "name": "Ebira", "wikiUrl": "https://en.wikipedia.org/wiki/Ebira_language" },
-    { "name": "Yoruba", "wikiUrl": "https://en.wikipedia.org/wiki/Yoruba_language" }
+    {"name": "Igala", "wikiUrl": "https://en.wikipedia.org/wiki/Igala_language"},
+    {"name": "Ebira", "wikiUrl": "https://en.wikipedia.org/wiki/Ebira_language"},
+    {"name": "Okun", "wikiUrl": "https://en.wikipedia.org/wiki/Okun_language"}
   ],
   "NG-KW": [
-    { "name": "Yoruba", "wikiUrl": "https://en.wikipedia.org/wiki/Yoruba_language" },
-    { "name": "Nupe", "wikiUrl": "https://en.wikipedia.org/wiki/Nupe_language" },
-    { "name": "Baruba", "wikiUrl": "https://en.wikipedia.org/wiki/Bariba_language" }
+    {"name": "Yoruba", "wikiUrl": "https://en.wikipedia.org/wiki/Yoruba_language"},
+    {"name": "Nupe", "wikiUrl": "https://en.wikipedia.org/wiki/Nupe_language"},
+    {"name": "Baruba", "wikiUrl": "https://en.wikipedia.org/wiki/Bariba_language"}
   ],
   "NG-LA": [
-    { "name": "Yoruba", "wikiUrl": "https://en.wikipedia.org/wiki/Yoruba_language" }
+    {"name": "Yoruba", "wikiUrl": "https://en.wikipedia.org/wiki/Yoruba_language"},
+    {"name": "Egun", "wikiUrl": "https://en.wikipedia.org/wiki/Gun_language"}
   ],
   "NG-NA": [
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" },
-    { "name": "Eggon", "wikiUrl": "https://en.wikipedia.org/wiki/Eggon_language" },
-    { "name": "Tiv", "wikiUrl": "https://en.wikipedia.org/wiki/Tiv_language" }
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Eggon", "wikiUrl": "https://en.wikipedia.org/wiki/Eggon_language"},
+    {"name": "Tiv", "wikiUrl": "https://en.wikipedia.org/wiki/Tiv_language"},
+    {"name": "Alago", "wikiUrl": "https://en.wikipedia.org/wiki/Alago_language"}
   ],
   "NG-NI": [
-    { "name": "Nupe", "wikiUrl": "https://en.wikipedia.org/wiki/Nupe_language" },
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" },
-    { "name": "Gbagyi", "wikiUrl": "https://en.wikipedia.org/wiki/Gbagyi_language" }
+    {"name": "Nupe", "wikiUrl": "https://en.wikipedia.org/wiki/Nupe_language"},
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Gbagyi", "wikiUrl": "https://en.wikipedia.org/wiki/Gbagyi_language"},
+    {"name": "Kamuku", "wikiUrl": "https://en.wikipedia.org/wiki/Kamuku_language"}
   ],
   "NG-OG": [
-    { "name": "Yoruba", "wikiUrl": "https://en.wikipedia.org/wiki/Yoruba_language" }
+    {"name": "Yoruba", "wikiUrl": "https://en.wikipedia.org/wiki/Yoruba_language"}
   ],
   "NG-ON": [
-    { "name": "Yoruba", "wikiUrl": "https://en.wikipedia.org/wiki/Yoruba_language" }
+    {"name": "Yoruba", "wikiUrl": "https://en.wikipedia.org/wiki/Yoruba_language"}
   ],
   "NG-OS": [
-    { "name": "Yoruba", "wikiUrl": "https://en.wikipedia.org/wiki/Yoruba_language" }
+    {"name": "Yoruba", "wikiUrl": "https://en.wikipedia.org/wiki/Yoruba_language"}
   ],
   "NG-OY": [
-    { "name": "Yoruba", "wikiUrl": "https://en.wikipedia.org/wiki/Yoruba_language" }
+    {"name": "Yoruba", "wikiUrl": "https://en.wikipedia.org/wiki/Yoruba_language"}
   ],
   "NG-PL": [
-    { "name": "Berom", "wikiUrl": "https://en.wikipedia.org/wiki/Berom_language" },
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" },
-    { "name": "Ngas", "wikiUrl": "https://en.wikipedia.org/wiki/Ngas_language" }
+    {"name": "Berom", "wikiUrl": "https://en.wikipedia.org/wiki/Berom_language"},
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Ngas", "wikiUrl": "https://en.wikipedia.org/wiki/Ngas_language"},
+    {"name": "Tarok", "wikiUrl": "https://en.wikipedia.org/wiki/Tarok_language"},
+    {"name": "Mwaghavul", "wikiUrl": "https://en.wikipedia.org/wiki/Mwaghavul_language"}
   ],
   "NG-RI": [
-    { "name": "Ikwerre", "wikiUrl": "https://en.wikipedia.org/wiki/Ikwerre_language" },
-    { "name": "Ijaw", "wikiUrl": "https://en.wikipedia.org/wiki/Ijaw_languages" },
-    { "name": "Ogoni", "wikiUrl": "https://en.wikipedia.org/wiki/Ogoni_languages" },
-    { "name": "Kalabari", "wikiUrl": "https://en.wikipedia.org/wiki/Kalabari_language" }
+    {"name": "Ikwerre", "wikiUrl": "https://en.wikipedia.org/wiki/Ikwerre_language"},
+    {"name": "Ijaw", "wikiUrl": "https://en.wikipedia.org/wiki/Ijaw_languages"},
+    {"name": "Ogoni", "wikiUrl": "https://en.wikipedia.org/wiki/Ogoni_languages"},
+    {"name": "Kalabari", "wikiUrl": "https://en.wikipedia.org/wiki/Kalabari_language"},
+    {"name": "Etche", "wikiUrl": "https://en.wikipedia.org/wiki/Etche_language"}
   ],
   "NG-SO": [
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" },
-    { "name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language" }
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language"}
   ],
   "NG-TA": [
-    { "name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language" },
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" },
-    { "name": "Mumuye", "wikiUrl": "https://en.wikipedia.org/wiki/Mumuye_language" },
-    { "name": "Jukun", "wikiUrl": "https://en.wikipedia.org/wiki/Jukun_language" }
+    {"name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language"},
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Mumuye", "wikiUrl": "https://en.wikipedia.org/wiki/Mumuye_language"},
+    {"name": "Jukun", "wikiUrl": "https://en.wikipedia.org/wiki/Jukun_language"},
+    {"name": "Kuteb", "wikiUrl": "https://en.wikipedia.org/wiki/Kuteb_language"}
   ],
   "NG-YO": [
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" },
-    { "name": "Kanuri", "wikiUrl": "https://en.wikipedia.org/wiki/Kanuri_language" },
-    { "name": "Bade", "wikiUrl": "https://en.wikipedia.org/wiki/Bade_language" }
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Kanuri", "wikiUrl": "https://en.wikipedia.org/wiki/Kanuri_language"},
+    {"name": "Bade", "wikiUrl": "https://en.wikipedia.org/wiki/Bade_language"},
+    {"name": "Ngizim", "wikiUrl": "https://en.wikipedia.org/wiki/Ngizim_language"}
   ],
   "NG-ZA": [
-    { "name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language" },
-    { "name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language" }
+    {"name": "Hausa", "wikiUrl": "https://en.wikipedia.org/wiki/Hausa_language"},
+    {"name": "Fulfulde", "wikiUrl": "https://en.wikipedia.org/wiki/Fula_language"}
   ]
 }

@@ -5,3 +5,6 @@ data/geo/source/salb/extracted_*/
 .DS_Store
 .cursor/
 *.md
+.env
+.env.local
+.env.*.local
