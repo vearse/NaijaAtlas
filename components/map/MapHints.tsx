@@ -107,7 +107,7 @@ export default function MapHints() {
   const isTransient = Boolean(mapActionHint || dragModeStateId);
 
   const barClass =
-    "w-full rounded-xl border shadow-sm text-sm min-h-[42px] flex items-center gap-2 px-3 py-2.5";
+    "w-full rounded-xl border shadow-sm text-sm min-h-[38px] lg:min-h-[42px] flex items-center gap-2 px-3 py-2 lg:py-2.5";
 
   if (panelHidden && !isTransient) {
     return (

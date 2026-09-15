@@ -1,0 +1,1039 @@
+[
+  {
+    "id": "group-ibadan-metro",
+    "name": "Ibadan Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-OY"
+    ],
+    "memberIds": [
+      "NG-OY-IBADAN-NORTH",
+      "NG-OY-IBADAN-NORTH-EAST",
+      "NG-OY-IBADAN-NORTH-WEST",
+      "NG-OY-IBADAN-SOUTH-EAST",
+      "NG-OY-IBADAN-SOUTH-WEST",
+      "NG-OY-EGBEDA",
+      "NG-OY-AKINYELE",
+      "NG-OY-ONA-ARA",
+      "NG-OY-LAGELU",
+      "NG-OY-OLUYOLE",
+      "NG-OY-IDO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The eleven LGAs forming greater Ibadan, once West Africa's largest city by area and Nigeria's colonial-era administrative and commercial capital of the west.",
+    "wikiNotes": [
+      {
+        "title": "19th-century founding",
+        "note": "Ibadan was founded around 1829 as a war camp by Yoruba warriors from Oyo, Ife, and Ijebu, later growing into the largest Yoruba city.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Ibadan"
+      },
+      {
+        "title": "Colonial administrative capital",
+        "note": "Ibadan served as the capital of the old Western Region and later Oyo State, seeding much of Nigeria's early university, radio, and print-media infrastructure.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Western_Region_(Nigeria)"
+      },
+      {
+        "title": "Urban sprawl",
+        "note": "The five core 'Ibadan North/South' LGAs form the historic city centre, while Egbeda, Akinyele, Ona Ara, Lagelu, and Oluyole absorb its modern suburban growth.",
+        "category": "geography",
+        "url": "https://en.wikipedia.org/wiki/Ibadan"
+      }
+    ]
+  },
+  {
+    "id": "group-ogbomoso-metro",
+    "name": "Ogbomoso Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-OY"
+    ],
+    "memberIds": [
+      "NG-OY-OGBOMOSHO-NORTH",
+      "NG-OY-OGBOMOSHO-SOUTH"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The Ogbomosho North and South LGAs forming Oyo State's second-largest urban centre, historically a major Yoruba war-era stronghold and cotton/tobacco trading town.",
+    "wikiNotes": [
+      {
+        "title": "Baptist mission history",
+        "note": "Ogbomosho became a centre of early Baptist missionary activity in Yorubaland from the 1850s, seeding some of Nigeria's oldest schools and hospitals.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Ogbomoso"
+      }
+    ]
+  },
+  {
+    "id": "group-osogbo-metro",
+    "name": "Osogbo Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-OS"
+    ],
+    "memberIds": [
+      "NG-OS-OSOGBO",
+      "NG-OS-OLORUNDA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Osun State's capital cluster, home to the UNESCO-listed Osun-Osogbo Sacred Grove on the city's edge.",
+    "wikiNotes": [
+      {
+        "title": "State capital creation",
+        "note": "Osogbo became Osun State's capital when the state was carved from Oyo State in 1991.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Osogbo"
+      },
+      {
+        "title": "Sacred grove heritage",
+        "note": "The Osun River sacred grove at the city's edge is a UNESCO World Heritage Site and hosts the annual Osun-Osogbo Festival.",
+        "category": "culture",
+        "url": "https://en.wikipedia.org/wiki/Osun-Osogbo_Sacred_Grove"
+      }
+    ]
+  },
+  {
+    "id": "group-ife-ijesa-cluster",
+    "name": "Ife-Ijesa Cluster",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-OS"
+    ],
+    "memberIds": [
+      "NG-OS-IFE-CENTRAL",
+      "NG-OS-IFE-EAST",
+      "NG-OS-IFE-NORTH",
+      "NG-OS-IFE-SOUTH",
+      "NG-OS-ILESA-EAST",
+      "NG-OS-ILESA-WEST",
+      "NG-OS-ATAKUNMOSA-EAST",
+      "NG-OS-ATAKUNMOSA-WEST",
+      "NG-OS-OBOKUN",
+      "NG-OS-ORIADE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The historic Ife and Ijesa LGAs of eastern Osun State - Ife regarded in Yoruba tradition as the cradle of the Yoruba people, and Ilesa as the historic Ijesa kingdom capital.",
+    "wikiNotes": [
+      {
+        "title": "Cradle of the Yoruba",
+        "note": "Ile-Ife is widely regarded in Yoruba oral tradition as the origin point of the Yoruba people and the seat of the Ooni of Ife.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Ile-Ife"
+      },
+      {
+        "title": "Ijesa kingdom",
+        "note": "Ilesa was the historic capital of the Ijesa sub-group, ruled by the Owa Obokun, and a centre of the southwest gold-mining belt.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Ilesa"
+      }
+    ]
+  },
+  {
+    "id": "group-akure-metro",
+    "name": "Akure Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-ON"
+    ],
+    "memberIds": [
+      "NG-ON-AKURE-SOUTH",
+      "NG-ON-AKURE-NORTH"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Ondo State's capital cluster, seat of the Deji of Akure and the state's administrative and commercial hub.",
+    "wikiNotes": [
+      {
+        "title": "State capital",
+        "note": "Akure became Ondo State's capital in 1976 and grew rapidly around federal and state administrative functions.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Akure"
+      }
+    ]
+  },
+  {
+    "id": "group-owo-ose-cluster",
+    "name": "Owo-Ose Cluster",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-ON"
+    ],
+    "memberIds": [
+      "NG-ON-OWO",
+      "NG-ON-OSE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The historic Owo Kingdom axis of Ondo State, known for its distinctive Yoruba-Benin hybrid art and bronze-casting tradition.",
+    "wikiNotes": [
+      {
+        "title": "Owo Kingdom art tradition",
+        "note": "The old Owo Kingdom produced a distinctive bronze and ivory-carving tradition blending Yoruba (Ife) and Benin artistic influences.",
+        "category": "culture",
+        "url": "https://en.wikipedia.org/wiki/Owo,_Nigeria"
+      }
+    ]
+  },
+  {
+    "id": "group-ijebuland",
+    "name": "Ijebuland",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-OG"
+    ],
+    "memberIds": [
+      "NG-OG-IJEBU-ODE",
+      "NG-OG-IJEBU-EAST",
+      "NG-OG-IJEBU-NORTH",
+      "NG-OG-IJEBU-NORTH-EAST",
+      "NG-OG-OGUN-WATERSIDE",
+      "NG-OG-ODOGBOLU",
+      "NG-OG-IKENNE",
+      "NG-OG-REMO-NORTH"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The historic Ijebu and Remo LGAs of Ogun State, once the independent Ijebu Kingdom known for its trading networks and the Sungbo's Eredo earthworks.",
+    "wikiNotes": [
+      {
+        "title": "Ijebu Kingdom trade power",
+        "note": "The pre-colonial Ijebu Kingdom, centred on Ijebu-Ode, controlled key coastal-to-interior trade routes and resisted British incursion until 1892.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Ijebu_Kingdom"
+      },
+      {
+        "title": "Sungbo's Eredo",
+        "note": "The kingdom's boundary is traced by Sungbo's Eredo, a vast earthwork wall-and-ditch system among Africa's largest ancient monuments.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Sungbo%27s_Eredo"
+      }
+    ]
+  },
+  {
+    "id": "group-yewaland-egbado",
+    "name": "Yewaland (Egbado)",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-OG"
+    ],
+    "memberIds": [
+      "NG-OG-EGBADO-NORTH",
+      "NG-OG-EGBADO-SOUTH",
+      "NG-OG-IMEKO-AFON",
+      "NG-OG-IPOKIA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The Yewa (historically Egbado) axis of western Ogun State bordering Benin Republic, home to the Yewa/Egbado Yoruba sub-group.",
+    "wikiNotes": [
+      {
+        "title": "Egbado-to-Yewa renaming",
+        "note": "The old 'Egbado' designation has increasingly been replaced locally by 'Yewa,' named for the Yewa River that runs through the area.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Yewa_people"
+      },
+      {
+        "title": "Cross-border ties",
+        "note": "The zone's proximity to Benin Republic has shaped centuries of cross-border Yoruba-Egun trade and cultural exchange.",
+        "category": "geography",
+        "url": "https://en.wikipedia.org/wiki/Egbado_North"
+      }
+    ]
+  },
+  {
+    "id": "group-egbaland",
+    "name": "Egbaland (Abeokuta Metro)",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-OG"
+    ],
+    "memberIds": [
+      "NG-OG-ABEOKUTA-NORTH",
+      "NG-OG-ABEOKUTA-SOUTH",
+      "NG-OG-ODEDA",
+      "NG-OG-OBAFEMI-OWODE",
+      "NG-OG-EWEKORO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Ogun State's capital cluster, historic seat of the Egba people who settled under the Olumo Rock in the 1830s.",
+    "wikiNotes": [
+      {
+        "title": "Founding at Olumo Rock",
+        "note": "The Egba people settled at Abeokuta in 1830 under Olumo Rock, using its caves as a defensive refuge during the Yoruba civil wars.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Olumo_Rock"
+      },
+      {
+        "title": "State capital",
+        "note": "Abeokuta became Ogun State's capital when the state was created in 1976.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Abeokuta"
+      }
+    ]
+  },
+  {
+    "id": "group-adoekiti-metro",
+    "name": "Ado-Ekiti Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-EK"
+    ],
+    "memberIds": [
+      "NG-EK-ADO-EKITI",
+      "NG-EK-IREPODUN-IFELODUN"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Ekiti State's capital cluster, seat of the Ewi of Ado-Ekiti.",
+    "wikiNotes": [
+      {
+        "title": "State capital",
+        "note": "Ado-Ekiti became Ekiti State's capital when the state was created from Ondo State in 1996.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Ado_Ekiti"
+      }
+    ]
+  },
+  {
+    "id": "group-ilorin-metro",
+    "name": "Ilorin Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KW"
+    ],
+    "memberIds": [
+      "NG-KW-ILORIN-EAST",
+      "NG-KW-ILORIN-SOUTH",
+      "NG-KW-ILORIN-WEST"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The three LGAs forming Ilorin, Kwara State's capital and a historic frontier emirate between Yoruba and Hausa-Fulani Nigeria.",
+    "wikiNotes": [
+      {
+        "title": "Fulani emirate transition",
+        "note": "Ilorin transitioned from a Yoruba town to a Fulani emirate in the early 19th century following the Sokoto Jihad, making it a cultural bridge city.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Ilorin"
+      }
+    ]
+  },
+  {
+    "id": "group-fct-metro",
+    "name": "Abuja Metropolis (FCT)",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-FC"
+    ],
+    "memberIds": [
+      "NG-FC-ABUJA-MUNICIPAL",
+      "NG-FC-BWARI",
+      "NG-FC-GWAGWALADA",
+      "NG-FC-KUJE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The urbanised core area councils of the Federal Capital Territory surrounding Nigeria's purpose-built federal capital.",
+    "wikiNotes": [
+      {
+        "title": "Planned capital",
+        "note": "Abuja was purpose-built as Nigeria's federal capital starting in 1976, officially replacing Lagos in 1991, chosen partly for its central, neutral location.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Abuja"
+      }
+    ]
+  },
+  {
+    "id": "group-jos-metro",
+    "name": "Jos Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-PL"
+    ],
+    "memberIds": [
+      "NG-PL-JOS-NORTH",
+      "NG-PL-JOS-SOUTH",
+      "NG-PL-JOS-EAST"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Plateau State's capital cluster on the cool Jos Plateau, built around a 20th-century tin-mining boom.",
+    "wikiNotes": [
+      {
+        "title": "Tin-mining boom town",
+        "note": "Jos grew rapidly from the early 1900s as a British colonial tin-mining hub, drawing migrant workers from across Nigeria and beyond.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Jos"
+      },
+      {
+        "title": "Cool highland climate",
+        "note": "At over 1,200m elevation, Jos has a notably cooler climate than most of Nigeria, historically marketed as a colonial hill-station retreat.",
+        "category": "geography",
+        "url": "https://en.wikipedia.org/wiki/Jos_Plateau"
+      }
+    ]
+  },
+  {
+    "id": "group-lokoja-confluence",
+    "name": "Lokoja / Confluence Cluster",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KO"
+    ],
+    "memberIds": [
+      "NG-KO-LOKOJA",
+      "NG-KO-KOGI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Kogi State's capital area at the confluence of the Niger and Benue rivers, Nigeria's first colonial administrative capital.",
+    "wikiNotes": [
+      {
+        "title": "Colonial capital",
+        "note": "Lokoja served as the capital of the Royal Niger Company and later the Protectorate of Northern Nigeria under Frederick Lugard from 1900.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Lokoja"
+      },
+      {
+        "title": "River confluence",
+        "note": "The town sits exactly at the meeting point of the Niger and Benue rivers, Nigeria's two largest waterways.",
+        "category": "geography",
+        "url": "https://en.wikipedia.org/wiki/Lokoja"
+      }
+    ]
+  },
+  {
+    "id": "group-makurdi-metro",
+    "name": "Makurdi Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-BE"
+    ],
+    "memberIds": [
+      "NG-BE-MAKURDI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Benue State's capital, on the Benue River, and the state's main administrative and trading hub.",
+    "wikiNotes": [
+      {
+        "title": "State capital",
+        "note": "Makurdi became Benue State's capital when the state was created in 1976.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Makurdi"
+      }
+    ]
+  },
+  {
+    "id": "group-lafia-keffi-axis",
+    "name": "Lafia-Keffi Axis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-NA"
+    ],
+    "memberIds": [
+      "NG-NA-LAFIA",
+      "NG-NA-KEFFI",
+      "NG-NA-AKWANGA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Nasarawa State's main administrative and historic emirate towns, close to the Abuja-Jos-Lafia corridor.",
+    "wikiNotes": [
+      {
+        "title": "Historic emirates",
+        "note": "Keffi and Lafia both trace their origins to 19th-century Fulani emirate foundations tied to the Sokoto Caliphate's southern expansion.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Keffi"
+      }
+    ]
+  },
+  {
+    "id": "group-kano-metro",
+    "name": "Kano Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KN"
+    ],
+    "memberIds": [
+      "NG-KN-KANO-MUNICIPAL",
+      "NG-KN-FAGGE",
+      "NG-KN-DALA",
+      "NG-KN-GWALE",
+      "NG-KN-TARAUNI",
+      "NG-KN-NASARAWA",
+      "NG-KN-KUMBOTSO",
+      "NG-KN-UNGOGO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The eight urban LGAs forming Kano city, one of West Africa's oldest and largest trading cities, historically ringed by ancient city walls.",
+    "wikiNotes": [
+      {
+        "title": "Ancient trans-Saharan hub",
+        "note": "Kano has been a major trans-Saharan trade centre since at least the 14th century, historically famed for leather, dyed cloth (indigo pits), and textiles.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Kano"
+      },
+      {
+        "title": "Kano city walls",
+        "note": "The old city (Kano birni) was enclosed by defensive mud walls dating to the 15th century, remnants of which still stand.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Kano_city_walls"
+      }
+    ]
+  },
+  {
+    "id": "group-kaduna-metro",
+    "name": "Kaduna Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KD"
+    ],
+    "memberIds": [
+      "NG-KD-KADUNA-NORTH",
+      "NG-KD-KADUNA-SOUTH",
+      "NG-KD-CHIKUN",
+      "NG-KD-IGABI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Kaduna State's capital cluster, a planned colonial administrative and military city on the Kaduna River.",
+    "wikiNotes": [
+      {
+        "title": "Colonial planned city",
+        "note": "Kaduna was founded around 1913 by Frederick Lugard as the capital of the Protectorate of Northern Nigeria, designed with a clear colonial urban plan.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Kaduna"
+      }
+    ]
+  },
+  {
+    "id": "group-zaria-metro",
+    "name": "Zaria Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KD"
+    ],
+    "memberIds": [
+      "NG-KD-ZARIA",
+      "NG-KD-SABON-GARI",
+      "NG-KD-GIWA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The historic Zazzau emirate city and modern university town, home to Ahmadu Bello University.",
+    "wikiNotes": [
+      {
+        "title": "Zazzau emirate",
+        "note": "Zaria was the seat of the historic Zazzau (Zaria) emirate, one of the seven original Hausa city-states (Hausa Bakwai).",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Zazzau"
+      },
+      {
+        "title": "University town",
+        "note": "Zaria became a major seat of higher education with the establishment of Ahmadu Bello University in 1962, one of Nigeria's largest universities.",
+        "category": "culture",
+        "url": "https://en.wikipedia.org/wiki/Ahmadu_Bello_University"
+      }
+    ]
+  },
+  {
+    "id": "group-sokoto-metro",
+    "name": "Sokoto Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-SO"
+    ],
+    "memberIds": [
+      "NG-SO-SOKOTO-NORTH",
+      "NG-SO-SOKOTO-SOUTH",
+      "NG-SO-WAMAKO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Sokoto State's capital, historic seat of the Sokoto Caliphate and the Sultan of Sokoto, Nigeria's foremost Islamic traditional authority.",
+    "wikiNotes": [
+      {
+        "title": "Caliphate seat",
+        "note": "Sokoto was founded around 1809 as the capital of the Sokoto Caliphate established by Usman dan Fodio, and remains the seat of the Sultanate to this day.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Sokoto_Caliphate"
+      }
+    ]
+  },
+  {
+    "id": "group-katsina-metro",
+    "name": "Katsina Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KT"
+    ],
+    "memberIds": [
+      "NG-KT-KATSINA",
+      "NG-KT-KAITA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Katsina State's capital, one of the original Hausa city-states and a historic centre of Islamic scholarship.",
+    "wikiNotes": [
+      {
+        "title": "Hausa Bakwai city-state",
+        "note": "Katsina was one of the seven original Hausa city-states (Hausa Bakwai) and a major centre of Quranic scholarship before and after the Sokoto Jihad.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Katsina"
+      }
+    ]
+  },
+  {
+    "id": "group-maiduguri-metro",
+    "name": "Maiduguri Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-BO"
+    ],
+    "memberIds": [
+      "NG-BO-MAIDUGURI",
+      "NG-BO-JERE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Borno State's capital, historic seat of the Borno Emirate and successor to the ancient Kanem-Bornu Empire.",
+    "wikiNotes": [
+      {
+        "title": "Kanem-Bornu legacy",
+        "note": "Maiduguri traces its regional lineage to the centuries-old Kanem-Bornu Empire, one of Africa's longest-lived states, though the modern city was founded in 1907.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Kanem%E2%80%93Bornu_Empire"
+      }
+    ]
+  },
+  {
+    "id": "group-yola-metro",
+    "name": "Yola Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AD"
+    ],
+    "memberIds": [
+      "NG-AD-YOLA-NORTH",
+      "NG-AD-YOLA-SOUTH"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Adamawa State's capital cluster, formed of the old Fombina/Adamawa emirate town of Yola and its modern twin Jimeta.",
+    "wikiNotes": [
+      {
+        "title": "Adamawa emirate",
+        "note": "Yola was founded around 1841 as the capital of the Adamawa Emirate, one of the largest emirates of the Sokoto Caliphate, spanning into modern Cameroon.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Adamawa_Emirate"
+      }
+    ]
+  },
+  {
+    "id": "group-bauchi-metro",
+    "name": "Bauchi Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-BA"
+    ],
+    "memberIds": [
+      "NG-BA-BAUCHI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Bauchi State's capital and historic emirate seat, gateway to Yankari National Park.",
+    "wikiNotes": [
+      {
+        "title": "Bauchi Emirate",
+        "note": "Bauchi was founded as an emirate seat in the early 19th century following the Sokoto Jihad, ruled by the Emir of Bauchi.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Bauchi_Emirate"
+      }
+    ]
+  },
+  {
+    "id": "group-gombe-metro",
+    "name": "Gombe Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-GO"
+    ],
+    "memberIds": [
+      "NG-GO-GOMBE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Gombe State's capital, a modern administrative city created as state capital in 1996.",
+    "wikiNotes": [
+      {
+        "title": "State capital",
+        "note": "Gombe became a state capital only in 1996 when Gombe State was carved from Bauchi State.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Gombe,_Nigeria"
+      }
+    ]
+  },
+  {
+    "id": "group-enugu-metro",
+    "name": "Enugu Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-EN"
+    ],
+    "memberIds": [
+      "NG-EN-ENUGU-EAST",
+      "NG-EN-ENUGU-NORTH",
+      "NG-EN-ENUGU-SOUTH"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Enugu State's capital, built around early-20th-century coal mining and once capital of the old Eastern Region and briefly of Biafra.",
+    "wikiNotes": [
+      {
+        "title": "Coal City",
+        "note": "Enugu grew from a 1909 coal discovery, developing into Nigeria's first major coal-mining industrial town and giving Enugu State its 'Coal City' nickname.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Enugu"
+      },
+      {
+        "title": "Biafran capital",
+        "note": "Enugu briefly served as the capital of the breakaway Republic of Biafra during the early phase of the 1967-70 Nigerian Civil War.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Republic_of_Biafra"
+      }
+    ]
+  },
+  {
+    "id": "group-owerri-metro",
+    "name": "Owerri Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-IM"
+    ],
+    "memberIds": [
+      "NG-IM-OWERRI-MUNICIPAL",
+      "NG-IM-OWERRI-NORTH",
+      "NG-IM-OWERRI-WEST"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Imo State's capital cluster, known locally as the 'Eastern Heartland' and a fast-growing hospitality and events hub.",
+    "wikiNotes": [
+      {
+        "title": "State capital",
+        "note": "Owerri became Imo State's capital when the state was created in 1976.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Owerri"
+      }
+    ]
+  },
+  {
+    "id": "group-onitsha-metro",
+    "name": "Onitsha Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AN"
+    ],
+    "memberIds": [
+      "NG-AN-ONITSHA-NORTH",
+      "NG-AN-ONITSHA-SOUTH",
+      "NG-AN-OGBARU"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Anambra State's commercial powerhouse on the Niger River, home to reputedly West Africa's largest market.",
+    "wikiNotes": [
+      {
+        "title": "Niger River trading port",
+        "note": "Onitsha grew as a major 19th-century river port and colonial trading post on the east bank of the Niger, cemented by the 1965 Niger Bridge crossing.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Onitsha"
+      }
+    ]
+  },
+  {
+    "id": "group-aba-metro",
+    "name": "Aba Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AB"
+    ],
+    "memberIds": [
+      "NG-AB-ABA-NORTH",
+      "NG-AB-ABA-SOUTH",
+      "NG-AB-OSISIOMA",
+      "NG-AB-UGWUNAGBO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Abia State's commercial and light-manufacturing capital, home of the 'Aba-made' shoe and garment industry centred on Ariaria Market.",
+    "wikiNotes": [
+      {
+        "title": "Aba-made manufacturing",
+        "note": "Aba's Ariaria Market area developed into Nigeria's leading hub for locally manufactured shoes, bags, and garments, collectively branded 'Aba-made.'",
+        "category": "economy",
+        "url": "https://en.wikipedia.org/wiki/Ariaria_International_Market"
+      }
+    ]
+  },
+  {
+    "id": "group-abakaliki-metro",
+    "name": "Abakaliki Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-EB"
+    ],
+    "memberIds": [
+      "NG-EB-ABAKALIKI",
+      "NG-EB-EBONYI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Ebonyi State's capital, historically known for rice cultivation and small-scale tin/lead mining.",
+    "wikiNotes": [
+      {
+        "title": "Rice-growing hub",
+        "note": "Abakaliki and its surrounding LGAs are among Nigeria's most productive rice-farming zones, giving the area a long-standing rice-trade identity.",
+        "category": "economy",
+        "url": "https://en.wikipedia.org/wiki/Abakaliki"
+      }
+    ]
+  },
+  {
+    "id": "group-port-harcourt-metro",
+    "name": "Port Harcourt Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-RI"
+    ],
+    "memberIds": [
+      "NG-RI-PORT-HARCOURT",
+      "NG-RI-OBIO-AKPOR",
+      "NG-RI-ELEME",
+      "NG-RI-OKRIKA",
+      "NG-RI-OYIGBO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Rivers State's capital and Nigeria's oil-industry hub, built as a colonial coal/rail port and now the centre of the Niger Delta petroleum economy.",
+    "wikiNotes": [
+      {
+        "title": "Colonial coal port",
+        "note": "Port Harcourt was founded in 1912 as a railway terminus and export port for Enugu coal, named after colonial secretary Lewis Harcourt.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Port_Harcourt"
+      },
+      {
+        "title": "Oil-industry centre",
+        "note": "The city became Nigeria's petroleum-industry hub following oil discoveries in the Niger Delta from the late 1950s, hosting major refineries and oil-company headquarters.",
+        "category": "economy",
+        "url": "https://en.wikipedia.org/wiki/Petroleum_industry_in_Nigeria"
+      }
+    ]
+  },
+  {
+    "id": "group-benin-city-metro",
+    "name": "Benin City Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-ED"
+    ],
+    "memberIds": [
+      "NG-ED-OREDO",
+      "NG-ED-EGOR",
+      "NG-ED-IKPOBA-OKHA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Edo State's capital, historic seat of the centuries-old Benin Kingdom and its Oba, famed for its bronze and ivory court art.",
+    "wikiNotes": [
+      {
+        "title": "Benin Kingdom",
+        "note": "Benin City was the capital of the Benin Kingdom, one of West Africa's oldest and most powerful pre-colonial states, dating back over 1,000 years.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Kingdom_of_Benin"
+      },
+      {
+        "title": "1897 Punitive Expedition",
+        "note": "The city's royal palace and famed bronze plaques were looted by a British military expedition in 1897, a legacy still central to ongoing restitution debates.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Benin_Expedition_of_1897"
+      }
+    ]
+  },
+  {
+    "id": "group-uyo-metro",
+    "name": "Uyo Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AK"
+    ],
+    "memberIds": [
+      "NG-AK-UYO",
+      "NG-AK-URUAN",
+      "NG-AK-ETINAN",
+      "NG-AK-IBESIKPO-ASUTAN"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Akwa Ibom State's capital cluster, a fast-growing administrative and oil-services city among the Ibibio people.",
+    "wikiNotes": [
+      {
+        "title": "State capital",
+        "note": "Uyo became Akwa Ibom State's capital when the state was created from Cross River State in 1987.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Uyo"
+      }
+    ]
+  },
+  {
+    "id": "group-warri-metro",
+    "name": "Warri Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-DE"
+    ],
+    "memberIds": [
+      "NG-DE-WARRI-SOUTH",
+      "NG-DE-WARRI-SOUTH-WEST",
+      "NG-DE-UVWIE",
+      "NG-DE-UDU"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Delta State's oil and commercial hub in the western Niger Delta, home to a major refinery and multi-ethnic Itsekiri-Urhobo-Ijaw population.",
+    "wikiNotes": [
+      {
+        "title": "Colonial trading post",
+        "note": "Warri developed from a historic Itsekiri Kingdom port into a major 20th-century oil-industry and trading city.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Warri"
+      }
+    ]
+  },
+  {
+    "id": "group-asaba-oshimili-metro",
+    "name": "Asaba Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-DE"
+    ],
+    "memberIds": [
+      "NG-DE-OSHIMILI-SOUTH",
+      "NG-DE-OSHIMILI-NORTH"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Delta State's capital, on the west bank of the Niger River directly opposite Onitsha, linked by the Niger Bridge.",
+    "wikiNotes": [
+      {
+        "title": "State capital",
+        "note": "Asaba became Delta State's capital when the state was created from Bendel State in 1991.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Asaba,_Nigeria"
+      }
+    ]
+  },
+  {
+    "id": "group-calabar-metro",
+    "name": "Calabar Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-CR"
+    ],
+    "memberIds": [
+      "NG-CR-CALABAR-MUNICIPAL",
+      "NG-CR-CALABAR-SOUTH"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Cross River State's capital, a historic Efik trading port and one of Nigeria's oldest points of contact with European traders.",
+    "wikiNotes": [
+      {
+        "title": "Historic trading port",
+        "note": "Calabar (Old Calabar) was a major Atlantic-era Efik trading port from the 17th century onward, later a British colonial administrative centre.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Calabar"
+      }
+    ]
+  }
+]

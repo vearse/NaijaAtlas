@@ -64,7 +64,7 @@ export default function MapTypeToggle() {
 
   return (
     <div role="group" aria-label="Map type selector">
-      <div className="inline-flex rounded-xl bg-white/90 backdrop-blur-md p-1 shadow-lg border border-slate-200/80 text-xs font-semibold">
+      <div className="inline-flex rounded-xl bg-white/90 backdrop-blur-md p-0.5 sm:p-1 shadow-lg border border-slate-200/80 text-xs font-semibold">
         {OPTIONS.map((opt, idx) => {
           const on = mapType === opt.id;
           const isFirst = idx === 0;
@@ -79,7 +79,7 @@ export default function MapTypeToggle() {
               title={opt.desc}
               className={[
                 "relative inline-flex items-center justify-center gap-1.5",
-                "min-h-[36px] px-2.5 sm:px-3.5 py-1.5",
+                "min-h-[30px] px-1.5 sm:px-3.5 py-1",
                 "transition-all select-none",
                 on ? activeBase : inactiveBase,
                 isFirst ? "rounded-l-lg" : "",

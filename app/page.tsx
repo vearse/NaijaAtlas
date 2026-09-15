@@ -10,6 +10,9 @@ import type {
   StateLanguage,
   LgaContent,
   WardsByLga,
+  MetroGroup,
+  StateNotesMap,
+  LgaGeneral,
 } from "@/types/location";
 
 function loadJson<T>(filePath: string): T {
@@ -44,6 +47,15 @@ export default function HomePage() {
     path.join(root, "data/locations/wards-by-lga.json")
   );
   const compareBundle = loadCompareBundle(root);
+  const metroGroups = loadJson<MetroGroup[]>(
+    path.join(root, "data/content/metro.json")
+  );
+  const stateNotes = loadJson<StateNotesMap>(
+    path.join(root, "data/content/state-notes.json")
+  );
+  const lgaGeneral = loadJson<Record<string, LgaGeneral>>(
+    path.join(root, "data/compare/lgas/general.json")
+  );
 
   return (
     <ExplorerShell
@@ -54,6 +66,9 @@ export default function HomePage() {
       lgaContent={lgaContent}
       wardsByLga={wardsByLga}
       compareBundle={compareBundle}
+      metroGroups={metroGroups}
+      stateNotes={stateNotes}
+      lgaGeneral={lgaGeneral}
     />
   );
 }

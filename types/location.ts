@@ -82,3 +82,56 @@ export interface LgaContent {
 
 /** Ward names keyed by LGA id (e.g. NG-LA-IKEJA) */
 export type WardsByLga = Record<string, string[]>;
+
+export interface WikiNote {
+  title: string;
+  note: string;
+  category: string;
+  url: string;
+}
+
+/** A metropolitan area grouping one or more LGAs (data/content/metro.json). */
+export interface MetroGroup {
+  id: string;
+  name: string;
+  groupType: string;
+  isOfficial: boolean;
+  partitionsState: string | null;
+  stateIds: string[];
+  memberIds: string[];
+  effectiveFrom: string | null;
+  effectiveTo: string | null;
+  description: string;
+  wikiNotes: WikiNote[];
+}
+
+/** Per-state exploration hints keyed by state id (data/content/state-notes.json). */
+export type StateNotesMap = Record<string, WikiNote[]>;
+
+/** Hand-curated "general" detail per LGA (data/compare/lgas/general.json). */
+export interface LgaGeneral {
+  id: string;
+  name: string;
+  stateId: string;
+  stateName: string;
+  nickname?: string;
+  summary?: string;
+  headquarters?: string;
+  yearCreated?: string;
+  chairman?: string | null;
+  chairmanNote?: string;
+  chairmanUpdatedAt?: string | null;
+  senatorialDistrictId?: string | null;
+  federalConstituency?: string;
+  populationNote?: string;
+  majorTowns?: string[];
+  languages?: string[];
+  ethnicGroups?: string[];
+  economy?: string;
+  climate?: string;
+  landmarks?: string[];
+  relatedResourceIds?: string[];
+  highlights?: string[];
+  wikiUrl?: string;
+  needsReview?: boolean;
+}

@@ -21,6 +21,9 @@ import type {
   StateContent,
   LgaContent,
   WardsByLga,
+  MetroGroup,
+  StateNotesMap,
+  LgaGeneral,
 } from "@/types/location";
 import type { CompareBundle } from "@/types/compare";
 import { OVERLAY_LAYER_LABELS } from "@/types/overlay";
@@ -34,6 +37,9 @@ interface LocationPanelProps {
   lgaContent: LgaContent[];
   wardsByLga: WardsByLga;
   compareBundle: CompareBundle;
+  metroGroups: MetroGroup[];
+  stateNotes: StateNotesMap;
+  lgaGeneral: Record<string, LgaGeneral>;
 }
 
 export default function LocationPanel({
@@ -44,6 +50,9 @@ export default function LocationPanel({
   lgaContent,
   wardsByLga,
   compareBundle,
+  metroGroups,
+  stateNotes,
+  lgaGeneral,
 }: LocationPanelProps) {
   const isMobile = useIsMobile();
   const [desktopCompareOpen, setDesktopCompareOpen] = useState(false);
@@ -182,6 +191,7 @@ export default function LocationPanel({
                 regions.find((r) => r.id === lgaLoc.regionId)?.name
               }
               wards={wards}
+              general={selectedLgaId ? lgaGeneral[selectedLgaId] : undefined}
             />
           )}
 
@@ -193,6 +203,8 @@ export default function LocationPanel({
               compareBundle={compareBundle}
               selectedLgaId={selectedLgaId}
               onSelectLga={toggleLgaSelection}
+              metroGroups={metroGroups}
+              stateNotesMap={stateNotes}
             />
           )}
 

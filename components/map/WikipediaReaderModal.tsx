@@ -1,21 +1,63 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
 import {
   fetchWikipediaArticle,
+  wikiTitleFromUrl,
   type WikipediaArticle,
 } from "@/lib/wikipedia/fetchArticle";
+
+interface WikiPage {
+  url: string;
+  title?: string;
+}
 
 function WikiArticleBody({
   loading,
   error,
   article,
+  onNavigate,
 }: {
   loading: boolean;
   error: string | null;
   article: WikipediaArticle | null;
+  onNavigate: (url: string) => void;
 }) {
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
+
+  const handleLoaded = (e: React.SyntheticEvent<HTMLIFrameElement>) => {
+    const win = e.currentTarget.contentWindow;
+    const doc = win?.document;
+    if (!doc) return;
+
+    doc.addEventListener(
+      "click",
+      (ev) => {
+        const target = ev.target as Element | null;
+        if (!target || typeof target.closest !== "function") return;
+        const anchor = target.closest("a");
+        if (!anchor) return;
+        const href = anchor.getAttribute("href");
+        if (!href) return;
+        if (href.startsWith("#")) return;
+
+        let resolved: URL;
+        try {
+          resolved = new URL(href, doc.baseURI);
+        } catch {
+          return;
+        }
+        if (!resolved.hostname.includes("wikipedia.org")) return;
+        if (resolved.href === doc.baseURI) return;
+        ev.preventDefault();
+        ev.stopPropagation();
+        onNavigate(resolved.href);
+      },
+      true
+    );
+  };
+
   if (loading) {
     return (
       <div className="flex flex-1 flex-col items-center justify-center min-h-[70vh] text-slate-500 gap-3">
@@ -38,8 +80,10 @@ function WikiArticleBody({
   return (
     <div className="flex flex-col h-full min-h-0">
       <iframe
+        ref={iframeRef}
         srcDoc={article.html}
         title={article.title}
+        onLoad={handleLoaded}
         className="w-full flex-1 min-h-0 border-0 bg-white"
         sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
       />
@@ -53,19 +97,37 @@ function WikiArticleBody({
 function WikiModalHeader({
   heading,
   pageUrl,
+  canGoBack,
+  backLabel,
+  onBack,
   onClose,
 }: {
   heading: string;
   pageUrl: string;
+  canGoBack: boolean;
+  backLabel: string;
+  onBack: () => void;
   onClose: () => void;
 }) {
   return (
     <div className="shrink-0 flex items-center justify-between gap-3 px-4 lg:px-6 py-3 lg:py-4 border-b border-slate-100 bg-gradient-to-r from-white to-sky-50/80">
       <div className="min-w-0 flex-1">
-        <p className="text-xs font-semibold uppercase tracking-wider text-sky-700">
-          Deep dive · Wikipedia
-        </p>
-        <h2 className="text-sm lg:text-lg font-bold text-slate-900 truncate">
+        <div className="flex items-center gap-2">
+          <p className="text-xs font-semibold uppercase tracking-wider text-sky-700">
+            Deep dive · Wikipedia
+          </p>
+          {canGoBack && (
+            <button
+              type="button"
+              onClick={onBack}
+              className="inline-flex items-center gap-1 rounded-full border border-sky-200 bg-white px-2 py-0.5 text-[10px] font-semibold text-sky-700 hover:bg-sky-50 transition-colors"
+            >
+              <span aria-hidden>←</span>
+              {backLabel}
+            </button>
+          )}
+        </div>
+        <h2 className="text-sm lg:text-lg font-bold text-slate-900 truncate mt-0.5">
           {heading}
         </h2>
         <a
@@ -96,15 +158,39 @@ export default function WikipediaReaderModal() {
   const closeWikiModal = useMapStore((s) => s.closeWikiModal);
 
   const open = wikiModal !== null;
-  const wikiUrl = wikiModal?.url ?? null;
   const featureName = wikiModal?.title;
 
+  const [pages, setPages] = useState<WikiPage[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [article, setArticle] = useState<WikipediaArticle | null>(null);
 
+  const current = pages.length > 0 ? pages[pages.length - 1] : null;
+  const currentUrl = current?.url ?? null;
+  const canGoBack = pages.length > 1;
+  const primaryTitle = pages.length > 1 ? (pages[0].title ?? "Original article") : "";
+
+  const navigateTo = useCallback((url: string) => {
+    setPages((prev) => [
+      ...prev,
+      { url, title: wikiTitleFromUrl(url) ?? undefined },
+    ]);
+  }, []);
+
+  const goBack = useCallback(() => {
+    setPages((prev) => (prev.length > 1 ? prev.slice(0, -1) : prev));
+  }, []);
+
   useEffect(() => {
-    if (!open || !wikiUrl) {
+    if (!wikiModal) {
+      setPages([]);
+      return;
+    }
+    setPages([{ url: wikiModal.url, title: wikiModal.title }]);
+  }, [wikiModal]);
+
+  useEffect(() => {
+    if (!open || !currentUrl) {
       setArticle(null);
       setError(null);
       setLoading(false);
@@ -116,7 +202,7 @@ export default function WikipediaReaderModal() {
     setError(null);
     setArticle(null);
 
-    void fetchWikipediaArticle(wikiUrl)
+    void fetchWikipediaArticle(currentUrl)
       .then((result) => {
         if (!cancelled) setArticle(result);
       })
@@ -134,7 +220,7 @@ export default function WikipediaReaderModal() {
     return () => {
       cancelled = true;
     };
-  }, [open, wikiUrl]);
+  }, [open, currentUrl]);
 
   useEffect(() => {
     if (!open) return;
@@ -145,9 +231,9 @@ export default function WikipediaReaderModal() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open, closeWikiModal]);
 
-  if (!open || !wikiUrl) return null;
+  if (!open || !current) return null;
 
-  const heading = article?.title ?? featureName ?? "Wikipedia";
+  const heading = article?.title ?? current?.title ?? featureName ?? "Wikipedia";
 
   return (
     <>
@@ -167,11 +253,19 @@ export default function WikipediaReaderModal() {
       >
         <WikiModalHeader
           heading={heading}
-          pageUrl={wikiUrl}
+          pageUrl={current.url}
+          canGoBack={canGoBack}
+          backLabel={primaryTitle}
+          onBack={goBack}
           onClose={closeWikiModal}
         />
         <div className="flex-1 overflow-hidden flex flex-col px-4 py-3 min-h-0">
-          <WikiArticleBody loading={loading} error={error} article={article} />
+          <WikiArticleBody
+            loading={loading}
+            error={error}
+            article={article}
+            onNavigate={navigateTo}
+          />
         </div>
       </div>
 
@@ -185,11 +279,19 @@ export default function WikipediaReaderModal() {
         <div className="pointer-events-auto w-full max-w-4xl h-[min(92vh,880px)] min-h-[80vh] flex flex-col bg-white rounded-2xl shadow-2xl border border-slate-200/80 overflow-hidden animate-scale-in">
           <WikiModalHeader
             heading={heading}
-            pageUrl={wikiUrl}
+            pageUrl={current.url}
+            canGoBack={canGoBack}
+            backLabel={primaryTitle}
+            onBack={goBack}
             onClose={closeWikiModal}
           />
           <div className="flex-1 overflow-hidden flex flex-col px-6 py-4 min-h-0">
-            <WikiArticleBody loading={loading} error={error} article={article} />
+            <WikiArticleBody
+              loading={loading}
+              error={error}
+              article={article}
+              onNavigate={navigateTo}
+            />
           </div>
         </div>
       </div>

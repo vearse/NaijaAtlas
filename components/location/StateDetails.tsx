@@ -1,6 +1,12 @@
 import { useState } from "react";
 import type { CompareBundle } from "@/types/compare";
-import type { StateContent, StateLocation, LgaLocation } from "@/types/location";
+import type {
+  StateContent,
+  StateLocation,
+  LgaLocation,
+  MetroGroup,
+  StateNotesMap,
+} from "@/types/location";
 import { formatStateLandArea } from "@/lib/compare/landArea";
 import { getCategoryData } from "@/lib/compare/compareUtils";
 import { openCityOnMap } from "@/lib/map/cityCoordsLookup";
@@ -15,7 +21,16 @@ interface StateDetailsProps {
   compareBundle?: CompareBundle;
   selectedLgaId?: string | null;
   onSelectLga?: (id: string) => void;
+  metroGroups?: MetroGroup[];
+  stateNotesMap?: StateNotesMap;
 }
+
+const NOTE_CATEGORY_STYLES: Record<string, string> = {
+  history: "bg-sky-50 text-sky-700 border-sky-200",
+  culture: "bg-violet-50 text-violet-700 border-violet-200",
+  economy: "bg-emerald-50 text-emerald-700 border-emerald-200",
+  geography: "bg-amber-50 text-amber-700 border-amber-200",
+};
 
 function StatCard({
   label,
@@ -61,6 +76,8 @@ export default function StateDetails({
   compareBundle,
   selectedLgaId,
   onSelectLga,
+  metroGroups = [],
+  stateNotesMap = {},
 }: StateDetailsProps) {
   const [showPlanVisit, setShowPlanVisit] = useState(false);
   const openWikiModal = useMapStore((s) => s.openWikiModal);
@@ -68,6 +85,11 @@ export default function StateDetails({
   const stateLgas = lgas
     .filter((l) => l.parentId === location.id)
     .sort((a, b) => a.name.localeCompare(b.name));
+
+  const lgaById = new Map(lgas.map((l) => [l.id, l]));
+
+  const stateMetro = metroGroups.filter((g) => g.stateIds.includes(location.id));
+  const stateNotes = stateNotesMap[location.id] ?? [];
 
   const wardTotal = stateLgas.reduce((n, l) => n + l.wardCount, 0);
   const landArea = formatStateLandArea(compareBundle, location.id);
@@ -134,6 +156,88 @@ export default function StateDetails({
           value={wardTotal > 0 ? String(wardTotal) : "—"}
         />
       </dl>
+
+      {stateMetro.length > 0 && (
+        <div className="space-y-3">
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            Metro areas ({stateMetro.length})
+          </h3>
+          {stateMetro.map((m) => {
+            const metroLgas = m.memberIds
+              .map((id) => lgaById.get(id))
+              .filter((l): l is LgaLocation => l !== undefined);
+            return (
+              <div
+                key={m.id}
+                className="rounded-xl border border-slate-100 bg-slate-50/70 p-3 space-y-2"
+              >
+                <div>
+                  <p className="text-sm font-semibold text-slate-800">{m.name}</p>
+                  {m.memberIds.length > 0 && (
+                    <p className="text-[11px] font-medium text-slate-500 mt-0.5">
+                      {m.memberIds.length} LGA
+                      {m.memberIds.length === 1 ? "" : "s"}
+                    </p>
+                  )}
+                </div>
+                {m.description && (
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    {m.description}
+                  </p>
+                )}
+                {metroLgas.length > 0 && (
+                  <div className="pt-1">
+                    <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">
+                      LGAs in this metro
+                    </p>
+                    <div className="flex flex-wrap gap-x-3 gap-y-1 mt-1.5">
+                      {metroLgas.map((lga) => (
+                        <button
+                          key={lga.id}
+                          type="button"
+                          onClick={() => onSelectLga?.(lga.id)}
+                          title={`Open ${lga.name} details`}
+                          className="text-xs text-slate-600 underline underline-offset-2 rounded px-0.5 transition-colors hover:text-ng-green"
+                        >
+                          {lga.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              {m.wikiNotes.length > 0 && (
+                <ul className="space-y-2">
+                  {m.wikiNotes.map((w, i) => (
+                    <li key={i} className="rounded-lg bg-white border border-slate-100 px-2.5 py-2">
+                      <button
+                        type="button"
+                        onClick={() => openWikiModal(w.url, w.title)}
+                        className="w-full text-left group"
+                      >
+                        <span className="flex items-center gap-1.5 text-xs font-semibold text-sky-800 group-hover:text-sky-950 underline underline-offset-2">
+                          {w.title}
+                          <span
+                            className={`rounded-full border px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide ${
+                              NOTE_CATEGORY_STYLES[w.category] ??
+                              "bg-slate-50 text-slate-600 border-slate-200"
+                            }`}
+                          >
+                            {w.category}
+                          </span>
+                        </span>
+                      </button>
+                      <p className="text-[11px] text-slate-500 leading-snug mt-1">
+                        {w.note}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              </div>
+            );
+          })}
+        </div>
+      )}
 
       {content.languages && content.languages.length > 0 && (
         <div>
@@ -210,6 +314,43 @@ export default function StateDetails({
       <p className="text-sm text-slate-600 leading-relaxed">
         {content.description}
       </p>
+
+      {stateNotes.length > 0 && (
+        <div>
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+            What to explore · learn ({stateNotes.length})
+          </h3>
+          <ul className="space-y-2">
+            {stateNotes.map((n, i) => (
+              <li
+                key={i}
+                className="rounded-xl border border-slate-100 px-3 py-2.5"
+              >
+                <button
+                  type="button"
+                  onClick={() => openWikiModal(n.url, n.title)}
+                  className="group w-full text-left"
+                >
+                  <span className="flex items-center flex-wrap gap-1.5 text-sm font-semibold text-slate-800 group-hover:text-ng-green">
+                    {n.title}
+                    <span
+                      className={`rounded-full border px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide ${
+                        NOTE_CATEGORY_STYLES[n.category] ??
+                        "bg-slate-50 text-slate-600 border-slate-200"
+                      }`}
+                    >
+                      {n.category}
+                    </span>
+                  </span>
+                </button>
+                <p className="text-xs text-slate-500 leading-relaxed mt-1">
+                  {n.note}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {stateLgas.length > 0 && (
         <div>

@@ -24,6 +24,9 @@ import type {
   StateContent,
   LgaContent,
   WardsByLga,
+  MetroGroup,
+  StateNotesMap,
+  LgaGeneral,
 } from "@/types/location";
 import type { CompareBundle } from "@/types/compare";
 import { buildCapitalLgaIdMap } from "@/lib/map/capitalLga";
@@ -46,6 +49,9 @@ interface ExplorerShellProps {
   lgaContent: LgaContent[];
   wardsByLga: WardsByLga;
   compareBundle: CompareBundle;
+  metroGroups: MetroGroup[];
+  stateNotes: StateNotesMap;
+  lgaGeneral: Record<string, LgaGeneral>;
 }
 
 export default function ExplorerShell({
@@ -56,6 +62,9 @@ export default function ExplorerShell({
   lgaContent,
   wardsByLga,
   compareBundle,
+  metroGroups,
+  stateNotes,
+  lgaGeneral,
 }: ExplorerShellProps) {
   const isMobile = useIsMobile();
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
@@ -86,7 +95,7 @@ export default function ExplorerShell({
     <div className="flex flex-col h-[100dvh] bg-[#eef2f6]">
       <UrlSync />
       <header className="shrink-0 z-20 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl shadow-sm relative">
-        <div className="max-w-[1600px] mx-auto px-3 lg:px-6 py-2.5 lg:py-4">
+        <div className="max-w-[1600px] mx-auto px-3 lg:px-6 py-2 lg:py-4">
           <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4 justify-between">
             <div className="flex flex-col items-start gap-1.5 shrink-0">
               <div className="flex items-center gap-2.5">
@@ -121,9 +130,11 @@ export default function ExplorerShell({
                 <MapTypeToggle />
               </div>
             </div>
-            <div className="lg:hidden space-y-2">
-              <RegionFilter regions={regions} />
-              <div className="flex justify-end">
+            <div className="lg:hidden flex items-center gap-2 justify-between">
+              <div className="min-w-0 flex-1">
+                <RegionFilter regions={regions} />
+              </div>
+              <div className="shrink-0">
                 <MapTypeToggle />
               </div>
             </div>
@@ -240,6 +251,9 @@ export default function ExplorerShell({
           lgaContent={lgaContent}
           wardsByLga={wardsByLga}
           compareBundle={compareBundle}
+          metroGroups={metroGroups}
+          stateNotes={stateNotes}
+          lgaGeneral={lgaGeneral}
         />
       </main>
 
