@@ -13,16 +13,20 @@ interface WikiPage {
   title?: string;
 }
 
+const AUDIO_FILE_RE = /\.(ogg|oga|opus|mp3|m4a|wav|flac|aac)$/i;
+
 function WikiArticleBody({
   loading,
   error,
   article,
   onNavigate,
+  onPlayAudio,
 }: {
   loading: boolean;
   error: string | null;
   article: WikipediaArticle | null;
   onNavigate: (url: string) => void;
+  onPlayAudio: (url: string) => void;
 }) {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
@@ -48,8 +52,19 @@ function WikiArticleBody({
         } catch {
           return;
         }
-        if (!resolved.hostname.includes("wikipedia.org")) return;
         if (resolved.href === doc.baseURI) return;
+
+        if (AUDIO_FILE_RE.test(resolved.pathname)) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          onPlayAudio(resolved.href);
+          return;
+        }
+
+        const isWikipedia =
+          resolved.hostname === "wikipedia.org" ||
+          resolved.hostname.endsWith(".wikipedia.org");
+        if (!isWikipedia) return;
         ev.preventDefault();
         ev.stopPropagation();
         onNavigate(resolved.href);
@@ -181,6 +196,16 @@ export default function WikipediaReaderModal() {
     setPages((prev) => (prev.length > 1 ? prev.slice(0, -1) : prev));
   }, []);
 
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const playAudio = useCallback((url: string) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.src = url;
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
+  }, []);
+
   useEffect(() => {
     if (!wikiModal) {
       setPages([]);
@@ -244,6 +269,8 @@ export default function WikipediaReaderModal() {
         onClick={closeWikiModal}
       />
 
+      <audio ref={audioRef} className="hidden" preload="none" />
+
       {/* Mobile — tall reader shell (~85%+ viewport) */}
       <div
         className="fixed inset-x-2 top-[3vh] sm:inset-x-3 sm:top-[4vh] z-[60] lg:hidden flex flex-col h-[min(94dvh,880px)] min-h-[85dvh] bg-white rounded-2xl shadow-2xl border border-slate-200/80 overflow-hidden animate-scale-in"
@@ -265,6 +292,7 @@ export default function WikipediaReaderModal() {
             error={error}
             article={article}
             onNavigate={navigateTo}
+            onPlayAudio={playAudio}
           />
         </div>
       </div>
@@ -291,6 +319,7 @@ export default function WikipediaReaderModal() {
               error={error}
               article={article}
               onNavigate={navigateTo}
+              onPlayAudio={playAudio}
             />
           </div>
         </div>
