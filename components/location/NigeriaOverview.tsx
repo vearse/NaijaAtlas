@@ -64,7 +64,7 @@ function formatKm2(value: number): string {
 interface RankRow {
   id: string;
   name: string;
-  subtitle?: string;
+  subtitle: string;
   value: number;
 }
 
@@ -268,7 +268,7 @@ export default function NigeriaOverview({
           : {
               id: s.id,
               name: s.name,
-              subtitle: s.regionName,
+              subtitle: s.regionName ?? "",
               value: population,
             };
       })
@@ -298,7 +298,7 @@ export default function NigeriaOverview({
           ? {
               id: s.id,
               name: s.name,
-              subtitle: s.regionName,
+              subtitle: s.regionName ?? "",
               value: igr,
             }
           : null;
@@ -315,7 +315,7 @@ export default function NigeriaOverview({
       .map((l) => ({
         id: l.id,
         name: l.name,
-        subtitle: `${l.regionName} · ${l.stateName}`,
+        subtitle: l.stateName,
         value: l.areaKm2 as number,
       }))
       .sort((a, b) => b.value - a.value)
@@ -330,7 +330,7 @@ export default function NigeriaOverview({
           ? {
               id: s.id,
               name: s.name,
-              subtitle: s.regionName,
+              subtitle: s.regionName ?? "",
               value: area,
             }
           : null;

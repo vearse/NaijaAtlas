@@ -1,1 +1,275 @@
-{}
+{
+"NG": [
+                {
+                "title": "Nnamdi Azikiwe",
+                "note": "Known as the 'Father of Nigerian Nationalism', Nnamdi Azikiwe was Nigeria's first President (1963–1966) and a key figure in the country's independence movement.",
+                "category": "politics",
+                "relatedStateIds": ["NG-AN"],
+                "url": "https://en.wikipedia.org/wiki/Nnamdi_Azikiwe",
+                "confidence": "high"
+                },
+                {
+                "title": "Obafemi Awolowo",
+                "note": "A nationalist and statesman, Obafemi Awolowo was the first Premier of the Western Region and a key advocate for free education and healthcare in Nigeria.",
+                "category": "politics",
+                "relatedStateIds": ["NG-OG"],
+                "url": "https://en.wikipedia.org/wiki/Obafemi_Awolowo",
+                "confidence": "high"
+                },
+                {
+                "title": "Ahmadu Bello",
+                "note": "The Sardauna of Sokoto and Premier of the Northern Region, Ahmadu Bello was a prominent leader who worked to modernize the north and promote unity in Nigeria.",
+                "category": "politics",
+                "relatedStateIds": ["NG-SO"],
+                "url": "https://en.wikipedia.org/wiki/Ahmadu_Bello",
+                "confidence": "high"
+                },
+                {
+                "title": "Funmilayo Ransome-Kuti",
+                "note": "A pioneering feminist and activist, Funmilayo Ransome-Kuti fought for women's rights and was the first woman in Nigeria to drive a car.",
+                "category": "activism",
+                "relatedStateIds": ["NG-OG"],
+                "url": "https://en.wikipedia.org/wiki/Funmilayo_Ransome-Kuti",
+                "confidence": "high"
+                },
+                {
+                "title": "Herbert Macaulay",
+                "note": "Regarded as the 'Father of Nigerian Nationalism', Herbert Macaulay was a key figure in the fight for independence and the founder of Nigeria's first political party.",
+                "category": "politics",
+                "relatedStateIds": ["NG-LA"],
+                "url": "https://en.wikipedia.org/wiki/Herbert_Macaulay",
+                "confidence": "high"
+                },
+                {
+                "title": "Chinua Achebe",
+                "note": "One of Africa's greatest novelists, Chinua Achebe's 'Things Fall Apart' is a classic of modern African literature, exploring themes of colonialism and tradition.",
+                "category": "literature",
+                "relatedStateIds": ["NG-AN"],
+                "url": "https://en.wikipedia.org/wiki/Chinua_Achebe",
+                "confidence": "high"
+                },
+                {
+                "title": "Wole Soyinka",
+                "note": "The first African to win the Nobel Prize in Literature (1986), Wole Soyinka is a playwright, poet, and activist known for his works on justice and human rights.",
+                "category": "literature",
+                "relatedStateIds": ["NG-OG"],
+                "url": "https://en.wikipedia.org/wiki/Wole_Soyinka",
+                "confidence": "high"
+                },
+                {
+                "title": "Fela Kuti",
+                "note": "The pioneer of Afrobeat music, Fela Kuti used his music to criticize corruption and military rule in Nigeria, becoming a symbol of resistance.",
+                "category": "music",
+                "relatedStateIds": ["NG-LA"],
+                "url": "https://en.wikipedia.org/wiki/Fela_Kuti",
+                "confidence": "high"
+                },
+                {
+                "title": "Mary Slessor",
+                "note": "A Scottish missionary who lived in Calabar, Mary Slessor is remembered for her efforts to end the killing of twins and promote education in Nigeria.",
+                "category": "activism",
+                "relatedStateIds": ["NG-CR"],
+                "url": "https://en.wikipedia.org/wiki/Mary_Slessor",
+                "confidence": "high"
+                },
+                {
+                "title": "Usman dan Fodio",
+                "note": "A religious scholar and reformer, Usman dan Fodio led the Fulani Jihad of 1804, founding the Sokoto Caliphate, one of the largest empires in 19th-century Africa.",
+                "category": "religion",
+                "relatedStateIds": ["NG-SO"],
+                "url": "https://en.wikipedia.org/wiki/Usman_dan_Fodio",
+                "confidence": "high"
+                },
+                {
+                "title": "Alvan Ikoku",
+                "note": "An educationist and nationalist, Alvan Ikoku was a key advocate for free and universal primary education in Nigeria.",
+                "category": "education",
+                "relatedStateIds": ["NG-IM"],
+                "url": "https://en.wikipedia.org/wiki/Alvan_Ikoku",
+                "confidence": "high"
+                },
+                {
+                "title": "Margaret Ekpo",
+                "note": "A women's rights activist and politician, Margaret Ekpo was one of Nigeria's first female political leaders and a strong advocate for women's participation in politics.",
+                "category": "activism",
+                "relatedStateIds": ["NG-CR"],
+                "url": "https://en.wikipedia.org/wiki/Margaret_Ekpo",
+                "confidence": "high"
+                },
+                {
+                "title": "Tafawa Balewa",
+                "note": "Nigeria's first Prime Minister (1960–1966), Tafawa Balewa was a key figure in the country's transition to independence.",
+                "category": "politics",
+                "relatedStateIds": ["NG-BA"],
+                "url": "https://en.wikipedia.org/wiki/Abubakar_Tafawa_Balewa",
+                "confidence": "high"
+                },
+                {
+                "title": "Ken Saro-Wiwa",
+                "note": "An environmental activist and writer, Ken Saro-Wiwa led the Ogoni struggle against environmental degradation caused by oil exploration in the Niger Delta.",
+                "category": "activism",
+                "relatedStateIds": ["NG-RI"],
+                "url": "https://en.wikipedia.org/wiki/Ken_Saro-Wiwa",
+                "confidence": "high"
+                },
+                {
+                "title": "Queen Amina of Zazzau",
+                "note": "A legendary warrior queen of Zazzau (Zaria), Queen Amina expanded her kingdom and is remembered as a symbol of strength and leadership.",
+                "category": "history",
+                "relatedStateIds": ["NG-KD"],
+                "url": "https://en.wikipedia.org/wiki/Amina",
+                "confidence": "high"
+                },
+                {
+                "title": "Blessing Okagbare",
+                "note": "An Olympic medalist and world champion sprinter and long jumper, Blessing Okagbare is one of Nigeria's most celebrated athletes.",
+                "category": "sports",
+                "relatedStateIds": ["NG-DE"],
+                "url": "https://en.wikipedia.org/wiki/Blessing_Okagbare",
+                "confidence": "high"
+                },
+                {
+                "title": "Hajiya Gambo Sawaba",
+                "note": "A women's rights activist and politician, Hajiya Gambo Sawaba fought for the rights of women and the underprivileged in northern Nigeria.",
+                "category": "activism",
+                "relatedStateIds": ["NG-KD"],
+                "url": "https://en.wikipedia.org/wiki/Gambo_Sawaba",
+                "confidence": "high"
+                },
+                {
+                "title": "Anthony Enahoro",
+                "note": "A nationalist and politician, Anthony Enahoro moved the first motion for Nigeria's independence in 1953.",
+                "category": "politics",
+                "relatedStateIds": ["NG-ED"],
+                "url": "https://en.wikipedia.org/wiki/Anthony_Enahoro",
+                "confidence": "high"
+                },
+                {
+                "title": "Florence Nwanzuruahu Nkiru Nwapa",
+                "note": "Known as the 'Mother of African Literature', Flora Nwapa was the first African woman to publish a novel in English.",
+                "category": "literature",
+                "relatedStateIds": ["NG-IM"],
+                "url": "https://en.wikipedia.org/wiki/Flora_Nwapa",
+                "confidence": "high"
+                },
+                {
+                "title": "Yakubu Gowon",
+                "note": "Nigeria's youngest Head of State, Yakubu Gowon led the country during the Civil War (1967–1970) and initiated the 'no victor, no vanquished' policy.",
+                "category": "politics",
+                "relatedStateIds": ["NG-PL"],
+                "url": "https://en.wikipedia.org/wiki/Yakubu_Gowon",
+                "confidence": "high"
+                },
+                {      "title": "Ngozi Okonjo-Iweala",
+                "note": "The first woman and first African to serve as the Director-General of the World Trade Organization (WTO), Ngozi Okonjo-Iweala is a globally recognized economist and former Nigerian Finance Minister.",
+                "category": "economics",
+                "relatedStateIds": ["NG-DE"],
+                "url": "https://en.wikipedia.org/wiki/Ngozi_Okonjo-Iweala",
+                "confidence": "high"
+            },
+            {
+                "title": "Akinwumi Adesina",
+                "note": "The President of the African Development Bank (AfDB), Akinwumi Adesina is a renowned economist and former Nigerian Minister of Agriculture, known for his agricultural reforms.",
+                "category": "economics",
+                "relatedStateIds": ["NG-OG"],
+                "url": "https://en.wikipedia.org/wiki/Akinwumi_Adesina",
+                "confidence": "high"
+            },
+            {
+                "title": "Burna Boy",
+                "note": "A Grammy-winning artist, Burna Boy is one of Nigeria's most prominent musicians, using his Afrobeat music to address social and political issues.",
+                "category": "music",
+                "relatedStateIds": ["NG-RI"],
+                "url": "https://en.wikipedia.org/wiki/Burna_Boy",
+                "confidence": "high"
+            },
+            {
+                "title": "Chimamanda Ngozi Adichie",
+                "note": "An award-winning author and feminist, Chimamanda Ngozi Adichie is known for her novels and essays that explore themes of identity, feminism, and post-colonialism.",
+                "category": "literature",
+                "relatedStateIds": ["NG-AN"],
+                "url": "https://en.wikipedia.org/wiki/Chimamanda_Ngozi_Adichie",
+                "confidence": "high"
+            },
+            {
+                "title": "Tony Elumelu",
+                "note": "A billionaire entrepreneur and philanthropist, Tony Elumelu is the founder of the Tony Elumelu Foundation, which empowers African entrepreneurs.",
+                "category": "business",
+                "relatedStateIds": ["NG-DE"],
+                "url": "https://en.wikipedia.org/wiki/Tony_Elumelu",
+                "confidence": "high"
+            },
+            {
+                "title": "Tems",
+                "note": "A globally recognized singer and songwriter, Tems has gained international acclaim for her contributions to Afrobeat and collaborations with global artists.",
+                "category": "music",
+                "relatedStateIds": ["NG-LA"],
+                "url": "https://en.wikipedia.org/wiki/Tems_(singer)",
+                "confidence": "high"
+            },
+            {
+                "title": "Olusegun Obasanjo",
+                "note": "A former Nigerian President and influential statesman, Olusegun Obasanjo remains active in African diplomacy and governance.",
+                "category": "politics",
+                "relatedStateIds": ["NG-OG"],
+                "url": "https://en.wikipedia.org/wiki/Olusegun_Obasanjo",
+                "confidence": "high"
+            },
+            {
+                "title": "Aliko Dangote",
+                "note": "The richest man in Africa, Aliko Dangote is a business magnate and philanthropist, known for his contributions to Nigeria's industrial development.",
+                "category": "business",
+                "relatedStateIds": ["NG-KN"],
+                "url": "https://en.wikipedia.org/wiki/Aliko_Dangote",
+                "confidence": "high"
+            },
+            {
+                "title": "Tobi Amusan",
+                "note": "A world champion hurdler, Tobi Amusan is a record-breaking athlete who has brought global recognition to Nigerian sports.",
+                "category": "sports",
+                "relatedStateIds": ["NG-OG"],
+                "url": "https://en.wikipedia.org/wiki/Tobi_Amusan",
+                "confidence": "high"
+            },
+            {
+                "title": "Aisha Yesufu",
+                "note": "A prominent activist and co-founder of the #BringBackOurGirls movement, Aisha Yesufu is known for her advocacy for human rights and good governance.",
+                "category": "activism",
+                "relatedStateIds": ["NG-KN"],
+                "url": "https://en.wikipedia.org/wiki/Aisha_Yesufu",
+                "confidence": "high"
+            },
+            {
+                "title": "Davido",
+                "note": "One of Nigeria's most popular musicians, Davido has gained international fame for his Afrobeat music and philanthropic efforts.",
+                "category": "music",
+                "relatedStateIds": ["NG-OS"],
+                "url": "https://en.wikipedia.org/wiki/Davido",
+                "confidence": "high"
+            },
+            {
+                "title": "Peter Obi",
+                "note": "A former Governor of Anambra State and a prominent political figure, Peter Obi is known for his focus on governance, transparency, and economic reforms.",
+                "category": "politics",
+                "relatedStateIds": ["NG-AN"],
+                "url": "https://en.wikipedia.org/wiki/Peter_Obi",
+                "confidence": "high"
+            },
+            {
+                "title": "Rabiu Kwankwaso",
+                "note": "A former Governor of Kano State and influential political leader, Rabiu Kwankwaso is known for his educational reforms and grassroots mobilization.",
+                "category": "politics",
+                "relatedStateIds": ["NG-KN"],
+                "url": "https://en.wikipedia.org/wiki/Rabiu_Kwankwaso",
+                "confidence": "high"
+            },
+            {
+                "title": "Blessing Abeng",
+                "note": "A branding and communications expert, Blessing Abeng is the co-founder of Ingressive for Good, an organization focused on empowering African youth with tech skills.",
+                "category": "business",
+                "relatedStateIds": ["NG-RI"],
+                "url": "https://www.ingressive.org/",
+                "confidence": "high"
+            }
+]
+}

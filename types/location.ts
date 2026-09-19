@@ -90,6 +90,25 @@ export interface WikiNote {
   note: string;
   category: string;
   url: string;
+  /** Festival/period detail (state-notes). */
+  period?: {
+    frequency?: string;
+    months?: string[];
+    note?: string;
+  } | null;
+  /** Human-readable places this note refers to (state-notes). */
+  locations?: Array<{
+    name: string;
+    lgaId?: string | null;
+    rank?: number;
+  }>;
+  /** Note sub-type (e.g. "festival", "market"). */
+  type?: string;
+  /** Group membership ids (state-notes). */
+  groupIds?: string[];
+  /** Other states where the same note applies. */
+  alsoInStateIds?: string[];
+  confidence?: string;
 }
 
 /** A country-level exploration note (data/compare/country/country-notes.json). */

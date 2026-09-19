@@ -69,6 +69,37 @@ function stringValue(value: unknown): string | null {
   return typeof value === "string" && value.trim() ? value.trim() : null;
 }
 
+const MONTH_ABBR: Record<string, string> = {
+  Jan: "Jan",
+  Feb: "Feb",
+  Mar: "Mar",
+  Apr: "Apr",
+  May: "May",
+  Jun: "Jun",
+  Jul: "Jul",
+  Aug: "Aug",
+  Sep: "Sep",
+  Oct: "Oct",
+  Nov: "Nov",
+  Dec: "Dec",
+};
+
+function formatPeriod(period: {
+  frequency?: string;
+  months?: string[];
+  note?: string;
+}): string {
+  const freq = period.frequency ? period.frequency : null;
+  const months =
+    period.months && period.months.length > 0
+      ? period.months.map((m) => MONTH_ABBR[m] ?? m).join("/")
+      : null;
+  if (freq && months) return `${months} · ${freq}`;
+  if (freq) return freq;
+  if (months) return months;
+  return "period";
+}
+
 export default function StateDetails({
   content,
   location,
@@ -344,6 +375,31 @@ export default function StateDetails({
                     </span>
                   </span>
                 </button>
+
+                {(n.period || n.locations || n.type) && (
+                  <div className="flex items-center flex-wrap gap-1.5 mt-1.5 text-[10px]">
+                    {n.type && (
+                      <span className="rounded-full bg-slate-50 border border-slate-200 px-1.5 py-px font-semibold uppercase tracking-wide text-slate-500">
+                        {n.type}
+                      </span>
+                    )}
+                    {n.period && (
+                      <span className="rounded-full bg-amber-50 border border-amber-200 px-1.5 py-px font-medium text-amber-700">
+                        {formatPeriod(n.period)}
+                      </span>
+                    )}
+                    {n.locations &&
+                      n.locations.slice(0, 3).map((loc, li) => (
+                        <span
+                          key={li}
+                          className="rounded-full bg-sky-50 border border-sky-200 px-1.5 py-px font-medium text-sky-700"
+                        >
+                          {loc.name}
+                        </span>
+                      ))}
+                  </div>
+                )}
+
                 <p className="text-xs text-slate-500 leading-relaxed mt-1">
                   {n.note}
                 </p>

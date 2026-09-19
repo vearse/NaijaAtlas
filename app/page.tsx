@@ -59,7 +59,7 @@ export default function HomePage() {
     path.join(root, "data/compare/country/country-notes.json")
   );
   const peopleNotes = loadJson<PeopleNotesMap>(
-    path.join(root, "data/content/people-notes.json")
+    path.join(root, "data/compare/country/people-notes.json")
   );
   const lgaGeneral = loadJson<Record<string, LgaGeneral>>(
     path.join(root, "data/compare/lgas/general.json")
