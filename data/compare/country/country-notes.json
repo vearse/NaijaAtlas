@@ -1,0 +1,589 @@
+{
+	"NG": [
+		{
+		"title": "Dufuna canoe",
+		"note": "A dugout canoe found at Dufuna in Yobe State in 1987 is more than 8,000 years old, making it one of the oldest known boats in Africa.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-YO"
+		],
+		"url": "https://en.wikipedia.org/wiki/Dufuna_canoe",
+		"confidence": "high"
+		},
+		{
+		"title": "Nok terracotta culture",
+		"note": "The Nok culture of central Nigeria produced life-size terracotta figures more than two thousand years ago, among the earliest large sculptures known south of the Sahara.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-KD"
+		],
+		"url": "https://en.wikipedia.org/wiki/Nok_culture",
+		"confidence": "high"
+		},
+		{
+		"title": "Igbo-Ukwu bronzes",
+		"note": "Bronzes found at Igbo-Ukwu in Anambra State, first uncovered in 1938 and later excavated by Thurstan Shaw, date to about the 9th century and show highly skilled lost-wax casting, thought to be linked to ritual kingship.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-AN"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Kanem-Bornu",
+		"note": "Centred on Lake Chad and later Borno, Kanem-Bornu lasted roughly a thousand years, making it one of the longest-lived states in African history.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-BO",
+			"NG-YO"
+		],
+		"url": "https://en.wikipedia.org/wiki/Bornu_Empire",
+		"confidence": "high"
+		},
+		{
+		"title": "Nri Kingdom",
+		"note": "The Nri Kingdom of the Igbo heartland was a ritual state whose ruler, the Eze Nri, held religious authority over neighbouring communities; Nri tradition places its origin around the 10th century.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-AN"
+		],
+		"url": null,
+		"confidence": "medium"
+		},
+		{
+		"title": "Ife and its bronze heads",
+		"note": "Ile-Ife is regarded in Yoruba tradition as the origin of the Yoruba people. Its naturalistic heads in brass, copper and terracotta date to roughly the 12th to 15th centuries and rank among the finest works of medieval African art.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-OS"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Benin Kingdom and the Benin Bronzes",
+		"note": "The Benin court produced brass plaques and cast heads that rank among Africa's finest art. British forces looted thousands of pieces in 1897, and since 2022 several institutions in Europe and the US have begun returning items.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-ED"
+		],
+		"url": "https://en.wikipedia.org/wiki/Benin_Bronzes",
+		"confidence": "high"
+		},
+		{
+		"title": "Hausa city-states and trans-Saharan trade",
+		"note": "Kano, Katsina and Zazzau (Zaria) grew rich on trans-Saharan trade in leather, dyed cloth and kola, and became centres of Islamic scholarship.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-KN",
+			"NG-KT",
+			"NG-KD"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Oyo Empire",
+		"note": "Old Oyo rose from the savanna edge with a cavalry-based army and dominated much of Yorubaland and neighbouring kingdoms until the early 19th century. Its capital Oyo-Ile fell to Ilorin forces around 1835, and the Alaafin's court later settled at present-day Oyo, while new powers such as Ibadan and Abeokuta rose in the Yoruba wars that followed.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-OY",
+			"NG-KW",
+			"NG-OG"
+		],
+		"url": "https://en.wikipedia.org/wiki/Oyo_Empire",
+		"confidence": "high"
+		},
+		{
+		"title": "Kingdoms before colonial rule",
+		"note": "Long before 1900 the land was a patchwork of powerful states: Oyo, Ife, Benin, Nri, Kanem-Bornu, the Hausa city-states, the Jukun Kwararafa confederacy, the Sokoto Caliphate and many more.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-OY",
+			"NG-OS",
+			"NG-ED",
+			"NG-AN",
+			"NG-BO",
+			"NG-KN",
+			"NG-TA",
+			"NG-SO"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Great earthworks",
+		"note": "Benin City's walls and moats and Sungbo's Eredo near Ijebu-Ode are among the largest pre-mechanical earthworks in the world.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-ED",
+			"NG-OG"
+		],
+		"url": null,
+		"confidence": "medium"
+		},
+		{
+		"title": "Atlantic slave trade heritage",
+		"note": "The Bights of Benin and Biafra were among the main embarkation regions of the Atlantic slave trade, and ports such as Badagry and Calabar are now memorial and heritage sites.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-LA",
+			"NG-CR"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Sokoto Caliphate",
+		"note": "Usman dan Fodio's jihad of 1804 created the Sokoto Caliphate, one of the largest states in 19th-century Africa, whose Sultan remains a leading Muslim authority today.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-SO"
+		],
+		"url": "https://en.wikipedia.org/wiki/Sokoto_Caliphate",
+		"confidence": "high"
+		},
+		{
+		"title": "Conquest and colonial rule",
+		"note": "Britain annexed Lagos in 1861 and chartered the Royal Niger Company in 1886, then conquered Benin (1897), the Aro (1901-02) and the Sokoto Caliphate (1903) before merging its territories in 1914.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-LA",
+			"NG-ED",
+			"NG-AB",
+			"NG-SO"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "How Nigeria got its name",
+		"note": "The name Nigeria was proposed in 1897 by the British journalist Flora Shaw, after the Niger River.",
+		"category": "history",
+		"relatedStateIds": [],
+		"url": "https://en.wikipedia.org/wiki/Nigeria",
+		"confidence": "high"
+		},
+		{
+		"title": "The 1914 amalgamation",
+		"note": "On 1 January 1914 Frederick Lugard merged the Northern and Southern Protectorates into a single colony and protectorate of Nigeria.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-KO",
+			"NG-LA"
+		],
+		"url": "https://en.wikipedia.org/wiki/History_of_Nigeria",
+		"confidence": "high"
+		},
+		{
+		"title": "Rise of nationalism",
+		"note": "Herbert Macaulay founded Nigeria's first political party in 1923, and later leaders such as Nnamdi Azikiwe, Obafemi Awolowo and Ahmadu Bello drove the road to independence.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-LA",
+			"NG-AN"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Aba Women's War of 1929",
+		"note": "Thousands of Igbo and Ibibio women protested British taxation and the warrant-chief system in 1929, one of the most significant anti-colonial movements in West Africa.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-AB",
+			"NG-IM",
+			"NG-AK"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Independence and republic",
+		"note": "Nigeria became independent on 1 October 1960 and a republic in 1963.",
+		"category": "history",
+		"relatedStateIds": [],
+		"url": "https://en.wikipedia.org/wiki/History_of_Nigeria",
+		"confidence": "high"
+		},
+		{
+		"title": "The Civil War",
+		"note": "The Nigerian Civil War of 1967-70 followed the declaration of the Republic of Biafra in the south-east and ended in January 1970. The federal government's post-war policy was summed up as 'no victor, no vanquished'.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-EN",
+			"NG-AB",
+			"NG-IM",
+			"NG-AN",
+			"NG-EB"
+		],
+		"url": "https://en.wikipedia.org/wiki/Nigerian_Civil_War",
+		"confidence": "high"
+		},
+		{
+		"title": "From three regions to 36 states",
+		"note": "Nigeria grew from three regions to 12 states in 1967, then 19 (1976), 21 (1987), 30 (1991) and 36 (1996), plus the Federal Capital Territory.",
+		"category": "history",
+		"relatedStateIds": [],
+		"url": "https://en.wikipedia.org/wiki/States_of_Nigeria",
+		"confidence": "high"
+		},
+		{
+		"title": "The 1970s oil boom",
+		"note": "Oil revenues surged after the 1973 price rise, transforming public spending and shaping the economy for decades.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-RI",
+			"NG-DE",
+			"NG-BY"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Military rule",
+		"note": "Nigeria's first coup came on 15 January 1966, and military governments ruled for most of the period until 1999, broken by the Second Republic of 1979-83 under President Shehu Shagari.",
+		"category": "history",
+		"relatedStateIds": [],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Abuja becomes the capital",
+		"note": "The federal capital moved from Lagos to the purpose-built city of Abuja on 12 December 1991.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-FC",
+			"NG-LA"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "June 12, 1993",
+		"note": "The presidential election of 12 June 1993, widely regarded as one of Nigeria's freest, was annulled by the military government, and MKO Abiola is widely believed to have won it. June 12 has been marked as Democracy Day since 2019.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-OG"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Return to civilian rule",
+		"note": "Democratic rule returned on 29 May 1999 under Olusegun Obasanjo. Later milestones include the first handover between elected civilians in 2007, the first defeat of a sitting president at the polls in 2015, and Bola Tinubu succeeding Muhammadu Buhari in 2023.",
+		"category": "history",
+		"relatedStateIds": [],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "North-east insurgency",
+		"note": "Since 2009 an insurgency by Boko Haram and its offshoot ISWAP has devastated parts of Borno, Yobe and Adamawa, displacing millions of people.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-BO",
+			"NG-YO",
+			"NG-AD"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "EndSARS protests",
+		"note": "In October 2020 youth-led protests against police brutality, centred on Lagos, spread across the country and became one of Nigeria's largest modern protest movements.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-LA"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "2014 GDP rebasing",
+		"note": "A 2014 rebasing of Nigeria's GDP made it Africa's largest economy at the time.",
+		"category": "history",
+		"relatedStateIds": [],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "A country of hundreds of peoples",
+		"note": "Nigeria has more than 250 ethnic groups and roughly 500 languages. Hausa, Yoruba and Igbo are the largest, and Nigerian Pidgin serves as a widely used lingua franca.",
+		"category": "culture",
+		"relatedStateIds": [],
+		"url": "https://en.wikipedia.org/wiki/Nigeria",
+		"confidence": "high"
+		},
+		{
+		"title": "UNESCO intangible heritage",
+		"note": "UNESCO has inscribed the Gelede masquerade, the Ifa divination system, the Ijele masquerade, Tiv Kwagh-hir theatre and the Sango festival of Oyo from Nigeria.",
+		"category": "culture",
+		"relatedStateIds": [
+			"NG-OG",
+			"NG-OS",
+			"NG-AN",
+			"NG-BE",
+			"NG-OY"
+		],
+		"url": null,
+		"confidence": "verified"
+		},
+		{
+		"title": "World Heritage Sites",
+		"note": "Nigeria's two World Heritage Sites are the Sukur Cultural Landscape in Adamawa (1999) and the Osun-Osogbo Sacred Grove (2005).",
+		"category": "culture",
+		"relatedStateIds": [
+			"NG-AD",
+			"NG-OS"
+		],
+		"url": "https://en.wikipedia.org/wiki/Osun-Osogbo_Sacred_Grove",
+		"confidence": "high"
+		},
+		{
+		"title": "Nsibidi",
+		"note": "Nsibidi is an indigenous system of signs associated with the Ekpe society of the Cross River region, among the oldest known indigenous sign-writing traditions in West Africa.",
+		"category": "culture",
+		"relatedStateIds": [
+			"NG-CR",
+			"NG-AK",
+			"NG-AB"
+		],
+		"url": "https://en.wikipedia.org/wiki/Nsibidi",
+		"confidence": "high"
+		},
+		{
+		"title": "Ajami",
+		"note": "Hausa has long been written in Ajami, an adaptation of the Arabic script used for centuries of scholarship and poetry.",
+		"category": "culture",
+		"relatedStateIds": [
+			"NG-KN",
+			"NG-SO",
+			"NG-KT"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Indigo and woven cloth",
+		"note": "Abeokuta is known for adire resist-dyed cloth, Iseyin for hand-woven Aso-Oke, and Kano's historic dye pits keep another indigo tradition alive.",
+		"category": "culture",
+		"relatedStateIds": [
+			"NG-OG",
+			"NG-OY",
+			"NG-KN"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Nollywood",
+		"note": "Nollywood grew from direct-to-video releases in the 1990s into one of the world's most prolific film industries by number of titles.",
+		"category": "culture",
+		"relatedStateIds": [
+			"NG-LA"
+		],
+		"url": "https://en.wikipedia.org/wiki/Nollywood",
+		"confidence": "high"
+		},
+		{
+		"title": "Afrobeat and Afrobeats",
+		"note": "Fela Kuti created Afrobeat in Lagos in the late 1960s and 1970s, and today Nigerian Afrobeats artists have reached worldwide audiences and won Grammy awards.",
+		"category": "culture",
+		"relatedStateIds": [
+			"NG-LA"
+		],
+		"url": "https://en.wikipedia.org/wiki/Afrobeat",
+		"confidence": "high"
+		},
+		{
+		"title": "Achebe and Soyinka",
+		"note": "Chinua Achebe's Things Fall Apart (1958) is among the most widely read African novels, and in 1986 Wole Soyinka became the first African to win the Nobel Prize in Literature.",
+		"category": "culture",
+		"relatedStateIds": [
+			"NG-AN",
+			"NG-OG"
+		],
+		"url": "https://en.wikipedia.org/wiki/Wole_Soyinka",
+		"confidence": "high"
+		},
+		{
+		"title": "Football glory",
+		"note": "The Super Eagles have won the Africa Cup of Nations, including in 1980, 1994 and 2013, and won the 1996 Olympic gold medal, the first for an African team. The Super Falcons are the most successful team in Women's Africa Cup of Nations history.",
+		"category": "culture",
+		"relatedStateIds": [],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "A nation of festivals",
+		"note": "From Osun-Osogbo in August and the Argungu fishing festival in February or March to the December Calabar Carnival, Ojude Oba and the northern Sallah Durbars, festivals fill the calendar all year.",
+		"category": "festival",
+		"relatedStateIds": [
+			"NG-OS",
+			"NG-KE",
+			"NG-CR",
+			"NG-OG",
+			"NG-KN"
+		],
+		"url": null,
+		"confidence": "verified"
+		},
+		{
+		"title": "Jollof, suya and pounded yam",
+		"note": "Jollof rice, suya, pounded yam with egusi and akara are Nigerian dishes with international followings, and the friendly jollof rivalry with Ghana is a running joke.",
+		"category": "culture",
+		"relatedStateIds": [],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Faith and belief",
+		"note": "Islam and Christianity are the two largest faiths, roughly balanced overall, while indigenous traditions such as Ifa, Ekpe and Alekwu remain alive.",
+		"category": "culture",
+		"relatedStateIds": [
+			"NG-OS",
+			"NG-CR",
+			"NG-BE"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "The national flag",
+		"note": "The green-white-green flag was designed in 1959 by Taiwo Akinkunmi, then a student in London, and adopted at independence.",
+		"category": "culture",
+		"relatedStateIds": [],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "National Youth Service Corps",
+		"note": "Created in 1973 after the civil war to foster unity, the NYSC posts graduates to states other than their own for a year of national service.",
+		"category": "institution",
+		"relatedStateIds": [],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Traditional rulers",
+		"note": "Oba, Emir, Obi, Igwe, Attah, Tor Tiv and many other titles carry cultural authority alongside the constitutional government. The Sultan of Sokoto, Ooni of Ife, Oba of Benin and Emir of Kano are among the best known.",
+		"category": "institution",
+		"relatedStateIds": [
+			"NG-SO",
+			"NG-OS",
+			"NG-ED",
+			"NG-KN"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "The Niger, the Benue and Lokoja",
+		"note": "Nigeria is named for the Niger, Africa's third-longest river, which meets the Benue at Lokoja in Kogi State.",
+		"category": "geography",
+		"relatedStateIds": [
+			"NG-KO"
+		],
+		"url": "https://en.wikipedia.org/wiki/Niger_River",
+		"confidence": "high"
+		},
+		{
+		"title": "The Niger Delta",
+		"note": "The Niger Delta is one of the world's largest river deltas, a network of creeks, mangroves and wetlands in the south-south.",
+		"category": "geography",
+		"relatedStateIds": [
+			"NG-BY",
+			"NG-RI",
+			"NG-DE"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "From mangrove to Sahel",
+		"note": "Nigeria runs from the Atlantic mangrove coast through rainforest and savanna to the semi-arid Sahel. Its highest point, Chappal Waddi, rises to roughly 2,419 metres in Taraba State.",
+		"category": "geography",
+		"relatedStateIds": [
+			"NG-TA"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Lake Chad",
+		"note": "Nigeria's north-east touches Lake Chad, which has shrunk dramatically since the 1960s, reshaping fishing and farming livelihoods.",
+		"category": "geography",
+		"relatedStateIds": [
+			"NG-BO",
+			"NG-YO"
+		],
+		"url": "https://en.wikipedia.org/wiki/Lake_Chad",
+		"confidence": "high"
+		},
+		{
+		"title": "Cross River rainforest",
+		"note": "The Cross River forests shelter the Cross River gorilla, one of the world's most endangered great apes.",
+		"category": "geography",
+		"relatedStateIds": [
+			"NG-CR"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Ikogosi warm and cold springs",
+		"note": "At Ikogosi in Ekiti State a warm spring and a cold spring meet and flow side by side.",
+		"category": "geography",
+		"relatedStateIds": [
+			"NG-EK"
+		],
+		"url": null,
+		"confidence": "medium"
+		},
+		{
+		"title": "Africa's most populous country",
+		"note": "Nigeria has well over 200 million people, more than any other African country, and Lagos is among the world's fastest-growing megacities.",
+		"category": "economy",
+		"relatedStateIds": [
+			"NG-LA"
+		],
+		"url": "https://en.wikipedia.org/wiki/Nigeria",
+		"confidence": "high"
+		},
+		{
+		"title": "Groundnut pyramids of Kano",
+		"note": "In the 1960s and 70s towering stacks of groundnut sacks in Kano symbolised Nigeria's pre-oil agricultural export economy.",
+		"category": "economy",
+		"relatedStateIds": [
+			"NG-KN"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Oil and OPEC",
+		"note": "Oil was first found in commercial quantity at Oloibiri in 1956, and Nigeria joined OPEC in 1971; crude oil remains central to exports and government revenue.",
+		"category": "economy",
+		"relatedStateIds": [
+			"NG-BY",
+			"NG-RI",
+			"NG-DE",
+			"NG-AK"
+		],
+		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Lagos tech and fintech",
+		"note": "Lagos is a leading African fintech hub, and Interswitch and Flutterwave were among the continent's first tech unicorns.",
+		"category": "economy",
+		"relatedStateIds": [
+			"NG-LA"
+		],
+		"url": null,
+		"confidence": "high"
+		}
+	]
+}

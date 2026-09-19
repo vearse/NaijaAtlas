@@ -26,6 +26,8 @@ import type {
   WardsByLga,
   MetroGroup,
   StateNotesMap,
+  CountryNotesMap,
+  PeopleNotesMap,
   LgaGeneral,
 } from "@/types/location";
 import type { CompareBundle } from "@/types/compare";
@@ -51,6 +53,8 @@ interface ExplorerShellProps {
   compareBundle: CompareBundle;
   metroGroups: MetroGroup[];
   stateNotes: StateNotesMap;
+  countryNotes: CountryNotesMap;
+  peopleNotes: PeopleNotesMap;
   lgaGeneral: Record<string, LgaGeneral>;
 }
 
@@ -64,6 +68,8 @@ export default function ExplorerShell({
   compareBundle,
   metroGroups,
   stateNotes,
+  countryNotes,
+  peopleNotes,
   lgaGeneral,
 }: ExplorerShellProps) {
   const isMobile = useIsMobile();
@@ -253,6 +259,8 @@ export default function ExplorerShell({
           compareBundle={compareBundle}
           metroGroups={metroGroups}
           stateNotes={stateNotes}
+          countryNotes={countryNotes}
+          peopleNotes={peopleNotes}
           lgaGeneral={lgaGeneral}
         />
       </main>
@@ -273,7 +281,10 @@ export default function ExplorerShell({
           open={infoModalOpen}
           onClose={() => setInfoModalOpen(false)}
           states={states}
+          lgas={lgas}
           compareBundle={compareBundle}
+          countryNotes={countryNotes}
+          peopleNotes={peopleNotes}
         />
       )}
 

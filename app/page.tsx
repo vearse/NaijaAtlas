@@ -12,6 +12,8 @@ import type {
   WardsByLga,
   MetroGroup,
   StateNotesMap,
+  CountryNotesMap,
+  PeopleNotesMap,
   LgaGeneral,
 } from "@/types/location";
 
@@ -53,6 +55,12 @@ export default function HomePage() {
   const stateNotes = loadJson<StateNotesMap>(
     path.join(root, "data/content/state-notes.json")
   );
+  const countryNotes = loadJson<CountryNotesMap>(
+    path.join(root, "data/compare/country/country-notes.json")
+  );
+  const peopleNotes = loadJson<PeopleNotesMap>(
+    path.join(root, "data/content/people-notes.json")
+  );
   const lgaGeneral = loadJson<Record<string, LgaGeneral>>(
     path.join(root, "data/compare/lgas/general.json")
   );
@@ -68,6 +76,8 @@ export default function HomePage() {
       compareBundle={compareBundle}
       metroGroups={metroGroups}
       stateNotes={stateNotes}
+      countryNotes={countryNotes}
+      peopleNotes={peopleNotes}
       lgaGeneral={lgaGeneral}
     />
   );

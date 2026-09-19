@@ -23,6 +23,8 @@ import type {
   WardsByLga,
   MetroGroup,
   StateNotesMap,
+  CountryNotesMap,
+  PeopleNotesMap,
   LgaGeneral,
 } from "@/types/location";
 import type { CompareBundle } from "@/types/compare";
@@ -39,6 +41,8 @@ interface LocationPanelProps {
   compareBundle: CompareBundle;
   metroGroups: MetroGroup[];
   stateNotes: StateNotesMap;
+  countryNotes: CountryNotesMap;
+  peopleNotes: PeopleNotesMap;
   lgaGeneral: Record<string, LgaGeneral>;
 }
 
@@ -52,6 +56,8 @@ export default function LocationPanel({
   compareBundle,
   metroGroups,
   stateNotes,
+  countryNotes,
+  peopleNotes,
   lgaGeneral,
 }: LocationPanelProps) {
   const isMobile = useIsMobile();
@@ -172,7 +178,13 @@ export default function LocationPanel({
           )}
 
           {showOverview && (
-            <NigeriaOverview states={states} compareBundle={compareBundle} />
+            <NigeriaOverview
+              states={states}
+              lgas={lgas}
+              compareBundle={compareBundle}
+              countryNotes={countryNotes}
+              peopleNotes={peopleNotes}
+            />
           )}
 
           {showRegion && activeRegion && (
@@ -192,6 +204,7 @@ export default function LocationPanel({
               }
               wards={wards}
               general={selectedLgaId ? lgaGeneral[selectedLgaId] : undefined}
+              metroGroups={metroGroups}
             />
           )}
 

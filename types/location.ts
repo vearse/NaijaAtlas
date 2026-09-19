@@ -44,11 +44,13 @@ export interface RegionLocation {
 export interface SearchEntry {
   id: string;
   name: string;
-  level: LocationLevel | "country" | OverlayLevel;
+  level: LocationLevel | "country" | OverlayLevel | "metro" | "state-note";
   parentId: string | null;
   stateName?: string;
   regionId?: string;
   regionName?: string;
+  stateIds?: string[];
+  category?: string;
   bbox?: [number, number, number, number];
   layerId?: "landforms" | "resources" | "cities" | "lakes" | "waterways" | "coast";
   typeLabel?: string;
@@ -90,6 +92,18 @@ export interface WikiNote {
   url: string;
 }
 
+/** A country-level exploration note (data/compare/country/country-notes.json). */
+export interface CountryNote {
+  title: string;
+  note: string;
+  category: string;
+  relatedStateIds: string[];
+  url: string | null;
+  confidence?: string;
+}
+
+export type CountryNotesMap = Record<string, CountryNote[]>;
+
 /** A metropolitan area grouping one or more LGAs (data/content/metro.json). */
 export interface MetroGroup {
   id: string;
@@ -107,6 +121,9 @@ export interface MetroGroup {
 
 /** Per-state exploration hints keyed by state id (data/content/state-notes.json). */
 export type StateNotesMap = Record<string, WikiNote[]>;
+
+/** Notable-people notes keyed by state id (data/content/people-notes.json). */
+export type PeopleNotesMap = Record<string, WikiNote[]>;
 
 /** Hand-curated "general" detail per LGA (data/compare/lgas/general.json). */
 export interface LgaGeneral {

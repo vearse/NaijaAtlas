@@ -1,21 +1,32 @@
 "use client";
 
 import type { CompareBundle } from "@/types/compare";
-import type { StateLocation } from "@/types/location";
+import type {
+  CountryNotesMap,
+  LgaLocation,
+  PeopleNotesMap,
+  StateLocation,
+} from "@/types/location";
 import NigeriaOverview from "@/components/location/NigeriaOverview";
 
 interface MobileInfoModalProps {
   open: boolean;
   onClose: () => void;
   states: StateLocation[];
+  lgas: LgaLocation[];
   compareBundle: CompareBundle;
+  countryNotes: CountryNotesMap;
+  peopleNotes: PeopleNotesMap;
 }
 
 export default function MobileInfoModal({
   open,
   onClose,
   states,
+  lgas,
   compareBundle,
+  countryNotes,
+  peopleNotes,
 }: MobileInfoModalProps) {
   if (!open) return null;
 
@@ -50,7 +61,13 @@ export default function MobileInfoModal({
           </button>
         </div>
         <div className="flex-1 overflow-y-auto overscroll-contain p-4 min-h-0">
-          <NigeriaOverview states={states} compareBundle={compareBundle} />
+          <NigeriaOverview
+            states={states}
+            lgas={lgas}
+            compareBundle={compareBundle}
+            countryNotes={countryNotes}
+            peopleNotes={peopleNotes}
+          />
         </div>
       </div>
     </>

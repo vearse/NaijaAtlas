@@ -2,7 +2,12 @@
 
 import { useState } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
-import type { LgaContent, LgaLocation, LgaGeneral } from "@/types/location";
+import type {
+  LgaContent,
+  LgaLocation,
+  LgaGeneral,
+  MetroGroup,
+} from "@/types/location";
 import VisitDirectionsControl from "@/components/directions/VisitDirectionsControl";
 
 interface LgaDetailsProps {
@@ -11,6 +16,7 @@ interface LgaDetailsProps {
   regionName?: string;
   wards?: string[];
   general?: LgaGeneral;
+  metroGroups?: MetroGroup[];
 }
 
 function stringValue(value: unknown): string | null {
@@ -68,12 +74,20 @@ function BulletList({
   );
 }
 
+const NOTE_CATEGORY_STYLES: Record<string, string> = {
+  history: "bg-sky-50 text-sky-700 border-sky-200",
+  culture: "bg-violet-50 text-violet-700 border-violet-200",
+  economy: "bg-emerald-50 text-emerald-700 border-emerald-200",
+  geography: "bg-amber-50 text-amber-700 border-amber-200",
+};
+
 export default function LgaDetails({
   content,
   location,
   regionName,
   wards = [],
   general,
+  metroGroups = [],
 }: LgaDetailsProps) {
   const setSelectedLga = useMapStore((s) => s.setSelectedLga);
   const openWikiModal = useMapStore((s) => s.openWikiModal);
@@ -95,6 +109,9 @@ export default function LgaDetails({
   const ethnicGroups = general?.ethnicGroups?.filter(Boolean) ?? [];
   const landmarks = general?.landmarks?.filter(Boolean) ?? [];
   const highlights = general?.highlights?.filter(Boolean) ?? [];
+  const lgaMetros = metroGroups.filter((g) =>
+    g.memberIds.includes(location.id)
+  );
 
   return (
     <div className="space-y-5">
@@ -193,6 +210,79 @@ export default function LgaDetails({
       <p className="text-sm text-slate-600 leading-relaxed">
         {summary ?? content.description}
       </p>
+
+      {lgaMetros.length > 0 && (
+        <div className="space-y-3">
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            Metro area{lgaMetros.length === 1 ? "" : "s"} (
+            {lgaMetros.length})
+          </h3>
+          {lgaMetros.map((m) => (
+            <div
+              key={m.id}
+              className="rounded-xl border border-slate-100 bg-emerald-50/40 p-3 space-y-2"
+            >
+              <p className="text-sm font-semibold text-slate-800">{m.name}</p>
+              {m.memberIds.length > 0 && (
+                <p className="text-[11px] font-medium text-slate-500">
+                  {m.memberIds.length} LGA
+                  {m.memberIds.length === 1 ? "" : "s"} in this metro
+                </p>
+              )}
+              {m.description && (
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {m.description}
+                </p>
+              )}
+              {m.wikiNotes.length > 0 && (
+                <ul className="space-y-2 pt-0.5">
+                  {m.wikiNotes.map((w, i) => (
+                    <li
+                      key={i}
+                      className="rounded-lg bg-white border border-slate-100 px-2.5 py-2"
+                    >
+                      {w.url ? (
+                        <button
+                          type="button"
+                          onClick={() => openWikiModal(w.url, w.title)}
+                          className="w-full text-left group"
+                        >
+                          <span className="flex items-center gap-1.5 text-xs font-semibold text-sky-800 group-hover:text-sky-950 underline underline-offset-2">
+                            {w.title}
+                            <span
+                              className={`rounded-full border px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide ${
+                                NOTE_CATEGORY_STYLES[w.category] ??
+                                "bg-slate-50 text-slate-600 border-slate-200"
+                              }`}
+                            >
+                              {w.category}
+                            </span>
+                          </span>
+                        </button>
+                      ) : (
+                        <span className="flex items-center gap-1.5 text-xs font-semibold text-slate-800">
+                          {w.title}
+                          <span
+                            className={`rounded-full border px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide ${
+                              NOTE_CATEGORY_STYLES[w.category] ??
+                              "bg-slate-50 text-slate-600 border-slate-200"
+                            }`}
+                          >
+                            {w.category}
+                          </span>
+                        </span>
+                      )}
+                      <p className="text-xs text-slate-500 leading-relaxed mt-1">
+                        {w.note}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
 
       {economy && (
         <div>

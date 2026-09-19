@@ -17,6 +17,40 @@
       "note": "Arochukwu was historically home to the powerful Aro Confederacy and the Ibini Ukpabi oracle ('Long Juju'), central to pre-colonial trade and slave-trade networks in the region.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Aro_Confederacy"
+    },
+    {
+      "title": "Ohafia war dance (Ikpirikpe-Ogu)",
+      "note": "Ohafia is known for its warrior tradition, expressed in the Ikpirikpe-Ogu war dance.",
+      "category": "culture",
+      "type": "performance",
+      "groupIds": [
+        "culture-ohafia-aro"
+      ],
+      "locations": [
+        {
+          "name": "Ohafia",
+          "lgaId": "NG-AB-OHAFIA"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
+    },
+    {
+      "title": "National War Museum, Umuahia",
+      "note": "Umuahia holds a museum of the 1967-70 civil war and served as an administrative seat of Biafra after Enugu fell.",
+      "category": "history",
+      "type": "site",
+      "groupIds": [
+        "culture-umuahia-ibeku"
+      ],
+      "locations": [
+        {
+          "name": "Umuahia",
+          "lgaId": "NG-AB-UMUAHIA-SOUTH"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
     }
   ],
   "NG-AD": [
@@ -31,6 +65,57 @@
       "note": "Adamawa is one of Nigeria's most linguistically diverse states, home to dozens of distinct ethnic groups including Fulani, Bura, Mumuye, and Margi.",
       "category": "culture",
       "url": "https://en.wikipedia.org/wiki/Adamawa_State"
+    },
+    {
+      "title": "Sukur Cultural Landscape",
+      "note": "The Sukur Cultural Landscape in Madagali LGA was inscribed by UNESCO in 1999 as Nigeria's first World Heritage Site, with the Hidi's hilltop palace, terraced fields and iron-working remains.",
+      "category": "history",
+      "type": "site",
+      "groupIds": [
+        "culture-northern-adamawa-highlands"
+      ],
+      "locations": [
+        {
+          "name": "Sukur",
+          "lgaId": "NG-AD-MADAGALI"
+        }
+      ],
+      "url": "https://en.wikipedia.org/wiki/Sukur",
+      "confidence": "high"
+    },
+    {
+      "title": "Lamido of Adamawa",
+      "note": "The Lamido of Adamawa heads the Adamawa Emirate (Fombina) at Yola.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "group-yola-metro"
+      ],
+      "locations": [
+        {
+          "name": "Yola",
+          "lgaId": "NG-AD-YOLA-SOUTH"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Hama Bachama",
+      "note": "The Hama Bachama is the traditional head of the Bachama (Bwatiye) people.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-bachama-numan"
+      ],
+      "locations": [
+        {
+          "name": "Lamurde",
+          "lgaId": "NG-AD-LAMURDE"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
     }
   ],
   "NG-AK": [
@@ -45,6 +130,29 @@
       "note": "The state is the traditional homeland of the Ibibio and Annang peoples, known for distinct masquerade and mmanwu traditions.",
       "category": "culture",
       "url": "https://en.wikipedia.org/wiki/Ibibio_people"
+    },
+    {
+      "title": "Ekpo masquerade society",
+      "note": "Ekpo is the ancestral masquerade society of the Ibibio and Annang.",
+      "category": "culture",
+      "type": "masquerade-society",
+      "groupIds": [
+        "culture-ibibio",
+        "culture-annang"
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Mbopo fattening-room rite",
+      "note": "Mbopo is the Ibibio rite of passage in which young women were traditionally prepared for marriage in a fattening house.",
+      "category": "culture",
+      "type": "rite",
+      "groupIds": [
+        "culture-ibibio"
+      ],
+      "url": null,
+      "confidence": "medium"
     }
   ],
   "NG-AN": [
@@ -65,6 +173,86 @@
       "note": "Nnewi has grown into one of Nigeria's leading indigenous auto-parts manufacturing hubs, nicknamed 'the Japan of Africa' by some commentators.",
       "category": "economy",
       "url": "https://en.wikipedia.org/wiki/Nnewi"
+    },
+    {
+      "title": "Ofala Festival (Onitsha)",
+      "note": "The Obi of Onitsha's annual emergence from seclusion, held in October and drawing large crowds. Onitsha's festival cycle also includes Umatu (first maize), Owuwa Ji (new yam) and Ifejioku (January).",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "group-onitsha-metro"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Oct"
+        ]
+      },
+      "locations": [
+        {
+          "name": "Onitsha",
+          "lgaId": null
+        }
+      ],
+      "url": "https://imeobionitsha.org/ceremonial-cycle",
+      "confidence": "verified"
+    },
+    {
+      "title": "Uzo-iyi Masquerade Festival",
+      "note": "Umuoji's four-day masquerade festival opens the rainy season in March.",
+      "category": "festival",
+      "type": "masquerade",
+      "groupIds": [
+        "culture-awka-nri"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Mar"
+        ],
+        "note": "Four days at the start of the rains"
+      },
+      "locations": [
+        {
+          "name": "Umuoji",
+          "lgaId": "NG-AN-IDEMILI-NORTH"
+        }
+      ],
+      "url": "https://www.critical-stages.org/26/wp-json/wp/v2/posts/308",
+      "confidence": "verified"
+    },
+    {
+      "title": "Ijele masquerade",
+      "note": "Ijele is Africa's largest masquerade, inscribed by UNESCO in 2009 and mainly found in Anambra.",
+      "category": "culture",
+      "type": "masquerade",
+      "groupIds": [
+        "culture-awka-nri"
+      ],
+      "alsoInStateIds": [
+        "NG-EN",
+        "NG-IM",
+        "NG-EB"
+      ],
+      "url": "https://fmacce.gov.ng/intangible-cultural-heritage",
+      "confidence": "verified"
+    },
+    {
+      "title": "Eze Nri",
+      "note": "The Eze Nri holds ritual kingship at Nri, associated with the Nri Kingdom.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-awka-nri"
+      ],
+      "locations": [
+        {
+          "name": "Nri",
+          "lgaId": "NG-AN-ANAOCHA"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-BA": [
@@ -75,10 +263,38 @@
       "url": "https://en.wikipedia.org/wiki/Bauchi_State"
     },
     {
-      "title": "Sukur cultural landscape",
-      "note": "Nearby the Bauchi/Adamawa borderland, the Sukur Kingdom holds Nigeria's only UNESCO World Heritage-listed cultural landscape, though technically sited in Adamawa.",
+      "title": "Bauchi Emirate",
+      "note": "Bauchi Emirate was founded in the early 19th century by Yakubu during the Sokoto jihad.",
       "category": "history",
-      "url": "https://en.wikipedia.org/wiki/Sukur"
+      "type": "tradition",
+      "groupIds": [
+        "group-bauchi-metro"
+      ],
+      "locations": [
+        {
+          "name": "Bauchi",
+          "lgaId": "NG-BA-BAUCHI"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
+    },
+    {
+      "title": "Sayawa (Zaar) communities",
+      "note": "The Sayawa (Zaar) of Tafawa Balewa, Bogoro and Dass are among southern Bauchi's largest non-Hausa groups.",
+      "category": "culture",
+      "type": "tradition",
+      "groupIds": [
+        "culture-sayawa-zaar"
+      ],
+      "locations": [
+        {
+          "name": "Tafawa Balewa",
+          "lgaId": "NG-BA-TAFAWA-BALEWA"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
     }
   ],
   "NG-BY": [
@@ -93,6 +309,44 @@
       "note": "Bayelsa is the home state of Goodluck Jonathan, Nigeria's president from 2010 to 2015, the country's first from a Niger Delta minority background.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Goodluck_Jonathan"
+    },
+    {
+      "title": "Oloibiri oil discovery",
+      "note": "Oloibiri in Ogbia LGA saw Nigeria's first commercial oil discovery in 1956, with production beginning in 1958.",
+      "category": "history",
+      "type": "site",
+      "groupIds": [
+        "culture-ogbia"
+      ],
+      "locations": [
+        {
+          "name": "Oloibiri",
+          "lgaId": "NG-BY-OGBIA"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Nembe and the Akassa raid",
+      "note": "Nembe (Brass) was a major palm-oil trading kingdom whose people carried out the 1895 Akassa raid on the Royal Niger Company.",
+      "category": "history",
+      "type": "tradition",
+      "groupIds": [
+        "culture-ijaw-bayelsa"
+      ],
+      "locations": [
+        {
+          "name": "Nembe",
+          "lgaId": "NG-BY-NEMBE"
+        },
+        {
+          "name": "Akassa",
+          "lgaId": "NG-BY-BRASS"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-BE": [
@@ -104,9 +358,115 @@
     },
     {
       "title": "Tiv and Idoma home",
-      "note": "The state is the traditional home of the Tiv people (Nigeria's fourth-largest ethnic group) and the Idoma people, each with distinct language and masquerade traditions.",
+      "note": "The state is the traditional home of the Tiv people (one of Nigeria's largest ethnic groups) and the Idoma people, each with distinct language and masquerade traditions.",
       "category": "culture",
       "url": "https://en.wikipedia.org/wiki/Tiv_people"
+    },
+    {
+      "title": "Kwagh-hir",
+      "note": "Kwagh-hir is Tiv theatre that mixes puppetry, masquerade, music, dance and storytelling, inscribed by UNESCO in 2019.",
+      "category": "culture",
+      "type": "performance",
+      "groupIds": [
+        "culture-tiv"
+      ],
+      "url": "https://fmacce.gov.ng/intangible-cultural-heritage",
+      "confidence": "verified"
+    },
+    {
+      "title": "Tor Tiv",
+      "note": "The Tor Tiv is the paramount ruler of the Tiv, with his palace at Gboko.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-tiv"
+      ],
+      "locations": [
+        {
+          "name": "Gboko",
+          "lgaId": "NG-BE-GBOKO"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Eje Alekwu festival",
+      "note": "Idoma communities honour the ancestral spirit Alekwu in a festival of masquerades, communal hunting and rites before the harvest.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-idoma"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Mar",
+          "Apr"
+        ],
+        "note": "Late March to early April"
+      },
+      "locations": [
+        {
+          "name": "Otukpo",
+          "lgaId": "NG-BE-OTUKPO"
+        },
+        {
+          "name": "Ado",
+          "lgaId": "NG-BE-ADO"
+        },
+        {
+          "name": "Okpokwu",
+          "lgaId": "NG-BE-OKPOKWU"
+        }
+      ],
+      "url": "https://splendorsofdawn.ng/2023/12/07/origin-of-alekwuafia-masquerade-thats-a-poet/",
+      "confidence": "verified"
+    },
+    {
+      "title": "Och'Idoma",
+      "note": "The Och'Idoma is the paramount ruler of the Idoma, whose palace at Otukpo is the focus of the Alekwu festival.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-idoma"
+      ],
+      "locations": [
+        {
+          "name": "Otukpo",
+          "lgaId": "NG-BE-OTUKPO"
+        }
+      ],
+      "url": null,
+      "confidence": "verified"
+    },
+    {
+      "title": "Ige-Agba new yam festival",
+      "note": "The Igede of Oju and Obi celebrate the new yam with the Ige-Agba festival.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-igede"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Sep"
+        ],
+        "note": "First week of September"
+      },
+      "locations": [
+        {
+          "name": "Oju",
+          "lgaId": "NG-BE-OJU"
+        },
+        {
+          "name": "Obi",
+          "lgaId": "NG-BE-OBI"
+        }
+      ],
+      "url": "https://fmino.gov.ng/?p=612",
+      "confidence": "verified"
     }
   ],
   "NG-BO": [
@@ -121,6 +481,41 @@
       "note": "Borno's 'Home of Peace' nickname predates the security challenges of the 2010s-2020s and reflects its historical role as a centre of Islamic scholarship and trans-Saharan trade.",
       "category": "culture",
       "url": "https://en.wikipedia.org/wiki/Borno_State"
+    },
+    {
+      "title": "Shehu of Borno",
+      "note": "The Shehu of Borno heads the Borno Emirate, succeeding the ancient Mai of Kanem-Bornu.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "group-maiduguri-metro",
+        "culture-kanuri-borno"
+      ],
+      "locations": [
+        {
+          "name": "Maiduguri",
+          "lgaId": "NG-BO-MAIDUGURI"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Mai of Biu",
+      "note": "The Mai of Biu rules the Bura (Babur) chiefdom of the Biu plateau.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-bura-biu"
+      ],
+      "locations": [
+        {
+          "name": "Biu",
+          "lgaId": "NG-BO-BIU"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
     }
   ],
   "NG-CR": [
@@ -132,8 +527,27 @@
     },
     {
       "title": "Calabar Carnival",
-      "note": "Calabar hosts Africa's biggest street carnival every December, drawing large domestic and diaspora crowds.",
-      "category": "culture",
+      "note": "Calabar hosts a December carnival billed as Africa's biggest street party, drawing large domestic and diaspora crowds.",
+      "category": "festival",
+      "type": "carnival",
+      "groupIds": [
+        "culture-efik-calabar",
+        "group-calabar-metro"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Dec"
+        ],
+        "note": "Runs through the December festive season"
+      },
+      "locations": [
+        {
+          "name": "Calabar",
+          "lgaId": "NG-CR-CALABAR-MUNICIPAL"
+        }
+      ],
+      "confidence": "high",
       "url": "https://en.wikipedia.org/wiki/Calabar_Carnival"
     },
     {
@@ -141,6 +555,77 @@
       "note": "Calabar was a major Atlantic-era Efik trading port from the 17th century, historically significant in both palm-oil trade and the transatlantic slave trade.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Calabar"
+    },
+    {
+      "title": "Ekpe (Leopard) society",
+      "note": "Ekpe is the Efik institution of governance and secret society, with branches among the Ibibio and Igbo of neighbouring states.",
+      "category": "institution",
+      "type": "society",
+      "groupIds": [
+        "culture-efik-calabar"
+      ],
+      "locations": [
+        {
+          "name": "Calabar",
+          "lgaId": "NG-CR-CALABAR-MUNICIPAL"
+        }
+      ],
+      "alsoInStateIds": [
+        "NG-AK",
+        "NG-AB"
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Leboku New Yam Festival",
+      "note": "The Yakurr (Yako) people mark the new yam with the three-week Leboku, which honours the earth goddess and ancestors and includes a parade of engaged maidens. Its international edition is held at Ugep.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-yakurr-abi"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Aug",
+          "Sep"
+        ],
+        "note": "About mid-August to mid-September"
+      },
+      "locations": [
+        {
+          "name": "Ugep",
+          "lgaId": "NG-CR-YAKURR"
+        },
+        {
+          "name": "Idomi",
+          "lgaId": "NG-CR-YAKURR"
+        },
+        {
+          "name": "Ekori",
+          "lgaId": "NG-CR-YAKURR"
+        }
+      ],
+      "url": "https://en.wikipedia.org/wiki/Leboku",
+      "confidence": "verified"
+    },
+    {
+      "title": "Ikom monoliths",
+      "note": "Hundreds of carved stone monoliths around Ikom and Etung are among the region's best-known archaeological and artistic remains.",
+      "category": "history",
+      "type": "site",
+      "groupIds": [
+        "culture-ekoi-ejagham"
+      ],
+      "locations": [
+        {
+          "name": "Ikom",
+          "lgaId": "NG-CR-IKOM"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-DE": [
@@ -155,6 +640,120 @@
       "note": "Delta is home to several distinct groups — Urhobo, Igbo (Anioma), Ijaw, Isoko, and Itsekiri — each with its own language and traditional rulership.",
       "category": "culture",
       "url": "https://en.wikipedia.org/wiki/Delta_State"
+    },
+    {
+      "title": "Amaseikumor Festival",
+      "note": "The Ijaw of Gbaramatu Kingdom in Warri South West LGA celebrate a seven-day annual festival built around confession, cleansing and the renewal of ancestral covenants.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-ijaw-delta"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": []
+      },
+      "locations": [
+        {
+          "name": "Gbaramatu",
+          "lgaId": "NG-DE-WARRI-SOUTH-WEST"
+        }
+      ],
+      "url": "https://fmacce.gov.ng/festivals-carnivals/amaseikumor-festival-gbaramatu-kingdom-delta-state",
+      "confidence": "verified"
+    },
+    {
+      "title": "Olu of Warri and coronation anniversary",
+      "note": "The Olu of Warri heads the Itsekiri Kingdom, seated at Warri, with Ode-Itsekiri as the cradle of the people. His coronation anniversary is marked with a week of events each August.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-itsekiri",
+        "group-warri-metro"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Aug"
+        ],
+        "note": "Week-long coronation anniversary celebrations"
+      },
+      "locations": [
+        {
+          "name": "Ode-Itsekiri",
+          "lgaId": "NG-DE-WARRI-SOUTH"
+        },
+        {
+          "name": "Warri",
+          "lgaId": "NG-DE-WARRI-SOUTH"
+        }
+      ],
+      "url": "https://businessday.ng/news/article/warri-kingdom-in-celebratory-mood-as-olu-of-warris-4th-coronation-anniversary-kicks-off/",
+      "confidence": "verified"
+    },
+    {
+      "title": "Ghigho Aghofen (Palace Watch)",
+      "note": "The Olu of Warri introduced the Palace Watch ceremony in December 2021, in which an Itsekiri community takes turns keeping watch over the palace.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-itsekiri"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Dec"
+        ],
+        "note": "First held on 18 December 2021"
+      },
+      "locations": [
+        {
+          "name": "Warri",
+          "lgaId": "NG-DE-WARRI-SOUTH"
+        }
+      ],
+      "url": "https://thewillnews.com/olu-of-warri-announces-new-festival-ghigho-aghofen/",
+      "confidence": "verified"
+    },
+    {
+      "title": "Ogunme",
+      "note": "A cultural form reported as unique to the Itsekiri people. Details still to be confirmed with local sources.",
+      "category": "culture",
+      "type": "tradition",
+      "groupIds": [
+        "culture-itsekiri"
+      ],
+      "url": null,
+      "confidence": "user-supplied"
+    },
+    {
+      "title": "Ekpu (Urhobo ancestral figures)",
+      "note": "Ekpu are carved ancestral memorial figures of the Urhobo.",
+      "category": "culture",
+      "type": "craft",
+      "groupIds": [
+        "culture-urhobo"
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Asagba of Asaba",
+      "note": "The Asagba is the traditional ruler of Asaba, capital of Delta State.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-anioma",
+        "group-asaba-oshimili-metro"
+      ],
+      "locations": [
+        {
+          "name": "Asaba",
+          "lgaId": "NG-DE-OSHIMILI-SOUTH"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-EB": [
@@ -169,6 +768,27 @@
       "note": "Ebonyi was created only in 1996, carved from Enugu and Abia States, making it one of the newest Igbo-speaking states.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Ebonyi_State"
+    },
+    {
+      "title": "Okumkpa (Afikpo)",
+      "note": "Okumkpa is a satirical masquerade performance of the Afikpo (Ehugbo) Igbo.",
+      "category": "festival",
+      "type": "masquerade",
+      "groupIds": [
+        "culture-afikpo"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": []
+      },
+      "locations": [
+        {
+          "name": "Afikpo",
+          "lgaId": "NG-EB-AFIKPO-NORTH"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
     }
   ],
   "NG-ED": [
@@ -183,6 +803,81 @@
       "note": "The Benin Kingdom's royal court produced the famed Benin Bronzes, many looted by British forces in 1897 and now the subject of ongoing international restitution efforts.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Kingdom_of_Benin"
+    },
+    {
+      "title": "Igue Festival",
+      "note": "Benin's Igue is the annual royal festival of blessing and renewal centred on the Oba's palace.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-benin-edo",
+        "group-benin-city-metro"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Dec"
+        ]
+      },
+      "locations": [
+        {
+          "name": "Benin City",
+          "lgaId": "NG-ED-OREDO"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Igun Eronmwon bronze casters' guild",
+      "note": "The Igun Eronmwon is the hereditary guild of royal bronze casters of Benin City.",
+      "category": "institution",
+      "type": "guild",
+      "groupIds": [
+        "culture-benin-edo"
+      ],
+      "locations": [
+        {
+          "name": "Benin City",
+          "lgaId": "NG-ED-OREDO"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Onojie of Esan",
+      "note": "Esan communities are ruled by kings titled Onojie, heading many small kingdoms.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-esan"
+      ],
+      "locations": [
+        {
+          "name": "Ekpoma",
+          "lgaId": "NG-ED-ESAN-WEST"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Otaru of Auchi",
+      "note": "The Otaru of Auchi is the leading traditional ruler among the Etsako (Afemai).",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-afemai-north-edo"
+      ],
+      "locations": [
+        {
+          "name": "Auchi",
+          "lgaId": "NG-ED-ETSAKO-WEST"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-EK": [
@@ -197,6 +892,71 @@
       "note": "Ekiti was created in 1996, carved from Ondo State, making it one of Nigeria's newest states.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Ekiti_State"
+    },
+    {
+      "title": "Udiroko Festival",
+      "note": "Ado-Ekiti's annual Udiroko festival gathers the Ewi, chiefs and indigenes at the palace under the big Uroko tree. It is dated to around 1310 AD and is treated as the town's new year.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-ekiti",
+        "group-adoekiti-metro"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Aug"
+        ],
+        "note": "Recent editions have fallen in late August"
+      },
+      "locations": [
+        {
+          "name": "Ado-Ekiti",
+          "lgaId": "NG-EK-ADO-EKITI"
+        }
+      ],
+      "url": "https://www.ekitistate.gov.ng/archives/4314",
+      "confidence": "verified"
+    },
+    {
+      "title": "Olosunta Festival",
+      "note": "Ikere-Ekiti honours Olosunta Mountain, a landmark tied to the town's founding, in an annual festival.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-ekiti"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Aug"
+        ]
+      },
+      "locations": [
+        {
+          "name": "Ikere-Ekiti",
+          "lgaId": "NG-EK-IKERE"
+        }
+      ],
+      "url": "https://thearthubng.com/?p=10340",
+      "confidence": "verified"
+    },
+    {
+      "title": "Ewi of Ado-Ekiti",
+      "note": "The Ewi is the paramount ruler of Ado-Ekiti; other major Ekiti thrones include the Olukere of Ikere.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "group-adoekiti-metro"
+      ],
+      "locations": [
+        {
+          "name": "Ado-Ekiti",
+          "lgaId": "NG-EK-ADO-EKITI"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-EN": [
@@ -211,6 +971,51 @@
       "note": "Enugu briefly served as the capital of the breakaway Republic of Biafra during the early phase of the 1967-70 Nigerian Civil War.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Republic_of_Biafra"
+    },
+    {
+      "title": "Odo Masquerade Festival",
+      "note": "The Odo festival, in which masks are said to bring the dead back among the living, is held every two years in Ngwo (Udi), Ebe, Ezeagu and parts of Nsukka.",
+      "category": "festival",
+      "type": "masquerade",
+      "groupIds": [
+        "culture-nsukka",
+        "culture-udi-awgu"
+      ],
+      "period": {
+        "frequency": "biennial",
+        "months": []
+      },
+      "locations": [
+        {
+          "name": "Ngwo",
+          "lgaId": "NG-EN-UDI"
+        },
+        {
+          "name": "Nsukka",
+          "lgaId": "NG-EN-NSUKKA"
+        },
+        {
+          "name": "Ezeagu",
+          "lgaId": "NG-EN-EZEAGU"
+        }
+      ],
+      "url": "https://en.wikipedia.org/wiki/Odo_Masquerade_Festival",
+      "confidence": "verified"
+    },
+    {
+      "title": "Mmanwu Festival",
+      "note": "The Federal Ministry of Information lists a masquerade festival held in Enugu each November to usher in the new yam.",
+      "category": "festival",
+      "type": "masquerade",
+      "groupIds": [],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Nov"
+        ]
+      },
+      "url": "https://fmino.gov.ng/?p=612",
+      "confidence": "verified"
     }
   ],
   "NG-FC": [
@@ -231,6 +1036,44 @@
       "note": "A 725-metre granite monolith just outside the FCT along the Kaduna expressway has become an unofficial national symbol, once featured on the 100-naira note.",
       "category": "geography",
       "url": "https://en.wikipedia.org/wiki/Zuma_Rock"
+    },
+    {
+      "title": "Abuja International Carnival",
+      "note": "Abuja stages a national carnival showcasing performances from across Nigeria; the Federal Ministry of Arts, Culture and Creative Economy lists the 2024 edition.",
+      "category": "festival",
+      "type": "carnival",
+      "groupIds": [
+        "group-fct-metro"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": []
+      },
+      "locations": [
+        {
+          "name": "Abuja",
+          "lgaId": "NG-FC-ABUJA-MUNICIPAL"
+        }
+      ],
+      "url": "https://fmacce.gov.ng/festivals-carnivals/2024-abuja-international-carnival",
+      "confidence": "verified"
+    },
+    {
+      "title": "Ona of Abaji",
+      "note": "The Ona of Abaji heads the Abaji Emirate, an Ebira-Koto (Egbura) traditional state in the FCT.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-fct-indigenous"
+      ],
+      "locations": [
+        {
+          "name": "Abaji",
+          "lgaId": "NG-FC-ABAJI"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-GO": [
@@ -239,6 +1082,40 @@
       "note": "Gombe's nickname reflects its savanna landscape and relatively recent emergence as a state, created in 1996 from Bauchi State.",
       "category": "geography",
       "url": "https://en.wikipedia.org/wiki/Gombe_State"
+    },
+    {
+      "title": "Emirate of Gombe",
+      "note": "Gombe Emirate was founded in the early 1800s by Buba Yero during the Sokoto jihad.",
+      "category": "history",
+      "type": "tradition",
+      "groupIds": [
+        "group-gombe-metro"
+      ],
+      "locations": [
+        {
+          "name": "Gombe",
+          "lgaId": "NG-GO-GOMBE"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Mai Tangale",
+      "note": "The Tangale of Billiri and Kaltungo are led by the Mai Tangale, alongside the neighbouring Waja.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-tangale-waja"
+      ],
+      "locations": [
+        {
+          "name": "Billiri",
+          "lgaId": "NG-GO-BILLIRI"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
     }
   ],
   "NG-IM": [
@@ -253,6 +1130,48 @@
       "note": "Imo is home to Oguta Lake, one of Nigeria's largest natural lakes and a popular local tourism site.",
       "category": "geography",
       "url": "https://en.wikipedia.org/wiki/Oguta_Lake"
+    },
+    {
+      "title": "Ikeji Festival (Arondizuogu)",
+      "note": "Arondizuogu's Ikeji festival celebrates the harvest of the first yams over four Igbo market days (Eke, Orie, Afor and Nkwo), ending with the big masquerades at Nkwo-Achi. The festival is traced to Arochukwu.",
+      "category": "festival",
+      "type": "masquerade",
+      "groupIds": [
+        "culture-orlu"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": []
+      },
+      "locations": [
+        {
+          "name": "Arondizuogu",
+          "lgaId": "NG-IM-IDEATO-NORTH"
+        }
+      ],
+      "url": "https://fmacce.gov.ng/festivals-carnivals/ikeji-festival-arondizuogu-imo-state",
+      "confidence": "verified"
+    },
+    {
+      "title": "Ahiajoku Lecture",
+      "note": "The Ahiajoku Lecture is an annual cultural and intellectual lecture series of the Imo State Government, launched in 1979.",
+      "category": "culture",
+      "type": "lecture-series",
+      "groupIds": [
+        "group-owerri-metro"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": []
+      },
+      "locations": [
+        {
+          "name": "Owerri",
+          "lgaId": "NG-IM-OWERRI-MUNICIPAL"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
     }
   ],
   "NG-JI": [
@@ -261,6 +1180,60 @@
       "note": "Jigawa's nickname reflects its status as one of Nigeria's newest states, carved from Kano State in 1991.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Jigawa_State"
+    },
+    {
+      "title": "Jigawa's emirates",
+      "note": "Jigawa's historic emirates include Dutse, Hadejia, Gumel, Kazaure and Ringim.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-hadejia-emirate",
+        "group-dutse-metro"
+      ],
+      "locations": [
+        {
+          "name": "Dutse",
+          "lgaId": "NG-JI-DUTSE"
+        },
+        {
+          "name": "Hadejia",
+          "lgaId": "NG-JI-HADEJIA"
+        },
+        {
+          "name": "Gumel",
+          "lgaId": "NG-JI-GUMEL"
+        },
+        {
+          "name": "Kazaure",
+          "lgaId": "NG-JI-KAZAURE"
+        },
+        {
+          "name": "Ringim",
+          "lgaId": "NG-JI-RINGIM"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Hadejia-Nguru wetlands",
+      "note": "The Hadejia-Nguru floodplain, a Ramsar-listed wetland shared with Yobe State, supports fishing, farming and migratory birds.",
+      "category": "geography",
+      "type": "site",
+      "groupIds": [
+        "culture-hadejia-emirate"
+      ],
+      "locations": [
+        {
+          "name": "Hadejia",
+          "lgaId": "NG-JI-HADEJIA"
+        }
+      ],
+      "alsoInStateIds": [
+        "NG-YO"
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-KD": [
@@ -275,6 +1248,64 @@
       "note": "Kaduna was founded around 1913 by Frederick Lugard as the administrative capital of the Protectorate of Northern Nigeria.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Kaduna"
+    },
+    {
+      "title": "Afan National Festival",
+      "note": "The Afan festival of the Kagoro (Gworok) people is held on 1 January at the Chief of Kagoro's palace in Kaura LGA. It marks the end of the farming season and the start of hunting, and is said to be around 400 years old.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-southern-kaduna"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Jan"
+        ],
+        "note": "Held on 1 January"
+      },
+      "locations": [
+        {
+          "name": "Kagoro",
+          "lgaId": "NG-KD-KAURA"
+        }
+      ],
+      "url": "https://nico.gov.ng/?p=3190",
+      "confidence": "verified"
+    },
+    {
+      "title": "Nok terracotta culture",
+      "note": "The Nok culture, named after Nok village in Jaba LGA, produced West Africa's earliest known large terracotta sculptures more than two thousand years ago.",
+      "category": "history",
+      "type": "site",
+      "groupIds": [
+        "culture-southern-kaduna"
+      ],
+      "locations": [
+        {
+          "name": "Nok",
+          "lgaId": "NG-KD-JABA"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Emir of Zazzau",
+      "note": "The Emir of Zazzau heads the historic Zazzau emirate, seated at Zaria.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "group-zaria-metro"
+      ],
+      "locations": [
+        {
+          "name": "Zaria",
+          "lgaId": "NG-KD-ZARIA"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-KN": [
@@ -295,6 +1326,66 @@
       "note": "Kano is Nigeria's most populous state, a status tied to its long history as a dense urban trading centre.",
       "category": "geography",
       "url": "https://en.wikipedia.org/wiki/Kano_State"
+    },
+    {
+      "title": "Sallah Durbar (Hawan Sallah)",
+      "note": "Mounted horsemen in colourful regalia pay homage to the Emir during the Eid celebrations in Kano, Katsina, Zaria and other northern emirates.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "group-kano-metro"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [],
+        "note": "Follows Eid-el-Fitr and Eid-el-Kabir, so it moves with the Islamic calendar"
+      },
+      "locations": [
+        {
+          "name": "Kano",
+          "lgaId": "NG-KN-KANO-MUNICIPAL"
+        }
+      ],
+      "alsoInStateIds": [
+        "NG-KT",
+        "NG-KD"
+      ],
+      "url": "https://fmino.gov.ng/?p=612",
+      "confidence": "verified"
+    },
+    {
+      "title": "Kano Emirate",
+      "note": "The Emir of Kano heads one of Nigeria's oldest and most prominent emirates. Its structure has been subject to recent legal and political change, so confirm the current status before publishing.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "group-kano-metro"
+      ],
+      "locations": [
+        {
+          "name": "Kano",
+          "lgaId": "NG-KN-KANO-MUNICIPAL"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
+    },
+    {
+      "title": "Kofar Mata dye pits",
+      "note": "The historic indigo dye pits near Kofar Mata are a symbol of Kano's textile tradition and are often dated to the late 15th century.",
+      "category": "culture",
+      "type": "craft",
+      "groupIds": [
+        "group-kano-metro"
+      ],
+      "locations": [
+        {
+          "name": "Kano",
+          "lgaId": "NG-KN-KANO-MUNICIPAL"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
     }
   ],
   "NG-KT": [
@@ -309,6 +1400,23 @@
       "note": "Katsina was one of the seven original Hausa city-states (Hausa Bakwai) and a major centre of Islamic scholarship before and after the Sokoto Jihad.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Katsina"
+    },
+    {
+      "title": "Daura and the Bayajidda legend",
+      "note": "Daura is regarded in Hausa tradition as the ancestral home of the Hausa people, linked to the Bayajidda legend.",
+      "category": "culture",
+      "type": "tradition",
+      "groupIds": [
+        "culture-daura-emirate"
+      ],
+      "locations": [
+        {
+          "name": "Daura",
+          "lgaId": "NG-KT-DAURA"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-KE": [
@@ -320,9 +1428,59 @@
     },
     {
       "title": "Argungu Fishing Festival",
-      "note": "Kebbi hosts the Argungu International Fishing and Cultural Festival, one of Nigeria's most famous traditional festivals, held on the Matan Fada River.",
-      "category": "culture",
+      "note": "Kebbi hosts the Argungu International Fishing and Cultural Festival, one of Nigeria's most famous traditional festivals. Its main event is a bare-hand and net fishing contest on the Matan Fada River, and it was created to mark the end of old hostilities between the Sokoto Caliphate and the Kebbi Kingdom.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-argungu-kebbawa"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Feb",
+          "Mar"
+        ],
+        "note": "Usually four days; editions have been irregular in recent years"
+      },
+      "locations": [
+        {
+          "name": "Argungu",
+          "lgaId": "NG-KE-ARGUNGU"
+        }
+      ],
+      "confidence": "verified",
       "url": "https://en.wikipedia.org/wiki/Argungu_Fishing_Festival"
+    },
+    {
+      "title": "Historic emirates of Kebbi",
+      "note": "Kebbi's historic emirates include Argungu, Gwandu, Yauri and Zuru, each with its own ruler.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-argungu-kebbawa",
+        "culture-yauri",
+        "culture-zuru-dakarkari"
+      ],
+      "locations": [
+        {
+          "name": "Argungu",
+          "lgaId": "NG-KE-ARGUNGU"
+        },
+        {
+          "name": "Gwandu",
+          "lgaId": "NG-KE-GWANDU"
+        },
+        {
+          "name": "Yauri",
+          "lgaId": "NG-KE-YAURI"
+        },
+        {
+          "name": "Zuru",
+          "lgaId": "NG-KE-ZURU"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-KO": [
@@ -339,10 +1497,125 @@
       "url": "https://en.wikipedia.org/wiki/Kogi_State"
     },
     {
-      "title": "Nigeria's first colonial capital",
-      "note": "Lokoja served as the capital of the Royal Niger Company and later the Protectorate of Northern Nigeria under Frederick Lugard, making it arguably the birthplace of modern Nigerian colonial administration.",
+      "title": "First capital of Northern Nigeria",
+      "note": "Lokoja was the first capital of the Protectorate of Northern Nigeria, which Frederick Lugard proclaimed there in 1900, before the seat moved to Zungeru in 1902.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Lokoja"
+    },
+    {
+      "title": "Ocho Festival",
+      "note": "Ocho is an ancient Igala hunting festival at Idah that opens the hunting and farming season. It was banned in 1963 and revived in 2018.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-igala"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": []
+      },
+      "locations": [
+        {
+          "name": "Idah",
+          "lgaId": "NG-KO-IDAH"
+        }
+      ],
+      "url": "https://guardian.ng/sunday-magazine/55-years-after-proscription-ancient-ocho-festival-holds-in-idah/",
+      "confidence": "verified"
+    },
+    {
+      "title": "Attah Igala",
+      "note": "The Attah Igala is the paramount ruler of the Igala kingdom, seated at Idah.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-igala"
+      ],
+      "locations": [
+        {
+          "name": "Idah",
+          "lgaId": "NG-KO-IDAH"
+        }
+      ],
+      "url": null,
+      "confidence": "verified"
+    },
+    {
+      "title": "Echane (Eche-Ane) masquerade festival",
+      "note": "Ebira communities stage the Echane masquerade festival in rotation from one district to another between April and June. Ebira festivals also include Ekuechi and the Eche-Ori new yam rites at Ihima and Eganyi.",
+      "category": "festival",
+      "type": "masquerade",
+      "groupIds": [
+        "culture-ebira"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Apr",
+          "May",
+          "Jun"
+        ],
+        "note": "Rotates between Ebira districts"
+      },
+      "locations": [
+        {
+          "name": "Ebiraland (rotating districts)",
+          "lgaId": null
+        }
+      ],
+      "url": "https://en.wikipedia.org/wiki/Ebira_people",
+      "confidence": "verified"
+    },
+    {
+      "title": "Ohinoyi of Ebiraland",
+      "note": "The Ohinoyi is the paramount ruler of the Ebira, seated at Okene.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-ebira"
+      ],
+      "locations": [
+        {
+          "name": "Okene",
+          "lgaId": "NG-KO-OKENE"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Ovie Orese",
+      "note": "Ovie Orese is a marital rite for young women in Ogori land, listed by the Federal Ministry of Information.",
+      "category": "culture",
+      "type": "rite",
+      "groupIds": [
+        "culture-ebira"
+      ],
+      "locations": [
+        {
+          "name": "Ogori",
+          "lgaId": "NG-KO-OGORI-MAGONGO"
+        }
+      ],
+      "url": "https://fmino.gov.ng/?p=612",
+      "confidence": "verified"
+    },
+    {
+      "title": "Obaro of Kabba",
+      "note": "The Obaro of Kabba is the leading Okun-Yoruba ruler of western Kogi.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-okun-yoruba"
+      ],
+      "locations": [
+        {
+          "name": "Kabba",
+          "lgaId": "NG-KO-KABBA-BUNU"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-KW": [
@@ -357,6 +1630,61 @@
       "note": "Ilorin transitioned from a Yoruba town to a Fulani emirate in the early 19th century after the Sokoto Jihad, giving Kwara's capital a distinctive blended Yoruba-Hausa identity found almost nowhere else in Nigeria.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Ilorin"
+    },
+    {
+      "title": "Emir of Ilorin",
+      "note": "The Emir of Ilorin heads the Ilorin Emirate, founded in the 1820s, which fused Yoruba and Fulani-Hausa traditions.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "group-ilorin-metro"
+      ],
+      "locations": [
+        {
+          "name": "Ilorin",
+          "lgaId": "NG-KW-ILORIN-WEST"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Etsu Patigi",
+      "note": "The Etsu Patigi is the Nupe ruler of Patigi on the Niger River.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-nupe-kwara"
+      ],
+      "locations": [
+        {
+          "name": "Patigi",
+          "lgaId": "NG-KW-PATEGI"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Patigi Regatta",
+      "note": "Patigi hosts a river regatta on the Niger, one of Kwara's best-known cultural events.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-nupe-kwara"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": []
+      },
+      "locations": [
+        {
+          "name": "Patigi",
+          "lgaId": "NG-KW-PATEGI"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
     }
   ],
   "NG-LA": [
@@ -377,6 +1705,80 @@
       "note": "Lagos is widely regarded as Africa's most populous urban agglomeration, with a metropolitan population estimated well above 15 million.",
       "category": "geography",
       "url": "https://en.wikipedia.org/wiki/Lagos"
+    },
+    {
+      "title": "Eyo Festival (Adamu Orisha Play)",
+      "note": "Lagos Island's white-robed Eyo masquerades parade through the streets, traditionally staged to mark the passing of an important Lagosian and for major ceremonial occasions. The main Eyo groups are Adimu, Laba, Oniko, Ologede and Agere.",
+      "category": "festival",
+      "type": "masquerade",
+      "groupIds": [
+        "culture-eko-lagos-island",
+        "group-lagos-metro"
+      ],
+      "period": {
+        "frequency": "irregular",
+        "months": [],
+        "note": "Held when occasion demands, not on a fixed date"
+      },
+      "locations": [
+        {
+          "name": "Lagos Island",
+          "lgaId": "NG-LA-LAGOS-ISLAND"
+        }
+      ],
+      "url": "https://fmino.gov.ng/?p=612",
+      "confidence": "verified"
+    },
+    {
+      "title": "Zangbeto (Egun night guardians)",
+      "note": "Zangbeto are straw-cloaked spirit figures of the Egun people, believed to guard communities at night and whose spinning dance is a signature performance in Badagry and across the Benin border.",
+      "category": "culture",
+      "type": "masquerade",
+      "groupIds": [
+        "culture-egun-badagry"
+      ],
+      "locations": [
+        {
+          "name": "Badagry",
+          "lgaId": "NG-LA-BADAGRY"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Oba of Lagos and the Idejo chiefs",
+      "note": "The Oba of Lagos rules from the Iga Idunganran palace on Lagos Island alongside the Idejo (White Cap) chiefs, the land-owning chiefly houses of old Eko.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-eko-lagos-island"
+      ],
+      "locations": [
+        {
+          "name": "Lagos Island",
+          "lgaId": "NG-LA-LAGOS-ISLAND"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Badagry slave-trade heritage",
+      "note": "Badagry was a major slave-trade port, and its heritage sites include the Point of No Return and historic missionary buildings.",
+      "category": "history",
+      "type": "site",
+      "groupIds": [
+        "culture-egun-badagry"
+      ],
+      "locations": [
+        {
+          "name": "Badagry",
+          "lgaId": "NG-LA-BADAGRY"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-NA": [
@@ -385,6 +1787,37 @@
       "note": "Nasarawa's nickname reflects its deposits of barite, salt, and other solid minerals, alongside its proximity to Abuja.",
       "category": "economy",
       "url": "https://en.wikipedia.org/wiki/Nasarawa_State"
+    },
+    {
+      "title": "Traditional rulers of Nasarawa",
+      "note": "Nasarawa's historic thrones include the Aren Eggon, the Osana of Doma and the Emirs of Lafia and Keffi.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-eggon",
+        "culture-alago",
+        "group-lafia-keffi-axis"
+      ],
+      "locations": [
+        {
+          "name": "Nasarawa Eggon",
+          "lgaId": "NG-NA-NASARAWA-EGON"
+        },
+        {
+          "name": "Doma",
+          "lgaId": "NG-NA-DOMA"
+        },
+        {
+          "name": "Lafia",
+          "lgaId": "NG-NA-LAFIA"
+        },
+        {
+          "name": "Keffi",
+          "lgaId": "NG-NA-KEFFI"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
     }
   ],
   "NG-NI": [
@@ -399,6 +1832,77 @@
       "note": "Niger is Nigeria's largest state by land area, spanning over 76,000 sq km.",
       "category": "geography",
       "url": "https://en.wikipedia.org/wiki/Niger_State"
+    },
+    {
+      "title": "Etsu Nupe",
+      "note": "The Etsu Nupe is the paramount ruler of the Nupe, seated at Bida.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-nupe-niger"
+      ],
+      "locations": [
+        {
+          "name": "Bida",
+          "lgaId": "NG-NI-BIDA"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Bida brass and glass-bead craft",
+      "note": "Bida is known for brasswork and glass-bead making passed down in Nupe craft guilds.",
+      "category": "culture",
+      "type": "craft",
+      "groupIds": [
+        "culture-nupe-niger"
+      ],
+      "locations": [
+        {
+          "name": "Bida",
+          "lgaId": "NG-NI-BIDA"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
+    },
+    {
+      "title": "Gani festival",
+      "note": "Bida marks the Prophet's birthday with the Gani festival of parades and Nupe pageantry.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-nupe-niger"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [],
+        "note": "Moves with the Islamic calendar"
+      },
+      "locations": [
+        {
+          "name": "Bida",
+          "lgaId": "NG-NI-BIDA"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
+    },
+    {
+      "title": "Emir of Kontagora",
+      "note": "The Emir of Kontagora holds the historic title Sarkin Sudan.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [],
+      "locations": [
+        {
+          "name": "Kontagora",
+          "lgaId": "NG-NI-KONTAGORA"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
     }
   ],
   "NG-OG": [
@@ -419,6 +1923,158 @@
       "note": "The Egba people settled at Abeokuta under Olumo Rock in 1830, using its caves as a wartime refuge; the rock remains the city's defining landmark.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Olumo_Rock"
+    },
+    {
+      "title": "Ojude Oba Festival",
+      "note": "Age-grade groups (Regberegbe) of Ijebu-Ode parade in matching regalia before the Awujale to pay homage, in one of Nigeria's largest Yoruba cultural events.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "group-ijebuland"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [],
+        "note": "Falls after the third day of Eid-el-Kabir, so it moves with the Islamic calendar"
+      },
+      "locations": [
+        {
+          "name": "Ijebu-Ode",
+          "lgaId": "NG-OG-IJEBU-ODE"
+        }
+      ],
+      "url": null,
+      "confidence": "verified"
+    },
+    {
+      "title": "Awujale of Ijebuland",
+      "note": "The Awujale of Ijebuland is the paramount ruler of the Ijebu kingdom, seated at Ijebu-Ode.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "group-ijebuland"
+      ],
+      "locations": [
+        {
+          "name": "Ijebu-Ode",
+          "lgaId": "NG-OG-IJEBU-ODE"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Osugbo society",
+      "note": "Osugbo is the Ijebu counterpart of the Ogboni fraternity, a council of elders with judicial and ritual authority that works alongside the Awujale.",
+      "category": "institution",
+      "type": "society",
+      "groupIds": [
+        "group-ijebuland"
+      ],
+      "locations": [
+        {
+          "name": "Ijebu-Ode",
+          "lgaId": "NG-OG-IJEBU-ODE"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
+    },
+    {
+      "title": "Agemo festival",
+      "note": "Agemo is a masquerade-linked festival celebrated in Ijebu and Remo towns, centred on the chameleon-linked Agemo cult.",
+      "category": "festival",
+      "type": "masquerade",
+      "groupIds": [
+        "group-ijebuland"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": []
+      },
+      "locations": [
+        {
+          "name": "Ijebu-Ode",
+          "lgaId": "NG-OG-IJEBU-ODE"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
+    },
+    {
+      "title": "Alake of Egbaland",
+      "note": "The Alake of Egbaland is the paramount ruler of the Egba, seated at Abeokuta beneath Olumo Rock.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "group-egbaland"
+      ],
+      "locations": [
+        {
+          "name": "Abeokuta",
+          "lgaId": "NG-OG-ABEOKUTA-SOUTH"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Lisabi Festival",
+      "note": "Egba communities commemorate Lisabi, the folk hero credited with organising the Egba revolt against Oyo overlordship in the 18th century.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "group-egbaland"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": []
+      },
+      "locations": [
+        {
+          "name": "Abeokuta",
+          "lgaId": "NG-OG-ABEOKUTA-NORTH"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
+    },
+    {
+      "title": "Gelede masquerade",
+      "note": "Gelede honours the power of women, especially elders, through masked dance and oral performance. It is practised by Yoruba communities in Benin and Togo as well as Nigeria, and was proclaimed by UNESCO as a masterpiece of oral and intangible heritage.",
+      "category": "festival",
+      "type": "masquerade",
+      "groupIds": [
+        "group-yewaland-egbado"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Mar",
+          "Apr",
+          "May"
+        ],
+        "note": "Observed before the rains, roughly March to May"
+      },
+      "locations": [
+        {
+          "name": "Ipokia",
+          "lgaId": "NG-OG-IPOKIA"
+        },
+        {
+          "name": "Imeko-Afon",
+          "lgaId": "NG-OG-IMEKO-AFON"
+        }
+      ],
+      "alsoInStateIds": [
+        "NG-LA",
+        "NG-OY",
+        "NG-OS",
+        "NG-ON",
+        "NG-EK"
+      ],
+      "url": "https://fmacce.gov.ng/intangible-cultural-heritage",
+      "confidence": "verified"
     }
   ],
   "NG-ON": [
@@ -429,10 +2085,166 @@
       "url": "https://en.wikipedia.org/wiki/Ondo_State"
     },
     {
-      "title": "Nigeria's first offshore oil find",
+      "title": "Early offshore oil exploration",
       "note": "Ondo's coastline was the site of some of Nigeria's earliest offshore oil exploration activity.",
       "category": "economy",
       "url": "https://en.wikipedia.org/wiki/Ondo_State"
+    },
+    {
+      "title": "Igogo Festival",
+      "note": "Owo's annual Igogo festival is listed by the Federal Ministry of Information among Nigeria's ancestral festivals.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "group-owo-ose-cluster"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Sep"
+        ],
+        "note": "Listed for September; some accounts place it into October"
+      },
+      "locations": [
+        {
+          "name": "Owo",
+          "lgaId": "NG-ON-OWO"
+        }
+      ],
+      "url": "https://fmino.gov.ng/?p=612",
+      "confidence": "verified"
+    },
+    {
+      "title": "Ariginya Festival",
+      "note": "Ariginya, meaning local wrestling, is one of the foremost traditional festivals of Ikare-Akoko.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-akoko"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": []
+      },
+      "locations": [
+        {
+          "name": "Ikare-Akoko",
+          "lgaId": "NG-ON-AKOKO-NORTH-EAST"
+        }
+      ],
+      "url": "https://en.wikipedia.org/wiki/Ariginya_Festival",
+      "confidence": "verified"
+    },
+    {
+      "title": "Biripo",
+      "note": "Biripo is a major traditional music of the Ilaje, Apoi and Ikale peoples, used to teach peace, unity and productivity.",
+      "category": "culture",
+      "type": "music",
+      "groupIds": [
+        "culture-ilaje",
+        "culture-ikale"
+      ],
+      "url": "https://www.africaknowledgeproject.org/index.php/erald/article/view/2291",
+      "confidence": "verified"
+    },
+    {
+      "title": "Irokute Festival",
+      "note": "Irokute is a traditional festival of Ikaleland, studied at Okitipupa.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-ikale"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": []
+      },
+      "locations": [
+        {
+          "name": "Okitipupa",
+          "lgaId": "NG-ON-OKITIPUPA"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
+    },
+    {
+      "title": "Jolly",
+      "note": "A cultural form reported as unique to the Ilaje people. Details still to be confirmed with local sources.",
+      "category": "culture",
+      "type": "tradition",
+      "groupIds": [
+        "culture-ilaje"
+      ],
+      "locations": [
+        {
+          "name": "Ilaje",
+          "lgaId": "NG-ON-ILAJE"
+        }
+      ],
+      "url": null,
+      "confidence": "user-supplied"
+    },
+    {
+      "title": "Zion",
+      "note": "A cultural form reported as unique to the Ilaje people. Details still to be confirmed with local sources.",
+      "category": "culture",
+      "type": "tradition",
+      "groupIds": [
+        "culture-ilaje"
+      ],
+      "locations": [
+        {
+          "name": "Ilaje",
+          "lgaId": "NG-ON-ILAJE"
+        }
+      ],
+      "url": null,
+      "confidence": "user-supplied"
+    },
+    {
+      "title": "Asiko",
+      "note": "A cultural form reported as unique to the Ikale people. Details still to be confirmed with local sources.",
+      "category": "culture",
+      "type": "tradition",
+      "groupIds": [
+        "culture-ikale"
+      ],
+      "locations": [
+        {
+          "name": "Okitipupa",
+          "lgaId": "NG-ON-OKITIPUPA"
+        }
+      ],
+      "url": null,
+      "confidence": "user-supplied"
+    },
+    {
+      "title": "Deji of Akure, Osemawe of Ondo and Olowo of Owo",
+      "note": "The state's three best-known royal thrones sit at Akure, Ondo and Owo, each heading an old Yoruba kingdom.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "group-akure-metro",
+        "culture-ondo-kingdom",
+        "group-owo-ose-cluster"
+      ],
+      "locations": [
+        {
+          "name": "Akure",
+          "lgaId": "NG-ON-AKURE-SOUTH"
+        },
+        {
+          "name": "Ondo",
+          "lgaId": "NG-ON-ONDO-WEST"
+        },
+        {
+          "name": "Owo",
+          "lgaId": "NG-ON-OWO"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-OS": [
@@ -447,6 +2259,92 @@
       "note": "Ile-Ife, in Osun State, is regarded in Yoruba oral tradition as the origin point of the Yoruba people and the seat of the Ooni of Ife.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Ile-Ife"
+    },
+    {
+      "title": "Osun-Osogbo Festival",
+      "note": "Devotees honour the river goddess Osun at the Osun-Osogbo Sacred Grove, a UNESCO World Heritage Site, in a festival lasting about two weeks that peaks in August.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "group-osogbo-metro"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Aug"
+        ],
+        "note": "Usually starts in the second week of August"
+      },
+      "locations": [
+        {
+          "name": "Osogbo",
+          "lgaId": "NG-OS-OSOGBO"
+        }
+      ],
+      "url": "https://fmino.gov.ng/?p=612",
+      "confidence": "verified"
+    },
+    {
+      "title": "Olojo Festival",
+      "note": "Ile-Ife's Olojo festival, centred on the Ooni of Ife and rites at Oke Mogun, lasts about four days in October.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "group-ife-ijesa-cluster"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Oct"
+        ]
+      },
+      "locations": [
+        {
+          "name": "Ile-Ife",
+          "lgaId": "NG-OS-IFE-CENTRAL"
+        }
+      ],
+      "url": "https://fmino.gov.ng/?p=612",
+      "confidence": "verified"
+    },
+    {
+      "title": "Ifa divination system",
+      "note": "The Ifa divination system, with its Odu Ifa verse corpus interpreted by a Babalawo, is central to Yoruba spirituality and was inscribed by UNESCO in 2008.",
+      "category": "culture",
+      "type": "tradition",
+      "groupIds": [
+        "group-ife-ijesa-cluster"
+      ],
+      "alsoInStateIds": [
+        "NG-OY",
+        "NG-OG",
+        "NG-EK",
+        "NG-ON",
+        "NG-LA"
+      ],
+      "url": "https://fmacce.gov.ng/intangible-cultural-heritage",
+      "confidence": "verified"
+    },
+    {
+      "title": "Oluwo of Iwo and Timi of Ede",
+      "note": "Iwo and Ede are historic Oyo-Yoruba towns in Osun State, ruled by the Oluwo and the Timi respectively.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-osun-oyo-yoruba"
+      ],
+      "locations": [
+        {
+          "name": "Iwo",
+          "lgaId": "NG-OS-IWO"
+        },
+        {
+          "name": "Ede",
+          "lgaId": "NG-OS-EDE-NORTH"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-OY": [
@@ -467,6 +2365,155 @@
       "note": "Ibadan, Oyo's capital, was home to WNTV, the first television station in Africa, launched in 1959.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Western_Nigeria_Television"
+    },
+    {
+      "title": "Sango Festival",
+      "note": "The World Sango Festival in Oyo honours Sango, the deified third Alaafin and Yoruba god of thunder. UNESCO inscribed it in 2023, and it marks the Yoruba traditional new year.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-oyo-kingdom"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Aug"
+        ]
+      },
+      "locations": [
+        {
+          "name": "Oyo town",
+          "lgaId": null
+        }
+      ],
+      "url": "https://fmacce.gov.ng/intangible-cultural-heritage",
+      "confidence": "verified"
+    },
+    {
+      "title": "Alaafin of Oyo",
+      "note": "The Alaafin is the ruler of Oyo, successor to the emperors of the Oyo Empire.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-oyo-kingdom"
+      ],
+      "locations": [
+        {
+          "name": "Oyo town",
+          "lgaId": null
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Olubadan chieftaincy line",
+      "note": "Ibadan's Olubadan is not chosen by a single royal house; chiefs rise by seniority through the civil (Otun) and military (Balogun) lines until they reach the throne.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "group-ibadan-metro"
+      ],
+      "locations": [
+        {
+          "name": "Ibadan",
+          "lgaId": "NG-OY-IBADAN-NORTH"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Oke'Badan Festival",
+      "note": "An Ibadan festival held at Oke'Badan hill, tied to the city's founding story.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "group-ibadan-metro"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Mar"
+        ]
+      },
+      "locations": [
+        {
+          "name": "Ibadan",
+          "lgaId": "NG-OY-IBADAN-NORTH"
+        }
+      ],
+      "url": null,
+      "confidence": "medium"
+    },
+    {
+      "title": "Egungun ancestral masquerades",
+      "note": "Egungun masquerades embody ancestors returning to visit the living and are among the most widespread Yoruba traditions, with strong local calendars in Oyo State towns.",
+      "category": "festival",
+      "type": "masquerade",
+      "groupIds": [
+        "culture-oyo-kingdom"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [],
+        "note": "Dates differ by town"
+      },
+      "alsoInStateIds": [
+        "NG-OS",
+        "NG-OG",
+        "NG-LA",
+        "NG-ON",
+        "NG-EK",
+        "NG-KW"
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Soun of Ogbomosho",
+      "note": "The Soun is the paramount ruler of Ogbomosho.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "group-ogbomoso-metro"
+      ],
+      "locations": [
+        {
+          "name": "Ogbomosho",
+          "lgaId": "NG-OY-OGBOMOSHO-NORTH"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Aare Ona Kakanfo title",
+      "note": "The Aare Ona Kakanfo was the commander-in-chief of the Oyo Empire's army, a title revived in the modern era.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-oyo-kingdom"
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Iseyin Aso-Oke weaving",
+      "note": "Iseyin is a leading centre of Aso-Oke, the hand-woven Yoruba cloth used for weddings and ceremonies.",
+      "category": "culture",
+      "type": "craft",
+      "groupIds": [
+        "culture-oke-ogun"
+      ],
+      "locations": [
+        {
+          "name": "Iseyin",
+          "lgaId": "NG-OY-ISEYIN"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-PL": [
@@ -481,6 +2528,48 @@
       "note": "Jos grew rapidly from the early 1900s as a British colonial tin-mining hub, drawing migrant labour from across Nigeria and shaping the state's ethnic diversity.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Jos"
+    },
+    {
+      "title": "Nzem Berom Festival",
+      "note": "Nzem Berom is the umbrella cultural festival of the Berom people, combining older harvest and planting rites, with music, dance and displays from across Beromland.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-berom",
+        "group-jos-metro"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": [
+          "Apr"
+        ],
+        "note": "First week of April; sometimes March; revived in 2016 after a gap"
+      },
+      "locations": [
+        {
+          "name": "Jos",
+          "lgaId": "NG-PL-JOS-NORTH"
+        }
+      ],
+      "url": "https://en.wikipedia.org/wiki/Berom_people",
+      "confidence": "verified"
+    },
+    {
+      "title": "Gbong Gwom Jos",
+      "note": "The Gbong Gwom Jos is the paramount Berom ruler and chairs the Plateau State Council of Traditional Rulers.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-berom"
+      ],
+      "locations": [
+        {
+          "name": "Jos",
+          "lgaId": "NG-PL-JOS-NORTH"
+        }
+      ],
+      "url": null,
+      "confidence": "verified"
     }
   ],
   "NG-RI": [
@@ -495,6 +2584,74 @@
       "note": "Port Harcourt was founded in 1912 as a railway terminus and export port for Enugu coal, before oil later became the dominant industry.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Port_Harcourt"
+    },
+    {
+      "title": "Ekine (Sekiapu) society",
+      "note": "Ekine, known as Sekiapu, is the masquerade and performance society central to Kalabari culture.",
+      "category": "culture",
+      "type": "masquerade-society",
+      "groupIds": [
+        "culture-kalabari-okrika-bonny"
+      ],
+      "locations": [
+        {
+          "name": "Buguma",
+          "lgaId": "NG-RI-ASARI-TORU"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Amanyanabo of Kalabari",
+      "note": "The Amanyanabo is the king of the Kalabari, seated at Buguma.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-kalabari-okrika-bonny"
+      ],
+      "locations": [
+        {
+          "name": "Buguma",
+          "lgaId": "NG-RI-ASARI-TORU"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Jaja of Opobo",
+      "note": "King Jaja founded Opobo in 1870 after breaking from Bonny and was exiled by the British in 1887.",
+      "category": "history",
+      "type": "tradition",
+      "groupIds": [
+        "culture-kalabari-okrika-bonny"
+      ],
+      "locations": [
+        {
+          "name": "Opobo",
+          "lgaId": "NG-RI-OPOBO-NKORO"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
+    },
+    {
+      "title": "Ogoni and the Ogoni Bill of Rights",
+      "note": "The Ogoni of Khana, Gokana, Tai and Eleme drew international attention through the 1990 Ogoni Bill of Rights and Ken Saro-Wiwa's activism.",
+      "category": "history",
+      "type": "tradition",
+      "groupIds": [
+        "culture-ogoni"
+      ],
+      "locations": [
+        {
+          "name": "Ogoniland",
+          "lgaId": "NG-RI-KHANA"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-SO": [
@@ -509,6 +2666,23 @@
       "note": "The Sultan of Sokoto remains Nigeria's foremost traditional Islamic authority, a title with unbroken lineage back to the Caliphate's founding.",
       "category": "culture",
       "url": "https://en.wikipedia.org/wiki/Sultan_of_Sokoto"
+    },
+    {
+      "title": "Gobir and the Sokoto jihad",
+      "note": "The Hausa kingdom of Gobir, in the Sabon Birni area of present-day Sokoto State, was the state whose rulers Usman dan Fodio opposed before founding the caliphate.",
+      "category": "history",
+      "type": "tradition",
+      "groupIds": [
+        "group-sokoto-metro"
+      ],
+      "locations": [
+        {
+          "name": "Sabon Birni",
+          "lgaId": "NG-SO-SABON-BIRNI"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-TA": [
@@ -523,6 +2697,61 @@
       "note": "Chappal Waddi, within Gashaka-Gumti National Park, rises to roughly 2,419 metres, making it Nigeria's tallest mountain.",
       "category": "geography",
       "url": "https://en.wikipedia.org/wiki/Chappal_Waddi"
+    },
+    {
+      "title": "Nwonyo International Fishing and Cultural Festival",
+      "note": "Held at Nwonyo Lake north of Ibi, the festival is among Nigeria's oldest fishing festivals. It was revived in 2024 after a break of about 14 years.",
+      "category": "festival",
+      "type": "festival",
+      "groupIds": [
+        "culture-jukun-wukari"
+      ],
+      "period": {
+        "frequency": "annual",
+        "months": []
+      },
+      "locations": [
+        {
+          "name": "Ibi",
+          "lgaId": "NG-TA-IBI"
+        }
+      ],
+      "url": "https://fmacce.gov.ng/festivals-carnivals/nwonyo-international-fishing-and-cultural-festival-ibitaraba-state",
+      "confidence": "verified"
+    },
+    {
+      "title": "Aku Uka of Wukari",
+      "note": "The Aku Uka heads the Wukari Federation, successor to the Kwararafa state of the Jukun.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-jukun-wukari"
+      ],
+      "locations": [
+        {
+          "name": "Wukari",
+          "lgaId": "NG-TA-WUKARI"
+        }
+      ],
+      "url": "https://en.wikipedia.org/wiki/Wukari_Federation",
+      "confidence": "verified"
+    },
+    {
+      "title": "Mumuye wood sculpture",
+      "note": "Mumuye figurative wood carvings are prized in African art collections.",
+      "category": "culture",
+      "type": "craft",
+      "groupIds": [
+        "culture-mumuye"
+      ],
+      "locations": [
+        {
+          "name": "Yorro",
+          "lgaId": "NG-TA-YORRO"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-YO": [
@@ -531,6 +2760,23 @@
       "note": "Yobe's nickname reflects its location in Nigeria's semi-arid Sahel zone, bordering Niger Republic.",
       "category": "geography",
       "url": "https://en.wikipedia.org/wiki/Yobe_State"
+    },
+    {
+      "title": "Mai of Fika",
+      "note": "The Emir of Fika bears the title Mai of Fika, heading the Bolewa-centred Fika Emirate.",
+      "category": "institution",
+      "type": "chieftaincy",
+      "groupIds": [
+        "culture-fika-emirate"
+      ],
+      "locations": [
+        {
+          "name": "Fika",
+          "lgaId": "NG-YO-FIKA"
+        }
+      ],
+      "url": null,
+      "confidence": "high"
     }
   ],
   "NG-ZA": [
@@ -545,6 +2791,17 @@
       "note": "Zamfara was the first Nigerian state to formally adopt Sharia criminal law in 1999-2000, a move that spread to several other northern states.",
       "category": "history",
       "url": "https://en.wikipedia.org/wiki/Zamfara_State"
+    },
+    {
+      "title": "Historic Zamfara Kingdom",
+      "note": "Zamfara was an old Hausa-speaking kingdom, counted in Hausa tradition among the Banza Bakwai states.",
+      "category": "history",
+      "type": "tradition",
+      "groupIds": [
+        "group-gusau-metro"
+      ],
+      "url": null,
+      "confidence": "medium"
     }
   ]
 }

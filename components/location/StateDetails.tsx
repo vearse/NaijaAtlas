@@ -124,6 +124,9 @@ export default function StateDetails({
         </p>
         <h2 className="text-2xl font-bold text-slate-900">{content.name}</h2>
         {nickname && <p className="text-sm text-slate-500 mt-1">{nickname}</p>}
+        <p className="text-xs text-slate-600 leading-relaxed">
+          {content.description}
+        </p>
       </div>
 
       <dl className="grid grid-cols-2 gap-3">
@@ -156,6 +159,48 @@ export default function StateDetails({
           value={wardTotal > 0 ? String(wardTotal) : "—"}
         />
       </dl>
+
+      {content.languages && content.languages.length > 0 && (
+        <div>
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+            Languages spoken ({content.languages.length})
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {content.languages.map((lang) => (
+              <button
+                key={lang.name}
+                type="button"
+                onClick={() => openWikiModal(lang.wikiUrl, lang.name)}
+                className="inline-flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 hover:border-emerald-300 text-emerald-700 text-xs font-medium px-3 py-1.5 transition-colors"
+                aria-label={`Open Wikipedia article for ${lang.name}`}
+                title={`Open Wikipedia: ${lang.name}`}
+              >
+                <span
+                  className="w-1.5 h-1.5 rounded-full bg-emerald-500"
+                  aria-hidden
+                />
+                <span>{lang.name}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className="w-3 h-3 text-emerald-500"
+                  aria-hidden
+                >
+                  <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                </svg>
+              </button>
+            ))}
+          </div>
+          {/* <p className="text-[11px] text-slate-400 mt-2 leading-relaxed">
+            Tap any language above to open a deep-dive Wikipedia reader with
+            background, speaker populations, and linguistic context.
+          </p> */}
+        </div>
+      )}
+
+      <ShowLgasButton stateId={location.id} stateName={location.name} />
 
       {stateMetro.length > 0 && (
         <div className="space-y-3">
@@ -239,47 +284,7 @@ export default function StateDetails({
         </div>
       )}
 
-      {content.languages && content.languages.length > 0 && (
-        <div>
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
-            Languages spoken ({content.languages.length})
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            {content.languages.map((lang) => (
-              <button
-                key={lang.name}
-                type="button"
-                onClick={() => openWikiModal(lang.wikiUrl, lang.name)}
-                className="inline-flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 hover:border-emerald-300 text-emerald-700 text-xs font-medium px-3 py-1.5 transition-colors"
-                aria-label={`Open Wikipedia article for ${lang.name}`}
-                title={`Open Wikipedia: ${lang.name}`}
-              >
-                <span
-                  className="w-1.5 h-1.5 rounded-full bg-emerald-500"
-                  aria-hidden
-                />
-                <span>{lang.name}</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="w-3 h-3 text-emerald-500"
-                  aria-hidden
-                >
-                  <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                </svg>
-              </button>
-            ))}
-          </div>
-          {/* <p className="text-[11px] text-slate-400 mt-2 leading-relaxed">
-            Tap any language above to open a deep-dive Wikipedia reader with
-            background, speaker populations, and linguistic context.
-          </p> */}
-        </div>
-      )}
-
-      <ShowLgasButton stateId={location.id} stateName={location.name} />
+    
 
       <button
         type="button"
@@ -310,10 +315,6 @@ export default function StateDetails({
         Double-click {location.name} on the map to show LGAs, or use the button
         above.
       </p> */}
-
-      <p className="text-sm text-slate-600 leading-relaxed">
-        {content.description}
-      </p>
 
       {stateNotes.length > 0 && (
         <div>

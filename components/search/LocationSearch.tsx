@@ -3,7 +3,11 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import Fuse from "fuse.js";
 import { useMapStore } from "@/lib/store/mapStore";
-import type { SearchEntry, OverlayLevel } from "@/types/location";
+import type {
+  SearchEntry,
+  OverlayLevel,
+  LgaLocation,
+} from "@/types/location";
 import type { OverlayLayerId } from "@/types/overlay";
 
 const OVERLAY_LEVELS = new Set<OverlayLevel>([
@@ -23,6 +27,8 @@ const LEVEL_EMOJI: Record<string, string> = {
   country: "🇳🇬",
   state: "🗺️",
   lga: "🏘️",
+  metro: "🌆",
+  "state-note": "📌",
   landform: "🏔️",
   resource: "⛏️",
   city: "🏙️",
@@ -46,10 +52,10 @@ export default function LocationSearch() {
         setIndex(data);
         fuseRef.current = new Fuse(data, {
           keys: [
-            { name: "name", weight: 0.6 },
+            { name: "name", weight: 0.62 },
             { name: "stateName", weight: 0.18 },
             { name: "regionName", weight: 0.12 },
-            { name: "typeLabel", weight: 0.1 },
+            { name: "summary", weight: 0.08 },
           ],
           threshold: 0.38,
           includeScore: true,
@@ -87,6 +93,16 @@ export default function LocationSearch() {
           { padding: 40, duration: 400 }
         );
       }
+      return;
+    }
+
+    if (entry.level === "metro" && entry.stateIds?.length) {
+      selectStates(entry.stateIds);
+      return;
+    }
+
+    if (entry.level === "state-note" && entry.parentId) {
+      selectStates([entry.parentId]);
       return;
     }
 
@@ -191,6 +207,19 @@ export default function LocationSearch() {
     }
     if (entry.level === "state") {
       return entry.regionName ?? "State";
+    }
+    if (entry.level === "metro") {
+      return [entry.stateName, entry.typeLabel]
+        .filter(Boolean)
+        .join(" · ");
+    }
+    if (entry.level === "state-note") {
+      return [
+        entry.stateName,
+        entry.category ? `${entry.category} note` : "State note",
+      ]
+        .filter(Boolean)
+        .join(" · ");
     }
     if (entry.level === "country") {
       return "Country";

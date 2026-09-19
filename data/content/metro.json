@@ -24,6 +24,22 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "The eleven LGAs forming greater Ibadan, once West Africa's largest city by area and Nigeria's colonial-era administrative and commercial capital of the west.",
+    "ethnicMakeup": [
+      {
+        "name": "Yoruba (Ibadan / Oyo-Yoruba)",
+        "role": "dominant"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority",
+        "note": "Large trading and professional community"
+      },
+      {
+        "name": "Hausa-Fulani",
+        "role": "minority",
+        "note": "Long-established Sabo/Ibadan North quarters"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "19th-century founding",
@@ -61,6 +77,16 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "The Ogbomosho North and South LGAs forming Oyo State's second-largest urban centre, historically a major Yoruba war-era stronghold and cotton/tobacco trading town.",
+    "ethnicMakeup": [
+      {
+        "name": "Yoruba (Ogbomosho)",
+        "role": "dominant"
+      },
+      {
+        "name": "Hausa-Fulani",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Baptist mission history",
@@ -86,6 +112,20 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Osun State's capital cluster, home to the UNESCO-listed Osun-Osogbo Sacred Grove on the city's edge.",
+    "ethnicMakeup": [
+      {
+        "name": "Yoruba (Osogbo / Oyo-Yoruba)",
+        "role": "dominant"
+      },
+      {
+        "name": "Hausa",
+        "role": "minority"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "State capital creation",
@@ -125,6 +165,31 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "The historic Ife and Ijesa LGAs of eastern Osun State - Ife regarded in Yoruba tradition as the cradle of the Yoruba people, and Ilesa as the historic Ijesa kingdom capital.",
+    "ethnicMakeup": [
+      {
+        "name": "Ife",
+        "role": "dominant",
+        "memberIds": [
+          "NG-OS-IFE-CENTRAL",
+          "NG-OS-IFE-EAST",
+          "NG-OS-IFE-NORTH",
+          "NG-OS-IFE-SOUTH"
+        ]
+      },
+      {
+        "name": "Ijesa",
+        "role": "dominant",
+        "memberIds": [
+          "NG-OS-ILESA-EAST",
+          "NG-OS-ILESA-WEST",
+          "NG-OS-ATAKUNMOSA-EAST",
+          "NG-OS-ATAKUNMOSA-WEST",
+          "NG-OS-OBOKUN",
+          "NG-OS-ORIADE"
+        ],
+        "note": "Distinct Yoruba sub-group with its own king, the Owa Obokun"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Cradle of the Yoruba",
@@ -156,6 +221,20 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Ondo State's capital cluster, seat of the Deji of Akure and the state's administrative and commercial hub.",
+    "ethnicMakeup": [
+      {
+        "name": "Yoruba (Akure)",
+        "role": "dominant"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority"
+      },
+      {
+        "name": "Hausa",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "State capital",
@@ -181,6 +260,23 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "The historic Owo Kingdom axis of Ondo State, known for its distinctive Yoruba-Benin hybrid art and bronze-casting tradition.",
+    "ethnicMakeup": [
+      {
+        "name": "Owo (Yoruba with Benin/Edo heritage)",
+        "role": "dominant",
+        "memberIds": [
+          "NG-ON-OWO"
+        ]
+      },
+      {
+        "name": "Ose (Ifon and neighbouring communities)",
+        "role": "dominant",
+        "memberIds": [
+          "NG-ON-OSE"
+        ],
+        "note": "Yoruba-Edo borderland communities; verify sub-group labels locally"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Owo Kingdom art tradition",
@@ -207,11 +303,37 @@
       "NG-OG-OGUN-WATERSIDE",
       "NG-OG-ODOGBOLU",
       "NG-OG-IKENNE",
-      "NG-OG-REMO-NORTH"
+      "NG-OG-REMO-NORTH",
+      "NG-OG-SHAGAMU"
     ],
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "The historic Ijebu and Remo LGAs of Ogun State, once the independent Ijebu Kingdom known for its trading networks and the Sungbo's Eredo earthworks.",
+    "ethnicMakeup": [
+      {
+        "name": "Ijebu",
+        "role": "dominant",
+        "memberIds": [
+          "NG-OG-IJEBU-ODE",
+          "NG-OG-IJEBU-EAST",
+          "NG-OG-IJEBU-NORTH",
+          "NG-OG-IJEBU-NORTH-EAST",
+          "NG-OG-ODOGBOLU",
+          "NG-OG-OGUN-WATERSIDE"
+        ],
+        "note": "Kingdom of the Awujale"
+      },
+      {
+        "name": "Remo (Ijebu-Remo)",
+        "role": "dominant",
+        "memberIds": [
+          "NG-OG-IKENNE",
+          "NG-OG-REMO-NORTH",
+          "NG-OG-SHAGAMU"
+        ],
+        "note": "Related to Ijebu but with its own towns and identity"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Ijebu Kingdom trade power",
@@ -245,6 +367,17 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "The Yewa (historically Egbado) axis of western Ogun State bordering Benin Republic, home to the Yewa/Egbado Yoruba sub-group.",
+    "ethnicMakeup": [
+      {
+        "name": "Yewa / Egbado (Yoruba)",
+        "role": "dominant"
+      },
+      {
+        "name": "Egun (Gun)",
+        "role": "minority",
+        "note": "Border communities toward Benin Republic; verify LGA spread"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Egbado-to-Yewa renaming",
@@ -279,6 +412,21 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Ogun State's capital cluster, historic seat of the Egba people who settled under the Olumo Rock in the 1830s.",
+    "ethnicMakeup": [
+      {
+        "name": "Egba (Yoruba)",
+        "role": "dominant",
+        "note": "Ruled by the Alake of Egbaland; sub-divisions include Egba Alake, Oke-Ona and Gbagura"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority"
+      },
+      {
+        "name": "Hausa",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Founding at Olumo Rock",
@@ -310,6 +458,20 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Ekiti State's capital cluster, seat of the Ewi of Ado-Ekiti.",
+    "ethnicMakeup": [
+      {
+        "name": "Ekiti (Yoruba)",
+        "role": "dominant"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority"
+      },
+      {
+        "name": "Hausa",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "State capital",
@@ -336,6 +498,29 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "The three LGAs forming Ilorin, Kwara State's capital and a historic frontier emirate between Yoruba and Hausa-Fulani Nigeria.",
+    "ethnicMakeup": [
+      {
+        "name": "Ilorin Yoruba (Yoruba-Fulani blend)",
+        "role": "dominant"
+      },
+      {
+        "name": "Fulani",
+        "role": "major",
+        "note": "Ruling emirate dynasty since the 1820s"
+      },
+      {
+        "name": "Hausa",
+        "role": "major"
+      },
+      {
+        "name": "Nupe",
+        "role": "minority"
+      },
+      {
+        "name": "Baruba (Bariba)",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Fulani emirate transition",
@@ -363,6 +548,33 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "The urbanised core area councils of the Federal Capital Territory surrounding Nigeria's purpose-built federal capital.",
+    "ethnicMakeup": [
+      {
+        "name": "Gbagyi (Gwari)",
+        "role": "major",
+        "note": "Indigenous FCT people"
+      },
+      {
+        "name": "Gade, Koro, Ganagana, Gwandara, Bassa-Kwomu",
+        "role": "minority",
+        "note": "Other indigenous FCT peoples"
+      },
+      {
+        "name": "Hausa-Fulani",
+        "role": "major",
+        "note": "Large settler population"
+      },
+      {
+        "name": "Igbo",
+        "role": "major",
+        "note": "Large settler population"
+      },
+      {
+        "name": "Yoruba",
+        "role": "major",
+        "note": "Large settler population"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Planned capital",
@@ -389,6 +601,39 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Plateau State's capital cluster on the cool Jos Plateau, built around a 20th-century tin-mining boom.",
+    "ethnicMakeup": [
+      {
+        "name": "Berom",
+        "role": "major",
+        "memberIds": [
+          "NG-PL-JOS-SOUTH"
+        ]
+      },
+      {
+        "name": "Afizere and Anaguta",
+        "role": "major",
+        "memberIds": [
+          "NG-PL-JOS-NORTH"
+        ],
+        "note": "Indigenous Jos North peoples"
+      },
+      {
+        "name": "Hausa-Fulani (Jasawa)",
+        "role": "major",
+        "memberIds": [
+          "NG-PL-JOS-NORTH"
+        ],
+        "note": "Long-settled Jos North community"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority"
+      },
+      {
+        "name": "Yoruba",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Tin-mining boom town",
@@ -419,11 +664,41 @@
     ],
     "effectiveFrom": null,
     "effectiveTo": null,
-    "description": "Kogi State's capital area at the confluence of the Niger and Benue rivers, Nigeria's first colonial administrative capital.",
+    "description": "Kogi State's capital area at the confluence of the Niger and Benue rivers, and the first capital of the Protectorate of Northern Nigeria.",
+    "ethnicMakeup": [
+      {
+        "name": "Oworo (Okun-Yoruba)",
+        "role": "major",
+        "memberIds": [
+          "NG-KO-LOKOJA"
+        ]
+      },
+      {
+        "name": "Ebira",
+        "role": "major"
+      },
+      {
+        "name": "Bassa (Komo/Nge)",
+        "role": "major"
+      },
+      {
+        "name": "Igala",
+        "role": "major"
+      },
+      {
+        "name": "Nupe (Kakanda)",
+        "role": "minority",
+        "note": "Riverine communities along the confluence"
+      },
+      {
+        "name": "Hausa-Fulani",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
-        "title": "Colonial capital",
-        "note": "Lokoja served as the capital of the Royal Niger Company and later the Protectorate of Northern Nigeria under Frederick Lugard from 1900.",
+        "title": "First Northern Nigeria capital",
+        "note": "Lokoja was the first capital of the Protectorate of Northern Nigeria, proclaimed there under Frederick Lugard in 1900.",
         "category": "history",
         "url": "https://en.wikipedia.org/wiki/Lokoja"
       },
@@ -450,6 +725,28 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Benue State's capital, on the Benue River, and the state's main administrative and trading hub.",
+    "ethnicMakeup": [
+      {
+        "name": "Tiv",
+        "role": "dominant"
+      },
+      {
+        "name": "Idoma",
+        "role": "major"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority"
+      },
+      {
+        "name": "Hausa",
+        "role": "minority"
+      },
+      {
+        "name": "Yoruba",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "State capital",
@@ -476,6 +773,36 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Nasarawa State's main administrative and historic emirate towns, close to the Abuja-Jos-Lafia corridor.",
+    "ethnicMakeup": [
+      {
+        "name": "Eggon",
+        "role": "major",
+        "memberIds": [
+          "NG-NA-AKWANGA"
+        ]
+      },
+      {
+        "name": "Alago and Migili",
+        "role": "major",
+        "memberIds": [
+          "NG-NA-LAFIA"
+        ]
+      },
+      {
+        "name": "Hausa-Fulani",
+        "role": "major",
+        "memberIds": [
+          "NG-NA-KEFFI"
+        ]
+      },
+      {
+        "name": "Gwandara",
+        "role": "minority",
+        "memberIds": [
+          "NG-NA-KEFFI"
+        ]
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Historic emirates",
@@ -507,6 +834,34 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "The eight urban LGAs forming Kano city, one of West Africa's oldest and largest trading cities, historically ringed by ancient city walls.",
+    "ethnicMakeup": [
+      {
+        "name": "Hausa",
+        "role": "dominant"
+      },
+      {
+        "name": "Fulani",
+        "role": "major",
+        "note": "Hausa-Fulani ruling and scholarly class"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority",
+        "note": "Concentrated around Sabon Gari"
+      },
+      {
+        "name": "Yoruba",
+        "role": "minority"
+      },
+      {
+        "name": "Kanuri",
+        "role": "minority"
+      },
+      {
+        "name": "Nupe",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Ancient trans-Saharan hub",
@@ -540,6 +895,37 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Kaduna State's capital cluster, a planned colonial administrative and military city on the Kaduna River.",
+    "ethnicMakeup": [
+      {
+        "name": "Hausa-Fulani",
+        "role": "dominant",
+        "memberIds": [
+          "NG-KD-KADUNA-NORTH"
+        ]
+      },
+      {
+        "name": "Gbagyi (Gwari)",
+        "role": "major",
+        "memberIds": [
+          "NG-KD-CHIKUN",
+          "NG-KD-IGABI"
+        ],
+        "note": "Indigenous people of the Kaduna area"
+      },
+      {
+        "name": "Southern Kaduna groups (Kataf, Bajju, Jaba, Kagoro and others)",
+        "role": "major",
+        "note": "Large migrant and resident communities, especially in Kaduna South"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority"
+      },
+      {
+        "name": "Yoruba",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Colonial planned city",
@@ -566,6 +952,24 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "The historic Zazzau emirate city and modern university town, home to Ahmadu Bello University.",
+    "ethnicMakeup": [
+      {
+        "name": "Hausa-Fulani (Zazzau)",
+        "role": "dominant"
+      },
+      {
+        "name": "Gbagyi (Gwari)",
+        "role": "minority"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority"
+      },
+      {
+        "name": "Yoruba",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Zazzau emirate",
@@ -598,6 +1002,21 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Sokoto State's capital, historic seat of the Sokoto Caliphate and the Sultan of Sokoto, Nigeria's foremost Islamic traditional authority.",
+    "ethnicMakeup": [
+      {
+        "name": "Hausa",
+        "role": "dominant"
+      },
+      {
+        "name": "Fulani",
+        "role": "major",
+        "note": "Dan Fodio's Fulani ruling class"
+      },
+      {
+        "name": "Tuareg",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Caliphate seat",
@@ -623,6 +1042,16 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Katsina State's capital, one of the original Hausa city-states and a historic centre of Islamic scholarship.",
+    "ethnicMakeup": [
+      {
+        "name": "Hausa",
+        "role": "dominant"
+      },
+      {
+        "name": "Fulani",
+        "role": "major"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Hausa Bakwai city-state",
@@ -648,6 +1077,36 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Borno State's capital, historic seat of the Borno Emirate and successor to the ancient Kanem-Bornu Empire.",
+    "ethnicMakeup": [
+      {
+        "name": "Kanuri",
+        "role": "dominant"
+      },
+      {
+        "name": "Shuwa Arab",
+        "role": "major"
+      },
+      {
+        "name": "Hausa",
+        "role": "major"
+      },
+      {
+        "name": "Fulani",
+        "role": "minority"
+      },
+      {
+        "name": "Southern Borno peoples (Babur/Bura, Marghi, Kibaku and others)",
+        "role": "minority"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority"
+      },
+      {
+        "name": "Yoruba",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Kanem-Bornu legacy",
@@ -673,6 +1132,32 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Adamawa State's capital cluster, formed of the old Fombina/Adamawa emirate town of Yola and its modern twin Jimeta.",
+    "ethnicMakeup": [
+      {
+        "name": "Fulani (Fulbe)",
+        "role": "dominant"
+      },
+      {
+        "name": "Hausa",
+        "role": "major"
+      },
+      {
+        "name": "Bachama",
+        "role": "minority"
+      },
+      {
+        "name": "Other Adamawa groups (Bata, Mbula, Chamba and others)",
+        "role": "minority"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority"
+      },
+      {
+        "name": "Yoruba",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Adamawa emirate",
@@ -697,6 +1182,24 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Bauchi State's capital and historic emirate seat, gateway to Yankari National Park.",
+    "ethnicMakeup": [
+      {
+        "name": "Hausa",
+        "role": "dominant"
+      },
+      {
+        "name": "Fulani",
+        "role": "major"
+      },
+      {
+        "name": "Jarawa",
+        "role": "minority"
+      },
+      {
+        "name": "Sayawa (Zaar)",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Bauchi Emirate",
@@ -721,6 +1224,32 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Gombe State's capital, a modern administrative city created as state capital in 1996.",
+    "ethnicMakeup": [
+      {
+        "name": "Fulani",
+        "role": "major"
+      },
+      {
+        "name": "Hausa",
+        "role": "major"
+      },
+      {
+        "name": "Tera",
+        "role": "minority"
+      },
+      {
+        "name": "Bolewa",
+        "role": "minority"
+      },
+      {
+        "name": "Kanuri",
+        "role": "minority"
+      },
+      {
+        "name": "Tangale",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "State capital",
@@ -747,6 +1276,20 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Enugu State's capital, built around early-20th-century coal mining and once capital of the old Eastern Region and briefly of Biafra.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Enugu)",
+        "role": "dominant"
+      },
+      {
+        "name": "Hausa",
+        "role": "minority"
+      },
+      {
+        "name": "Yoruba",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Coal City",
@@ -779,6 +1322,16 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Imo State's capital cluster, known locally as the 'Eastern Heartland' and a fast-growing hospitality and events hub.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Owerri)",
+        "role": "dominant"
+      },
+      {
+        "name": "Other Nigerians (Hausa, Yoruba, Ibibio and others)",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "State capital",
@@ -805,6 +1358,32 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Anambra State's commercial powerhouse on the Niger River, home to reputedly West Africa's largest market.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Onitsha)",
+        "role": "dominant",
+        "memberIds": [
+          "NG-AN-ONITSHA-NORTH",
+          "NG-AN-ONITSHA-SOUTH"
+        ]
+      },
+      {
+        "name": "Igbo (Ogbaru riverine)",
+        "role": "dominant",
+        "memberIds": [
+          "NG-AN-OGBARU"
+        ]
+      },
+      {
+        "name": "Hausa",
+        "role": "minority",
+        "note": "Trading community"
+      },
+      {
+        "name": "Yoruba",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Niger River trading port",
@@ -832,6 +1411,16 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Abia State's commercial and light-manufacturing capital, home of the 'Aba-made' shoe and garment industry centred on Ariaria Market.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Ngwa)",
+        "role": "dominant"
+      },
+      {
+        "name": "Other Nigerians (Hausa, Yoruba, Ibibio and others)",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Aba-made manufacturing",
@@ -857,6 +1446,17 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Ebonyi State's capital, historically known for rice cultivation and small-scale tin/lead mining.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Izzi and Ezza)",
+        "role": "dominant",
+        "note": "Verify sub-group split per LGA"
+      },
+      {
+        "name": "Hausa",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Rice-growing hub",
@@ -885,6 +1485,40 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Rivers State's capital and Nigeria's oil-industry hub, built as a colonial coal/rail port and now the centre of the Niger Delta petroleum economy.",
+    "ethnicMakeup": [
+      {
+        "name": "Ikwerre",
+        "role": "major",
+        "memberIds": [
+          "NG-RI-PORT-HARCOURT",
+          "NG-RI-OBIO-AKPOR"
+        ],
+        "note": "Indigenous people of the Port Harcourt area"
+      },
+      {
+        "name": "Eleme (Ogoni-related)",
+        "role": "major",
+        "memberIds": [
+          "NG-RI-ELEME"
+        ]
+      },
+      {
+        "name": "Okrika (Ijaw)",
+        "role": "major",
+        "memberIds": [
+          "NG-RI-OKRIKA"
+        ]
+      },
+      {
+        "name": "Igbo",
+        "role": "major",
+        "note": "Large settler population"
+      },
+      {
+        "name": "Yoruba, Hausa, Ibibio, Efik and others",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Colonial coal port",
@@ -917,6 +1551,33 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Edo State's capital, historic seat of the centuries-old Benin Kingdom and its Oba, famed for its bronze and ivory court art.",
+    "ethnicMakeup": [
+      {
+        "name": "Edo (Bini)",
+        "role": "dominant"
+      },
+      {
+        "name": "Esan, Etsako and Owan",
+        "role": "minority",
+        "note": "Other Edo groups resident in the city"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority"
+      },
+      {
+        "name": "Urhobo",
+        "role": "minority"
+      },
+      {
+        "name": "Yoruba",
+        "role": "minority"
+      },
+      {
+        "name": "Hausa",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Benin Kingdom",
@@ -950,6 +1611,24 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Akwa Ibom State's capital cluster, a fast-growing administrative and oil-services city among the Ibibio people.",
+    "ethnicMakeup": [
+      {
+        "name": "Ibibio",
+        "role": "dominant"
+      },
+      {
+        "name": "Annang",
+        "role": "minority"
+      },
+      {
+        "name": "Oron",
+        "role": "minority"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "State capital",
@@ -977,6 +1656,45 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Delta State's oil and commercial hub in the western Niger Delta, home to a major refinery and multi-ethnic Itsekiri-Urhobo-Ijaw population.",
+    "ethnicMakeup": [
+      {
+        "name": "Itsekiri",
+        "role": "major",
+        "memberIds": [
+          "NG-DE-WARRI-SOUTH",
+          "NG-DE-WARRI-SOUTH-WEST"
+        ]
+      },
+      {
+        "name": "Urhobo",
+        "role": "major",
+        "memberIds": [
+          "NG-DE-UVWIE",
+          "NG-DE-UDU"
+        ]
+      },
+      {
+        "name": "Ijaw",
+        "role": "major",
+        "memberIds": [
+          "NG-DE-WARRI-SOUTH-WEST"
+        ],
+        "note": "Gbaramatu and neighbouring Ijaw communities; claims over Warri are contested among the three groups"
+      },
+      {
+        "name": "Isoko",
+        "role": "minority"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority",
+        "note": "Large trading settler community"
+      },
+      {
+        "name": "Yoruba",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Colonial trading post",
@@ -1002,6 +1720,16 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Delta State's capital, on the west bank of the Niger River directly opposite Onitsha, linked by the Niger Bridge.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Anioma; Enuani dialect)",
+        "role": "dominant"
+      },
+      {
+        "name": "Other Nigerians (Yoruba, Hausa, Urhobo and others)",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "State capital",
@@ -1027,6 +1755,25 @@
     "effectiveFrom": null,
     "effectiveTo": null,
     "description": "Cross River State's capital, a historic Efik trading port and one of Nigeria's oldest points of contact with European traders.",
+    "ethnicMakeup": [
+      {
+        "name": "Efik",
+        "role": "dominant"
+      },
+      {
+        "name": "Qua and Efut",
+        "role": "minority",
+        "note": "Other indigenous Calabar peoples"
+      },
+      {
+        "name": "Ibibio",
+        "role": "minority"
+      },
+      {
+        "name": "Igbo",
+        "role": "minority"
+      }
+    ],
     "wikiNotes": [
       {
         "title": "Historic trading port",
@@ -1035,5 +1782,3444 @@
         "url": "https://en.wikipedia.org/wiki/Calabar"
       }
     ]
+  },
+  {
+    "id": "group-lagos-metro",
+    "name": "Lagos Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-LA"
+    ],
+    "memberIds": [
+      "NG-LA-AGEGE",
+      "NG-LA-AJEROMI-IFELODUN",
+      "NG-LA-ALIMOSHO",
+      "NG-LA-AMUWO-ODOFIN",
+      "NG-LA-APAPA",
+      "NG-LA-ETI-OSA",
+      "NG-LA-IFAKO-IJAIYE",
+      "NG-LA-IKEJA",
+      "NG-LA-KOSOFE",
+      "NG-LA-LAGOS-ISLAND",
+      "NG-LA-LAGOS-MAINLAND",
+      "NG-LA-MUSHIN",
+      "NG-LA-OJO",
+      "NG-LA-OSHODI-ISOLO",
+      "NG-LA-SOMOLU",
+      "NG-LA-SURULERE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The sixteen metropolitan LGAs of Lagos State, Nigeria's largest city and commercial capital, built around the historic Eko settlement on Lagos Island and its lagoon-side mainland.",
+    "ethnicMakeup": [
+      {
+        "name": "Yoruba (Eko, Awori and other Yoruba groups)",
+        "role": "dominant",
+        "note": "Eko and Awori are the indigenous Yoruba communities"
+      },
+      {
+        "name": "Igbo",
+        "role": "major"
+      },
+      {
+        "name": "Hausa-Fulani",
+        "role": "major"
+      },
+      {
+        "name": "Edo, Urhobo, Ijaw, Itsekiri, Ibibio-Efik and others",
+        "role": "minority"
+      },
+      {
+        "name": "Aguda and Saro (Afro-Brazilian and Sierra Leonean returnee descendants)",
+        "role": "minority",
+        "memberIds": [
+          "NG-LA-LAGOS-ISLAND"
+        ],
+        "note": "Historic 19th-century returnee communities"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Sixteen metropolitan LGAs",
+        "note": "Lagos State officially classes 16 of its 20 LGAs as metropolitan; Badagry, Epe, Ibeju-Lekki and Ikorodu are non-metropolitan.",
+        "category": "geography",
+        "url": "https://en.wikipedia.org/wiki/Lagos"
+      },
+      {
+        "title": "Nigeria's most cosmopolitan city",
+        "note": "Indigenous Yoruba communities live alongside some of Nigeria's largest Igbo, Hausa-Fulani and minority-group populations, making Lagos the country's most ethnically mixed city.",
+        "category": "culture",
+        "url": "https://en.wikipedia.org/wiki/Lagos"
+      }
+    ]
+  },
+  {
+    "id": "group-yenagoa-metro",
+    "name": "Yenagoa Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-BY"
+    ],
+    "memberIds": [
+      "NG-BY-YENAGOA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Bayelsa State's capital on the Ekole Creek in the heart of the Niger Delta, home to the Epie-Atissa and surrounding Ijaw communities.",
+    "ethnicMakeup": [
+      {
+        "name": "Epie-Atissa",
+        "role": "dominant",
+        "note": "Indigenous people of Yenagoa"
+      },
+      {
+        "name": "Ijaw (Izon)",
+        "role": "major"
+      },
+      {
+        "name": "Other Nigerians (Igbo, Yoruba, Hausa and others)",
+        "role": "minority"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "State capital",
+        "note": "Yenagoa became the capital when Bayelsa State was created from Rivers State in 1996.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Yenagoa"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "group-dutse-metro",
+    "name": "Dutse Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-JI"
+    ],
+    "memberIds": [
+      "NG-JI-DUTSE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Jigawa State's capital, seat of the Dutse Emirate, created as a state capital when Jigawa was carved from Kano State in 1991.",
+    "ethnicMakeup": [
+      {
+        "name": "Hausa",
+        "role": "dominant"
+      },
+      {
+        "name": "Fulani",
+        "role": "major"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "State capital",
+        "note": "Dutse became the capital when Jigawa State was created from Kano State in 1991.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Dutse,_Jigawa"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "group-birnin-kebbi-metro",
+    "name": "Birnin Kebbi Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KE"
+    ],
+    "memberIds": [
+      "NG-KE-BIRNIN-KEBBI",
+      "NG-KE-KALGO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Kebbi State's capital area on the Rima River, centre of the historic Kebbi Kingdom.",
+    "ethnicMakeup": [
+      {
+        "name": "Hausa (Kebbawa)",
+        "role": "dominant"
+      },
+      {
+        "name": "Fulani",
+        "role": "major"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Kebbi Kingdom centre",
+        "note": "Birnin Kebbi is the capital of Kebbi State (created 1991) and lies in the heartland of the historic Kebbi Kingdom.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Birnin_Kebbi"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "group-minna-metro",
+    "name": "Minna Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-NI"
+    ],
+    "memberIds": [
+      "NG-NI-CHANCHAGA",
+      "NG-NI-BOSSO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Niger State's capital cluster on Gbagyi (Gwari) ancestral land, a railway and administrative town near the Shiroro and Kainji power corridor.",
+    "ethnicMakeup": [
+      {
+        "name": "Gbagyi (Gwari)",
+        "role": "major",
+        "note": "Indigenous people of the Minna area"
+      },
+      {
+        "name": "Nupe",
+        "role": "major"
+      },
+      {
+        "name": "Hausa-Fulani",
+        "role": "major"
+      },
+      {
+        "name": "Igbo and Yoruba",
+        "role": "minority"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "State capital",
+        "note": "Minna has been the capital of Niger State since the state was created in 1976.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Minna"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "group-jalingo-metro",
+    "name": "Jalingo Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-TA"
+    ],
+    "memberIds": [
+      "NG-TA-JALINGO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Taraba State's capital, created when Taraba was carved from Gongola State in 1991, at the meeting point of Fulani, Mumuye, Jukun and Hausa communities.",
+    "ethnicMakeup": [
+      {
+        "name": "Fulani",
+        "role": "major"
+      },
+      {
+        "name": "Mumuye",
+        "role": "major"
+      },
+      {
+        "name": "Hausa",
+        "role": "major"
+      },
+      {
+        "name": "Jukun",
+        "role": "minority"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "State capital",
+        "note": "Jalingo became the capital when Taraba State was created from Gongola State in 1991.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Jalingo"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "group-damaturu-metro",
+    "name": "Damaturu Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-YO"
+    ],
+    "memberIds": [
+      "NG-YO-DAMATURU"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Yobe State's capital on the Maiduguri-Kano corridor, created as a state capital when Yobe was carved from Borno State in 1991.",
+    "ethnicMakeup": [
+      {
+        "name": "Kanuri",
+        "role": "dominant"
+      },
+      {
+        "name": "Hausa",
+        "role": "major"
+      },
+      {
+        "name": "Fulani",
+        "role": "minority"
+      },
+      {
+        "name": "Bade and Ngizim",
+        "role": "minority"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "State capital",
+        "note": "Damaturu became the capital when Yobe State was created from Borno State in 1991.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Damaturu"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "group-gusau-metro",
+    "name": "Gusau Metropolis",
+    "groupType": "metro-area",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-ZA"
+    ],
+    "memberIds": [
+      "NG-ZA-GUSAU"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Zamfara State's capital, a Hausa trading and grain-marketing town created as a state capital when Zamfara was carved from Sokoto State in 1996.",
+    "ethnicMakeup": [
+      {
+        "name": "Hausa",
+        "role": "dominant"
+      },
+      {
+        "name": "Fulani",
+        "role": "major"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "State capital",
+        "note": "Gusau became the capital when Zamfara State was created from Sokoto State in 1996.",
+        "category": "history",
+        "url": "https://en.wikipedia.org/wiki/Gusau"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-eko-lagos-island",
+    "name": "Eko (Lagos Island and Mainland)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-LA"
+    ],
+    "memberIds": [
+      "NG-LA-LAGOS-ISLAND",
+      "NG-LA-LAGOS-MAINLAND",
+      "NG-LA-ETI-OSA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Historic core of Lagos: the Eko settlement, seat of the Oba of Lagos and the Idejo (White Cap) chieftaincy, with Awori and returnee-descended communities.",
+    "ethnicMakeup": [
+      {
+        "name": "Eko (Yoruba)",
+        "role": "dominant"
+      },
+      {
+        "name": "Awori",
+        "role": "major",
+        "memberIds": [
+          "NG-LA-ETI-OSA"
+        ]
+      },
+      {
+        "name": "Aguda and Saro",
+        "role": "minority",
+        "note": "Afro-Brazilian and Sierra Leonean returnee descendants"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-awori",
+    "name": "Awori",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-LA",
+      "NG-OG"
+    ],
+    "memberIds": [
+      "NG-LA-IKEJA",
+      "NG-LA-ALIMOSHO",
+      "NG-LA-OJO",
+      "NG-LA-AMUWO-ODOFIN",
+      "NG-OG-ADO-ODO-OTA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Awori Yoruba sub-group of Lagos and south-western Ogun, indigenous to much of the Lagos mainland and Ota.",
+    "ethnicMakeup": [
+      {
+        "name": "Awori (Yoruba)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-egun-badagry",
+    "name": "Egun (Badagry)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-LA"
+    ],
+    "memberIds": [
+      "NG-LA-BADAGRY"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Egun (Gun/Ogu) coastal people of Badagry, a community that continues across the border into Benin Republic; Badagry was a major slave-trade port.",
+    "ethnicMakeup": [
+      {
+        "name": "Egun (Gun)",
+        "role": "dominant"
+      },
+      {
+        "name": "Awori",
+        "role": "major"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Egun (Badagry)",
+        "note": "Home of the Egun Zangbeto night-guardian masquerades.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-ijebu-lagos",
+    "name": "Lagos Ijebu (Ikorodu, Epe, Ibeju-Lekki)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-LA"
+    ],
+    "memberIds": [
+      "NG-LA-IKORODU",
+      "NG-LA-EPE",
+      "NG-LA-IBEJU-LEKKI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Ijebu-related lagoon-side communities in the eastern non-metropolitan part of Lagos State; Awori communities are also present in Ibeju-Lekki.",
+    "ethnicMakeup": [
+      {
+        "name": "Ijebu (Yoruba)",
+        "role": "dominant"
+      },
+      {
+        "name": "Awori",
+        "role": "minority",
+        "memberIds": [
+          "NG-LA-IBEJU-LEKKI"
+        ]
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-oyo-kingdom",
+    "name": "Oyo (Alaafin's Kingdom)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-OY"
+    ],
+    "memberIds": [
+      "NG-OY-OYO-EAST",
+      "NG-OY-OYO-WEST",
+      "NG-OY-ATIBA",
+      "NG-OY-AFIJIO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Heartland of the historic Oyo Empire around present-day Oyo town, seat of the Alaafin of Oyo.",
+    "ethnicMakeup": [
+      {
+        "name": "Oyo (Yoruba)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-oke-ogun",
+    "name": "Oke-Ogun",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-OY"
+    ],
+    "memberIds": [
+      "NG-OY-SAKI-EAST",
+      "NG-OY-SAKI-WEST",
+      "NG-OY-ATISBO",
+      "NG-OY-IWAJOWA",
+      "NG-OY-KAJOLA",
+      "NG-OY-ITESIWAJU",
+      "NG-OY-ISEYIN",
+      "NG-OY-OLORUNSOGO",
+      "NG-OY-IREPO",
+      "NG-OY-OORELOPE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The savanna plain of north-western Oyo State, home to Oyo-Yoruba communities such as Saki, Igboho and Iseyin, the last known for Aso-Oke weaving.",
+    "ethnicMakeup": [
+      {
+        "name": "Yoruba (Oke-Ogun)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-ibarapa",
+    "name": "Ibarapa",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-OY"
+    ],
+    "memberIds": [
+      "NG-OY-IBARAPA-CENTRAL",
+      "NG-OY-IBARAPA-EAST",
+      "NG-OY-IBARAPA-NORTH"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The Ibarapa Yoruba towns (Igboora, Igangan, Tapa and neighbours) on the western edge of Oyo State.",
+    "ethnicMakeup": [
+      {
+        "name": "Yoruba (Ibarapa)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-osun-oyo-yoruba",
+    "name": "Iwo-Ede-Ejigbo axis",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-OS"
+    ],
+    "memberIds": [
+      "NG-OS-IWO",
+      "NG-OS-EDE-NORTH",
+      "NG-OS-EDE-SOUTH",
+      "NG-OS-EJIGBO",
+      "NG-OS-EGBEDORE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Oyo-Yoruba towns of north-western Osun State, including the seats of the Oluwo of Iwo, the Timi of Ede and the Olojigbo of Ejigbo.",
+    "ethnicMakeup": [
+      {
+        "name": "Yoruba (Oyo-Yoruba)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-akoko",
+    "name": "Akoko",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-ON"
+    ],
+    "memberIds": [
+      "NG-ON-AKOKO-NORTH-EAST",
+      "NG-ON-AKOKO-NORTH-WEST",
+      "NG-ON-AKOKO-SOUTH-EAST",
+      "NG-ON-AKOKO-SOUTH-WEST"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Hill-country Yoruba sub-group of north-eastern Ondo State organised in many small kingdoms (Ikare, Oka, Ikaram and others).",
+    "ethnicMakeup": [
+      {
+        "name": "Akoko (Yoruba)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Akoko",
+        "note": "Hosts the Ariginya (local wrestling) festival at Ikare-Akoko.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-ilaje",
+    "name": "Ilaje",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-ON"
+    ],
+    "memberIds": [
+      "NG-ON-ILAJE",
+      "NG-ON-ESE-ODO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Riverine and coastal Yoruba sub-group of southern Ondo State, fishing and oil-region communities of the Atlantic coast.",
+    "ethnicMakeup": [
+      {
+        "name": "Ilaje (Yoruba)",
+        "role": "dominant"
+      },
+      {
+        "name": "Apoi and Arogbo Ijaw",
+        "role": "minority",
+        "memberIds": [
+          "NG-ON-ESE-ODO"
+        ],
+        "note": "Ijaw communities in Ese-Odo"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Ilaje",
+        "note": "Shares the Biripo musical tradition with the Apoi and the Ikale.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-ikale",
+    "name": "Ikale",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-ON"
+    ],
+    "memberIds": [
+      "NG-ON-OKITIPUPA",
+      "NG-ON-IRELE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Yoruba sub-group of southern Ondo State centred on Okitipupa and Irele, in Ikaleland.",
+    "ethnicMakeup": [
+      {
+        "name": "Ikale (Yoruba)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Ikale",
+        "note": "Shares the Biripo musical tradition with the Ilaje and Apoi; also known for the Irokute festival at Okitipupa.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-ondo-kingdom",
+    "name": "Ondo Kingdom and neighbours",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-ON"
+    ],
+    "memberIds": [
+      "NG-ON-ONDO-EAST",
+      "NG-ON-ONDO-WEST",
+      "NG-ON-ODIGBO",
+      "NG-ON-ILE-OLUJI-OKEIGBO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Yoruba communities around the Ondo Kingdom under the Osemawe of Ondo and Ile-Oluji.",
+    "ethnicMakeup": [
+      {
+        "name": "Yoruba (Ondo)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-ekiti",
+    "name": "Ekiti Yoruba",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-EK"
+    ],
+    "memberIds": [
+      "NG-EK-ADO-EKITI",
+      "NG-EK-EFON",
+      "NG-EK-EKITI-EAST",
+      "NG-EK-EKITI-SOUTH-WEST",
+      "NG-EK-EKITI-WEST",
+      "NG-EK-EMURE",
+      "NG-EK-GBONYIN",
+      "NG-EK-IDO-OSI",
+      "NG-EK-IJERO",
+      "NG-EK-IKERE",
+      "NG-EK-IKOLE",
+      "NG-EK-ILEJEMEJE",
+      "NG-EK-IREPODUN-IFELODUN",
+      "NG-EK-ISE-ORUN",
+      "NG-EK-MOBA",
+      "NG-EK-OYE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The whole of Ekiti State, homeland of the Ekiti sub-group of the Yoruba, organised in some sixteen historic kingdoms each with its own crowned Oba.",
+    "ethnicMakeup": [
+      {
+        "name": "Ekiti (Yoruba)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-igbomina-kwara",
+    "name": "Igbomina and Ekiti (Kwara)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KW"
+    ],
+    "memberIds": [
+      "NG-KW-IFELODUN",
+      "NG-KW-IREPODUN",
+      "NG-KW-ISIN",
+      "NG-KW-OKE-ERO",
+      "NG-KW-EKITI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Igbomina and Ekiti-Yoruba communities of southern Kwara State.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbomina and Ekiti (Yoruba)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-nupe-kwara",
+    "name": "Nupe (Kwara)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KW"
+    ],
+    "memberIds": [
+      "NG-KW-PATEGI",
+      "NG-KW-EDU"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Nupe communities along the Niger River in northern Kwara State, seat of the Etsu Patigi.",
+    "ethnicMakeup": [
+      {
+        "name": "Nupe",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-baruba-borgu-kwara",
+    "name": "Baruba (Borgu, Kwara)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KW"
+    ],
+    "memberIds": [
+      "NG-KW-BARUTEN",
+      "NG-KW-KAIAMA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Baruba (Bariba/Baatonu) and related Borgu communities in the north-west of Kwara State, continuous with the Borgu region of Benin Republic.",
+    "ethnicMakeup": [
+      {
+        "name": "Baruba (Bariba/Baatonu)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-fct-indigenous",
+    "name": "FCT indigenous peoples",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-FC"
+    ],
+    "memberIds": [
+      "NG-FC-ABAJI",
+      "NG-FC-ABUJA-MUNICIPAL",
+      "NG-FC-BWARI",
+      "NG-FC-GWAGWALADA",
+      "NG-FC-KUJE",
+      "NG-FC-KWALI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The original inhabitants of the Federal Capital Territory, who lived in the area long before Abuja was built.",
+    "ethnicMakeup": [
+      {
+        "name": "Gbagyi (Gwari)",
+        "role": "dominant"
+      },
+      {
+        "name": "Gade",
+        "role": "major"
+      },
+      {
+        "name": "Koro",
+        "role": "major"
+      },
+      {
+        "name": "Ganagana",
+        "role": "minority"
+      },
+      {
+        "name": "Gwandara",
+        "role": "minority"
+      },
+      {
+        "name": "Bassa-Kwomu",
+        "role": "minority"
+      },
+      {
+        "name": "Ebira-Koto (Egbura)",
+        "role": "minority",
+        "memberIds": [
+          "NG-FC-ABAJI"
+        ]
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "FCT indigenous peoples",
+        "note": "Indigenous groups are recognised through area-council traditional rulers such as the Ona of Abaji.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-berom",
+    "name": "Berom",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-PL"
+    ],
+    "memberIds": [
+      "NG-PL-JOS-SOUTH",
+      "NG-PL-BARKIN-LADI",
+      "NG-PL-RIYOM"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Largest indigenous people of the Jos Plateau, centred on Jos South, Barkin Ladi and Riyom under the Gbong Gwom Jos.",
+    "ethnicMakeup": [
+      {
+        "name": "Berom",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Berom",
+        "note": "Their festivals were merged into the annual Nzem Berom cultural festival held around April.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-ngas-mwaghavul",
+    "name": "Ngas and Mwaghavul (central Plateau)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-PL"
+    ],
+    "memberIds": [
+      "NG-PL-PANKSHIN",
+      "NG-PL-KANKE",
+      "NG-PL-MANGU",
+      "NG-PL-BOKKOS"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Ngas (Pankshin, Kanke) and Mwaghavul (Mangu, Bokkos) communities of the central Plateau highlands.",
+    "ethnicMakeup": [
+      {
+        "name": "Ngas",
+        "role": "dominant",
+        "memberIds": [
+          "NG-PL-PANKSHIN",
+          "NG-PL-KANKE"
+        ]
+      },
+      {
+        "name": "Mwaghavul",
+        "role": "dominant",
+        "memberIds": [
+          "NG-PL-MANGU",
+          "NG-PL-BOKKOS"
+        ]
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-southern-plateau",
+    "name": "Southern Plateau (Tarok, Goemai, Pan, Mupun)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-PL"
+    ],
+    "memberIds": [
+      "NG-PL-LANGTANG-NORTH",
+      "NG-PL-LANGTANG-SOUTH",
+      "NG-PL-SHENDAM",
+      "NG-PL-QUA-AN-PAN",
+      "NG-PL-MIKANG"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Tarok (Langtang), Goemai (Shendam), Pan (Qua'an Pan) and related communities of the southern Plateau lowlands.",
+    "ethnicMakeup": [
+      {
+        "name": "Tarok",
+        "role": "dominant",
+        "memberIds": [
+          "NG-PL-LANGTANG-NORTH",
+          "NG-PL-LANGTANG-SOUTH"
+        ]
+      },
+      {
+        "name": "Goemai",
+        "role": "dominant",
+        "memberIds": [
+          "NG-PL-SHENDAM"
+        ]
+      },
+      {
+        "name": "Pan and Mupun",
+        "role": "major",
+        "memberIds": [
+          "NG-PL-QUA-AN-PAN",
+          "NG-PL-MIKANG"
+        ]
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-igala",
+    "name": "Igala",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KO"
+    ],
+    "memberIds": [
+      "NG-KO-ANKPA",
+      "NG-KO-BASSA",
+      "NG-KO-DEKINA",
+      "NG-KO-IBAJI",
+      "NG-KO-IDAH",
+      "NG-KO-IGALAMELA-ODOLU",
+      "NG-KO-OFU",
+      "NG-KO-OLAMABORO",
+      "NG-KO-OMALA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Eastern Kogi kingdom centred on Idah, seat of the Attah Igala.",
+    "ethnicMakeup": [
+      {
+        "name": "Igala",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Igala",
+        "note": "Idah hosts the Ocho hunting festival, banned in 1963 and revived in 2018.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-ebira",
+    "name": "Ebira",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KO"
+    ],
+    "memberIds": [
+      "NG-KO-OKENE",
+      "NG-KO-ADAVI",
+      "NG-KO-OKEHI",
+      "NG-KO-AJAOKUTA",
+      "NG-KO-OGORI-MAGONGO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Ebira (Igbira) heartland of central Kogi around Okene, under the Ohinoyi of Ebiraland; Ogori and Magongo communities have distinct local traditions.",
+    "ethnicMakeup": [
+      {
+        "name": "Ebira",
+        "role": "dominant"
+      },
+      {
+        "name": "Ogori and Magongo",
+        "role": "minority",
+        "memberIds": [
+          "NG-KO-OGORI-MAGONGO"
+        ]
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-okun-yoruba",
+    "name": "Okun Yoruba",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KO"
+    ],
+    "memberIds": [
+      "NG-KO-YAGBA-EAST",
+      "NG-KO-YAGBA-WEST",
+      "NG-KO-MOPA-MURO",
+      "NG-KO-IJUMU",
+      "NG-KO-KABBA-BUNU"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Yoruba-speaking Okun communities (Kabba, Ijumu, Yagba, Mopa) of western Kogi.",
+    "ethnicMakeup": [
+      {
+        "name": "Okun Yoruba (Owe, Bunu, Yagba, Ijumu, Iyagba)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-tiv",
+    "name": "Tiv",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-BE"
+    ],
+    "memberIds": [
+      "NG-BE-BURUKU",
+      "NG-BE-GBOKO",
+      "NG-BE-GUMA",
+      "NG-BE-GWER-EAST",
+      "NG-BE-GWER-WEST",
+      "NG-BE-KATSINA-ALA",
+      "NG-BE-KONSHISHA",
+      "NG-BE-KWANDE",
+      "NG-BE-LOGO",
+      "NG-BE-TARKA",
+      "NG-BE-UKUM",
+      "NG-BE-USHONGO",
+      "NG-BE-VANDEIKYA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Tiv heartland of Benue State under the Tor Tiv; the Tiv also live in Nasarawa, Taraba and Plateau states.",
+    "ethnicMakeup": [
+      {
+        "name": "Tiv",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Tiv",
+        "note": "Home of the Kwagh-hir theatrical tradition, inscribed by UNESCO in 2019.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-idoma",
+    "name": "Idoma",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-BE"
+    ],
+    "memberIds": [
+      "NG-BE-ADO",
+      "NG-BE-AGATU",
+      "NG-BE-APA",
+      "NG-BE-OGBADIBO",
+      "NG-BE-OHIMINI",
+      "NG-BE-OKPOKWU",
+      "NG-BE-OTUKPO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Idoma communities of southern Benue State around Otukpo, seat of the Och'Idoma.",
+    "ethnicMakeup": [
+      {
+        "name": "Idoma",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Idoma",
+        "note": "Home of the Eje Alekwu ancestral festival.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-igede",
+    "name": "Igede",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-BE"
+    ],
+    "memberIds": [
+      "NG-BE-OJU",
+      "NG-BE-OBI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Igede-speaking communities of Oju and Obi in south-eastern Benue State.",
+    "ethnicMakeup": [
+      {
+        "name": "Igede",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Igede",
+        "note": "Known for the Ige-Agba new yam festival.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-eggon",
+    "name": "Eggon",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-NA"
+    ],
+    "memberIds": [
+      "NG-NA-NASARAWA-EGON",
+      "NG-NA-AKWANGA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Eggon communities of northern Nasarawa State, under the Aren Eggon.",
+    "ethnicMakeup": [
+      {
+        "name": "Eggon",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-alago",
+    "name": "Alago (Arago) and neighbours",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-NA"
+    ],
+    "memberIds": [
+      "NG-NA-AWE",
+      "NG-NA-DOMA",
+      "NG-NA-KEANA",
+      "NG-NA-OBI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Alago, Migili and related communities of southern Nasarawa State, including the Doma chiefdom under the Osana of Doma.",
+    "ethnicMakeup": [
+      {
+        "name": "Alago (Arago)",
+        "role": "dominant"
+      },
+      {
+        "name": "Migili",
+        "role": "minority"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-nupe-niger",
+    "name": "Nupe (Niger State)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-NI"
+    ],
+    "memberIds": [
+      "NG-NI-BIDA",
+      "NG-NI-EDATI",
+      "NG-NI-GBAKO",
+      "NG-NI-KATCHA",
+      "NG-NI-LAVUN",
+      "NG-NI-AGAIE",
+      "NG-NI-LAPAI",
+      "NG-NI-MOKWA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Nupe kingdom of central Niger State centred on Bida, seat of the Etsu Nupe.",
+    "ethnicMakeup": [
+      {
+        "name": "Nupe",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Nupe (Niger State)",
+        "note": "Bida is known for brasswork and glass-bead making.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-gbagyi-niger",
+    "name": "Gbagyi (Gwari) of Niger State",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-NI"
+    ],
+    "memberIds": [
+      "NG-NI-CHANCHAGA",
+      "NG-NI-BOSSO",
+      "NG-NI-GURARA",
+      "NG-NI-PAIKORO",
+      "NG-NI-SULEJA",
+      "NG-NI-TAFA",
+      "NG-NI-SHIRORO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Gbagyi (Gwari) communities of eastern Niger State, including the Minna area.",
+    "ethnicMakeup": [
+      {
+        "name": "Gbagyi (Gwari)",
+        "role": "dominant"
+      },
+      {
+        "name": "Kadara and other groups",
+        "role": "minority"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-borgu-kambari",
+    "name": "Borgu and Kambari",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-NI"
+    ],
+    "memberIds": [
+      "NG-NI-BORGU",
+      "NG-NI-AGWARA",
+      "NG-NI-RIJAU",
+      "NG-NI-MAGAMA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Kambari, Bokobaru and other communities of north-western Niger State along the Benin Republic border.",
+    "ethnicMakeup": [
+      {
+        "name": "Kambari",
+        "role": "major"
+      },
+      {
+        "name": "Bokobaru (Bariba/Baatonu)",
+        "role": "major",
+        "memberIds": [
+          "NG-NI-BORGU"
+        ]
+      },
+      {
+        "name": "Hausa-Fulani",
+        "role": "major"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-southern-kaduna",
+    "name": "Southern Kaduna peoples",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KD"
+    ],
+    "memberIds": [
+      "NG-KD-JABA",
+      "NG-KD-JEMA-A",
+      "NG-KD-KACHIA",
+      "NG-KD-KAGARKO",
+      "NG-KD-KAJURU",
+      "NG-KD-KAURA",
+      "NG-KD-KAURU",
+      "NG-KD-LERE",
+      "NG-KD-SANGA",
+      "NG-KD-ZANGON-KATAF"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The highland peoples of southern Kaduna State, including Kataf (Atyap), Bajju, Ham (Jaba), Kagoro (Gworok), Fantswam, Ikulu, Adara and Kurama.",
+    "ethnicMakeup": [
+      {
+        "name": "Atyap (Kataf)",
+        "role": "major",
+        "memberIds": [
+          "NG-KD-ZANGON-KATAF"
+        ]
+      },
+      {
+        "name": "Bajju",
+        "role": "major"
+      },
+      {
+        "name": "Ham (Jaba)",
+        "role": "major",
+        "memberIds": [
+          "NG-KD-JABA"
+        ]
+      },
+      {
+        "name": "Kagoro (Gworok)",
+        "role": "major",
+        "memberIds": [
+          "NG-KD-KAURA"
+        ]
+      },
+      {
+        "name": "Adara and Kurama",
+        "role": "major",
+        "memberIds": [
+          "NG-KD-KAJURU",
+          "NG-KD-KAURU"
+        ]
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Southern Kaduna peoples",
+        "note": "The Nok terracotta culture is named after Nok village in Jaba LGA; the Afan festival is held at Kagoro on 1 January.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-daura-emirate",
+    "name": "Daura Emirate",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KT"
+    ],
+    "memberIds": [
+      "NG-KT-DAURA",
+      "NG-KT-BAURE",
+      "NG-KT-ZANGO",
+      "NG-KT-MAI-ADUA",
+      "NG-KT-SANDAMU"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Hausa communities of northern Katsina State around Daura, regarded in tradition as the ancestral home of the Hausa.",
+    "ethnicMakeup": [
+      {
+        "name": "Hausa",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Daura Emirate",
+        "note": "Daura is tied to the Bayajidda legend of Hausa origins.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-zuru-dakarkari",
+    "name": "Zuru (Dakarkari)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KE"
+    ],
+    "memberIds": [
+      "NG-KE-ZURU",
+      "NG-KE-DANKO-WASAGU",
+      "NG-KE-SAKABA",
+      "NG-KE-FAKAI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The Dakarkari and related peoples of the Zuru Emirate in southern Kebbi State.",
+    "ethnicMakeup": [
+      {
+        "name": "Dakarkari",
+        "role": "dominant"
+      },
+      {
+        "name": "Hausa-Fulani",
+        "role": "minority"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-yauri",
+    "name": "Yauri Emirate",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KE"
+    ],
+    "memberIds": [
+      "NG-KE-YAURI",
+      "NG-KE-SHANGA",
+      "NG-KE-NGASKI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The Yauri Emirate on the Niger River in south-western Kebbi State, home of the Reshe, Gungawa and related river peoples.",
+    "ethnicMakeup": [
+      {
+        "name": "Reshe and Gungawa",
+        "role": "dominant",
+        "note": "Verify sub-group labels locally"
+      },
+      {
+        "name": "Hausa-Fulani",
+        "role": "minority"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-argungu-kebbawa",
+    "name": "Argungu (Kebbawa)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-KE"
+    ],
+    "memberIds": [
+      "NG-KE-ARGUNGU",
+      "NG-KE-AUGIE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The Kebbawa communities of the Argungu Emirate, historic heart of the Kebbi Kingdom.",
+    "ethnicMakeup": [
+      {
+        "name": "Hausa (Kebbawa)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Argungu (Kebbawa)",
+        "note": "Host of the Argungu Fishing Festival.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-hadejia-emirate",
+    "name": "Hadejia Emirate",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-JI"
+    ],
+    "memberIds": [
+      "NG-JI-HADEJIA",
+      "NG-JI-AUYO",
+      "NG-JI-KAFIN-HAUSA",
+      "NG-JI-KAUGAMA",
+      "NG-JI-MALAM-MADORI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Hausa communities of the Hadejia Emirate on the Hadejia-Jama'are floodplain of Jigawa State.",
+    "ethnicMakeup": [
+      {
+        "name": "Hausa",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-kanuri-borno",
+    "name": "Kanuri heartland",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-BO"
+    ],
+    "memberIds": [
+      "NG-BO-MAIDUGURI",
+      "NG-BO-JERE",
+      "NG-BO-KONDUGA",
+      "NG-BO-BAMA",
+      "NG-BO-DIKWA",
+      "NG-BO-NGALA",
+      "NG-BO-KALA-BALGE",
+      "NG-BO-MONGUNO",
+      "NG-BO-MARTE",
+      "NG-BO-NGANZAI",
+      "NG-BO-KUKAWA",
+      "NG-BO-MAGUMERI",
+      "NG-BO-GUBIO",
+      "NG-BO-KAGA",
+      "NG-BO-GUZAMALA",
+      "NG-BO-ABADAM",
+      "NG-BO-MOBBAR",
+      "NG-BO-MAFA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Core Kanuri-speaking LGAs of Borno State, successors of the Kanem-Bornu Empire and the Shehu of Borno's domain.",
+    "ethnicMakeup": [
+      {
+        "name": "Kanuri",
+        "role": "dominant"
+      },
+      {
+        "name": "Shuwa Arab",
+        "role": "major"
+      },
+      {
+        "name": "Fulani and Hausa",
+        "role": "minority"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-bura-biu",
+    "name": "Bura (Babur) and Biu",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-BO"
+    ],
+    "memberIds": [
+      "NG-BO-BIU",
+      "NG-BO-HAWUL",
+      "NG-BO-KWAYA-KUSAR",
+      "NG-BO-SHANI",
+      "NG-BO-BAYO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The Bura (Babur) and related communities of the Biu plateau in southern Borno State, under the Mai of Biu.",
+    "ethnicMakeup": [
+      {
+        "name": "Bura (Babur)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-marghi-chibok-gwoza",
+    "name": "Marghi, Kibaku and Gwoza hill peoples",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-BO"
+    ],
+    "memberIds": [
+      "NG-BO-ASKIRA-UBA",
+      "NG-BO-CHIBOK",
+      "NG-BO-DAMBOA",
+      "NG-BO-GWOZA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Marghi, Kibaku (Chibok) and Gwoza hill peoples of southern Borno State.",
+    "ethnicMakeup": [
+      {
+        "name": "Marghi",
+        "role": "major",
+        "memberIds": [
+          "NG-BO-ASKIRA-UBA",
+          "NG-BO-DAMBOA"
+        ]
+      },
+      {
+        "name": "Kibaku (Chibok)",
+        "role": "major",
+        "memberIds": [
+          "NG-BO-CHIBOK"
+        ]
+      },
+      {
+        "name": "Gwoza hill peoples",
+        "role": "major",
+        "memberIds": [
+          "NG-BO-GWOZA"
+        ]
+      },
+      {
+        "name": "Kanuri",
+        "role": "minority"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-bachama-numan",
+    "name": "Bachama (Bwatiye)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AD"
+    ],
+    "memberIds": [
+      "NG-AD-NUMAN",
+      "NG-AD-DEMSA",
+      "NG-AD-LAMURDE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Bachama (Bwatiye) communities of the Benue valley in southern Adamawa State, under the Hama Bachama.",
+    "ethnicMakeup": [
+      {
+        "name": "Bachama (Bwatiye)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-northern-adamawa-highlands",
+    "name": "Northern Adamawa highland peoples",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AD"
+    ],
+    "memberIds": [
+      "NG-AD-MADAGALI",
+      "NG-AD-MICHIKA",
+      "NG-AD-HONG",
+      "NG-AD-MAIHA",
+      "NG-AD-MUBI-NORTH",
+      "NG-AD-MUBI-SOUTH"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Kamwe (Higi), Kilba, Fali, Margi and neighbouring peoples of the Mandara-foothill north of Adamawa State.",
+    "ethnicMakeup": [
+      {
+        "name": "Kamwe (Higi)",
+        "role": "major",
+        "memberIds": [
+          "NG-AD-MICHIKA",
+          "NG-AD-MADAGALI"
+        ]
+      },
+      {
+        "name": "Kilba",
+        "role": "major",
+        "memberIds": [
+          "NG-AD-HONG",
+          "NG-AD-MAIHA"
+        ]
+      },
+      {
+        "name": "Fali",
+        "role": "major",
+        "memberIds": [
+          "NG-AD-MUBI-NORTH",
+          "NG-AD-MUBI-SOUTH"
+        ]
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Northern Adamawa highland peoples",
+        "note": "The Sukur Cultural Landscape lies in Madagali LGA.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-jukun-wukari",
+    "name": "Jukun (Wukari Federation)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-TA"
+    ],
+    "memberIds": [
+      "NG-TA-WUKARI",
+      "NG-TA-DONGA",
+      "NG-TA-IBI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Jukun communities of southern Taraba State under the Aku Uka of Wukari, successors of the Kwararafa confederacy.",
+    "ethnicMakeup": [
+      {
+        "name": "Jukun",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Jukun (Wukari Federation)",
+        "note": "Ibi hosts the Nwonyo International Fishing and Cultural Festival.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-kuteb-takum",
+    "name": "Kuteb and Ichen (Takum)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-TA"
+    ],
+    "memberIds": [
+      "NG-TA-TAKUM",
+      "NG-TA-USSA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Kuteb, Ichen and related communities of Takum and Ussa in south-eastern Taraba State.",
+    "ethnicMakeup": [
+      {
+        "name": "Kuteb",
+        "role": "dominant",
+        "memberIds": [
+          "NG-TA-TAKUM"
+        ]
+      },
+      {
+        "name": "Ichen and others",
+        "role": "major",
+        "memberIds": [
+          "NG-TA-USSA"
+        ]
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-mumuye",
+    "name": "Mumuye",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-TA"
+    ],
+    "memberIds": [
+      "NG-TA-YORRO",
+      "NG-TA-ZING"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Mumuye communities of central Taraba State, renowned for their figurative wood sculpture.",
+    "ethnicMakeup": [
+      {
+        "name": "Mumuye",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-mambilla",
+    "name": "Mambilla",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-TA"
+    ],
+    "memberIds": [
+      "NG-TA-SARDAUNA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Mambilla Plateau communities of Taraba State along the Cameroon border.",
+    "ethnicMakeup": [
+      {
+        "name": "Mambilla",
+        "role": "major"
+      },
+      {
+        "name": "Fulani",
+        "role": "major"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-sayawa-zaar",
+    "name": "Sayawa (Zaar)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-BA"
+    ],
+    "memberIds": [
+      "NG-BA-TAFAWA-BALEWA",
+      "NG-BA-BOGORO",
+      "NG-BA-DASS"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Sayawa (Zaar) communities of southern Bauchi State.",
+    "ethnicMakeup": [
+      {
+        "name": "Sayawa (Zaar)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-tangale-waja",
+    "name": "Tangale and Waja",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-GO"
+    ],
+    "memberIds": [
+      "NG-GO-BILLIRI",
+      "NG-GO-KALTUNGO",
+      "NG-GO-BALANGA",
+      "NG-GO-SHONGOM"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Tangale (Billiri, Kaltungo) and Waja (Balanga, Shongom) communities of southern Gombe State.",
+    "ethnicMakeup": [
+      {
+        "name": "Tangale",
+        "role": "dominant",
+        "memberIds": [
+          "NG-GO-BILLIRI",
+          "NG-GO-KALTUNGO"
+        ]
+      },
+      {
+        "name": "Waja",
+        "role": "dominant",
+        "memberIds": [
+          "NG-GO-BALANGA",
+          "NG-GO-SHONGOM"
+        ]
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-fika-emirate",
+    "name": "Fika Emirate",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-YO"
+    ],
+    "memberIds": [
+      "NG-YO-FIKA",
+      "NG-YO-FUNE",
+      "NG-YO-NANGERE",
+      "NG-YO-POTISKUM"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The Fika Emirate of southern Yobe State, under the Mai of Fika, home of the Bolewa, Ngizim and Karekare.",
+    "ethnicMakeup": [
+      {
+        "name": "Bolewa",
+        "role": "dominant"
+      },
+      {
+        "name": "Ngizim",
+        "role": "major",
+        "memberIds": [
+          "NG-YO-POTISKUM"
+        ]
+      },
+      {
+        "name": "Karekare",
+        "role": "major"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-ohafia-aro",
+    "name": "Ohafia, Arochukwu and Abam",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AB"
+    ],
+    "memberIds": [
+      "NG-AB-OHAFIA",
+      "NG-AB-AROCHUKWU",
+      "NG-AB-BENDE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Igbo communities of north-eastern Abia State: the Aro of Arochukwu, the Ohafia warrior tradition and the Abam.",
+    "ethnicMakeup": [
+      {
+        "name": "Aro",
+        "role": "major",
+        "memberIds": [
+          "NG-AB-AROCHUKWU"
+        ]
+      },
+      {
+        "name": "Ohafia",
+        "role": "major",
+        "memberIds": [
+          "NG-AB-OHAFIA"
+        ]
+      },
+      {
+        "name": "Abam",
+        "role": "major",
+        "memberIds": [
+          "NG-AB-BENDE"
+        ]
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-ngwa-ukwa",
+    "name": "Ngwa and Ukwa",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AB"
+    ],
+    "memberIds": [
+      "NG-AB-ISIALA-NGWA-NORTH",
+      "NG-AB-ISIALA-NGWA-SOUTH",
+      "NG-AB-OBI-NGWA",
+      "NG-AB-UKWA-EAST",
+      "NG-AB-UKWA-WEST"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Ngwa and Ukwa Igbo communities of southern Abia State, hinterland of the Aba commercial centre.",
+    "ethnicMakeup": [
+      {
+        "name": "Ngwa",
+        "role": "dominant"
+      },
+      {
+        "name": "Ukwa",
+        "role": "major",
+        "memberIds": [
+          "NG-AB-UKWA-EAST",
+          "NG-AB-UKWA-WEST"
+        ]
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-umuahia-ibeku",
+    "name": "Ibeku and Umuahia axis",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AB"
+    ],
+    "memberIds": [
+      "NG-AB-UMUAHIA-NORTH",
+      "NG-AB-UMUAHIA-SOUTH",
+      "NG-AB-IKWUANO",
+      "NG-AB-ISUIKWUATO",
+      "NG-AB-UMU-NNEOCHI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Igbo communities of central and northern Abia around Umuahia (Ibeku), including Ikwuano and Isuikwuato.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Ibeku, Ikwuano, Isuikwuato)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-mbaise",
+    "name": "Mbaise",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-IM"
+    ],
+    "memberIds": [
+      "NG-IM-ABOH-MBAISE",
+      "NG-IM-AHIAZU-MBAISE",
+      "NG-IM-EZINIHITTE-MBAISE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The three Mbaise LGAs of Imo State, a densely populated Igbo cultural area.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Mbaise)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-orlu",
+    "name": "Orlu area",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-IM"
+    ],
+    "memberIds": [
+      "NG-IM-ORLU",
+      "NG-IM-ORSU",
+      "NG-IM-ORU-EAST",
+      "NG-IM-ORU-WEST",
+      "NG-IM-NJABA",
+      "NG-IM-NKWERRE",
+      "NG-IM-NWANGELE",
+      "NG-IM-ISU",
+      "NG-IM-IDEATO-NORTH",
+      "NG-IM-IDEATO-SOUTH"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Igbo communities of the Orlu area of Imo State, including Nkwerre and Ideato, home of Arondizuogu.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Orlu area)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Orlu area",
+        "note": "Arondizuogu in Ideato North hosts the Ikeji masquerade festival.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-okigwe",
+    "name": "Okigwe area",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-IM"
+    ],
+    "memberIds": [
+      "NG-IM-OKIGWE",
+      "NG-IM-ONUIMO",
+      "NG-IM-IHITTE-UBOMA",
+      "NG-IM-OBOWO",
+      "NG-IM-EHIME-MBANO",
+      "NG-IM-ISIALA-MBANO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Igbo communities of northern Imo State around Okigwe.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Okigwe area)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-oguta-egbema",
+    "name": "Oguta and Egbema",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-IM"
+    ],
+    "memberIds": [
+      "NG-IM-OGUTA",
+      "NG-IM-OHAJI-EGBEMA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Igbo communities of the Oguta Lake area and the Egbema oil belt in south-western Imo State.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Oguta and Egbema)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-awka-nri",
+    "name": "Nri-Awka heartland",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AN"
+    ],
+    "memberIds": [
+      "NG-AN-AWKA-NORTH",
+      "NG-AN-AWKA-SOUTH",
+      "NG-AN-ANAOCHA",
+      "NG-AN-NJIKOKA",
+      "NG-AN-DUNUKOFIA",
+      "NG-AN-IDEMILI-NORTH",
+      "NG-AN-IDEMILI-SOUTH"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The Nri and Awka heartland of Anambra State, associated with the ritual Nri Kingdom and Awka's metalworking tradition.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Nri-Awka)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Nri-Awka heartland",
+        "note": "The Eze Nri holds a ritual kingship associated with the Nri Kingdom.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-anambra-river",
+    "name": "Anambra River basin",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AN"
+    ],
+    "memberIds": [
+      "NG-AN-ANAMBRA-EAST",
+      "NG-AN-ANAMBRA-WEST",
+      "NG-AN-AYAMELUM",
+      "NG-AN-OYI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "River-basin communities of northern Anambra State, including Aguleri and Umueri; Anambra West has strong Igala links.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Anambra River communities)",
+        "role": "dominant"
+      },
+      {
+        "name": "Igala",
+        "role": "minority",
+        "memberIds": [
+          "NG-AN-ANAMBRA-WEST"
+        ]
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-nnewi-aguata",
+    "name": "Nnewi, Aguata and Orumba",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AN"
+    ],
+    "memberIds": [
+      "NG-AN-NNEWI-NORTH",
+      "NG-AN-NNEWI-SOUTH",
+      "NG-AN-EKWUSIGO",
+      "NG-AN-AGUATA",
+      "NG-AN-ORUMBA-NORTH",
+      "NG-AN-ORUMBA-SOUTH",
+      "NG-AN-IHIALA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Igbo communities of southern Anambra State, home of Nnewi's industrial cluster.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Nnewi, Aguata, Orumba, Ihiala)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-nsukka",
+    "name": "Nsukka Igbo",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-EN"
+    ],
+    "memberIds": [
+      "NG-EN-NSUKKA",
+      "NG-EN-IGBO-EZE-NORTH",
+      "NG-EN-IGBO-EZE-SOUTH",
+      "NG-EN-IGBO-ETITI",
+      "NG-EN-UZO-UWANI",
+      "NG-EN-UDENU",
+      "NG-EN-ISI-UZO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The Igbo communities of northern Enugu State, centred on Nsukka.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Nsukka)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-nkanu",
+    "name": "Nkanu",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-EN"
+    ],
+    "memberIds": [
+      "NG-EN-NKANU-EAST",
+      "NG-EN-NKANU-WEST"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Nkanu Igbo communities south of Enugu.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Nkanu)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-udi-awgu",
+    "name": "Udi, Awgu and Oji River area",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-EN"
+    ],
+    "memberIds": [
+      "NG-EN-UDI",
+      "NG-EN-EZEAGU",
+      "NG-EN-OJI-RIVER",
+      "NG-EN-AWGU",
+      "NG-EN-ANINRI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Igbo communities of the western Enugu escarpment, including the Ngwo clan associated with the Odo festival.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Udi, Awgu, Ezeagu, Oji River, Aninri)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-afikpo",
+    "name": "Afikpo (Ehugbo)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-EB"
+    ],
+    "memberIds": [
+      "NG-EB-AFIKPO-NORTH",
+      "NG-EB-AFIKPO-SOUTH"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The Afikpo (Ehugbo) Igbo of southern Ebonyi State, known for elaborate masquerade traditions.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Afikpo / Ehugbo)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-ezza-izzi-ikwo",
+    "name": "Ezza, Izzi and Ikwo",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-EB"
+    ],
+    "memberIds": [
+      "NG-EB-IZZI",
+      "NG-EB-EZZA-NORTH",
+      "NG-EB-EZZA-SOUTH",
+      "NG-EB-IKWO",
+      "NG-EB-ISHIELU",
+      "NG-EB-OHAUKWU"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Northern Ebonyi Igbo communities around Abakaliki, including Izzi, Ezza and Ikwo.",
+    "ethnicMakeup": [
+      {
+        "name": "Izzi",
+        "role": "major",
+        "memberIds": [
+          "NG-EB-IZZI"
+        ]
+      },
+      {
+        "name": "Ezza",
+        "role": "major",
+        "memberIds": [
+          "NG-EB-EZZA-NORTH",
+          "NG-EB-EZZA-SOUTH"
+        ]
+      },
+      {
+        "name": "Ikwo",
+        "role": "major",
+        "memberIds": [
+          "NG-EB-IKWO"
+        ]
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-ivo-ohaozara-onicha",
+    "name": "Ivo, Ohaozara and Onicha",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-EB"
+    ],
+    "memberIds": [
+      "NG-EB-IVO",
+      "NG-EB-OHAOZARA",
+      "NG-EB-ONICHA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Igbo communities of south-western Ebonyi State, including the Uburu and Okposi salt-lake areas.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Ivo, Ohaozara, Onicha)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-ikwerre",
+    "name": "Ikwerre",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-RI"
+    ],
+    "memberIds": [
+      "NG-RI-IKWERRE",
+      "NG-RI-EMOHUA",
+      "NG-RI-OBIO-AKPOR",
+      "NG-RI-PORT-HARCOURT"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Ikwerre communities, indigenous to Port Harcourt and Obio-Akpor and to the Ikwerre and Emohua areas.",
+    "ethnicMakeup": [
+      {
+        "name": "Ikwerre",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-ogoni",
+    "name": "Ogoni",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-RI"
+    ],
+    "memberIds": [
+      "NG-RI-GOKANA",
+      "NG-RI-KHANA",
+      "NG-RI-TAI",
+      "NG-RI-ELEME"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The four Ogoni-linked LGAs of south-eastern Rivers State.",
+    "ethnicMakeup": [
+      {
+        "name": "Ogoni (Khana, Gokana, Tai)",
+        "role": "dominant"
+      },
+      {
+        "name": "Eleme",
+        "role": "dominant",
+        "memberIds": [
+          "NG-RI-ELEME"
+        ],
+        "note": "Distinct language, usually counted with Ogoniland"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-kalabari-okrika-bonny",
+    "name": "Eastern Ijaw and Degema (Kalabari, Okrika, Bonny, Opobo)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-RI"
+    ],
+    "memberIds": [
+      "NG-RI-ASARI-TORU",
+      "NG-RI-AKUKU-TORU",
+      "NG-RI-DEGEMA",
+      "NG-RI-BONNY",
+      "NG-RI-OPOBO-NKORO",
+      "NG-RI-OKRIKA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Eastern Ijaw kingdoms of the Rivers creeks, including Kalabari, Okrika, Bonny and Opobo, plus the Degema.",
+    "ethnicMakeup": [
+      {
+        "name": "Kalabari",
+        "role": "dominant",
+        "memberIds": [
+          "NG-RI-ASARI-TORU",
+          "NG-RI-AKUKU-TORU"
+        ]
+      },
+      {
+        "name": "Okrika",
+        "role": "major",
+        "memberIds": [
+          "NG-RI-OKRIKA"
+        ]
+      },
+      {
+        "name": "Bonny and Opobo",
+        "role": "major",
+        "memberIds": [
+          "NG-RI-BONNY",
+          "NG-RI-OPOBO-NKORO"
+        ]
+      },
+      {
+        "name": "Degema",
+        "role": "major",
+        "memberIds": [
+          "NG-RI-DEGEMA"
+        ]
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Eastern Ijaw and Degema (Kalabari, Okrika, Bonny, Opobo)",
+        "note": "The Ekine (Sekiapu) masquerade society is central to Kalabari culture.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-etche-ekpeye-ogba",
+    "name": "Etche, Ekpeye, Ogba and Omuma",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-RI"
+    ],
+    "memberIds": [
+      "NG-RI-ETCHE",
+      "NG-RI-OMUMA",
+      "NG-RI-OGBA-EGBEMA-NDONI",
+      "NG-RI-AHOADA-EAST",
+      "NG-RI-AHOADA-WEST"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Igbo-related communities of northern and central Rivers State.",
+    "ethnicMakeup": [
+      {
+        "name": "Etche",
+        "role": "major"
+      },
+      {
+        "name": "Ekpeye",
+        "role": "major",
+        "memberIds": [
+          "NG-RI-AHOADA-WEST"
+        ]
+      },
+      {
+        "name": "Ogba",
+        "role": "major",
+        "memberIds": [
+          "NG-RI-OGBA-EGBEMA-NDONI"
+        ]
+      },
+      {
+        "name": "Omuma",
+        "role": "major"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-obolo-andoni",
+    "name": "Obolo (Andoni)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-RI",
+      "NG-AK"
+    ],
+    "memberIds": [
+      "NG-RI-ANDONI",
+      "NG-AK-EASTERN-OBOLO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Obolo (Andoni) communities across the Rivers/Akwa Ibom coast.",
+    "ethnicMakeup": [
+      {
+        "name": "Obolo (Andoni)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-ijaw-bayelsa",
+    "name": "Ijaw of Bayelsa",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-BY"
+    ],
+    "memberIds": [
+      "NG-BY-BRASS",
+      "NG-BY-EKEREMOR",
+      "NG-BY-KOLOKUMA-OPOKUMA",
+      "NG-BY-NEMBE",
+      "NG-BY-SAGBAMA",
+      "NG-BY-SOUTHERN-IJAW",
+      "NG-BY-YENAGOA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The Ijaw (Izon) clans of Bayelsa State, with Epie-Atissa in Yenagoa.",
+    "ethnicMakeup": [
+      {
+        "name": "Ijaw (Izon)",
+        "role": "dominant"
+      },
+      {
+        "name": "Epie-Atissa",
+        "role": "major",
+        "memberIds": [
+          "NG-BY-YENAGOA"
+        ]
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Ijaw of Bayelsa",
+        "note": "Nembe (Brass) was a major palm-oil trading kingdom.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-ogbia",
+    "name": "Ogbia",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-BY"
+    ],
+    "memberIds": [
+      "NG-BY-OGBIA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The Ogbia people of Bayelsa State, in whose area Oloibiri lies.",
+    "ethnicMakeup": [
+      {
+        "name": "Ogbia",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Ogbia",
+        "note": "Oloibiri saw Nigeria's first commercial oil discovery in 1956.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-ibibio",
+    "name": "Ibibio",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AK"
+    ],
+    "memberIds": [
+      "NG-AK-UYO",
+      "NG-AK-URUAN",
+      "NG-AK-ETINAN",
+      "NG-AK-ITU",
+      "NG-AK-IBIONO-IBOM",
+      "NG-AK-IKONO",
+      "NG-AK-INI",
+      "NG-AK-NSIT-IBOM",
+      "NG-AK-NSIT-ATAI",
+      "NG-AK-NSIT-UBIUM",
+      "NG-AK-IBESIKPO-ASUTAN",
+      "NG-AK-MKPAT-ENIN",
+      "NG-AK-IKOT-ABASI",
+      "NG-AK-ONNA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Ibibio communities, the largest group in Akwa Ibom State.",
+    "ethnicMakeup": [
+      {
+        "name": "Ibibio",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-annang",
+    "name": "Annang",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AK"
+    ],
+    "memberIds": [
+      "NG-AK-ABAK",
+      "NG-AK-ETIM-EKPO",
+      "NG-AK-IKA",
+      "NG-AK-IKOT-EKPENE",
+      "NG-AK-ESSIEN-UDIM",
+      "NG-AK-OBOT-AKARA",
+      "NG-AK-UKANAFUN",
+      "NG-AK-ORUK-ANAM"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Annang communities of north-western Akwa Ibom State, closely related to the Ibibio.",
+    "ethnicMakeup": [
+      {
+        "name": "Annang",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-oron",
+    "name": "Oron",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AK"
+    ],
+    "memberIds": [
+      "NG-AK-ORON",
+      "NG-AK-MBO",
+      "NG-AK-UDUNG-UKO",
+      "NG-AK-URUE-OFFONG-ORUKO",
+      "NG-AK-OKOBO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Oron communities of the south-eastern Akwa Ibom coast.",
+    "ethnicMakeup": [
+      {
+        "name": "Oron",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-eket-ibeno",
+    "name": "Eket and Ibeno",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-AK"
+    ],
+    "memberIds": [
+      "NG-AK-EKET",
+      "NG-AK-ESIT-EKET",
+      "NG-AK-IBENO"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Eket and Ibeno communities of the south-western Akwa Ibom coast and its oil-industry belt.",
+    "ethnicMakeup": [
+      {
+        "name": "Eket and Ibeno",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-efik-calabar",
+    "name": "Efik and Calabar area",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-CR"
+    ],
+    "memberIds": [
+      "NG-CR-CALABAR-MUNICIPAL",
+      "NG-CR-CALABAR-SOUTH",
+      "NG-CR-AKPABUYO",
+      "NG-CR-BAKASSI",
+      "NG-CR-ODUKPANI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Efik and related communities of the Calabar estuary, an Atlantic trading society governed through the Ekpe society.",
+    "ethnicMakeup": [
+      {
+        "name": "Efik",
+        "role": "dominant"
+      },
+      {
+        "name": "Qua and Efut",
+        "role": "minority"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-ekoi-ejagham",
+    "name": "Ekoi (Ejagham)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-CR"
+    ],
+    "memberIds": [
+      "NG-CR-AKAMKPA",
+      "NG-CR-ETUNG",
+      "NG-CR-IKOM",
+      "NG-CR-OBUBRA"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Ekoi (Ejagham) communities of the central Cross River forest belt, including the Ikom monolith area.",
+    "ethnicMakeup": [
+      {
+        "name": "Ekoi (Ejagham)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-yakurr-abi",
+    "name": "Yakurr, Abi and Biase",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-CR"
+    ],
+    "memberIds": [
+      "NG-CR-YAKURR",
+      "NG-CR-ABI",
+      "NG-CR-BIASE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Yakö (Yakurr), Abi and Biase communities of southern-central Cross River State.",
+    "ethnicMakeup": [
+      {
+        "name": "Yakurr (Yakö)",
+        "role": "dominant",
+        "memberIds": [
+          "NG-CR-YAKURR"
+        ]
+      },
+      {
+        "name": "Abi",
+        "role": "major",
+        "memberIds": [
+          "NG-CR-ABI"
+        ]
+      },
+      {
+        "name": "Biase",
+        "role": "major",
+        "memberIds": [
+          "NG-CR-BIASE"
+        ]
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Yakurr, Abi and Biase",
+        "note": "Ugep in Yakurr hosts the Leboku new yam festival.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-northern-cross-river",
+    "name": "Northern Cross River (Ogoja, Bekwarra, Boki, Yala, Obudu)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-CR"
+    ],
+    "memberIds": [
+      "NG-CR-OGOJA",
+      "NG-CR-YALA",
+      "NG-CR-BEKWARRA",
+      "NG-CR-OBUDU",
+      "NG-CR-OBANLIKU",
+      "NG-CR-BOKI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Boki, Bekwarra, Yala, Bette and Ogoja communities of northern Cross River State.",
+    "ethnicMakeup": [
+      {
+        "name": "Boki",
+        "role": "major",
+        "memberIds": [
+          "NG-CR-BOKI"
+        ]
+      },
+      {
+        "name": "Bekwarra",
+        "role": "major",
+        "memberIds": [
+          "NG-CR-BEKWARRA"
+        ]
+      },
+      {
+        "name": "Yala",
+        "role": "major",
+        "memberIds": [
+          "NG-CR-YALA"
+        ]
+      },
+      {
+        "name": "Ogoja and Bette peoples",
+        "role": "major"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-itsekiri",
+    "name": "Itsekiri",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-DE"
+    ],
+    "memberIds": [
+      "NG-DE-WARRI-NORTH",
+      "NG-DE-WARRI-SOUTH",
+      "NG-DE-WARRI-SOUTH-WEST"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The Itsekiri Kingdom of the western Niger Delta under the Olu of Warri, with Ode-Itsekiri as its cradle.",
+    "ethnicMakeup": [
+      {
+        "name": "Itsekiri",
+        "role": "dominant"
+      },
+      {
+        "name": "Ijaw and Urhobo",
+        "role": "minority",
+        "memberIds": [
+          "NG-DE-WARRI-SOUTH-WEST",
+          "NG-DE-WARRI-SOUTH"
+        ],
+        "note": "Mixed communities; local claims are contested"
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Itsekiri",
+        "note": "Itsekiri identity centres on the Olu of Warri, who marks his coronation anniversary each August.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-urhobo",
+    "name": "Urhobo",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-DE"
+    ],
+    "memberIds": [
+      "NG-DE-UDU",
+      "NG-DE-UVWIE",
+      "NG-DE-OKPE",
+      "NG-DE-SAPELE",
+      "NG-DE-ETHIOPE-EAST",
+      "NG-DE-ETHIOPE-WEST",
+      "NG-DE-UGHELLI-NORTH",
+      "NG-DE-UGHELLI-SOUTH"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Urhobo kingdoms of the central Delta State.",
+    "ethnicMakeup": [
+      {
+        "name": "Urhobo",
+        "role": "dominant"
+      },
+      {
+        "name": "Okpe",
+        "role": "major",
+        "memberIds": [
+          "NG-DE-OKPE"
+        ],
+        "note": "Closely related to Urhobo, with its own traditional ruler"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-isoko",
+    "name": "Isoko",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-DE"
+    ],
+    "memberIds": [
+      "NG-DE-ISOKO-NORTH",
+      "NG-DE-ISOKO-SOUTH"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Isoko communities of southern Delta State.",
+    "ethnicMakeup": [
+      {
+        "name": "Isoko",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-ijaw-delta",
+    "name": "Ijaw of Delta",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-DE"
+    ],
+    "memberIds": [
+      "NG-DE-BURUTU",
+      "NG-DE-BOMADI",
+      "NG-DE-PATANI",
+      "NG-DE-WARRI-SOUTH-WEST"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Ijaw communities of the Delta creeks, including the Gbaramatu Kingdom in Warri South West.",
+    "ethnicMakeup": [
+      {
+        "name": "Ijaw",
+        "role": "dominant"
+      },
+      {
+        "name": "Itsekiri",
+        "role": "minority",
+        "memberIds": [
+          "NG-DE-WARRI-SOUTH-WEST"
+        ]
+      }
+    ],
+    "wikiNotes": [
+      {
+        "title": "Ijaw of Delta",
+        "note": "Gbaramatu Kingdom hosts the seven-day Amaseikumor festival.",
+        "category": "culture",
+        "url": null
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-anioma",
+    "name": "Anioma (Delta Igbo)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-DE"
+    ],
+    "memberIds": [
+      "NG-DE-ANIOCHA-NORTH",
+      "NG-DE-ANIOCHA-SOUTH",
+      "NG-DE-IKA-NORTH-EAST",
+      "NG-DE-IKA-SOUTH",
+      "NG-DE-NDOKWA-EAST",
+      "NG-DE-NDOKWA-WEST",
+      "NG-DE-OSHIMILI-NORTH",
+      "NG-DE-OSHIMILI-SOUTH"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Igbo-speaking communities of Delta North, often grouped as Anioma, west of the Niger.",
+    "ethnicMakeup": [
+      {
+        "name": "Igbo (Anioma)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-ukwuani",
+    "name": "Ukwuani (Kwale)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-DE"
+    ],
+    "memberIds": [
+      "NG-DE-UKWUANI"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The Ukwuani (Kwale) people of southern Delta North, whose language is close to but distinct from Igbo.",
+    "ethnicMakeup": [
+      {
+        "name": "Ukwuani",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
+  },
+  {
+    "id": "culture-benin-edo",
+    "name": "Edo (Bini) heartland",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-ED"
+    ],
+    "memberIds": [
+      "NG-ED-OREDO",
+      "NG-ED-EGOR",
+      "NG-ED-IKPOBA-OKHA",
+      "NG-ED-ORHIONMWON",
+      "NG-ED-OVIA-NORTH-EAST",
+      "NG-ED-OVIA-SOUTH-WEST",
+      "NG-ED-UHUNMWONDE"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Edo (Bini) heartland of southern Edo State, home of the Benin Kingdom and its Oba.",
+    "ethnicMakeup": [
+      {
+        "name": "Edo (Bini)",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-esan",
+    "name": "Esan",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-ED"
+    ],
+    "memberIds": [
+      "NG-ED-ESAN-CENTRAL",
+      "NG-ED-ESAN-NORTH-EAST",
+      "NG-ED-ESAN-SOUTH-EAST",
+      "NG-ED-ESAN-WEST",
+      "NG-ED-IGUEBEN"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "Esan communities of central Edo State, whose rulers bear the title Onojie.",
+    "ethnicMakeup": [
+      {
+        "name": "Esan",
+        "role": "dominant"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "high"
+  },
+  {
+    "id": "culture-afemai-north-edo",
+    "name": "Afemai (Etsako, Owan and Akoko-Edo)",
+    "groupType": "cultural-group",
+    "isOfficial": false,
+    "partitionsState": null,
+    "stateIds": [
+      "NG-ED"
+    ],
+    "memberIds": [
+      "NG-ED-ETSAKO-CENTRAL",
+      "NG-ED-ETSAKO-EAST",
+      "NG-ED-ETSAKO-WEST",
+      "NG-ED-AKOKO-EDO",
+      "NG-ED-OWAN-EAST",
+      "NG-ED-OWAN-WEST"
+    ],
+    "effectiveFrom": null,
+    "effectiveTo": null,
+    "description": "The northern Edo peoples, called Afemai, including Etsako, Owan and Akoko-Edo communities.",
+    "ethnicMakeup": [
+      {
+        "name": "Etsako",
+        "role": "dominant",
+        "memberIds": [
+          "NG-ED-ETSAKO-CENTRAL",
+          "NG-ED-ETSAKO-EAST",
+          "NG-ED-ETSAKO-WEST"
+        ]
+      },
+      {
+        "name": "Owan",
+        "role": "major",
+        "memberIds": [
+          "NG-ED-OWAN-EAST",
+          "NG-ED-OWAN-WEST"
+        ]
+      },
+      {
+        "name": "Akoko-Edo",
+        "role": "major",
+        "memberIds": [
+          "NG-ED-AKOKO-EDO"
+        ],
+        "note": "Distinct Edoid-speaking communities, not to be confused with Akoko in Ondo State"
+      }
+    ],
+    "wikiNotes": [],
+    "confidence": "medium"
   }
 ]

@@ -9,7 +9,7 @@
     "dev:fast": "next dev",
     "rebuild": "npm run clean && npm run build:geo && npm run build",
     "rebuild:dev": "npm run clean && npm run build:geo && next dev",
-    "prebuild": "npm run build:compare && node scripts/verify-geo.mjs && node scripts/verify-compare.mjs",
+    "prebuild": "npm run build:compare && node scripts/build-search-index-content.mjs && node scripts/verify-geo.mjs && node scripts/verify-compare.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
