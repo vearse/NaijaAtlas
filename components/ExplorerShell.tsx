@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import dynamic from "next/dynamic";
 import LocationSearch from "@/components/search/LocationSearch";
+import SearchSpotlight from "@/components/search/SearchSpotlight";
 import PoweredByIseOwo from "@/components/PoweredByIseOwo";
 import RegionFilter from "@/components/map/RegionFilter";
 import SelectedStatesBar from "@/components/map/SelectedStatesBar";
@@ -81,6 +82,7 @@ export default function ExplorerShell({
 
   const closeMobileSheet = useMapStore((s) => s.closeMobileSheet);
   const [compareModalOpen, setCompareModalOpen] = useState(false);
+  const [searchSpotlightOpen, setSearchSpotlightOpen] = useState(false);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
 
   const capitalLgaByState = useMemo(
@@ -119,7 +121,7 @@ export default function ExplorerShell({
               </div>
               <PoweredByIseOwo />
             </div>
-            <div className="flex flex-col items-stretch gap-1.5 w-full lg:flex-1 lg:max-w-md">
+            <div className="hidden lg:flex flex-col items-stretch gap-1.5 lg:flex-1 lg:max-w-md">
               <LocationSearch />
               <MapHints />
             </div>
@@ -152,7 +154,7 @@ export default function ExplorerShell({
           <button
             type="button"
             onClick={() => setCompareModalOpen(true)}
-            className="absolute top-2.5 right-3 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-ng-green text-white px-3 py-2 text-xs font-semibold shadow-md min-h-[36px]"
+            className="absolute top-2.5 right-14 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-ng-green text-white px-3 py-2 text-xs font-semibold shadow-md min-h-[36px]"
             aria-label="Open state comparison"
           >
             <svg
@@ -174,7 +176,7 @@ export default function ExplorerShell({
           <button
             type="button"
             onClick={() => closeMobileSheet()}
-            className="absolute top-2.5 right-3 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-white text-slate-800 border border-slate-200 px-3 py-2 text-xs font-semibold shadow-sm min-h-[36px]"
+            className="absolute top-2.5 right-14 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-white text-slate-800 border border-slate-200 px-3 py-2 text-xs font-semibold shadow-sm min-h-[36px]"
             aria-label="Return to map view"
           >
             <svg
@@ -194,13 +196,36 @@ export default function ExplorerShell({
           </button>
         )}
 
+        {isMobile && (
+          <button
+            type="button"
+            onClick={() => setSearchSpotlightOpen(true)}
+            className="absolute top-2.5 right-3 z-30 lg:hidden flex h-[36px] w-[36px] items-center justify-center rounded-full bg-ng-green text-white shadow-md"
+            aria-label="Open search"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="h-4 w-4"
+              aria-hidden
+            >
+              <path
+                fillRule="evenodd"
+                d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+        )}
+
         {isMobile &&
           singleStateSelected &&
           mobileSheet !== "open" && (
             <button
               type="button"
               onClick={() => openMobileSheet()}
-              className="absolute top-2.5 right-3 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-ng-green text-white px-3 py-2 text-xs font-semibold shadow-md min-h-[36px]"
+              className="absolute top-2.5 right-14 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-ng-green text-white px-3 py-2 text-xs font-semibold shadow-md min-h-[36px]"
               aria-label="View state details"
             >
               Details
@@ -215,7 +240,7 @@ export default function ExplorerShell({
             <button
               type="button"
               onClick={() => setInfoModalOpen(true)}
-              className="absolute top-2.5 right-3 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-white text-slate-800 border border-slate-200 px-3 py-2 text-xs font-semibold shadow-sm min-h-[36px]"
+              className="absolute top-2.5 right-14 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-white text-slate-800 border border-slate-200 px-3 py-2 text-xs font-semibold shadow-sm min-h-[36px]"
               aria-label="Open Nigeria overview"
             >
               <svg
@@ -287,6 +312,12 @@ export default function ExplorerShell({
           peopleNotes={peopleNotes}
         />
       )}
+
+
+      <SearchSpotlight
+        open={searchSpotlightOpen}
+        onClose={() => setSearchSpotlightOpen(false)}
+      />
 
       <WikipediaReaderModal />
     </div>

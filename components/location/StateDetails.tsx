@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { LENSES, LENS_LABELS, lensFor, type FocusLens } from "@/components/compare/lenses";
 import type { CompareBundle } from "@/types/compare";
 import type {
   StateContent,
@@ -111,6 +112,7 @@ export default function StateDetails({
   stateNotesMap = {},
 }: StateDetailsProps) {
   const [showPlanVisit, setShowPlanVisit] = useState(false);
+  const [focusLens, setFocusLens] = useState<FocusLens>("learn");
   const openWikiModal = useMapStore((s) => s.openWikiModal);
 
   const stateLgas = lgas
@@ -233,6 +235,28 @@ export default function StateDetails({
 
       <ShowLgasButton stateId={location.id} stateName={location.name} />
 
+          <div className="flex items-center gap-1.5 mb-3" role="tablist" aria-label="Focus lens">
+            {LENSES.map((l) => (
+              <button
+                key={l}
+                type="button"
+                role="tab"
+                aria-selected={focusLens === l}
+                onClick={() => setFocusLens(l)}
+                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
+                  focusLens === l
+                    ? "bg-ng-green text-white shadow-sm"
+                    : "bg-white text-slate-600 border border-slate-200 hover:border-ng-green/40 hover:text-ng-green"
+                }`}
+              >
+                {LENS_LABELS[l]}
+              </button>
+            ))}
+            <span className="ml-auto text-[10px] font-medium text-slate-400">
+              {stateNotes.filter((n) => lensFor(n) === focusLens || focusLens === "learn").length} notes
+            </span>
+          </div>
+
       {stateMetro.length > 0 && (
         <div className="space-y-3">
           <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
@@ -349,11 +373,16 @@ export default function StateDetails({
 
       {stateNotes.length > 0 && (
         <div>
+
           <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
-            What to explore · learn ({stateNotes.length})
+            {focusLens === "learn"
+              ? `What to explore · learn (${stateNotes.length})`
+              : `${focusLens === "tourist" ? "Tourist" : "Invest"} · ${LENS_LABELS[focusLens].toLowerCase()} (${stateNotes.filter((n) => lensFor(n) === focusLens).length})`}
           </h3>
           <ul className="space-y-2">
-            {stateNotes.map((n, i) => (
+            {stateNotes
+              .filter((n) => focusLens === "learn" || lensFor(n) === focusLens)
+              .map((n, i) => (
               <li
                 key={i}
                 className="rounded-xl border border-slate-100 px-3 py-2.5"
