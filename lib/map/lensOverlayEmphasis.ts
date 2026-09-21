@@ -19,14 +19,21 @@ const LENS_OPACITY_EXPR = [
   FULL_OPACITY,
 ] as const;
 
-const PAINT_KEYS: Record<string, ("icon-opacity" | "text-opacity" | "line-opacity" | "fill-opacity")[]> = {
+type LensOpacityPaintKey =
+  | "icon-opacity"
+  | "text-opacity"
+  | "line-opacity"
+  | "fill-opacity"
+  | "circle-opacity";
+
+const PAINT_KEYS: Record<string, LensOpacityPaintKey[]> = {
   symbol: ["icon-opacity", "text-opacity"],
   line: ["line-opacity"],
   fill: ["fill-opacity"],
   circle: ["circle-opacity"],
 };
 
-function layerPaintKeys(map: MaplibreMap, layerId: string): ("icon-opacity" | "text-opacity" | "line-opacity" | "fill-opacity")[] {
+function layerPaintKeys(map: MaplibreMap, layerId: string): LensOpacityPaintKey[] {
   const layer = map.getLayer(layerId);
   if (!layer) return [];
   const type = layer.type;

@@ -16,8 +16,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const { url, name, description, ogDescription, keywords, locale, themeColor } =
-  siteConfig;
+const { url, name, description, ogDescription, keywords, locale } = siteConfig;
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
@@ -85,10 +84,6 @@ export const metadata: Metadata = {
     title: name,
     statusBarStyle: "default",
   },
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: themeColor },
-    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
-  ],
 };
 
 export default function RootLayout({

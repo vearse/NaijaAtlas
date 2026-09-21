@@ -14,7 +14,7 @@ export const siteConfig = {
   /** Production default; override with NEXT_PUBLIC_SITE_URL in deploy env. */
   url:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-    "https://naijaatlas.com",
+    "https://naija-atlas-zeta.vercel.app",
   twitterHandle: undefined as string | undefined,
   keywords: [
     "NaijaAtlas",
