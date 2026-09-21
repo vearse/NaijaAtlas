@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import PostHogProvider from "@/components/PostHogProvider";
+import JsonLd from "@/components/seo/JsonLd";
+import { buildRootJsonLd } from "@/lib/seo/jsonLd";
+import { defaultTitle, siteConfig } from "@/lib/seo/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,51 +16,79 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://naijaatlas.com";
+const { url, name, description, ogDescription, keywords, locale, themeColor } =
+  siteConfig;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(url),
   title: {
-    default: "NaijaAtlas — Interactive Map of Nigeria's States & LGAs",
-    template: "%s · NaijaAtlas",
+    default: defaultTitle,
+    template: `%s · ${name}`,
   },
-  description:
-    "NaijaAtlas maps Nigeria's 36 states, 774 local government areas, and 6 geopolitical regions. Search locations, compare states, and share direct links.",
-  keywords: [
-    "NaijaAtlas",
-    "Nigeria map",
-    "Nigeria states",
-    "LGA map",
-    "local government areas",
-    "geopolitical regions",
-    "interactive map",
-  ],
-  authors: [{ name: "NaijaAtlas" }],
-  creator: "NaijaAtlas",
+  description,
+  keywords: [...keywords],
+  applicationName: name,
+  authors: [{ name, url }],
+  creator: name,
+  publisher: name,
+  category: "education",
+  formatDetection: {
+    telephone: false,
+    address: false,
+    email: false,
+  },
   openGraph: {
-    title: "NaijaAtlas — Interactive Map of Nigeria",
-    description:
-      "Navigate Nigeria's states, LGAs, and regions with NaijaAtlas. Shareable links and mobile-friendly exploration.",
+    title: defaultTitle,
+    description: ogDescription,
     type: "website",
-    locale: "en_NG",
-    siteName: "NaijaAtlas",
-    url: siteUrl,
+    locale,
+    siteName: name,
+    url,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: defaultTitle,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NaijaAtlas — Interactive Map of Nigeria",
-    description:
-      "Map Nigeria's states, LGAs, and regions with NaijaAtlas.",
+    title: defaultTitle,
+    description: ogDescription,
+    images: ["/opengraph-image"],
+    ...(siteConfig.twitterHandle
+      ? { site: siteConfig.twitterHandle, creator: siteConfig.twitterHandle }
+      : {}),
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true },
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   alternates: {
     canonical: "/",
   },
+  other: {
+    "geo.region": "NG",
+    "geo.placename": "Nigeria",
+  },
+  appleWebApp: {
+    capable: true,
+    title: name,
+    statusBarStyle: "default",
+  },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: themeColor },
+    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
+  ],
 };
 
 export default function RootLayout({
@@ -70,6 +101,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}
       >
+        <JsonLd data={buildRootJsonLd()} />
         <PostHogProvider apiKey={process.env.POSTHOG_API_KEY}>
           {children}
         </PostHogProvider>

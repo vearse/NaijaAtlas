@@ -11,11 +11,13 @@ import {
   defaultPeriodForCategory,
 } from "@/lib/compare/compareUtils";
 import {
-  LENSES,
+  LENS_IDS,
   LENS_LABELS,
-  lensFor,
-  type FocusLens,
-} from "@/components/compare/lenses";
+  lensInputFromCountryNote,
+  lensInputFromWikiNote,
+  type LensId,
+} from "@/lib/lenses/lensHelper";
+import { useLensFilter } from "@/hooks/useLensFilter";
 import { formatAreaKm2 } from "@/lib/map/metrics";
 import type { CompareBundle } from "@/types/compare";
 import type {
@@ -218,8 +220,9 @@ export default function NigeriaOverview({
   peopleNotes = {},
 }: NigeriaOverviewProps) {
   const openWikiModal = useMapStore((s) => s.openWikiModal);
+  const setActiveLens = useMapStore((s) => s.setActiveLens);
   const [openIndex, setOpenIndex] = useState(0);
-  const [focusLens, setFocusLens] = useState<FocusLens>("learn");
+  const { activeLens, matches } = useLensFilter();
   const totalLgas = states.reduce((n, s) => n + s.lgaCount, 0);
   const totalLand = totalLandAreaKm2(
     compareBundle,
@@ -231,16 +234,23 @@ export default function NigeriaOverview({
     [countryNotes]
   );
 
+  const filteredCountryNotes = useMemo(
+    () =>
+      countryNoteList.filter((n) =>
+        matches(lensInputFromCountryNote(n))
+      ),
+    [countryNoteList, matches]
+  );
+
   const groupedNotes = useMemo(() => {
     const groups = new Map<string, CountryNote[]>();
-    for (const note of countryNoteList) {
-      if (focusLens !== "learn" && lensFor(note) !== focusLens) continue;
+    for (const note of filteredCountryNotes) {
       const list = groups.get(note.category) ?? [];
       list.push(note);
       groups.set(note.category, list);
     }
     return groups;
-  }, [countryNoteList, focusLens]);
+  }, [filteredCountryNotes]);
 
   const orderedCategories = useMemo(() => {
     const present = new Set(groupedNotes.keys());
@@ -376,8 +386,11 @@ export default function NigeriaOverview({
   }, [states, generalData]);
 
   const peopleList: WikiNote[] = useMemo(
-    () => Object.values(peopleNotes).flat(),
-    [peopleNotes]
+    () =>
+      Object.values(peopleNotes)
+        .flat()
+        .filter((n) => matches(lensInputFromWikiNote(n))),
+    [peopleNotes, matches]
   );
 
   const toggle = (i: number) => setOpenIndex(openIndex === i ? -1 : i);
@@ -436,26 +449,29 @@ export default function NigeriaOverview({
 
       <div>
         <div className="flex items-center gap-2 mb-3">
-          <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 sr-only" htmlFor="country-lens-filter">
+          <label
+            className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 sr-only"
+            htmlFor="country-lens-filter"
+          >
             Focus filter
           </label>
           <select
             id="country-lens-filter"
-            value={focusLens}
-            onChange={(e) => setFocusLens(e.target.value as FocusLens)}
+            value={activeLens}
+            onChange={(e) => setActiveLens(e.target.value as LensId)}
             aria-label="Filter highlights by focus"
             className="rounded-full border border-slate-200 bg-white text-xs font-semibold text-slate-700 px-3 py-1.5 focus:outline-none focus:border-ng-green/50 focus:ring-1 focus:ring-ng-green/20"
           >
-            {LENSES.map((l) => (
+            {LENS_IDS.map((l) => (
               <option key={l} value={l}>
                 {LENS_LABELS[l]}
               </option>
             ))}
           </select>
           <span className="ml-auto text-[10px] font-medium text-slate-400">
-            {focusLens === "learn"
+            {activeLens === "learn"
               ? `${countryNoteList.length} notes`
-              : `${countryNoteList.filter((n) => lensFor(n) === focusLens).length} notes`}
+              : `${filteredCountryNotes.length} notes`}
           </span>
         </div>
         <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
@@ -464,7 +480,7 @@ export default function NigeriaOverview({
         <div className="space-y-2">
           <AccordionItem
             title="Interesting history"
-            count={countryNoteList.length}
+            count={filteredCountryNotes.length}
             open={openIndex === 0}
             onToggle={() => toggle(0)}
           >

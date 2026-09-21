@@ -22,6 +22,7 @@ export interface DirectionsState {
 
 import type { OverlayLayerId, SelectedOverlayFeature } from "@/types/overlay";
 import type { DrivingStep } from "@/lib/map/directionsApi";
+import type { LensId } from "@/lib/lenses/lensHelper";
 
 const DEFAULT_ACTIVE_OVERLAYS = new Set<OverlayLayerId>(["cities"]);
 
@@ -83,6 +84,8 @@ export interface MapSelectionState {
   reset: () => void;
   mapType: MapTypeId;
   setMapType: (id: MapTypeId) => void;
+  activeLens: LensId;
+  setActiveLens: (lens: LensId) => void;
   directions: DirectionsState;
   setDirectionsFrom: (f: DirectionsTarget | null) => void;
   setDirectionsTo: (t: DirectionsTarget | null) => void;
@@ -133,6 +136,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   mapInstance: null,
   lgaVisibilityHandler: null,
   mapType: "minimal",
+  activeLens: "learn",
   directions: {
     from: null,
     to: null,
@@ -143,6 +147,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
 
   registerMap: (map) => set({ mapInstance: map }),
   setMapType: (id) => set({ mapType: id }),
+  setActiveLens: (lens) => set({ activeLens: lens }),
 
   setDirectionsFrom: (from) =>
     set((state) => ({

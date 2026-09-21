@@ -9,6 +9,7 @@ import type {
   LgaLocation,
 } from "@/types/location";
 import type { OverlayLayerId } from "@/types/overlay";
+import { lensInputFromSearchEntry, matchesActiveLens } from "@/lib/lenses/lensHelper";
 
 const OVERLAY_LEVELS = new Set<OverlayLevel>([
   "landform",
@@ -44,6 +45,7 @@ export default function LocationSearch() {
   const [index, setIndex] = useState<SearchEntry[]>([]);
   const fuseRef = useRef<Fuse<SearchEntry> | null>(null);
   const { selectStates, setSelectedLga } = useMapStore();
+  const activeLens = useMapStore((s) => s.activeLens);
 
   useEffect(() => {
     fetch("/search-index.json")
@@ -63,16 +65,32 @@ export default function LocationSearch() {
       });
   }, []);
 
-  const search = useCallback((q: string) => {
-    setQuery(q);
-    if (!q.trim() || !fuseRef.current) {
-      setResults([]);
-      return;
-    }
-    const found = fuseRef.current.search(q, { limit: 10 }).map((r) => r.item);
-    setResults(found);
-    setOpen(true);
-  }, []);
+  const search = useCallback(
+    (q: string) => {
+      setQuery(q);
+      if (!q.trim() || !fuseRef.current) {
+        setResults([]);
+        return;
+      }
+      let found = fuseRef.current.search(q, { limit: 20 }).map((r) => r.item);
+      if (activeLens !== "learn") {
+        const alwaysShow = new Set([
+          "country",
+          "state",
+          "lga",
+          "metro",
+        ]);
+        found = found.filter(
+          (entry) =>
+            alwaysShow.has(entry.level) ||
+            matchesActiveLens(lensInputFromSearchEntry(entry), activeLens)
+        );
+      }
+      setResults(found.slice(0, 10));
+      setOpen(true);
+    },
+    [activeLens]
+  );
 
   const selectResult = (entry: SearchEntry) => {
     setOpen(false);

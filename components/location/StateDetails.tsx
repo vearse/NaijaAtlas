@@ -1,5 +1,12 @@
-import { useState } from "react";
-import { LENSES, LENS_LABELS, lensFor, type FocusLens } from "@/components/compare/lenses";
+import { useMemo, useState } from "react";
+import {
+  LENS_IDS,
+  LENS_LABELS,
+} from "@/lib/lenses/lensHelper";
+import {
+  getStateOverlayItems,
+  type StateOverlayItem,
+} from "@/lib/lenses/stateOverlayItems";
 import type { CompareBundle } from "@/types/compare";
 import type {
   StateContent,
@@ -11,6 +18,7 @@ import type {
 import { formatStateLandArea } from "@/lib/compare/landArea";
 import { getCategoryData } from "@/lib/compare/compareUtils";
 import { openCityOnMap } from "@/lib/map/cityCoordsLookup";
+import { openStateOverlayItemOnMap } from "@/lib/map/openOverlayItem";
 import ShowLgasButton from "@/components/map/ShowLgasButton";
 import VisitDirectionsControl from "@/components/directions/VisitDirectionsControl";
 import { useMapStore } from "@/lib/store/mapStore";
@@ -31,6 +39,8 @@ const NOTE_CATEGORY_STYLES: Record<string, string> = {
   culture: "bg-violet-50 text-violet-700 border-violet-200",
   economy: "bg-emerald-50 text-emerald-700 border-emerald-200",
   geography: "bg-amber-50 text-amber-700 border-amber-200",
+  festival: "bg-pink-50 text-pink-700 border-pink-200",
+  institution: "bg-orange-50 text-orange-700 border-orange-200",
 };
 
 function StatCard({
@@ -101,6 +111,65 @@ function formatPeriod(period: {
   return "period";
 }
 
+function OverlayItemList({
+  title,
+  items,
+  onSelect,
+  openWikiModal,
+}: {
+  title: string;
+  items: StateOverlayItem[];
+  onSelect: (item: StateOverlayItem) => void;
+  openWikiModal: (url: string, title?: string) => void;
+}) {
+  if (items.length === 0) return null;
+  return (
+    <div>
+      <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+        {title} ({items.length})
+      </h3>
+      <ul className="space-y-2">
+        {items.map((item) => (
+          <li
+            key={item.id}
+            className="rounded-xl border border-slate-100 px-3 py-2.5"
+          >
+            <button
+              type="button"
+              onClick={() => onSelect(item)}
+              className="group w-full text-left"
+            >
+              <span className="flex items-center flex-wrap gap-1.5 text-sm font-semibold text-slate-800 group-hover:text-ng-green">
+                {item.name}
+                <span className="rounded-full border border-slate-200 bg-slate-50 px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide text-slate-500">
+                  {item.category}
+                </span>
+              </span>
+            </button>
+            {item.summary && (
+              <p className="text-xs text-slate-500 leading-relaxed mt-1 line-clamp-3">
+                {item.summary}
+              </p>
+            )}
+            {item.wikiUrl && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openWikiModal(item.wikiUrl!, item.name);
+                }}
+                className="mt-1.5 text-[11px] font-semibold text-sky-700 underline underline-offset-2 hover:text-sky-900"
+              >
+                Wikipedia
+              </button>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export default function StateDetails({
   content,
   location,
@@ -112,7 +181,8 @@ export default function StateDetails({
   stateNotesMap = {},
 }: StateDetailsProps) {
   const [showPlanVisit, setShowPlanVisit] = useState(false);
-  const [focusLens, setFocusLens] = useState<FocusLens>("learn");
+  const activeLens = useMapStore((s) => s.activeLens);
+  const setActiveLens = useMapStore((s) => s.setActiveLens);
   const openWikiModal = useMapStore((s) => s.openWikiModal);
 
   const stateLgas = lgas
@@ -123,6 +193,21 @@ export default function StateDetails({
 
   const stateMetro = metroGroups.filter((g) => g.stateIds.includes(location.id));
   const stateNotes = stateNotesMap[location.id] ?? [];
+
+  const overlayBundle = useMemo(
+    () => getStateOverlayItems(location.id, location.name, activeLens),
+    [location.id, location.name, activeLens]
+  );
+
+  const touristCount =
+    overlayBundle.cities.length +
+    overlayBundle.places.length +
+    overlayBundle.landforms.length +
+    overlayBundle.lakes.length;
+  const investCount =
+    overlayBundle.resources.length +
+    overlayBundle.agriculture.length +
+    overlayBundle.cities.length;
 
   const wardTotal = stateLgas.reduce((n, l) => n + l.wardCount, 0);
   const landArea = formatStateLandArea(compareBundle, location.id);
@@ -148,6 +233,17 @@ export default function StateDetails({
   const openMajorCity = (cityName: string) => {
     openCityOnMap(cityName);
   };
+
+  const onOverlaySelect = (item: StateOverlayItem) => {
+    openStateOverlayItemOnMap(item);
+  };
+
+  const tabCount =
+    activeLens === "learn"
+      ? stateNotes.length
+      : activeLens === "tourist"
+        ? touristCount
+        : investCount;
 
   return (
     <div className="space-y-5">
@@ -226,38 +322,35 @@ export default function StateDetails({
               </button>
             ))}
           </div>
-          {/* <p className="text-[11px] text-slate-400 mt-2 leading-relaxed">
-            Tap any language above to open a deep-dive Wikipedia reader with
-            background, speaker populations, and linguistic context.
-          </p> */}
         </div>
       )}
 
       <ShowLgasButton stateId={location.id} stateName={location.name} />
 
-          <div className="flex items-center gap-1.5 mb-3" role="tablist" aria-label="Focus lens">
-            {LENSES.map((l) => (
-              <button
-                key={l}
-                type="button"
-                role="tab"
-                aria-selected={focusLens === l}
-                onClick={() => setFocusLens(l)}
-                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
-                  focusLens === l
-                    ? "bg-ng-green text-white shadow-sm"
-                    : "bg-white text-slate-600 border border-slate-200 hover:border-ng-green/40 hover:text-ng-green"
-                }`}
-              >
-                {LENS_LABELS[l]}
-              </button>
-            ))}
-            <span className="ml-auto text-[10px] font-medium text-slate-400">
-              {stateNotes.filter((n) => lensFor(n) === focusLens || focusLens === "learn").length} notes
-            </span>
-          </div>
+      <div className="flex items-center gap-1.5 mb-1" role="tablist" aria-label="Focus lens">
+        {LENS_IDS.map((l) => (
+          <button
+            key={l}
+            type="button"
+            role="tab"
+            aria-selected={activeLens === l}
+            onClick={() => setActiveLens(l)}
+            className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
+              activeLens === l
+                ? "bg-ng-green text-white shadow-sm"
+                : "bg-white text-slate-600 border border-slate-200 hover:border-ng-green/40 hover:text-ng-green"
+            }`}
+          >
+            {LENS_LABELS[l]}
+          </button>
+        ))}
+        <span className="ml-auto text-[10px] font-medium text-slate-400">
+          {tabCount}{" "}
+          {activeLens === "learn" ? "notes" : "places"}
+        </span>
+      </div>
 
-      {stateMetro.length > 0 && (
+      {activeLens === "learn" && stateMetro.length > 0 && (
         <div className="space-y-3">
           <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
             Metro areas ({stateMetro.length})
@@ -305,41 +398,42 @@ export default function StateDetails({
                     </div>
                   </div>
                 )}
-              {m.wikiNotes.length > 0 && (
-                <ul className="space-y-2">
-                  {m.wikiNotes.map((w, i) => (
-                    <li key={i} className="rounded-lg bg-white border border-slate-100 px-2.5 py-2">
-                      <button
-                        type="button"
-                        onClick={() => openWikiModal(w.url, w.title)}
-                        className="w-full text-left group"
+                {m.wikiNotes.length > 0 && (
+                  <ul className="space-y-2">
+                    {m.wikiNotes.map((w, i) => (
+                      <li
+                        key={i}
+                        className="rounded-lg bg-white border border-slate-100 px-2.5 py-2"
                       >
-                        <span className="flex items-center gap-1.5 text-xs font-semibold text-sky-800 group-hover:text-sky-950 underline underline-offset-2">
-                          {w.title}
-                          <span
-                            className={`rounded-full border px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide ${
-                              NOTE_CATEGORY_STYLES[w.category] ??
-                              "bg-slate-50 text-slate-600 border-slate-200"
-                            }`}
-                          >
-                            {w.category}
+                        <button
+                          type="button"
+                          onClick={() => openWikiModal(w.url, w.title)}
+                          className="w-full text-left group"
+                        >
+                          <span className="flex items-center gap-1.5 text-xs font-semibold text-sky-800 group-hover:text-sky-950 underline underline-offset-2">
+                            {w.title}
+                            <span
+                              className={`rounded-full border px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide ${
+                                NOTE_CATEGORY_STYLES[w.category] ??
+                                "bg-slate-50 text-slate-600 border-slate-200"
+                              }`}
+                            >
+                              {w.category}
+                            </span>
                           </span>
-                        </span>
-                      </button>
-                      <p className="text-[11px] text-slate-500 leading-snug mt-1">
-                        {w.note}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                        </button>
+                        <p className="text-[11px] text-slate-500 leading-snug mt-1">
+                          {w.note}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             );
           })}
         </div>
       )}
-
-    
 
       <button
         type="button"
@@ -366,23 +460,13 @@ export default function StateDetails({
         />
       )}
 
-      {/* <p className="text-xs text-slate-500 text-center leading-relaxed">
-        Double-click {location.name} on the map to show LGAs, or use the button
-        above.
-      </p> */}
-
-      {stateNotes.length > 0 && (
+      {activeLens === "learn" && stateNotes.length > 0 && (
         <div>
-
           <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
-            {focusLens === "learn"
-              ? `What to explore · learn (${stateNotes.length})`
-              : `${focusLens === "tourist" ? "Tourist" : "Invest"} · ${LENS_LABELS[focusLens].toLowerCase()} (${stateNotes.filter((n) => lensFor(n) === focusLens).length})`}
+            What to explore · learn ({stateNotes.length})
           </h3>
           <ul className="space-y-2">
-            {stateNotes
-              .filter((n) => focusLens === "learn" || lensFor(n) === focusLens)
-              .map((n, i) => (
+            {stateNotes.map((n, i) => (
               <li
                 key={i}
                 className="rounded-xl border border-slate-100 px-3 py-2.5"
@@ -435,6 +519,74 @@ export default function StateDetails({
               </li>
             ))}
           </ul>
+        </div>
+      )}
+
+      {activeLens === "tourist" && (
+        <div className="space-y-5">
+          {touristCount === 0 ? (
+            <p className="text-xs text-slate-500 text-center leading-relaxed">
+              No tourist places catalogued for {content.name} yet.
+            </p>
+          ) : (
+            <>
+              <OverlayItemList
+                title="Cities to visit"
+                items={overlayBundle.cities}
+                onSelect={onOverlaySelect}
+                openWikiModal={openWikiModal}
+              />
+              <OverlayItemList
+                title="Places to visit"
+                items={overlayBundle.places}
+                onSelect={onOverlaySelect}
+                openWikiModal={openWikiModal}
+              />
+              <OverlayItemList
+                title="Landforms & scenery"
+                items={overlayBundle.landforms}
+                onSelect={onOverlaySelect}
+                openWikiModal={openWikiModal}
+              />
+              <OverlayItemList
+                title="Lakes"
+                items={overlayBundle.lakes}
+                onSelect={onOverlaySelect}
+                openWikiModal={openWikiModal}
+              />
+            </>
+          )}
+        </div>
+      )}
+
+      {activeLens === "invest" && (
+        <div className="space-y-5">
+          {investCount === 0 ? (
+            <p className="text-xs text-slate-500 text-center leading-relaxed">
+              No investment-related places catalogued for {content.name} yet.
+            </p>
+          ) : (
+            <>
+              <OverlayItemList
+                title="Resources & minerals"
+                items={overlayBundle.resources}
+                onSelect={onOverlaySelect}
+                openWikiModal={openWikiModal}
+              />
+              <OverlayItemList
+                title="Agriculture & land"
+                items={overlayBundle.agriculture}
+                onSelect={onOverlaySelect}
+                openWikiModal={openWikiModal}
+              />
+              <OverlayItemList
+                title="Commercial & industrial cities"
+                items={overlayBundle.cities}
+                onSelect={onOverlaySelect}
+                openWikiModal={openWikiModal}
+              />
+            </>
+          )}
         </div>
       )}
 

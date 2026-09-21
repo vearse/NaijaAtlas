@@ -82,3 +82,7 @@ npm run build           # prebuild runs verify-geo + verify-compare
 - Country view: states + regions only (no LGAs)
 - Click state(s) to reveal LGAs (multi-select up to 3 for compare)
 - Click LGA for details panel
+
+## Lenses (Learn · Tourist · Invest)
+
+Use the header lens selector to emphasize tourism- or investment-related notes and map overlays. **Learn** is the default full atlas view. Classification rules live in `lib/lenses/lensHelper.ts` (edit arrays there — no separate lens datasets). Share links can include `?lens=tourist` or `?lens=invest`. See `docs/ARCHITECTURE.md` §4.5.

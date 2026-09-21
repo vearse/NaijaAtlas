@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
+import { parseLensId } from "@/lib/lenses/lensHelper";
 
 /** Sync map selection ↔ URL query params for shareable links */
 export default function UrlSync() {
@@ -11,6 +12,7 @@ export default function UrlSync() {
   const selectedLgaId = useMapStore((s) => s.selectedLgaId);
   const activeRegionId = useMapStore((s) => s.activeRegionId);
   const mapType = useMapStore((s) => s.mapType);
+  const activeLens = useMapStore((s) => s.activeLens);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -40,6 +42,11 @@ export default function UrlSync() {
       store.openMobileSheet();
     }
 
+    const lensParam = params.get("lens");
+    if (lensParam) {
+      store.setActiveLens(parseLensId(lensParam));
+    }
+
     setReady(true);
   }, []);
 
@@ -56,6 +63,9 @@ export default function UrlSync() {
     if (selectedLgaId) params.set("lga", selectedLgaId);
     // Always emit the map type so deep-links preserve the user's preferred base canvas.
     params.set("map", mapType);
+    if (activeLens !== "learn") {
+      params.set("lens", activeLens);
+    }
 
     const qs = params.toString();
     const next = qs
@@ -72,6 +82,7 @@ export default function UrlSync() {
     selectedLgaId,
     activeRegionId,
     mapType,
+    activeLens,
   ]);
 
   return null;

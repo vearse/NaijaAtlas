@@ -1,12 +1,11 @@
 import type { MetadataRoute } from "next";
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://naijaatlas.com";
+import { siteConfig } from "@/lib/seo/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const { url } = siteConfig;
   return [
     {
-      url: siteUrl,
+      url,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,

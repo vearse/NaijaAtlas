@@ -49,6 +49,7 @@ import {
   queryPriorityLayers,
 } from "@/lib/map/interaction";
 import { OVERLAY_REGISTRY, resolveOverlayLayerId } from "@/lib/map/overlayRegistry";
+import { applyLensOverlayEmphasis } from "@/lib/map/lensOverlayEmphasis";
 import { OVERLAY_LAYER_LABELS, type OverlayLayerId } from "@/types/overlay";
 import {
   cloneGeometry,
@@ -168,6 +169,7 @@ export default function NigeriaMap({
   const activeRegionId = useMapStore((s) => s.activeRegionId);
   const resetCounter = useMapStore((s) => s.resetCounter);
   const activeOverlays = useMapStore((s) => s.activeOverlays);
+  const activeLens = useMapStore((s) => s.activeLens);
   const labeledLgaOrder = useMapStore((s) => s.labeledLgaOrder);
   const mapType: MapTypeId = useMapStore((s) => s.mapType);
   const directions = useMapStore((s) => s.directions);
@@ -1330,6 +1332,14 @@ export default function NigeriaMap({
     restackLgaStack(map, readyLgaStateIds(map, lgaVisibleStateIds));
     restackTopOverlayLayers(map);
   }, [activeOverlaysKey, mapReady, activeOverlays, lgaVisibleStateIds, readyLgaStateIds]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map?.isStyleLoaded() || !mapReady) return;
+    const run = () => applyLensOverlayEmphasis(map, activeLens, activeOverlays);
+    run();
+    map.once("idle", run);
+  }, [activeLens, activeOverlaysKey, mapReady, activeOverlays]);
 
   const labeledLgaKey = labeledLgaOrder.join(",");
 

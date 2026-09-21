@@ -14,12 +14,17 @@ export default function MapHints() {
   const activeRegionId = useMapStore((s) => s.activeRegionId);
   const activeOverlays = useMapStore((s) => s.activeOverlays);
   const selectedOverlay = useMapStore((s) => s.selectedOverlay);
+  const activeLens = useMapStore((s) => s.activeLens);
 
   useEffect(() => {
     setPanelHidden(localStorage.getItem(HINTS_DISMISSED_KEY) === "1");
   }, []);
 
   const hint = useMemo(() => {
+    if (activeLens !== "learn") {
+      return `${activeLens === "tourist" ? "Tourist" : "Invest"} lens — highlighted map markers and panel notes match this view`;
+    }
+
     if (mapActionHint) return mapActionHint;
 
     if (dragModeStateId) {
@@ -60,6 +65,7 @@ export default function MapHints() {
 
     return "Click a state to select · double-click to show LGAs · Layers bottom-right";
   }, [
+    activeLens,
     mapActionHint,
     dragModeStateId,
     selectedOverlay,
@@ -70,6 +76,9 @@ export default function MapHints() {
   ]);
 
   const mobileHint = useMemo(() => {
+    if (activeLens !== "learn") {
+      return `${activeLens === "tourist" ? "Tourist" : "Invest"} lens active`;
+    }
     if (mapActionHint) return mapActionHint;
     if (dragModeStateId) return "Drag the state on the map";
     if (selectedOverlay) return "Overlay details in panel";
@@ -78,6 +87,7 @@ export default function MapHints() {
     if (selectedStateIds.size > 0) return "Tap the map icon on a selected state to show LGAs";
     return "Tap a state to explore";
   }, [
+    activeLens,
     mapActionHint,
     dragModeStateId,
     selectedOverlay,
