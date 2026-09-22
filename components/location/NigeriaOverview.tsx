@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import PopulationBarChart from "@/components/charts/PopulationBarChart";
 import CountryProfile from "@/components/compare/CountryProfile";
+import OverlayItemList from "@/components/location/OverlayItemList";
+import { openStateOverlayItemOnMap } from "@/lib/map/openOverlayItem";
 import { useMapStore } from "@/lib/store/mapStore";
 import { totalLandAreaKm2 } from "@/lib/compare/landArea";
 import {
@@ -17,6 +19,12 @@ import {
   lensInputFromWikiNote,
   type LensId,
 } from "@/lib/lenses/lensHelper";
+import {
+  aggregateCountryOverlayItems,
+  pickRandom,
+  type StateOverlayBundle,
+  type StateOverlayItem,
+} from "@/lib/lenses/stateOverlayItems";
 import { useLensFilter } from "@/hooks/useLensFilter";
 import { formatAreaKm2 } from "@/lib/map/metrics";
 import type { CompareBundle } from "@/types/compare";
@@ -53,6 +61,19 @@ const CATEGORY_ORDER = [
   "institution",
   "geography",
   "economy",
+];
+
+const TOURIST_SECTIONS: { key: keyof StateOverlayBundle; title: string }[] = [
+  { key: "cities", title: "Cities to visit" },
+  { key: "places", title: "Places to visit" },
+  { key: "landforms", title: "Landforms & scenery" },
+  { key: "lakes", title: "Lakes" },
+];
+
+const INVEST_SECTIONS: { key: keyof StateOverlayBundle; title: string }[] = [
+  { key: "resources", title: "Resources & minerals" },
+  { key: "agriculture", title: "Agriculture & land" },
+  { key: "cities", title: "Commercial & industrial cities" },
 ];
 
 function formatPopulation(value: number): string {
@@ -393,6 +414,26 @@ export default function NigeriaOverview({
     [peopleNotes, matches]
   );
 
+  const countryLensPicks = useMemo(() => {
+    if (activeLens === "learn") return null;
+    const bundle = aggregateCountryOverlayItems(states, activeLens);
+    const sections =
+      activeLens === "tourist" ? TOURIST_SECTIONS : INVEST_SECTIONS;
+    const sectionPicks = sections
+      .map(({ key, title }) => {
+        const pool = bundle[key];
+        const count = Math.min(pool.length, 2 + Math.floor(Math.random() * 3));
+        return { title, items: pickRandom(pool, count) };
+      })
+      .filter((s) => s.items.length > 0);
+    const total = sectionPicks.reduce((n, p) => n + p.items.length, 0);
+    return { sections: sectionPicks, total };
+  }, [activeLens, states]);
+
+  const onStateOverlaySelect = (item: StateOverlayItem) => {
+    openStateOverlayItemOnMap(item);
+  };
+
   const toggle = (i: number) => setOpenIndex(openIndex === i ? -1 : i);
 
   return (
@@ -471,64 +512,107 @@ export default function NigeriaOverview({
           <span className="ml-auto text-[10px] font-medium text-slate-400">
             {activeLens === "learn"
               ? `${countryNoteList.length} notes`
-              : `${filteredCountryNotes.length} notes`}
+              : `${countryLensPicks?.total ?? 0} picks`}
           </span>
         </div>
         <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
           Highlights
         </p>
         <div className="space-y-2">
-          <AccordionItem
-            title="Interesting history"
-            count={filteredCountryNotes.length}
-            open={openIndex === 0}
-            onToggle={() => toggle(0)}
-          >
-            <div className="space-y-4">
-              {orderedCategories.map((category) => {
-                const notes = groupedNotes.get(category) ?? [];
-                return (
-                  <div key={category}>
-                    <h4 className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 mb-1.5">
-                      {category}
-                    </h4>
-                    <ul className="space-y-2">
-                      {notes.map((n, i) => (
-                        <li
-                          key={i}
-                          className="rounded-lg border border-slate-100 px-2.5 py-2"
-                        >
-                          <button
-                            type="button"
-                            onClick={() =>
-                              n.url && openWikiModal(n.url, n.title)
-                            }
-                            disabled={!n.url}
-                            className="group w-full text-left"
+          {activeLens !== "learn" && countryLensPicks ? (
+            <>
+              <div className="rounded-xl border border-slate-100 overflow-hidden">
+                <div className="flex items-center justify-between gap-2 px-3 py-2.5 bg-slate-50/60 border-b border-slate-100">
+                  <span className="flex items-center gap-2 min-w-0">
+                    <span className="text-sm font-semibold text-slate-800">
+                      {activeLens === "tourist"
+                        ? "Tourist picks across Nigeria"
+                        : "Investment picks across Nigeria"}
+                    </span>
+                    <span className="rounded-full bg-slate-100 text-slate-500 text-[10px] font-semibold px-2 py-0.5">
+                      {countryLensPicks.total}
+                    </span>
+                  </span>
+                </div>
+                <div className="p-3 space-y-4">
+                  {countryLensPicks.sections.map((section) => (
+                    <OverlayItemList
+                      key={section.title}
+                      title={section.title}
+                      items={section.items}
+                      onSelect={onStateOverlaySelect}
+                      openWikiModal={openWikiModal}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 px-4 py-3 text-center">
+                <p className="text-xs font-semibold text-slate-700">
+                  These are{" "}
+                  <span className="text-ng-green">random picks</span> sampled
+                  from {activeLens === "tourist" ? "tourist sites" : "industries"}{" "}
+                  across Nigeria.
+                </p>
+                <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
+                  {activeLens === "tourist"
+                    ? "Select a state on the map (or search above) to see its full tourist guide with local places, landforms and lakes."
+                    : "Select a state on the map (or search above) to see its full investment guide with resources, agriculture and cities."}
+                </p>
+              </div>
+            </>
+          ) : (
+            <AccordionItem
+              title="Interesting history"
+              count={filteredCountryNotes.length}
+              open={openIndex === 0}
+              onToggle={() => toggle(0)}
+            >
+              <div className="space-y-4">
+                {orderedCategories.map((category) => {
+                  const notes = groupedNotes.get(category) ?? [];
+                  return (
+                    <div key={category}>
+                      <h4 className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 mb-1.5">
+                        {category}
+                      </h4>
+                      <ul className="space-y-2">
+                        {notes.map((n, i) => (
+                          <li
+                            key={i}
+                            className="rounded-lg border border-slate-100 px-2.5 py-2"
                           >
-                            <span className="flex items-center flex-wrap gap-1.5 text-xs font-semibold text-slate-800 group-hover:text-ng-green">
-                              {n.title}
-                              <span
-                                className={`rounded-full border px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide ${
-                                  NOTE_CATEGORY_STYLES[n.category] ??
-                                  "bg-slate-50 text-slate-600 border-slate-200"
-                                }`}
-                              >
-                                {n.category}
+                            <button
+                              type="button"
+                              onClick={() =>
+                                n.url && openWikiModal(n.url, n.title)
+                              }
+                              disabled={!n.url}
+                              className="group w-full text-left"
+                            >
+                              <span className="flex items-center flex-wrap gap-1.5 text-xs font-semibold text-slate-800 group-hover:text-ng-green">
+                                {n.title}
+                                <span
+                                  className={`rounded-full border px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide ${
+                                    NOTE_CATEGORY_STYLES[n.category] ??
+                                    "bg-slate-50 text-slate-600 border-slate-200"
+                                  }`}
+                                >
+                                  {n.category}
+                                </span>
                               </span>
-                            </span>
-                          </button>
-                          <p className="text-xs text-slate-500 leading-relaxed mt-1">
-                            {n.note}
-                          </p>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
-          </AccordionItem>
+                            </button>
+                            <p className="text-xs text-slate-500 leading-relaxed mt-1">
+                              {n.note}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                })}
+              </div>
+            </AccordionItem>
+          )}
 
           <AccordionItem
             title="Top states by population"

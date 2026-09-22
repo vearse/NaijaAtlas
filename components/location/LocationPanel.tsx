@@ -169,10 +169,10 @@ export default function LocationPanel({
                 ? "Region"
                 : "Overview"}
         </p>
-        {!showOverlay && <Breadcrumbs states={states} lgas={lgas} />}
+        {!showOverlay && !showDirectionsPanel && <Breadcrumbs states={states} lgas={lgas} />}
       </div>
       <div className="flex-1 overflow-y-auto p-4">
-        {isMobile && hasMapSelection && !showOverlay && (
+        {isMobile && hasMapSelection && !showOverlay && !showDirectionsPanel && (
           <div className="mb-3 lg:hidden">
             <Breadcrumbs states={states} lgas={lgas} />
           </div>
@@ -291,7 +291,7 @@ export default function LocationPanel({
     </div>
   );
 
-  const hasSheetContent = hasMapSelection || !!activeRegionId || showOverlay || showOverlayGuide;
+  const hasSheetContent = hasMapSelection || !!activeRegionId || showOverlay || showOverlayGuide || showDirectionsPanel;
 
   if (isMobile) {
     if (mobileSheet === "hidden" && hasSheetContent) {

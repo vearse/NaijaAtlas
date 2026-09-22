@@ -21,6 +21,7 @@ import { openCityOnMap } from "@/lib/map/cityCoordsLookup";
 import { openStateOverlayItemOnMap } from "@/lib/map/openOverlayItem";
 import ShowLgasButton from "@/components/map/ShowLgasButton";
 import GetDirectionsButton from "@/components/directions/GetDirectionsButton";
+import OverlayItemList from "@/components/location/OverlayItemList";
 import { useMapStore } from "@/lib/store/mapStore";
 
 interface StateDetailsProps {
@@ -109,65 +110,6 @@ function formatPeriod(period: {
   if (freq) return freq;
   if (months) return months;
   return "period";
-}
-
-function OverlayItemList({
-  title,
-  items,
-  onSelect,
-  openWikiModal,
-}: {
-  title: string;
-  items: StateOverlayItem[];
-  onSelect: (item: StateOverlayItem) => void;
-  openWikiModal: (url: string, title?: string) => void;
-}) {
-  if (items.length === 0) return null;
-  return (
-    <div>
-      <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
-        {title} ({items.length})
-      </h3>
-      <ul className="space-y-2">
-        {items.map((item) => (
-          <li
-            key={item.id}
-            className="rounded-xl border border-slate-100 px-3 py-2.5"
-          >
-            <button
-              type="button"
-              onClick={() => onSelect(item)}
-              className="group w-full text-left"
-            >
-              <span className="flex items-center flex-wrap gap-1.5 text-sm font-semibold text-slate-800 group-hover:text-ng-green">
-                {item.name}
-                <span className="rounded-full border border-slate-200 bg-slate-50 px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide text-slate-500">
-                  {item.category}
-                </span>
-              </span>
-            </button>
-            {item.summary && (
-              <p className="text-xs text-slate-500 leading-relaxed mt-1 line-clamp-3">
-                {item.summary}
-              </p>
-            )}
-            {item.wikiUrl && (
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  openWikiModal(item.wikiUrl!, item.name);
-                }}
-                className="mt-1.5 text-[11px] font-semibold text-sky-700 underline underline-offset-2 hover:text-sky-900"
-              >
-                Wikipedia
-              </button>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
 }
 
 export default function StateDetails({
@@ -289,30 +231,26 @@ export default function StateDetails({
       </dl>
 
       {content.languages && content.languages.length > 0 && (
-        <div>
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+        <div className="rounded-xl bg-slate-50 border border-slate-100 px-3 py-2.5">
+          <h3 className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
             Languages spoken ({content.languages.length})
           </h3>
-          <div className="flex flex-wrap gap-2">
+          <div className="text-sm font-semibold text-slate-800 mt-0.5 flex flex-wrap gap-x-3 gap-y-1">
             {content.languages.map((lang) => (
               <button
                 key={lang.name}
                 type="button"
                 onClick={() => openWikiModal(lang.wikiUrl, lang.name)}
-                className="inline-flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 hover:border-emerald-300 text-emerald-700 text-xs font-medium px-3 py-1.5 transition-colors"
+                className="inline-flex items-center gap-1 text-slate-800 underline underline-offset-2 hover:text-ng-green"
                 aria-label={`Open Wikipedia article for ${lang.name}`}
                 title={`Open Wikipedia: ${lang.name}`}
               >
-                <span
-                  className="w-1.5 h-1.5 rounded-full bg-emerald-500"
-                  aria-hidden
-                />
-                <span>{lang.name}</span>
+                {lang.name}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className="w-3 h-3 text-emerald-500"
+                  className="w-3 h-3 text-slate-400"
                   aria-hidden
                 >
                   <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
@@ -525,24 +463,28 @@ export default function StateDetails({
                 items={overlayBundle.cities}
                 onSelect={onOverlaySelect}
                 openWikiModal={openWikiModal}
+                fallbackLonLat={location.centroid}
               />
               <OverlayItemList
                 title="Places to visit"
                 items={overlayBundle.places}
                 onSelect={onOverlaySelect}
                 openWikiModal={openWikiModal}
+                fallbackLonLat={location.centroid}
               />
               <OverlayItemList
                 title="Landforms & scenery"
                 items={overlayBundle.landforms}
                 onSelect={onOverlaySelect}
                 openWikiModal={openWikiModal}
+                fallbackLonLat={location.centroid}
               />
               <OverlayItemList
                 title="Lakes"
                 items={overlayBundle.lakes}
                 onSelect={onOverlaySelect}
                 openWikiModal={openWikiModal}
+                fallbackLonLat={location.centroid}
               />
             </>
           )}
@@ -562,18 +504,21 @@ export default function StateDetails({
                 items={overlayBundle.resources}
                 onSelect={onOverlaySelect}
                 openWikiModal={openWikiModal}
+                fallbackLonLat={location.centroid}
               />
               <OverlayItemList
                 title="Agriculture & land"
                 items={overlayBundle.agriculture}
                 onSelect={onOverlaySelect}
                 openWikiModal={openWikiModal}
+                fallbackLonLat={location.centroid}
               />
               <OverlayItemList
                 title="Commercial & industrial cities"
                 items={overlayBundle.cities}
                 onSelect={onOverlaySelect}
                 openWikiModal={openWikiModal}
+                fallbackLonLat={location.centroid}
               />
             </>
           )}

@@ -223,3 +223,52 @@ export function getStateOverlayItems(
 
   return { ...empty, resources, agriculture, cities };
 }
+
+/**
+ * Aggregate a lens's overlay catalog across every state, deduped per section by id.
+ * Used by the country overview to auto-pick Tourist / Invest highlights when the
+ * active lens is not Learn.
+ */
+export function aggregateCountryOverlayItems(
+  states: Array<{ id: string; name: string }>,
+  lens: LensId
+): StateOverlayBundle {
+  const bundle: StateOverlayBundle = {
+    cities: [],
+    places: [],
+    landforms: [],
+    lakes: [],
+    resources: [],
+    agriculture: [],
+  };
+  if (lens === "learn") return bundle;
+  const seen: Record<keyof StateOverlayBundle, Set<string>> = {
+    cities: new Set(),
+    places: new Set(),
+    landforms: new Set(),
+    lakes: new Set(),
+    resources: new Set(),
+    agriculture: new Set(),
+  };
+  for (const state of states) {
+    const perState = getStateOverlayItems(state.id, state.name, lens);
+    for (const section of Object.keys(bundle) as (keyof StateOverlayBundle)[]) {
+      for (const item of perState[section]) {
+        if (seen[section].has(item.id)) continue;
+        seen[section].add(item.id);
+        bundle[section].push(item);
+      }
+    }
+  }
+  return bundle;
+}
+
+/** Shuffle then take `count` items — used for randomized overview picks. */
+export function pickRandom<T>(items: T[], count: number): T[] {
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy.slice(0, Math.max(0, count));
+}
