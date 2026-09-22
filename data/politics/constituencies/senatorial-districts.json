@@ -1,0 +1,1534 @@
+[
+  {
+    "id": "abia-central",
+    "name": "Abia Central",
+    "state": "Abia",
+    "lga_ids": [
+      "NG-AB-ISIALA-NGWA-NORTH",
+      "NG-AB-ISIALA-NGWA-SOUTH",
+      "NG-AB-OBI-NWA",
+      "NG-AB-UGWUNAGBO",
+      "NG-AB-OSISIOMA-NGWA",
+      "NG-AB-UMUAHIA-NORTH",
+      "NG-AB-UMUAHIA-SOUTH",
+      "NG-AB-IKWUANO"
+    ]
+  },
+  {
+    "id": "abia-north",
+    "name": "Abia North",
+    "state": "Abia",
+    "lga_ids": [
+      "NG-AB-AROCHUKWU",
+      "NG-AB-OHAFIA",
+      "NG-AB-BENDE",
+      "NG-AB-ISUIKWATO",
+      "NG-AB-UMU-NEOCHI"
+    ]
+  },
+  {
+    "id": "abia-south",
+    "name": "Abia South",
+    "state": "Abia",
+    "lga_ids": [
+      "NG-AB-ABA-NORTH",
+      "NG-AB-ABA-SOUTH",
+      "NG-AB-UKWA-EAST",
+      "NG-AB-UKWA-WEST"
+    ]
+  },
+  {
+    "id": "adamawa-central",
+    "name": "Adamawa Central",
+    "state": "Adamawa",
+    "lga_ids": [
+      "NG-AD-FUFORE",
+      "NG-AD-SONG",
+      "NG-AD-HONG",
+      "NG-AD-GOMBI",
+      "NG-AD-YOLA-NORTH",
+      "NG-AD-YOLA-SOUTH",
+      "NG-AD-GIRERI"
+    ]
+  },
+  {
+    "id": "adamawa-north",
+    "name": "Adamawa North",
+    "state": "Adamawa",
+    "lga_ids": [
+      "NG-AD-MICHIKA",
+      "NG-AD-MADAGALI",
+      "NG-AD-MUBI-NORTH",
+      "NG-AD-MUBI-SOUTH",
+      "NG-AD-MAIHA"
+    ]
+  },
+  {
+    "id": "adamawa-south",
+    "name": "Adamawa South",
+    "state": "Adamawa",
+    "lga_ids": [
+      "NG-AD-DEMSA",
+      "NG-AD-NUMAN",
+      "NG-AD-LAMURDE",
+      "NG-AD-GUYUK",
+      "NG-AD-SHELLENG",
+      "NG-AD-JADA",
+      "NG-AD-GANAYE",
+      "NG-AD-MAYO-BELWA",
+      "NG-AD-TOUNGO"
+    ]
+  },
+  {
+    "id": "akwa-ibom-north-east",
+    "name": "Akwa Ibom North East",
+    "state": "Akwa Ibom",
+    "lga_ids": [
+      "NG-AK-ETINAN",
+      "NG-AK-NSIT-IBOM",
+      "NG-AK-NSIT-UBIUM",
+      "NG-AK-ITU",
+      "NG-AK-IBIONO-IBOM",
+      "NG-AK-UYO",
+      "NG-AK-URUAN",
+      "NG-AK-NSIT-ATAI",
+      "NG-AK-IBESIKPO-ASUTAN"
+    ]
+  },
+  {
+    "id": "akwa-ibom-north-west",
+    "name": "Akwa Ibom North West",
+    "state": "Akwa Ibom",
+    "lga_ids": [
+      "NG-AK-ABAK",
+      "NG-AK-ETIM-EKPO",
+      "NG-AK-IKA",
+      "NG-AK-IKONO",
+      "NG-AK-INI",
+      "NG-AK-IKOT-EKPENE",
+      "NG-AK-ESSIEN-UDIM",
+      "NG-AK-OBOT-AKARA",
+      "NG-AK-UKANAFUN",
+      "NG-AK-ORUK-ANAM"
+    ]
+  },
+  {
+    "id": "akwa-ibom-south",
+    "name": "Akwa Ibom South",
+    "state": "Akwa Ibom",
+    "lga_ids": [
+      "NG-AK-EKET",
+      "NG-AK-ONNA",
+      "NG-AK-ESIT-EKET",
+      "NG-AK-IBENO",
+      "NG-AK-IKOT-ABASI",
+      "NG-AK-MKPAT-ENIN",
+      "NG-AK-EASTERN-OBOLO",
+      "NG-AK-ORON",
+      "NG-AK-MBO",
+      "NG-AK-OKOBO",
+      "NG-AK-UDUNG-UKO",
+      "NG-AK-URUE-OFFONG-ORUKO"
+    ]
+  },
+  {
+    "id": "anambra-central",
+    "name": "Anambra Central",
+    "state": "Anambra",
+    "lga_ids": [
+      "NG-AN-AWKA-NORTH",
+      "NG-AN-AWKA-SOUTH",
+      "NG-AN-IDEMILI-NORTH",
+      "NG-AN-IDEMILI-SOUTH",
+      "NG-AN-NJIKOKA",
+      "NG-AN-DUNUKOFIA",
+      "NG-AN-ANAOCHA"
+    ]
+  },
+  {
+    "id": "anambra-north",
+    "name": "Anambra North",
+    "state": "Anambra",
+    "lga_ids": [
+      "NG-AN-ANAMBRA-EAST",
+      "NG-AN-ANAMBRA-WEST",
+      "NG-AN-OGBARU",
+      "NG-AN-ONITSHA-NORTH",
+      "NG-AN-ONITSHA-SOUTH",
+      "NG-AN-OYI",
+      "NG-AN-AYAMELUM"
+    ]
+  },
+  {
+    "id": "anambra-south",
+    "name": "Anambra South",
+    "state": "Anambra",
+    "lga_ids": [
+      "NG-AN-AGUATA",
+      "NG-AN-IHIALA",
+      "NG-AN-NNEWI-NORTH",
+      "NG-AN-NNEWI-SOUTH",
+      "NG-AN-EKWUSIGO",
+      "NG-AN-ORUMBA-NORTH",
+      "NG-AN-ORUMBA-SOUTH"
+    ]
+  },
+  {
+    "id": "bauchi-central",
+    "name": "Bauchi Central",
+    "state": "Bauchi",
+    "lga_ids": [
+      "NG-BA-DARAZO",
+      "NG-BA-GANJUWA",
+      "NG-BA-MISAU",
+      "NG-BA-DAMBAN",
+      "NG-BA-NINGI",
+      "NG-BA-WARJI"
+    ]
+  },
+  {
+    "id": "bauchi-north",
+    "name": "Bauchi North",
+    "state": "Bauchi",
+    "lga_ids": [
+      "NG-BA-GAMAWA",
+      "NG-BA-JAMAARE",
+      "NG-BA-ITAS-GADAU",
+      "NG-BA-KATAGUM",
+      "NG-BA-SHIRA",
+      "NG-BA-GIADE",
+      "NG-BA-ZAKI"
+    ]
+  },
+  {
+    "id": "bauchi-south",
+    "name": "Bauchi South",
+    "state": "Bauchi",
+    "lga_ids": [
+      "NG-BA-ALKALERI",
+      "NG-BA-KIRFI",
+      "NG-BA-BAUCHI",
+      "NG-BA-BOGORO",
+      "NG-BA-DASS",
+      "NG-BA-TAFAWA-BALEWA",
+      "NG-BA-TORO"
+    ]
+  },
+  {
+    "id": "bayelsa-central",
+    "name": "Bayelsa Central",
+    "state": "Bayelsa",
+    "lga_ids": [
+      "NG-BY-SOUTHERN-IJAW",
+      "NG-BY-YENEGOA",
+      "NG-BY-KOLOKUMA-OPOKUMA"
+    ]
+  },
+  {
+    "id": "bayelsa-east",
+    "name": "Bayelsa East",
+    "state": "Bayelsa",
+    "lga_ids": [
+      "NG-BY-BRASS",
+      "NG-BY-NEMBE",
+      "NG-BY-OGBIA"
+    ]
+  },
+  {
+    "id": "bayelsa-west",
+    "name": "Bayelsa West",
+    "state": "Bayelsa",
+    "lga_ids": [
+      "NG-BY-SAGBAMA",
+      "NG-BY-EKEREMOR"
+    ]
+  },
+  {
+    "id": "benue-north-east",
+    "name": "Benue North East",
+    "state": "Benue",
+    "lga_ids": [
+      "NG-BE-KATSINA-ALA",
+      "NG-BE-UKUM",
+      "NG-BE-LOGO",
+      "NG-BE-KONSHISHA",
+      "NG-BE-VANDEIKYA",
+      "NG-BE-KWANDE",
+      "NG-BE-USHONGO"
+    ]
+  },
+  {
+    "id": "benue-north-west",
+    "name": "Benue North West",
+    "state": "Benue",
+    "lga_ids": [
+      "NG-BE-BURUKU",
+      "NG-BE-GBOKO",
+      "NG-BE-TARKA",
+      "NG-BE-GUMA",
+      "NG-BE-MAKURDI",
+      "NG-BE-GWER-EAST",
+      "NG-BE-GWER-WEST"
+    ]
+  },
+  {
+    "id": "benue-south",
+    "name": "Benue South",
+    "state": "Benue",
+    "lga_ids": [
+      "NG-BE-ADO",
+      "NG-BE-OGBADIBO",
+      "NG-BE-OKPOKWU",
+      "NG-BE-APA",
+      "NG-BE-AGATU",
+      "NG-BE-OJU",
+      "NG-BE-OBI",
+      "NG-BE-OTURKPO",
+      "NG-BE-OHIMINI"
+    ]
+  },
+  {
+    "id": "borno-central",
+    "name": "Borno Central",
+    "state": "Borno",
+    "lga_ids": [
+      "NG-BO-BAMA",
+      "NG-BO-NGALA",
+      "NG-BO-KALA-BALGE",
+      "NG-BO-DIKWA",
+      "NG-BO-MAFA",
+      "NG-BO-KONDUGA",
+      "NG-BO-JERE",
+      "NG-BO-MAIDUGURI"
+    ]
+  },
+  {
+    "id": "borno-north",
+    "name": "Borno North",
+    "state": "Borno",
+    "lga_ids": [
+      "NG-BO-KAGA",
+      "NG-BO-GUBIO",
+      "NG-BO-MAGUMERI",
+      "NG-BO-KUKAWA",
+      "NG-BO-MOBBAR",
+      "NG-BO-ABADAM",
+      "NG-BO-GUZAMALA",
+      "NG-BO-MONGUNO",
+      "NG-BO-NGANZAI",
+      "NG-BO-MARTE"
+    ]
+  },
+  {
+    "id": "borno-south",
+    "name": "Borno South",
+    "state": "Borno",
+    "lga_ids": [
+      "NG-BO-ASKIRA-UBA",
+      "NG-BO-HAWUL",
+      "NG-BO-BIU",
+      "NG-BO-KWAYA-KUSAR",
+      "NG-BO-SHANI",
+      "NG-BO-BAYO",
+      "NG-BO-DAMBOA",
+      "NG-BO-GWOZA",
+      "NG-BO-CHIBOK"
+    ]
+  },
+  {
+    "id": "cross-river-central",
+    "name": "Cross River Central",
+    "state": "Cross River",
+    "lga_ids": [
+      "NG-CR-BOKI",
+      "NG-CR-IKOM",
+      "NG-CR-OBUBRA",
+      "NG-CR-ETUNG",
+      "NG-CR-YAKURR",
+      "NG-CR-ABI"
+    ]
+  },
+  {
+    "id": "cross-river-north",
+    "name": "Cross River North",
+    "state": "Cross River",
+    "lga_ids": [
+      "NG-CR-OBANLIKU",
+      "NG-CR-OBUDU",
+      "NG-CR-BEKWARA",
+      "NG-CR-OGOJA",
+      "NG-CR-YALA"
+    ]
+  },
+  {
+    "id": "cross-river-south",
+    "name": "Cross River South",
+    "state": "Cross River",
+    "lga_ids": [
+      "NG-CR-AKAMKPA",
+      "NG-CR-BIASE",
+      "NG-CR-CALABAR-SOUTH",
+      "NG-CR-AKPABUYO",
+      "NG-CR-CALABAR-MUNICIPAL",
+      "NG-CR-ODUKPANI"
+    ]
+  },
+  {
+    "id": "delta-central",
+    "name": "Delta Central",
+    "state": "Delta",
+    "lga_ids": [
+      "NG-DE-ETHIOPE-EAST",
+      "NG-DE-ETHIOPE-WEST",
+      "NG-DE-OKPE",
+      "NG-DE-SAPELE",
+      "NG-DE-UVWIE",
+      "NG-DE-UGHELLI-NORTH",
+      "NG-DE-UGHELLI-SOUTH",
+      "NG-DE-UDU"
+    ]
+  },
+  {
+    "id": "delta-north",
+    "name": "Delta North",
+    "state": "Delta",
+    "lga_ids": [
+      "NG-DE-ANIOCHA-NORTH",
+      "NG-DE-ANIOCHA-SOUTH",
+      "NG-DE-OSHIMILI-NORTH",
+      "NG-DE-OSHIMILI-SOUTH",
+      "NG-DE-IKA-NORTH-EAST",
+      "NG-DE-IKA-SOUTH",
+      "NG-DE-NDOKWA-EAST",
+      "NG-DE-NDOKWA-WEST",
+      "NG-DE-UKWUANI"
+    ]
+  },
+  {
+    "id": "delta-south",
+    "name": "Delta South",
+    "state": "Delta",
+    "lga_ids": [
+      "NG-DE-BOMADI",
+      "NG-DE-PATANI",
+      "NG-DE-BURUTU",
+      "NG-DE-ISOKO-NORTH",
+      "NG-DE-ISOKO-SOUTH",
+      "NG-DE-WARRI-NORTH",
+      "NG-DE-WARRI-SOUTH",
+      "NG-DE-WARRI-SOUTH-WEST"
+    ]
+  },
+  {
+    "id": "ebonyi-central",
+    "name": "Ebonyi Central",
+    "state": "Ebonyi",
+    "lga_ids": [
+      "NG-EB-EZZA-NORTH",
+      "NG-EB-ISHIELU",
+      "NG-EB-EZZA-SOUTH",
+      "NG-EB-IKWO"
+    ]
+  },
+  {
+    "id": "ebonyi-north",
+    "name": "Ebonyi North",
+    "state": "Ebonyi",
+    "lga_ids": [
+      "NG-EB-ABAKALIKI",
+      "NG-EB-IZZI",
+      "NG-EB-EBONYI",
+      "NG-EB-OHAUKWU"
+    ]
+  },
+  {
+    "id": "ebonyi-south",
+    "name": "Ebonyi South",
+    "state": "Ebonyi",
+    "lga_ids": [
+      "NG-EB-AFIKPO-NORTH",
+      "NG-EB-AFIKPO-SOUTH",
+      "NG-EB-IVO",
+      "NG-EB-OHAOZARA",
+      "NG-EB-ONICHA"
+    ]
+  },
+  {
+    "id": "edo-central",
+    "name": "Edo Central",
+    "state": "Edo",
+    "lga_ids": [
+      "NG-ED-ESAN-CENTRAL",
+      "NG-ED-ESAN-SOUTH-EAST",
+      "NG-ED-IGUEBEN",
+      "NG-ED-ESAN-NORTH-EAST"
+    ]
+  },
+  {
+    "id": "edo-north",
+    "name": "Edo North",
+    "state": "Edo",
+    "lga_ids": [
+      "NG-ED-AKOKO-EDO",
+      "NG-ED-ETSAKO-EAST",
+      "NG-ED-ETSAKO-WEST",
+      "NG-ED-ETSAKO-CENTRAL",
+      "NG-ED-OWAN-EAST",
+      "NG-ED-OWAN-WEST"
+    ]
+  },
+  {
+    "id": "edo-south",
+    "name": "Edo South",
+    "state": "Edo",
+    "lga_ids": [
+      "NG-ED-EGOR",
+      "NG-ED-IKPOBA-OKHA",
+      "NG-ED-OREDO",
+      "NG-ED-ORHIONMWON",
+      "NG-ED-UHUNMWONDE",
+      "NG-ED-OVIA-NORTH-EAST",
+      "NG-ED-OVIA-SOUTH-WEST"
+    ]
+  },
+  {
+    "id": "ekiti-central",
+    "name": "Ekiti Central",
+    "state": "Ekiti",
+    "lga_ids": [
+      "NG-EK-ADO-EKITI",
+      "NG-EK-IREPODUN-IFELODUN",
+      "NG-EK-IJERO",
+      "NG-EK-EKITI-WEST",
+      "NG-EK-EFON-ALAYEE"
+    ]
+  },
+  {
+    "id": "ekiti-north",
+    "name": "Ekiti North",
+    "state": "Ekiti",
+    "lga_ids": [
+      "NG-EK-IDOSI-OSI",
+      "NG-EK-MOBA",
+      "NG-EK-ILEMEJI",
+      "NG-EK-IKOLE",
+      "NG-EK-OYE"
+    ]
+  },
+  {
+    "id": "ekiti-south",
+    "name": "Ekiti South",
+    "state": "Ekiti",
+    "lga_ids": [
+      "NG-EK-EKITI-SOUTH-WEST",
+      "NG-EK-IKERE",
+      "NG-EK-ISE-ORUN",
+      "NG-EK-EMURE",
+      "NG-EK-GBOYIN",
+      "NG-EK-EKITI-EAST"
+    ]
+  },
+  {
+    "id": "enugu-east",
+    "name": "Enugu East",
+    "state": "Enugu",
+    "lga_ids": [
+      "NG-EN-ENUGU-EAST",
+      "NG-EN-ISI-UZO",
+      "NG-EN-ENUGU-NORTH",
+      "NG-EN-ENUGU-SOUTH",
+      "NG-EN-NKANU-EAST",
+      "NG-EN-NKANU-WEST"
+    ]
+  },
+  {
+    "id": "enugu-north",
+    "name": "Enugu North",
+    "state": "Enugu",
+    "lga_ids": [
+      "NG-EN-IGBO-ETITI",
+      "NG-EN-UZO-UWANI",
+      "NG-EN-IGBO-EZE-NORTH",
+      "NG-EN-UDENU",
+      "NG-EN-NSUKKA",
+      "NG-EN-IGBO-EZE-SOUTH"
+    ]
+  },
+  {
+    "id": "enugu-west",
+    "name": "Enugu West",
+    "state": "Enugu",
+    "lga_ids": [
+      "NG-EN-ANINRI",
+      "NG-EN-AWGU",
+      "NG-EN-OJI-RIVER",
+      "NG-EN-EZEAGU",
+      "NG-EN-UDI"
+    ]
+  },
+  {
+    "id": "fct",
+    "name": "FCT",
+    "state": "Federal Capital Territory",
+    "lga_ids": [
+      "NG-FC-ABAJI",
+      "NG-FC-KUJE",
+      "NG-FC-KWALI",
+      "NG-FC-GWAGWALADA",
+      "NG-FC-ABUJA-MUNICIPAL",
+      "NG-FC-BWARI"
+    ]
+  },
+  {
+    "id": "gombe-central",
+    "name": "Gombe Central",
+    "state": "Gombe",
+    "lga_ids": [
+      "NG-GO-AKKO",
+      "NG-GO-YAMALTU-DEBA"
+    ]
+  },
+  {
+    "id": "gombe-north",
+    "name": "Gombe North",
+    "state": "Gombe",
+    "lga_ids": [
+      "NG-GO-DUKKU",
+      "NG-GO-NAFADA",
+      "NG-GO-GOMBE",
+      "NG-GO-KWAMI",
+      "NG-GO-FUNAKAYE"
+    ]
+  },
+  {
+    "id": "gombe-south",
+    "name": "Gombe South",
+    "state": "Gombe",
+    "lga_ids": [
+      "NG-GO-BALANGA",
+      "NG-GO-BILLIRI",
+      "NG-GO-KALTUNGO",
+      "NG-GO-SHOMGOM"
+    ]
+  },
+  {
+    "id": "imo-east",
+    "name": "Imo East",
+    "state": "Imo",
+    "lga_ids": [
+      "NG-IM-ABOH-MBAISE",
+      "NG-IM-NGOR-OKPALA",
+      "NG-IM-AHIAZU-MBAISE",
+      "NG-IM-EZINIHITTE",
+      "NG-IM-IKEDURU",
+      "NG-IM-MBAITOLI",
+      "NG-IM-OWERRI-MUNICIPAL",
+      "NG-IM-OWERRI-NORTH",
+      "NG-IM-OWERRI-WEST"
+    ]
+  },
+  {
+    "id": "imo-north",
+    "name": "Imo North",
+    "state": "Imo",
+    "lga_ids": [
+      "NG-IM-EHIME-MBANO",
+      "NG-IM-IHITTE-UBOMA",
+      "NG-IM-OBOWO",
+      "NG-IM-ISIALA-MBANO",
+      "NG-IM-OKIGWE",
+      "NG-IM-UNUIMO"
+    ]
+  },
+  {
+    "id": "imo-west",
+    "name": "Imo West",
+    "state": "Imo",
+    "lga_ids": [
+      "NG-IM-IDEATO-NORTH",
+      "NG-IM-IDEATO-SOUTH",
+      "NG-IM-ISU",
+      "NG-IM-NJABA",
+      "NG-IM-NKWERRE",
+      "NG-IM-NWANGELE",
+      "NG-IM-OGUTA",
+      "NG-IM-OHAJI-EGBEMA",
+      "NG-IM-ORU-WEST",
+      "NG-IM-ORU-EAST",
+      "NG-IM-ORSU",
+      "NG-IM-ORLU"
+    ]
+  },
+  {
+    "id": "jigawa-north-east",
+    "name": "Jigawa North East",
+    "state": "Jigawa",
+    "lga_ids": [
+      "NG-JI-HADEJIA",
+      "NG-JI-KAFIN-HAUSA",
+      "NG-JI-MALAM-MADORI",
+      "NG-JI-KAUGAMA"
+    ]
+  },
+  {
+    "id": "jigawa-north-west",
+    "name": "Jigawa North West",
+    "state": "Jigawa",
+    "lga_ids": [
+      "NG-JI-BABURA",
+      "NG-JI-GARKI",
+      "NG-JI-GUMEL",
+      "NG-JI-MAIGATARI",
+      "NG-JI-SULE-TANKARKAR",
+      "NG-JI-GAGARAWA",
+      "NG-JI-KAZAURE",
+      "NG-JI-RONI",
+      "NG-JI-GWIWA",
+      "NG-JI-YANKWASHI",
+      "NG-JI-RINGIM",
+      "NG-JI-TAURA"
+    ]
+  },
+  {
+    "id": "jigawa-south-west",
+    "name": "Jigawa South West",
+    "state": "Jigawa",
+    "lga_ids": [
+      "NG-JI-BIRNI-KUDU",
+      "NG-JI-BUJI",
+      "NG-JI-BIRINIWA",
+      "NG-JI-GURI",
+      "NG-JI-KIRI-KASAMMA",
+      "NG-JI-DUTSE",
+      "NG-JI-KIYAWA",
+      "NG-JI-GWARAM",
+      "NG-JI-JAHUN",
+      "NG-JI-MIGA"
+    ]
+  },
+  {
+    "id": "kaduna-central",
+    "name": "Kaduna Central",
+    "state": "Kaduna",
+    "lga_ids": [
+      "NG-KD-BIRNIN-GWARI",
+      "NG-KD-GIWA",
+      "NG-KD-CHIKUN",
+      "NG-KD-KAJURU",
+      "NG-KD-IGABI",
+      "NG-KD-KADUNA-NORTH",
+      "NG-KD-KADUNA-SOUTH"
+    ]
+  },
+  {
+    "id": "kaduna-north",
+    "name": "Kaduna North",
+    "state": "Kaduna",
+    "lga_ids": [
+      "NG-KD-IKARA",
+      "NG-KD-KUBAU",
+      "NG-KD-LERE",
+      "NG-KD-MARKAFI",
+      "NG-KD-KUDAN",
+      "NG-KD-SABON-GARI",
+      "NG-KD-SOBA",
+      "NG-KD-ZARIA"
+    ]
+  },
+  {
+    "id": "kaduna-south",
+    "name": "Kaduna South",
+    "state": "Kaduna",
+    "lga_ids": [
+      "NG-KD-JEMAA",
+      "NG-KD-SANGA",
+      "NG-KD-KACHIA",
+      "NG-KD-KAGARKO",
+      "NG-KD-KAURA",
+      "NG-KD-KAURU",
+      "NG-KD-ZANGO-KATAF",
+      "NG-KD-JABA"
+    ]
+  },
+  {
+    "id": "kano-central",
+    "name": "Kano Central",
+    "state": "Kano",
+    "lga_ids": [
+      "NG-KN-DALA",
+      "NG-KN-DAWAKIN-KUDU",
+      "NG-KN-WARAWA",
+      "NG-KN-FAGGE",
+      "NG-KN-GEZAWA",
+      "NG-KN-GABASAWA",
+      "NG-KN-GWALE",
+      "NG-KN-KANO-MUNICIPAL",
+      "NG-KN-KUMBOTSO",
+      "NG-KN-KURA",
+      "NG-KN-MADOBI",
+      "NG-KN-GARUM-MALLAM",
+      "NG-KN-MINJIBIR",
+      "NG-KN-UNGOGO",
+      "NG-KN-NASARAWA",
+      "NG-KN-TARAUNI"
+    ]
+  },
+  {
+    "id": "kano-north",
+    "name": "Kano North",
+    "state": "Kano",
+    "lga_ids": [
+      "NG-KN-BAGWAI",
+      "NG-KN-SHANONO",
+      "NG-KN-BICHI",
+      "NG-KN-DAMBATTA",
+      "NG-KN-MAKODA",
+      "NG-KN-DAWAKIN-TOFA",
+      "NG-KN-TOFA",
+      "NG-KN-RIMIN-GADO",
+      "NG-KN-GWARZO",
+      "NG-KN-KABO",
+      "NG-KN-TSANYAWA",
+      "NG-KN-KUNCHI"
+    ]
+  },
+  {
+    "id": "kano-south",
+    "name": "Kano South",
+    "state": "Kano",
+    "lga_ids": [
+      "NG-KN-ALBASU",
+      "NG-KN-GAYA",
+      "NG-KN-AJINGI",
+      "NG-KN-BEBEJI",
+      "NG-KN-KIRU",
+      "NG-KN-DOGUWA",
+      "NG-KN-TUDUN-WADA",
+      "NG-KN-KARAYE",
+      "NG-KN-ROGO",
+      "NG-KN-RANO",
+      "NG-KN-BUNKURE",
+      "NG-KN-KIBIYA",
+      "NG-KN-SUMAILA",
+      "NG-KN-TAKALI",
+      "NG-KN-WUDIL",
+      "NG-KN-GARKO"
+    ]
+  },
+  {
+    "id": "katsina-central",
+    "name": "Katsina Central",
+    "state": "Katsina",
+    "lga_ids": [
+      "NG-KT-BATAGARAWA",
+      "NG-KT-CHARANCHI",
+      "NG-KT-RIMI",
+      "NG-KT-BATSARI",
+      "NG-KT-SAFANA",
+      "NG-KT-DAN-MUSA",
+      "NG-KT-DUTSIN-MA",
+      "NG-KT-KURFI",
+      "NG-KT-JIBIA",
+      "NG-KT-KAITA",
+      "NG-KT-KATSINA"
+    ]
+  },
+  {
+    "id": "katsina-north",
+    "name": "Katsina North",
+    "state": "Katsina",
+    "lga_ids": [
+      "NG-KT-BINDAWA",
+      "NG-KT-MANI",
+      "NG-KT-DAURA",
+      "NG-KT-SANDAMU",
+      "NG-KT-MAIADUA",
+      "NG-KT-INGAWA",
+      "NG-KT-KANKIA",
+      "NG-KT-KUSADA",
+      "NG-KT-MASHI",
+      "NG-KT-DUTSI",
+      "NG-KT-ZANGO",
+      "NG-KT-BAURE"
+    ]
+  },
+  {
+    "id": "katsina-south",
+    "name": "Katsina South",
+    "state": "Katsina",
+    "lga_ids": [
+      "NG-KT-BAKORI",
+      "NG-KT-DANJA",
+      "NG-KT-FASKARI",
+      "NG-KT-KANKARA",
+      "NG-KT-SABUWA",
+      "NG-KT-FUNTUA",
+      "NG-KT-DANDUME",
+      "NG-KT-MALUMFASHI",
+      "NG-KT-KAFUR",
+      "NG-KT-MATAZUU",
+      "NG-KT-MUSAWA"
+    ]
+  },
+  {
+    "id": "kebbi-central",
+    "name": "Kebbi Central",
+    "state": "Kebbi",
+    "lga_ids": [
+      "NG-KE-ALEIRO",
+      "NG-KE-GWANDU",
+      "NG-KE-JEGA",
+      "NG-KE-BUNZA",
+      "NG-KE-BIRNIN-KEBBI",
+      "NG-KE-KALGO",
+      "NG-KE-KOKO-BESSE",
+      "NG-KE-MAIYAMA"
+    ]
+  },
+  {
+    "id": "kebbi-north",
+    "name": "Kebbi North",
+    "state": "Kebbi",
+    "lga_ids": [
+      "NG-KE-AREWA-DANDI",
+      "NG-KE-ARGUNGU",
+      "NG-KE-AUGIE",
+      "NG-KE-BAGUDO",
+      "NG-KE-SURU"
+    ]
+  },
+  {
+    "id": "kebbi-south",
+    "name": "Kebbi South",
+    "state": "Kebbi",
+    "lga_ids": [
+      "NG-KE-FAKAI",
+      "NG-KE-SAKABA",
+      "NG-KE-WASAGU-DANKO",
+      "NG-KE-ZURU",
+      "NG-KE-NGASKI",
+      "NG-KE-SHANGA",
+      "NG-KE-YAURI"
+    ]
+  },
+  {
+    "id": "kogi-central",
+    "name": "Kogi Central",
+    "state": "Kogi",
+    "lga_ids": [
+      "NG-KO-ADAVI",
+      "NG-KO-OKEHI",
+      "NG-KO-AJAOKUTA",
+      "NG-KO-OKENE",
+      "NG-KO-OGORI-MANGONGO"
+    ]
+  },
+  {
+    "id": "kogi-east",
+    "name": "Kogi East",
+    "state": "Kogi",
+    "lga_ids": [
+      "NG-KO-ANKPA",
+      "NG-KO-OMALA",
+      "NG-KO-OLAMABOLO",
+      "NG-KO-BASSA",
+      "NG-KO-DEKINA",
+      "NG-KO-IDAH",
+      "NG-KO-IGALAMELA-ODOLU",
+      "NG-KO-IBAJI",
+      "NG-KO-OFU"
+    ]
+  },
+  {
+    "id": "kogi-west",
+    "name": "Kogi West",
+    "state": "Kogi",
+    "lga_ids": [
+      "NG-KO-IJUMU",
+      "NG-KO-KABBA-BUNU",
+      "NG-KO-LOKOJA",
+      "NG-KO-YAGBA-EAST",
+      "NG-KO-YAGBA-WEST",
+      "NG-KO-MOPA-MURO"
+    ]
+  },
+  {
+    "id": "kwara-central",
+    "name": "Kwara Central",
+    "state": "Kwara",
+    "lga_ids": [
+      "NG-KW-ILORIN-EAST",
+      "NG-KW-ILORIN-SOUTH",
+      "NG-KW-ILORIN-WEST",
+      "NG-KW-ASA"
+    ]
+  },
+  {
+    "id": "kwara-north",
+    "name": "Kwara North",
+    "state": "Kwara",
+    "lga_ids": [
+      "NG-KW-BARUTEN",
+      "NG-KW-KAIAMA",
+      "NG-KW-EDU",
+      "NG-KW-MORO",
+      "NG-KW-PATEGI"
+    ]
+  },
+  {
+    "id": "kwara-south",
+    "name": "Kwara South",
+    "state": "Kwara",
+    "lga_ids": [
+      "NG-KW-EKITI",
+      "NG-KW-ISIN",
+      "NG-KW-IREPODUN",
+      "NG-KW-OKE-ERO",
+      "NG-KW-IFELODUN",
+      "NG-KW-OFFA",
+      "NG-KW-OYUN"
+    ]
+  },
+  {
+    "id": "lagos-central",
+    "name": "Lagos Central",
+    "state": "Lagos",
+    "lga_ids": [
+      "NG-LA-APAPA",
+      "NG-LA-ETI-OSA",
+      "NG-LA-LAGOS-MAINLAND",
+      "NG-LA-LAGOS-ISLAND",
+      "NG-LA-SURULERE"
+    ]
+  },
+  {
+    "id": "lagos-east",
+    "name": "Lagos East",
+    "state": "Lagos",
+    "lga_ids": [
+      "NG-LA-EPE",
+      "NG-LA-IBEJU-LEKKI",
+      "NG-LA-IKORODU",
+      "NG-LA-KOSOFE",
+      "NG-LA-SHOMOLU"
+    ]
+  },
+  {
+    "id": "lagos-west",
+    "name": "Lagos West",
+    "state": "Lagos",
+    "lga_ids": [
+      "NG-LA-AGEGE",
+      "NG-LA-AJEROMI-IFELODUN",
+      "NG-LA-ALIMOSHO",
+      "NG-LA-AMUWO-ODOFIN",
+      "NG-LA-BADAGRY",
+      "NG-LA-IFAKO-IJAYE",
+      "NG-LA-IKEJA",
+      "NG-LA-MUSHIN",
+      "NG-LA-OJO",
+      "NG-LA-OSHODI-ISOLO"
+    ]
+  },
+  {
+    "id": "nasarawa-north",
+    "name": "Nasarawa North",
+    "state": "Nasarawa",
+    "lga_ids": [
+      "NG-NA-AKWANGA",
+      "NG-NA-NASARAWA-EGGON",
+      "NG-NA-WAMBA"
+    ]
+  },
+  {
+    "id": "nasarawa-south",
+    "name": "Nasarawa South",
+    "state": "Nasarawa",
+    "lga_ids": [
+      "NG-NA-AWE",
+      "NG-NA-DOMA",
+      "NG-NA-KEANA",
+      "NG-NA-LAFIA",
+      "NG-NA-OBI"
+    ]
+  },
+  {
+    "id": "nasarawa-west",
+    "name": "Nasarawa West",
+    "state": "Nasarawa",
+    "lga_ids": [
+      "NG-NA-KEFFI",
+      "NG-NA-KARU",
+      "NG-NA-KOKONA",
+      "NG-NA-NASARAWA",
+      "NG-NA-TOTO"
+    ]
+  },
+  {
+    "id": "niger-east",
+    "name": "Niger East",
+    "state": "Niger",
+    "lga_ids": [
+      "NG-NI-BOSSO",
+      "NG-NI-PAILORO",
+      "NG-NI-CHANCHAGA",
+      "NG-NI-GURARA",
+      "NG-NI-SULEJA",
+      "NG-NI-TAFA",
+      "NG-NI-SHIRORO",
+      "NG-NI-RAFI",
+      "NG-NI-MUYA"
+    ]
+  },
+  {
+    "id": "niger-north",
+    "name": "Niger North",
+    "state": "Niger",
+    "lga_ids": [
+      "NG-NI-AGWARA",
+      "NG-NI-BORGU",
+      "NG-NI-KONTAGORA",
+      "NG-NI-WUSHISHI",
+      "NG-NI-MARIGA",
+      "NG-NI-MASHEGU",
+      "NG-NI-MAGAMA",
+      "NG-NI-RIJAU"
+    ]
+  },
+  {
+    "id": "niger-south",
+    "name": "Niger South",
+    "state": "Niger",
+    "lga_ids": [
+      "NG-NI-AGAIE",
+      "NG-NI-LAPAI",
+      "NG-NI-BIDA",
+      "NG-NI-GBAKO",
+      "NG-NI-KATCHA",
+      "NG-NI-LAVUN",
+      "NG-NI-MOKWA",
+      "NG-NI-EDATI"
+    ]
+  },
+  {
+    "id": "ogun-central",
+    "name": "Ogun Central",
+    "state": "Ogun",
+    "lga_ids": [
+      "NG-OG-ABEOKUTA-NORTH",
+      "NG-OG-OBAFEMI-OWODE",
+      "NG-OG-ODEDA",
+      "NG-OG-ABEOKUTA-SOUTH",
+      "NG-OG-IFO",
+      "NG-OG-EWEKORO"
+    ]
+  },
+  {
+    "id": "ogun-east",
+    "name": "Ogun East",
+    "state": "Ogun",
+    "lga_ids": [
+      "NG-OG-IJEBU-NORTH",
+      "NG-OG-IJEBU-EAST",
+      "NG-OG-OGUN-WATERSIDE",
+      "NG-OG-IJEBU-ODE",
+      "NG-OG-ODOGBOLU",
+      "NG-OG-IJEBU-NORTH-EAST",
+      "NG-OG-IKENNE",
+      "NG-OG-SHAGAMU",
+      "NG-OG-REMO-NORTH"
+    ]
+  },
+  {
+    "id": "ogun-west",
+    "name": "Ogun West",
+    "state": "Ogun",
+    "lga_ids": [
+      "NG-OG-ADO-ODO-OTA",
+      "NG-OG-EGBADO-NORTH",
+      "NG-OG-IMEKO-AFON",
+      "NG-OG-EGBADO-SOUTH",
+      "NG-OG-IPOKIA"
+    ]
+  },
+  {
+    "id": "ondo-central",
+    "name": "Ondo Central",
+    "state": "Ondo",
+    "lga_ids": [
+      "NG-ON-AKURE-NORTH",
+      "NG-ON-AKURE-SOUTH",
+      "NG-ON-IDANRE",
+      "NG-ON-IFEDORE",
+      "NG-ON-ONDO-EAST",
+      "NG-ON-ONDO-WEST"
+    ]
+  },
+  {
+    "id": "ondo-north",
+    "name": "Ondo North",
+    "state": "Ondo",
+    "lga_ids": [
+      "NG-ON-AKOKO-NORTH-EAST",
+      "NG-ON-AKOKO-NORTH-WEST",
+      "NG-ON-AKOKO-SOUTH-EAST",
+      "NG-ON-AKOKO-SOUTH-WEST",
+      "NG-ON-OWO",
+      "NG-ON-OSE"
+    ]
+  },
+  {
+    "id": "ondo-south",
+    "name": "Ondo South",
+    "state": "Ondo",
+    "lga_ids": [
+      "NG-ON-ESE-ODO",
+      "NG-ON-ILAJE",
+      "NG-ON-ILE-OLUJI-OKEIGBO",
+      "NG-ON-ODIGBO",
+      "NG-ON-OKITIPUPA",
+      "NG-ON-IRELE"
+    ]
+  },
+  {
+    "id": "osun-central",
+    "name": "Osun Central",
+    "state": "Osun",
+    "lga_ids": [
+      "NG-OS-BOLUWADURO",
+      "NG-OS-IFEDAYO",
+      "NG-OS-ILA",
+      "NG-OS-IREPODUN",
+      "NG-OS-OLORUNDA",
+      "NG-OS-OSOGBO",
+      "NG-OS-OROLU",
+      "NG-OS-ODO-OTIN",
+      "NG-OS-IFELODUN",
+      "NG-OS-BORIPE"
+    ]
+  },
+  {
+    "id": "osun-east",
+    "name": "Osun East",
+    "state": "Osun",
+    "lga_ids": [
+      "NG-OS-ATAKUMOSA-EAST",
+      "NG-OS-ATAKUMOSA-WEST",
+      "NG-OS-ILESHA-EAST",
+      "NG-OS-ILESHA-WEST",
+      "NG-OS-IFE-CENTRAL",
+      "NG-OS-IFE-NORTH",
+      "NG-OS-IFE-SOUTH",
+      "NG-OS-IFE-EAST",
+      "NG-OS-OBOKUN",
+      "NG-OS-ORIADE"
+    ]
+  },
+  {
+    "id": "osun-west",
+    "name": "Osun West",
+    "state": "Osun",
+    "lga_ids": [
+      "NG-OS-AIYEDADE",
+      "NG-OS-IREWOLE",
+      "NG-OS-ISOKAN",
+      "NG-OS-AIYEDIRE",
+      "NG-OS-IWO",
+      "NG-OS-OLA-OLUWA",
+      "NG-OS-EDE-NORTH",
+      "NG-OS-EDE-SOUTH",
+      "NG-OS-EGBEDORE",
+      "NG-OS-EJIGBO"
+    ]
+  },
+  {
+    "id": "oyo-central",
+    "name": "Oyo Central",
+    "state": "Oyo",
+    "lga_ids": [
+      "NG-OY-AFIJIO",
+      "NG-OY-ATIBA",
+      "NG-OY-OYO-EAST",
+      "NG-OY-OYO-WEST",
+      "NG-OY-AKINYELE",
+      "NG-OY-LAGELU",
+      "NG-OY-EGBEDA",
+      "NG-OY-ONA-ARA",
+      "NG-OY-OGO-OLUWA",
+      "NG-OY-SURULERE",
+      "NG-OY-OLUYOLE"
+    ]
+  },
+  {
+    "id": "oyo-north",
+    "name": "Oyo North",
+    "state": "Oyo",
+    "lga_ids": [
+      "NG-OY-ATIGBO",
+      "NG-OY-SAKI-EAST",
+      "NG-OY-SAKI-WEST",
+      "NG-OY-IREPO",
+      "NG-OY-OLORUNSOGO",
+      "NG-OY-ORELOPE",
+      "NG-OY-ISEYIN",
+      "NG-OY-KAJOLA",
+      "NG-OY-IWAJOWA",
+      "NG-OY-ITESIWAJU",
+      "NG-OY-OGBOMOSHO-NORTH",
+      "NG-OY-OGBOMOSHO-SOUTH",
+      "NG-OY-ORI-IRE"
+    ]
+  },
+  {
+    "id": "oyo-south",
+    "name": "Oyo South",
+    "state": "Oyo",
+    "lga_ids": [
+      "NG-OY-IBADAN-NORTH-EAST",
+      "NG-OY-IBADAN-SOUTH-EAST",
+      "NG-OY-IBADAN-NORTH",
+      "NG-OY-IBADAN-NORTH-WEST",
+      "NG-OY-IBADAN-SOUTH-WEST",
+      "NG-OY-IBARAPA-CENTRAL",
+      "NG-OY-IBARAPA-NORTH",
+      "NG-OY-IBARAPA-EAST",
+      "NG-OY-IDO"
+    ]
+  },
+  {
+    "id": "plateau-central",
+    "name": "Plateau Central",
+    "state": "Plateau",
+    "lga_ids": [
+      "NG-PL-BOKKOS",
+      "NG-PL-MANGU",
+      "NG-PL-KANKE",
+      "NG-PL-PANKSHIN",
+      "NG-PL-KANAM"
+    ]
+  },
+  {
+    "id": "plateau-north",
+    "name": "Plateau North",
+    "state": "Plateau",
+    "lga_ids": [
+      "NG-PL-BARIKIN-LADI",
+      "NG-PL-RIYOM",
+      "NG-PL-JOS-NORTH",
+      "NG-PL-BASSA",
+      "NG-PL-JOS-SOUTH",
+      "NG-PL-JOS-EAST"
+    ]
+  },
+  {
+    "id": "plateau-south",
+    "name": "Plateau South",
+    "state": "Plateau",
+    "lga_ids": [
+      "NG-PL-LANGTANG-NORTH",
+      "NG-PL-LANGTANG-SOUTH",
+      "NG-PL-MIKANG",
+      "NG-PL-QUAAN-PAN",
+      "NG-PL-SHENDAM",
+      "NG-PL-WASE"
+    ]
+  },
+  {
+    "id": "rivers-east",
+    "name": "Rivers East",
+    "state": "Rivers",
+    "lga_ids": [
+      "NG-RI-ETCHE",
+      "NG-RI-OMUMMA",
+      "NG-RI-IKWERRE",
+      "NG-RI-EMOHUA",
+      "NG-RI-OBIA-AKPOR",
+      "NG-RI-OKRIKA",
+      "NG-RI-OGU-BOLO",
+      "NG-RI-PORT-HARCOURT"
+    ]
+  },
+  {
+    "id": "rivers-south-east",
+    "name": "Rivers South East",
+    "state": "Rivers",
+    "lga_ids": [
+      "NG-RI-ANDONI",
+      "NG-RI-OPOBO-NKORO",
+      "NG-RI-ELEME",
+      "NG-RI-OYIGBO",
+      "NG-RI-TAI",
+      "NG-RI-KHANA",
+      "NG-RI-GOKANA"
+    ]
+  },
+  {
+    "id": "rivers-west",
+    "name": "Rivers West",
+    "state": "Rivers",
+    "lga_ids": [
+      "NG-RI-ABUA-ODUAL",
+      "NG-RI-AHOADA-EAST",
+      "NG-RI-AHOADA-WEST",
+      "NG-RI-OGBA-EGBEMA-NDONI",
+      "NG-RI-AKUKU-TORU",
+      "NG-RI-ASARI-TORU",
+      "NG-RI-DEGEMA",
+      "NG-RI-BONNY"
+    ]
+  },
+  {
+    "id": "sokoto-east",
+    "name": "Sokoto East",
+    "state": "Sokoto",
+    "lga_ids": [
+      "NG-SO-GORONYO",
+      "NG-SO-GADA",
+      "NG-SO-ILLELA",
+      "NG-SO-GAWABAWA",
+      "NG-SO-ISA",
+      "NG-SO-SABON-BIRNI",
+      "NG-SO-WURNO",
+      "NG-SO-RABAH"
+    ]
+  },
+  {
+    "id": "sokoto-north",
+    "name": "Sokoto North",
+    "state": "Sokoto",
+    "lga_ids": [
+      "NG-SO-BINJI",
+      "NG-SO-SILAME",
+      "NG-SO-KWARE",
+      "NG-SO-WAMAKO",
+      "NG-SO-SOKOTO-NORTH",
+      "NG-SO-SOKOTO-SOUTH",
+      "NG-SO-TANGAZA",
+      "NG-SO-GUDU"
+    ]
+  },
+  {
+    "id": "sokoto-south",
+    "name": "Sokoto South",
+    "state": "Sokoto",
+    "lga_ids": [
+      "NG-SO-DANGE-SHNSI",
+      "NG-SO-BODINGA",
+      "NG-SO-TURETA",
+      "NG-SO-KEBBE",
+      "NG-SO-TAMBUWAL",
+      "NG-SO-YABO",
+      "NG-SO-SHAGARI"
+    ]
+  },
+  {
+    "id": "taraba-central",
+    "name": "Taraba Central",
+    "state": "Taraba",
+    "lga_ids": [
+      "NG-TA-BALI",
+      "NG-TA-GASSOL",
+      "NG-TA-SARDAUNA",
+      "NG-TA-GASHAKA",
+      "NG-TA-KURMI"
+    ]
+  },
+  {
+    "id": "taraba-north",
+    "name": "Taraba North",
+    "state": "Taraba",
+    "lga_ids": [
+      "NG-TA-JALINGO",
+      "NG-TA-YORRO",
+      "NG-TA-ZING",
+      "NG-TA-KARIN-LAMIDO",
+      "NG-TA-LAU",
+      "NG-TA-ARDO-KOLA"
+    ]
+  },
+  {
+    "id": "taraba-south",
+    "name": "Taraba South",
+    "state": "Taraba",
+    "lga_ids": [
+      "NG-TA-TAKUM",
+      "NG-TA-DONGA",
+      "NG-TA-USSA",
+      "NG-TA-WUKARI",
+      "NG-TA-IBI"
+    ]
+  },
+  {
+    "id": "yobe-east",
+    "name": "Yobe East",
+    "state": "Yobe",
+    "lga_ids": [
+      "NG-YO-BURSARI",
+      "NG-YO-GEIDAM",
+      "NG-YO-YUNUSARI",
+      "NG-YO-DAMATURU",
+      "NG-YO-GUJBA",
+      "NG-YO-GULANI",
+      "NG-YO-TARMUA"
+    ]
+  },
+  {
+    "id": "yobe-north",
+    "name": "Yobe North",
+    "state": "Yobe",
+    "lga_ids": [
+      "NG-YO-BADE",
+      "NG-YO-JAKUSKO",
+      "NG-YO-MACHINA",
+      "NG-YO-NGURU",
+      "NG-YO-YUSUFARI",
+      "NG-YO-KARASUWA"
+    ]
+  },
+  {
+    "id": "yobe-south",
+    "name": "Yobe South",
+    "state": "Yobe",
+    "lga_ids": [
+      "NG-YO-FIKA",
+      "NG-YO-FUNE",
+      "NG-YO-NANGERE",
+      "NG-YO-POTISKUM"
+    ]
+  },
+  {
+    "id": "zamfara-central",
+    "name": "Zamfara Central",
+    "state": "Zamfara",
+    "lga_ids": [
+      "NG-ZA-BUNGUDU",
+      "NG-ZA-MARU",
+      "NG-ZA-GUSAU",
+      "NG-ZA-TSAFE"
+    ]
+  },
+  {
+    "id": "zamfara-north",
+    "name": "Zamfara North",
+    "state": "Zamfara",
+    "lga_ids": [
+      "NG-ZA-KAURA-NAMODA",
+      "NG-ZA-BIRNIN-MAGAJI",
+      "NG-ZA-SHINKAFI",
+      "NG-ZA-ZURMI"
+    ]
+  },
+  {
+    "id": "zamfara-west",
+    "name": "Zamfara West",
+    "state": "Zamfara",
+    "lga_ids": [
+      "NG-ZA-ANKA",
+      "NG-ZA-TALATA-MAFARA",
+      "NG-ZA-BAKURA",
+      "NG-ZA-MARADUN",
+      "NG-ZA-GUMMI",
+      "NG-ZA-BUKKUYUM"
+    ]
+  }
+]

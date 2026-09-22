@@ -11,6 +11,7 @@ All project code lives in **`ExploreNigeria/`**.
 
 - **Geometry:** UN SALB Nigeria (OSGoF) via HDX — stored in `data/geo/source/salb/`, served from `public/geo/`
 - **Hierarchy + ward centroids:** [temikeezy/nigeria-geojson-data](https://github.com/temikeezy/nigeria-geojson-data) — `data/locations/source/temikeezy/`
+- **Polling units:** [JayCodist/inec-polling-units-scraper](https://github.com/JayCodist/inec-polling-units-scraper) — `data/locations/source/jaycodist/`, compiled by `build-polling-units.ts` into `data/locations/polling-units*.json`
 
 ## Map layer rules (mandatory)
 

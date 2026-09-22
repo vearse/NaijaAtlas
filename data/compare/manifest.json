@@ -5,7 +5,7 @@
       "label": "General",
       "temporal": false,
       "dataFile": "general.json",
-      "sourceNote": "Boundaries © UN SALB / OSGoF · Hierarchy © temikeezy",
+      "sourceNote": "Boundaries © UN SALB / OSGoF · Hierarchy © temikeezy · Polling units © INEC (JayCodist/inec-polling-units-scraper)",
       "fields": [
         { "key": "region", "label": "Region", "type": "text", "source": "computed" },
         { "key": "capital", "label": "Capital", "type": "text", "source": "data" },

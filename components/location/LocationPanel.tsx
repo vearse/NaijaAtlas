@@ -273,7 +273,7 @@ export default function LocationPanel({
         </FadeIn>
       </div>
       <footer className="p-4 border-t border-slate-100 text-[10px] text-slate-400 leading-relaxed bg-slate-50/50 hidden lg:block">
-        Boundaries © UN SALB / OSGoF · Hierarchy © temikeezy · Map © OpenStreetMap
+        Boundaries © UN SALB / OSGoF · Hierarchy © temikeezy · Polling units © INEC via JayCodist · Map © OpenStreetMap
       </footer>
     </div>
   );

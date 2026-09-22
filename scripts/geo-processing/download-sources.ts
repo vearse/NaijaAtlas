@@ -28,6 +28,9 @@ const TEMIKEEZY_FILES = [
   "full.json",
 ];
 
+const JAYCODIST_REPO = "JayCodist/inec-polling-units-scraper";
+const JAYCODIST_RAW_PREFIX = `https://raw.githubusercontent.com/${JAYCODIST_REPO}/main/results`;
+
 function download(url: string, dest: string): Promise<void> {
   return new Promise((resolve, reject) => {
     const file = fs.createWriteStream(dest);
@@ -59,11 +62,40 @@ function download(url: string, dest: string): Promise<void> {
   });
 }
 
+async function downloadJaycodist(jayDir: string): Promise<void> {
+  const summaryDest = path.join(jayDir, "summary.json");
+  if (fs.existsSync(summaryDest)) {
+    console.log("  skip summary.json (exists)");
+  } else {
+    console.log("  downloading summary.json...");
+    await download(`${JAYCODIST_RAW_PREFIX}/summary.json`, summaryDest);
+  }
+
+  const summary: {
+    states?: { fileName?: string }[];
+  } = JSON.parse(fs.readFileSync(summaryDest, "utf-8"));
+  const files = (summary.states ?? [])
+    .map((s) => s.fileName)
+    .filter((f): f is string => Boolean(f));
+
+  for (const f of files) {
+    const dest = path.join(jayDir, f);
+    if (fs.existsSync(dest)) {
+      console.log(`  skip ${f} (exists)`);
+      continue;
+    }
+    console.log(`  downloading ${f}...`);
+    await download(`${JAYCODIST_RAW_PREFIX}/${f}`, dest);
+  }
+}
+
 async function main() {
   const salbDir = path.join(ROOT, "data/geo/source/salb");
   const temiDir = path.join(ROOT, "data/locations/source/temikeezy");
+  const jayDir = path.join(ROOT, "data/locations/source/jaycodist");
   fs.mkdirSync(salbDir, { recursive: true });
   fs.mkdirSync(temiDir, { recursive: true });
+  fs.mkdirSync(jayDir, { recursive: true });
 
   console.log("Downloading UN SALB shapefiles from HDX...");
   for (const f of SALB_FILES) {
@@ -87,6 +119,9 @@ async function main() {
     console.log(`  downloading ${f}...`);
     await download(url, dest);
   }
+
+  console.log("Downloading INEC polling-unit JSON (JayCodist)...");
+  await downloadJaycodist(jayDir);
 
   console.log("Done.");
 }

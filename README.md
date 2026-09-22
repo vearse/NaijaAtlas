@@ -14,7 +14,7 @@ Interactive map of Nigeria — states, LGAs, and geopolitical regions.
 ```bash
 cd ExploreNigeria
 npm install
-npm run download:geo   # fetch SALB + temikeezy source data
+npm run download:geo   # fetch SALB + temikeezy + INEC polling-unit source data
 npm run build:geo      # process boundaries → public/geo/
 npm run build:compare  # generate compare JSON from source CSVs
 npm run dev
@@ -26,6 +26,18 @@ Set `NEXT_PUBLIC_SITE_URL` to your production URL (e.g. `https://naijaatlas.com`
 
 - **Boundaries:** [UN SALB Nigeria](https://salb.un.org/en/data/nga) (OSGoF)
 - **Hierarchy:** [temikeezy/nigeria-geojson-data](https://github.com/temikeezy/nigeria-geojson-data)
+- **Polling units:** [JayCodist/inec-polling-units-scraper](https://github.com/JayCodist/inec-polling-units-scraper) (scraped from INEC; 185,432 units)
+
+## Polling unit data
+
+185k+ INEC polling units across 37 states, 774 LGAs and 8,809 wards, compiled by `build:geo` into:
+
+- `data/locations/polling-units.json` — full nested dataset (state → LGA → ward → units)
+- `data/locations/polling-unit-index.json` — flat, sorted by `delimitation` code (e.g. `01/01/01/005`) for code-based lookup
+- `data/locations/polling-unit-counts.json` — lightweight counts only (state → LGA → ward)
+- `data/locations/states.json` / `lgas.json` / `wards.json` — enriched with `pollingUnitCount`
+
+Lookup options: **by code** (search `polling-unit-index.json` on `delimitation`/`abbreviation`), **by LGA** or **by ward** (navigate the nested dataset / counts by `lgaId` / `wardId`).
 
 ## Compare data (states & country profile)
 
