@@ -15,6 +15,7 @@ import LocationPanel from "@/components/location/LocationPanel";
 import CompareModal from "@/components/compare/CompareModal";
 import MobileInfoModal from "@/components/compare/MobileInfoModal";
 import WikipediaReaderModal from "@/components/map/WikipediaReaderModal";
+import DirectionsModal from "@/components/directions/DirectionsModal";
 import UrlSync from "@/components/UrlSync";
 import { useMapStore, MAX_COMPARE_STATES } from "@/lib/store/mapStore";
 import { useIsMobile } from "@/hooks/useMediaQuery";
@@ -32,7 +33,10 @@ import type {
   LgaGeneral,
 } from "@/types/location";
 import type { CompareBundle } from "@/types/compare";
+import type { PoliticsBundle, PollingUnitCountsBundle } from "@/types/politics";
 import { buildCapitalLgaIdMap } from "@/lib/map/capitalLga";
+import ElectionPanel from "@/components/election/ElectionPanel";
+import ElectionMapLegend from "@/components/election/ElectionMapLegend";
 
 const NigeriaMap = dynamic(() => import("@/components/map/NigeriaMap"), {
   ssr: false,
@@ -57,6 +61,8 @@ interface ExplorerShellProps {
   countryNotes: CountryNotesMap;
   peopleNotes: PeopleNotesMap;
   lgaGeneral: Record<string, LgaGeneral>;
+  politics: PoliticsBundle;
+  pollingCounts: PollingUnitCountsBundle;
 }
 
 export default function ExplorerShell({
@@ -72,8 +78,12 @@ export default function ExplorerShell({
   countryNotes,
   peopleNotes,
   lgaGeneral,
+  politics,
+  pollingCounts,
 }: ExplorerShellProps) {
   const isMobile = useIsMobile();
+  const mapType = useMapStore((s) => s.mapType);
+  const isElectionMode = mapType === "election";
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
   const selectedLgaId = useMapStore((s) => s.selectedLgaId);
   const activeRegionId = useMapStore((s) => s.activeRegionId);
@@ -95,6 +105,7 @@ export default function ExplorerShell({
     !selectedLgaId && selectedStateIds.size === 1;
   const lgaSelected = selectedLgaId !== null;
   const showCompare =
+    !isElectionMode &&
     !selectedLgaId &&
     selectedStates.length >= 2 &&
     selectedStates.length <= MAX_COMPARE_STATES;
@@ -115,14 +126,16 @@ export default function ExplorerShell({
                     NaijaAtlas
                   </h1>
                   <p className="text-[11px] lg:text-xs text-slate-500 mt-0.5 hidden sm:block">
-                    36 states · 774 LGAs · 6 regions
+                    {isElectionMode
+                      ? "2027 elections · PU locator · Senate districts"
+                      : "36 states · 774 LGAs · 6 regions"}
                   </p>
                 </div>
               </div>
               <PoweredByIseOwo />
             </div>
             <div className="hidden lg:flex flex-col items-stretch gap-1.5 lg:flex-1 lg:max-w-md">
-              <LocationSearch />
+              {!isElectionMode && <LocationSearch />}
               <MapHints />
             </div>
           </div>
@@ -170,7 +183,19 @@ export default function ExplorerShell({
           </button>
         )}
 
+        {isMobile && isElectionMode && (
+          <button
+            type="button"
+            onClick={() => openMobileSheet()}
+            className="absolute top-2.5 right-14 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-ng-green text-white px-3 py-2 text-xs font-semibold shadow-md min-h-[36px]"
+            aria-label="Open election panel"
+          >
+            Election
+          </button>
+        )}
+
         {isMobile &&
+          !isElectionMode &&
           (singleStateSelected || lgaSelected) &&
           mobileSheet === "open" && (
           <button
@@ -233,6 +258,7 @@ export default function ExplorerShell({
           )}
 
         {isMobile &&
+          !isElectionMode &&
           !showCompare &&
           !singleStateSelected &&
           selectedStateIds.size === 0 &&
@@ -269,25 +295,35 @@ export default function ExplorerShell({
               regions={regions}
               lgas={lgas}
               capitalLgaByState={capitalLgaByState}
+              politicsLookups={politics.lookups}
             />
-            <MapBottomToolbar />
+            {!isElectionMode && <MapBottomToolbar />}
+            <ElectionMapLegend lookups={politics.lookups} />
             <MapControls />
           </div>
         </div>
-        <LocationPanel
-          states={states}
-          lgas={lgas}
-          regions={regions}
-          stateContent={stateContent}
-          lgaContent={lgaContent}
-          wardsByLga={wardsByLga}
-          compareBundle={compareBundle}
-          metroGroups={metroGroups}
-          stateNotes={stateNotes}
-          countryNotes={countryNotes}
-          peopleNotes={peopleNotes}
-          lgaGeneral={lgaGeneral}
-        />
+        {isElectionMode ? (
+          <ElectionPanel
+            politics={politics}
+            pollingCounts={pollingCounts}
+            lgas={lgas}
+          />
+        ) : (
+          <LocationPanel
+            states={states}
+            lgas={lgas}
+            regions={regions}
+            stateContent={stateContent}
+            lgaContent={lgaContent}
+            wardsByLga={wardsByLga}
+            compareBundle={compareBundle}
+            metroGroups={metroGroups}
+            stateNotes={stateNotes}
+            countryNotes={countryNotes}
+            peopleNotes={peopleNotes}
+            lgaGeneral={lgaGeneral}
+          />
+        )}
       </main>
 
       {isMobile && showCompare && (
@@ -320,6 +356,7 @@ export default function ExplorerShell({
       />
 
       <WikipediaReaderModal />
+      <DirectionsModal />
     </div>
   );
 }

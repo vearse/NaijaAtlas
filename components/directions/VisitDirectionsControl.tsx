@@ -22,6 +22,7 @@ interface VisitDirectionsControlProps {
     lonLat?: [number, number] | null | undefined;
     kind: "state" | "lga" | "overlay" | "mapFeature";
   };
+  restoreMapTypeOnClose?: boolean;
 }
 
 function formatDuration(totalMinutes: number): string {
@@ -54,6 +55,7 @@ function maneuverGlyph(step: DrivingStep): string {
 
 export default function VisitDirectionsControl({
   feature,
+  restoreMapTypeOnClose = false,
 }: VisitDirectionsControlProps) {
   const directions = useMapStore((s) => s.directions);
   const setDirectionsFrom = useMapStore((s) => s.setDirectionsFrom);
@@ -64,6 +66,10 @@ export default function VisitDirectionsControl({
   const clearDirections = useMapStore((s) => s.clearDirections);
   const setMapActionHint = useMapStore((s) => s.setMapActionHint);
   const setMapType = useMapStore((s) => s.setMapType);
+  const restoreMapTypeAfterDirections = useMapStore(
+    (s) => s.restoreMapTypeAfterDirections
+  );
+  const closeDirectionsModal = useMapStore((s) => s.closeDirectionsModal);
 
   const [fetching, setFetching] = useState(false);
   const [routeStats, setRouteStats] = useState<{
@@ -215,11 +221,18 @@ export default function VisitDirectionsControl({
   }
 
   function handleCloseDirections() {
-    clearDirections();
+    if (restoreMapTypeOnClose) {
+      restoreMapTypeAfterDirections();
+      closeDirectionsModal();
+    } else {
+      clearDirections();
+    }
     setRouteStats(null);
     setFallbackUsed(false);
     setMapActionHint(null);
-    setMapType("minimal");
+    if (!restoreMapTypeOnClose) {
+      setMapType("minimal");
+    }
   }
 
   return (

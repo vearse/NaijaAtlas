@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import ExplorerShell from "@/components/ExplorerShell";
 import { loadCompareBundle } from "@/lib/compare/loadCompareBundle";
+import { buildPoliticsBundle } from "@/lib/politics/buildLookups";
 import type {
   StateLocation,
   LgaLocation,
@@ -16,6 +17,13 @@ import type {
   PeopleNotesMap,
   LgaGeneral,
 } from "@/types/location";
+import type {
+  FederalConstituency,
+  PollingUnitCountsBundle,
+  PresidentialBundle,
+  SenateRace,
+  SenatorialDistrict,
+} from "@/types/politics";
 
 function loadJson<T>(filePath: string): T {
   return JSON.parse(fs.readFileSync(filePath, "utf-8")) as T;
@@ -65,6 +73,29 @@ export default function HomePage() {
     path.join(root, "data/compare/lgas/general.json")
   );
 
+  const senatorialDistricts = loadJson<SenatorialDistrict[]>(
+    path.join(root, "data/politics/constituencies/senatorial-districts.json")
+  );
+  const federalConstituencies = loadJson<FederalConstituency[]>(
+    path.join(root, "data/politics/constituencies/federal-constituencies.json")
+  );
+  const senateRaces = loadJson<SenateRace[]>(
+    path.join(root, "data/politics/candidate/2027/seneate/senate.json")
+  );
+  const presidential = loadJson<PresidentialBundle>(
+    path.join(root, "data/politics/candidate/2027/presidential_candidates.json")
+  );
+  const politics = buildPoliticsBundle(
+    senatorialDistricts,
+    federalConstituencies,
+    senateRaces,
+    presidential,
+    states
+  );
+  const pollingCounts = loadJson<PollingUnitCountsBundle>(
+    path.join(root, "data/locations/polling-unit-counts.json")
+  );
+
   return (
     <ExplorerShell
       states={states}
@@ -79,6 +110,8 @@ export default function HomePage() {
       countryNotes={countryNotes}
       peopleNotes={peopleNotes}
       lgaGeneral={lgaGeneral}
+      politics={politics}
+      pollingCounts={pollingCounts}
     />
   );
 }

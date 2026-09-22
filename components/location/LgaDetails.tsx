@@ -8,7 +8,7 @@ import type {
   LgaGeneral,
   MetroGroup,
 } from "@/types/location";
-import VisitDirectionsControl from "@/components/directions/VisitDirectionsControl";
+import GetDirectionsButton from "@/components/directions/GetDirectionsButton";
 
 interface LgaDetailsProps {
   content: LgaContent;
@@ -91,7 +91,6 @@ export default function LgaDetails({
 }: LgaDetailsProps) {
   const setSelectedLga = useMapStore((s) => s.setSelectedLga);
   const openWikiModal = useMapStore((s) => s.openWikiModal);
-  const [showPlanVisit, setShowPlanVisit] = useState(false);
   const [lon, lat] = location.centroid;
   const wardList = wards.length > 0 ? wards : [];
 
@@ -182,30 +181,13 @@ export default function LgaDetails({
         </dd>
       </dl>
 
-      <button
-        type="button"
-        onClick={() => setShowPlanVisit((v) => !v)}
-        aria-expanded={showPlanVisit}
-        className={[
-          "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
-          showPlanVisit
-            ? "border-ng-green/40 bg-emerald-50 text-ng-green"
-            : "border-slate-200 bg-white text-slate-600 hover:border-ng-green/40 hover:text-ng-green",
-        ].join(" ")}
-      >
-        <span aria-hidden>🧭</span>
-        {showPlanVisit ? "Hide plan visit" : "Show plan visit"}
-      </button>
-
-      {showPlanVisit && (
-        <VisitDirectionsControl
-          feature={{
-            name: content.name,
-            lonLat: location.centroid,
-            kind: "lga",
-          }}
-        />
-      )}
+      <GetDirectionsButton
+        name={content.name}
+        lonLat={location.centroid}
+        kind="lga"
+        label="Get directions"
+        size="md"
+      />
 
       <p className="text-sm text-slate-600 leading-relaxed">
         {summary ?? content.description}

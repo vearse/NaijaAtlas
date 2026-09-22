@@ -20,7 +20,7 @@ import { getCategoryData } from "@/lib/compare/compareUtils";
 import { openCityOnMap } from "@/lib/map/cityCoordsLookup";
 import { openStateOverlayItemOnMap } from "@/lib/map/openOverlayItem";
 import ShowLgasButton from "@/components/map/ShowLgasButton";
-import VisitDirectionsControl from "@/components/directions/VisitDirectionsControl";
+import GetDirectionsButton from "@/components/directions/GetDirectionsButton";
 import { useMapStore } from "@/lib/store/mapStore";
 
 interface StateDetailsProps {
@@ -180,7 +180,6 @@ export default function StateDetails({
   metroGroups = [],
   stateNotesMap = {},
 }: StateDetailsProps) {
-  const [showPlanVisit, setShowPlanVisit] = useState(false);
   const activeLens = useMapStore((s) => s.activeLens);
   const setActiveLens = useMapStore((s) => s.setActiveLens);
   const openWikiModal = useMapStore((s) => s.openWikiModal);
@@ -435,30 +434,13 @@ export default function StateDetails({
         </div>
       )}
 
-      <button
-        type="button"
-        onClick={() => setShowPlanVisit((v) => !v)}
-        aria-expanded={showPlanVisit}
-        className={[
-          "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
-          showPlanVisit
-            ? "border-ng-green/40 bg-emerald-50 text-ng-green"
-            : "border-slate-200 bg-white text-slate-600 hover:border-ng-green/40 hover:text-ng-green",
-        ].join(" ")}
-      >
-        <span aria-hidden>🧭</span>
-        {showPlanVisit ? "Hide plan visit" : "Show plan visit"}
-      </button>
-
-      {showPlanVisit && (
-        <VisitDirectionsControl
-          feature={{
-            name: content.name,
-            lonLat: location.centroid,
-            kind: "state",
-          }}
-        />
-      )}
+      <GetDirectionsButton
+        name={content.name}
+        lonLat={location.centroid}
+        kind="state"
+        label="Get directions"
+        size="md"
+      />
 
       {activeLens === "learn" && stateNotes.length > 0 && (
         <div>
@@ -516,6 +498,14 @@ export default function StateDetails({
                 <p className="text-xs text-slate-500 leading-relaxed mt-1">
                   {n.note}
                 </p>
+                <div className="mt-2">
+                  <GetDirectionsButton
+                    name={n.title}
+                    lonLat={location.centroid}
+                    kind="state"
+                    label="Get directions"
+                  />
+                </div>
               </li>
             ))}
           </ul>

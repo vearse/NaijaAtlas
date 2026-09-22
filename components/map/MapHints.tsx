@@ -15,12 +15,17 @@ export default function MapHints() {
   const activeOverlays = useMapStore((s) => s.activeOverlays);
   const selectedOverlay = useMapStore((s) => s.selectedOverlay);
   const activeLens = useMapStore((s) => s.activeLens);
+  const mapType = useMapStore((s) => s.mapType);
 
   useEffect(() => {
     setPanelHidden(localStorage.getItem(HINTS_DISMISSED_KEY) === "1");
   }, []);
 
   const hint = useMemo(() => {
+    if (mapType === "election") {
+      return "Election mode — select states to see senatorial districts; click an LGA for candidates";
+    }
+
     if (activeLens !== "learn") {
       return `${activeLens === "tourist" ? "Tourist" : "Invest"} lens — highlighted map markers and panel notes match this view`;
     }
@@ -66,6 +71,7 @@ export default function MapHints() {
     return "Click a state to select · double-click to show LGAs · Layers bottom-right";
   }, [
     activeLens,
+    mapType,
     mapActionHint,
     dragModeStateId,
     selectedOverlay,
@@ -88,6 +94,7 @@ export default function MapHints() {
     return "Tap a state to explore";
   }, [
     activeLens,
+    mapType,
     mapActionHint,
     dragModeStateId,
     selectedOverlay,

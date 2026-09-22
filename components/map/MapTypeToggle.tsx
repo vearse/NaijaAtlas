@@ -2,7 +2,12 @@
 
 import { useMapStore, type MapTypeId } from "@/lib/store/mapStore";
 
-const OPTIONS: Array<{ id: MapTypeId; label: string; short: string; desc: string }> = [
+const OPTIONS: Array<{
+  id: MapTypeId;
+  label: string;
+  short: string;
+  desc: string;
+}> = [
   {
     id: "minimal",
     label: "Minimal",
@@ -14,6 +19,12 @@ const OPTIONS: Array<{ id: MapTypeId; label: string; short: string; desc: string
     label: "Street Map",
     short: "OSM",
     desc: "Real-world streets, buildings, and terrain from OSM",
+  },
+  {
+    id: "election",
+    label: "Election",
+    short: "Election",
+    desc: "Senatorial districts, polling units, and 2027 candidates",
   },
 ];
 
@@ -53,6 +64,19 @@ function StreetIcon({ active }: { active: boolean }) {
   );
 }
 
+function ElectionIcon({ active }: { active: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      aria-hidden
+      className={`w-3.5 h-3.5 shrink-0 ${active ? "text-white" : "text-slate-500"}`}
+    >
+      <rect x="2" y="2" width="12" height="12" rx="2" fill="none" stroke="currentColor" strokeWidth="1.2" />
+      <path d="M5 6h6M5 9h4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export default function MapTypeToggle() {
   const mapType = useMapStore((s) => s.mapType);
   const setMapType = useMapStore((s) => s.setMapType);
@@ -69,7 +93,12 @@ export default function MapTypeToggle() {
           const on = mapType === opt.id;
           const isFirst = idx === 0;
           const isLast = idx === OPTIONS.length - 1;
-          const Icon = opt.id === "minimal" ? MinimalIcon : StreetIcon;
+          const Icon =
+            opt.id === "minimal"
+              ? MinimalIcon
+              : opt.id === "osm"
+                ? StreetIcon
+                : ElectionIcon;
           return (
             <button
               key={opt.id}

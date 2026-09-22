@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
 import WikiDeepDiveLink from "@/components/map/WikiDeepDiveLink";
-import VisitDirectionsControl from "@/components/directions/VisitDirectionsControl";
+import GetDirectionsButton from "@/components/directions/GetDirectionsButton";
 import {
   CITY_CATEGORY_LABELS,
   LAKE_CATEGORY_LABELS,
@@ -254,7 +254,6 @@ export default function OverlayFeaturePanel({
   states,
 }: OverlayFeaturePanelProps) {
   const { clearSelectedOverlay, showLgas, addSelectedState } = useMapStore();
-  const [showPlanVisit, setShowPlanVisit] = useState(false);
   const { layerId, name, properties: props } = feature;
   const meta = OVERLAY_LAYER_LABELS[layerId];
   const cityCat = cityCategoryMeta(props.category);
@@ -496,30 +495,13 @@ export default function OverlayFeaturePanel({
         </div>
       )}
 
-      <button
-        type="button"
-        onClick={() => setShowPlanVisit((v) => !v)}
-        aria-expanded={showPlanVisit}
-        className={[
-          "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
-          showPlanVisit
-            ? "border-ng-green/40 bg-emerald-50 text-ng-green"
-            : "border-slate-200 bg-white text-slate-600 hover:border-ng-green/40 hover:text-ng-green",
-        ].join(" ")}
-      >
-        <span aria-hidden>🧭</span>
-        {showPlanVisit ? "Hide plan visit" : "Show plan visit"}
-      </button>
-
-      {showPlanVisit && (
-        <VisitDirectionsControl
-          feature={{
-            name,
-            lonLat: toLonLat,
-            kind: "overlay",
-          }}
-        />
-      )}
+      <GetDirectionsButton
+        name={name}
+        lonLat={toLonLat}
+        kind="overlay"
+        label="Get directions"
+        size="md"
+      />
 
       <dl className="space-y-3 rounded-xl border border-slate-100 bg-slate-50/80 p-4">
         <DetailRow label="Founded" value={text(props.founded)} />

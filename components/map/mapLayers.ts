@@ -1,6 +1,8 @@
 import type { LayerSpecification, Map, SourceSpecification, StyleSpecification } from "maplibre-gl";
 import { MAP_GLYPHS, MAP_FONT, MAP_FONT_EMPHASIS } from "@/lib/map/interaction";
 import { LGA_PALETTE, assignLgaPaletteColors, colorForIndex } from "@/lib/map/colors";
+import { enrichLgaSenatorialColors } from "@/lib/politics/senatorialColors";
+import type { PoliticsLookups } from "@/types/politics";
 import { withExcludeState, withExcludeStates } from "@/lib/map/dragStateGeometry";
 import type { MapTypeId } from "@/lib/store/mapStore";
 
@@ -69,6 +71,19 @@ export function getMapStyle(mapType: MapTypeId): StyleSpecification {
             source: "osm-raster",
             minzoom: 0,
             maxzoom: 22,
+          },
+        ],
+      };
+    case "election":
+      return {
+        version: 8,
+        glyphs: MAP_GLYPHS,
+        sources: {},
+        layers: [
+          {
+            id: "background",
+            type: "background",
+            paint: { "background-color": "#c5d4e3" },
           },
         ],
       };
@@ -444,7 +459,7 @@ export function createNeighborLayers(): LayerSpecification[] {
  */
 export function applyNeighborLayersMapTypeTuning(
   map: Map,
-  mapType: "minimal" | "osm"
+  mapType: MapTypeId
 ): void {
   const osm = mapType === "osm";
 
@@ -494,7 +509,7 @@ export function applyNeighborLayersMapTypeTuning(
  */
 export function applyAdminLayersMapTypeTuning(
   map: Map,
-  mapType: "minimal" | "osm"
+  mapType: MapTypeId
 ): void {
   if (mapType !== "osm") return;
 
@@ -942,10 +957,13 @@ export function createLgaLayers(stateId: string): LayerSpecification[] {
 export function addLgaStateLayers(
   map: Map,
   stateId: string,
-  data: GeoJSON.FeatureCollection
+  data: GeoJSON.FeatureCollection,
+  options?: { electionLookups?: PoliticsLookups }
 ): void {
   removeLgaStateLayers(map, stateId);
-  const filled = enrichLgaColors(data);
+  const filled = options?.electionLookups
+    ? enrichLgaSenatorialColors(data, options.electionLookups)
+    : enrichLgaColors(data);
   map.addSource(lgaSourceId(stateId), lgaSourceSpec(filled));
   map.addSource(
     lgaOutlineSourceId(stateId),

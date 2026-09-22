@@ -1,6 +1,10 @@
 "use client";
 
-import { useMapStore, MAX_COMPARE_STATES } from "@/lib/store/mapStore";
+import {
+  useMapStore,
+  MAX_COMPARE_STATES,
+  MAX_ELECTION_STATES,
+} from "@/lib/store/mapStore";
 import type { StateLocation } from "@/types/location";
 import { MapLayersIcon } from "@/components/map/ShowLgasButton";
 
@@ -12,6 +16,8 @@ const CHIP_STYLES = [
   "bg-emerald-50 text-emerald-800 border-emerald-200/80",
   "bg-sky-50 text-sky-800 border-sky-200/80",
   "bg-violet-50 text-violet-800 border-violet-200/80",
+  "bg-amber-50 text-amber-900 border-amber-200/80",
+  "bg-rose-50 text-rose-900 border-rose-200/80",
 ];
 
 const LGA_VISIBLE_CHIP =
@@ -26,7 +32,12 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
     hideLgas,
     openMobileSheet,
     selectStates,
+    mapType,
   } = useMapStore();
+
+  const maxStates =
+    mapType === "election" ? MAX_ELECTION_STATES : MAX_COMPARE_STATES;
+  const isElection = mapType === "election";
 
   const selected = states.filter((s) => selectedStateIds.has(s.id));
 
@@ -34,7 +45,9 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
     <div className="flex flex-wrap items-center gap-2 pt-1">
       <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mr-1">
         {selected.length === 0
-          ? `Select up to ${MAX_COMPARE_STATES} states to compare`
+          ? isElection
+            ? `Select up to ${maxStates} states on the map`
+            : `Select up to ${maxStates} states to compare`
           : "Selected"}
       </span>
       {selected.map((s, i) => {
@@ -55,26 +68,28 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
             >
               {s.name}
             </button>
-            <button
-              type="button"
-              aria-label={
-                lgaVisible
-                  ? `Hide ${s.name} LGAs on map`
-                  : `Show ${s.name} LGAs on map`
-              }
-              aria-pressed={lgaVisible}
-              title={lgaVisible ? "LGAs visible on map" : "Show LGAs on map"}
-              onClick={() =>
-                lgaVisible ? hideLgas(s.id) : showLgas(s.id)
-              }
-              className={`rounded-full w-6 h-6 flex items-center justify-center transition-colors ${
-                lgaVisible
-                  ? "bg-ng-green text-white shadow-sm"
-                  : "hover:bg-black/10 text-current"
-              }`}
-            >
-              <MapLayersIcon active={lgaVisible} />
-            </button>
+            {!isElection && (
+              <button
+                type="button"
+                aria-label={
+                  lgaVisible
+                    ? `Hide ${s.name} LGAs on map`
+                    : `Show ${s.name} LGAs on map`
+                }
+                aria-pressed={lgaVisible}
+                title={lgaVisible ? "LGAs visible on map" : "Show LGAs on map"}
+                onClick={() =>
+                  lgaVisible ? hideLgas(s.id) : showLgas(s.id)
+                }
+                className={`rounded-full w-6 h-6 flex items-center justify-center transition-colors ${
+                  lgaVisible
+                    ? "bg-ng-green text-white shadow-sm"
+                    : "hover:bg-black/10 text-current"
+                }`}
+              >
+                <MapLayersIcon active={lgaVisible} />
+              </button>
+            )}
             <button
               type="button"
               aria-label={`Remove ${s.name}`}
@@ -86,9 +101,9 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
           </span>
         );
       })}
-      {selected.length >= 1 && selected.length < MAX_COMPARE_STATES && (
+      {selected.length >= 1 && selected.length < maxStates && (
         <span className="text-[10px] text-slate-400">
-          · add up to {MAX_COMPARE_STATES - selected.length} more to compare
+          · add up to {maxStates - selected.length} more
         </span>
       )}
       {selected.length > 1 && (

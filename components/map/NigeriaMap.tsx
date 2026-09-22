@@ -73,12 +73,14 @@ import {
   clearLgaGeoCache,
 } from "@/lib/map/lgaGeoCache";
 import type { RegionLocation, StateLocation, LgaLocation } from "@/types/location";
+import type { PoliticsLookups } from "@/types/politics";
 
 interface NigeriaMapProps {
   states: StateLocation[];
   regions: RegionLocation[];
   lgas: LgaLocation[];
   capitalLgaByState: ReadonlyMap<string, string>;
+  politicsLookups: PoliticsLookups;
 }
 
 type HitKind = "lga" | "state" | "region";
@@ -119,6 +121,7 @@ export default function NigeriaMap({
   regions,
   lgas,
   capitalLgaByState,
+  politicsLookups,
 }: NigeriaMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
@@ -137,6 +140,8 @@ export default function NigeriaMap({
   lgasRef.current = lgas;
   const regionsRef = useRef(regions);
   regionsRef.current = regions;
+  const politicsLookupsRef = useRef(politicsLookups);
+  politicsLookupsRef.current = politicsLookups;
   const adm1FeaturesRef = useRef<Map<string, GeoJSON.Feature>>(new Map());
   const dragHandlersBoundRef = useRef(false);
   const draggedBaseGeometryRef = useRef<GeoJSON.Geometry | null>(null);
@@ -486,7 +491,13 @@ export default function NigeriaMap({
 
       if (hit.kind === "lga") {
         if (hit.feature.layer.id.includes("-line")) return;
-        store.setSelectedLga(id);
+        if (store.mapType === "election") {
+          const districtId =
+            politicsLookupsRef.current.lgaToSenatorialDistrictId[id] ?? null;
+          store.setSelectedLgaForElection(id, districtId);
+        } else {
+          store.setSelectedLga(id);
+        }
         syncLgaLabelFilters(map);
         return;
       }
@@ -971,7 +982,7 @@ export default function NigeriaMap({
     // "Minimal stopped working" reports caused by diff-style reapplying
     // paint/layout to runtime-added layers when there was nothing to swap.
     const hasOsmLayer = Boolean(map.getLayer("osm-tiles"));
-    if (mapType === "minimal" && !hasOsmLayer) return;
+    if ((mapType === "minimal" || mapType === "election") && !hasOsmLayer) return;
     // Also skip if OSM already loaded + OSM requested (no re-fetch of tiles).
     if (mapType === "osm" && hasOsmLayer) return;
 
@@ -1266,7 +1277,12 @@ export default function NigeriaMap({
         if (!liveMap) return;
       }
 
-      addLgaStateLayers(liveMap, stateId, data);
+      addLgaStateLayers(liveMap, stateId, data, {
+        electionLookups:
+          useMapStore.getState().mapType === "election"
+            ? politicsLookupsRef.current
+            : undefined,
+      });
 
       loadedLgaRef.current.add(stateId);
       const visible = useMapStore.getState().lgaVisibleStateIds;
@@ -1336,10 +1352,21 @@ export default function NigeriaMap({
   useEffect(() => {
     const map = mapRef.current;
     if (!map?.isStyleLoaded() || !mapReady) return;
+    if (useMapStore.getState().mapType === "election") return;
     const run = () => applyLensOverlayEmphasis(map, activeLens, activeOverlays);
     run();
     map.once("idle", run);
   }, [activeLens, activeOverlaysKey, mapReady, activeOverlays]);
+
+  useEffect(() => {
+    if (!mapReady) return;
+    const visible = [...useMapStore.getState().lgaVisibleStateIds];
+    if (visible.length === 0) return;
+    for (const stateId of visible) {
+      loadedLgaRef.current.delete(stateId);
+      void loadLgaLayer(stateId);
+    }
+  }, [mapType, mapReady, loadLgaLayer]);
 
   const labeledLgaKey = labeledLgaOrder.join(",");
 

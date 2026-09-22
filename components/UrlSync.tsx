@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
+import { parseMapTypeParam } from "@/lib/map/mapType";
 import { parseLensId } from "@/lib/lenses/lensHelper";
 
 /** Sync map selection ↔ URL query params for shareable links */
@@ -13,33 +14,40 @@ export default function UrlSync() {
   const activeRegionId = useMapStore((s) => s.activeRegionId);
   const mapType = useMapStore((s) => s.mapType);
   const activeLens = useMapStore((s) => s.activeLens);
+  const selectedSenatorialDistrictId = useMapStore(
+    (s) => s.selectedSenatorialDistrictId
+  );
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const store = useMapStore.getState();
 
-    // Set base map style FIRST so overlays/selections are painted onto the correct canvas.
     const mapParam = params.get("map");
-    if (mapParam === "osm") {
-      store.setMapType("osm");
-    }
-    // Any other value (including undefined / "minimal" / garbage) → no-op: stays default 'minimal'.
+    store.setMapType(parseMapTypeParam(mapParam));
 
     const region = params.get("region");
     const states = params.get("states")?.split(",").filter(Boolean);
     const lga = params.get("lga");
     const showLgas = params.get("lgas") === "1";
+    const sd = params.get("sd");
 
     if (region) {
       store.setActiveRegion(region);
     } else if (states?.length) {
-      if (showLgas) store.showLgasForStates(states);
-      else store.selectStates(states);
+      if (store.mapType === "election" || showLgas) {
+        store.showLgasForStates(states);
+      } else {
+        store.selectStates(states);
+      }
     }
 
     if (lga) {
       store.setSelectedLga(lga);
       store.openMobileSheet();
+    }
+
+    if (sd) {
+      store.setSelectedSenatorialDistrict(sd);
     }
 
     const lensParam = params.get("lens");
@@ -61,10 +69,12 @@ export default function UrlSync() {
       if (lgaVisibleStateIds.size > 0) params.set("lgas", "1");
     }
     if (selectedLgaId) params.set("lga", selectedLgaId);
-    // Always emit the map type so deep-links preserve the user's preferred base canvas.
     params.set("map", mapType);
     if (activeLens !== "learn") {
       params.set("lens", activeLens);
+    }
+    if (mapType === "election" && selectedSenatorialDistrictId) {
+      params.set("sd", selectedSenatorialDistrictId);
     }
 
     const qs = params.toString();
@@ -83,6 +93,7 @@ export default function UrlSync() {
     activeRegionId,
     mapType,
     activeLens,
+    selectedSenatorialDistrictId,
   ]);
 
   return null;

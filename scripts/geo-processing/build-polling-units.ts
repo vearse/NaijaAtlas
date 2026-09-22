@@ -438,6 +438,42 @@ export async function buildPollingUnits(): Promise<{
     pollingUnits: index,
   });
 
+  const delimitationIndex: Record<string, { stateId: string; puId: string }> =
+    {};
+  const byState: Record<string, typeof index> = {};
+  for (const row of index) {
+    if (row.delimitation) {
+      delimitationIndex[row.delimitation] = {
+        stateId: row.stateId,
+        puId: row.id,
+      };
+    }
+    if (!byState[row.stateId]) byState[row.stateId] = [];
+    byState[row.stateId].push(row);
+  }
+
+  const publicPuDir = projectRoot("public/data/polling-units/by-state");
+  ensureDir(publicPuDir);
+  for (const [stateId, rows] of Object.entries(byState)) {
+    const shard = rows.map((pu) => ({
+      id: pu.id,
+      delimitation: pu.delimitation,
+      name: pu.name,
+      abbreviation: pu.abbreviation,
+      wardId: pu.wardId,
+      wardName: pu.wardName,
+      lgaId: pu.lgaId,
+      lgaName: pu.lgaName,
+      status: pu.status,
+    }));
+    writeJson(path.join(publicPuDir, `${stateId}.json`), shard);
+  }
+  ensureDir(projectRoot("public/data/polling-units"));
+  writeJson(
+    projectRoot("public/data/polling-units/delimitation-index.json"),
+    delimitationIndex
+  );
+
   const { stateCount, lgaCount, wardCount } = enrichCounts(states);
 
   const locationsDir = projectRoot("data/locations");
