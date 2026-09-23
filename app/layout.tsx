@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import PostHogProvider from "@/components/PostHogProvider";
 import PwaRegister from "@/components/PwaRegister";
+import PwaInstallPrompt from "@/components/PwaInstallPrompt";
 import JsonLd from "@/components/seo/JsonLd";
 import { buildRootJsonLd } from "@/lib/seo/jsonLd";
 import { defaultTitle, siteConfig } from "@/lib/seo/site";
@@ -17,7 +18,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const { url, name, description, ogDescription, keywords, locale } = siteConfig;
+const { url, name, description, ogDescription, keywords, locale, themeColor } =
+  siteConfig;
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: themeColor },
+    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
@@ -100,6 +109,7 @@ export default function RootLayout({
         <JsonLd data={buildRootJsonLd()} />
         <PostHogProvider apiKey={process.env.POSTHOG_API_KEY}>
           <PwaRegister />
+          <PwaInstallPrompt />
           {children}
         </PostHogProvider>
       </body>
