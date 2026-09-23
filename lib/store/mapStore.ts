@@ -40,6 +40,11 @@ import type { OverlayLayerId, SelectedOverlayFeature } from "@/types/overlay";
 import type { DrivingStep } from "@/lib/map/directionsApi";
 import type { LensId } from "@/lib/lenses/lensHelper";
 import type { PollingUnitShardEntry } from "@/types/politics";
+import {
+  MAX_FEATURE_MAP_VIEWS,
+  type FeatureMapView,
+  fitMapToStateIds,
+} from "@/lib/map/featureMapViews";
 
 const DEFAULT_ACTIVE_OVERLAYS = new Set<OverlayLayerId>(["cities"]);
 
@@ -129,6 +134,15 @@ export interface MapSelectionState {
   toggleDirections: (active: boolean) => void;
   clearDirections: () => void;
   flyToDirectionsRoute: () => void;
+  /** Colored state coverage from overlay “view on map” (max 10). */
+  featureMapViews: FeatureMapView[];
+  toggleFeatureMapView: (input: {
+    id: string;
+    label: string;
+    stateIds: string[];
+  }) => void;
+  removeFeatureMapView: (id: string) => void;
+  clearFeatureMapViews: () => void;
 }
 
 function mobileSheetForSelection(count: number): MobileSheetMode {
@@ -184,8 +198,43 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     steps: [],
     active: false,
   },
+  featureMapViews: [],
 
   registerMap: (map) => set({ mapInstance: map }),
+
+  toggleFeatureMapView: ({ id, label, stateIds }) => {
+    const uniqueIds = [...new Set(stateIds)].filter(Boolean);
+    if (uniqueIds.length === 0) return;
+    const current = get().featureMapViews;
+    const existing = current.find((v) => v.id === id);
+    if (existing) {
+      set({ featureMapViews: current.filter((v) => v.id !== id) });
+      return;
+    }
+    let next = [...current];
+    if (next.length >= MAX_FEATURE_MAP_VIEWS) {
+      next = next.slice(1);
+    }
+    const used = new Set(next.map((v) => v.colorIndex));
+    let colorIndex = 0;
+    for (let i = 0; i < MAX_FEATURE_MAP_VIEWS; i += 1) {
+      if (!used.has(i)) {
+        colorIndex = i;
+        break;
+      }
+    }
+    next.push({ id, label, stateIds: uniqueIds, colorIndex });
+    set({ featureMapViews: next });
+    const map = get().mapInstance;
+    if (map) fitMapToStateIds(map, uniqueIds);
+  },
+
+  removeFeatureMapView: (id) =>
+    set({
+      featureMapViews: get().featureMapViews.filter((v) => v.id !== id),
+    }),
+
+  clearFeatureMapViews: () => set({ featureMapViews: [] }),
   setMapType: (id) => {
     const prev = get().mapType;
     if (prev === "election" && id !== "election") {
@@ -648,6 +697,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       directionsPanelTarget: null,
       activeOverlays: new Set(DEFAULT_ACTIVE_OVERLAYS),
       resetCounter: get().resetCounter + 1,
+      featureMapViews: [],
     });
     notifyLgaVisibility(get);
   },

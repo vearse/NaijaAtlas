@@ -104,7 +104,12 @@ export const WATERWAY_MILITARY_CATEGORY_LABELS: Record<
   "airforce-base": { label: "Air Force base", color: "#1e40af", branch: "Nigerian Air Force" },
 };
 
-export const LAKE_CATEGORIES = ["natural", "reservoir", "lagoon"] as const;
+export const LAKE_CATEGORIES = [
+  "natural",
+  "reservoir",
+  "lagoon",
+  "power-distributor",
+] as const;
 export type LakeCategory = (typeof LAKE_CATEGORIES)[number];
 
 export const LAKE_CATEGORY_LABELS: Record<
@@ -114,6 +119,10 @@ export const LAKE_CATEGORY_LABELS: Record<
   natural: { label: "Natural lake", color: "#2563eb" },
   reservoir: { label: "Reservoir", color: "#0891b2" },
   lagoon: { label: "Coastal lagoon", color: "#0ea5e9" },
+  "power-distributor": {
+    label: "Power distribution (DISCO)",
+    color: "#ca8a04",
+  },
 };
 
 export const POWER_PLANT_CATEGORIES = ["major-hydro", "regional-hydro"] as const;

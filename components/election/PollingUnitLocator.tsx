@@ -23,18 +23,21 @@ import {
   resolvePollingUnitByDelimitation,
 } from "@/lib/politics/fetchPollingUnits";
 import { useMapStore } from "@/lib/store/mapStore";
+import { useToastStore } from "@/lib/store/toastStore";
 import GetDirectionsButton from "@/components/directions/GetDirectionsButton";
 
 interface PollingUnitLocatorProps {
   pollingCounts: PollingUnitCountsBundle;
   lgas: LgaLocation[];
   politics: PoliticsBundle;
+  onShowPresidential: () => void;
 }
 
 export default function PollingUnitLocator({
   pollingCounts,
   lgas,
   politics,
+  onShowPresidential,
 }: PollingUnitLocatorProps) {
   const setSelectedSenatorialDistrict = useMapStore(
     (s) => s.setSelectedSenatorialDistrict
@@ -192,6 +195,13 @@ export default function PollingUnitLocator({
     }
   };
 
+  const pushToast = useToastStore((s) => s.pushToast);
+
+  useEffect(() => {
+    if (!resolved) return;
+    pushToast(`Polling unit found — ${resolved.name}`, "success");
+  }, [resolved, pushToast]);
+
   return (
     <section className="space-y-4">
       <div>
@@ -336,14 +346,24 @@ export default function PollingUnitLocator({
 
       {resolved && (
         <div className="rounded-xl border border-emerald-100 bg-emerald-50/60 p-3 text-sm space-y-3">
-          <div>
-            <p className="font-semibold text-slate-900">{resolved.name}</p>
-            <p className="text-xs text-slate-600 mt-1 font-mono">
-              {formatDelimitationDisplay(resolved.delimitation)}
-            </p>
-            {resolved.status && (
-              <p className="text-xs text-slate-500 mt-1">{resolved.status}</p>
-            )}
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <p className="font-semibold text-slate-900">{resolved.name}</p>
+              <p className="text-xs text-slate-600 mt-1 font-mono">
+                {formatDelimitationDisplay(resolved.delimitation)}
+              </p>
+              {resolved.status && (
+                <p className="text-xs text-slate-500 mt-1">{resolved.status}</p>
+              )}
+            </div>
+            <button
+              type="button"
+              onClick={onShowPresidential}
+              className="shrink-0 rounded-lg bg-ng-green px-3 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-emerald-700 transition flex items-center gap-1"
+            >
+              <span aria-hidden>🗳️</span>
+              View candidates
+            </button>
           </div>
 
           {senatorialDistrict && senatorialDistrictId && (
@@ -381,8 +401,22 @@ export default function PollingUnitLocator({
               </p>
               <ul className="text-xs text-slate-700 space-y-1">
                 {federalSeats.map((fc) => (
-                  <li key={fc.id} className="rounded-md bg-white/80 px-2 py-1">
-                    {fc.name}
+                  <li key={fc.id}>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setSelectedSenatorialDistrict(fc.senatorial_district_id)
+                      }
+                      className="w-full flex items-center justify-between gap-2 rounded-md bg-white/80 px-2 py-1 text-left hover:bg-white transition"
+                    >
+                      <span className="min-w-0">{fc.name}</span>
+                      <span
+                        className="shrink-0 text-slate-400 font-semibold"
+                        aria-hidden
+                      >
+                        →
+                      </span>
+                    </button>
                   </li>
                 ))}
               </ul>

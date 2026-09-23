@@ -37,6 +37,7 @@ import type { PoliticsBundle, PollingUnitCountsBundle } from "@/types/politics";
 import { buildCapitalLgaIdMap } from "@/lib/map/capitalLga";
 import ElectionPanel from "@/components/election/ElectionPanel";
 import ElectionMapLegend from "@/components/election/ElectionMapLegend";
+import ToastStack from "@/components/ui/ToastStack";
 
 const NigeriaMap = dynamic(() => import("@/components/map/NigeriaMap"), {
   ssr: false,
@@ -357,6 +358,7 @@ export default function ExplorerShell({
 
       <WikipediaReaderModal />
       <DirectionsModal />
+      <ToastStack />
     </div>
   );
 }

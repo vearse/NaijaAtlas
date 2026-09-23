@@ -698,7 +698,9 @@ function buildLakes(catalog: CatalogRow[]): Feature[] {
   for (const row of catalog) {
     const kind = String(row.featureKind ?? "lake");
     const feature =
-      kind === "power-station" ? powerStationFeature(row) : lakePolygonFeature(row);
+      kind === "power-station" || kind === "power-distributor"
+        ? powerStationFeature(row)
+        : lakePolygonFeature(row);
     if (feature) features.push(feature);
     else missing.push(row.id);
   }

@@ -560,14 +560,21 @@ export default function NigeriaOverview({
                 </p>
               </div>
             </>
-          ) : (
-            <AccordionItem
-              title="Interesting history"
-              count={filteredCountryNotes.length}
-              open={openIndex === 0}
-              onToggle={() => toggle(0)}
-            >
-              <div className="space-y-4">
+          ) : null}
+
+          {activeLens === "learn" && filteredCountryNotes.length > 0 && (
+            <div className="rounded-xl border border-slate-100 overflow-hidden">
+              <div className="flex items-center justify-between gap-2 px-3 py-2.5 bg-slate-50/60 border-b border-slate-100">
+                <span className="flex items-center gap-2 min-w-0">
+                  <span className="text-sm font-semibold text-slate-800">
+                    Interesting history
+                  </span>
+                  <span className="rounded-full bg-slate-100 text-slate-500 text-[10px] font-semibold px-2 py-0.5">
+                    {filteredCountryNotes.length}
+                  </span>
+                </span>
+              </div>
+              <div className="p-3 space-y-4">
                 {orderedCategories.map((category) => {
                   const notes = groupedNotes.get(category) ?? [];
                   return (
@@ -611,9 +618,11 @@ export default function NigeriaOverview({
                   );
                 })}
               </div>
-            </AccordionItem>
+            </div>
           )}
 
+          {activeLens === "learn" && (
+            <>
           <AccordionItem
             title="Top states by population"
             count={populationRanking.ranked.length}
@@ -732,6 +741,8 @@ export default function NigeriaOverview({
                 ))}
               </ul>
             </AccordionItem>
+          )}
+            </>
           )}
         </div>
       </div>

@@ -6,6 +6,7 @@ import {
   MAX_ELECTION_STATES,
   type DirectionsTarget,
 } from "@/lib/store/mapStore";
+import { FEATURE_MAP_VIEW_CHIP_CLASSES } from "@/lib/map/featureMapViews";
 import type { StateLocation } from "@/types/location";
 import { MapLayersIcon } from "@/components/map/ShowLgasButton";
 
@@ -58,6 +59,9 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
     directions,
     openDirectionsPanel,
     restoreMapTypeAfterDirections,
+    featureMapViews,
+    removeFeatureMapView,
+    clearFeatureMapViews,
   } = useMapStore();
 
   const maxStates =
@@ -72,13 +76,15 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
   return (
     <div className="flex flex-wrap items-center gap-2 pt-1">
       <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mr-1">
-        {selected.length === 0 && !directionTarget
+        {selected.length === 0 && !directionTarget && featureMapViews.length === 0
           ? isElection
             ? `Select up to ${maxStates} states on the map`
             : `Select up to ${maxStates} states to compare`
           : selected.length > 0
             ? "Selected"
-            : "Directions"}
+            : featureMapViews.length > 0
+              ? "On map"
+              : "Directions"}
       </span>
       {selected.map((s, i) => {
         const lgaVisible = lgaVisibleStateIds.has(s.id);
@@ -131,6 +137,44 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
           </span>
         );
       })}
+      {featureMapViews.map((view) => {
+        const chipStyle =
+          FEATURE_MAP_VIEW_CHIP_CLASSES[
+            view.colorIndex % FEATURE_MAP_VIEW_CHIP_CLASSES.length
+          ];
+        return (
+          <span
+            key={view.id}
+            className={`inline-flex items-center gap-1 rounded-full pl-2 pr-1.5 py-1 text-xs font-medium shadow-sm border max-w-[220px] ${chipStyle}`}
+          >
+            <span
+              className="truncate"
+              title={`${view.label} · ${view.stateIds.length} state${
+                view.stateIds.length === 1 ? "" : "s"
+              }`}
+            >
+              {view.label}
+            </span>
+            <button
+              type="button"
+              aria-label={`Remove ${view.label} from map`}
+              onClick={() => removeFeatureMapView(view.id)}
+              className="rounded-full hover:bg-black/10 w-5 h-5 flex items-center justify-center leading-none shrink-0"
+            >
+              ×
+            </button>
+          </span>
+        );
+      })}
+      {featureMapViews.length > 1 && (
+        <button
+          type="button"
+          onClick={() => clearFeatureMapViews()}
+          className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 hover:text-ng-green transition-colors"
+        >
+          Clear map views
+        </button>
+      )}
       {directionTarget && (
         <span
           className={`inline-flex items-center gap-1 rounded-full pl-2 pr-1.5 py-1 text-xs font-medium shadow-sm border ${DIRECTION_CHIP}`}

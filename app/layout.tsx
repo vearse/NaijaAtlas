@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import PostHogProvider from "@/components/PostHogProvider";
+import PwaRegister from "@/components/PwaRegister";
 import JsonLd from "@/components/seo/JsonLd";
 import { buildRootJsonLd } from "@/lib/seo/jsonLd";
 import { defaultTitle, siteConfig } from "@/lib/seo/site";
@@ -98,6 +99,7 @@ export default function RootLayout({
       >
         <JsonLd data={buildRootJsonLd()} />
         <PostHogProvider apiKey={process.env.POSTHOG_API_KEY}>
+          <PwaRegister />
           {children}
         </PostHogProvider>
       </body>

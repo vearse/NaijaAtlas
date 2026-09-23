@@ -5,6 +5,11 @@ import { enrichLgaSenatorialColors } from "@/lib/politics/senatorialColors";
 import type { PoliticsLookups } from "@/types/politics";
 import { withExcludeState, withExcludeStates } from "@/lib/map/dragStateGeometry";
 import type { MapTypeId } from "@/lib/store/mapStore";
+import type { FeatureMapView } from "@/lib/map/featureMapViews";
+import {
+  FEATURE_MAP_VIEW_BORDER_COLORS,
+  FEATURE_MAP_VIEW_FILL_COLORS,
+} from "@/lib/map/featureMapViews";
 
 const FILL_TRANSITION = {
   "fill-opacity-transition": { duration: 300 },
@@ -313,11 +318,48 @@ export function applyStateMaskForLgaVisibility(
   }
 }
 
-/** Selection color from feature ids — not sticky feature-state. */
+function featureViewColorMaps(views: FeatureMapView[]): {
+  fillByState: Record<string, string>;
+  borderByState: Record<string, string>;
+} {
+  const fillByState: Record<string, string> = {};
+  const borderByState: Record<string, string> = {};
+  for (const view of views) {
+    const fill =
+      FEATURE_MAP_VIEW_FILL_COLORS[
+        view.colorIndex % FEATURE_MAP_VIEW_FILL_COLORS.length
+      ];
+    const border =
+      FEATURE_MAP_VIEW_BORDER_COLORS[
+        view.colorIndex % FEATURE_MAP_VIEW_BORDER_COLORS.length
+      ];
+    for (const stateId of view.stateIds) {
+      fillByState[stateId] = fill;
+      borderByState[stateId] = border;
+    }
+  }
+  return { fillByState, borderByState };
+}
+
+function matchStateColors(
+  byState: Record<string, string>,
+  fallback: string
+): unknown[] | string {
+  const ids = Object.keys(byState);
+  if (ids.length === 0) return fallback;
+  const pairs: unknown[] = [];
+  for (const id of ids) {
+    pairs.push(id, byState[id]);
+  }
+  return ["match", ["get", "id"], ...pairs, fallback];
+}
+
+/** Selection + optional feature coverage colors — not sticky feature-state. */
 export function applyStateSelectionPaint(
   map: Map,
   selectedIds: Iterable<string>,
-  readyLgaStateIds: Iterable<string>
+  readyLgaStateIds: Iterable<string>,
+  featureMapViews: FeatureMapView[] = []
 ): void {
   const ids = [...selectedIds];
   const ready = [...readyLgaStateIds];
@@ -331,14 +373,28 @@ export function applyStateSelectionPaint(
       : (["==", ["get", "id"], ""] as const);
   const selectedWithLga = ["all", isSelected, lgaCoversState] as const;
 
+  const { fillByState, borderByState } = featureViewColorMaps(featureMapViews);
+  const featureStateIds = Object.keys(fillByState);
+  const hasFeatureViews = featureStateIds.length > 0;
+  const inFeatureView =
+    hasFeatureViews
+      ? (["in", ["get", "id"], ["literal", featureStateIds]] as const)
+      : (["==", ["get", "id"], ""] as const);
+
+  const defaultFill = ["coalesce", ["get", "regionColor"], "#f1f5f9"] as const;
+  const featureFill = matchStateColors(fillByState, "#f1f5f9");
+  const featureBorder = matchStateColors(borderByState, "#475569");
+
   if (map.getLayer("states-fill")) {
     map.setPaintProperty("states-fill", "fill-color", [
       "case",
       isSelected,
       "#008751",
+      inFeatureView,
+      featureFill,
       ["boolean", ["feature-state", "hover"], false],
       "#fbbf24",
-      ["coalesce", ["get", "regionColor"], "#f1f5f9"],
+      defaultFill,
     ]);
     map.setPaintProperty("states-fill", "fill-opacity", [
       "case",
@@ -346,9 +402,11 @@ export function applyStateSelectionPaint(
       0.55,
       isSelected,
       0.55,
+      inFeatureView,
+      0.52,
       ["boolean", ["feature-state", "hover"], false],
       0.42,
-      ids.length > 0 ? 0.18 : 0.92,
+      ids.length > 0 || hasFeatureViews ? 0.18 : 0.92,
     ]);
   }
 
@@ -359,6 +417,8 @@ export function applyStateSelectionPaint(
       "#003322",
       isSelected,
       "#006b40",
+      inFeatureView,
+      featureBorder,
       ["boolean", ["feature-state", "hover"], false],
       "#b45309",
       "#475569",

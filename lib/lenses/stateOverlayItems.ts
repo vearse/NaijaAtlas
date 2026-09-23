@@ -8,6 +8,10 @@ import landformsCatalog from "@/data/overlays/catalog/landforms.json";
 import resourcesCatalog from "@/data/overlays/catalog/resources.json";
 import lakesCatalog from "@/data/overlays/catalog/lakes.json";
 import {
+  resolveCoverageStateIds,
+  shouldOfferViewOnMap,
+} from "@/lib/map/featureCoverage";
+import {
   lensesFor,
   type LensId,
   type LensInput,
@@ -24,6 +28,8 @@ export interface StateOverlayItem {
   lon: number | null;
   lat: number | null;
   section: "cities" | "places" | "landforms" | "lakes" | "resources" | "agriculture";
+  coverageStateIds?: string[];
+  showViewOnMap?: boolean;
 }
 
 interface CatalogRow {
@@ -36,6 +42,8 @@ interface CatalogRow {
   stateId?: string;
   stateName?: string;
   statesCrossed?: string[];
+  coversStates?: string[];
+  locations?: Array<{ state?: string }> | string;
   summary?: string;
   description?: string;
   economy?: string;
@@ -99,6 +107,21 @@ function toItem(
     row.resourceType ??
     row.type ??
     layerId;
+  const propsForCoverage: Record<string, unknown> = {
+    statesCrossed: row.statesCrossed,
+    coversStates: row.coversStates,
+    stateName: row.stateName,
+    locations: Array.isArray(row.locations)
+      ? JSON.stringify(row.locations)
+      : row.locations,
+  };
+  const coverageStateIds = resolveCoverageStateIds(propsForCoverage);
+  const showViewOnMap =
+    (layerId === "landforms" ||
+      layerId === "resources" ||
+      layerId === "lakes") &&
+    shouldOfferViewOnMap(propsForCoverage, coverageStateIds);
+
   return {
     id: typeof row.id === "string" && row.id ? row.id : fallbackId,
     name,
@@ -112,6 +135,8 @@ function toItem(
     lon: typeof row.lon === "number" && Number.isFinite(row.lon) ? row.lon : null,
     lat: typeof row.lat === "number" && Number.isFinite(row.lat) ? row.lat : null,
     section,
+    coverageStateIds,
+    showViewOnMap,
   };
 }
 

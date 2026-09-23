@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
+import { useToastStore } from "@/lib/store/toastStore";
 
 const HINTS_DISMISSED_KEY = "naija-atlas-hints-dismissed";
 
@@ -110,6 +111,13 @@ export default function MapHints() {
     }, 4000);
     return () => window.clearTimeout(t);
   }, [mapActionHint]);
+
+  const pushToast = useToastStore((s) => s.pushToast);
+
+  useEffect(() => {
+    if (!mapActionHint) return;
+    pushToast(mapActionHint, "tip");
+  }, [mapActionHint, pushToast]);
 
   const dismiss = () => {
     localStorage.setItem(HINTS_DISMISSED_KEY, "1");

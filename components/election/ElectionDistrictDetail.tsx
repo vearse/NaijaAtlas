@@ -5,6 +5,7 @@ import type { PoliticsBundle } from "@/types/politics";
 import { useMapStore } from "@/lib/store/mapStore";
 import { colorForDistrict } from "@/lib/politics/senatorialColors";
 import { CandidateRow } from "./CandidateAvatar";
+import PresidentialTicketList from "./PresidentialTicketList";
 
 interface ElectionDistrictDetailProps {
   politics: PoliticsBundle;
@@ -53,9 +54,6 @@ export default function ElectionDistrictDetail({
 
   const { lookups, presidential } = politics;
 
-  const [openPresidential, setOpenPresidential] = useState<Set<string>>(
-    () => new Set()
-  );
   const [openReps, setOpenReps] = useState<Set<string>>(() => new Set());
 
   const chipDistricts = useMemo(() => {
@@ -249,81 +247,7 @@ export default function ElectionDistrictDetail({
           <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">
             Presidential
           </h3>
-          <ul className="space-y-2">
-            {presidential.candidates.map((ticket) => {
-              const id = ticket.party.abbreviation;
-              const open = openPresidential.has(id);
-              return (
-                <li
-                  key={id}
-                  className={`overflow-hidden rounded-xl border bg-white transition-colors ${
-                    open ? "border-ng-green/40" : "border-slate-100"
-                  }`}
-                >
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setOpenPresidential((s) => toggleInSet(s, id))
-                    }
-                    aria-expanded={open}
-                    className="w-full flex items-center gap-2.5 px-3 py-2.5 text-left transition-colors hover:bg-slate-50"
-                  >
-                    <span className="shrink-0 rounded-md bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-700">
-                      {ticket.party.abbreviation}
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block text-sm font-medium text-slate-900 truncate">
-                        {ticket.presidential_candidate.name}
-                      </span>
-                      <span className="block text-[10px] text-slate-400 truncate">
-                        {ticket.party.name}
-                      </span>
-                    </span>
-                    <Chevron open={open} />
-                  </button>
-                  {open && (
-                    <div className="px-3 pb-3 pt-1">
-                      <div className="rounded-lg border border-slate-100 bg-slate-50/60 px-2.5 py-2 text-sm">
-                        <p className="text-slate-500 text-xs">
-                          Vice presidential candidate
-                        </p>
-                        <p className="font-semibold text-slate-900 truncate">
-                          {ticket.vice_presidential_candidate.name}
-                        </p>
-                        {(ticket.vice_presidential_candidate.age ||
-                          ticket.vice_presidential_candidate.gender) && (
-                          <p className="text-xs text-slate-400">
-                            {[
-                              ticket.vice_presidential_candidate.gender,
-                              ticket.vice_presidential_candidate.age
-                                ? `Age ${ticket.vice_presidential_candidate.age}`
-                                : null,
-                            ]
-                              .filter(Boolean)
-                              .join(" · ")}
-                          </p>
-                        )}
-                      </div>
-                      {(ticket.presidential_candidate.age ||
-                        ticket.presidential_candidate.gender) && (
-                        <p className="mt-1.5 text-xs text-slate-400">
-                          {[
-                            ticket.presidential_candidate.gender,
-                            ticket.presidential_candidate.age
-                              ? `Age ${ticket.presidential_candidate.age}`
-                              : null,
-                          ]
-                            .filter(Boolean)
-                            .join(" · ")}{" "}
-                          · Presidential candidate
-                        </p>
-                      )}
-                    </div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
+          <PresidentialTicketList presidential={presidential} />
         </section>
 
         <section className="border-t border-slate-100 pt-4">

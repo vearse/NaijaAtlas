@@ -474,6 +474,7 @@ export async function buildGeo() {
     reservoir: "Reservoir / dam",
     lagoon: "Coastal lagoon",
     "power-station": "Hydro power station",
+    "power-distributor": "Power distribution (DISCO)",
   };
 
   const landformCentroids: Record<string, [number, number]> = {
@@ -567,7 +568,12 @@ export async function buildGeo() {
       summary: row.summary,
     })),
     ...lakesCatalog.map((row) => {
-      const kind = row.type === "power-station" ? "power-station" : String(row.lakeCategory ?? "natural");
+      const kind =
+        row.type === "power-station" || row.featureKind === "power-distributor"
+          ? row.featureKind === "power-distributor"
+            ? "power-distributor"
+            : "power-station"
+          : String(row.lakeCategory ?? "natural");
       return {
         id: row.id,
         name: row.name,

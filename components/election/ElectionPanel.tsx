@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import type { PoliticsBundle, PollingUnitCountsBundle } from "@/types/politics";
 import type { LgaLocation } from "@/types/location";
 import { useIsMobile } from "@/hooks/useMediaQuery";
@@ -8,6 +9,7 @@ import MobileBottomSheet from "@/components/location/MobileBottomSheet";
 import PollingUnitLocator from "./PollingUnitLocator";
 import ElectionDistrictPicker from "./ElectionDistrictPicker";
 import ElectionDistrictDetail from "./ElectionDistrictDetail";
+import PresidentialCandidatesDetail from "./PresidentialCandidatesDetail";
 
 interface ElectionPanelProps {
   politics: PoliticsBundle;
@@ -31,7 +33,16 @@ export default function ElectionPanel({
     ? politics.lookups.districtById[selectedSenatorialDistrictId]
     : null;
 
+  const [viewPresidential, setViewPresidential] = useState(false);
+
   const inDistrictPhase = Boolean(selectedSenatorialDistrictId && district);
+  const inPresidentialPhase = viewPresidential && !inDistrictPhase;
+
+  if (selectedSenatorialDistrictId && viewPresidential) {
+    setViewPresidential(false);
+  }
+
+  const openPresidential = () => setViewPresidential(true);
 
   const browsePhase = (
     <div className="flex flex-col h-full min-h-0">
@@ -49,8 +60,12 @@ export default function ElectionPanel({
           pollingCounts={pollingCounts}
           lgas={lgas}
           politics={politics}
+          onShowPresidential={openPresidential}
         />
-        <ElectionDistrictPicker politics={politics} />
+        <ElectionDistrictPicker
+          politics={politics}
+          onShowPresidential={openPresidential}
+        />
       </div>
     </div>
   );
@@ -59,16 +74,31 @@ export default function ElectionPanel({
     <ElectionDistrictDetail politics={politics} />
   );
 
-  const inner = inDistrictPhase ? districtPhase : browsePhase;
+  const presidentialPhase = (
+    <PresidentialCandidatesDetail
+      politics={politics}
+      onBack={() => setViewPresidential(false)}
+    />
+  );
+
+  const inner = inDistrictPhase
+    ? districtPhase
+    : inPresidentialPhase
+      ? presidentialPhase
+      : browsePhase;
 
   const sheetTitle = inDistrictPhase
     ? district?.name ?? "District"
-    : "2027 Elections";
+    : inPresidentialPhase
+      ? "Presidential candidates"
+      : "2027 Elections";
   const sheetSubtitle = inDistrictPhase
     ? `${district?.state} · Candidates`
-    : selectedStateIds.size > 0
-      ? `${selectedStateIds.size} state(s) on map`
-      : "Find polling unit & districts";
+    : inPresidentialPhase
+      ? `${politics.presidential.candidates.length} tickets · ${politics.presidential.election.election_date ?? "2027"}`
+      : selectedStateIds.size > 0
+        ? `${selectedStateIds.size} state(s) on map`
+        : "Find polling unit & districts";
 
   if (isMobile) {
     if (mobileSheet === "hidden") {
@@ -78,7 +108,11 @@ export default function ElectionPanel({
           onClick={() => openMobileSheet()}
           className="fixed bottom-4 left-1/2 -translate-x-1/2 z-30 lg:hidden rounded-full bg-ng-green px-4 py-2 text-sm font-semibold text-white shadow-lg flex items-center gap-2"
         >
-          {inDistrictPhase ? district?.name ?? "Election" : "2027 Elections"}
+          {inDistrictPhase
+            ? district?.name ?? "Election"
+            : inPresidentialPhase
+              ? "Presidential candidates"
+              : "2027 Elections"}
         </button>
       );
     }

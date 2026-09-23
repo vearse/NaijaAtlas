@@ -1,6 +1,7 @@
 "use client";
 
 import GetDirectionsButton from "@/components/directions/GetDirectionsButton";
+import ViewOnMapButton from "@/components/map/ViewOnMapButton";
 import type { StateOverlayItem } from "@/lib/lenses/stateOverlayItems";
 
 interface OverlayItemListProps {
@@ -47,20 +48,29 @@ export default function OverlayItemList({
                 {item.summary}
               </p>
             )}
-            <div className="flex justify-between">  
-              {item.wikiUrl && (
+            <div className="flex flex-wrap items-center justify-between gap-2 mt-2">
+              {item.wikiUrl ? (
                 <button
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
                     openWikiModal(item.wikiUrl!, item.name);
                   }}
-                  className="mt-1.5 text-[11px] font-semibold text-sky-700 underline underline-offset-2 hover:text-sky-900"
+                  className="text-[11px] font-semibold text-sky-700 underline underline-offset-2 hover:text-sky-900"
                 >
                   Wikipedia
                 </button>
+              ) : (
+                <span />
               )}
-              <div className="mt-2">
+              <div className="flex flex-wrap items-center gap-3 ml-auto">
+                {item.showViewOnMap && item.coverageStateIds && item.coverageStateIds.length > 0 && (
+                  <ViewOnMapButton
+                    featureId={item.id}
+                    label={item.name}
+                    stateIds={item.coverageStateIds}
+                  />
+                )}
                 <GetDirectionsButton
                   name={item.name}
                   lonLat={

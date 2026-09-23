@@ -178,12 +178,21 @@ export default function NigeriaMap({
   const labeledLgaOrder = useMapStore((s) => s.labeledLgaOrder);
   const mapType: MapTypeId = useMapStore((s) => s.mapType);
   const directions = useMapStore((s) => s.directions);
+  const featureMapViews = useMapStore((s) => s.featureMapViews);
   const loadedLgaRef = useRef(new Set<string>());
   const [lgaReadyKey, setLgaReadyKey] = useState(0);
 
   const selectedKey = useMemo(
     () => [...selectedStateIds].sort().join(","),
     [selectedStateIds]
+  );
+
+  const featureMapViewsKey = useMemo(
+    () =>
+      featureMapViews
+        .map((v) => `${v.id}:${v.stateIds.join(",")}:${v.colorIndex}`)
+        .join("|"),
+    [featureMapViews]
   );
 
   const lgaVisibleKey = useMemo(
@@ -306,7 +315,12 @@ export default function NigeriaMap({
       const store = useMapStore.getState();
       const ready = readyLgaStateIds(map, store.lgaVisibleStateIds);
       applyStateMaskForLgaVisibility(map, ready, store.draggedStateId);
-      applyStateSelectionPaint(map, store.selectedStateIds, ready);
+      applyStateSelectionPaint(
+        map,
+        store.selectedStateIds,
+        ready,
+        store.featureMapViews
+      );
       // Final writer: keep OSM free of admin/region/LGA fills.
       applyAdminLayersMapTypeTuning(map, useMapStore.getState().mapType);
     },
@@ -1029,7 +1043,8 @@ export default function NigeriaMap({
         applyStateSelectionPaint(
           map,
           store.selectedStateIds,
-          readyLgas
+          readyLgas,
+          store.featureMapViews
         );
 
         // 3. Z-order restacking
@@ -1183,7 +1198,12 @@ export default function NigeriaMap({
     }
 
     if (map.getLayer("states-fill")) {
-      if (activeRegionId && activeRegion && selectedStateIds.size === 0) {
+      if (
+        activeRegionId &&
+        activeRegion &&
+        selectedStateIds.size === 0 &&
+        featureMapViews.length === 0
+      ) {
         map.setPaintProperty("states-fill", "fill-color", [
           "case",
           ["boolean", ["feature-state", "hover"], false],
@@ -1204,7 +1224,8 @@ export default function NigeriaMap({
         applyStateSelectionPaint(
           map,
           selectedStateIds,
-          readyVisible
+          readyVisible,
+          useMapStore.getState().featureMapViews
         );
       }
     }
@@ -1212,7 +1233,7 @@ export default function NigeriaMap({
     // Map-type tuning must be the final writer so OSM stays uncluttered
     // no matter which selection/mask effect ran above.
     applyAdminLayersMapTypeTuning(map, useMapStore.getState().mapType);
-  }, [selectedKey, lgaVisibleKey, lgaReadyKey, activeRegionId, draggedStateId, states, regions, setFeatureState, mapReady, selectedStateIds, lgaVisibleStateIds, readyLgaStateIds]);
+  }, [selectedKey, featureMapViewsKey, lgaVisibleKey, lgaReadyKey, activeRegionId, draggedStateId, states, regions, setFeatureState, mapReady, selectedStateIds, lgaVisibleStateIds, readyLgaStateIds]);
 
   // ——— LGA selected highlight ———
   useEffect(() => {

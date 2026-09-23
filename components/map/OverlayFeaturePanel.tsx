@@ -4,6 +4,11 @@ import { type ReactNode } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
 import WikiDeepDiveLink from "@/components/map/WikiDeepDiveLink";
 import GetDirectionsButton from "@/components/directions/GetDirectionsButton";
+import ViewOnMapButton from "@/components/map/ViewOnMapButton";
+import {
+  resolveCoverageStateIds,
+  shouldOfferViewOnMap,
+} from "@/lib/map/featureCoverage";
 import {
   CITY_CATEGORY_LABELS,
   LAKE_CATEGORY_LABELS,
@@ -274,6 +279,7 @@ export default function OverlayFeaturePanel({
 
   const relatedStateNames = [
     ...parseStringArray(props.statesCrossed),
+    ...parseStringArray(props.coversStates),
     ...parseStringArray(props.coastalStates),
   ];
   if (typeof props.stateName === "string" && props.stateName) {
@@ -288,6 +294,17 @@ export default function OverlayFeaturePanel({
   const unmatchedStateNames = uniqueStateNames.filter(
     (stateName) => !relatedStates.some((s) => s.name === stateName)
   );
+
+  const coverageStateIds = resolveCoverageStateIds(
+    props as Record<string, unknown>
+  );
+  const featureMapId = String(props.id ?? feature.id ?? name);
+  const showViewOnMap =
+    (layerId === "landforms" ||
+      layerId === "resources" ||
+      layerId === "lakes" ||
+      layerId === "waterways") &&
+    shouldOfferViewOnMap(props as Record<string, unknown>, coverageStateIds);
 
   const wikiUrl = text(props.wikiUrl);
   const siteName = text(props.siteName);
@@ -495,13 +512,22 @@ export default function OverlayFeaturePanel({
         </div>
       )}
 
-      <GetDirectionsButton
-        name={name}
-        lonLat={toLonLat}
-        kind="overlay"
-        label="Get directions"
-        size="md"
-      />
+      <div className="flex flex-wrap items-center gap-3">
+        {showViewOnMap && (
+          <ViewOnMapButton
+            featureId={featureMapId}
+            label={name}
+            stateIds={coverageStateIds}
+          />
+        )}
+        <GetDirectionsButton
+          name={name}
+          lonLat={toLonLat}
+          kind="overlay"
+          label="Get directions"
+          size="md"
+        />
+      </div>
 
       <dl className="space-y-3 rounded-xl border border-slate-100 bg-slate-50/80 p-4">
         <DetailRow label="Founded" value={text(props.founded)} />
