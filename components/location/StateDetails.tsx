@@ -224,43 +224,51 @@ export default function StateDetails({
             </dd>
           </div>
         )}
+        {content.languages && content.languages.length > 0 && (
+          <div className="rounded-xl bg-slate-50 border border-slate-100 px-3 py-2.5 col-span-2">
+            <h3 className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+              Languages spoken ({content.languages.length})
+            </h3>
+            <div className="text-sm font-semibold text-slate-800 mt-0.5 flex flex-wrap gap-x-3 gap-y-1">
+              {content.languages.map((lang) => (
+                <button
+                  key={lang.name}
+                  type="button"
+                  onClick={() => openWikiModal(lang.wikiUrl, lang.name)}
+                  className="inline-flex items-center gap-1 text-slate-800 underline underline-offset-2 hover:text-ng-green"
+                  aria-label={`Open Wikipedia article for ${lang.name}`}
+                  title={`Open Wikipedia: ${lang.name}`}
+                >
+                  {lang.name}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="w-3 h-3 text-slate-400"
+                    aria-hidden
+                  >
+                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                  </svg>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+        
         <StatCard
           label="Wards"
           value={wardTotal > 0 ? String(wardTotal) : "—"}
         />
+        <GetDirectionsButton
+          name={content.name}
+          lonLat={location.centroid}
+          kind="state"
+          label="Get directions"
+          size="md"
+        />
       </dl>
 
-      {content.languages && content.languages.length > 0 && (
-        <div className="rounded-xl bg-slate-50 border border-slate-100 px-3 py-2.5">
-          <h3 className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-            Languages spoken ({content.languages.length})
-          </h3>
-          <div className="text-sm font-semibold text-slate-800 mt-0.5 flex flex-wrap gap-x-3 gap-y-1">
-            {content.languages.map((lang) => (
-              <button
-                key={lang.name}
-                type="button"
-                onClick={() => openWikiModal(lang.wikiUrl, lang.name)}
-                className="inline-flex items-center gap-1 text-slate-800 underline underline-offset-2 hover:text-ng-green"
-                aria-label={`Open Wikipedia article for ${lang.name}`}
-                title={`Open Wikipedia: ${lang.name}`}
-              >
-                {lang.name}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="w-3 h-3 text-slate-400"
-                  aria-hidden
-                >
-                  <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                </svg>
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
 
       <ShowLgasButton stateId={location.id} stateName={location.name} />
 
@@ -372,13 +380,6 @@ export default function StateDetails({
         </div>
       )}
 
-      <GetDirectionsButton
-        name={content.name}
-        lonLat={location.centroid}
-        kind="state"
-        label="Get directions"
-        size="md"
-      />
 
       {activeLens === "learn" && stateNotes.length > 0 && (
         <div>

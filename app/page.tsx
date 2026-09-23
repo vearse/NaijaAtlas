@@ -21,6 +21,7 @@ import type {
   FederalConstituency,
   PollingUnitCountsBundle,
   PresidentialBundle,
+  RepsRace,
   SenateRace,
   SenatorialDistrict,
 } from "@/types/politics";
@@ -82,6 +83,9 @@ export default function HomePage() {
   const senateRaces = loadJson<SenateRace[]>(
     path.join(root, "data/politics/candidate/2027/seneate/senate.json")
   );
+  const repsRaces = loadJson<RepsRace[]>(
+    path.join(root, "data/politics/candidate/2027/representative/reps.json")
+  );
   const presidential = loadJson<PresidentialBundle>(
     path.join(root, "data/politics/candidate/2027/presidential_candidates.json")
   );
@@ -89,6 +93,7 @@ export default function HomePage() {
     senatorialDistricts,
     federalConstituencies,
     senateRaces,
+    repsRaces,
     presidential,
     states
   );

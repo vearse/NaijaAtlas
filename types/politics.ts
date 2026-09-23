@@ -27,6 +27,24 @@ export interface SenateRace {
   candidates: CandidateRow[];
 }
 
+export interface RepsCandidate {
+  name: string;
+  party: string;
+  age?: string;
+  gender?: string;
+  pwd?: string;
+  qualification?: string;
+}
+
+export interface RepsRace {
+  federal_constituency_id: string;
+  name: string;
+  state: string;
+  region?: string;
+  senatorial_district_id: string;
+  candidates: RepsCandidate[];
+}
+
 export interface PresidentialCandidateTicket {
   party: { abbreviation: string; name: string };
   presidential_candidate: { name: string; age?: number; gender?: string };
@@ -50,6 +68,7 @@ export interface PoliticsLookups {
   districtById: Record<string, SenatorialDistrict>;
   federalBySenatorialDistrictId: Record<string, FederalConstituency[]>;
   senateBySenatorialDistrictId: Record<string, SenateRace>;
+  repsByFederalConstituencyId: Record<string, RepsRace>;
   districtsByStateId: Record<string, SenatorialDistrict[]>;
   districtColorIndex: Record<string, number>;
 }
@@ -58,6 +77,7 @@ export interface PoliticsBundle {
   senatorialDistricts: SenatorialDistrict[];
   federalConstituencies: FederalConstituency[];
   senateRaces: SenateRace[];
+  repsRaces: RepsRace[];
   presidential: PresidentialBundle;
   lookups: PoliticsLookups;
 }

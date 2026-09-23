@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import type { PoliticsBundle } from "@/types/politics";
 import { useMapStore } from "@/lib/store/mapStore";
 import { colorForDistrict } from "@/lib/politics/senatorialColors";
@@ -8,6 +8,36 @@ import { CandidateRow } from "./CandidateAvatar";
 
 interface ElectionDistrictDetailProps {
   politics: PoliticsBundle;
+}
+
+function Chevron({ open }: { open: boolean }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      aria-hidden
+      className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
+        open ? "rotate-180" : ""
+      }`}
+    >
+      <path
+        fillRule="evenodd"
+        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
+function toggleInSet(set: Set<string>, id: string): Set<string> {
+  const next = new Set(set);
+  if (next.has(id)) {
+    next.delete(id);
+  } else {
+    next.add(id);
+  }
+  return next;
 }
 
 export default function ElectionDistrictDetail({
@@ -22,6 +52,11 @@ export default function ElectionDistrictDetail({
   );
 
   const { lookups, presidential } = politics;
+
+  const [openPresidential, setOpenPresidential] = useState<Set<string>>(
+    () => new Set()
+  );
+  const [openReps, setOpenReps] = useState<Set<string>>(() => new Set());
 
   const chipDistricts = useMemo(() => {
     if (selectedStateIds.size === 0) {
@@ -104,22 +139,6 @@ export default function ElectionDistrictDetail({
       <div className="flex-1 overflow-y-auto p-4 space-y-6">
         <section>
           <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">
-            Presidential
-          </h3>
-          <ul className="space-y-2">
-            {presidential.candidates.map((ticket) => (
-              <CandidateRow
-                key={ticket.party.abbreviation}
-                name={ticket.presidential_candidate.name}
-                party={ticket.party.abbreviation}
-                subtitle={`VP: ${ticket.vice_presidential_candidate.name}`}
-              />
-            ))}
-          </ul>
-        </section>
-
-        <section className="border-t border-slate-100 pt-4">
-          <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">
             Senate candidates
           </h3>
           {senateRace && senateRace.candidates.length > 0 ? (
@@ -137,24 +156,173 @@ export default function ElectionDistrictDetail({
           )}
         </section>
 
-        <section>
+        <section className="border-t border-slate-100 pt-4">
           <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">
             House of Representatives
           </h3>
-          <ul className="space-y-1.5">
-            {federalSeats.map((fc) => (
-              <li
-                key={fc.id}
-                className="text-sm rounded-lg border border-slate-100 bg-slate-50/80 px-3 py-2"
-              >
-                {fc.name}
-                {fc.verify === false && (
-                  <span className="ml-2 text-[10px] uppercase text-amber-600">
-                    unverified
-                  </span>
-                )}
-              </li>
-            ))}
+          {federalSeats.length > 0 ? (
+            <ul className="space-y-2">
+              {federalSeats.map((fc) => {
+                const race = lookups.repsByFederalConstituencyId[fc.id];
+                const open = openReps.has(fc.id);
+                const candidateCount = race?.candidates.length ?? 0;
+                return (
+                  <li
+                    key={fc.id}
+                    className="overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpenReps((s) => toggleInSet(s, fc.id))}
+                      aria-expanded={open}
+                      className="w-full flex items-center gap-2 px-3 py-2.5 text-left transition-colors hover:bg-slate-50"
+                    >
+                      <span className="min-w-0 flex-1">
+                        <span className="block text-sm font-semibold text-slate-900 truncate">
+                          {fc.name}
+                        </span>
+                        <span className="block text-xs text-slate-500">
+                          {candidateCount > 0
+                            ? `${candidateCount} candidate${candidateCount === 1 ? "" : "s"}`
+                            : "No candidates loaded"}
+                          {fc.verify === false && (
+                            <span className="ml-1.5 text-[10px] uppercase text-amber-600">
+                              unverified
+                            </span>
+                          )}
+                        </span>
+                      </span>
+                      <Chevron open={open} />
+                    </button>
+                    {open && (
+                      <ul className="px-2 pb-2 space-y-1.5">
+                        {race && race.candidates.length > 0 ? (
+                          race.candidates.map((c, i) => (
+                            <li
+                              key={`${fc.id}-${c.party}-${c.name}-${i}`}
+                              className="flex items-center gap-2 rounded-lg border border-slate-100 bg-slate-50/60 px-2.5 py-2"
+                            >
+                              <div className="min-w-0 flex-1">
+                                <p className="text-sm font-medium text-slate-900 truncate">
+                                  {c.name}
+                                </p>
+                                {(c.gender || c.age) && (
+                                  <p className="text-[10px] text-slate-400">
+                                    {[
+                                      c.gender,
+                                      c.age ? `Age ${c.age}` : null,
+                                    ]
+                                      .filter(Boolean)
+                                      .join(" · ")}
+                                  </p>
+                                )}
+                                {c.qualification && (
+                                  <p className="text-[10px] text-slate-400 truncate">
+                                    {c.qualification}
+                                  </p>
+                                )}
+                              </div>
+                              <span className="shrink-0 rounded-md bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-700">
+                                {c.party}
+                              </span>
+                            </li>
+                          ))
+                        ) : (
+                          <li className="text-sm text-slate-500 px-2 py-1">
+                            No candidates loaded for this constituency.
+                          </li>
+                        )}
+                      </ul>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <p className="text-sm text-slate-500">
+              No federal constituencies for this district.
+            </p>
+          )}
+        </section>
+
+        <section className="border-t border-slate-100 pt-4">
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">
+            Presidential
+          </h3>
+          <ul className="space-y-2">
+            {presidential.candidates.map((ticket) => {
+              const id = ticket.party.abbreviation;
+              const open = openPresidential.has(id);
+              return (
+                <li
+                  key={id}
+                  className={`overflow-hidden rounded-xl border bg-white transition-colors ${
+                    open ? "border-ng-green/40" : "border-slate-100"
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setOpenPresidential((s) => toggleInSet(s, id))
+                    }
+                    aria-expanded={open}
+                    className="w-full flex items-center gap-2.5 px-3 py-2.5 text-left transition-colors hover:bg-slate-50"
+                  >
+                    <span className="shrink-0 rounded-md bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-700">
+                      {ticket.party.abbreviation}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-sm font-medium text-slate-900 truncate">
+                        {ticket.presidential_candidate.name}
+                      </span>
+                      <span className="block text-[10px] text-slate-400 truncate">
+                        {ticket.party.name}
+                      </span>
+                    </span>
+                    <Chevron open={open} />
+                  </button>
+                  {open && (
+                    <div className="px-3 pb-3 pt-1">
+                      <div className="rounded-lg border border-slate-100 bg-slate-50/60 px-2.5 py-2 text-sm">
+                        <p className="text-slate-500 text-xs">
+                          Vice presidential candidate
+                        </p>
+                        <p className="font-semibold text-slate-900 truncate">
+                          {ticket.vice_presidential_candidate.name}
+                        </p>
+                        {(ticket.vice_presidential_candidate.age ||
+                          ticket.vice_presidential_candidate.gender) && (
+                          <p className="text-xs text-slate-400">
+                            {[
+                              ticket.vice_presidential_candidate.gender,
+                              ticket.vice_presidential_candidate.age
+                                ? `Age ${ticket.vice_presidential_candidate.age}`
+                                : null,
+                            ]
+                              .filter(Boolean)
+                              .join(" · ")}
+                          </p>
+                        )}
+                      </div>
+                      {(ticket.presidential_candidate.age ||
+                        ticket.presidential_candidate.gender) && (
+                        <p className="mt-1.5 text-xs text-slate-400">
+                          {[
+                            ticket.presidential_candidate.gender,
+                            ticket.presidential_candidate.age
+                              ? `Age ${ticket.presidential_candidate.age}`
+                              : null,
+                          ]
+                            .filter(Boolean)
+                            .join(" · ")}{" "}
+                          · Presidential candidate
+                        </p>
+                      )}
+                    </div>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </section>
 

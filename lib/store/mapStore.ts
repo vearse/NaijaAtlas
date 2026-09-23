@@ -39,6 +39,7 @@ export interface DirectionsState {
 import type { OverlayLayerId, SelectedOverlayFeature } from "@/types/overlay";
 import type { DrivingStep } from "@/lib/map/directionsApi";
 import type { LensId } from "@/lib/lenses/lensHelper";
+import type { PollingUnitShardEntry } from "@/types/politics";
 
 const DEFAULT_ACTIVE_OVERLAYS = new Set<OverlayLayerId>(["cities"]);
 
@@ -115,6 +116,9 @@ export interface MapSelectionState {
   setMapType: (id: MapTypeId) => void;
   selectedSenatorialDistrictId: string | null;
   setSelectedSenatorialDistrict: (id: string | null) => void;
+  /** Confirmed polling unit from the 2027 locator (persists until the user changes it). */
+  confirmedPollingUnit: PollingUnitShardEntry | null;
+  setConfirmedPollingUnit: (unit: PollingUnitShardEntry | null) => void;
   activeLens: LensId;
   setActiveLens: (lens: LensId) => void;
   directions: DirectionsState;
@@ -171,6 +175,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   lgaVisibilityHandler: null,
   mapType: "minimal",
   selectedSenatorialDistrictId: null,
+  confirmedPollingUnit: null,
   activeLens: "learn",
   directions: {
     from: null,
@@ -215,6 +220,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   },
   setSelectedSenatorialDistrict: (id) =>
     set({ selectedSenatorialDistrictId: id, mobileSheet: "open" }),
+  setConfirmedPollingUnit: (unit) => set({ confirmedPollingUnit: unit }),
   setActiveLens: (lens) => set({ activeLens: lens }),
 
   setDirectionsFrom: (from) =>

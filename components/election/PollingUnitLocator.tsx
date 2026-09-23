@@ -43,7 +43,8 @@ export default function PollingUnitLocator({
 
   const [codeInput, setCodeInput] = useState("");
   const [codeError, setCodeError] = useState<string | null>(null);
-  const [resolved, setResolved] = useState<PollingUnitShardEntry | null>(null);
+  const resolved = useMapStore((s) => s.confirmedPollingUnit);
+  const setResolved = useMapStore((s) => s.setConfirmedPollingUnit);
 
   const [lgaQuery, setLgaQuery] = useState("");
   const [selectedLgaId, setSelectedLgaId] = useState("");
@@ -233,6 +234,26 @@ export default function PollingUnitLocator({
             {codeError}
           </p>
         )}
+        <p className="flex items-start gap-2 rounded-lg border border-sky-100 bg-sky-50/60 px-2.5 py-2 text-[11px] leading-snug text-sky-900">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className="h-3.5 w-3.5 shrink-0 mt-0.5"
+            aria-hidden
+          >
+            <path
+              fillRule="evenodd"
+              d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.052 3.135 9.386 8 10.623 4.865-1.237 8-5.571 8-10.623 0-.681-.056-1.351-.166-2A11.954 11.954 0 0110 1.944z"
+              clipRule="evenodd"
+            />
+          </svg>
+          <span>
+            We only need your polling unit code to find your unit — your VIN
+            is never required. Keep your VIN (voter ID) secure and never share
+            it with anyone.
+          </span>
+        </p>
       </div>
 
       <div className="space-y-2 border-t border-slate-100 pt-4">

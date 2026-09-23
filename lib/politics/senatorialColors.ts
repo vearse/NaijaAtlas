@@ -1,33 +1,16 @@
 import type { PoliticsLookups } from "@/types/politics";
+import { LGA_PALETTE } from "@/lib/map/colors";
 
-/** Distinct fills for senatorial districts (cycles for 109 districts). */
-export const SENATORIAL_DISTRICT_PALETTE = [
-  "#008751",
-  "#0d9488",
-  "#0891b2",
-  "#0284c7",
-  "#6366f1",
-  "#7c3aed",
-  "#9333ea",
-  "#c026d3",
-  "#db2777",
-  "#e11d48",
-  "#ea580c",
-  "#ca8a04",
-  "#65a30d",
-  "#059669",
-  "#14b8a6",
-  "#6BA368",
-  "#5B8FA8",
-  "#A8BF7A",
-  "#688EB5",
-  "#D4896A",
-] as const;
+/**
+ * Distinct fills for senatorial districts (cycles for 109 districts).
+ * Reuses the LGA earth-tone pool — interleaved hues (green / tan / blue /
+ * ochre) keep neighbouring districts visually distinct, with only a single
+ * soft terracotta instead of several near-identical reds.
+ */
+export const SENATORIAL_DISTRICT_PALETTE = LGA_PALETTE;
 
 export function colorForSenatorialIndex(index: number): string {
-  return SENATORIAL_DISTRICT_PALETTE[
-    index % SENATORIAL_DISTRICT_PALETTE.length
-  ];
+  return LGA_PALETTE[index % LGA_PALETTE.length];
 }
 
 export function colorForDistrict(
