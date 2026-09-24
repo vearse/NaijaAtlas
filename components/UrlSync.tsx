@@ -11,8 +11,7 @@ export default function UrlSync() {
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
   const lgaVisibleStateIds = useMapStore((s) => s.lgaVisibleStateIds);
   const selectedLgaId = useMapStore((s) => s.selectedLgaId);
-  const activeRegionIds = useMapStore((s) => s.activeRegionIds);
-  const activeRegionIdsKey = [...activeRegionIds].sort().join(",");
+  const activeRegionId = useMapStore((s) => s.activeRegionId);
   const mapType = useMapStore((s) => s.mapType);
   const activeLens = useMapStore((s) => s.activeLens);
   const selectedSenatorialDistrictId = useMapStore(
@@ -26,16 +25,15 @@ export default function UrlSync() {
     const mapParam = params.get("map");
     store.setMapType(parseMapTypeParam(mapParam));
 
-    const regionsParam =
-      params.get("regions")?.split(",").filter(Boolean) ??
-      (params.get("region") ? [params.get("region")!] : undefined);
+    const regionParam =
+      params.get("region") ?? params.get("regions")?.split(",")[0];
     const states = params.get("states")?.split(",").filter(Boolean);
     const lga = params.get("lga");
     const showLgas = params.get("lgas") === "1";
     const sd = params.get("sd");
 
-    if (regionsParam?.length) {
-      store.setActiveRegions(regionsParam);
+    if (regionParam) {
+      store.setActiveRegion(regionParam);
     } else if (states?.length) {
       if (store.mapType === "election" || showLgas) {
         store.showLgasForStates(states);
@@ -65,8 +63,8 @@ export default function UrlSync() {
     if (!ready) return;
 
     const params = new URLSearchParams();
-    if (activeRegionIds.size > 0) {
-      params.set("regions", [...activeRegionIds].sort().join(","));
+    if (activeRegionId) {
+      params.set("regions", activeRegionId);
     } else if (selectedStateIds.size > 0) {
       params.set("states", [...selectedStateIds].sort().join(","));
       if (lgaVisibleStateIds.size > 0) params.set("lgas", "1");
@@ -93,7 +91,7 @@ export default function UrlSync() {
     selectedStateIds,
     lgaVisibleStateIds,
     selectedLgaId,
-    activeRegionIdsKey,
+    activeRegionId,
     mapType,
     activeLens,
     selectedSenatorialDistrictId,

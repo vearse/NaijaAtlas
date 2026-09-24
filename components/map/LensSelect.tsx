@@ -69,6 +69,7 @@ export default function LensSelect() {
       buttonLabel={LENS_LABELS[activeLens]}
       variant="neutral"
       menuWidthClass="w-56"
+      menuAlign="left"
     />
   );
 }

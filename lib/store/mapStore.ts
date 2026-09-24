@@ -40,6 +40,7 @@ import type { OverlayLayerId, SelectedOverlayFeature } from "@/types/overlay";
 import type { DrivingStep } from "@/lib/map/directionsApi";
 import type { LensId } from "@/lib/lenses/lensHelper";
 import { defaultOverlaysForLens } from "@/lib/lenses/lensMapLayers";
+import { syncAllOverlayVisibility } from "@/components/map/overlayLayers";
 import type { PollingUnitShardEntry } from "@/types/politics";
 import type { LgaFocusPlan } from "@/lib/map/lgaMapFocus";
 import {
@@ -319,12 +320,18 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     });
   },
 
-  clearAllOverlays: () =>
+  clearAllOverlays: () => {
+    const empty = new Set<OverlayLayerId>();
     set({
-      activeOverlays: new Set(),
+      activeOverlays: empty,
       selectedOverlay: null,
       overlayGuideLayer: null,
-    }),
+    });
+    const map = get().mapInstance;
+    if (map?.isStyleLoaded()) {
+      syncAllOverlayVisibility(map, empty);
+    }
+  },
 
   setDirectionsFrom: (from) =>
     set((state) => ({

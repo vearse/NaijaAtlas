@@ -63,7 +63,7 @@ export default function LocationPanel({
 }: LocationPanelProps) {
   const isMobile = useIsMobile();
   const [desktopCompareOpen, setDesktopCompareOpen] = useState(false);
-  const { selectedStateIds, selectedLgaId, activeRegionIds, setSelectedLga, mobileSheet, selectedOverlay, overlayGuideLayer, directionsPanelTarget } =
+  const { selectedStateIds, selectedLgaId, activeRegionId, setSelectedLga, mobileSheet, selectedOverlay, overlayGuideLayer, directionsPanelTarget } =
     useMapStore();
 
   const toggleLgaSelection = (id: string) => {
@@ -92,17 +92,12 @@ export default function LocationPanel({
   const showDirectionsPanel = directionsPanelTarget !== null;
   const showOverlayGuide = guideLayer !== null && !showOverlay && !showDirectionsPanel;
 
-  const selectedRegions = regions.filter((r) => activeRegionIds.has(r.id));
-  const activeRegion =
-    selectedRegions.length === 1 ? selectedRegions[0] : null;
-  const showMultiRegion =
-    selectedRegions.length > 1 &&
-    !hasMapSelection &&
-    !showOverlay &&
-    !showDirectionsPanel;
+  const activeRegion = activeRegionId
+    ? regions.find((r) => r.id === activeRegionId) ?? null
+    : null;
   const showOverview =
     !hasMapSelection &&
-    activeRegionIds.size === 0 &&
+    !activeRegionId &&
     !showOverlay &&
     !showOverlayGuide &&
     !showDirectionsPanel;

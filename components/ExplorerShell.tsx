@@ -142,13 +142,15 @@ export default function ExplorerShell({
             </div>
           </div>
           <div className="mt-2 lg:mt-4 space-y-1.5 lg:space-y-2">
-            <div className="flex items-center justify-end gap-2 flex-wrap">
-              {!isElectionMode && (
-                <>
-                  <LensSelect />
-                  <RegionSelect regions={regions} />
-                </>
-              )}
+            <div className="flex items-center justify-between gap-2 flex-wrap w-full">
+              <div className="flex items-center gap-2 flex-wrap">
+                {!isElectionMode && (
+                  <>
+                    <LensSelect />
+                    <RegionSelect regions={regions} />
+                  </>
+                )}
+              </div>
               <MapTypeToggle />
             </div>
             <SelectedStatesBar states={states} />

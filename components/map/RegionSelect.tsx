@@ -50,7 +50,7 @@ export default function RegionSelect({ regions }: RegionSelectProps) {
 
   const buttonLabel = activeRegion
     ? REGION_SHORT[activeRegion.name] ?? activeRegion.name
-    : "All";
+    : "Region";
 
   const options = [
     {
@@ -87,6 +87,7 @@ export default function RegionSelect({ regions }: RegionSelectProps) {
       buttonLabel={buttonLabel}
       variant="neutral"
       menuWidthClass="w-60"
+      menuAlign="left"
     />
   );
 }

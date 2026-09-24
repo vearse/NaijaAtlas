@@ -13,7 +13,7 @@ export default function MapHints() {
   const lgaFocus = useMapStore((s) => s.lgaFocus);
   const dragModeStateId = useMapStore((s) => s.dragModeStateId);
   const mapActionHint = useMapStore((s) => s.mapActionHint);
-  const activeRegionIds = useMapStore((s) => s.activeRegionIds);
+  const activeRegionId = useMapStore((s) => s.activeRegionId);
   const activeOverlays = useMapStore((s) => s.activeOverlays);
   const selectedOverlay = useMapStore((s) => s.selectedOverlay);
   const activeLens = useMapStore((s) => s.activeLens);
@@ -70,8 +70,8 @@ export default function MapHints() {
       return "Tap the map icon on a selected state to show LGAs · long-press a state on the map to drag";
     }
 
-    if (activeRegionIds.size > 0) {
-      return "Regions highlighted — pick more in the Region menu or on the map · click a state to explore";
+    if (activeRegionId) {
+      return "Region highlighted — pick another in the Region menu or on the map · click a state to explore";
     }
 
     return "Click a state to select · double-click to show LGAs · Layers bottom-right";
@@ -85,7 +85,7 @@ export default function MapHints() {
     lgaVisibleStateIds.size,
     lgaFocus?.lgaIds.length,
     selectedStateIds.size,
-    activeRegionIds.size,
+    activeRegionId,
   ]);
 
   const mobileHint = useMemo(() => {

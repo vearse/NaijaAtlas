@@ -18,6 +18,8 @@ interface MapChromeDropdownProps<T extends string> {
   buttonLabel?: string;
   variant?: "neutral" | "accent";
   menuWidthClass?: string;
+  /** Menu anchor edge (use `left` for controls on the left side of the header). */
+  menuAlign?: "left" | "right";
 }
 
 function ChevronDown({ open }: { open: boolean }) {
@@ -66,6 +68,7 @@ export default function MapChromeDropdown<T extends string>({
   buttonLabel,
   variant = "neutral",
   menuWidthClass = "w-52",
+  menuAlign = "right",
 }: MapChromeDropdownProps<T>) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -115,7 +118,9 @@ export default function MapChromeDropdown<T extends string>({
         <div
           role="menu"
           aria-label={ariaLabel}
-          className={`absolute right-0 z-50 mt-2 ${menuWidthClass} overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-xl`}
+          className={`absolute z-50 mt-2 ${menuWidthClass} overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-xl ${
+            menuAlign === "left" ? "left-0" : "right-0"
+          }`}
         >
           {options.map((opt, idx) => {
             const on = value === opt.id;

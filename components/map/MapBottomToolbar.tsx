@@ -197,15 +197,14 @@ export default function MapBottomToolbar() {
                 Layers
               </span>
               <div className="flex items-center gap-1">
-                {activeOverlays.size > 0 && (
-                  <button
-                    type="button"
-                    onClick={() => clearAllOverlays()}
-                    className="text-[10px] font-semibold text-slate-500 hover:text-slate-800 px-1.5 py-0.5 rounded-md hover:bg-slate-100"
-                  >
-                    Clear
-                  </button>
-                )}
+                <button
+                  type="button"
+                  onClick={() => clearAllOverlays()}
+                  disabled={activeOverlays.size === 0}
+                  className="text-[10px] font-semibold text-slate-500 hover:text-slate-800 px-1.5 py-0.5 rounded-md hover:bg-slate-100 disabled:opacity-40 disabled:pointer-events-none"
+                >
+                  Clear all
+                </button>
                 <button
                   type="button"
                   onClick={() => setLayersOpen(false)}
