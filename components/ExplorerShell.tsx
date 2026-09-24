@@ -109,7 +109,7 @@ export default function ExplorerShell({
   const showCompare =
     !isElectionMode &&
     !selectedLgaId &&
-    selectedStates.length >= 2 &&
+    selectedStates.length >= 3 &&
     selectedStates.length <= MAX_COMPARE_STATES;
 
   return (

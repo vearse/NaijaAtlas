@@ -1,7 +1,9 @@
 import type { LayerSpecification, Map, SourceSpecification, StyleSpecification } from "maplibre-gl";
 import { MAP_GLYPHS, MAP_FONT, MAP_FONT_EMPHASIS } from "@/lib/map/interaction";
 import { LGA_PALETTE, assignLgaPaletteColors, colorForIndex } from "@/lib/map/colors";
-import { enrichLgaSenatorialColors } from "@/lib/politics/senatorialColors";
+import { enrichLgaSenatorialColors, colorForSenatorialIndex } from "@/lib/politics/senatorialColors";
+import { enrichLgaMetroFocus } from "@/lib/map/lgaFocusColors";
+import type { LgaFocusPlan } from "@/lib/map/lgaMapFocus";
 import type { PoliticsLookups } from "@/types/politics";
 import { withExcludeState, withExcludeStates } from "@/lib/map/dragStateGeometry";
 import type { MapTypeId } from "@/lib/store/mapStore";
@@ -1047,16 +1049,60 @@ export function createLgaLayers(stateId: string): LayerSpecification[] {
   return [...createLgaFillLineLayers(stateId), createLgaLabelLayer(stateId)];
 }
 
+export interface LgaFillEnrichOptions {
+  electionLookups?: PoliticsLookups;
+  lgaFocus?: LgaFocusPlan | null;
+  stateId: string;
+  mapType: MapTypeId;
+}
+
+export function enrichLgaGeoForMap(
+  data: GeoJSON.FeatureCollection,
+  options: LgaFillEnrichOptions
+): GeoJSON.FeatureCollection {
+  if (options.mapType === "election" && options.electionLookups) {
+    return enrichLgaSenatorialColors(data, options.electionLookups);
+  }
+  const focus = options.lgaFocus;
+  if (
+    focus &&
+    focus.lgaIds.length > 0 &&
+    focus.stateIds.includes(options.stateId)
+  ) {
+    const accent = colorForSenatorialIndex(focus.colorIndex ?? 0);
+    return enrichLgaMetroFocus(data, focus.lgaIds, accent);
+  }
+  return enrichLgaColors(data);
+}
+
+/** Update fill + outline sources when focus or map type changes. */
+export function applyLgaSourceFillData(
+  map: Map,
+  stateId: string,
+  data: GeoJSON.FeatureCollection,
+  options: LgaFillEnrichOptions
+): void {
+  const filled = enrichLgaGeoForMap(data, options);
+  const src = map.getSource(lgaSourceId(stateId)) as
+    | { setData: (d: GeoJSON.GeoJSON) => void }
+    | undefined;
+  src?.setData(filled);
+  const outline = map.getSource(lgaOutlineSourceId(stateId)) as
+    | { setData: (d: GeoJSON.GeoJSON) => void }
+    | undefined;
+  outline?.setData(toLgaOutlineCollection(filled));
+}
+
 /** Tear down any prior mount, then add source + fill/line/label layers. */
 export function addLgaStateLayers(
   map: Map,
   stateId: string,
   data: GeoJSON.FeatureCollection,
-  options?: { electionLookups?: PoliticsLookups }
+  options?: LgaFillEnrichOptions
 ): void {
   removeLgaStateLayers(map, stateId);
-  const filled = options?.electionLookups
-    ? enrichLgaSenatorialColors(data, options.electionLookups)
+  const filled = options
+    ? enrichLgaGeoForMap(data, options)
     : enrichLgaColors(data);
   map.addSource(lgaSourceId(stateId), lgaSourceSpec(filled));
   map.addSource(

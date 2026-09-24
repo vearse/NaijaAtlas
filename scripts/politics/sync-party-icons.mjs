@@ -63,7 +63,8 @@ function partySvg(code) {
 function iconForPartyCode(code) {
   const entry = partyMap[code];
   if (entry?.icon) return entry.icon;
-  return `${partiesDoc.iconBasePath}/${code}.svg`;
+  const safe = code.replace(/[^a-zA-Z0-9_-]/g, "_");
+  return `/politics/parties/${safe}.svg`;
 }
 
 const iconDir = path.join(root, "public/politics/parties");

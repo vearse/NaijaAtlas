@@ -9,6 +9,11 @@ import type { LgaLocation } from "@/types/location";
  * LGA subset, etc.
  */
 export interface LgaFocusPlan {
+  /** Stable id for toggle + accent color (e.g. metro id). */
+  id: string;
+  label?: string;
+  /** Assigned when focus activates; stable per `id`. */
+  colorIndex?: number;
   /** LGA ids to highlight (only those resolvable against `lgas`). */
   lgaIds: string[];
   /** State ids whose LGA layers must be loaded (parents of `lgaIds`). */
@@ -29,7 +34,8 @@ export interface LgaFocusPlan {
 export function resolveLgaFocusPlan(
   lgaIds: string[],
   lgas: LgaLocation[],
-  fallbackStateIds: string[] = []
+  fallbackStateIds: string[] = [],
+  meta?: { id: string; label?: string }
 ): LgaFocusPlan {
   const byId = new Map(lgas.map((l) => [l.id, l]));
   const found: LgaLocation[] = [];
@@ -66,7 +72,32 @@ export function resolveLgaFocusPlan(
     ];
   }
 
-  return { lgaIds: found.map((l) => l.id), stateIds, bounds };
+  const resolvedIds = found.map((l) => l.id);
+  const id =
+    meta?.id ??
+    (resolvedIds.length > 0
+      ? `lga-focus:${resolvedIds.sort().join(",")}`
+      : `lga-focus:states:${[...stateIds].sort().join(",")}`);
+
+  return {
+    id,
+    label: meta?.label,
+    lgaIds: resolvedIds,
+    stateIds,
+    bounds,
+  };
+}
+
+/** States that need LGA layers on map (user toggles ∪ metro focus). */
+export function effectiveLgaStateIds(
+  lgaVisibleStateIds: Set<string>,
+  lgaFocus: LgaFocusPlan | null
+): Set<string> {
+  const out = new Set(lgaVisibleStateIds);
+  if (lgaFocus) {
+    for (const sid of lgaFocus.stateIds) out.add(sid);
+  }
+  return out;
 }
 
 /** True when two plans cover the same set of LGA ids (set order-insensitive). */
@@ -74,7 +105,9 @@ export function sameLgaFocus(
   a: LgaFocusPlan | null,
   b: LgaFocusPlan | null
 ): boolean {
-  if (!a || !b || a.lgaIds.length !== b.lgaIds.length) return false;
+  if (!a || !b) return false;
+  if (a.id && b.id) return a.id === b.id;
+  if (a.lgaIds.length !== b.lgaIds.length) return false;
   const sortedA = [...a.lgaIds].sort();
   const sortedB = [...b.lgaIds].sort();
   return sortedA.every((id, i) => id === sortedB[i]);

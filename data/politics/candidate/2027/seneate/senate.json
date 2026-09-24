@@ -8,17 +8,17 @@
       {
         "party": "APC",
         "name": "Udende Emmanuel Memga",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Tyough Robert Aondona",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "PDP",
         "name": "Unongo Thomas Tyolumun",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -31,22 +31,22 @@
       {
         "party": "APC",
         "name": "Zam Titus Tartenger",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Tsegba Terngu",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Utaan Conrad Terhide",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Ortom Eunice Erdoo",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -59,22 +59,22 @@
       {
         "party": "APC",
         "name": "Agbo Frances Ottah",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Olofu David Adejo",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Onjeh Daniel Donal",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Moro Abba Patrick",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -87,22 +87,22 @@
       {
         "party": "APC",
         "name": "Philip Tanimu Aduda",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ireti Kingibe",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Austen Peters-Pam Iyabode Amanda",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Angulu Bako",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -115,22 +115,22 @@
       {
         "party": "APC",
         "name": "Bello Yahaya",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ogembe Salau Ahmed",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Salau Muritala Audu",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Natasha Akpoti-Uduaghan",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -143,22 +143,22 @@
       {
         "party": "APC",
         "name": "Ameh Erico Joseph",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Abubakar Aminu Suleiman",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Ameh Peter Ojonugwa",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Muhammed Abdullahi",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -171,22 +171,22 @@
       {
         "party": "APC",
         "name": "Karimi Sunday",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Musa Ibrahim Ahmadu",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Fatosa Olumuyiwa Adedokun",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Yusuf Ayo Tajudeen",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -199,22 +199,22 @@
       {
         "party": "APC",
         "name": "Abdulrazaq Abdulrahaman",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Abdulahi Risikat Motunrayo",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Suleiman Abdulrasheed Olufemi Omoda",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Saliu Mustapha",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -227,22 +227,22 @@
       {
         "party": "APC",
         "name": "Umar Sadiq",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Bala Taoheed Usman",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Gana Thomas Audu",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Kolo Baba Jiya",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -255,22 +255,22 @@
       {
         "party": "APC",
         "name": "Adewoye Olalekan",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Oyedepo Iyiola",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Oni Samuel Omoniyi",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Popoola Adekeye Lekan Saheed",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -283,22 +283,22 @@
       {
         "party": "APC",
         "name": "Sule Abdullahi",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Victor Affiku Tsaku",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Danladi James",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Madaki Benbella Anthony",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -311,22 +311,22 @@
       {
         "party": "APC",
         "name": "Abdul Ibrahim Baba",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Hassan Abubakar Nalaraba",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Baba Ayinwulu",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Agbo-Omeri Mike",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -339,22 +339,22 @@
       {
         "party": "APC",
         "name": "Haruna Dauda",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Umar Musa Galadima",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Adamu Auta Umar Farouq",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Kaura Danlami Kefas",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -367,17 +367,17 @@
       {
         "party": "APC",
         "name": "Musa Mohammed Sani",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ahmed Mohammed Mukhtar",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Bawa John Agmada",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       }
     ]
   },
@@ -390,22 +390,22 @@
       {
         "party": "APC",
         "name": "Bello Abubakar Sani",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Abdullahi Shehu Mohammed",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Bawa Joshua Nuhu",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Abdullahi Yahaya",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -418,22 +418,22 @@
       {
         "party": "APC",
         "name": "Idris Mohammed Sani",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Umar Danjuma Emimaru",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Sadiq Mohammed Rabiu",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Jiya Peter Ndalikali",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -446,22 +446,22 @@
       {
         "party": "APC",
         "name": "Kasuwa Bitrus David",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Yusuf Bello",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Yusuf Ishaku",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Goliath Timothy",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -474,22 +474,22 @@
       {
         "party": "APC",
         "name": "Mwadkwon Simon Davou",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Rose Bitrus Mwanti",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Bature Musa Jonathan",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Gwottson Dalyop",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -502,22 +502,22 @@
       {
         "party": "APC",
         "name": "Lalong Simon Bako",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Solomon Selcap Dalung",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Kefas Peter Kefas Dandam",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Shekarau Johnbull",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -530,22 +530,22 @@
       {
         "party": "APC",
         "name": "Salihu Mustapha",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ibrahim Mustapha",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Ahmed Abdullahi Musa",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Attahamohammed Ibrahim",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -558,22 +558,22 @@
       {
         "party": "APC",
         "name": "Umaru Ahmadu",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Iya Umar",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Abubakar Rabiu",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Lawan Mohammed Ribado",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -586,22 +586,22 @@
       {
         "party": "APC",
         "name": "Tangwami Felix Bilishan",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Binos Dauda Yaroe",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Peter Fwa Barata",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Ahmed Hassan",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -614,17 +614,17 @@
       {
         "party": "APC",
         "name": "Misau Isah Hamma",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Abdul Ahmed Ningi",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "PDP",
         "name": "Aliyu Bello",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -637,17 +637,17 @@
       {
         "party": "APC",
         "name": "Baba Ibrahim Mohammed",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Suleiman Mohammed Nazif",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "PDP",
         "name": "Adamu Abdulkadir",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -660,17 +660,17 @@
       {
         "party": "APC",
         "name": "Shehu Yakubu Abdullahi",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Garba Dahiru",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "PDP",
         "name": "Dabo Danjuma Adamu",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -683,22 +683,22 @@
       {
         "party": "APC",
         "name": "Lawan Kaka Shehu",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Baba Gana Zannah",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Abdulkadir Fema",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Kyari Alhaji Grema",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -711,22 +711,22 @@
       {
         "party": "APC",
         "name": "Monguno Mohammed Tahir",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Abdullahi Modu Kura",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Abubakar Tijjani",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Kareto Mohammed Abdullah",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -739,22 +739,22 @@
       {
         "party": "APC",
         "name": "Ndume Mohammed Ali",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Idris Mamman Gatumbwa",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Kwajafailliya Habu",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Apaguaminu Mallum",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -767,22 +767,22 @@
       {
         "party": "APC",
         "name": "Mohammed Ahmed",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Idris Audu Umar",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Kabiru Mohammed",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Hammadu Aliyu",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -795,22 +795,22 @@
       {
         "party": "APC",
         "name": "Yahaya Muhammed Inuwa",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Mustapha Mohammed Aliyu",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Mohammed Dukku",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Dankwambo Ibrahim Hassan",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -823,22 +823,22 @@
       {
         "party": "APC",
         "name": "Hamma Tabitha",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Mela Audu Nunghe",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Amos Bulus Kilawangs",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Siyako Anthony Yaro",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -851,22 +851,22 @@
       {
         "party": "APC",
         "name": "Manu Haruna",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ahmadu Benni Umaru Salim",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Nyan-Ganji Gilbert Gills",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Iliyasu Goje",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -879,22 +879,22 @@
       {
         "party": "APC",
         "name": "Lau Shuaibu Isa",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Maigari Kasimu Bello",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Bandawa Anfani",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Bubajoda Hilkiah",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -907,22 +907,22 @@
       {
         "party": "APC",
         "name": "Aliyu Yusuf",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Afiniki Yarima",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Ezekiel Yakubu Ambo",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Istifanus Musa",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -935,17 +935,17 @@
       {
         "party": "APC",
         "name": "Buni Mai Mala",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Kale Kawu",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "PDP",
         "name": "Mustapha Maigoro",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -958,17 +958,17 @@
       {
         "party": "APC",
         "name": "Lawan Ahmad Ibrahim",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Imamuddeen Ahmad Abubakar Talba",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "PDP",
         "name": "Abubakar Chigari",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -981,22 +981,22 @@
       {
         "party": "APC",
         "name": "Bomai Ibrahim Mohammed",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Gambo Jajere Baba",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Hassan Mohammed",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Hamma Ibrahim Barde",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1009,17 +1009,17 @@
       {
         "party": "APC",
         "name": "Madori Ahmed Abdulhamid Malam Ali",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Muhammad Ubali Shitu",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "PDP",
         "name": "Salisu Mamuda",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1032,22 +1032,22 @@
       {
         "party": "APC",
         "name": "Hussaini Babangida Uba",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ahmed Mahmud Gumel",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Sabo Salisu",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Abdullahi Aminu Taura",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1060,22 +1060,22 @@
       {
         "party": "APC",
         "name": "Ibraheem Sani Garba",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ahmed Isah Dutse",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Aminu Mustapha",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Suleiman Abba",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1088,22 +1088,22 @@
       {
         "party": "APC",
         "name": "Sani Shehu",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Lawal Adamu Usman",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Adamu Haruna",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Ibrahim Usman",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1116,22 +1116,22 @@
       {
         "party": "APC",
         "name": "Yero Mukhtar Ramalan",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Khalid Ibrahim Mustapha",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Sha'aban Mohammad Turad",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Ahmed Abdullahi Zubairu",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1144,17 +1144,17 @@
       {
         "party": "APC",
         "name": "Marshall Sunday Katung",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Godfrey Ali Gaiya",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "PDP",
         "name": "Gumbari Joseph Mataimaki",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1167,22 +1167,22 @@
       {
         "party": "APC",
         "name": "Shekarau Ibrahim",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Samaila Abdullahi Mukhtar",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Yusuf Nasiru Gawuna",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Sankara Nafiu Danladi",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1195,22 +1195,22 @@
       {
         "party": "APC",
         "name": "Barau I. Jibrin",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Saleh Shehu Kudawa",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Usman Sunusi Danbatta",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Sagir Abdulkadir Ahmad",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1223,22 +1223,22 @@
       {
         "party": "APC",
         "name": "Kawa Suleiman Abdurrahaman",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Baba Aminu Zubair",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Ibrahim Kassim Bataiya",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Isa Umar Sambo",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1251,17 +1251,17 @@
       {
         "party": "APC",
         "name": "Abubakar Sadiq Yar'Adua",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Lawal Sani",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "PDP",
         "name": "Abdulaziz Amina Lawal Rafindadi",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1274,22 +1274,22 @@
       {
         "party": "APC",
         "name": "Yahaya Nasir",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Lawal Sani",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Yahaya Aminu",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Daura Umar Dauda",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1302,22 +1302,22 @@
       {
         "party": "APC",
         "name": "Dandutse Muntari Mohammed",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Lawal Umar",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Hussain Ishaq Suleim",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Bawa Rabiu",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1330,22 +1330,22 @@
       {
         "party": "APC",
         "name": "Adamu Mohammed Aleiro",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Aminu Bande",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Umar Yarotela",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Andarai Haruna Saidu",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1358,22 +1358,22 @@
       {
         "party": "APC",
         "name": "Adamu Muhammad Aliero",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Mera Ibrahim Mohammed",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Abdurrahaman Aliyu",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Mukhtar Mohammed Tafarki",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1386,22 +1386,22 @@
       {
         "party": "APC",
         "name": "Muhammed Ja'afaru Ngaski",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Maidoki Garba Musa",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Hassan Mustapha",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Abubakar Hamza",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1414,22 +1414,22 @@
       {
         "party": "APC",
         "name": "Tukur Muhammad",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Hassan Muhammad",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Ummar Maisalati",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Umar Abubakar",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1442,22 +1442,22 @@
       {
         "party": "APC",
         "name": "Wamakko Aliyu Magatakarda",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Maishinko Mani Katami",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Abubakar Mainasara Sani",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Maccido Ahmed",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1470,22 +1470,22 @@
       {
         "party": "APC",
         "name": "Abdullahi Ibrahim Danbaba",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Yabo Faruk Malami",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Tanimu Bodinga",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Yusuf Dahiru",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1498,22 +1498,22 @@
       {
         "party": "APC",
         "name": "Bilbis Ikra Aliyu",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Abubakar Atiku Sale",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Ibrahim Sanusi",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Bala Sanusi",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1526,22 +1526,22 @@
       {
         "party": "APC",
         "name": "Sahabi Ya'u",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Shehu Rafi",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Nasiru Garba",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Musa Hanafi Moriki",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1554,22 +1554,22 @@
       {
         "party": "APC",
         "name": "Abdulaziz Yari",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ibrahim Mikailu Barau",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Abdullahi Hassan Anka",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Lawal Faru",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1582,22 +1582,22 @@
       {
         "party": "APC",
         "name": "Atuma Emeka",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Austine Okwudiri Akobundu",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Nkechi Nwaogu",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Ogu Bob",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1610,22 +1610,22 @@
       {
         "party": "APC",
         "name": "Kalu Orji Uzor",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Okoronkwo Ikechukwu Bishop Godswill",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Nkole Uko Ndukwe",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Udeachara Jude",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1638,27 +1638,27 @@
       {
         "party": "APC",
         "name": "Ikonne Prince Paul",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Isiguzor Chukwuemeka Victor",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Enyinna Kasarachi Michael",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Onuoha Ishmael Chinyere",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       },
       {
         "party": "LP",
         "name": "Enyinnaya Abaribe",
-        "party_icon": "/politics/parties/LP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/labour-party-lp_logo.SV1XCjLU.jpg"
       }
     ]
   },
@@ -1671,22 +1671,22 @@
       {
         "party": "APC",
         "name": "Ekwunife Uche Lilian",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Nwobu Geoffery Ndubuisi",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Umeh Victor Chukwunonyelum",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Ughamadu Lawrence Chijioke",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1699,22 +1699,22 @@
       {
         "party": "APC",
         "name": "Nnalue Chimzobam Kingsley",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Udedibia Sunday Ikenna",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Nwoye Tony Okechukwu",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Oliatachinenye Edith",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1727,22 +1727,22 @@
       {
         "party": "APC",
         "name": "Benson-Oraelosi Chibuogwu Maryanne",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Anagwu Fredrick Emeka",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Onunkwo Ebuka Josephat",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Nwosu Ikechukwu Samben",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1755,22 +1755,22 @@
       {
         "party": "APC",
         "name": "Eze Kenneth Emeka",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ugo Maginus Kel",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Odoh Benard Ifeanyi",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Ngwuta Elechi Christopher",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1783,22 +1783,22 @@
       {
         "party": "APC",
         "name": "Nwebonyi Onyeka Peter",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ikeria Chibuike Solomon",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Nwite James N",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Opoke Sunday Andrew",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1811,22 +1811,22 @@
       {
         "party": "APC",
         "name": "Ani Anthony Okorie",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Silas Joseph Onu",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Ndubuisi Emmanuel C",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Nwachi Maria Ude",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1839,22 +1839,22 @@
       {
         "party": "APC",
         "name": "Chukwu Kelvin",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Idoko Mechika",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Asadu Patrick Oziokoja",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Ukwueke Kingsley",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1867,22 +1867,22 @@
       {
         "party": "APC",
         "name": "Asogwa Ikeje Israel",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Chika Idoko Emmanuel",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Asadu Patrick Oziokoja",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Ezeme Nestor Chika",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1895,22 +1895,22 @@
       {
         "party": "APC",
         "name": "Ngwu Osita",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ani Juliet Nkechi",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Eneh Kingsley Uchenna",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Amadi Dennis",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1923,22 +1923,22 @@
       {
         "party": "APC",
         "name": "Uzodinma Ezebuihe Anayochukwu",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ofoegbu Uchenna Daniel",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Onyeagocha Uchechukwu",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Madumere Prince Eze",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1951,22 +1951,22 @@
       {
         "party": "APC",
         "name": "Ndubueze Patrick Chiwuba",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ibekwe Nkiru",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Omegara Mathew",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Ejiogu Micheal Duru",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -1979,22 +1979,22 @@
       {
         "party": "APC",
         "name": "Uzodinma Goodhope Odidika",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Iwuchukwu Vincent Ogadinma Nnabugo",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Nwogu Nze Ndieze",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Onyereri Chukwudi Victor Jones",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2007,22 +2007,22 @@
       {
         "party": "APC",
         "name": "Bassey Aniekan Etim",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Sunday Etim Umoren",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Afia Ekere S.",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Udobang Cletus Kufre",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2035,17 +2035,17 @@
       {
         "party": "APC",
         "name": "Akpabio Godswill",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Akpabio Patience Christopher Ibanga Obot",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Inemeh Patty Etete",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       }
     ]
   },
@@ -2058,22 +2058,22 @@
       {
         "party": "APC",
         "name": "Akpan Ekong Sampson",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Louis Paul Udoh",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Frank Okon Daniel",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Isong Etim",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2086,22 +2086,22 @@
       {
         "party": "APC",
         "name": "Benson Friday Konbowei",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Aistine Inei Asamaowei",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Okoyareuben Boutuaowei",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Akinaka Erepamo Richard",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2114,22 +2114,22 @@
       {
         "party": "APC",
         "name": "Sunny-Golu Israel",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Sylva Ngo Nathaniel",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Tekenah Dau Kenny",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Joseph Ateki Boabofa",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2142,22 +2142,22 @@
       {
         "party": "APC",
         "name": "Agbiki Fidelis",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ogola Christopher",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Dickson Seriake Henry",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Ebebi Onduakpo Polycarp",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2170,22 +2170,22 @@
       {
         "party": "APC",
         "name": "Ewa Oden Ibiang",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Akin Rickett",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Ewa Bassey Eko",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "John Ifere",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2198,17 +2198,17 @@
       {
         "party": "APC",
         "name": "Jarigbe Jarigbe Agom",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ugbong Casmir",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Ake Abuashe Grace",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       }
     ]
   },
@@ -2221,22 +2221,22 @@
       {
         "party": "APC",
         "name": "Ekpenyong Asuquo",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Edet Joseph",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Egwu Egwu Arong",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Inyang Florence",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2249,22 +2249,22 @@
       {
         "party": "APC",
         "name": "Dafinone Ede Omueya",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ewhrudjakpor Benjamin",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Omo-Agege Ovie Augustine",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Arhagba Ighogbedjere",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2277,22 +2277,22 @@
       {
         "party": "APC",
         "name": "Okowa Ifeanyi Arthur",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ogoliegbune Valentine Chibuzor",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Ochei Victor Onyekachi",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Ogannah Onyeama Austyn",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2305,17 +2305,17 @@
       {
         "party": "APC",
         "name": "Joel-Onowakpo Thomas Ewomazino",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "NDC",
         "name": "Adhekpukoli Elo",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Otuaro Kingley Burutu",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2328,17 +2328,17 @@
       {
         "party": "APC",
         "name": "Ikpea Joseph",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Okonofua Herberta Inemezele",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Inemezele Ikpea Igiagbe Joseph",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       }
     ]
   },
@@ -2351,22 +2351,22 @@
       {
         "party": "APC",
         "name": "Oshiomhole Adams",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Aruna Abubakari",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Oisamoje Maria Evuarherhe",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Momoh-Dejih Bashir Eugine",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2379,22 +2379,22 @@
       {
         "party": "APC",
         "name": "Ogbeide-Ihama Omoregie",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Iduoriyekemwen Matthew Aigbuhuenze",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Epelle-Asemota Bridgitte",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Ojediamen Benjamin Ehichioya",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2407,22 +2407,22 @@
       {
         "party": "APC",
         "name": "Onyesoh Allwell Iheacho",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Agwor Samuel Ndubuisi",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Okwuwolu Wolu Ekelechi Benjamin",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Anele Akor Wisdom",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2435,22 +2435,22 @@
       {
         "party": "APC",
         "name": "Osarosaka Ebenezer Erewari",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ikuru Tele Betram",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Abiante Awaji-Inombek",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Nwogu Olaka",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2463,22 +2463,22 @@
       {
         "party": "APC",
         "name": "Obuah Amechi Felix",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Otto Josiah",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Ogbobula Isaac",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Job Vincent",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2491,22 +2491,22 @@
       {
         "party": "APC",
         "name": "Bamidele Opeyemi",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Akinyemi Victor Babafemi",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Omolayotaiwo Oluwagbenga",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Fatuyi-Olajuyigbe Monica Adesola",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2519,17 +2519,17 @@
       {
         "party": "APC",
         "name": "Oguntoye Ayobami Samuel",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Ayeni Funso",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Oguntoye Ayobami Samuel",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       }
     ]
   },
@@ -2542,17 +2542,17 @@
       {
         "party": "APC",
         "name": "Adaramodu Adeyemi Raphael",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Kolawole Job Nathaniel",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "PDP",
         "name": "Ayeni Oyeolabisi",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2565,22 +2565,22 @@
       {
         "party": "APC",
         "name": "Sanni Eshilokun Wasiu Olatunji",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Abayomi Idowu Omotayo",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Johnson Lawrence Adeniyi Oladipupo",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Dakova-Vaughan Kolawole David",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2593,22 +2593,22 @@
       {
         "party": "APC",
         "name": "Abiru Adetokunbo Mukhail",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Moshood Babatunde Olanrewaju",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Adebanjo Adeola Damilola",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Adeniji Victorin",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2621,22 +2621,22 @@
       {
         "party": "APC",
         "name": "Adebule Idiat Oluranti",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Bello Owolabi Hafis",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Salvador Adegoke Moshood",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Phillips Adebiyi Abiodun",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2649,22 +2649,22 @@
       {
         "party": "APC",
         "name": "Salisu Shuaibu Afolabi",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Samuel Oluwafemi Abiodun-Oni",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "George-Taylor Oluwadurotimi",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Obasanjo Iyabo",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2677,22 +2677,22 @@
       {
         "party": "APC",
         "name": "Abiodun Adedapo Olusegun",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Adebanjo Babatunde Olalekan",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Shokoya Adewale Oluwasegun",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Omotayo Oluwafemi Abdulhameed",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2705,22 +2705,22 @@
       {
         "party": "APC",
         "name": "Ojugbele Jimo Olusola",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Olanrewaju Abdul-Lateef Ajani",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Abioro Itunu",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Ogunola Babatunde",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2733,17 +2733,17 @@
       {
         "party": "APC",
         "name": "Adegbonmire Adeniyi Ayodele",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Akinyelure Patrick Ayo",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Falaiye Olugbenga Akinwale",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       }
     ]
   },
@@ -2756,22 +2756,22 @@
       {
         "party": "APC",
         "name": "Ipinsagba Olajide Emmanuel",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Foluso Mayowa Felix Adefemi",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Daodu Babatunde Olumayokun",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Adenekan Olateru Olagbegi",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2784,22 +2784,22 @@
       {
         "party": "APC",
         "name": "Kekemeke Duerimini Isaacs",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Tofowomo Gbadamosi Tola",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Nejo Myson Adeyemi",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Oyerinmade Mathew Oye",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2812,22 +2812,22 @@
       {
         "party": "APC",
         "name": "Adegoke Rasheed Adekunle",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Olaoye Akeem",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Oduyemi Morenikeji Nathaniel",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Fadeyi Olubiyi Oluwole",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       },
       {
         "party": "Accord",
@@ -2845,17 +2845,17 @@
       {
         "party": "APC",
         "name": "Fadahunsi Francis Adenigba",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Babatunde Olaniyi Loye",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Derin-Ologbenla Charles Adewale",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "Accord",
@@ -2873,17 +2873,17 @@
       {
         "party": "APC",
         "name": "Ogunbiyi Akinade Akanmu",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Oriolowo Adelere",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Ayoola Alaba",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "Accord",
@@ -2901,22 +2901,22 @@
       {
         "party": "APC",
         "name": "Akintunde Yunus Abiodun",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Kamil Akinlabi",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Salawu Akeem",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Olunloyo Ayobami Akinyode",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2929,22 +2929,22 @@
       {
         "party": "APC",
         "name": "Ogunesan Hannah Olawumi",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Agoro Lanre Adehirah",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Ojekunle Abigail Olanike",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Adeoye Beulah Olufemi Ayodeji",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   },
@@ -2957,22 +2957,22 @@
       {
         "party": "APC",
         "name": "Oseni Abasi Aderemi",
-        "party_icon": "/politics/parties/APC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
       },
       {
         "party": "ADC",
         "name": "Lukman Adeola Adetunji",
-        "party_icon": "/politics/parties/ADC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
       },
       {
         "party": "NDC",
         "name": "Abdulateef Gbolagade",
-        "party_icon": "/politics/parties/NDC.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
       },
       {
         "party": "PDP",
         "name": "Adeleke Kehinde Saheed",
-        "party_icon": "/politics/parties/PDP.svg"
+        "party_icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
       }
     ]
   }

@@ -213,7 +213,10 @@ export default function LgaDetails({
                   {m.name}
                 </p>
                 <ViewLgasOnMapButton
-                  plan={resolveLgaFocusPlan(m.memberIds, lgas, m.stateIds)}
+                  plan={resolveLgaFocusPlan(m.memberIds, lgas, m.stateIds, {
+                    id: m.id,
+                    label: m.name,
+                  })}
                   className="shrink-0"
                 />
               </div>

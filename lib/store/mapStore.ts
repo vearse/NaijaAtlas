@@ -43,6 +43,7 @@ import { defaultOverlaysForLens } from "@/lib/lenses/lensMapLayers";
 import { syncAllOverlayVisibility } from "@/components/map/overlayLayers";
 import type { PollingUnitShardEntry } from "@/types/politics";
 import type { LgaFocusPlan } from "@/lib/map/lgaMapFocus";
+import { LGA_PALETTE } from "@/lib/map/colors";
 import {
   MAX_FEATURE_MAP_VIEWS,
   type FeatureMapView,
@@ -163,6 +164,14 @@ function notifyLgaVisibility(get: () => MapSelectionState): void {
   get().lgaVisibilityHandler?.(get().lgaVisibleStateIds);
 }
 
+function colorIndexForFocusId(id: string): number {
+  let h = 0;
+  for (let i = 0; i < id.length; i += 1) {
+    h = (h * 31 + id.charCodeAt(i)) | 0;
+  }
+  return Math.abs(h) % LGA_PALETTE.length;
+}
+
 function pruneLabelsForHiddenStates(
   order: string[],
   lgaVisible: Set<string>,
@@ -247,9 +256,14 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
 
   focusLgas: (plan) => {
     if (!plan || plan.stateIds.length === 0) return;
+    const prev = get().lgaFocus;
+    const colorIndex =
+      prev?.id === plan.id && prev.colorIndex != null
+        ? prev.colorIndex
+        : colorIndexForFocusId(plan.id);
+    const focus: LgaFocusPlan = { ...plan, colorIndex };
     set({
-      lgaFocus: plan,
-      lgaVisibleStateIds: new Set(plan.stateIds),
+      lgaFocus: focus,
       selectedStateIds: new Set(plan.stateIds),
       selectedLgaId: null,
       draggedStateId: null,
@@ -262,14 +276,18 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       mobileSheet: "open",
       mapActionHint:
         plan.lgaIds.length > 0
-          ? "Metro / group view — member LGAs in green; others muted (not full LGA browse colors)"
+          ? focus.label
+            ? `${focus.label} on map — highlighted LGAs in color; others neutral gray`
+            : "Metro / group on map — highlighted LGAs in color; others neutral gray"
           : "Showing state LGAs — member areas could not be resolved",
     });
     notifyLgaVisibility(get);
   },
 
-  clearLgaFocus: () =>
-    set({ lgaFocus: null, mapActionHint: null }),
+  clearLgaFocus: () => {
+    set({ lgaFocus: null, mapActionHint: null });
+    notifyLgaVisibility(get);
+  },
   setMapType: (id) => {
     const prev = get().mapType;
     if (prev === "election" && id !== "election") {
@@ -457,7 +475,9 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   setSelectedOverlay: (feature) =>
     set({
       selectedOverlay: feature,
-      overlayGuideLayer: feature ? null : get().overlayGuideLayer,
+      overlayGuideLayer: feature
+        ? feature.layerId
+        : get().overlayGuideLayer,
       selectedLgaId: feature ? null : get().selectedLgaId,
       activeRegionId: feature ? null : get().activeRegionId,
       directionsPanelTarget: null,

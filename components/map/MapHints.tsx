@@ -59,7 +59,7 @@ export default function MapHints() {
     }
 
     if (lgaFocus && lgaFocus.lgaIds.length > 0) {
-      return "Metro / group view — member LGAs share green fill; other LGAs in view are muted gray (use state map icon for full multicolor LGA browse)";
+      return "Metro / group view — highlighted LGAs use an accent color; others are neutral gray (state map icon still toggles full multicolor LGA browse)";
     }
 
     if (lgaVisibleStateIds.size > 0) {
@@ -97,7 +97,7 @@ export default function MapHints() {
     if (selectedOverlay) return "Overlay details in panel";
     if (activeOverlays.size > 0) return "Tap a highlighted feature for details";
     if (lgaFocus && lgaFocus.lgaIds.length > 0) {
-      return "Metro view — green = in group, gray = other LGAs";
+      return "Metro view — colored = in group, gray = other LGAs";
     }
     if (lgaVisibleStateIds.size > 0) return "Tap an LGA for its name";
     if (selectedStateIds.size > 0) return "Tap the map icon on a selected state to show LGAs";

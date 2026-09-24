@@ -120,7 +120,8 @@ export default function LocationSearch({ lgas = [] }: { lgas?: LgaLocation[] }) 
       const plan = resolveLgaFocusPlan(
         entry.memberIds ?? [],
         lgas,
-        entry.stateIds
+        entry.stateIds,
+        { id: entry.id, label: entry.name }
       );
       if (plan.stateIds.length > 0) focusLgas(plan);
       else selectStates(entry.stateIds);

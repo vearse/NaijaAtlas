@@ -107,7 +107,7 @@ export default function MapChromeDropdown<T extends string>({
           {active.icon}
         </span>
         {buttonLabel && (
-          <span className="hidden sm:inline text-xs font-semibold text-slate-700 max-w-[5.5rem] truncate">
+          <span className="inline text-[11px] sm:text-xs font-semibold text-slate-700 max-w-[4.75rem] sm:max-w-[5.5rem] truncate">
             {buttonLabel}
           </span>
         )}

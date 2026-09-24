@@ -1,125 +1,121 @@
 {
   "schemaVersion": 1,
-  "iconBasePath": "/politics/parties",
+  "iconBasePath": "https://inecnigeria.org/_nuxt/",
   "source": {
-    "note": "Party names from INEC 2027 presidential list and candidate rolls. Icons are app-hosted SVG badges (abbrev + brand tint).",
+    "note": "Party names and party icons sourced from the official INEC Registered Political Parties directory.",
+    "url": "https://inecnigeria.org/parties",
     "updated": "2026-09-24"
   },
   "parties": {
     "A": {
       "abbreviation": "A",
-      "name": "A Party",
-      "icon": "/politics/parties/A.svg"
+      "name": "Accord",
+      "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdtKq2Eb6GpoKwyPFey0dk_d0GJ8jFIBhr7qAY6Zy3Og&s=10"
     },
     "AA": {
       "abbreviation": "AA",
       "name": "Action Alliance",
-      "icon": "/politics/parties/AA.svg"
+      "icon": "https://inecnigeria.org/_nuxt/action-alliance-aa_logo.DQolkzM6.jpg"
     },
     "AAC": {
       "abbreviation": "AAC",
       "name": "African Action Congress",
-      "icon": "/politics/parties/AAC.svg"
+      "icon": "https://inecnigeria.org/_nuxt/african-action-congress-aac_logo.BiPR0ZxO.jpg"
     },
     "ADC": {
       "abbreviation": "ADC",
       "name": "African Democratic Congress",
-      "icon": "/politics/parties/ADC.svg"
+      "icon": "https://inecnigeria.org/_nuxt/african-democratic-congress-adc_logo.DBilnanA.jpg"
     },
     "ADP": {
       "abbreviation": "ADP",
-      "name": "Alliance for Democracy and Progress",
-      "icon": "/politics/parties/ADP.svg"
+      "name": "Action Democratic Party",
+      "icon": "https://inecnigeria.org/_nuxt/action-democratic-party-adp_logo.7qxyEaV2.png"
     },
     "APC": {
       "abbreviation": "APC",
       "name": "All Progressives Congress",
-      "icon": "/politics/parties/APC.svg"
+      "icon": "https://inecnigeria.org/_nuxt/all-progressives-congress-apc_logo.CSXCWB6p.jpg"
     },
     "APGA": {
       "abbreviation": "APGA",
       "name": "All Progressives Grand Alliance",
-      "icon": "/politics/parties/APGA.svg"
+      "icon": "https://inecnigeria.org/_nuxt/all-progressives-grand-alliance-apga_logo.PfgYjSjV.jpg"
     },
     "APM": {
       "abbreviation": "APM",
       "name": "Allied Peoples Movement",
-      "icon": "/politics/parties/APM.svg"
+      "icon": "https://inecnigeria.org/_nuxt/allied-peoples-movement-apm_logo.BQN54Bkl.jpg"
     },
     "APP": {
       "abbreviation": "APP",
-      "name": "Allied Peoples Party",
-      "icon": "/politics/parties/APP.svg"
-    },
-    "Accord": {
-      "abbreviation": "Accord",
-      "name": "Accord Party",
-      "icon": "/politics/parties/Accord.svg"
+      "name": "Action Peoples Party",
+      "icon": "https://inecnigeria.org/_nuxt/action-peoples-party-app_logo.BhRwRU7M.png"
     },
     "BP": {
       "abbreviation": "BP",
       "name": "Boot Party",
-      "icon": "/politics/parties/BP.svg"
+      "icon": "https://inecnigeria.org/_nuxt/boot-party-bp_logo.Br5O5Wf6.jpg"
     },
     "DLA": {
       "abbreviation": "DLA",
-      "name": "Democratic Labour Alliance",
-      "icon": "/politics/parties/DLA.svg"
+      "name": "Democratic Leadership Alliance",
+      "icon": "https://inecnigeria.org/_nuxt/democratic-leadership-alliance-dla_logo.B-mFJlad.jpg"
     },
     "LP": {
       "abbreviation": "LP",
       "name": "Labour Party",
-      "icon": "/politics/parties/LP.svg"
+      "icon": "https://inecnigeria.org/_nuxt/labour-party-lp_logo.SV1XCjLU.jpg"
     },
     "NDC": {
       "abbreviation": "NDC",
       "name": "Nigeria Democratic Congress",
-      "icon": "/politics/parties/NDC.svg"
+      "icon": "https://inecnigeria.org/_nuxt/nigeria-democratic-congress_logo.BauESQLD.jpeg"
     },
     "NDP": {
       "abbreviation": "NDP",
       "name": "National Democratic Party",
-      "icon": "/politics/parties/NDP.svg"
+      "icon": "https://inecnigeria.org/_nuxt/national-democratic-party_logo.B2wV2anp.jpg"
     },
     "NNPP": {
       "abbreviation": "NNPP",
-      "name": "New Nigeria People's Party",
-      "icon": "/politics/parties/NNPP.svg"
+      "name": "New Nigeria Peoples Party",
+      "icon": "https://inecnigeria.org/_nuxt/new-nigeria-peoples-party-nnpp_logo.DkfmFai5.jpg"
     },
     "NRM": {
       "abbreviation": "NRM",
       "name": "National Rescue Movement",
-      "icon": "/politics/parties/NRM.svg"
+      "icon": "https://inecnigeria.org/_nuxt/national-rescue-movement-nrm_logo.BUg-M2QT.png"
     },
     "PDP": {
       "abbreviation": "PDP",
       "name": "Peoples Democratic Party",
-      "icon": "/politics/parties/PDP.svg"
+      "icon": "https://inecnigeria.org/_nuxt/peoples-democratic-party-pdp_logo.BClIHPW3.jpg"
     },
     "PRP": {
       "abbreviation": "PRP",
       "name": "Peoples Redemption Party",
-      "icon": "/politics/parties/PRP.svg"
+      "icon": "https://inecnigeria.org/_nuxt/peoples-redemption-party-prp_logo.C8_o4OQI.png"
     },
     "SDP": {
       "abbreviation": "SDP",
       "name": "Social Democratic Party",
-      "icon": "/politics/parties/SDP.svg"
+      "icon": "https://inecnigeria.org/_nuxt/social-democratic-party-sdp_logo.DhlQ2VXw.png"
     },
     "YP": {
       "abbreviation": "YP",
-      "name": "Young Party",
-      "icon": "/politics/parties/YP.svg"
+      "name": "Youth Party",
+      "icon": "https://inecnigeria.org/_nuxt/youth-party-yp_logo.D9Wh44Zt.png"
     },
     "YPP": {
       "abbreviation": "YPP",
-      "name": "Young Progressive Party",
-      "icon": "/politics/parties/YPP.svg"
+      "name": "Young Progressives Party",
+      "icon": "https://inecnigeria.org/_nuxt/young-progressive-party-ypp_logo.Biw28-Pp.jpeg"
     },
     "ZLP": {
       "abbreviation": "ZLP",
       "name": "Zenith Labour Party",
-      "icon": "/politics/parties/ZLP.svg"
+      "icon": "https://inecnigeria.org/_nuxt/zenith-labour-party-zlp_logo.B_S46I7c.jpg"
     }
   }
 }

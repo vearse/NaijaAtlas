@@ -362,10 +362,29 @@ export default function OverlayFeaturePanel({
   return (
     <div className="space-y-5">
       <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">
+        <div className="min-w-0">
+          <button
+            type="button"
+            onClick={() => useMapStore.getState().clearSelectedOverlay()}
+            className="group inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1 rounded-md -ml-1 px-1 py-0.5 hover:text-slate-800 hover:bg-slate-100 transition-colors"
+            aria-label={`Back to ${meta.label} layer guide`}
+          >
+            <svg
+              viewBox="0 0 16 16"
+              className="h-3.5 w-3.5 shrink-0 text-slate-400 group-hover:text-slate-600"
+              fill="none"
+              aria-hidden
+            >
+              <path
+                d="M10 3L5 8l5 5"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
             {meta.label} layer
-          </p>
+          </button>
           <h2 className="text-2xl font-bold text-slate-900">{name}</h2>
           {text(props.nickname) || siteName ? (
             <p className="text-sm text-slate-500 mt-1">
