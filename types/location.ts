@@ -50,6 +50,7 @@ export interface SearchEntry {
   regionId?: string;
   regionName?: string;
   stateIds?: string[];
+  memberIds?: string[];
   category?: string;
   bbox?: [number, number, number, number];
   layerId?: "landforms" | "resources" | "cities" | "lakes" | "waterways" | "coast";

@@ -169,6 +169,7 @@ export default function NigeriaMap({
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
   const lgaVisibleStateIds = useMapStore((s) => s.lgaVisibleStateIds);
   const selectedLgaId = useMapStore((s) => s.selectedLgaId);
+  const lgaFocus = useMapStore((s) => s.lgaFocus);
   const draggedStateId = useMapStore((s) => s.draggedStateId);
   const dragModeStateId = useMapStore((s) => s.dragModeStateId);
   const activeRegionId = useMapStore((s) => s.activeRegionId);
@@ -1240,18 +1241,23 @@ export default function NigeriaMap({
     const map = mapRef.current;
     if (!map?.isStyleLoaded()) return;
 
+    const focusIds = new Set(lgaFocus?.lgaIds ?? []);
+    const inFocusMode = focusIds.size > 0;
     for (const stateId of lgaVisibleStateIds) {
       const src = lgaSourceId(stateId);
       if (!map.getSource(src)) continue;
       for (const l of lgas) {
         if (l.parentId !== stateId) continue;
-        setFeatureState(src, l.id, { selected: l.id === selectedLgaId });
-        setFeatureState(lgaOutlineSourceId(stateId), l.id, {
-          selected: l.id === selectedLgaId,
-        });
+        const focused = inFocusMode && focusIds.has(l.id);
+        const dimmed = inFocusMode && !focusIds.has(l.id);
+        const selected =
+          !inFocusMode && l.id === selectedLgaId;
+        const statePayload = { selected, focused, dimmed };
+        setFeatureState(src, l.id, statePayload);
+        setFeatureState(lgaOutlineSourceId(stateId), l.id, statePayload);
       }
     }
-  }, [lgaVisibleKey, selectedLgaId, lgas, setFeatureState, lgaVisibleStateIds]);
+  }, [lgaVisibleKey, selectedLgaId, lgas, setFeatureState, lgaVisibleStateIds, lgaFocus, lgaReadyKey]);
 
   const loadLgaLayer = useCallback(async (stateId: string) => {
     const map = mapRef.current;
@@ -1400,6 +1406,10 @@ export default function NigeriaMap({
 
   // ——— Fly to selection ———
   useEffect(() => {
+    if (lgaFocus?.bounds) {
+      flyToBounds(lgaFocus.bounds, 40);
+      return;
+    }
     if (selectedLgaId) {
       const bbox = bboxById.get(selectedLgaId);
       if (bbox) flyToBounds(bboxToLngLatBounds(bbox), 72);
@@ -1424,6 +1434,7 @@ export default function NigeriaMap({
       flyToBounds(unionBboxes(bboxes));
     }
   }, [
+    lgaFocus,
     selectedKey,
     selectedLgaId,
     activeRegionId,

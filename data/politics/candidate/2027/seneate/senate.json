@@ -7,15 +7,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Udende Emmanuel Memga"
+        "name": "Udende Emmanuel Memga",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Tyough Robert Aondona"
+        "name": "Tyough Robert Aondona",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "PDP",
-        "name": "Unongo Thomas Tyolumun"
+        "name": "Unongo Thomas Tyolumun",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -27,19 +30,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Zam Titus Tartenger"
+        "name": "Zam Titus Tartenger",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Tsegba Terngu"
+        "name": "Tsegba Terngu",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Utaan Conrad Terhide"
+        "name": "Utaan Conrad Terhide",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Ortom Eunice Erdoo"
+        "name": "Ortom Eunice Erdoo",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -51,19 +58,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Agbo Frances Ottah"
+        "name": "Agbo Frances Ottah",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Olofu David Adejo"
+        "name": "Olofu David Adejo",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Onjeh Daniel Donal"
+        "name": "Onjeh Daniel Donal",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Moro Abba Patrick"
+        "name": "Moro Abba Patrick",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -75,19 +86,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Philip Tanimu Aduda"
+        "name": "Philip Tanimu Aduda",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ireti Kingibe"
+        "name": "Ireti Kingibe",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Austen Peters-Pam Iyabode Amanda"
+        "name": "Austen Peters-Pam Iyabode Amanda",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Angulu Bako"
+        "name": "Angulu Bako",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -99,19 +114,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Bello Yahaya"
+        "name": "Bello Yahaya",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ogembe Salau Ahmed"
+        "name": "Ogembe Salau Ahmed",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Salau Muritala Audu"
+        "name": "Salau Muritala Audu",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Natasha Akpoti-Uduaghan"
+        "name": "Natasha Akpoti-Uduaghan",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -123,19 +142,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ameh Erico Joseph"
+        "name": "Ameh Erico Joseph",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Abubakar Aminu Suleiman"
+        "name": "Abubakar Aminu Suleiman",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Ameh Peter Ojonugwa"
+        "name": "Ameh Peter Ojonugwa",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Muhammed Abdullahi"
+        "name": "Muhammed Abdullahi",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -147,19 +170,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Karimi Sunday"
+        "name": "Karimi Sunday",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Musa Ibrahim Ahmadu"
+        "name": "Musa Ibrahim Ahmadu",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Fatosa Olumuyiwa Adedokun"
+        "name": "Fatosa Olumuyiwa Adedokun",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Yusuf Ayo Tajudeen"
+        "name": "Yusuf Ayo Tajudeen",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -171,19 +198,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Abdulrazaq Abdulrahaman"
+        "name": "Abdulrazaq Abdulrahaman",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Abdulahi Risikat Motunrayo"
+        "name": "Abdulahi Risikat Motunrayo",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Suleiman Abdulrasheed Olufemi Omoda"
+        "name": "Suleiman Abdulrasheed Olufemi Omoda",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Saliu Mustapha"
+        "name": "Saliu Mustapha",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -195,19 +226,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Umar Sadiq"
+        "name": "Umar Sadiq",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Bala Taoheed Usman"
+        "name": "Bala Taoheed Usman",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Gana Thomas Audu"
+        "name": "Gana Thomas Audu",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Kolo Baba Jiya"
+        "name": "Kolo Baba Jiya",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -219,19 +254,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Adewoye Olalekan"
+        "name": "Adewoye Olalekan",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Oyedepo Iyiola"
+        "name": "Oyedepo Iyiola",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Oni Samuel Omoniyi"
+        "name": "Oni Samuel Omoniyi",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Popoola Adekeye Lekan Saheed"
+        "name": "Popoola Adekeye Lekan Saheed",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -243,19 +282,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Sule Abdullahi"
+        "name": "Sule Abdullahi",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Victor Affiku Tsaku"
+        "name": "Victor Affiku Tsaku",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Danladi James"
+        "name": "Danladi James",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Madaki Benbella Anthony"
+        "name": "Madaki Benbella Anthony",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -267,19 +310,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Abdul Ibrahim Baba"
+        "name": "Abdul Ibrahim Baba",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Hassan Abubakar Nalaraba"
+        "name": "Hassan Abubakar Nalaraba",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Baba Ayinwulu"
+        "name": "Baba Ayinwulu",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Agbo-Omeri Mike"
+        "name": "Agbo-Omeri Mike",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -291,19 +338,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Haruna Dauda"
+        "name": "Haruna Dauda",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Umar Musa Galadima"
+        "name": "Umar Musa Galadima",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Adamu Auta Umar Farouq"
+        "name": "Adamu Auta Umar Farouq",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Kaura Danlami Kefas"
+        "name": "Kaura Danlami Kefas",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -315,15 +366,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Musa Mohammed Sani"
+        "name": "Musa Mohammed Sani",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ahmed Mohammed Mukhtar"
+        "name": "Ahmed Mohammed Mukhtar",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Bawa John Agmada"
+        "name": "Bawa John Agmada",
+        "party_icon": "/politics/parties/NDC.svg"
       }
     ]
   },
@@ -335,19 +389,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Bello Abubakar Sani"
+        "name": "Bello Abubakar Sani",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Abdullahi Shehu Mohammed"
+        "name": "Abdullahi Shehu Mohammed",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Bawa Joshua Nuhu"
+        "name": "Bawa Joshua Nuhu",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Abdullahi Yahaya"
+        "name": "Abdullahi Yahaya",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -359,19 +417,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Idris Mohammed Sani"
+        "name": "Idris Mohammed Sani",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Umar Danjuma Emimaru"
+        "name": "Umar Danjuma Emimaru",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Sadiq Mohammed Rabiu"
+        "name": "Sadiq Mohammed Rabiu",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Jiya Peter Ndalikali"
+        "name": "Jiya Peter Ndalikali",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -383,19 +445,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Kasuwa Bitrus David"
+        "name": "Kasuwa Bitrus David",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Yusuf Bello"
+        "name": "Yusuf Bello",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Yusuf Ishaku"
+        "name": "Yusuf Ishaku",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Goliath Timothy"
+        "name": "Goliath Timothy",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -407,19 +473,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Mwadkwon Simon Davou"
+        "name": "Mwadkwon Simon Davou",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Rose Bitrus Mwanti"
+        "name": "Rose Bitrus Mwanti",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Bature Musa Jonathan"
+        "name": "Bature Musa Jonathan",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Gwottson Dalyop"
+        "name": "Gwottson Dalyop",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -431,19 +501,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Lalong Simon Bako"
+        "name": "Lalong Simon Bako",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Solomon Selcap Dalung"
+        "name": "Solomon Selcap Dalung",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Kefas Peter Kefas Dandam"
+        "name": "Kefas Peter Kefas Dandam",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Shekarau Johnbull"
+        "name": "Shekarau Johnbull",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -455,19 +529,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Salihu Mustapha"
+        "name": "Salihu Mustapha",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ibrahim Mustapha"
+        "name": "Ibrahim Mustapha",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Ahmed Abdullahi Musa"
+        "name": "Ahmed Abdullahi Musa",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Attahamohammed Ibrahim"
+        "name": "Attahamohammed Ibrahim",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -479,19 +557,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Umaru Ahmadu"
+        "name": "Umaru Ahmadu",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Iya Umar"
+        "name": "Iya Umar",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Abubakar Rabiu"
+        "name": "Abubakar Rabiu",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Lawan Mohammed Ribado"
+        "name": "Lawan Mohammed Ribado",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -503,19 +585,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Tangwami Felix Bilishan"
+        "name": "Tangwami Felix Bilishan",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Binos Dauda Yaroe"
+        "name": "Binos Dauda Yaroe",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Peter Fwa Barata"
+        "name": "Peter Fwa Barata",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Ahmed Hassan"
+        "name": "Ahmed Hassan",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -527,15 +613,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Misau Isah Hamma"
+        "name": "Misau Isah Hamma",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Abdul Ahmed Ningi"
+        "name": "Abdul Ahmed Ningi",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "PDP",
-        "name": "Aliyu Bello"
+        "name": "Aliyu Bello",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -547,15 +636,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Baba Ibrahim Mohammed"
+        "name": "Baba Ibrahim Mohammed",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Suleiman Mohammed Nazif"
+        "name": "Suleiman Mohammed Nazif",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "PDP",
-        "name": "Adamu Abdulkadir"
+        "name": "Adamu Abdulkadir",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -567,15 +659,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Shehu Yakubu Abdullahi"
+        "name": "Shehu Yakubu Abdullahi",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Garba Dahiru"
+        "name": "Garba Dahiru",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "PDP",
-        "name": "Dabo Danjuma Adamu"
+        "name": "Dabo Danjuma Adamu",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -587,19 +682,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Lawan Kaka Shehu"
+        "name": "Lawan Kaka Shehu",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Baba Gana Zannah"
+        "name": "Baba Gana Zannah",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Abdulkadir Fema"
+        "name": "Abdulkadir Fema",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Kyari Alhaji Grema"
+        "name": "Kyari Alhaji Grema",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -611,19 +710,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Monguno Mohammed Tahir"
+        "name": "Monguno Mohammed Tahir",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Abdullahi Modu Kura"
+        "name": "Abdullahi Modu Kura",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Abubakar Tijjani"
+        "name": "Abubakar Tijjani",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Kareto Mohammed Abdullah"
+        "name": "Kareto Mohammed Abdullah",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -635,19 +738,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ndume Mohammed Ali"
+        "name": "Ndume Mohammed Ali",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Idris Mamman Gatumbwa"
+        "name": "Idris Mamman Gatumbwa",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Kwajafailliya Habu"
+        "name": "Kwajafailliya Habu",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Apaguaminu Mallum"
+        "name": "Apaguaminu Mallum",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -659,19 +766,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Mohammed Ahmed"
+        "name": "Mohammed Ahmed",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Idris Audu Umar"
+        "name": "Idris Audu Umar",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Kabiru Mohammed"
+        "name": "Kabiru Mohammed",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Hammadu Aliyu"
+        "name": "Hammadu Aliyu",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -683,19 +794,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Yahaya Muhammed Inuwa"
+        "name": "Yahaya Muhammed Inuwa",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Mustapha Mohammed Aliyu"
+        "name": "Mustapha Mohammed Aliyu",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Mohammed Dukku"
+        "name": "Mohammed Dukku",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Dankwambo Ibrahim Hassan"
+        "name": "Dankwambo Ibrahim Hassan",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -707,19 +822,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Hamma Tabitha"
+        "name": "Hamma Tabitha",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Mela Audu Nunghe"
+        "name": "Mela Audu Nunghe",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Amos Bulus Kilawangs"
+        "name": "Amos Bulus Kilawangs",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Siyako Anthony Yaro"
+        "name": "Siyako Anthony Yaro",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -731,19 +850,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Manu Haruna"
+        "name": "Manu Haruna",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ahmadu Benni Umaru Salim"
+        "name": "Ahmadu Benni Umaru Salim",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Nyan-Ganji Gilbert Gills"
+        "name": "Nyan-Ganji Gilbert Gills",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Iliyasu Goje"
+        "name": "Iliyasu Goje",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -755,19 +878,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Lau Shuaibu Isa"
+        "name": "Lau Shuaibu Isa",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Maigari Kasimu Bello"
+        "name": "Maigari Kasimu Bello",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Bandawa Anfani"
+        "name": "Bandawa Anfani",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Bubajoda Hilkiah"
+        "name": "Bubajoda Hilkiah",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -779,19 +906,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Aliyu Yusuf"
+        "name": "Aliyu Yusuf",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Afiniki Yarima"
+        "name": "Afiniki Yarima",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Ezekiel Yakubu Ambo"
+        "name": "Ezekiel Yakubu Ambo",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Istifanus Musa"
+        "name": "Istifanus Musa",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -803,15 +934,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Buni Mai Mala"
+        "name": "Buni Mai Mala",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Kale Kawu"
+        "name": "Kale Kawu",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "PDP",
-        "name": "Mustapha Maigoro"
+        "name": "Mustapha Maigoro",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -823,15 +957,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Lawan Ahmad Ibrahim"
+        "name": "Lawan Ahmad Ibrahim",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Imamuddeen Ahmad Abubakar Talba"
+        "name": "Imamuddeen Ahmad Abubakar Talba",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "PDP",
-        "name": "Abubakar Chigari"
+        "name": "Abubakar Chigari",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -843,19 +980,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Bomai Ibrahim Mohammed"
+        "name": "Bomai Ibrahim Mohammed",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Gambo Jajere Baba"
+        "name": "Gambo Jajere Baba",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Hassan Mohammed"
+        "name": "Hassan Mohammed",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Hamma Ibrahim Barde"
+        "name": "Hamma Ibrahim Barde",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -867,15 +1008,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Madori Ahmed Abdulhamid Malam Ali"
+        "name": "Madori Ahmed Abdulhamid Malam Ali",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Muhammad Ubali Shitu"
+        "name": "Muhammad Ubali Shitu",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "PDP",
-        "name": "Salisu Mamuda"
+        "name": "Salisu Mamuda",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -887,19 +1031,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Hussaini Babangida Uba"
+        "name": "Hussaini Babangida Uba",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ahmed Mahmud Gumel"
+        "name": "Ahmed Mahmud Gumel",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Sabo Salisu"
+        "name": "Sabo Salisu",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Abdullahi Aminu Taura"
+        "name": "Abdullahi Aminu Taura",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -911,19 +1059,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ibraheem Sani Garba"
+        "name": "Ibraheem Sani Garba",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ahmed Isah Dutse"
+        "name": "Ahmed Isah Dutse",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Aminu Mustapha"
+        "name": "Aminu Mustapha",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Suleiman Abba"
+        "name": "Suleiman Abba",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -935,19 +1087,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Sani Shehu"
+        "name": "Sani Shehu",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Lawal Adamu Usman"
+        "name": "Lawal Adamu Usman",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Adamu Haruna"
+        "name": "Adamu Haruna",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Ibrahim Usman"
+        "name": "Ibrahim Usman",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -959,19 +1115,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Yero Mukhtar Ramalan"
+        "name": "Yero Mukhtar Ramalan",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Khalid Ibrahim Mustapha"
+        "name": "Khalid Ibrahim Mustapha",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Sha'aban Mohammad Turad"
+        "name": "Sha'aban Mohammad Turad",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Ahmed Abdullahi Zubairu"
+        "name": "Ahmed Abdullahi Zubairu",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -983,15 +1143,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Marshall Sunday Katung"
+        "name": "Marshall Sunday Katung",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Godfrey Ali Gaiya"
+        "name": "Godfrey Ali Gaiya",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "PDP",
-        "name": "Gumbari Joseph Mataimaki"
+        "name": "Gumbari Joseph Mataimaki",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1003,19 +1166,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Shekarau Ibrahim"
+        "name": "Shekarau Ibrahim",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Samaila Abdullahi Mukhtar"
+        "name": "Samaila Abdullahi Mukhtar",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Yusuf Nasiru Gawuna"
+        "name": "Yusuf Nasiru Gawuna",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Sankara Nafiu Danladi"
+        "name": "Sankara Nafiu Danladi",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1027,19 +1194,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Barau I. Jibrin"
+        "name": "Barau I. Jibrin",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Saleh Shehu Kudawa"
+        "name": "Saleh Shehu Kudawa",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Usman Sunusi Danbatta"
+        "name": "Usman Sunusi Danbatta",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Sagir Abdulkadir Ahmad"
+        "name": "Sagir Abdulkadir Ahmad",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1051,19 +1222,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Kawa Suleiman Abdurrahaman"
+        "name": "Kawa Suleiman Abdurrahaman",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Baba Aminu Zubair"
+        "name": "Baba Aminu Zubair",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Ibrahim Kassim Bataiya"
+        "name": "Ibrahim Kassim Bataiya",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Isa Umar Sambo"
+        "name": "Isa Umar Sambo",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1075,15 +1250,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Abubakar Sadiq Yar'Adua"
+        "name": "Abubakar Sadiq Yar'Adua",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Lawal Sani"
+        "name": "Lawal Sani",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "PDP",
-        "name": "Abdulaziz Amina Lawal Rafindadi"
+        "name": "Abdulaziz Amina Lawal Rafindadi",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1095,19 +1273,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Yahaya Nasir"
+        "name": "Yahaya Nasir",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Lawal Sani"
+        "name": "Lawal Sani",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Yahaya Aminu"
+        "name": "Yahaya Aminu",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Daura Umar Dauda"
+        "name": "Daura Umar Dauda",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1119,19 +1301,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Dandutse Muntari Mohammed"
+        "name": "Dandutse Muntari Mohammed",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Lawal Umar"
+        "name": "Lawal Umar",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Hussain Ishaq Suleim"
+        "name": "Hussain Ishaq Suleim",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Bawa Rabiu"
+        "name": "Bawa Rabiu",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1143,19 +1329,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Adamu Mohammed Aleiro"
+        "name": "Adamu Mohammed Aleiro",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Aminu Bande"
+        "name": "Aminu Bande",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Umar Yarotela"
+        "name": "Umar Yarotela",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Andarai Haruna Saidu"
+        "name": "Andarai Haruna Saidu",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1167,19 +1357,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Adamu Muhammad Aliero"
+        "name": "Adamu Muhammad Aliero",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Mera Ibrahim Mohammed"
+        "name": "Mera Ibrahim Mohammed",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Abdurrahaman Aliyu"
+        "name": "Abdurrahaman Aliyu",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Mukhtar Mohammed Tafarki"
+        "name": "Mukhtar Mohammed Tafarki",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1191,19 +1385,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Muhammed Ja'afaru Ngaski"
+        "name": "Muhammed Ja'afaru Ngaski",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Maidoki Garba Musa"
+        "name": "Maidoki Garba Musa",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Hassan Mustapha"
+        "name": "Hassan Mustapha",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Abubakar Hamza"
+        "name": "Abubakar Hamza",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1215,19 +1413,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Tukur Muhammad"
+        "name": "Tukur Muhammad",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Hassan Muhammad"
+        "name": "Hassan Muhammad",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Ummar Maisalati"
+        "name": "Ummar Maisalati",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Umar Abubakar"
+        "name": "Umar Abubakar",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1239,19 +1441,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Wamakko Aliyu Magatakarda"
+        "name": "Wamakko Aliyu Magatakarda",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Maishinko Mani Katami"
+        "name": "Maishinko Mani Katami",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Abubakar Mainasara Sani"
+        "name": "Abubakar Mainasara Sani",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Maccido Ahmed"
+        "name": "Maccido Ahmed",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1263,19 +1469,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Abdullahi Ibrahim Danbaba"
+        "name": "Abdullahi Ibrahim Danbaba",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Yabo Faruk Malami"
+        "name": "Yabo Faruk Malami",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Tanimu Bodinga"
+        "name": "Tanimu Bodinga",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Yusuf Dahiru"
+        "name": "Yusuf Dahiru",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1287,19 +1497,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Bilbis Ikra Aliyu"
+        "name": "Bilbis Ikra Aliyu",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Abubakar Atiku Sale"
+        "name": "Abubakar Atiku Sale",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Ibrahim Sanusi"
+        "name": "Ibrahim Sanusi",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Bala Sanusi"
+        "name": "Bala Sanusi",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1311,19 +1525,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Sahabi Ya'u"
+        "name": "Sahabi Ya'u",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Shehu Rafi"
+        "name": "Shehu Rafi",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Nasiru Garba"
+        "name": "Nasiru Garba",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Musa Hanafi Moriki"
+        "name": "Musa Hanafi Moriki",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1335,19 +1553,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Abdulaziz Yari"
+        "name": "Abdulaziz Yari",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ibrahim Mikailu Barau"
+        "name": "Ibrahim Mikailu Barau",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Abdullahi Hassan Anka"
+        "name": "Abdullahi Hassan Anka",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Lawal Faru"
+        "name": "Lawal Faru",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1359,19 +1581,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Atuma Emeka"
+        "name": "Atuma Emeka",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Austine Okwudiri Akobundu"
+        "name": "Austine Okwudiri Akobundu",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Nkechi Nwaogu"
+        "name": "Nkechi Nwaogu",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Ogu Bob"
+        "name": "Ogu Bob",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1383,19 +1609,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Kalu Orji Uzor"
+        "name": "Kalu Orji Uzor",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Okoronkwo Ikechukwu Bishop Godswill"
+        "name": "Okoronkwo Ikechukwu Bishop Godswill",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Nkole Uko Ndukwe"
+        "name": "Nkole Uko Ndukwe",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Udeachara Jude"
+        "name": "Udeachara Jude",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1407,23 +1637,28 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ikonne Prince Paul"
+        "name": "Ikonne Prince Paul",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Isiguzor Chukwuemeka Victor"
+        "name": "Isiguzor Chukwuemeka Victor",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Enyinna Kasarachi Michael"
+        "name": "Enyinna Kasarachi Michael",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Onuoha Ishmael Chinyere"
+        "name": "Onuoha Ishmael Chinyere",
+        "party_icon": "/politics/parties/PDP.svg"
       },
       {
         "party": "LP",
-        "name": "Enyinnaya Abaribe"
+        "name": "Enyinnaya Abaribe",
+        "party_icon": "/politics/parties/LP.svg"
       }
     ]
   },
@@ -1435,19 +1670,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ekwunife Uche Lilian"
+        "name": "Ekwunife Uche Lilian",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Nwobu Geoffery Ndubuisi"
+        "name": "Nwobu Geoffery Ndubuisi",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Umeh Victor Chukwunonyelum"
+        "name": "Umeh Victor Chukwunonyelum",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Ughamadu Lawrence Chijioke"
+        "name": "Ughamadu Lawrence Chijioke",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1459,19 +1698,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Nnalue Chimzobam Kingsley"
+        "name": "Nnalue Chimzobam Kingsley",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Udedibia Sunday Ikenna"
+        "name": "Udedibia Sunday Ikenna",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Nwoye Tony Okechukwu"
+        "name": "Nwoye Tony Okechukwu",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Oliatachinenye Edith"
+        "name": "Oliatachinenye Edith",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1483,19 +1726,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Benson-Oraelosi Chibuogwu Maryanne"
+        "name": "Benson-Oraelosi Chibuogwu Maryanne",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Anagwu Fredrick Emeka"
+        "name": "Anagwu Fredrick Emeka",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Onunkwo Ebuka Josephat"
+        "name": "Onunkwo Ebuka Josephat",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Nwosu Ikechukwu Samben"
+        "name": "Nwosu Ikechukwu Samben",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1507,19 +1754,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Eze Kenneth Emeka"
+        "name": "Eze Kenneth Emeka",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ugo Maginus Kel"
+        "name": "Ugo Maginus Kel",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Odoh Benard Ifeanyi"
+        "name": "Odoh Benard Ifeanyi",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Ngwuta Elechi Christopher"
+        "name": "Ngwuta Elechi Christopher",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1531,19 +1782,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Nwebonyi Onyeka Peter"
+        "name": "Nwebonyi Onyeka Peter",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ikeria Chibuike Solomon"
+        "name": "Ikeria Chibuike Solomon",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Nwite James N"
+        "name": "Nwite James N",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Opoke Sunday Andrew"
+        "name": "Opoke Sunday Andrew",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1555,19 +1810,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ani Anthony Okorie"
+        "name": "Ani Anthony Okorie",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Silas Joseph Onu"
+        "name": "Silas Joseph Onu",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Ndubuisi Emmanuel C"
+        "name": "Ndubuisi Emmanuel C",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Nwachi Maria Ude"
+        "name": "Nwachi Maria Ude",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1579,19 +1838,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Chukwu Kelvin"
+        "name": "Chukwu Kelvin",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Idoko Mechika"
+        "name": "Idoko Mechika",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Asadu Patrick Oziokoja"
+        "name": "Asadu Patrick Oziokoja",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Ukwueke Kingsley"
+        "name": "Ukwueke Kingsley",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1603,19 +1866,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Asogwa Ikeje Israel"
+        "name": "Asogwa Ikeje Israel",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Chika Idoko Emmanuel"
+        "name": "Chika Idoko Emmanuel",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Asadu Patrick Oziokoja"
+        "name": "Asadu Patrick Oziokoja",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Ezeme Nestor Chika"
+        "name": "Ezeme Nestor Chika",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1627,19 +1894,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ngwu Osita"
+        "name": "Ngwu Osita",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ani Juliet Nkechi"
+        "name": "Ani Juliet Nkechi",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Eneh Kingsley Uchenna"
+        "name": "Eneh Kingsley Uchenna",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Amadi Dennis"
+        "name": "Amadi Dennis",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1651,19 +1922,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Uzodinma Ezebuihe Anayochukwu"
+        "name": "Uzodinma Ezebuihe Anayochukwu",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ofoegbu Uchenna Daniel"
+        "name": "Ofoegbu Uchenna Daniel",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Onyeagocha Uchechukwu"
+        "name": "Onyeagocha Uchechukwu",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Madumere Prince Eze"
+        "name": "Madumere Prince Eze",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1675,19 +1950,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ndubueze Patrick Chiwuba"
+        "name": "Ndubueze Patrick Chiwuba",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ibekwe Nkiru"
+        "name": "Ibekwe Nkiru",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Omegara Mathew"
+        "name": "Omegara Mathew",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Ejiogu Micheal Duru"
+        "name": "Ejiogu Micheal Duru",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1699,19 +1978,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Uzodinma Goodhope Odidika"
+        "name": "Uzodinma Goodhope Odidika",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Iwuchukwu Vincent Ogadinma Nnabugo"
+        "name": "Iwuchukwu Vincent Ogadinma Nnabugo",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Nwogu Nze Ndieze"
+        "name": "Nwogu Nze Ndieze",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Onyereri Chukwudi Victor Jones"
+        "name": "Onyereri Chukwudi Victor Jones",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1723,19 +2006,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Bassey Aniekan Etim"
+        "name": "Bassey Aniekan Etim",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Sunday Etim Umoren"
+        "name": "Sunday Etim Umoren",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Afia Ekere S."
+        "name": "Afia Ekere S.",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Udobang Cletus Kufre"
+        "name": "Udobang Cletus Kufre",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1747,15 +2034,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Akpabio Godswill"
+        "name": "Akpabio Godswill",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Akpabio Patience Christopher Ibanga Obot"
+        "name": "Akpabio Patience Christopher Ibanga Obot",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Inemeh Patty Etete"
+        "name": "Inemeh Patty Etete",
+        "party_icon": "/politics/parties/NDC.svg"
       }
     ]
   },
@@ -1767,19 +2057,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Akpan Ekong Sampson"
+        "name": "Akpan Ekong Sampson",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Louis Paul Udoh"
+        "name": "Louis Paul Udoh",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Frank Okon Daniel"
+        "name": "Frank Okon Daniel",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Isong Etim"
+        "name": "Isong Etim",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1791,19 +2085,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Benson Friday Konbowei"
+        "name": "Benson Friday Konbowei",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Aistine Inei Asamaowei"
+        "name": "Aistine Inei Asamaowei",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Okoyareuben Boutuaowei"
+        "name": "Okoyareuben Boutuaowei",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Akinaka Erepamo Richard"
+        "name": "Akinaka Erepamo Richard",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1815,19 +2113,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Sunny-Golu Israel"
+        "name": "Sunny-Golu Israel",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Sylva Ngo Nathaniel"
+        "name": "Sylva Ngo Nathaniel",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Tekenah Dau Kenny"
+        "name": "Tekenah Dau Kenny",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Joseph Ateki Boabofa"
+        "name": "Joseph Ateki Boabofa",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1839,19 +2141,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Agbiki Fidelis"
+        "name": "Agbiki Fidelis",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ogola Christopher"
+        "name": "Ogola Christopher",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Dickson Seriake Henry"
+        "name": "Dickson Seriake Henry",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Ebebi Onduakpo Polycarp"
+        "name": "Ebebi Onduakpo Polycarp",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1863,19 +2169,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ewa Oden Ibiang"
+        "name": "Ewa Oden Ibiang",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Akin Rickett"
+        "name": "Akin Rickett",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Ewa Bassey Eko"
+        "name": "Ewa Bassey Eko",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "John Ifere"
+        "name": "John Ifere",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1887,15 +2197,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Jarigbe Jarigbe Agom"
+        "name": "Jarigbe Jarigbe Agom",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ugbong Casmir"
+        "name": "Ugbong Casmir",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Ake Abuashe Grace"
+        "name": "Ake Abuashe Grace",
+        "party_icon": "/politics/parties/NDC.svg"
       }
     ]
   },
@@ -1907,19 +2220,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ekpenyong Asuquo"
+        "name": "Ekpenyong Asuquo",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Edet Joseph"
+        "name": "Edet Joseph",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Egwu Egwu Arong"
+        "name": "Egwu Egwu Arong",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Inyang Florence"
+        "name": "Inyang Florence",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1931,19 +2248,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Dafinone Ede Omueya"
+        "name": "Dafinone Ede Omueya",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ewhrudjakpor Benjamin"
+        "name": "Ewhrudjakpor Benjamin",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Omo-Agege Ovie Augustine"
+        "name": "Omo-Agege Ovie Augustine",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Arhagba Ighogbedjere"
+        "name": "Arhagba Ighogbedjere",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1955,19 +2276,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Okowa Ifeanyi Arthur"
+        "name": "Okowa Ifeanyi Arthur",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ogoliegbune Valentine Chibuzor"
+        "name": "Ogoliegbune Valentine Chibuzor",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Ochei Victor Onyekachi"
+        "name": "Ochei Victor Onyekachi",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Ogannah Onyeama Austyn"
+        "name": "Ogannah Onyeama Austyn",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1979,15 +2304,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Joel-Onowakpo Thomas Ewomazino"
+        "name": "Joel-Onowakpo Thomas Ewomazino",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "NDC",
-        "name": "Adhekpukoli Elo"
+        "name": "Adhekpukoli Elo",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Otuaro Kingley Burutu"
+        "name": "Otuaro Kingley Burutu",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -1999,15 +2327,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ikpea Joseph"
+        "name": "Ikpea Joseph",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Okonofua Herberta Inemezele"
+        "name": "Okonofua Herberta Inemezele",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Inemezele Ikpea Igiagbe Joseph"
+        "name": "Inemezele Ikpea Igiagbe Joseph",
+        "party_icon": "/politics/parties/NDC.svg"
       }
     ]
   },
@@ -2019,19 +2350,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Oshiomhole Adams"
+        "name": "Oshiomhole Adams",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Aruna Abubakari"
+        "name": "Aruna Abubakari",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Oisamoje Maria Evuarherhe"
+        "name": "Oisamoje Maria Evuarherhe",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Momoh-Dejih Bashir Eugine"
+        "name": "Momoh-Dejih Bashir Eugine",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2043,19 +2378,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ogbeide-Ihama Omoregie"
+        "name": "Ogbeide-Ihama Omoregie",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Iduoriyekemwen Matthew Aigbuhuenze"
+        "name": "Iduoriyekemwen Matthew Aigbuhuenze",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Epelle-Asemota Bridgitte"
+        "name": "Epelle-Asemota Bridgitte",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Ojediamen Benjamin Ehichioya"
+        "name": "Ojediamen Benjamin Ehichioya",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2067,19 +2406,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Onyesoh Allwell Iheacho"
+        "name": "Onyesoh Allwell Iheacho",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Agwor Samuel Ndubuisi"
+        "name": "Agwor Samuel Ndubuisi",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Okwuwolu Wolu Ekelechi Benjamin"
+        "name": "Okwuwolu Wolu Ekelechi Benjamin",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Anele Akor Wisdom"
+        "name": "Anele Akor Wisdom",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2091,19 +2434,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Osarosaka Ebenezer Erewari"
+        "name": "Osarosaka Ebenezer Erewari",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ikuru Tele Betram"
+        "name": "Ikuru Tele Betram",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Abiante Awaji-Inombek"
+        "name": "Abiante Awaji-Inombek",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Nwogu Olaka"
+        "name": "Nwogu Olaka",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2115,19 +2462,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Obuah Amechi Felix"
+        "name": "Obuah Amechi Felix",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Otto Josiah"
+        "name": "Otto Josiah",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Ogbobula Isaac"
+        "name": "Ogbobula Isaac",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Job Vincent"
+        "name": "Job Vincent",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2139,19 +2490,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Bamidele Opeyemi"
+        "name": "Bamidele Opeyemi",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Akinyemi Victor Babafemi"
+        "name": "Akinyemi Victor Babafemi",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Omolayotaiwo Oluwagbenga"
+        "name": "Omolayotaiwo Oluwagbenga",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Fatuyi-Olajuyigbe Monica Adesola"
+        "name": "Fatuyi-Olajuyigbe Monica Adesola",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2163,15 +2518,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Oguntoye Ayobami Samuel"
+        "name": "Oguntoye Ayobami Samuel",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Ayeni Funso"
+        "name": "Ayeni Funso",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Oguntoye Ayobami Samuel"
+        "name": "Oguntoye Ayobami Samuel",
+        "party_icon": "/politics/parties/NDC.svg"
       }
     ]
   },
@@ -2183,15 +2541,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Adaramodu Adeyemi Raphael"
+        "name": "Adaramodu Adeyemi Raphael",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Kolawole Job Nathaniel"
+        "name": "Kolawole Job Nathaniel",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "PDP",
-        "name": "Ayeni Oyeolabisi"
+        "name": "Ayeni Oyeolabisi",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2203,19 +2564,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Sanni Eshilokun Wasiu Olatunji"
+        "name": "Sanni Eshilokun Wasiu Olatunji",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Abayomi Idowu Omotayo"
+        "name": "Abayomi Idowu Omotayo",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Johnson Lawrence Adeniyi Oladipupo"
+        "name": "Johnson Lawrence Adeniyi Oladipupo",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Dakova-Vaughan Kolawole David"
+        "name": "Dakova-Vaughan Kolawole David",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2227,19 +2592,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Abiru Adetokunbo Mukhail"
+        "name": "Abiru Adetokunbo Mukhail",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Moshood Babatunde Olanrewaju"
+        "name": "Moshood Babatunde Olanrewaju",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Adebanjo Adeola Damilola"
+        "name": "Adebanjo Adeola Damilola",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Adeniji Victorin"
+        "name": "Adeniji Victorin",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2251,19 +2620,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Adebule Idiat Oluranti"
+        "name": "Adebule Idiat Oluranti",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Bello Owolabi Hafis"
+        "name": "Bello Owolabi Hafis",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Salvador Adegoke Moshood"
+        "name": "Salvador Adegoke Moshood",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Phillips Adebiyi Abiodun"
+        "name": "Phillips Adebiyi Abiodun",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2275,19 +2648,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Salisu Shuaibu Afolabi"
+        "name": "Salisu Shuaibu Afolabi",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Samuel Oluwafemi Abiodun-Oni"
+        "name": "Samuel Oluwafemi Abiodun-Oni",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "George-Taylor Oluwadurotimi"
+        "name": "George-Taylor Oluwadurotimi",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Obasanjo Iyabo"
+        "name": "Obasanjo Iyabo",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2299,19 +2676,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Abiodun Adedapo Olusegun"
+        "name": "Abiodun Adedapo Olusegun",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Adebanjo Babatunde Olalekan"
+        "name": "Adebanjo Babatunde Olalekan",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Shokoya Adewale Oluwasegun"
+        "name": "Shokoya Adewale Oluwasegun",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Omotayo Oluwafemi Abdulhameed"
+        "name": "Omotayo Oluwafemi Abdulhameed",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2323,19 +2704,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ojugbele Jimo Olusola"
+        "name": "Ojugbele Jimo Olusola",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Olanrewaju Abdul-Lateef Ajani"
+        "name": "Olanrewaju Abdul-Lateef Ajani",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Abioro Itunu"
+        "name": "Abioro Itunu",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Ogunola Babatunde"
+        "name": "Ogunola Babatunde",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2347,15 +2732,18 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Adegbonmire Adeniyi Ayodele"
+        "name": "Adegbonmire Adeniyi Ayodele",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Akinyelure Patrick Ayo"
+        "name": "Akinyelure Patrick Ayo",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Falaiye Olugbenga Akinwale"
+        "name": "Falaiye Olugbenga Akinwale",
+        "party_icon": "/politics/parties/NDC.svg"
       }
     ]
   },
@@ -2367,19 +2755,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ipinsagba Olajide Emmanuel"
+        "name": "Ipinsagba Olajide Emmanuel",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Foluso Mayowa Felix Adefemi"
+        "name": "Foluso Mayowa Felix Adefemi",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Daodu Babatunde Olumayokun"
+        "name": "Daodu Babatunde Olumayokun",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Adenekan Olateru Olagbegi"
+        "name": "Adenekan Olateru Olagbegi",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2391,19 +2783,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Kekemeke Duerimini Isaacs"
+        "name": "Kekemeke Duerimini Isaacs",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Tofowomo Gbadamosi Tola"
+        "name": "Tofowomo Gbadamosi Tola",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Nejo Myson Adeyemi"
+        "name": "Nejo Myson Adeyemi",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Oyerinmade Mathew Oye"
+        "name": "Oyerinmade Mathew Oye",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2415,23 +2811,28 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Adegoke Rasheed Adekunle"
+        "name": "Adegoke Rasheed Adekunle",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Olaoye Akeem"
+        "name": "Olaoye Akeem",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Oduyemi Morenikeji Nathaniel"
+        "name": "Oduyemi Morenikeji Nathaniel",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Fadeyi Olubiyi Oluwole"
+        "name": "Fadeyi Olubiyi Oluwole",
+        "party_icon": "/politics/parties/PDP.svg"
       },
       {
         "party": "Accord",
-        "name": "Ganiyu Ayobami Olaoluwa"
+        "name": "Ganiyu Ayobami Olaoluwa",
+        "party_icon": "/politics/parties/Accord.svg"
       }
     ]
   },
@@ -2443,19 +2844,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Fadahunsi Francis Adenigba"
+        "name": "Fadahunsi Francis Adenigba",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Babatunde Olaniyi Loye"
+        "name": "Babatunde Olaniyi Loye",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Derin-Ologbenla Charles Adewale"
+        "name": "Derin-Ologbenla Charles Adewale",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "Accord",
-        "name": "Fadipe Ibukun Isola"
+        "name": "Fadipe Ibukun Isola",
+        "party_icon": "/politics/parties/Accord.svg"
       }
     ]
   },
@@ -2467,19 +2872,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ogunbiyi Akinade Akanmu"
+        "name": "Ogunbiyi Akinade Akanmu",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Oriolowo Adelere"
+        "name": "Oriolowo Adelere",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Ayoola Alaba"
+        "name": "Ayoola Alaba",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "Accord",
-        "name": "Oyewumi Kamorudeen Olalere"
+        "name": "Oyewumi Kamorudeen Olalere",
+        "party_icon": "/politics/parties/Accord.svg"
       }
     ]
   },
@@ -2491,19 +2900,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Akintunde Yunus Abiodun"
+        "name": "Akintunde Yunus Abiodun",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Kamil Akinlabi"
+        "name": "Kamil Akinlabi",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Salawu Akeem"
+        "name": "Salawu Akeem",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Olunloyo Ayobami Akinyode"
+        "name": "Olunloyo Ayobami Akinyode",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2515,19 +2928,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Ogunesan Hannah Olawumi"
+        "name": "Ogunesan Hannah Olawumi",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Agoro Lanre Adehirah"
+        "name": "Agoro Lanre Adehirah",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Ojekunle Abigail Olanike"
+        "name": "Ojekunle Abigail Olanike",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Adeoye Beulah Olufemi Ayodeji"
+        "name": "Adeoye Beulah Olufemi Ayodeji",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   },
@@ -2539,19 +2956,23 @@
     "candidates": [
       {
         "party": "APC",
-        "name": "Oseni Abasi Aderemi"
+        "name": "Oseni Abasi Aderemi",
+        "party_icon": "/politics/parties/APC.svg"
       },
       {
         "party": "ADC",
-        "name": "Lukman Adeola Adetunji"
+        "name": "Lukman Adeola Adetunji",
+        "party_icon": "/politics/parties/ADC.svg"
       },
       {
         "party": "NDC",
-        "name": "Abdulateef Gbolagade"
+        "name": "Abdulateef Gbolagade",
+        "party_icon": "/politics/parties/NDC.svg"
       },
       {
         "party": "PDP",
-        "name": "Adeleke Kehinde Saheed"
+        "name": "Adeleke Kehinde Saheed",
+        "party_icon": "/politics/parties/PDP.svg"
       }
     ]
   }

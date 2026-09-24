@@ -2,10 +2,12 @@
 
 import { useEffect, useCallback } from "react";
 import LocationSearch from "@/components/search/LocationSearch";
+import type { LgaLocation } from "@/types/location";
 
 interface SearchSpotlightProps {
   open: boolean;
   onClose: () => void;
+  lgas?: LgaLocation[];
 }
 
 /**
@@ -13,7 +15,7 @@ interface SearchSpotlightProps {
  * centered elevated bar. Recorded for small + md screens where the inline
  * header search is collapsed behind an icon button.
  */
-export default function SearchSpotlight({ open, onClose }: SearchSpotlightProps) {
+export default function SearchSpotlight({ open, onClose, lgas }: SearchSpotlightProps) {
   const closeOnEscape = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -43,7 +45,7 @@ export default function SearchSpotlight({ open, onClose }: SearchSpotlightProps)
         aria-hidden
       />
       <div className="relative w-full max-w-lg rounded-2xl bg-white shadow-2xl ring-1 ring-slate-900/10 overflow-hidden">
-        <LocationSearch />
+        <LocationSearch lgas={lgas} />
       </div>
     </div>
   );

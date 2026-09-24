@@ -13,11 +13,9 @@ import {
   defaultPeriodForCategory,
 } from "@/lib/compare/compareUtils";
 import {
-  LENS_IDS,
   LENS_LABELS,
   lensInputFromCountryNote,
   lensInputFromWikiNote,
-  type LensId,
 } from "@/lib/lenses/lensHelper";
 import {
   aggregateCountryOverlayItems,
@@ -241,7 +239,6 @@ export default function NigeriaOverview({
   peopleNotes = {},
 }: NigeriaOverviewProps) {
   const openWikiModal = useMapStore((s) => s.openWikiModal);
-  const setActiveLens = useMapStore((s) => s.setActiveLens);
   const [openIndex, setOpenIndex] = useState(0);
   const { activeLens, matches } = useLensFilter();
   const totalLgas = states.reduce((n, s) => n + s.lgaCount, 0);
@@ -489,35 +486,21 @@ export default function NigeriaOverview({
       </div>
 
       <div>
-        <div className="flex items-center gap-2 mb-3">
-          <label
-            className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 sr-only"
-            htmlFor="country-lens-filter"
-          >
-            Focus filter
-          </label>
-          <select
-            id="country-lens-filter"
-            value={activeLens}
-            onChange={(e) => setActiveLens(e.target.value as LensId)}
-            aria-label="Filter highlights by focus"
-            className="rounded-full border border-slate-200 bg-white text-xs font-semibold text-slate-700 px-3 py-1.5 focus:outline-none focus:border-ng-green/50 focus:ring-1 focus:ring-ng-green/20"
-          >
-            {LENS_IDS.map((l) => (
-              <option key={l} value={l}>
-                {LENS_LABELS[l]}
-              </option>
-            ))}
-          </select>
-          <span className="ml-auto text-[10px] font-medium text-slate-400">
+        <div className="flex items-center justify-between gap-2 mb-3">
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            Highlights
+            {activeLens !== "learn" && (
+              <span className="normal-case font-medium text-slate-500 ml-1.5">
+                · {LENS_LABELS[activeLens]}
+              </span>
+            )}
+          </p>
+          <span className="text-[10px] font-medium text-slate-400 shrink-0">
             {activeLens === "learn"
               ? `${countryNoteList.length} notes`
               : `${countryLensPicks?.total ?? 0} picks`}
           </span>
         </div>
-        <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
-          Highlights
-        </p>
         <div className="space-y-2">
           {activeLens !== "learn" && countryLensPicks ? (
             <>

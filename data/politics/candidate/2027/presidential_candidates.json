@@ -1,306 +1,324 @@
 {
-    "election": {
-      "country": "Nigeria",
-      "year": 2027,
-      "type": "Presidential",
-      "election_date": "2027-01-16",
-      "candidate_list_status": "Final list published by INEC",
-      "candidate_list_published": "2026-09-12",
-      "total_presidential_candidates": 18
-    },
-    "source": {
-      "organization": "Independent National Electoral Commission (INEC)",
-      "verified_against": "INEC final list as reproduced by Channels Television",
-      "verified_date": "2026-09-22"
-    },
-    "candidates": [
-      {
-        "party": {
-          "abbreviation": "AA",
-          "name": "Action Alliance"
-        },
-        "presidential_candidate": {
-          "name": "Rufai Adekunle Omo-Aje",
-          "age": 71,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Shehu Hussaini",
-          "age": 56,
-          "gender": "Male"
-        }
+  "election": {
+    "country": "Nigeria",
+    "year": 2027,
+    "type": "Presidential",
+    "election_date": "2027-01-16",
+    "candidate_list_status": "Final list published by INEC",
+    "candidate_list_published": "2026-09-12",
+    "total_presidential_candidates": 18
+  },
+  "source": {
+    "organization": "Independent National Electoral Commission (INEC)",
+    "verified_against": "INEC final list as reproduced by Channels Television",
+    "verified_date": "2026-09-22"
+  },
+  "candidates": [
+    {
+      "party": {
+        "abbreviation": "AA",
+        "name": "Action Alliance",
+        "icon": "/politics/parties/AA.svg"
       },
-      {
-        "party": {
-          "abbreviation": "ADP",
-          "name": "Alliance for Democracy and Progress"
-        },
-        "presidential_candidate": {
-          "name": "Abbas-Bin Aliyu",
-          "age": 44,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Ike Chinazam",
-          "age": 50,
-          "gender": "Male"
-        }
+      "presidential_candidate": {
+        "name": "Rufai Adekunle Omo-Aje",
+        "age": 71,
+        "gender": "Male"
       },
-      {
-        "party": {
-          "abbreviation": "APP",
-          "name": "Allied Peoples Party"
-        },
-        "presidential_candidate": {
-          "name": "Yusuf Kabiru",
-          "age": 54,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Peace Egobia Ofordile",
-          "age": 47,
-          "gender": "Female"
-        }
-      },
-      {
-        "party": {
-          "abbreviation": "AAC",
-          "name": "African Action Congress"
-        },
-        "presidential_candidate": {
-          "name": "Omoyele Sowore",
-          "age": 55,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Haruna Garba Magashi",
-          "age": 49,
-          "gender": "Male"
-        }
-      },
-      {
-        "party": {
-          "abbreviation": "ADC",
-          "name": "African Democratic Congress"
-        },
-        "presidential_candidate": {
-          "name": "Atiku Abubakar",
-          "age": 79,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Chibuike Rotimi Amaechi",
-          "age": 61,
-          "gender": "Male"
-        }
-      },
-      {
-        "party": {
-          "abbreviation": "APC",
-          "name": "All Progressives Congress"
-        },
-        "presidential_candidate": {
-          "name": "Bola Ahmed Tinubu",
-          "age": 74,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Kashim Shettima",
-          "age": 59,
-          "gender": "Male"
-        }
-      },
-      {
-        "party": {
-          "abbreviation": "APM",
-          "name": "Allied Peoples Movement"
-        },
-        "presidential_candidate": {
-          "name": "Oluseyi Abiodun Makinde",
-          "age": 58,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Musa Lawal Daura",
-          "age": 73,
-          "gender": "Male"
-        }
-      },
-      {
-        "party": {
-          "abbreviation": "BP",
-          "name": "Boot Party"
-        },
-        "presidential_candidate": {
-          "name": "Sunday Adenuga",
-          "age": 52,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Mustapha Usman Turaki",
-          "age": 40,
-          "gender": "Male"
-        }
-      },
-      {
-        "party": {
-          "abbreviation": "DLA",
-          "name": "Democratic Labour Alliance"
-        },
-        "presidential_candidate": {
-          "name": "Moses Olusoji Adebisi",
-          "age": 35,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Nafisat Usaku Abubakar",
-          "age": 35,
-          "gender": "Female"
-        }
-      },
-      {
-        "party": {
-          "abbreviation": "LP",
-          "name": "Labour Party"
-        },
-        "presidential_candidate": {
-          "name": "Sunday Chibuzo Okereke",
-          "age": 43,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Hajja Bintu Konto",
-          "age": 54,
-          "gender": "Female"
-        }
-      },
-      {
-        "party": {
-          "abbreviation": "NDP",
-          "name": "National Democratic Party"
-        },
-        "presidential_candidate": {
-          "name": "Ada Elizabeth Fredrick Okwori",
-          "age": 48,
-          "gender": "Female"
-        },
-        "vice_presidential_candidate": {
-          "name": "Uchenna Anthony Chukwuemeka",
-          "age": 48,
-          "gender": "Male"
-        }
-      },
-      {
-        "party": {
-          "abbreviation": "NRM",
-          "name": "National Rescue Movement"
-        },
-        "presidential_candidate": {
-          "name": "Nkem Esther Okereke",
-          "age": 43,
-          "gender": "Female"
-        },
-        "vice_presidential_candidate": {
-          "name": "Nasir Muhammed Sulaiman",
-          "age": 35,
-          "gender": "Male"
-        }
-      },
-      {
-        "party": {
-          "abbreviation": "NDC",
-          "name": "Nigeria Democratic Congress"
-        },
-        "presidential_candidate": {
-          "name": "Peter Gregory Obi",
-          "age": 65,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Musa Mohammed Rabiu Kwankwaso",
-          "age": 69,
-          "gender": "Male"
-        }
-      },
-      {
-        "party": {
-          "abbreviation": "PDP",
-          "name": "Peoples Democratic Party"
-        },
-        "presidential_candidate": {
-          "name": "Sandy Ojang Onor",
-          "age": 60,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Umaru Babangida",
-          "age": 61,
-          "gender": "Male"
-        }
-      },
-      {
-        "party": {
-          "abbreviation": "PRP",
-          "name": "Peoples Redemption Party"
-        },
-        "presidential_candidate": {
-          "name": "Donald Duke",
-          "age": 64,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Rabiu Kabiru",
-          "age": 80,
-          "gender": "Male"
-        }
-      },
-      {
-        "party": {
-          "abbreviation": "SDP",
-          "name": "Social Democratic Party"
-        },
-        "presidential_candidate": {
-          "name": "Adewole Ebenezer Adebayo",
-          "age": 54,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Usman Muhammed Bugaje",
-          "age": 74,
-          "gender": "Male"
-        }
-      },
-      {
-        "party": {
-          "abbreviation": "YPP",
-          "name": "Young Progressive Party"
-        },
-        "presidential_candidate": {
-          "name": "Peter Ada Agada",
-          "age": 54,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Patience Ndidi Key",
-          "age": 52,
-          "gender": "Female"
-        }
-      },
-      {
-        "party": {
-          "abbreviation": "ZLP",
-          "name": "Zenith Labour Party"
-        },
-        "presidential_candidate": {
-          "name": "Daniel Daberechukwu Nwanyanwu",
-          "age": 66,
-          "gender": "Male"
-        },
-        "vice_presidential_candidate": {
-          "name": "Hassan Khalid",
-          "age": 37,
-          "gender": "Male"
-        }
+      "vice_presidential_candidate": {
+        "name": "Shehu Hussaini",
+        "age": 56,
+        "gender": "Male"
       }
-    ]
+    },
+    {
+      "party": {
+        "abbreviation": "ADP",
+        "name": "Alliance for Democracy and Progress",
+        "icon": "/politics/parties/ADP.svg"
+      },
+      "presidential_candidate": {
+        "name": "Abbas-Bin Aliyu",
+        "age": 44,
+        "gender": "Male"
+      },
+      "vice_presidential_candidate": {
+        "name": "Ike Chinazam",
+        "age": 50,
+        "gender": "Male"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "APP",
+        "name": "Allied Peoples Party",
+        "icon": "/politics/parties/APP.svg"
+      },
+      "presidential_candidate": {
+        "name": "Yusuf Kabiru",
+        "age": 54,
+        "gender": "Male"
+      },
+      "vice_presidential_candidate": {
+        "name": "Peace Egobia Ofordile",
+        "age": 47,
+        "gender": "Female"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "AAC",
+        "name": "African Action Congress",
+        "icon": "/politics/parties/AAC.svg"
+      },
+      "presidential_candidate": {
+        "name": "Omoyele Sowore",
+        "age": 55,
+        "gender": "Male"
+      },
+      "vice_presidential_candidate": {
+        "name": "Haruna Garba Magashi",
+        "age": 49,
+        "gender": "Male"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "ADC",
+        "name": "African Democratic Congress",
+        "icon": "/politics/parties/ADC.svg"
+      },
+      "presidential_candidate": {
+        "name": "Atiku Abubakar",
+        "age": 79,
+        "gender": "Male"
+      },
+      "vice_presidential_candidate": {
+        "name": "Chibuike Rotimi Amaechi",
+        "age": 61,
+        "gender": "Male"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "APC",
+        "name": "All Progressives Congress",
+        "icon": "/politics/parties/APC.svg"
+      },
+      "presidential_candidate": {
+        "name": "Bola Ahmed Tinubu",
+        "age": 74,
+        "gender": "Male"
+      },
+      "vice_presidential_candidate": {
+        "name": "Kashim Shettima",
+        "age": 59,
+        "gender": "Male"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "APM",
+        "name": "Allied Peoples Movement",
+        "icon": "/politics/parties/APM.svg"
+      },
+      "presidential_candidate": {
+        "name": "Oluseyi Abiodun Makinde",
+        "age": 58,
+        "gender": "Male"
+      },
+      "vice_presidential_candidate": {
+        "name": "Musa Lawal Daura",
+        "age": 73,
+        "gender": "Male"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "BP",
+        "name": "Boot Party",
+        "icon": "/politics/parties/BP.svg"
+      },
+      "presidential_candidate": {
+        "name": "Sunday Adenuga",
+        "age": 52,
+        "gender": "Male"
+      },
+      "vice_presidential_candidate": {
+        "name": "Mustapha Usman Turaki",
+        "age": 40,
+        "gender": "Male"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "DLA",
+        "name": "Democratic Labour Alliance",
+        "icon": "/politics/parties/DLA.svg"
+      },
+      "presidential_candidate": {
+        "name": "Moses Olusoji Adebisi",
+        "age": 35,
+        "gender": "Male"
+      },
+      "vice_presidential_candidate": {
+        "name": "Nafisat Usaku Abubakar",
+        "age": 35,
+        "gender": "Female"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "LP",
+        "name": "Labour Party",
+        "icon": "/politics/parties/LP.svg"
+      },
+      "presidential_candidate": {
+        "name": "Sunday Chibuzo Okereke",
+        "age": 43,
+        "gender": "Male"
+      },
+      "vice_presidential_candidate": {
+        "name": "Hajja Bintu Konto",
+        "age": 54,
+        "gender": "Female"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "NDP",
+        "name": "National Democratic Party",
+        "icon": "/politics/parties/NDP.svg"
+      },
+      "presidential_candidate": {
+        "name": "Ada Elizabeth Fredrick Okwori",
+        "age": 48,
+        "gender": "Female"
+      },
+      "vice_presidential_candidate": {
+        "name": "Uchenna Anthony Chukwuemeka",
+        "age": 48,
+        "gender": "Male"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "NRM",
+        "name": "National Rescue Movement",
+        "icon": "/politics/parties/NRM.svg"
+      },
+      "presidential_candidate": {
+        "name": "Nkem Esther Okereke",
+        "age": 43,
+        "gender": "Female"
+      },
+      "vice_presidential_candidate": {
+        "name": "Nasir Muhammed Sulaiman",
+        "age": 35,
+        "gender": "Male"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "NDC",
+        "name": "Nigeria Democratic Congress",
+        "icon": "/politics/parties/NDC.svg"
+      },
+      "presidential_candidate": {
+        "name": "Peter Gregory Obi",
+        "age": 65,
+        "gender": "Male"
+      },
+      "vice_presidential_candidate": {
+        "name": "Musa Mohammed Rabiu Kwankwaso",
+        "age": 69,
+        "gender": "Male"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "PDP",
+        "name": "Peoples Democratic Party",
+        "icon": "/politics/parties/PDP.svg"
+      },
+      "presidential_candidate": {
+        "name": "Sandy Ojang Onor",
+        "age": 60,
+        "gender": "Male"
+      },
+      "vice_presidential_candidate": {
+        "name": "Umaru Babangida",
+        "age": 61,
+        "gender": "Male"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "PRP",
+        "name": "Peoples Redemption Party",
+        "icon": "/politics/parties/PRP.svg"
+      },
+      "presidential_candidate": {
+        "name": "Donald Duke",
+        "age": 64,
+        "gender": "Male"
+      },
+      "vice_presidential_candidate": {
+        "name": "Rabiu Kabiru",
+        "age": 80,
+        "gender": "Male"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "SDP",
+        "name": "Social Democratic Party",
+        "icon": "/politics/parties/SDP.svg"
+      },
+      "presidential_candidate": {
+        "name": "Adewole Ebenezer Adebayo",
+        "age": 54,
+        "gender": "Male"
+      },
+      "vice_presidential_candidate": {
+        "name": "Usman Muhammed Bugaje",
+        "age": 74,
+        "gender": "Male"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "YPP",
+        "name": "Young Progressive Party",
+        "icon": "/politics/parties/YPP.svg"
+      },
+      "presidential_candidate": {
+        "name": "Peter Ada Agada",
+        "age": 54,
+        "gender": "Male"
+      },
+      "vice_presidential_candidate": {
+        "name": "Patience Ndidi Key",
+        "age": 52,
+        "gender": "Female"
+      }
+    },
+    {
+      "party": {
+        "abbreviation": "ZLP",
+        "name": "Zenith Labour Party",
+        "icon": "/politics/parties/ZLP.svg"
+      },
+      "presidential_candidate": {
+        "name": "Daniel Daberechukwu Nwanyanwu",
+        "age": 66,
+        "gender": "Male"
+      },
+      "vice_presidential_candidate": {
+        "name": "Hassan Khalid",
+        "age": 37,
+        "gender": "Male"
+      }
+    }
+  ]
 }

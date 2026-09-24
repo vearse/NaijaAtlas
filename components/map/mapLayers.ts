@@ -16,12 +16,87 @@ const FILL_TRANSITION = {
   "fill-color-transition": { duration: 300 },
 };
 
+type FillLayerSpec = Extract<LayerSpecification, { type: "fill" }>;
+type LineLayerSpec = Extract<LayerSpecification, { type: "line" }>;
+type FillPaint = NonNullable<FillLayerSpec["paint"]>;
+type LinePaint = NonNullable<LineLayerSpec["paint"]>;
+
 /** LGA boundary strokes — lighter than state borders for hierarchy */
 const LGA_LINE = {
   default: "#cbd5e1",
   hover: "#94a3b8",
   selected: "#64748b",
+  /** Metro / group “view on map” — member LGAs share one accent */
+  focused: "#006b40",
+  dimmed: "#94a3b8",
 } as const;
+
+/** Shared fill paint for LGA polygons (visibility vs focus modes use feature-state). */
+const LGA_FILL_COLOR: FillPaint = {
+  "fill-color": [
+    "case",
+    ["boolean", ["feature-state", "selected"], false],
+    "#dc2626",
+    ["boolean", ["feature-state", "focused"], false],
+    "#008751",
+    ["boolean", ["feature-state", "dimmed"], false],
+    "#cbd5e1",
+    ["boolean", ["feature-state", "hover"], false],
+    "#ea580c",
+    ["coalesce", ["get", "fillColor"], "#7cb87c"],
+  ],
+  "fill-opacity": [
+    "case",
+    ["boolean", ["feature-state", "selected"], false],
+    0.78,
+    ["boolean", ["feature-state", "focused"], false],
+    0.62,
+    ["boolean", ["feature-state", "dimmed"], false],
+    0.28,
+    ["boolean", ["feature-state", "hover"], false],
+    0.68,
+    0.72,
+  ],
+};
+
+const LGA_LINE_COLOR: LinePaint = {
+  "line-color": [
+    "case",
+    ["boolean", ["feature-state", "hover"], false],
+    LGA_LINE.hover,
+    ["boolean", ["feature-state", "selected"], false],
+    LGA_LINE.selected,
+    ["boolean", ["feature-state", "focused"], false],
+    LGA_LINE.focused,
+    ["boolean", ["feature-state", "dimmed"], false],
+    LGA_LINE.dimmed,
+    LGA_LINE.default,
+  ],
+  "line-width": [
+    "case",
+    ["boolean", ["feature-state", "hover"], false],
+    1.35,
+    ["boolean", ["feature-state", "selected"], false],
+    1.5,
+    ["boolean", ["feature-state", "focused"], false],
+    1.35,
+    ["boolean", ["feature-state", "dimmed"], false],
+    0.75,
+    1,
+  ],
+  "line-opacity": [
+    "case",
+    ["boolean", ["feature-state", "selected"], false],
+    0.95,
+    ["boolean", ["feature-state", "focused"], false],
+    0.9,
+    ["boolean", ["feature-state", "dimmed"], false],
+    0.35,
+    ["boolean", ["feature-state", "hover"], false],
+    0.9,
+    0.72,
+  ],
+};
 
 const LINE_TRANSITION = {
   "line-opacity-transition": { duration: 300 },
@@ -905,68 +980,27 @@ export function createCountryLabelLayer(): LayerSpecification {
 export function createLgaFillLineLayers(stateId: string): LayerSpecification[] {
   const src = lgaSourceId(stateId);
   const outlineSrc = lgaOutlineSourceId(stateId);
-  return [
-    {
-      id: lgaFillLayerId(stateId),
-      source: src,
-      type: "fill",
-      paint: {
-        "fill-antialias": true,
-        "fill-color": [
-          "case",
-          ["boolean", ["feature-state", "selected"], false],
-          "#dc2626",
-          ["boolean", ["feature-state", "hover"], false],
-          "#ea580c",
-          ["coalesce", ["get", "fillColor"], "#7cb87c"],
-        ],
-        "fill-opacity": [
-          "case",
-          ["boolean", ["feature-state", "selected"], false],
-          0.78,
-          ["boolean", ["feature-state", "hover"], false],
-          0.68,
-          0.72,
-        ],
-      },
+  const fillLayer: FillLayerSpec = {
+    id: lgaFillLayerId(stateId),
+    source: src,
+    type: "fill",
+    paint: {
+      "fill-antialias": true,
+      ...LGA_FILL_COLOR,
     },
-    {
-      id: lgaLineLayerId(stateId),
-      source: outlineSrc,
-      type: "line",
-      layout: {
-        "line-cap": "butt",
-        "line-join": "round",
-        visibility: "visible",
-      },
-      paint: {
-        "line-color": [
-          "case",
-          ["boolean", ["feature-state", "hover"], false],
-          LGA_LINE.hover,
-          ["boolean", ["feature-state", "selected"], false],
-          LGA_LINE.selected,
-          LGA_LINE.default,
-        ],
-        "line-width": [
-          "case",
-          ["boolean", ["feature-state", "hover"], false],
-          1.35,
-          ["boolean", ["feature-state", "selected"], false],
-          1.5,
-          1,
-        ],
-        "line-opacity": [
-          "case",
-          ["boolean", ["feature-state", "selected"], false],
-          0.95,
-          ["boolean", ["feature-state", "hover"], false],
-          0.9,
-          0.72,
-        ],
-      },
+  };
+  const lineLayer: LineLayerSpec = {
+    id: lgaLineLayerId(stateId),
+    source: outlineSrc,
+    type: "line",
+    layout: {
+      "line-cap": "butt",
+      "line-join": "round",
+      visibility: "visible",
     },
-  ];
+    paint: LGA_LINE_COLOR,
+  };
+  return [fillLayer, lineLayer];
 }
 
 export function createLgaLabelLayer(stateId: string): LayerSpecification {

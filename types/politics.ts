@@ -17,6 +17,7 @@ export interface FederalConstituency {
 export interface CandidateRow {
   party: string;
   name: string;
+  party_icon?: string;
 }
 
 export interface SenateRace {
@@ -30,6 +31,7 @@ export interface SenateRace {
 export interface RepsCandidate {
   name: string;
   party: string;
+  party_icon?: string;
   age?: string;
   gender?: string;
   pwd?: string;
@@ -46,7 +48,7 @@ export interface RepsRace {
 }
 
 export interface PresidentialCandidateTicket {
-  party: { abbreviation: string; name: string };
+  party: { abbreviation: string; name: string; icon?: string };
   presidential_candidate: { name: string; age?: number; gender?: string };
   vice_presidential_candidate: { name: string; age?: number; gender?: string };
 }

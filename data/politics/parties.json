@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "iconBasePath": "/politics/parties",
+  "source": {
+    "note": "Party names from INEC 2027 presidential list and candidate rolls. Icons are app-hosted SVG badges (abbrev + brand tint).",
+    "updated": "2026-09-24"
+  },
+  "parties": {
+    "A": {
+      "abbreviation": "A",
+      "name": "A Party",
+      "icon": "/politics/parties/A.svg"
+    },
+    "AA": {
+      "abbreviation": "AA",
+      "name": "Action Alliance",
+      "icon": "/politics/parties/AA.svg"
+    },
+    "AAC": {
+      "abbreviation": "AAC",
+      "name": "African Action Congress",
+      "icon": "/politics/parties/AAC.svg"
+    },
+    "ADC": {
+      "abbreviation": "ADC",
+      "name": "African Democratic Congress",
+      "icon": "/politics/parties/ADC.svg"
+    },
+    "ADP": {
+      "abbreviation": "ADP",
+      "name": "Alliance for Democracy and Progress",
+      "icon": "/politics/parties/ADP.svg"
+    },
+    "APC": {
+      "abbreviation": "APC",
+      "name": "All Progressives Congress",
+      "icon": "/politics/parties/APC.svg"
+    },
+    "APGA": {
+      "abbreviation": "APGA",
+      "name": "All Progressives Grand Alliance",
+      "icon": "/politics/parties/APGA.svg"
+    },
+    "APM": {
+      "abbreviation": "APM",
+      "name": "Allied Peoples Movement",
+      "icon": "/politics/parties/APM.svg"
+    },
+    "APP": {
+      "abbreviation": "APP",
+      "name": "Allied Peoples Party",
+      "icon": "/politics/parties/APP.svg"
+    },
+    "Accord": {
+      "abbreviation": "Accord",
+      "name": "Accord Party",
+      "icon": "/politics/parties/Accord.svg"
+    },
+    "BP": {
+      "abbreviation": "BP",
+      "name": "Boot Party",
+      "icon": "/politics/parties/BP.svg"
+    },
+    "DLA": {
+      "abbreviation": "DLA",
+      "name": "Democratic Labour Alliance",
+      "icon": "/politics/parties/DLA.svg"
+    },
+    "LP": {
+      "abbreviation": "LP",
+      "name": "Labour Party",
+      "icon": "/politics/parties/LP.svg"
+    },
+    "NDC": {
+      "abbreviation": "NDC",
+      "name": "Nigeria Democratic Congress",
+      "icon": "/politics/parties/NDC.svg"
+    },
+    "NDP": {
+      "abbreviation": "NDP",
+      "name": "National Democratic Party",
+      "icon": "/politics/parties/NDP.svg"
+    },
+    "NNPP": {
+      "abbreviation": "NNPP",
+      "name": "New Nigeria People's Party",
+      "icon": "/politics/parties/NNPP.svg"
+    },
+    "NRM": {
+      "abbreviation": "NRM",
+      "name": "National Rescue Movement",
+      "icon": "/politics/parties/NRM.svg"
+    },
+    "PDP": {
+      "abbreviation": "PDP",
+      "name": "Peoples Democratic Party",
+      "icon": "/politics/parties/PDP.svg"
+    },
+    "PRP": {
+      "abbreviation": "PRP",
+      "name": "Peoples Redemption Party",
+      "icon": "/politics/parties/PRP.svg"
+    },
+    "SDP": {
+      "abbreviation": "SDP",
+      "name": "Social Democratic Party",
+      "icon": "/politics/parties/SDP.svg"
+    },
+    "YP": {
+      "abbreviation": "YP",
+      "name": "Young Party",
+      "icon": "/politics/parties/YP.svg"
+    },
+    "YPP": {
+      "abbreviation": "YPP",
+      "name": "Young Progressive Party",
+      "icon": "/politics/parties/YPP.svg"
+    },
+    "ZLP": {
+      "abbreviation": "ZLP",
+      "name": "Zenith Labour Party",
+      "icon": "/politics/parties/ZLP.svg"
+    }
+  }
+}

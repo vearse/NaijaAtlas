@@ -20,9 +20,11 @@ import { getCategoryData } from "@/lib/compare/compareUtils";
 import { openCityOnMap } from "@/lib/map/cityCoordsLookup";
 import { openStateOverlayItemOnMap } from "@/lib/map/openOverlayItem";
 import ShowLgasButton from "@/components/map/ShowLgasButton";
+import ViewLgasOnMapButton from "@/components/map/ViewLgasOnMapButton";
 import GetDirectionsButton from "@/components/directions/GetDirectionsButton";
 import OverlayItemList from "@/components/location/OverlayItemList";
 import { useMapStore } from "@/lib/store/mapStore";
+import { resolveLgaFocusPlan } from "@/lib/map/lgaMapFocus";
 
 interface StateDetailsProps {
   content: StateContent;
@@ -309,14 +311,22 @@ export default function StateDetails({
                 key={m.id}
                 className="rounded-xl border border-slate-100 bg-slate-50/70 p-3 space-y-2"
               >
-                <div>
-                  <p className="text-sm font-semibold text-slate-800">{m.name}</p>
-                  {m.memberIds.length > 0 && (
-                    <p className="text-[11px] font-medium text-slate-500 mt-0.5">
-                      {m.memberIds.length} LGA
-                      {m.memberIds.length === 1 ? "" : "s"}
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p className="text-sm font-semibold text-slate-800">
+                      {m.name}
                     </p>
-                  )}
+                    {m.memberIds.length > 0 && (
+                      <p className="text-[11px] font-medium text-slate-500 mt-0.5">
+                        {m.memberIds.length} LGA
+                        {m.memberIds.length === 1 ? "" : "s"}
+                      </p>
+                    )}
+                  </div>
+                  <ViewLgasOnMapButton
+                    plan={resolveLgaFocusPlan(m.memberIds, lgas, m.stateIds)}
+                    className="shrink-0"
+                  />
                 </div>
                 {m.description && (
                   <p className="text-xs text-slate-600 leading-relaxed">

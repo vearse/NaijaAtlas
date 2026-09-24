@@ -5,6 +5,7 @@ import type { PoliticsBundle } from "@/types/politics";
 import { useMapStore } from "@/lib/store/mapStore";
 import { colorForDistrict } from "@/lib/politics/senatorialColors";
 import { CandidateRow } from "./CandidateAvatar";
+import PartyIcon from "@/components/election/PartyIcon";
 import PresidentialTicketList from "./PresidentialTicketList";
 
 interface ElectionDistrictDetailProps {
@@ -146,6 +147,7 @@ export default function ElectionDistrictDetail({
                   key={`${c.party}-${c.name}`}
                   name={c.name}
                   party={c.party}
+                  partyIcon={c.party_icon}
                 />
               ))}
             </ul>
@@ -220,9 +222,15 @@ export default function ElectionDistrictDetail({
                                   </p>
                                 )}
                               </div>
-                              <span className="shrink-0 rounded-md bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-700">
-                                {c.party}
-                              </span>
+                              <div className="flex items-center gap-1 shrink-0">
+                                <PartyIcon
+                                  icon={c.party_icon}
+                                  abbreviation={c.party}
+                                />
+                                <span className="rounded-md bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-700">
+                                  {c.party}
+                                </span>
+                              </div>
                             </li>
                           ))
                         ) : (

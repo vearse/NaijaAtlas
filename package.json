@@ -15,6 +15,7 @@
     "lint": "next lint",
     "build:geo": "tsx scripts/geo-processing/fetch-neighbors.ts && tsx scripts/geo-processing/build-all.ts",
     "build:compare": "tsx scripts/geo-processing/build-compare.ts",
+    "sync:party-icons": "node scripts/politics/sync-party-icons.mjs",
     "download:geo": "tsx scripts/geo-processing/download-sources.ts"
   },
   "dependencies": {

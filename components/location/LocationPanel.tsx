@@ -63,7 +63,7 @@ export default function LocationPanel({
 }: LocationPanelProps) {
   const isMobile = useIsMobile();
   const [desktopCompareOpen, setDesktopCompareOpen] = useState(false);
-  const { selectedStateIds, selectedLgaId, activeRegionId, setSelectedLga, mobileSheet, selectedOverlay, overlayGuideLayer, directionsPanelTarget } =
+  const { selectedStateIds, selectedLgaId, activeRegionIds, setSelectedLga, mobileSheet, selectedOverlay, overlayGuideLayer, directionsPanelTarget } =
     useMapStore();
 
   const toggleLgaSelection = (id: string) => {
@@ -85,18 +85,29 @@ export default function LocationPanel({
     ? resolveStateContent(singleState, stateContent)
     : null;
 
-  const activeRegion = activeRegionId
-    ? regions.find((r) => r.id === activeRegionId)
-    : null;
-
   const hasMapSelection =
     selectedStateIds.size > 0 || selectedLgaId !== null;
   const showOverlay = selectedOverlay !== null;
   const guideLayer = overlayGuideLayer;
   const showDirectionsPanel = directionsPanelTarget !== null;
   const showOverlayGuide = guideLayer !== null && !showOverlay && !showDirectionsPanel;
-  const showOverview = !hasMapSelection && !activeRegionId && !showOverlay && !showOverlayGuide && !showDirectionsPanel;
-  const showRegion = activeRegion && !hasMapSelection && !showOverlay && !showDirectionsPanel;
+
+  const selectedRegions = regions.filter((r) => activeRegionIds.has(r.id));
+  const activeRegion =
+    selectedRegions.length === 1 ? selectedRegions[0] : null;
+  const showMultiRegion =
+    selectedRegions.length > 1 &&
+    !hasMapSelection &&
+    !showOverlay &&
+    !showDirectionsPanel;
+  const showOverview =
+    !hasMapSelection &&
+    activeRegionIds.size === 0 &&
+    !showOverlay &&
+    !showOverlayGuide &&
+    !showDirectionsPanel;
+  const showRegion =
+    activeRegion && !hasMapSelection && !showOverlay && !showDirectionsPanel;
   const showCompare =
     !showOverlay &&
     !showDirectionsPanel &&
@@ -217,6 +228,7 @@ export default function LocationPanel({
               wards={wards}
               general={selectedLgaId ? lgaGeneral[selectedLgaId] : undefined}
               metroGroups={metroGroups}
+              lgas={lgas}
             />
           )}
 

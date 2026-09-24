@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { PresidentialBundle } from "@/types/politics";
+import PartyIcon from "@/components/election/PartyIcon";
 
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -58,9 +59,11 @@ export default function PresidentialTicketList({
               aria-expanded={isOpen}
               className="w-full flex items-center gap-2.5 px-3 py-2.5 text-left transition-colors hover:bg-slate-50"
             >
-              <span className="shrink-0 rounded-md bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-700">
-                {ticket.party.abbreviation}
-              </span>
+              <PartyIcon
+                icon={ticket.party.icon}
+                abbreviation={ticket.party.abbreviation}
+                size="md"
+              />
               <span className="min-w-0 flex-1">
                 <span className="block text-sm font-medium text-slate-900 truncate">
                   {ticket.presidential_candidate.name}

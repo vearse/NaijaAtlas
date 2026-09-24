@@ -1,5 +1,7 @@
 "use client";
 
+import PartyIcon from "@/components/election/PartyIcon";
+
 function CandidateAvatar({ name }: { name: string }) {
   return (
     <div
@@ -21,10 +23,12 @@ function CandidateAvatar({ name }: { name: string }) {
 export function CandidateRow({
   name,
   party,
+  partyIcon,
   subtitle,
 }: {
   name: string;
   party: string;
+  partyIcon?: string;
   subtitle?: string;
 }) {
   return (
@@ -36,9 +40,12 @@ export function CandidateRow({
           <p className="text-xs text-slate-500 truncate">{subtitle}</p>
         )}
       </div>
-      <span className="shrink-0 rounded-md bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-700">
-        {party}
-      </span>
+      <div className="flex items-center gap-1.5 shrink-0">
+        <PartyIcon icon={partyIcon} abbreviation={party} />
+        <span className="rounded-md bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-700">
+          {party}
+        </span>
+      </div>
     </li>
   );
 }

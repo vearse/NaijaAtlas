@@ -39,7 +39,9 @@ export interface DirectionsState {
 import type { OverlayLayerId, SelectedOverlayFeature } from "@/types/overlay";
 import type { DrivingStep } from "@/lib/map/directionsApi";
 import type { LensId } from "@/lib/lenses/lensHelper";
+import { defaultOverlaysForLens } from "@/lib/lenses/lensMapLayers";
 import type { PollingUnitShardEntry } from "@/types/politics";
+import type { LgaFocusPlan } from "@/lib/map/lgaMapFocus";
 import {
   MAX_FEATURE_MAP_VIEWS,
   type FeatureMapView,
@@ -95,6 +97,7 @@ export interface MapSelectionState {
   toggleDragMode: (stateId: string) => void;
   enableDragMode: (stateId: string, hint?: string) => void;
   toggleOverlay: (id: OverlayLayerId) => void;
+  clearAllOverlays: () => void;
   clearOverlayGuide: () => void;
   setSelectedOverlay: (feature: SelectedOverlayFeature | null) => void;
   clearSelectedOverlay: () => void;
@@ -143,6 +146,10 @@ export interface MapSelectionState {
   }) => void;
   removeFeatureMapView: (id: string) => void;
   clearFeatureMapViews: () => void;
+  /** LGA group currently highlighted on the map (metro / LGA “view on map”). */
+  lgaFocus: LgaFocusPlan | null;
+  focusLgas: (plan: LgaFocusPlan) => void;
+  clearLgaFocus: () => void;
 }
 
 function mobileSheetForSelection(count: number): MobileSheetMode {
@@ -199,6 +206,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     active: false,
   },
   featureMapViews: [],
+  lgaFocus: null,
 
   registerMap: (map) => set({ mapInstance: map }),
 
@@ -235,6 +243,32 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     }),
 
   clearFeatureMapViews: () => set({ featureMapViews: [] }),
+
+  focusLgas: (plan) => {
+    if (!plan || plan.stateIds.length === 0) return;
+    set({
+      lgaFocus: plan,
+      lgaVisibleStateIds: new Set(plan.stateIds),
+      selectedStateIds: new Set(plan.stateIds),
+      selectedLgaId: null,
+      draggedStateId: null,
+      dragModeStateId: null,
+      activeRegionId: null,
+      selectedOverlay: null,
+      selectedSenatorialDistrictId: null,
+      directionsPanelTarget: null,
+      panelOpen: true,
+      mobileSheet: "open",
+      mapActionHint:
+        plan.lgaIds.length > 0
+          ? "Metro / group view — member LGAs in green; others muted (not full LGA browse colors)"
+          : "Showing state LGAs — member areas could not be resolved",
+    });
+    notifyLgaVisibility(get);
+  },
+
+  clearLgaFocus: () =>
+    set({ lgaFocus: null, mapActionHint: null }),
   setMapType: (id) => {
     const prev = get().mapType;
     if (prev === "election" && id !== "election") {
@@ -244,6 +278,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         lgaVisibleStateIds: new Set(),
         selectedLgaId: null,
         directionsPanelTarget: null,
+        lgaFocus: null,
       });
       notifyLgaVisibility(get);
       return;
@@ -261,6 +296,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         lgaVisibleStateIds: lgaVisible,
         activeRegionId: null,
         directionsPanelTarget: null,
+        lgaFocus: null,
       });
       notifyLgaVisibility(get);
       return;
@@ -270,7 +306,25 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   setSelectedSenatorialDistrict: (id) =>
     set({ selectedSenatorialDistrictId: id, mobileSheet: "open" }),
   setConfirmedPollingUnit: (unit) => set({ confirmedPollingUnit: unit }),
-  setActiveLens: (lens) => set({ activeLens: lens }),
+  setActiveLens: (lens) => {
+    if (get().mapType === "election") {
+      set({ activeLens: lens });
+      return;
+    }
+    set({
+      activeLens: lens,
+      activeOverlays: defaultOverlaysForLens(lens),
+      selectedOverlay: null,
+      overlayGuideLayer: null,
+    });
+  },
+
+  clearAllOverlays: () =>
+    set({
+      activeOverlays: new Set(),
+      selectedOverlay: null,
+      overlayGuideLayer: null,
+    }),
 
   setDirectionsFrom: (from) =>
     set((state) => ({
@@ -379,6 +433,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         panelOpen: true,
         mobileSheet: "open" as MobileSheetMode,
         directionsPanelTarget: null,
+        lgaFocus: null,
       });
     } else {
       next.delete(id);
@@ -399,6 +454,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       selectedLgaId: feature ? null : get().selectedLgaId,
       activeRegionId: feature ? null : get().activeRegionId,
       directionsPanelTarget: null,
+      lgaFocus: feature ? null : get().lgaFocus,
       panelOpen:
         feature !== null ||
         get().selectedStateIds.size > 0 ||
@@ -477,6 +533,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         activeRegionId: null,
         selectedOverlay: null,
         directionsPanelTarget: null,
+        lgaFocus: null,
         mobileSheet: mobileSheetForSelection(next.size),
       });
       notifyLgaVisibility(get);
@@ -502,6 +559,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       selectedOverlay: null,
       selectedSenatorialDistrictId: null,
       directionsPanelTarget: null,
+      lgaFocus: null,
       mobileSheet: mobileSheetForSelection(next.size),
     });
     notifyLgaVisibility(get);
@@ -528,6 +586,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       selectedOverlay: null,
       selectedSenatorialDistrictId: null,
       directionsPanelTarget: null,
+      lgaFocus: null,
       mobileSheet: mobileSheetForSelection(next.size),
     });
     notifyLgaVisibility(get);
@@ -551,6 +610,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       activeRegionId: null,
       selectedOverlay: null,
       directionsPanelTarget: null,
+      lgaFocus: null,
       mobileSheet: mobileSheetForSelection(ids.length),
     });
     notifyLgaVisibility(get);
@@ -578,6 +638,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       activeRegionId: null,
       selectedOverlay: null,
       directionsPanelTarget: null,
+      lgaFocus: null,
       mobileSheet: "open",
     });
     notifyLgaVisibility(get);
@@ -589,7 +650,16 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     const labeledLgaOrder = get().labeledLgaOrder.filter(
       (lgaId) => !lgaId.startsWith(`${id}-`)
     );
-    set({ lgaVisibleStateIds: lgaVisible, labeledLgaOrder });
+    const focus = get().lgaFocus;
+    const clearFocus =
+      focus != null &&
+      (focus.stateIds.includes(id) ||
+        ![...focus.stateIds].every((sid) => lgaVisible.has(sid)));
+    set({
+      lgaVisibleStateIds: lgaVisible,
+      labeledLgaOrder,
+      ...(clearFocus ? { lgaFocus: null } : {}),
+    });
     notifyLgaVisibility(get);
   },
 
@@ -633,6 +703,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       activeRegionId: null,
       selectedOverlay: null,
       directionsPanelTarget: null,
+      lgaFocus: null,
       mobileSheet: mobileSheetForSelection(ids.length),
     });
     notifyLgaVisibility(get);
@@ -646,6 +717,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       directionsPanelTarget: null,
       panelOpen: id !== null || get().selectedStateIds.size > 0,
       mobileSheet: id !== null ? "open" : get().mobileSheet,
+      lgaFocus: id ? null : get().lgaFocus,
     });
   },
 
@@ -698,6 +770,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       activeOverlays: new Set(DEFAULT_ACTIVE_OVERLAYS),
       resetCounter: get().resetCounter + 1,
       featureMapViews: [],
+      lgaFocus: null,
     });
     notifyLgaVisibility(get);
   },

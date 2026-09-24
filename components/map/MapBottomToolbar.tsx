@@ -126,7 +126,7 @@ function LayersStackIcon() {
     <svg
       viewBox="0 0 20 20"
       fill="currentColor"
-      className="h-4 w-4 text-ng-green shrink-0"
+      className="h-4 w-4 text-slate-600 shrink-0"
       aria-hidden
     >
       <path d="M3.25 3A2.25 2.25 0 001 5.25v9.5A2.25 2.25 0 003.25 17h13.5A2.25 2.25 0 0019 14.75v-9.5A2.25 2.25 0 0016.75 3H3.25zM2.25 5.25a1 1 0 011-1h13.5a1 1 0 011 1v9.5a1 1 0 01-1 1H3.25a1 1 0 01-1-1v-9.5zm4.47 2.47a.75.75 0 011.06 0l2.22 2.22 3.28-3.28a.75.75 0 111.06 1.06l-3.81 3.81a.75.75 0 01-1.06 0l-2.75-2.75a.75.75 0 010-1.06z" />
@@ -138,6 +138,7 @@ export default function MapBottomToolbar() {
   const [layersOpen, setLayersOpen] = useState(false);
   const activeOverlays = useMapStore((s) => s.activeOverlays);
   const toggleOverlay = useMapStore((s) => s.toggleOverlay);
+  const clearAllOverlays = useMapStore((s) => s.clearAllOverlays);
   const zoomIn = useMapStore((s) => s.zoomIn);
   const zoomOut = useMapStore((s) => s.zoomOut);
 
@@ -184,7 +185,7 @@ export default function MapBottomToolbar() {
             <LayersStackIcon />
             <span>Layers</span>
             {activeOverlays.size > 0 && (
-              <span className="rounded-full bg-ng-green text-white text-[10px] font-bold px-1.5 py-0.5 min-w-[1.25rem] text-center">
+              <span className="rounded-full bg-slate-700 text-white text-[10px] font-bold px-1.5 py-0.5 min-w-[1.25rem] text-center">
                 {activeOverlays.size}
               </span>
             )}
@@ -195,14 +196,25 @@ export default function MapBottomToolbar() {
               <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                 Layers
               </span>
-              <button
-                type="button"
-                onClick={() => setLayersOpen(false)}
-                className="h-6 w-6 flex items-center justify-center rounded-md text-slate-400 hover:bg-slate-100 hover:text-slate-600 text-sm"
-                aria-label="Collapse layers"
-              >
-                ✕
-              </button>
+              <div className="flex items-center gap-1">
+                {activeOverlays.size > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => clearAllOverlays()}
+                    className="text-[10px] font-semibold text-slate-500 hover:text-slate-800 px-1.5 py-0.5 rounded-md hover:bg-slate-100"
+                  >
+                    Clear
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setLayersOpen(false)}
+                  className="h-6 w-6 flex items-center justify-center rounded-md text-slate-400 hover:bg-slate-100 hover:text-slate-600 text-sm"
+                  aria-label="Collapse layers"
+                >
+                  ✕
+                </button>
+              </div>
             </div>
             {layerGrid}
           </>

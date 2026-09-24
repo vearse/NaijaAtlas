@@ -10,9 +10,10 @@ export default function MapHints() {
   const [panelHidden, setPanelHidden] = useState(true);
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
   const lgaVisibleStateIds = useMapStore((s) => s.lgaVisibleStateIds);
+  const lgaFocus = useMapStore((s) => s.lgaFocus);
   const dragModeStateId = useMapStore((s) => s.dragModeStateId);
   const mapActionHint = useMapStore((s) => s.mapActionHint);
-  const activeRegionId = useMapStore((s) => s.activeRegionId);
+  const activeRegionIds = useMapStore((s) => s.activeRegionIds);
   const activeOverlays = useMapStore((s) => s.activeOverlays);
   const selectedOverlay = useMapStore((s) => s.selectedOverlay);
   const activeLens = useMapStore((s) => s.activeLens);
@@ -57,16 +58,20 @@ export default function MapHints() {
       return "Click a highlighted feature for details · admin selection still works on empty areas";
     }
 
+    if (lgaFocus && lgaFocus.lgaIds.length > 0) {
+      return "Metro / group view — member LGAs share green fill; other LGAs in view are muted gray (use state map icon for full multicolor LGA browse)";
+    }
+
     if (lgaVisibleStateIds.size > 0) {
-      return "Click an LGA to select it · click a border for its name";
+      return "LGA browse — each LGA has its own color · click an LGA to select it · click a border for its name";
     }
 
     if (selectedStateIds.size > 0) {
       return "Tap the map icon on a selected state to show LGAs · long-press a state on the map to drag";
     }
 
-    if (activeRegionId) {
-      return "Click the region again to select all its states";
+    if (activeRegionIds.size > 0) {
+      return "Regions highlighted — pick more in the Region menu or on the map · click a state to explore";
     }
 
     return "Click a state to select · double-click to show LGAs · Layers bottom-right";
@@ -78,8 +83,9 @@ export default function MapHints() {
     selectedOverlay,
     activeOverlays,
     lgaVisibleStateIds.size,
+    lgaFocus?.lgaIds.length,
     selectedStateIds.size,
-    activeRegionId,
+    activeRegionIds.size,
   ]);
 
   const mobileHint = useMemo(() => {
@@ -90,6 +96,9 @@ export default function MapHints() {
     if (dragModeStateId) return "Drag the state on the map";
     if (selectedOverlay) return "Overlay details in panel";
     if (activeOverlays.size > 0) return "Tap a highlighted feature for details";
+    if (lgaFocus && lgaFocus.lgaIds.length > 0) {
+      return "Metro view — green = in group, gray = other LGAs";
+    }
     if (lgaVisibleStateIds.size > 0) return "Tap an LGA for its name";
     if (selectedStateIds.size > 0) return "Tap the map icon on a selected state to show LGAs";
     return "Tap a state to explore";
@@ -101,6 +110,7 @@ export default function MapHints() {
     selectedOverlay,
     activeOverlays.size,
     lgaVisibleStateIds.size,
+    lgaFocus?.lgaIds.length,
     selectedStateIds.size,
   ]);
 

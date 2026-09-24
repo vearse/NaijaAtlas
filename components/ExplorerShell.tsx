@@ -5,7 +5,8 @@ import dynamic from "next/dynamic";
 import LocationSearch from "@/components/search/LocationSearch";
 import SearchSpotlight from "@/components/search/SearchSpotlight";
 import PoweredByIseOwo from "@/components/PoweredByIseOwo";
-import RegionFilter from "@/components/map/RegionFilter";
+import LensSelect from "@/components/map/LensSelect";
+import RegionSelect from "@/components/map/RegionSelect";
 import SelectedStatesBar from "@/components/map/SelectedStatesBar";
 import MapControls from "@/components/map/MapControls";
 import MapHints from "@/components/map/MapHints";
@@ -136,29 +137,19 @@ export default function ExplorerShell({
               <PoweredByIseOwo />
             </div>
             <div className="hidden lg:flex flex-col items-stretch gap-1.5 lg:flex-1 lg:max-w-md">
-              {!isElectionMode && <LocationSearch />}
+              {!isElectionMode && <LocationSearch lgas={lgas} />}
               <MapHints />
             </div>
           </div>
           <div className="mt-2 lg:mt-4 space-y-1.5 lg:space-y-2">
-            <div className="hidden lg:flex lg:items-start lg:justify-between lg:gap-3">
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
-                  Geopolitical regions
-                </p>
-                <RegionFilter regions={regions} />
-              </div>
-              <div>
-                <MapTypeToggle />
-              </div>
-            </div>
-            <div className="lg:hidden flex items-center gap-2 justify-between">
-              <div className="min-w-0 flex-1">
-                <RegionFilter regions={regions} />
-              </div>
-              <div className="shrink-0">
-                <MapTypeToggle />
-              </div>
+            <div className="flex items-center justify-end gap-2 flex-wrap">
+              {!isElectionMode && (
+                <>
+                  <LensSelect />
+                  <RegionSelect regions={regions} />
+                </>
+              )}
+              <MapTypeToggle />
             </div>
             <SelectedStatesBar states={states} />
           </div>
@@ -354,6 +345,7 @@ export default function ExplorerShell({
       <SearchSpotlight
         open={searchSpotlightOpen}
         onClose={() => setSearchSpotlightOpen(false)}
+        lgas={lgas}
       />
 
       <WikipediaReaderModal />

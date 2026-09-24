@@ -10,6 +10,7 @@ import type {
 } from "@/types/location";
 import type { OverlayLayerId } from "@/types/overlay";
 import { lensInputFromSearchEntry, matchesActiveLens } from "@/lib/lenses/lensHelper";
+import { resolveLgaFocusPlan } from "@/lib/map/lgaMapFocus";
 
 const OVERLAY_LEVELS = new Set<OverlayLevel>([
   "landform",
@@ -38,13 +39,14 @@ const LEVEL_EMOJI: Record<string, string> = {
   coast: "🌊",
 };
 
-export default function LocationSearch() {
+export default function LocationSearch({ lgas = [] }: { lgas?: LgaLocation[] }) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchEntry[]>([]);
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState<SearchEntry[]>([]);
   const fuseRef = useRef<Fuse<SearchEntry> | null>(null);
   const { selectStates, setSelectedLga } = useMapStore();
+  const focusLgas = useMapStore((s) => s.focusLgas);
   const activeLens = useMapStore((s) => s.activeLens);
 
   useEffect(() => {
@@ -115,7 +117,13 @@ export default function LocationSearch() {
     }
 
     if (entry.level === "metro" && entry.stateIds?.length) {
-      selectStates(entry.stateIds);
+      const plan = resolveLgaFocusPlan(
+        entry.memberIds ?? [],
+        lgas,
+        entry.stateIds
+      );
+      if (plan.stateIds.length > 0) focusLgas(plan);
+      else selectStates(entry.stateIds);
       return;
     }
 

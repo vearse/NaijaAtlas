@@ -28,6 +28,7 @@ for (const m of metro) {
     level: "metro",
     parentId: null,
     stateIds: m.stateIds ?? [],
+    memberIds: m.memberIds ?? [],
     stateName: firstState?.name,
     regionName: firstState?.regionName,
     typeLabel: "Metro area",

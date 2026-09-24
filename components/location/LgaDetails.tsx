@@ -9,6 +9,8 @@ import type {
   MetroGroup,
 } from "@/types/location";
 import GetDirectionsButton from "@/components/directions/GetDirectionsButton";
+import ViewLgasOnMapButton from "@/components/map/ViewLgasOnMapButton";
+import { resolveLgaFocusPlan } from "@/lib/map/lgaMapFocus";
 
 interface LgaDetailsProps {
   content: LgaContent;
@@ -17,6 +19,7 @@ interface LgaDetailsProps {
   wards?: string[];
   general?: LgaGeneral;
   metroGroups?: MetroGroup[];
+  lgas?: LgaLocation[];
 }
 
 function stringValue(value: unknown): string | null {
@@ -88,6 +91,7 @@ export default function LgaDetails({
   wards = [],
   general,
   metroGroups = [],
+  lgas = [],
 }: LgaDetailsProps) {
   const setSelectedLga = useMapStore((s) => s.setSelectedLga);
   const openWikiModal = useMapStore((s) => s.openWikiModal);
@@ -204,7 +208,15 @@ export default function LgaDetails({
               key={m.id}
               className="rounded-xl border border-slate-100 bg-emerald-50/40 p-3 space-y-2"
             >
-              <p className="text-sm font-semibold text-slate-800">{m.name}</p>
+              <div className="flex items-start justify-between gap-2">
+                <p className="text-sm font-semibold text-slate-800">
+                  {m.name}
+                </p>
+                <ViewLgasOnMapButton
+                  plan={resolveLgaFocusPlan(m.memberIds, lgas, m.stateIds)}
+                  className="shrink-0"
+                />
+              </div>
               {m.memberIds.length > 0 && (
                 <p className="text-[11px] font-medium text-slate-500">
                   {m.memberIds.length} LGA
