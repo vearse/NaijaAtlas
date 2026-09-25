@@ -1,6 +1,6 @@
 "use client";
 
-import { useMapStore } from "@/lib/store/mapStore";
+import { useMapStore, primarySelectedStateId } from "@/lib/store/mapStore";
 import type { StateLocation, LgaLocation } from "@/types/location";
 
 interface BreadcrumbsProps {
@@ -9,14 +9,24 @@ interface BreadcrumbsProps {
 }
 
 export default function Breadcrumbs({ states, lgas }: BreadcrumbsProps) {
-  const { selectedStateIds, selectedLgaId, reset, selectStates, setSelectedLga } =
-    useMapStore();
+  const {
+    selectedStateIds,
+    selectedStateOrder,
+    selectedLgaId,
+    reset,
+    selectStates,
+    setSelectedLga,
+  } = useMapStore();
 
   const lga = selectedLgaId ? lgas.find((l) => l.id === selectedLgaId) : null;
+  const primaryId = primarySelectedStateId(
+    selectedStateIds,
+    selectedStateOrder
+  );
   const state = lga
     ? states.find((s) => s.id === lga.parentId)
-    : selectedStateIds.size === 1
-      ? states.find((s) => selectedStateIds.has(s.id))
+    : primaryId
+      ? states.find((s) => s.id === primaryId)
       : null;
 
   const crumbs: { label: string; onClick: () => void }[] = [
@@ -44,9 +54,9 @@ export default function Breadcrumbs({ states, lgas }: BreadcrumbsProps) {
       label: lga.name,
       onClick: () => setSelectedLga(lga.id),
     });
-  } else if (selectedStateIds.size > 1) {
+  } else if (selectedStateIds.size > 1 && state) {
     crumbs.push({
-      label: `${selectedStateIds.size} states`,
+      label: `${selectedStateIds.size} on map`,
       onClick: () => setSelectedLga(null),
     });
   }

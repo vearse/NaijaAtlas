@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import dynamic from "next/dynamic";
 import LocationSearch from "@/components/search/LocationSearch";
 import SearchSpotlight from "@/components/search/SearchSpotlight";
@@ -12,13 +12,17 @@ import MapControls from "@/components/map/MapControls";
 import MapHints from "@/components/map/MapHints";
 import MapBottomToolbar from "@/components/map/MapBottomToolbar";
 import MapTypeToggle from "@/components/map/MapTypeToggle";
+import CompareMenu from "@/components/compare/CompareMenu";
 import LocationPanel from "@/components/location/LocationPanel";
 import CompareModal from "@/components/compare/CompareModal";
 import MobileInfoModal from "@/components/compare/MobileInfoModal";
 import WikipediaReaderModal from "@/components/map/WikipediaReaderModal";
 import DirectionsModal from "@/components/directions/DirectionsModal";
 import UrlSync from "@/components/UrlSync";
-import { useMapStore, MAX_COMPARE_STATES } from "@/lib/store/mapStore";
+import {
+  useMapStore,
+  canCompareStates,
+} from "@/lib/store/mapStore";
 import { useIsMobile } from "@/hooks/useMediaQuery";
 import type {
   StateLocation,
@@ -103,14 +107,21 @@ export default function ExplorerShell({
   );
 
   const selectedStates = states.filter((s) => selectedStateIds.has(s.id));
-  const singleStateSelected =
-    !selectedLgaId && selectedStateIds.size === 1;
+  const compareView = useMapStore((s) => s.compareView);
+  const closeCompareView = useMapStore((s) => s.closeCompareView);
+  const compareStatesEligible = canCompareStates({
+    mapType,
+    selectedStateIds,
+    selectedLgaId,
+  });
+  const showStateCompare = compareView === "state" && compareStatesEligible;
+  const statePanelOpen =
+    !selectedLgaId && selectedStateIds.size >= 1 && !showStateCompare;
   const lgaSelected = selectedLgaId !== null;
-  const showCompare =
-    !isElectionMode &&
-    !selectedLgaId &&
-    selectedStates.length >= 3 &&
-    selectedStates.length <= MAX_COMPARE_STATES;
+
+  useEffect(() => {
+    if (isMobile && showStateCompare) setCompareModalOpen(true);
+  }, [isMobile, showStateCompare]);
 
   return (
     <div className="flex flex-col h-[100dvh] bg-[#eef2f6]">
@@ -148,16 +159,19 @@ export default function ExplorerShell({
                   <>
                     <LensSelect />
                     <RegionSelect regions={regions} />
+                    <CompareMenu />
                   </>
                 )}
               </div>
-              <MapTypeToggle />
+              <div className="flex items-center gap-2 flex-wrap justify-end">
+                <MapTypeToggle />
+              </div>
             </div>
             <SelectedStatesBar states={states} />
           </div>
         </div>
 
-        {isMobile && showCompare && (
+        {isMobile && showStateCompare && (
           <button
             type="button"
             onClick={() => setCompareModalOpen(true)}
@@ -190,7 +204,7 @@ export default function ExplorerShell({
 
         {isMobile &&
           !isElectionMode &&
-          (singleStateSelected || lgaSelected) &&
+          (statePanelOpen || lgaSelected) &&
           mobileSheet === "open" && (
           <button
             type="button"
@@ -239,7 +253,7 @@ export default function ExplorerShell({
         )}
 
         {isMobile &&
-          singleStateSelected &&
+          statePanelOpen &&
           mobileSheet !== "open" && (
             <button
               type="button"
@@ -253,8 +267,9 @@ export default function ExplorerShell({
 
         {isMobile &&
           !isElectionMode &&
-          !showCompare &&
-          !singleStateSelected &&
+          !showStateCompare &&
+          !compareStatesEligible &&
+          !statePanelOpen &&
           selectedStateIds.size === 0 &&
           !activeRegionId && (
             <button
@@ -320,10 +335,13 @@ export default function ExplorerShell({
         )}
       </main>
 
-      {isMobile && showCompare && (
+      {isMobile && showStateCompare && (
         <CompareModal
           open={compareModalOpen}
-          onClose={() => setCompareModalOpen(false)}
+          onClose={() => {
+            setCompareModalOpen(false);
+            closeCompareView();
+          }}
           states={selectedStates}
           contents={stateContent}
           lgas={lgas}

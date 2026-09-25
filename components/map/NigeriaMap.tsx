@@ -170,7 +170,7 @@ export default function NigeriaMap({
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
   const lgaVisibleStateIds = useMapStore((s) => s.lgaVisibleStateIds);
   const selectedLgaId = useMapStore((s) => s.selectedLgaId);
-  const lgaFocus = useMapStore((s) => s.lgaFocus);
+  const metroMapViews = useMapStore((s) => s.metroMapViews);
   const draggedStateId = useMapStore((s) => s.draggedStateId);
   const dragModeStateId = useMapStore((s) => s.dragModeStateId);
   const activeRegionId = useMapStore((s) => s.activeRegionId);
@@ -202,17 +202,23 @@ export default function NigeriaMap({
     [lgaVisibleStateIds]
   );
 
-  const lgaFocusKey = useMemo(() => {
-    if (!lgaFocus) return "";
-    return `${lgaFocus.id}:${lgaFocus.colorIndex ?? 0}:${lgaFocus.lgaIds.join(",")}:${lgaFocus.stateIds.join(",")}`;
-  }, [lgaFocus]);
+  const metroMapViewsKey = useMemo(
+    () =>
+      metroMapViews
+        .map(
+          (v) =>
+            `${v.id}:${v.colorIndex}:${v.lgaIds.join(",")}:${v.stateIds.join(",")}`
+        )
+        .join("|"),
+    [metroMapViews]
+  );
 
   const effectiveLgaKey = useMemo(
     () =>
-      [...effectiveLgaStateIds(lgaVisibleStateIds, lgaFocus)]
+      [...effectiveLgaStateIds(lgaVisibleStateIds, metroMapViews)]
         .sort()
         .join(","),
-    [lgaVisibleKey, lgaFocusKey, lgaVisibleStateIds, lgaFocus]
+    [lgaVisibleKey, metroMapViewsKey, lgaVisibleStateIds, metroMapViews]
   );
 
   const activeOverlaysKey = useMemo(
@@ -330,7 +336,7 @@ export default function NigeriaMap({
       const store = useMapStore.getState();
       const effective = effectiveLgaStateIds(
         store.lgaVisibleStateIds,
-        store.lgaFocus
+        store.metroMapViews
       );
       const ready = readyLgaStateIds(map, effective);
       applyStateMaskForLgaVisibility(map, ready, store.draggedStateId);
@@ -346,6 +352,31 @@ export default function NigeriaMap({
     [readyLgaStateIds]
   );
 
+  const refreshMetroLgaFills = useCallback((map: maplibregl.Map) => {
+    const store = useMapStore.getState();
+    const effective = effectiveLgaStateIds(
+      store.lgaVisibleStateIds,
+      store.metroMapViews
+    );
+    for (const stateId of effective) {
+      if (!lgaLayersReady(map, stateId)) continue;
+      void fetchLgaGeo(stateId).then((data) => {
+        const liveMap = mapRef.current;
+        if (!data || !liveMap) return;
+        const latest = useMapStore.getState();
+        applyLgaSourceFillData(liveMap, stateId, data, {
+          stateId,
+          mapType: latest.mapType,
+          electionLookups:
+            latest.mapType === "election"
+              ? politicsLookupsRef.current
+              : undefined,
+          metroMapViews: latest.metroMapViews,
+        });
+      });
+    }
+  }, []);
+
   const syncLgaVisibilityOnMap = useCallback(
     (_visible?: Set<string>) => {
       const map = mapRef.current;
@@ -360,7 +391,7 @@ export default function NigeriaMap({
       const store = useMapStore.getState();
       const effective = effectiveLgaStateIds(
         store.lgaVisibleStateIds,
-        store.lgaFocus
+        store.metroMapViews
       );
       const dragged = store.draggedStateId;
       const readyVisible = readyLgaStateIds(map, effective);
@@ -382,8 +413,14 @@ export default function NigeriaMap({
       restackTopOverlayLayers(map);
       syncLgaLabelFilters(map);
       refreshSelectionPaint(map);
+      refreshMetroLgaFills(map);
     },
-    [syncLgaLabelFilters, readyLgaStateIds, refreshSelectionPaint]
+    [
+      syncLgaLabelFilters,
+      readyLgaStateIds,
+      refreshSelectionPaint,
+      refreshMetroLgaFills,
+    ]
   );
 
   const pickCityFeature = useCallback(
@@ -463,7 +500,7 @@ export default function NigeriaMap({
       const store = useMapStore.getState();
       const lgaLayersForHit = effectiveLgaStateIds(
         store.lgaVisibleStateIds,
-        store.lgaFocus
+        store.metroMapViews
       );
       const layers = queryPriorityLayers(
         lgaLayersForHit,
@@ -509,7 +546,7 @@ export default function NigeriaMap({
       if (useMapStore.getState().mapType === "osm") return;
 
       const lineLayers = [
-        ...effectiveLgaStateIds(store.lgaVisibleStateIds, store.lgaFocus),
+        ...effectiveLgaStateIds(store.lgaVisibleStateIds, store.metroMapViews),
       ]
         .map((sid) => lgaLineLayerId(sid))
         .filter((id) => map.getLayer(id));
@@ -952,7 +989,7 @@ export default function NigeriaMap({
       const boot = useMapStore.getState();
       const pending = effectiveLgaStateIds(
         boot.lgaVisibleStateIds,
-        boot.lgaFocus
+        boot.metroMapViews
       );
       for (const stateId of pending) {
         void loadLgaLayerRef.current(stateId);
@@ -1053,7 +1090,7 @@ export default function NigeriaMap({
         const store = useMapStore.getState();
         const effective = effectiveLgaStateIds(
           store.lgaVisibleStateIds,
-          store.lgaFocus
+          store.metroMapViews
         );
         const readyLgas = readyLgaStateIds(map, effective);
 
@@ -1161,7 +1198,7 @@ export default function NigeriaMap({
     const activeRegion = activeRegionId
       ? regions.find((r) => r.id === activeRegionId)
       : null;
-    const effectiveLga = effectiveLgaStateIds(lgaVisibleStateIds, lgaFocus);
+    const effectiveLga = effectiveLgaStateIds(lgaVisibleStateIds, metroMapViews);
     const readyVisible = readyLgaStateIds(map, effectiveLga);
 
     for (const s of states) {
@@ -1272,14 +1309,14 @@ export default function NigeriaMap({
     // Map-type tuning must be the final writer so OSM stays uncluttered
     // no matter which selection/mask effect ran above.
     applyAdminLayersMapTypeTuning(map, useMapStore.getState().mapType);
-  }, [selectedKey, featureMapViewsKey, lgaVisibleKey, lgaFocusKey, lgaReadyKey, activeRegionId, draggedStateId, states, regions, setFeatureState, mapReady, selectedStateIds, lgaVisibleStateIds, lgaFocus, readyLgaStateIds]);
+  }, [selectedKey, featureMapViewsKey, lgaVisibleKey, metroMapViewsKey, lgaReadyKey, activeRegionId, draggedStateId, states, regions, setFeatureState, mapReady, selectedStateIds, lgaVisibleStateIds, metroMapViews, readyLgaStateIds]);
 
   // ——— LGA selected highlight ———
   useEffect(() => {
     const map = mapRef.current;
     if (!map?.isStyleLoaded()) return;
 
-    const effectiveLga = effectiveLgaStateIds(lgaVisibleStateIds, lgaFocus);
+    const effectiveLga = effectiveLgaStateIds(lgaVisibleStateIds, metroMapViews);
     for (const stateId of effectiveLga) {
       const src = lgaSourceId(stateId);
       if (!map.getSource(src)) continue;
@@ -1295,36 +1332,19 @@ export default function NigeriaMap({
         setFeatureState(lgaOutlineSourceId(stateId), l.id, statePayload);
       }
     }
-  }, [effectiveLgaKey, selectedLgaId, lgas, setFeatureState, lgaVisibleStateIds, lgaFocus, lgaReadyKey]);
+  }, [effectiveLgaKey, selectedLgaId, lgas, setFeatureState, lgaVisibleStateIds, metroMapViews, lgaReadyKey]);
 
-  // ——— Metro focus: election-style fillColor on LGA sources ———
+  // ——— Metro map views: election-style fillColor on LGA sources ———
   useEffect(() => {
     const map = mapRef.current;
     if (!map?.isStyleLoaded() || !mapReady) return;
-
-    const store = useMapStore.getState();
-    const effective = effectiveLgaStateIds(
-      store.lgaVisibleStateIds,
-      store.lgaFocus
-    );
-
-    void (async () => {
-      for (const stateId of effective) {
-        if (!lgaLayersReady(map, stateId)) continue;
-        const data = await fetchLgaGeo(stateId);
-        if (!data || !mapRef.current) continue;
-        applyLgaSourceFillData(mapRef.current, stateId, data, {
-          stateId,
-          mapType: store.mapType,
-          electionLookups:
-            store.mapType === "election"
-              ? politicsLookupsRef.current
-              : undefined,
-          lgaFocus: store.lgaFocus,
-        });
-      }
-    })();
-  }, [lgaFocusKey, mapReady, mapType, lgaReadyKey, effectiveLgaKey]);
+    refreshMetroLgaFills(map);
+    const onIdle = () => refreshMetroLgaFills(map);
+    map.once("idle", onIdle);
+    return () => {
+      map.off("idle", onIdle);
+    };
+  }, [metroMapViewsKey, mapReady, mapType, lgaReadyKey, effectiveLgaKey, refreshMetroLgaFills]);
 
   const loadLgaLayer = useCallback(async (stateId: string) => {
     const map = mapRef.current;
@@ -1341,7 +1361,7 @@ export default function NigeriaMap({
       const store = useMapStore.getState();
       const effective = effectiveLgaStateIds(
         store.lgaVisibleStateIds,
-        store.lgaFocus
+        store.metroMapViews
       );
       const readyVisible = readyLgaStateIds(map, effective);
       applyStateMaskForLgaVisibility(
@@ -1354,6 +1374,7 @@ export default function NigeriaMap({
       restackTopOverlayLayers(map);
       syncLgaLabelFilters(map);
       refreshSelectionPaint(map);
+      refreshMetroLgaFills(map);
       return;
     }
 
@@ -1383,13 +1404,13 @@ export default function NigeriaMap({
           storeAfterLoad.mapType === "election"
             ? politicsLookupsRef.current
             : undefined,
-        lgaFocus: storeAfterLoad.lgaFocus,
+        metroMapViews: storeAfterLoad.metroMapViews,
       });
 
       loadedLgaRef.current.add(stateId);
       const effective = effectiveLgaStateIds(
         storeAfterLoad.lgaVisibleStateIds,
-        storeAfterLoad.lgaFocus
+        storeAfterLoad.metroMapViews
       );
       const readyVisible = readyLgaStateIds(liveMap, effective);
       applyStateMaskForLgaVisibility(
@@ -1408,12 +1429,18 @@ export default function NigeriaMap({
       restackLgaStack(liveMap, readyVisible);
       restackTopOverlayLayers(liveMap);
       refreshSelectionPaint(liveMap);
+      refreshMetroLgaFills(liveMap);
       setLgaReadyKey((k) => k + 1);
     } finally {
       loadingLgaRef.current.delete(stateId);
       setLgaLoadingCount(loadingLgaRef.current.size);
     }
-  }, [syncLgaLabelFilters, readyLgaStateIds, refreshSelectionPaint]);
+  }, [
+    syncLgaLabelFilters,
+    readyLgaStateIds,
+    refreshSelectionPaint,
+    refreshMetroLgaFills,
+  ]);
 
   loadLgaLayerRef.current = loadLgaLayer;
 
@@ -1436,7 +1463,7 @@ export default function NigeriaMap({
   useEffect(() => {
     if (!mapReady) return;
     syncLgaVisibilityOnMap();
-  }, [lgaVisibleKey, lgaFocusKey, mapReady, syncLgaVisibilityOnMap]);
+  }, [lgaVisibleKey, metroMapViewsKey, mapReady, syncLgaVisibilityOnMap]);
 
   useEffect(() => {
     useMapStore.getState().registerLgaVisibilityHandler(() => {
@@ -1452,7 +1479,7 @@ export default function NigeriaMap({
     syncAllOverlayVisibility(map, activeOverlays);
     const effective = effectiveLgaStateIds(
       useMapStore.getState().lgaVisibleStateIds,
-      useMapStore.getState().lgaFocus
+      useMapStore.getState().metroMapViews
     );
     restackLgaStack(map, readyLgaStateIds(map, effective));
     restackTopOverlayLayers(map);
@@ -1471,7 +1498,7 @@ export default function NigeriaMap({
     if (!mapReady) return;
     const store = useMapStore.getState();
     const visible = [
-      ...effectiveLgaStateIds(store.lgaVisibleStateIds, store.lgaFocus),
+      ...effectiveLgaStateIds(store.lgaVisibleStateIds, store.metroMapViews),
     ];
     if (visible.length === 0) return;
     for (const stateId of visible) {
@@ -1491,10 +1518,6 @@ export default function NigeriaMap({
 
   // ——— Fly to selection ———
   useEffect(() => {
-    if (lgaFocus?.bounds) {
-      flyToBounds(lgaFocus.bounds, 40);
-      return;
-    }
     if (selectedLgaId) {
       const bbox = bboxById.get(selectedLgaId);
       if (bbox) flyToBounds(bboxToLngLatBounds(bbox), 72);
@@ -1519,7 +1542,6 @@ export default function NigeriaMap({
       flyToBounds(unionBboxes(bboxes));
     }
   }, [
-    lgaFocus,
     selectedKey,
     selectedLgaId,
     activeRegionId,

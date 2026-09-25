@@ -1,16 +1,32 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
 import { useToastStore } from "@/lib/store/toastStore";
+import { MAX_METRO_MAP_VIEWS } from "@/lib/map/metroMapViews";
 
 const HINTS_DISMISSED_KEY = "naija-atlas-hints-dismissed";
+const ATTENTION_INTERVAL_MS = 40000;
+const ATTENTION_DURATION_MS = 3500;
+const COLOR_CYCLE_MS = 4000;
+
+/** Three accents; index 0 is the original neutral Tips bar. */
+const TIP_ACCENT_STYLES = [
+  "border-slate-200/90 bg-white/95 backdrop-blur text-slate-600",
+  "border-amber-200/90 bg-amber-50/95 text-amber-950",
+  "border-sky-200/90 bg-sky-50/95 text-sky-950",
+] as const;
 
 export default function MapHints() {
   const [panelHidden, setPanelHidden] = useState(true);
+  const [accentIdx, setAccentIdx] = useState(0);
+  const [attention, setAttention] = useState(false);
+  const [hintPulse, setHintPulse] = useState(false);
+  const prevHintRef = useRef<string>("");
+
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
   const lgaVisibleStateIds = useMapStore((s) => s.lgaVisibleStateIds);
-  const lgaFocus = useMapStore((s) => s.lgaFocus);
+  const metroMapViews = useMapStore((s) => s.metroMapViews);
   const dragModeStateId = useMapStore((s) => s.dragModeStateId);
   const mapActionHint = useMapStore((s) => s.mapActionHint);
   const activeRegionId = useMapStore((s) => s.activeRegionId);
@@ -21,6 +37,25 @@ export default function MapHints() {
 
   useEffect(() => {
     setPanelHidden(localStorage.getItem(HINTS_DISMISSED_KEY) === "1");
+  }, []);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setAccentIdx((i) => (i + 1) % TIP_ACCENT_STYLES.length);
+    }, COLOR_CYCLE_MS);
+    return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    let timeout: number | undefined;
+    const interval = window.setInterval(() => {
+      setAttention(true);
+      timeout = window.setTimeout(() => setAttention(false), ATTENTION_DURATION_MS);
+    }, ATTENTION_INTERVAL_MS);
+    return () => {
+      window.clearInterval(interval);
+      window.clearTimeout(timeout);
+    };
   }, []);
 
   const hint = useMemo(() => {
@@ -58,8 +93,8 @@ export default function MapHints() {
       return "Click a highlighted feature for details · admin selection still works on empty areas";
     }
 
-    if (lgaFocus && lgaFocus.lgaIds.length > 0) {
-      return "Metro / group view — highlighted LGAs use an accent color; others are neutral gray (state map icon still toggles full multicolor LGA browse)";
+    if (metroMapViews.length > 0) {
+      return `Metro on map (${metroMapViews.length}/${MAX_METRO_MAP_VIEWS}) — colored LGAs are in the metro; gray are not · add more from state Learn tab`;
     }
 
     if (lgaVisibleStateIds.size > 0) {
@@ -83,7 +118,7 @@ export default function MapHints() {
     selectedOverlay,
     activeOverlays,
     lgaVisibleStateIds.size,
-    lgaFocus?.lgaIds.length,
+    metroMapViews.length,
     selectedStateIds.size,
     activeRegionId,
   ]);
@@ -96,8 +131,8 @@ export default function MapHints() {
     if (dragModeStateId) return "Drag the state on the map";
     if (selectedOverlay) return "Overlay details in panel";
     if (activeOverlays.size > 0) return "Tap a highlighted feature for details";
-    if (lgaFocus && lgaFocus.lgaIds.length > 0) {
-      return "Metro view — colored = in group, gray = other LGAs";
+    if (metroMapViews.length > 0) {
+      return `Metro on map — ${metroMapViews.length} active`;
     }
     if (lgaVisibleStateIds.size > 0) return "Tap an LGA for its name";
     if (selectedStateIds.size > 0) return "Tap the map icon on a selected state to show LGAs";
@@ -110,9 +145,19 @@ export default function MapHints() {
     selectedOverlay,
     activeOverlays.size,
     lgaVisibleStateIds.size,
-    lgaFocus?.lgaIds.length,
+    metroMapViews.length,
     selectedStateIds.size,
   ]);
+
+  useEffect(() => {
+    if (prevHintRef.current && prevHintRef.current !== hint) {
+      setHintPulse(true);
+      const t = window.setTimeout(() => setHintPulse(false), ATTENTION_DURATION_MS);
+      prevHintRef.current = hint;
+      return () => window.clearTimeout(t);
+    }
+    prevHintRef.current = hint;
+  }, [hint]);
 
   useEffect(() => {
     if (!mapActionHint) return;
@@ -142,14 +187,23 @@ export default function MapHints() {
   const isTransient = Boolean(mapActionHint || dragModeStateId);
 
   const barClass =
-    "w-full rounded-xl border shadow-sm text-sm min-h-[38px] lg:min-h-[42px] flex items-center gap-2 px-3 py-2 lg:py-2.5";
+    "w-full rounded-xl border shadow-sm text-sm min-h-[38px] lg:min-h-[42px] flex items-center gap-2 px-3 py-2 lg:py-2.5 transition-colors duration-500";
+
+  const accentStyle = isTransient
+    ? "border-emerald-200 bg-emerald-50 text-emerald-900"
+    : TIP_ACCENT_STYLES[accentIdx];
+
+  const motionClass =
+    !isTransient && (attention || hintPulse)
+      ? "animate-naija-attention ring-2 ring-amber-300/80"
+      : "";
 
   if (panelHidden && !isTransient) {
     return (
       <button
         type="button"
         onClick={show}
-        className={`${barClass} border-slate-200 bg-white/95 backdrop-blur text-slate-500 hover:bg-slate-50 hover:text-slate-700 transition-colors`}
+        className={`${barClass} border-slate-200 bg-white/95 backdrop-blur text-slate-500 hover:bg-slate-50 hover:text-slate-700 ${motionClass}`}
         aria-label="Show map hints"
         title="Show hints"
       >
@@ -163,11 +217,8 @@ export default function MapHints() {
 
   return (
     <div
-      className={`${barClass} min-w-0 ${
-        isTransient
-          ? "border-emerald-200 bg-emerald-50 text-emerald-900"
-          : "border-slate-200 bg-white/95 backdrop-blur text-slate-600"
-      }`}
+      key={hint}
+      className={`${barClass} min-w-0 ${accentStyle} ${motionClass} animate-fade-in-soft`}
     >
       <span
         className={`inline-block h-1.5 w-1.5 shrink-0 rounded-full ${

@@ -1,9 +1,9 @@
 import type { LayerSpecification, Map, SourceSpecification, StyleSpecification } from "maplibre-gl";
 import { MAP_GLYPHS, MAP_FONT, MAP_FONT_EMPHASIS } from "@/lib/map/interaction";
 import { LGA_PALETTE, assignLgaPaletteColors, colorForIndex } from "@/lib/map/colors";
-import { enrichLgaSenatorialColors, colorForSenatorialIndex } from "@/lib/politics/senatorialColors";
-import { enrichLgaMetroFocus } from "@/lib/map/lgaFocusColors";
-import type { LgaFocusPlan } from "@/lib/map/lgaMapFocus";
+import { enrichLgaSenatorialColors } from "@/lib/politics/senatorialColors";
+import { enrichLgaMetroMapViews } from "@/lib/map/lgaFocusColors";
+import type { MetroMapView } from "@/lib/map/metroMapViews";
 import type { PoliticsLookups } from "@/types/politics";
 import { withExcludeState, withExcludeStates } from "@/lib/map/dragStateGeometry";
 import type { MapTypeId } from "@/lib/store/mapStore";
@@ -1051,7 +1051,7 @@ export function createLgaLayers(stateId: string): LayerSpecification[] {
 
 export interface LgaFillEnrichOptions {
   electionLookups?: PoliticsLookups;
-  lgaFocus?: LgaFocusPlan | null;
+  metroMapViews?: MetroMapView[];
   stateId: string;
   mapType: MapTypeId;
 }
@@ -1063,14 +1063,9 @@ export function enrichLgaGeoForMap(
   if (options.mapType === "election" && options.electionLookups) {
     return enrichLgaSenatorialColors(data, options.electionLookups);
   }
-  const focus = options.lgaFocus;
-  if (
-    focus &&
-    focus.lgaIds.length > 0 &&
-    focus.stateIds.includes(options.stateId)
-  ) {
-    const accent = colorForSenatorialIndex(focus.colorIndex ?? 0);
-    return enrichLgaMetroFocus(data, focus.lgaIds, accent);
+  const views = options.metroMapViews ?? [];
+  if (views.some((v) => v.stateIds.includes(options.stateId))) {
+    return enrichLgaMetroMapViews(data, options.stateId, views);
   }
   return enrichLgaColors(data);
 }

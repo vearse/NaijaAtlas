@@ -11,6 +11,77 @@ function maxSelectedStates(mapType: MapTypeId): number {
 export type MobileSheetMode = "hidden" | "peek" | "open";
 export type MapTypeId = "minimal" | "osm" | "election";
 
+/** Active comparison panel (state today; metro & LGA later). */
+export type CompareViewId = "state" | "metro" | "lga";
+
+export function canCompareStates(state: {
+  mapType: MapTypeId;
+  selectedStateIds: Set<string>;
+  selectedLgaId: string | null;
+}): boolean {
+  if (state.mapType === "election" || state.selectedLgaId) return false;
+  const n = state.selectedStateIds.size;
+  return n >= 2 && n <= MAX_COMPARE_STATES;
+}
+
+function pruneStateOrder(order: string[], ids: Set<string>): string[] {
+  return order.filter((id) => ids.has(id));
+}
+
+/** Most recently selected state still in the set (panel focus when multi-select). */
+export function primarySelectedStateId(
+  selectedStateIds: Set<string>,
+  selectedStateOrder: string[]
+): string | null {
+  for (let i = selectedStateOrder.length - 1; i >= 0; i--) {
+    const id = selectedStateOrder[i];
+    if (selectedStateIds.has(id)) return id;
+  }
+  return selectedStateIds.size > 0
+    ? (selectedStateIds.values().next().value ?? null)
+    : null;
+}
+
+function appendStateToOrder(
+  order: string[],
+  id: string,
+  ids: Set<string>
+): string[] {
+  const pruned = pruneStateOrder(order, ids);
+  return [...pruned.filter((x) => x !== id), id];
+}
+
+function evictOldestSelectedState(
+  mapType: MapTypeId,
+  next: Set<string>,
+  order: string[]
+): { ids: Set<string>; order: string[] } {
+  const max = maxSelectedStates(mapType);
+  let ids = new Set(next);
+  let ord = pruneStateOrder(order, ids);
+  while (ids.size > max) {
+    const oldest = ord.find((sid) => ids.has(sid)) ?? ids.values().next().value;
+    if (!oldest) break;
+    ids.delete(oldest);
+    ord = ord.filter((sid) => sid !== oldest);
+  }
+  return { ids, order: ord };
+}
+
+function retainCompareView(
+  current: CompareViewId | null,
+  mapType: MapTypeId,
+  selectedStateIds: Set<string>,
+  selectedLgaId: string | null
+): CompareViewId | null {
+  if (current === "state") {
+    return canCompareStates({ mapType, selectedStateIds, selectedLgaId })
+      ? current
+      : null;
+  }
+  return current;
+}
+
 function syncElectionLgaVisibility(
   mapType: MapTypeId,
   selectedStateIds: Set<string>,
@@ -43,17 +114,24 @@ import { defaultOverlaysForLens } from "@/lib/lenses/lensMapLayers";
 import { syncAllOverlayVisibility } from "@/components/map/overlayLayers";
 import type { PollingUnitShardEntry } from "@/types/politics";
 import type { LgaFocusPlan } from "@/lib/map/lgaMapFocus";
-import { LGA_PALETTE } from "@/lib/map/colors";
 import {
   MAX_FEATURE_MAP_VIEWS,
   type FeatureMapView,
   fitMapToStateIds,
 } from "@/lib/map/featureMapViews";
+import {
+  MAX_METRO_MAP_VIEWS,
+  type MetroMapView,
+  planToMetroView,
+  assignMetroColorIndex,
+} from "@/lib/map/metroMapViews";
 
 const DEFAULT_ACTIVE_OVERLAYS = new Set<OverlayLayerId>(["cities"]);
 
 export interface MapSelectionState {
   selectedStateIds: Set<string>;
+  /** Selection order — last entry is the panel “focus” state when several are selected. */
+  selectedStateOrder: string[];
   lgaVisibleStateIds: Set<string>;
   selectedLgaId: string | null;
   /** State currently lifted off the map for dragging (one at a time). */
@@ -148,10 +226,17 @@ export interface MapSelectionState {
   }) => void;
   removeFeatureMapView: (id: string) => void;
   clearFeatureMapViews: () => void;
-  /** LGA group currently highlighted on the map (metro / LGA “view on map”). */
-  lgaFocus: LgaFocusPlan | null;
-  focusLgas: (plan: LgaFocusPlan) => void;
-  clearLgaFocus: () => void;
+  /** Metro / LGA groups on the map (independent of state selection). */
+  metroMapViews: MetroMapView[];
+  activeMetroPanelId: string | null;
+  toggleMetroMapView: (plan: LgaFocusPlan) => void;
+  removeMetroMapView: (id: string) => void;
+  clearMetroMapViews: () => void;
+  setActiveMetroPanelId: (id: string | null) => void;
+  /** User-opened compare mode (not automatic when multi-select). */
+  compareView: CompareViewId | null;
+  openCompareView: (view: CompareViewId) => void;
+  closeCompareView: () => void;
 }
 
 function mobileSheetForSelection(count: number): MobileSheetMode {
@@ -162,14 +247,6 @@ function mobileSheetForSelection(count: number): MobileSheetMode {
 
 function notifyLgaVisibility(get: () => MapSelectionState): void {
   get().lgaVisibilityHandler?.(get().lgaVisibleStateIds);
-}
-
-function colorIndexForFocusId(id: string): number {
-  let h = 0;
-  for (let i = 0; i < id.length; i += 1) {
-    h = (h * 31 + id.charCodeAt(i)) | 0;
-  }
-  return Math.abs(h) % LGA_PALETTE.length;
 }
 
 function pruneLabelsForHiddenStates(
@@ -185,6 +262,7 @@ function pruneLabelsForHiddenStates(
 
 export const useMapStore = create<MapSelectionState>((set, get) => ({
   selectedStateIds: new Set(),
+  selectedStateOrder: [],
   lgaVisibleStateIds: new Set(),
   selectedLgaId: null,
   draggedStateId: null,
@@ -216,7 +294,9 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     active: false,
   },
   featureMapViews: [],
-  lgaFocus: null,
+  metroMapViews: [],
+  activeMetroPanelId: null,
+  compareView: null,
 
   registerMap: (map) => set({ mapInstance: map }),
 
@@ -254,40 +334,80 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
 
   clearFeatureMapViews: () => set({ featureMapViews: [] }),
 
-  focusLgas: (plan) => {
+  toggleMetroMapView: (plan) => {
     if (!plan || plan.stateIds.length === 0) return;
-    const prev = get().lgaFocus;
-    const colorIndex =
-      prev?.id === plan.id && prev.colorIndex != null
-        ? prev.colorIndex
-        : colorIndexForFocusId(plan.id);
-    const focus: LgaFocusPlan = { ...plan, colorIndex };
+    const current = get().metroMapViews;
+    const existing = current.find((v) => v.id === plan.id);
+    if (existing) {
+      const next = current.filter((v) => v.id !== plan.id);
+      set({
+        metroMapViews: next,
+        activeMetroPanelId:
+          get().activeMetroPanelId === plan.id
+            ? next[0]?.id ?? null
+            : get().activeMetroPanelId,
+      });
+      notifyLgaVisibility(get);
+      return;
+    }
+
+    let next = [...current];
+    if (next.length >= MAX_METRO_MAP_VIEWS) {
+      next = next.slice(1);
+    }
+    const used = new Set(next.map((v) => v.colorIndex));
+    const colorIndex = assignMetroColorIndex(used);
+    const view = planToMetroView(
+      { ...plan, colorIndex, label: plan.label ?? plan.id },
+      colorIndex
+    );
+    next.push(view);
     set({
-      lgaFocus: focus,
-      selectedStateIds: new Set(plan.stateIds),
-      selectedLgaId: null,
-      draggedStateId: null,
-      dragModeStateId: null,
-      activeRegionId: null,
+      metroMapViews: next,
+      activeMetroPanelId: plan.id,
       selectedOverlay: null,
-      selectedSenatorialDistrictId: null,
       directionsPanelTarget: null,
       panelOpen: true,
       mobileSheet: "open",
-      mapActionHint:
-        plan.lgaIds.length > 0
-          ? focus.label
-            ? `${focus.label} on map — highlighted LGAs in color; others neutral gray`
-            : "Metro / group on map — highlighted LGAs in color; others neutral gray"
-          : "Showing state LGAs — member areas could not be resolved",
+      mapActionHint: plan.label
+        ? `${plan.label} on map — add up to ${MAX_METRO_MAP_VIEWS} metros; states stay unselected`
+        : `Metro on map — up to ${MAX_METRO_MAP_VIEWS} at once`,
+    });
+    notifyLgaVisibility(get);
+    const map = get().mapInstance;
+    if (map && plan.bounds) {
+      map.fitBounds(plan.bounds, { padding: 40, duration: 900 });
+    }
+  },
+
+  removeMetroMapView: (id) => {
+    const next = get().metroMapViews.filter((v) => v.id !== id);
+    set({
+      metroMapViews: next,
+      activeMetroPanelId:
+        get().activeMetroPanelId === id ? next[0]?.id ?? null : get().activeMetroPanelId,
     });
     notifyLgaVisibility(get);
   },
 
-  clearLgaFocus: () => {
-    set({ lgaFocus: null, mapActionHint: null });
+  clearMetroMapViews: () => {
+    set({ metroMapViews: [], activeMetroPanelId: null, mapActionHint: null });
     notifyLgaVisibility(get);
   },
+
+  setActiveMetroPanelId: (id) => set({ activeMetroPanelId: id }),
+
+  openCompareView: (view) => {
+    if (view !== "state") return;
+    if (!canCompareStates(get())) return;
+    set({
+      compareView: view,
+      panelOpen: true,
+      mobileSheet: "open",
+    });
+  },
+
+  closeCompareView: () => set({ compareView: null }),
   setMapType: (id) => {
     const prev = get().mapType;
     if (prev === "election" && id !== "election") {
@@ -297,7 +417,9 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         lgaVisibleStateIds: new Set(),
         selectedLgaId: null,
         directionsPanelTarget: null,
-        lgaFocus: null,
+        metroMapViews: [],
+        activeMetroPanelId: null,
+        compareView: null,
       });
       notifyLgaVisibility(get);
       return;
@@ -315,7 +437,9 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         lgaVisibleStateIds: lgaVisible,
         activeRegionId: null,
         directionsPanelTarget: null,
-        lgaFocus: null,
+        metroMapViews: [],
+        activeMetroPanelId: null,
+        compareView: null,
       });
       notifyLgaVisibility(get);
       return;
@@ -458,7 +582,8 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         panelOpen: true,
         mobileSheet: "open" as MobileSheetMode,
         directionsPanelTarget: null,
-        lgaFocus: null,
+        metroMapViews: [],
+        activeMetroPanelId: null,
       });
     } else {
       next.delete(id);
@@ -481,7 +606,6 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       selectedLgaId: feature ? null : get().selectedLgaId,
       activeRegionId: feature ? null : get().activeRegionId,
       directionsPanelTarget: null,
-      lgaFocus: feature ? null : get().lgaFocus,
       panelOpen:
         feature !== null ||
         get().selectedStateIds.size > 0 ||
@@ -537,7 +661,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   setMapActionHint: (hint) => set({ mapActionHint: hint }),
 
   toggleState: (id) => {
-    const next = new Set(get().selectedStateIds);
+    let next = new Set(get().selectedStateIds);
     const lgaVisible = new Set(get().lgaVisibleStateIds);
     const draggedStateId =
       get().draggedStateId === id ? null : get().draggedStateId;
@@ -549,8 +673,10 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       const labeledLgaOrder = get().labeledLgaOrder.filter(
         (lgaId) => !lgaId.startsWith(`${id}-`)
       );
+      const order = pruneStateOrder(get().selectedStateOrder, next);
       set({
         selectedStateIds: next,
+        selectedStateOrder: order,
         lgaVisibleStateIds: lgaVisible,
         selectedLgaId: null,
         draggedStateId,
@@ -560,61 +686,74 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         activeRegionId: null,
         selectedOverlay: null,
         directionsPanelTarget: null,
-        lgaFocus: null,
+        compareView: retainCompareView(
+          get().compareView,
+          get().mapType,
+          next,
+          null
+        ),
         mobileSheet: mobileSheetForSelection(next.size),
       });
       notifyLgaVisibility(get);
       return;
     }
-    if (next.size >= maxSelectedStates(get().mapType)) {
-      const oldest = next.values().next().value;
-      if (oldest) {
-        next.delete(oldest);
-        lgaVisible.delete(oldest);
-      }
-    }
     next.add(id);
-    syncElectionLgaVisibility(get().mapType, next, lgaVisible);
+    let order = appendStateToOrder(get().selectedStateOrder, id, next);
+    const evicted = evictOldestSelectedState(get().mapType, next, order);
+    for (const sid of get().selectedStateIds) {
+      if (!evicted.ids.has(sid)) lgaVisible.delete(sid);
+    }
+    syncElectionLgaVisibility(get().mapType, evicted.ids, lgaVisible);
     set({
-      selectedStateIds: next,
+      selectedStateIds: evicted.ids,
+      selectedStateOrder: evicted.order,
       lgaVisibleStateIds: lgaVisible,
       selectedLgaId: null,
       draggedStateId,
       dragModeStateId,
-      panelOpen: next.size > 0,
+      panelOpen: evicted.ids.size > 0,
       activeRegionId: null,
       selectedOverlay: null,
       selectedSenatorialDistrictId: null,
       directionsPanelTarget: null,
-      lgaFocus: null,
-      mobileSheet: mobileSheetForSelection(next.size),
+      compareView: retainCompareView(
+        get().compareView,
+        get().mapType,
+        evicted.ids,
+        null
+      ),
+      mobileSheet: mobileSheetForSelection(evicted.ids.size),
     });
     notifyLgaVisibility(get);
   },
 
   addSelectedState: (id) => {
-    const next = new Set(get().selectedStateIds);
+    let next = new Set(get().selectedStateIds);
     if (next.has(id)) return;
     const lgaVisible = new Set(get().lgaVisibleStateIds);
-    if (next.size >= maxSelectedStates(get().mapType)) {
-      const oldest = next.values().next().value;
-      if (oldest) {
-        next.delete(oldest);
-        lgaVisible.delete(oldest);
-      }
-    }
     next.add(id);
-    syncElectionLgaVisibility(get().mapType, next, lgaVisible);
+    let order = appendStateToOrder(get().selectedStateOrder, id, next);
+    const evicted = evictOldestSelectedState(get().mapType, next, order);
+    for (const sid of get().selectedStateIds) {
+      if (!evicted.ids.has(sid)) lgaVisible.delete(sid);
+    }
+    syncElectionLgaVisibility(get().mapType, evicted.ids, lgaVisible);
     set({
-      selectedStateIds: next,
+      selectedStateIds: evicted.ids,
+      selectedStateOrder: evicted.order,
       lgaVisibleStateIds: lgaVisible,
       panelOpen: true,
       activeRegionId: null,
       selectedOverlay: null,
       selectedSenatorialDistrictId: null,
       directionsPanelTarget: null,
-      lgaFocus: null,
-      mobileSheet: mobileSheetForSelection(next.size),
+      compareView: retainCompareView(
+        get().compareView,
+        get().mapType,
+        evicted.ids,
+        get().selectedLgaId
+      ),
+      mobileSheet: mobileSheetForSelection(evicted.ids.size),
     });
     notifyLgaVisibility(get);
   },
@@ -629,6 +768,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     }
     set({
       selectedStateIds: idSet,
+      selectedStateOrder: [...ids],
       lgaVisibleStateIds: lgaVisible,
       selectedLgaId: null,
       draggedStateId: null,
@@ -637,7 +777,12 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       activeRegionId: null,
       selectedOverlay: null,
       directionsPanelTarget: null,
-      lgaFocus: null,
+      compareView: retainCompareView(
+        get().compareView,
+        get().mapType,
+        idSet,
+        null
+      ),
       mobileSheet: mobileSheetForSelection(ids.length),
     });
     notifyLgaVisibility(get);
@@ -646,26 +791,29 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   showLgas: (id) => {
     const lgaVisible = new Set(get().lgaVisibleStateIds);
     lgaVisible.add(id);
-    const selected = new Set(get().selectedStateIds);
+    let selected = new Set(get().selectedStateIds);
+    let order = get().selectedStateOrder;
     if (!selected.has(id)) {
-      if (selected.size >= maxSelectedStates(get().mapType)) {
-        const oldest = selected.values().next().value;
-        if (oldest) {
-          selected.delete(oldest);
-          lgaVisible.delete(oldest);
-        }
-      }
       selected.add(id);
+      order = appendStateToOrder(order, id, selected);
+      const evicted = evictOldestSelectedState(get().mapType, selected, order);
+      for (const sid of get().selectedStateIds) {
+        if (!evicted.ids.has(sid)) lgaVisible.delete(sid);
+      }
+      selected = evicted.ids;
+      order = evicted.order;
     }
     set({
       lgaVisibleStateIds: lgaVisible,
       selectedStateIds: selected,
+      selectedStateOrder: order,
       selectedLgaId: null,
       panelOpen: true,
       activeRegionId: null,
       selectedOverlay: null,
       directionsPanelTarget: null,
-      lgaFocus: null,
+      metroMapViews: [],
+      activeMetroPanelId: null,
       mobileSheet: "open",
     });
     notifyLgaVisibility(get);
@@ -677,15 +825,9 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     const labeledLgaOrder = get().labeledLgaOrder.filter(
       (lgaId) => !lgaId.startsWith(`${id}-`)
     );
-    const focus = get().lgaFocus;
-    const clearFocus =
-      focus != null &&
-      (focus.stateIds.includes(id) ||
-        ![...focus.stateIds].every((sid) => lgaVisible.has(sid)));
     set({
       lgaVisibleStateIds: lgaVisible,
       labeledLgaOrder,
-      ...(clearFocus ? { lgaFocus: null } : {}),
     });
     notifyLgaVisibility(get);
   },
@@ -725,12 +867,14 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     set({
       lgaVisibleStateIds: new Set(ids),
       selectedStateIds: new Set(ids),
+      selectedStateOrder: [...ids],
       selectedLgaId: null,
       panelOpen: ids.length > 0,
       activeRegionId: null,
       selectedOverlay: null,
       directionsPanelTarget: null,
-      lgaFocus: null,
+      metroMapViews: [],
+      activeMetroPanelId: null,
       mobileSheet: mobileSheetForSelection(ids.length),
     });
     notifyLgaVisibility(get);
@@ -738,13 +882,22 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
 
   setSelectedLga: (id) => {
     if (id) get().addLabeledLga(id);
+    const selectedStateIds = get().selectedStateIds;
     set({
       selectedLgaId: id,
       selectedOverlay: id ? null : get().selectedOverlay,
       directionsPanelTarget: null,
-      panelOpen: id !== null || get().selectedStateIds.size > 0,
+      compareView: retainCompareView(
+        get().compareView,
+        get().mapType,
+        selectedStateIds,
+        id
+      ),
+      panelOpen:
+        id !== null ||
+        selectedStateIds.size > 0 ||
+        get().metroMapViews.length > 0,
       mobileSheet: id !== null ? "open" : get().mobileSheet,
-      lgaFocus: id ? null : get().lgaFocus,
     });
   },
 
@@ -764,6 +917,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     set({
       activeRegionId: id,
       selectedStateIds: new Set(),
+      selectedStateOrder: [],
       lgaVisibleStateIds: new Set(),
       selectedLgaId: null,
       draggedStateId: null,
@@ -773,6 +927,8 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       directionsPanelTarget: null,
       mobileSheet: id ? "peek" : "hidden",
       labeledLgaOrder: [],
+      metroMapViews: [],
+      activeMetroPanelId: null,
     });
     notifyLgaVisibility(get);
   },
@@ -780,6 +936,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   reset: () => {
     set({
       selectedStateIds: new Set(),
+      selectedStateOrder: [],
       lgaVisibleStateIds: new Set(),
       selectedLgaId: null,
       draggedStateId: null,
@@ -797,7 +954,9 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       activeOverlays: new Set(DEFAULT_ACTIVE_OVERLAYS),
       resetCounter: get().resetCounter + 1,
       featureMapViews: [],
-      lgaFocus: null,
+      metroMapViews: [],
+      activeMetroPanelId: null,
+      compareView: null,
     });
     notifyLgaVisibility(get);
   },

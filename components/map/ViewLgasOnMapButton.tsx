@@ -1,8 +1,8 @@
 "use client";
 
 import { useMapStore } from "@/lib/store/mapStore";
-import { sameLgaFocus } from "@/lib/map/lgaMapFocus";
 import type { LgaFocusPlan } from "@/lib/map/lgaMapFocus";
+import { MAX_METRO_MAP_VIEWS } from "@/lib/map/metroMapViews";
 
 interface ViewLgasOnMapButtonProps {
   plan: LgaFocusPlan;
@@ -10,36 +10,35 @@ interface ViewLgasOnMapButtonProps {
 }
 
 /**
- * "View on map" toggle for an LGA-based focus (metro area, LGA group, …).
- * Highlights the plan's member LGAs, loads their state LGA layers, and
- * flies to the union bounds. Toggling again clears the highlight.
+ * Toggle a metro / LGA group on the map (independent of state selection).
  */
 export default function ViewLgasOnMapButton({
   plan,
   className = "",
 }: ViewLgasOnMapButtonProps) {
-  const lgaFocus = useMapStore((s) => s.lgaFocus);
-  const focusLgas = useMapStore((s) => s.focusLgas);
-  const clearLgaFocus = useMapStore((s) => s.clearLgaFocus);
+  const views = useMapStore((s) => s.metroMapViews);
+  const toggleMetroMapView = useMapStore((s) => s.toggleMetroMapView);
 
-  const active = sameLgaFocus(lgaFocus, plan);
-  const disabled = plan.stateIds.length === 0;
+  const active = views.some((v) => v.id === plan.id);
+  const atCap = views.length >= MAX_METRO_MAP_VIEWS && !active;
+  const disabled = plan.stateIds.length === 0 || atCap;
 
   return (
     <button
       type="button"
       disabled={disabled}
       title={
-        disabled
-          ? "Member LGAs could not be resolved for this place"
-          : active
-            ? "Remove LGA highlight from map"
-            : "Show covered LGAs on the map"
+        atCap
+          ? `Remove a metro from the map first (max ${MAX_METRO_MAP_VIEWS})`
+          : disabled
+            ? "Member LGAs could not be resolved for this place"
+            : active
+              ? "Remove metro from map"
+              : "Show metro LGAs on the map"
       }
       onClick={(e) => {
         e.stopPropagation();
-        if (active) clearLgaFocus();
-        else focusLgas(plan);
+        toggleMetroMapView(plan);
       }}
       className={`text-[11px] font-semibold rounded-full px-2.5 py-1 transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
         active

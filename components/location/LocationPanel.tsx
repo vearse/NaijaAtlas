@@ -1,7 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useMapStore, MAX_COMPARE_STATES } from "@/lib/store/mapStore";
+import {
+  useMapStore,
+  MAX_COMPARE_STATES,
+  canCompareStates,
+  primarySelectedStateId,
+} from "@/lib/store/mapStore";
 import Breadcrumbs from "./Breadcrumbs";
 import StateDetails from "./StateDetails";
 import LgaDetails from "./LgaDetails";
@@ -12,6 +17,7 @@ import MobileBottomSheet from "./MobileBottomSheet";
 import DesktopCompareModal from "@/components/compare/DesktopCompareModal";
 import OverlayFeaturePanel from "@/components/map/OverlayFeaturePanel";
 import OverlayLayerGuidePanel from "@/components/map/OverlayLayerGuidePanel";
+import MetroMapPanel from "@/components/location/MetroMapPanel";
 import DirectionsPanel from "@/components/directions/DirectionsPanel";
 import FadeIn from "@/components/ui/FadeIn";
 import { useIsMobile } from "@/hooks/useMediaQuery";
@@ -63,8 +69,21 @@ export default function LocationPanel({
 }: LocationPanelProps) {
   const isMobile = useIsMobile();
   const [desktopCompareOpen, setDesktopCompareOpen] = useState(false);
-  const { selectedStateIds, selectedLgaId, activeRegionId, setSelectedLga, mobileSheet, selectedOverlay, overlayGuideLayer, directionsPanelTarget } =
-    useMapStore();
+  const {
+    selectedStateIds,
+    selectedStateOrder,
+    selectedLgaId,
+    activeRegionId,
+    setSelectedLga,
+    mobileSheet,
+    selectedOverlay,
+    overlayGuideLayer,
+    directionsPanelTarget,
+    metroMapViews,
+    activeMetroPanelId,
+    compareView,
+    mapType,
+  } = useMapStore();
 
   const toggleLgaSelection = (id: string) => {
     const store = useMapStore.getState();
@@ -79,10 +98,16 @@ export default function LocationPanel({
     : null;
 
   const selectedStates = states.filter((s) => selectedStateIds.has(s.id));
-  const singleState =
-    !selectedLgaId && selectedStates.length === 1 ? selectedStates[0] : null;
-  const singleStateContent = singleState
-    ? resolveStateContent(singleState, stateContent)
+  const primaryStateId = primarySelectedStateId(
+    selectedStateIds,
+    selectedStateOrder
+  );
+  const panelState =
+    !selectedLgaId && primaryStateId
+      ? states.find((s) => s.id === primaryStateId) ?? null
+      : null;
+  const panelStateContent = panelState
+    ? resolveStateContent(panelState, stateContent)
     : null;
 
   const hasMapSelection =
@@ -91,6 +116,13 @@ export default function LocationPanel({
   const guideLayer = overlayGuideLayer;
   const showDirectionsPanel = directionsPanelTarget !== null;
   const showOverlayGuide = guideLayer !== null && !showOverlay && !showDirectionsPanel;
+  const showMetroMap =
+    metroMapViews.length > 0 &&
+    !hasMapSelection &&
+    !showOverlay &&
+    !showDirectionsPanel &&
+    !showOverlayGuide &&
+    !activeRegionId;
 
   const activeRegion = activeRegionId
     ? regions.find((r) => r.id === activeRegionId) ?? null
@@ -100,46 +132,64 @@ export default function LocationPanel({
     !activeRegionId &&
     !showOverlay &&
     !showOverlayGuide &&
+    !showMetroMap &&
     !showDirectionsPanel;
   const showRegion =
-    activeRegion && !hasMapSelection && !showOverlay && !showDirectionsPanel;
-  const showCompare =
+    activeRegion &&
+    !hasMapSelection &&
     !showOverlay &&
     !showDirectionsPanel &&
-    !lgaC &&
-    !singleState &&
-    selectedStates.length >= 2 &&
-    selectedStates.length <= MAX_COMPARE_STATES;
+    !showMetroMap;
+  const compareStatesEligible = canCompareStates({
+    mapType,
+    selectedStateIds,
+    selectedLgaId,
+  });
+  const showStateCompare =
+    compareView === "state" &&
+    compareStatesEligible &&
+    !showOverlay &&
+    !showDirectionsPanel &&
+    !lgaC;
 
   const panelContentKey =
     directionsPanelTarget?.name ??
     selectedOverlay?.id ??
     guideLayer ??
+    (showMetroMap ? `metro-${activeMetroPanelId ?? metroMapViews[0]?.id}` : null) ??
     lgaLoc?.id ??
-    singleState?.id ??
-    (showCompare ? `compare-${selectedStates.map((s) => s.id).sort().join(",")}` : null) ??
+    panelState?.id ??
+    (showStateCompare
+      ? `compare-${selectedStates.map((s) => s.id).sort().join(",")}`
+      : null) ??
     activeRegion?.id ??
     (showOverview ? "overview" : "empty");
 
   useEffect(() => {
-    if (!showCompare) setDesktopCompareOpen(false);
-  }, [showCompare]);
+    if (!showStateCompare) setDesktopCompareOpen(false);
+  }, [showStateCompare]);
 
   const wards = selectedLgaId ? wardsByLga[selectedLgaId] ?? [] : [];
+
+  const activeMetro =
+    metroMapViews.find((v) => v.id === (activeMetroPanelId ?? metroMapViews[0]?.id)) ??
+    metroMapViews[0];
 
   const sheetTitle = showDirectionsPanel
     ? directionsPanelTarget?.name ?? "Directions"
     : selectedOverlay
     ? selectedOverlay.name
+    : showMetroMap
+      ? activeMetro?.label ?? "Metro areas"
     : guideLayer
       ? OVERLAY_LAYER_LABELS[guideLayer].label
     : lgaLoc
     ? lgaLoc.name
-    : singleState
-      ? singleState.name
-      : showCompare
-        ? `${selectedStates.length} states`
-        : activeRegion
+    : showStateCompare
+      ? "Compare states"
+      : panelState
+      ? panelState.name
+      : activeRegion
           ? activeRegion.name
           : "NaijaAtlas";
 
@@ -147,15 +197,23 @@ export default function LocationPanel({
     ? "Directions · location panel"
     : selectedOverlay
     ? `${OVERLAY_LAYER_LABELS[selectedOverlay.layerId].label} · Map feature`
+    : showMetroMap
+      ? metroMapViews.length > 1
+        ? `${metroMapViews.length} metros on map`
+        : "Metro · LGAs highlighted on map"
     : guideLayer
       ? "Layer guide · tap features on the map"
     : lgaLoc
     ? `${lgaLoc.stateName} · LGA`
-    : singleState
-      ? `${singleState.regionName} · State`
-      : showCompare
-        ? "Compare view"
-        : activeRegion
+    : showStateCompare
+      ? `${selectedStates.length} states · side-by-side metrics`
+      : panelState
+      ? `${panelState.regionName} · State${
+          selectedStates.length > 1
+            ? ` · ${selectedStates.length} on map`
+            : ""
+        }`
+      : activeRegion
           ? `${activeRegion.stateIds.length} states`
           : undefined;
 
@@ -169,6 +227,10 @@ export default function LocationPanel({
               ? "Map feature"
             : showOverlayGuide
               ? "Layer guide"
+            : showStateCompare
+              ? "Compare"
+            : showMetroMap
+              ? "Metro"
             : hasMapSelection
               ? "Location"
               : activeRegionId
@@ -193,6 +255,10 @@ export default function LocationPanel({
 
           {showOverlayGuide && guideLayer && !showDirectionsPanel && (
             <OverlayLayerGuidePanel layerId={guideLayer} />
+          )}
+
+          {showMetroMap && !showDirectionsPanel && (
+            <MetroMapPanel metroGroups={metroGroups} lgas={lgas} />
           )}
 
           {showOverview && !showDirectionsPanel && (
@@ -227,10 +293,10 @@ export default function LocationPanel({
             />
           )}
 
-          {!lgaC && singleState && singleStateContent && !showOverlay && !showDirectionsPanel && (
+          {!lgaC && panelState && panelStateContent && !showOverlay && !showDirectionsPanel && !showStateCompare && (
             <StateDetails
-              content={singleStateContent}
-              location={singleState}
+              content={panelStateContent}
+              location={panelState}
               lgas={lgas}
               compareBundle={compareBundle}
               selectedLgaId={selectedLgaId}
@@ -240,7 +306,7 @@ export default function LocationPanel({
             />
           )}
 
-          {showCompare && !isMobile && (
+          {showStateCompare && !isMobile && (
             <StateCompare
               states={selectedStates}
               contents={stateContent}
@@ -250,21 +316,9 @@ export default function LocationPanel({
             />
           )}
 
-          {showCompare && isMobile && (
-            <div className="rounded-xl border border-ng-green/20 bg-emerald-50/50 px-4 py-5 text-center space-y-2">
-              <p className="text-sm font-semibold text-slate-800">
-                {selectedStates.length} states selected
-              </p>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Tap <span className="font-semibold text-ng-green">Compare</span>{" "}
-                at the top right to review and compare side by side.
-              </p>
-            </div>
-          )}
-
           {!lgaC &&
-            !singleState &&
-            !showCompare &&
+            !panelState &&
+            !showStateCompare &&
             !showDirectionsPanel &&
             selectedStates.length > MAX_COMPARE_STATES && (
             <div className="space-y-4">
@@ -330,7 +384,7 @@ export default function LocationPanel({
   return (
     <aside className="w-full lg:w-[400px] xl:w-[440px] shrink-0 bg-white border-l border-slate-200/80 flex flex-col h-full shadow-xl lg:shadow-none">
       {inner}
-      {!isMobile && showCompare && (
+      {!isMobile && showStateCompare && (
         <DesktopCompareModal
           open={desktopCompareOpen}
           onClose={() => setDesktopCompareOpen(false)}

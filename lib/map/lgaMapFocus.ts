@@ -1,4 +1,5 @@
 import type { LgaLocation } from "@/types/location";
+import type { MetroMapView } from "@/lib/map/metroMapViews";
 
 /**
  * A plan to show a group of LGAs on the map: which LGA features to
@@ -88,14 +89,14 @@ export function resolveLgaFocusPlan(
   };
 }
 
-/** States that need LGA layers on map (user toggles ∪ metro focus). */
+/** States that need LGA layers on map (user toggles ∪ active metros). */
 export function effectiveLgaStateIds(
   lgaVisibleStateIds: Set<string>,
-  lgaFocus: LgaFocusPlan | null
+  metroMapViews: MetroMapView[]
 ): Set<string> {
   const out = new Set(lgaVisibleStateIds);
-  if (lgaFocus) {
-    for (const sid of lgaFocus.stateIds) out.add(sid);
+  for (const view of metroMapViews) {
+    for (const sid of view.stateIds) out.add(sid);
   }
   return out;
 }

@@ -7,6 +7,7 @@ import {
   type DirectionsTarget,
 } from "@/lib/store/mapStore";
 import { FEATURE_MAP_VIEW_CHIP_CLASSES } from "@/lib/map/featureMapViews";
+import { METRO_MAP_VIEW_CHIP_CLASSES } from "@/lib/map/metroMapViews";
 import type { StateLocation } from "@/types/location";
 import { MapLayersIcon } from "@/components/map/ShowLgasButton";
 
@@ -62,6 +63,10 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
     featureMapViews,
     removeFeatureMapView,
     clearFeatureMapViews,
+    metroMapViews,
+    removeMetroMapView,
+    clearMetroMapViews,
+    setActiveMetroPanelId,
   } = useMapStore();
 
   const maxStates =
@@ -76,13 +81,16 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
   return (
     <div className="flex flex-wrap items-center gap-2 pt-1">
       <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mr-1">
-        {selected.length === 0 && !directionTarget && featureMapViews.length === 0
+        {selected.length === 0 &&
+        !directionTarget &&
+        featureMapViews.length === 0 &&
+        metroMapViews.length === 0
           ? isElection
             ? `Select up to ${maxStates} states on the map`
             : `Select up to ${maxStates} states to compare`
           : selected.length > 0
             ? "Selected"
-            : featureMapViews.length > 0
+            : featureMapViews.length > 0 || metroMapViews.length > 0
               ? "On map"
               : "Directions"}
       </span>
@@ -137,6 +145,49 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
           </span>
         );
       })}
+      {metroMapViews.map((view) => {
+        const chipStyle =
+          METRO_MAP_VIEW_CHIP_CLASSES[
+            view.colorIndex % METRO_MAP_VIEW_CHIP_CLASSES.length
+          ];
+        return (
+          <span
+            key={view.id}
+            className={`inline-flex items-center gap-1 rounded-full pl-2 pr-1.5 py-1 text-xs font-medium shadow-sm border max-w-[220px] ${chipStyle}`}
+          >
+            <button
+              type="button"
+              className="truncate text-left"
+              title={`${view.label} · ${view.lgaIds.length} LGA${
+                view.lgaIds.length === 1 ? "" : "s"
+              }`}
+              onClick={() => {
+                setActiveMetroPanelId(view.id);
+                openMobileSheet();
+              }}
+            >
+              {view.label}
+            </button>
+            <button
+              type="button"
+              aria-label={`Remove ${view.label} from map`}
+              onClick={() => removeMetroMapView(view.id)}
+              className="rounded-full hover:bg-black/10 w-5 h-5 flex items-center justify-center leading-none shrink-0"
+            >
+              ×
+            </button>
+          </span>
+        );
+      })}
+      {metroMapViews.length > 1 && (
+        <button
+          type="button"
+          onClick={() => clearMetroMapViews()}
+          className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 hover:text-ng-green transition-colors"
+        >
+          Clear metros
+        </button>
+      )}
       {featureMapViews.map((view) => {
         const chipStyle =
           FEATURE_MAP_VIEW_CHIP_CLASSES[

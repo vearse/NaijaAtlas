@@ -46,7 +46,7 @@ export default function LocationSearch({ lgas = [] }: { lgas?: LgaLocation[] }) 
   const [index, setIndex] = useState<SearchEntry[]>([]);
   const fuseRef = useRef<Fuse<SearchEntry> | null>(null);
   const { selectStates, setSelectedLga } = useMapStore();
-  const focusLgas = useMapStore((s) => s.focusLgas);
+  const toggleMetroMapView = useMapStore((s) => s.toggleMetroMapView);
   const activeLens = useMapStore((s) => s.activeLens);
 
   useEffect(() => {
@@ -123,7 +123,7 @@ export default function LocationSearch({ lgas = [] }: { lgas?: LgaLocation[] }) 
         entry.stateIds,
         { id: entry.id, label: entry.name }
       );
-      if (plan.stateIds.length > 0) focusLgas(plan);
+      if (plan.stateIds.length > 0) toggleMetroMapView(plan);
       else selectStates(entry.stateIds);
       return;
     }

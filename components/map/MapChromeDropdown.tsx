@@ -7,6 +7,7 @@ export interface MapChromeOption<T extends string> {
   label: string;
   desc?: string;
   icon: ReactNode;
+  disabled?: boolean;
 }
 
 interface MapChromeDropdownProps<T extends string> {
@@ -125,24 +126,30 @@ export default function MapChromeDropdown<T extends string>({
           {options.map((opt, idx) => {
             const on = value === opt.id;
             const rowAccent = variant === "accent" && on;
+            const disabled = opt.disabled === true;
             return (
               <button
                 key={opt.id}
                 type="button"
                 role="menuitemradio"
                 aria-checked={on}
+                disabled={disabled}
                 onClick={() => {
+                  if (disabled) return;
                   onChange(opt.id);
                   setOpen(false);
                 }}
                 title={opt.desc}
                 className={[
                   "w-full flex items-center gap-2.5 px-3 py-2 text-left transition-colors",
+                  disabled ? "opacity-45 cursor-not-allowed" : "",
                   rowAccent
                     ? "bg-ng-green text-white shadow-inner"
                     : on
                       ? "bg-slate-100 text-slate-900"
-                      : "text-slate-700 hover:bg-slate-50",
+                      : disabled
+                        ? "text-slate-500"
+                        : "text-slate-700 hover:bg-slate-50",
                   idx === 0 ? "rounded-t-xl" : "",
                   idx === options.length - 1 ? "rounded-b-xl" : "",
                 ].join(" ")}
