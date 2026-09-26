@@ -11,7 +11,6 @@ import {
 const LAYER_ACTIVE: Record<OverlayLayerId, string> = {
   waterways: "bg-sky-100 text-sky-900 ring-1 ring-sky-300/80",
   lakes: "bg-cyan-100 text-cyan-900 ring-1 ring-cyan-300/80",
-  coast: "bg-blue-100 text-blue-900 ring-1 ring-blue-300/80",
   landforms: "bg-amber-100 text-amber-900 ring-1 ring-amber-300/80",
   cities: "bg-slate-200 text-slate-900 ring-1 ring-slate-300/80",
   resources: "bg-orange-100 text-orange-900 ring-1 ring-orange-300/80",
@@ -24,17 +23,17 @@ function LayerIcon({ id }: { id: OverlayLayerId }) {
       return (
         <svg viewBox="0 0 20 20" fill="none" className={cls} aria-hidden>
           <path
-            d="M3 14c2-3 4-3 6-1s4 2 6-1 2-4 2-4"
+            d="M2 14c2-2 4-1 6 0s5 1 8-2"
             stroke="currentColor"
             strokeWidth="1.75"
             strokeLinecap="round"
           />
           <path
-            d="M5 12c1-1 2-1 3 0"
+            d="M3 15c2-3 4-3 6-1s4 2 6-1 2-4 2-4"
             stroke="currentColor"
-            strokeWidth="1.25"
+            strokeWidth="1.75"
             strokeLinecap="round"
-            opacity="0.7"
+            opacity="0.65"
           />
         </svg>
       );
@@ -48,18 +47,6 @@ function LayerIcon({ id }: { id: OverlayLayerId }) {
             stroke="currentColor"
             strokeWidth="1.5"
           />
-        </svg>
-      );
-    case "coast":
-      return (
-        <svg viewBox="0 0 20 20" fill="none" className={cls} aria-hidden>
-          <path
-            d="M2 14c2-2 4-1 6 0s5 1 8-2"
-            stroke="currentColor"
-            strokeWidth="1.75"
-            strokeLinecap="round"
-          />
-          <path d="M2 16h16" stroke="currentColor" strokeWidth="1.25" opacity="0.4" />
         </svg>
       );
     case "landforms":
@@ -143,7 +130,7 @@ export default function MapBottomToolbar() {
   const zoomOut = useMapStore((s) => s.zoomOut);
 
   const layerGrid = (
-    <div className="grid grid-cols-2 gap-1 w-[11.5rem]">
+    <div className="grid grid-cols-2 gap-1 w-[14rem]">
       {OVERLAY_LAYER_IDS.map((id) => {
         const { label, short } = OVERLAY_LAYER_LABELS[id];
         const on = activeOverlays.has(id);

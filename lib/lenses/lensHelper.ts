@@ -246,9 +246,10 @@ function layerDefaultLenses(layerId: OverlayLayerId): LensId[] {
     case "cities":
       return ["learn", "tourist", "invest"];
     case "landforms":
-    case "coast":
     case "lakes":
       return ["learn", "tourist"];
+    // Coast features reach the tourist lens via TOURIST_TYPES in
+    // inferExtraLenses, so the merged layer itself stays learn-only.
     case "waterways":
       return ["learn"];
     default:
@@ -343,7 +344,14 @@ export function lensInputFromGeoProperties(
 ): LensInput {
   return {
     layerId,
-    category: String(properties.category ?? properties.militaryCategory ?? ""),
+    // `coastCategory` matters now that Coast ships inside the Waterways layer:
+    // without it seaports/estuaries would dim under the tourist lens.
+    category: String(
+      properties.category ??
+        properties.militaryCategory ??
+        properties.coastCategory ??
+        ""
+    ),
     type: String(properties.type ?? ""),
     landformType: String(properties.landformType ?? ""),
     resourceType: String(properties.resourceType ?? properties.type ?? ""),

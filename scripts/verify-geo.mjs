@@ -8,7 +8,6 @@ const required = [
   "public/geo/neighbors.geojson",
   "public/geo/overlays/waterways.geojson",
   "public/geo/overlays/lakes.geojson",
-  "public/geo/overlays/coast.geojson",
   "public/geo/overlays/landforms.geojson",
   "public/geo/overlays/cities.geojson",
   "public/geo/lgas/NG-LA.geojson",

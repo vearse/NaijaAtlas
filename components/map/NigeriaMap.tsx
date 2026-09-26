@@ -316,12 +316,25 @@ export default function NigeriaMap({
 
   const syncLgaLabelFilters = useCallback((map: maplibregl.Map) => {
     const store = useMapStore.getState();
-    for (const stateId of store.lgaVisibleStateIds) {
-      const visibleIds = store.labeledLgaOrder.filter(
-        (lgaId) =>
-          lgasRef.current.find((l) => l.id === lgaId)?.parentId === stateId
-      );
-      updateLgaLabelFilter(map, stateId, visibleIds);
+    const parentOf = new Map(lgasRef.current.map((l) => [l.id, l.parentId]));
+    const labelIds = new Set(store.labeledLgaOrder);
+    for (const view of store.metroMapViews) {
+      for (const lgaId of view.lgaIds) labelIds.add(lgaId);
+    }
+    const idsByState = new Map<string, string[]>();
+    for (const lgaId of labelIds) {
+      const parentId = parentOf.get(lgaId);
+      if (!parentId) continue;
+      const list = idsByState.get(parentId);
+      if (list) list.push(lgaId);
+      else idsByState.set(parentId, [lgaId]);
+    }
+    const effective = effectiveLgaStateIds(
+      store.lgaVisibleStateIds,
+      store.metroMapViews
+    );
+    for (const stateId of effective) {
+      updateLgaLabelFilter(map, stateId, idsByState.get(stateId) ?? []);
     }
   }, []);
 
@@ -1514,7 +1527,7 @@ export default function NigeriaMap({
     const map = mapRef.current;
     if (!map?.isStyleLoaded() || !mapReady) return;
     syncLgaLabelFilters(map);
-  }, [labeledLgaKey, lgaVisibleKey, mapReady, syncLgaLabelFilters]);
+  }, [labeledLgaKey, lgaVisibleKey, metroMapViewsKey, mapReady, syncLgaLabelFilters]);
 
   // ——— Fly to selection ———
   useEffect(() => {

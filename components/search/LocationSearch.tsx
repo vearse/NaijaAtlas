@@ -8,7 +8,7 @@ import type {
   OverlayLevel,
   LgaLocation,
 } from "@/types/location";
-import type { OverlayLayerId } from "@/types/overlay";
+import { OVERLAY_LAYER_IDS, type OverlayLayerId } from "@/types/overlay";
 import { lensInputFromSearchEntry, matchesActiveLens } from "@/lib/lenses/lensHelper";
 import { resolveLgaFocusPlan } from "@/lib/map/lgaMapFocus";
 
@@ -201,6 +201,9 @@ export default function LocationSearch({ lgas = [] }: { lgas?: LgaLocation[] }) 
             else if (lid === "resources") layerIds.push("overlay-resources-points");
             else if (lid === "landforms") layerIds.push("overlay-landforms-points");
             else if (lid === "lakes") layerIds.push("overlay-lakes-points", "overlay-lakes-poly");
+            else if (lid === "waterways") {
+              layerIds.push("overlay-waterways-line", "overlay-waterways-point-icons");
+            }
           }
           const hits = liveMap.queryRenderedFeatures(
             liveMap.project([entry.centroid![0], entry.centroid![1]]),
@@ -211,8 +214,7 @@ export default function LocationSearch({ lgas = [] }: { lgas?: LgaLocation[] }) 
             const overlayLayerId = (hit.layer.id.startsWith("overlay-")
               ? hit.layer.id.slice("overlay-".length).split("-")[0]
               : layerId) as OverlayLayerId;
-            const validLayers: OverlayLayerId[] = ["waterways", "lakes", "coast", "landforms", "cities", "resources"];
-            const resolvedLayer = validLayers.includes(overlayLayerId)
+            const resolvedLayer = OVERLAY_LAYER_IDS.includes(overlayLayerId)
               ? overlayLayerId
               : layerId;
             cat.setSelectedOverlay({

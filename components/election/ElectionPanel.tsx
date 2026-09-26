@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { PoliticsBundle, PollingUnitCountsBundle } from "@/types/politics";
 import type { LgaLocation } from "@/types/location";
 import { useIsMobile } from "@/hooks/useMediaQuery";
@@ -38,9 +38,11 @@ export default function ElectionPanel({
   const inDistrictPhase = Boolean(selectedSenatorialDistrictId && district);
   const inPresidentialPhase = viewPresidential && !inDistrictPhase;
 
-  if (selectedSenatorialDistrictId && viewPresidential) {
-    setViewPresidential(false);
-  }
+  useEffect(() => {
+    if (selectedSenatorialDistrictId && viewPresidential) {
+      setViewPresidential(false);
+    }
+  }, [selectedSenatorialDistrictId, viewPresidential]);
 
   const openPresidential = () => setViewPresidential(true);
 

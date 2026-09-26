@@ -32,10 +32,28 @@ export interface OverlayRegistryEntry {
   layers: OverlayLayerSpec[];
 }
 
+/**
+ * One line paint for the whole Waterways & Coast layer.
+ *
+ * `waterwayClass` discriminates rivers (`major` / `tributary` / `delta`) from
+ * the coast (`coastline` / `coast-zone`); `coastZone` picks the zone colour.
+ */
 const WATERWAY_LINE_PAINT: LineLayerSpecification["paint"] = {
   "line-color": [
     "match",
-    ["coalesce", ["get", "waterwayClass"], "tributary"],
+    ["get", "waterwayClass"],
+    "coastline",
+    "#1e3a5f",
+    "coast-zone",
+    [
+      "match",
+      ["get", "coastZone"],
+      "niger-delta",
+      "#15803d",
+      "cross-river-east",
+      "#7c3aed",
+      "#0d9488",
+    ],
     "major",
     "#1d4ed8",
     "delta",
@@ -51,7 +69,11 @@ const WATERWAY_LINE_PAINT: LineLayerSpecification["paint"] = {
     5,
     [
       "match",
-      ["coalesce", ["get", "waterwayClass"], "tributary"],
+      ["get", "waterwayClass"],
+      "coastline",
+      3.5,
+      "coast-zone",
+      4.2,
       "major",
       2,
       "delta",
@@ -63,7 +85,11 @@ const WATERWAY_LINE_PAINT: LineLayerSpecification["paint"] = {
     8,
     [
       "match",
-      ["coalesce", ["get", "waterwayClass"], "tributary"],
+      ["get", "waterwayClass"],
+      "coastline",
+      5.5,
+      "coast-zone",
+      6.5,
       "major",
       3.5,
       "delta",
@@ -75,7 +101,11 @@ const WATERWAY_LINE_PAINT: LineLayerSpecification["paint"] = {
     11,
     [
       "match",
-      ["coalesce", ["get", "waterwayClass"], "tributary"],
+      ["get", "waterwayClass"],
+      "coastline",
+      8,
+      "coast-zone",
+      9.5,
       "major",
       5,
       "delta",
@@ -88,62 +118,33 @@ const WATERWAY_LINE_PAINT: LineLayerSpecification["paint"] = {
   "line-opacity": 0.92,
 };
 
-const COAST_LINE_PAINT: LineLayerSpecification["paint"] = {
-  "line-color": [
+/** Military formations and coast points share one label colour lookup. */
+const WATERWAY_POINT_LABEL_PAINT: SymbolLayerSpecification["paint"] = {
+  "text-color": [
     "match",
-    ["coalesce", ["get", "coastCategory"], "national"],
-    "national",
-    "#1e3a5f",
-    "coast-zone",
-    [
-      "match",
-      ["get", "id"],
-      "zone-lagos-barrier",
-      "#0d9488",
-      "zone-niger-delta",
-      "#15803d",
-      "zone-cross-river-east",
-      "#7c3aed",
-      "#0d9488",
-    ],
-    "#1e3a5f",
+    ["coalesce", ["get", "militaryCategory"], ["get", "waterwayClass"]],
+    "army-division",
+    "#365314",
+    "navy-base",
+    "#0f172a",
+    "airforce-hq",
+    "#075985",
+    "airforce-base",
+    "#1e3a8a",
+    "seaport",
+    "#1e3a8a",
+    "oil-terminal",
+    "#b45309",
+    "estuary",
+    "#0e7490",
+    "environment",
+    "#047857",
+    "historic",
+    "#78350f",
+    "#334155",
   ],
-  "line-width": [
-    "interpolate",
-    ["linear"],
-    ["zoom"],
-    5,
-    [
-      "match",
-      ["coalesce", ["get", "coastCategory"], "national"],
-      "national",
-      3.5,
-      "coast-zone",
-      4.2,
-      2.5,
-    ],
-    8,
-    [
-      "match",
-      ["coalesce", ["get", "coastCategory"], "national"],
-      "national",
-      5.5,
-      "coast-zone",
-      6.5,
-      4,
-    ],
-    11,
-    [
-      "match",
-      ["coalesce", ["get", "coastCategory"], "national"],
-      "national",
-      8,
-      "coast-zone",
-      9.5,
-      6,
-    ],
-  ],
-  "line-opacity": 0.92,
+  "text-halo-color": "#ffffff",
+  "text-halo-width": 2,
 };
 
 export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
@@ -154,11 +155,18 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
     slot: "aboveStates",
     interactiveLayerIds: [
       "overlay-waterways-line",
-      "overlay-waterways-labels",
-      "overlay-waterways-mil-icons",
-      "overlay-waterways-mil-labels",
+      "overlay-waterways-line-labels",
+      "overlay-waterways-point-icons",
+      "overlay-waterways-point-labels",
     ],
     layers: [
+      {
+        id: "overlay-ocean-fill",
+        type: "fill",
+        filter: ["==", ["get", "kind"], "ocean"],
+        paint: { "fill-color": "#7eb8d8", "fill-opacity": 0.6 },
+        layout: { visibility: "none" },
+      },
       {
         id: "overlay-waterways-line",
         type: "line",
@@ -167,7 +175,7 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
         layout: { visibility: "none", "line-cap": "round", "line-join": "round" },
       },
       {
-        id: "overlay-waterways-labels",
+        id: "overlay-waterways-line-labels",
         type: "symbol",
         filter: ["==", ["get", "featureKind"], "line"],
         minzoom: 6,
@@ -193,26 +201,23 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
         },
       },
       {
-        id: "overlay-waterways-mil-icons",
+        id: "overlay-waterways-point-icons",
         type: "symbol",
         filter: ["==", ["get", "featureKind"], "point"],
         minzoom: 4,
         layout: {
           visibility: "none",
-          "icon-image": [
-            "concat",
-            "waterway-icon-",
-            ["coalesce", ["get", "militaryCategory"], "army-division"],
-          ],
-          "icon-size": ["interpolate", ["linear"], ["zoom"], 4, 0.95, 7, 1.2, 11, 1.5],
+          // `iconId` is stamped by the overlay build (waterway-icon-* / coast-icon-*).
+          "icon-image": ["get", "iconId"],
+          "icon-size": ["interpolate", ["linear"], ["zoom"], 4, 0.9, 8, 1.1, 11, 1.4],
           "icon-allow-overlap": true,
           "icon-ignore-placement": true,
-          "icon-padding": 10,
+          "icon-padding": 8,
           "icon-anchor": "center",
         },
       },
       {
-        id: "overlay-waterways-mil-labels",
+        id: "overlay-waterways-point-labels",
         type: "symbol",
         filter: ["==", ["get", "featureKind"], "point"],
         minzoom: 6,
@@ -224,25 +229,9 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
           "text-font": ["Open Sans Semibold"],
           "text-anchor": "top",
           "text-optional": true,
-          "text-allow-overlap": false,
+          "text-max-width": 12,
         },
-        paint: {
-          "text-color": [
-            "match",
-            ["coalesce", ["get", "militaryCategory"], "army-division"],
-            "army-division",
-            "#365314",
-            "navy-base",
-            "#0f172a",
-            "airforce-hq",
-            "#075985",
-            "airforce-base",
-            "#1e3a8a",
-            "#0f172a",
-          ],
-          "text-halo-color": "#ffffff",
-          "text-halo-width": 2,
-        },
+        paint: WATERWAY_POINT_LABEL_PAINT,
       },
     ],
   },
@@ -395,89 +384,6 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
         },
         paint: {
           "text-color": "#713f12",
-          "text-halo-color": "#ffffff",
-          "text-halo-width": 2,
-        },
-      },
-    ],
-  },
-  coast: {
-    id: "coast",
-    sourceId: "overlays-coast",
-    geoPath: "/geo/overlays/coast.geojson",
-    slot: "aboveStates",
-    interactiveLayerIds: [
-      "overlay-coast-line",
-      "overlay-coast-icons",
-      "overlay-coast-labels",
-    ],
-    layers: [
-      {
-        id: "overlay-ocean-fill",
-        type: "fill",
-        filter: ["==", ["get", "kind"], "ocean"],
-        paint: { "fill-color": "#7eb8d8", "fill-opacity": 0.6 },
-        layout: { visibility: "none" },
-      },
-      {
-        id: "overlay-coast-line",
-        type: "line",
-        filter: ["==", ["get", "featureKind"], "line"],
-        paint: COAST_LINE_PAINT,
-        layout: {
-          visibility: "none",
-          "line-cap": "round",
-          "line-join": "round",
-        },
-      },
-      {
-        id: "overlay-coast-icons",
-        type: "symbol",
-        filter: ["==", ["get", "featureKind"], "point"],
-        layout: {
-          visibility: "none",
-          "icon-image": [
-            "concat",
-            "coast-icon-",
-            ["coalesce", ["get", "coastCategory"], "seaport"],
-          ],
-          "icon-size": ["interpolate", ["linear"], ["zoom"], 5, 0.82, 8, 1.05, 11, 1.28],
-          "icon-allow-overlap": true,
-          "icon-ignore-placement": true,
-          "icon-padding": 8,
-        },
-      },
-      {
-        id: "overlay-coast-labels",
-        type: "symbol",
-        filter: ["==", ["get", "featureKind"], "point"],
-        minzoom: 6,
-        layout: {
-          visibility: "none",
-          "text-field": ["get", "name"],
-          "text-size": 10,
-          "text-offset": [0, 1.4],
-          "text-font": ["Open Sans Semibold"],
-          "text-anchor": "top",
-          "text-optional": true,
-          "text-max-width": 12,
-        },
-        paint: {
-          "text-color": [
-            "match",
-            ["coalesce", ["get", "coastCategory"], "seaport"],
-            "seaport",
-            "#1e3a8a",
-            "oil-terminal",
-            "#b45309",
-            "estuary",
-            "#0e7490",
-            "environment",
-            "#047857",
-            "historic",
-            "#78350f",
-            "#334155",
-          ],
           "text-halo-color": "#ffffff",
           "text-halo-width": 2,
         },
@@ -892,7 +798,7 @@ export function interactiveLayersForActive(
   active: Set<OverlayLayerId>
 ): string[] {
   const ids: string[] = [];
-  for (const layerId of ["cities", "waterways", "coast", "lakes", "landforms", "resources"] as OverlayLayerId[]) {
+  for (const layerId of ["cities", "waterways", "lakes", "landforms", "resources"] as OverlayLayerId[]) {
     if (!active.has(layerId)) continue;
     ids.push(...OVERLAY_REGISTRY[layerId].interactiveLayerIds);
   }

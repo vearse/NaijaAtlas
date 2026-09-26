@@ -1,1 +1,31 @@
-{"boundaries":{"name":"UN SALB Nigeria (OSGoF)","url":"https://salb.un.org/en/data/nga"},"hierarchy":{"name":"temikeezy/nigeria-geojson-data","url":"https://github.com/temikeezy/nigeria-geojson-data","license":"MIT"},"pollingUnits":{"name":"INEC polling units (JayCodist/inec-polling-units-scraper)","url":"https://github.com/JayCodist/inec-polling-units-scraper","license":"MIT","scrapedAt":"2025-09-27T11:56:13.593Z"}}
+{
+  "boundaries": {
+    "name": "UN SALB Nigeria (OSGoF)",
+    "url": "https://salb.un.org/en/data/nga"
+  },
+  "hierarchy": {
+    "name": "temikeezy/nigeria-geojson-data",
+    "url": "https://github.com/temikeezy/nigeria-geojson-data",
+    "license": "MIT"
+  },
+  "pollingUnits": {
+    "name": "INEC polling units (JayCodist/inec-polling-units-scraper)",
+    "url": "https://github.com/JayCodist/inec-polling-units-scraper",
+    "license": "MIT",
+    "scrapedAt": "2025-09-27T11:56:13.593Z"
+  },
+  "politics": {
+    "senatorialDistricts": {
+      "name": "Nigerian senatorial districts (LGA membership)",
+      "note": "Curated constituency boundaries for election map mode"
+    },
+    "federalConstituencies": {
+      "name": "House of Representatives federal constituencies",
+      "note": "Linked to senatorial districts via senatorial_district_id"
+    },
+    "candidates2027": {
+      "name": "INEC / curated 2027 candidate lists",
+      "note": "Presidential, Senate, and House tickets under data/politics/candidate/2027/"
+    }
+  }
+}

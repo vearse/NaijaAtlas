@@ -86,7 +86,7 @@ export default function MapHints() {
     }
 
     if (activeOverlays.has("waterways")) {
-      return "Waterways layer active — click Niger, Benue, delta channels and other rivers for details";
+      return "Waterways & Coast layer active — click rivers, the coastline, seaports, terminals and military markers for details";
     }
 
     if (activeOverlays.size > 0) {
@@ -94,7 +94,7 @@ export default function MapHints() {
     }
 
     if (metroMapViews.length > 0) {
-      return `Metro on map (${metroMapViews.length}/${MAX_METRO_MAP_VIEWS}) — colored LGAs are in the metro; gray are not · add more from state Learn tab`;
+      return `Metro on map (${metroMapViews.length}/${MAX_METRO_MAP_VIEWS}) — labeled + colored LGAs are in the metro; gray are not · add more from state Learn tab`;
     }
 
     if (lgaVisibleStateIds.size > 0) {

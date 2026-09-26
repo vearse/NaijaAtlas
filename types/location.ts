@@ -53,7 +53,7 @@ export interface SearchEntry {
   memberIds?: string[];
   category?: string;
   bbox?: [number, number, number, number];
-  layerId?: "landforms" | "resources" | "cities" | "lakes" | "waterways" | "coast";
+  layerId?: "landforms" | "resources" | "cities" | "lakes" | "waterways";
   typeLabel?: string;
   centroid?: [number, number];
   summary?: string;

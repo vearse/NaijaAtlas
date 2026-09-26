@@ -617,6 +617,7 @@ function buildWaterways(catalog: CatalogRow[]): Feature[] {
         waterwayClass: "military",
         militaryBranch: row.militaryBranch,
         militaryCategory: row.militaryCategory,
+        iconId: `waterway-icon-${String(row.militaryCategory ?? "army-division")}`,
       },
       geometry: { type: "Point", coordinates: [lon, lat] },
     });
@@ -735,7 +736,14 @@ function buildCities(catalog: CatalogRow[]): Feature[] {
 function atlanticOcean(): Feature {
   return {
     type: "Feature",
-    properties: { id: "ocean-atlantic", kind: "ocean", name: "Atlantic Ocean", interactive: false },
+    properties: {
+      id: "ocean-atlantic",
+      kind: "ocean",
+      name: "Atlantic Ocean",
+      interactive: false,
+      featureKind: "polygon",
+      waterwayClass: "ocean",
+    },
     geometry: {
       type: "Polygon",
       coordinates: [[
@@ -749,11 +757,22 @@ function coastlineFromAdm0(adm0: FeatureCollection): Feature | null {
   const f = adm0.features[0];
   if (!f?.geometry) return null;
   try {
-    const line = turf.polygonToLine(f as Feature<Polygon>);
+    // polygonToLine returns a FeatureCollection for MultiPolygon input.
+    const lines = turf.polygonToLine(f as Feature<Polygon>);
+    const first = lines.type === "FeatureCollection" ? lines.features[0] : lines;
+    const geometry = first?.geometry;
+    if (!geometry) return null;
     return {
       type: "Feature",
-      properties: { id: "coastline-ng", name: "Nigeria Coastline" },
-      geometry: line.geometry as LineString | MultiLineString,
+      properties: {
+        id: "coastline-ng",
+        name: "Nigeria Coastline",
+        featureKind: "line",
+        waterwayClass: "coastline",
+        coastCategory: "national",
+        coastZone: "national",
+      },
+      geometry: geometry as LineString | MultiLineString,
     };
   } catch {
     return null;
@@ -769,7 +788,10 @@ function coastZoneLineFeature(row: CatalogRow): Feature | null {
       id: row.id,
       name: row.name,
       featureKind: "line",
+      waterwayClass: "coast-zone",
       coastCategory: row.coastCategory ?? "coast-zone",
+      // Paint keys off the zone slug, so zone colours survive id renames.
+      coastZone: row.id.replace(/^zone-/, ""),
     },
     geometry: { type: "LineString", coordinates: coords },
   };
@@ -781,18 +803,22 @@ function coastPointFeature(
 ): Feature | null {
   const point = coords[row.id];
   if (!point) return null;
+  const category = String(row.coastCategory ?? "seaport");
   return {
     type: "Feature",
     properties: {
       id: row.id,
       name: row.name,
       featureKind: "point",
-      coastCategory: row.coastCategory ?? "seaport",
+      waterwayClass: category,
+      coastCategory: category,
+      iconId: `coast-icon-${category}`,
     },
     geometry: { type: "Point", coordinates: point },
   };
 }
 
+/** Ocean, national coastline, coast zones, ports and coastal features. */
 function buildCoast(
   coastCatalog: CatalogRow[],
   portsCatalog: CatalogRow[],
@@ -805,10 +831,7 @@ function buildCoast(
     const row = coastCatalog.find((c) => c.id === "coastline-ng");
     coast.properties = {
       ...coast.properties,
-      id: "coastline-ng",
       name: row?.name ?? "Nigeria Coastline",
-      featureKind: "line",
-      coastCategory: "national",
     };
     features.push(coast);
   }
@@ -905,9 +928,36 @@ export async function buildOverlays(): Promise<void> {
 
   ensureDir(projectRoot("public/geo/overlays"));
 
+  // Waterways and coast ship as one layer: rivers, coastline, ports, coastal
+  // features, ocean fill and military formations all live in a single source.
+  const waterFeatures = fc(buildWaterways(waterwaysCatalog), waterwaysCatalog, "waterways");
+  const coastFeatures = buildCoast(
+    coastCatalog,
+    portsCatalog,
+    coastFeaturesCatalog,
+    adm0
+  );
+  const coastMerged = coastFeatures.map((f) => {
+    const id = String(f.properties?.id ?? "");
+    if (f.properties?.kind === "ocean") {
+      return {
+        ...f,
+        properties: { ...f.properties, layerId: "waterways", kind: "ocean" },
+      };
+    }
+    const portRow = portsCatalog.find((c) => c.id === id);
+    if (portRow) return mergeCatalog(f, portsCatalog, "waterways");
+    const featureRow = coastFeaturesCatalog.find((c) => c.id === id);
+    if (featureRow) return mergeCatalog(f, coastFeaturesCatalog, "waterways");
+    const coastRow = coastCatalog.find((c) => c.id === id);
+    if (coastRow) return mergeCatalog(f, coastCatalog, "waterways");
+    return { ...f, properties: { ...f.properties, layerId: "waterways" } };
+  });
+  waterFeatures.features = [...waterFeatures.features, ...coastMerged];
+
   writeGeoJson(
     projectRoot("public/geo/overlays/waterways.geojson"),
-    fc(buildWaterways(waterwaysCatalog), waterwaysCatalog, "waterways")
+    waterFeatures
   );
   writeGeoJson(
     projectRoot("public/geo/overlays/lakes.geojson"),
@@ -927,32 +977,8 @@ export async function buildOverlays(): Promise<void> {
     features: resourceFeatures,
   });
 
-  const coastFeatures = buildCoast(
-    coastCatalog,
-    portsCatalog,
-    coastFeaturesCatalog,
-    adm0
-  );
-  const coastMerged = coastFeatures.map((f) => {
-    const id = String(f.properties?.id ?? "");
-    if (f.properties?.kind === "ocean") {
-      return { ...f, properties: { ...f.properties, layerId: "coast", kind: "ocean" } };
-    }
-    const portRow = portsCatalog.find((c) => c.id === id);
-    if (portRow) return mergeCatalog(f, portsCatalog, "coast");
-    const featureRow = coastFeaturesCatalog.find((c) => c.id === id);
-    if (featureRow) return mergeCatalog(f, coastFeaturesCatalog, "coast");
-    const coastRow = coastCatalog.find((c) => c.id === id);
-    if (coastRow) return mergeCatalog(f, coastCatalog, "coast");
-    return { ...f, properties: { ...f.properties, layerId: "coast" } };
-  });
-  writeGeoJson(projectRoot("public/geo/overlays/coast.geojson"), {
-    type: "FeatureCollection",
-    features: coastMerged,
-  });
-
   console.log(
-    `✓ Overlays: waterways(${waterwaysCatalog.length}) lakes(${lakesCatalog.length}) landforms(${landformsCatalog.length}) cities(${citiesCatalog.length}) coast(${coastMerged.length}) resources(${resourceFeatures.length})`
+    `✓ Overlays: waterways(${waterFeatures.features.length}) lakes(${lakesCatalog.length}) landforms(${landformsCatalog.length}) cities(${citiesCatalog.length}) resources(${resourceFeatures.length})`
   );
 }
 

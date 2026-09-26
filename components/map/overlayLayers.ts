@@ -34,6 +34,16 @@ const STALE_LANDFORM_LAYER_IDS = [
   "overlay-landforms-point",
 ];
 
+/** Retired layer ids from before Coast merged into Waterways. */
+const STALE_WATERWAY_LAYER_IDS = [
+  "overlay-waterways-labels",
+  "overlay-waterways-mil-icons",
+  "overlay-waterways-mil-labels",
+  "overlay-coast-line",
+  "overlay-coast-icons",
+  "overlay-coast-labels",
+];
+
 let styleImageHookInstalled = false;
 
 function ensureStyleImageMissingHook(map: Map): void {
@@ -49,6 +59,21 @@ function removeStaleLandformLayers(map: Map): void {
   for (const id of STALE_LANDFORM_LAYER_IDS) {
     if (map.getLayer(id)) map.removeLayer(id);
   }
+}
+
+function removeStaleWaterwayLayers(map: Map): void {
+  for (const id of STALE_WATERWAY_LAYER_IDS) {
+    if (map.getLayer(id)) map.removeLayer(id);
+  }
+}
+
+/** Waterways and Coast share one source, so the ocean fill stays first. */
+const OCEAN_FILL_LAYER_ID = "overlay-ocean-fill";
+
+/** Register the icon sets the Waterways & Coast point layer draws from. */
+function registerWaterwayLayerIcons(map: Map): void {
+  registerWaterwayIcons(map);
+  registerCoastIcons(map);
 }
 
 function insertBeforeId(map: Map, slot: OverlayRegistryEntry["slot"]): string | undefined {
@@ -82,6 +107,7 @@ export function mountOverlaySource(map: Map, layerId: OverlayLayerId): void {
 
 export function mountOverlayLayersFor(map: Map, layerId: OverlayLayerId): void {
   if (layerId === "landforms") removeStaleLandformLayers(map);
+  if (layerId === "waterways") removeStaleWaterwayLayers(map);
   mountOverlaySource(map, layerId);
   const entry = OVERLAY_REGISTRY[layerId];
   const before = insertBeforeId(map, entry.slot);
@@ -100,12 +126,12 @@ export function mountOverlayLayersFor(map: Map, layerId: OverlayLayerId): void {
 export function addOverlayLayers(map: Map): void {
   ensureStyleImageMissingHook(map);
   removeStaleLandformLayers(map);
+  removeStaleWaterwayLayers(map);
   registerCityIcons(map);
   registerTourIcon(map);
-  registerCoastIcons(map);
   registerLakeIcons(map);
   registerLandformIcons(map);
-  registerWaterwayIcons(map);
+  registerWaterwayLayerIcons(map);
   registerResourceIcons(map);
   for (const layerId of OVERLAY_LAYER_IDS) {
     mountOverlayLayersFor(map, layerId);
@@ -122,9 +148,8 @@ export function setOverlayVisibility(
     registerCityIcons(map);
     registerTourIcon(map);
   }
-  if (layerId === "coast") registerCoastIcons(map);
   if (layerId === "lakes") registerLakeIcons(map);
-  if (layerId === "waterways") registerWaterwayIcons(map);
+  if (layerId === "waterways") registerWaterwayLayerIcons(map);
   if (layerId === "resources") registerResourceIcons(map);
   if (layerId === "landforms") {
     registerLandformIcons(map);
@@ -165,9 +190,9 @@ export function syncAllOverlayVisibility(
  * Ocean + mid overlays. Lakes/landforms/cities are restacked on top separately.
  */
 export function restackOverlayLayers(map: Map): void {
-  if (map.getLayer("overlay-ocean-fill")) {
+  if (map.getLayer(OCEAN_FILL_LAYER_ID)) {
     map.moveLayer(
-      "overlay-ocean-fill",
+      OCEAN_FILL_LAYER_ID,
       map.getLayer("states-fill") ? "states-fill" : undefined
     );
   }
@@ -175,12 +200,9 @@ export function restackOverlayLayers(map: Map): void {
   const aboveStates = map.getLayer(INSERT_ABOVE_STATES)
     ? INSERT_ABOVE_STATES
     : undefined;
-  const midOverlayIds = [
-    ...OVERLAY_REGISTRY.waterways.layers.map((l) => l.id),
-    ...OVERLAY_REGISTRY.coast.layers
-      .filter((l) => l.id !== "overlay-ocean-fill")
-      .map((l) => l.id),
-  ];
+  const midOverlayIds = OVERLAY_REGISTRY.waterways.layers
+    .filter((l) => l.id !== OCEAN_FILL_LAYER_ID)
+    .map((l) => l.id);
   for (const id of midOverlayIds) {
     if (map.getLayer(id)) map.moveLayer(id, aboveStates);
   }

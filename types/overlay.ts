@@ -2,7 +2,6 @@
 export type OverlayLayerId =
   | "waterways"
   | "lakes"
-  | "coast"
   | "landforms"
   | "cities"
   | "resources";
@@ -10,7 +9,6 @@ export type OverlayLayerId =
 export const OVERLAY_LAYER_IDS: OverlayLayerId[] = [
   "waterways",
   "lakes",
-  "coast",
   "landforms",
   "cities",
   "resources",
@@ -20,9 +18,12 @@ export const OVERLAY_LAYER_LABELS: Record<
   OverlayLayerId,
   { label: string; short: string; category: string }
 > = {
-  waterways: { label: "Waterways", short: "Water", category: "Waterway" },
+  waterways: {
+    label: "Waterways & Coast",
+    short: "Water",
+    category: "Waterway",
+  },
   lakes: { label: "Lakes", short: "Lakes", category: "Lake" },
-  coast: { label: "Coast", short: "Coast", category: "Coast" },
   landforms: { label: "Landforms", short: "Relief", category: "Landform" },
   cities: { label: "Cities", short: "Cities", category: "City" },
   resources: { label: "Resources", short: "Minerals", category: "Resource" },
@@ -305,13 +306,39 @@ export const LANDFORM_MAP_LEGEND = [
 
 export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
   waterways: {
-    title: "Waterways",
-    summary: "Major rivers, tributaries, Niger Delta creeks, and Armed Forces formations.",
+    title: "Waterways & Coast",
+    summary:
+      "Major rivers, tributaries, Niger Delta creeks, the Atlantic coastline and ports, and Armed Forces formations.",
     description:
-      "Blue lines show permanent waterways. Thicker dark blue lines are major rivers (Niger, Benue); lighter lines are tributaries and delta creeks. Military markers show Army divisions (olive shields), Navy commands (slate ships), and Air Force bases (sky roundels/deltas). Tap any line or marker for details.",
-    includes: ["Niger & Benue main stems", "Kaduna, Cross, Osun, Imo rivers", "Delta creeks (Nun, Forcados, Bonny)", "9 Army divisions, 3 Navy commands, 5 Air Force formations"],
-    legend: ["Thick blue = major river", "Medium blue = tributary", "Light cyan = delta creek", "🪖 olive shield = Army division", "🚢 slate ship = Navy command", "🎯 sky roundel = Air Force HQ", "✈️ indigo delta = Air Force base"],
-    tip: "Zoom in to read river names and see military formation labels.",
+      "Blue lines show permanent waterways. Thicker dark blue lines are major rivers (Niger, Benue); lighter lines are tributaries and delta creeks. Light blue fills the Gulf of Guinea offshore, with a thick dark national coastline and coloured zone traces for the Lagos barrier coast, Niger Delta, and the eastern Cross River shore. Military markers show Army divisions (olive shields), Navy commands (slate ships), and Air Force bases (sky roundels/deltas). Tap any line or marker for details.",
+    includes: [
+      "Niger & Benue main stems",
+      "Kaduna, Cross, Osun, Imo rivers",
+      "Delta creeks (Nun, Forcados, Bonny)",
+      "853 km national coastline & three coast zones",
+      "Apapa, Lekki, Port Harcourt, Calabar, Warri, Onne",
+      "Forcados, Bonny, Escravos terminals",
+      "Lagos Lagoon, Niger Delta & Cross River estuaries",
+      "9 Army divisions, 3 Navy commands, 5 Air Force formations",
+    ],
+    legend: [
+      "Light blue fill = ocean",
+      "Thick dark blue = major river",
+      "Medium blue = tributary",
+      "Light cyan = delta creek",
+      "Thick dark slate = national coast",
+      "Teal / green / purple = coast zones",
+      "🪖 olive shield = Army division",
+      "🚢 slate ship = Navy command",
+      "🎯 sky roundel = Air Force HQ",
+      "✈️ indigo delta = Air Force base",
+      "⚓ navy = seaport",
+      "💧 amber = oil terminal",
+      "~ cyan = estuary",
+      "🍃 green = coastal environment",
+      "🏛 brown = historic coast",
+    ],
+    tip: "Zoom in to read river and coastline names, then tap any line or icon for trade, ecology, and environment notes.",
   },
   lakes: {
     title: "Lakes & hydro",
@@ -321,29 +348,6 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
     includes: ["Lake Chad, Kainji, Lagos Lagoon", "Regional reservoirs (Goronyo, Dadin Kowa, Asejire)", "Kainji, Jebba, Shiroro, Zungeru power stations"],
     legend: ["Blue fill = natural lake", "Teal fill = reservoir", "Sky fill = lagoon", "⚡ gold = major hydro", "⚡ grey = regional dam"],
     tip: "Tap a lake polygon or power icon for capacity, operator, and linked dam details.",
-  },
-  coast: {
-    title: "Coast & ports",
-    summary: "Atlantic ocean, coastline zones, seaports, delta terminals, estuaries, and coastal environment.",
-    description:
-      "Light blue shows the Gulf of Guinea offshore. A thick dark national coastline and coloured zone traces divide Lagos barrier coast, Niger Delta, and the eastern Cross River shore. Icons match this legend: ⚓ seaport, 💧 oil terminal, ~ estuary, 🍃 environment, 🏛 historic coast.",
-    includes: [
-      "853 km national coastline & three coast zones",
-      "Apapa, Lekki, Port Harcourt, Calabar, Warri, Onne",
-      "Forcados, Bonny, Escravos terminals",
-      "Lagos Lagoon, Niger Delta & Cross River estuaries",
-    ],
-    legend: [
-      "Light blue = ocean",
-      "Thick dark line = national coast",
-      "Teal / green / purple = coast zones",
-      "⚓ navy = seaport",
-      "💧 amber = oil terminal",
-      "~ cyan = estuary",
-      "🍃 green = environment",
-      "🏛 brown = historic coast",
-    ],
-    tip: "Tap any coast line or icon for trade, ecology, and environment notes. Navy commands are now on the Waterways layer.",
   },
   landforms: {
     title: "Landforms & relief",
