@@ -9,6 +9,7 @@ const required = [
   "public/geo/overlays/waterways.geojson",
   "public/geo/overlays/lakes.geojson",
   "public/geo/overlays/landforms.geojson",
+  "public/geo/overlays/ecology.geojson",
   "public/geo/overlays/cities.geojson",
   "public/geo/lgas/NG-LA.geojson",
 ];

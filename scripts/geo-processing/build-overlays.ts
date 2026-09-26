@@ -237,6 +237,12 @@ const LANDFORM_BUFFERS: Record<
   "landform-farin-ruwa": { center: [8.72, 9.42], radiusKm: 18 },
 };
 
+function landformGeometryKey(rowId: string): string {
+  return rowId.startsWith("ecology-")
+    ? rowId.replace(/^ecology-/, "landform-")
+    : rowId;
+}
+
 function landformAreaFeature(row: CatalogRow): Feature | null {
   const props = {
     id: row.id,
@@ -246,7 +252,7 @@ function landformAreaFeature(row: CatalogRow): Feature | null {
     sizeTier: row.sizeTier ?? "medium",
   };
 
-  const ring = LANDFORM_POLYGONS[row.id];
+  const ring = LANDFORM_POLYGONS[landformGeometryKey(row.id)];
   if (ring?.length) {
     return {
       type: "Feature",
@@ -255,7 +261,7 @@ function landformAreaFeature(row: CatalogRow): Feature | null {
     };
   }
 
-  const buf = LANDFORM_BUFFERS[row.id];
+  const buf = LANDFORM_BUFFERS[landformGeometryKey(row.id)];
   if (buf) {
     const buffered = turf.buffer(turf.point(buf.center), buf.radiusKm, {
       units: "kilometers",
@@ -918,6 +924,7 @@ export async function buildOverlays(): Promise<void> {
   const waterwaysCatalog = readCatalog("waterways");
   const lakesCatalog = readCatalog("lakes");
   const landformsCatalog = readCatalog("landforms");
+  const ecologyCatalog = readCatalog("ecology");
   const citiesCatalog = readCatalog("cities");
   const coastCatalog = readCatalog("coast");
   const portsCatalog = readCatalog("ports");
@@ -968,6 +975,10 @@ export async function buildOverlays(): Promise<void> {
     fc(buildLandforms(landformsCatalog), landformsCatalog, "landforms")
   );
   writeGeoJson(
+    projectRoot("public/geo/overlays/ecology.geojson"),
+    fc(buildLandforms(ecologyCatalog), ecologyCatalog, "ecology")
+  );
+  writeGeoJson(
     projectRoot("public/geo/overlays/cities.geojson"),
     fc(buildCities(citiesCatalog), citiesCatalog, "cities")
   );
@@ -978,7 +989,7 @@ export async function buildOverlays(): Promise<void> {
   });
 
   console.log(
-    `✓ Overlays: waterways(${waterFeatures.features.length}) lakes(${lakesCatalog.length}) landforms(${landformsCatalog.length}) cities(${citiesCatalog.length}) resources(${resourceFeatures.length})`
+    `✓ Overlays: waterways(${waterFeatures.features.length}) lakes(${lakesCatalog.length}) landforms(${landformsCatalog.length}) ecology(${ecologyCatalog.length}) cities(${citiesCatalog.length}) resources(${resourceFeatures.length})`
   );
 }
 

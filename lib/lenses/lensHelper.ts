@@ -248,6 +248,8 @@ function layerDefaultLenses(layerId: OverlayLayerId): LensId[] {
     case "landforms":
     case "lakes":
       return ["learn", "tourist"];
+    case "ecology":
+      return ["learn", "invest"];
     // Coast features reach the tourist lens via TOURIST_TYPES in
     // inferExtraLenses, so the merged layer itself stays learn-only.
     case "waterways":
@@ -275,7 +277,10 @@ function inferExtraLenses(input: LensInput): LensId[] {
   if (TOURIST_KEYWORDS.some((k) => haystack.includes(k))) extra.add("tourist");
   if (INVEST_KEYWORDS.some((k) => haystack.includes(k))) extra.add("invest");
 
-  if (input.layerId === "landforms" && input.economy) {
+  if (
+    (input.layerId === "landforms" || input.layerId === "ecology") &&
+    input.economy
+  ) {
     const econ = input.economy.toLowerCase();
     if (INVEST_KEYWORDS.some((k) => econ.includes(k))) extra.add("invest");
   }

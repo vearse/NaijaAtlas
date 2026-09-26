@@ -40,9 +40,9 @@ import type { StyleSpecification } from "maplibre-gl";
 import {
   addOverlayLayers,
   syncAllOverlayVisibility,
-  restackOverlayLayers,
-  restackTopOverlayLayers,
+  finalizeOverlayStack,
   restackCityLayers,
+  CITY_TOURS_SOURCE,
 } from "./overlayLayers";
 import MapTooltip from "./MapTooltip";
 import MapLoadingBadge from "./MapLoadingBadge";
@@ -55,7 +55,11 @@ import { OVERLAY_REGISTRY, resolveOverlayLayerId } from "@/lib/map/overlayRegist
 import { syncOverlayPresentation } from "@/lib/map/syncOverlayPresentation";
 import { buildRankingSnapshot } from "@/lib/ranking/computeRanking";
 import type { CompareBundle } from "@/types/compare";
-import { OVERLAY_LAYER_LABELS, type OverlayLayerId } from "@/types/overlay";
+import {
+  OVERLAY_LAYER_IDS,
+  OVERLAY_LAYER_LABELS,
+  type OverlayLayerId,
+} from "@/types/overlay";
 import {
   cloneGeometry,
   translateGeometry,
@@ -467,9 +471,9 @@ export default function NigeriaMap({
         }
       }
 
-      restackOverlayLayers(map);
+      finalizeOverlayStack(map);
       restackLgaStack(map, readyVisible);
-      restackTopOverlayLayers(map);
+      finalizeOverlayStack(map);
       syncLgaLabelFilters(map);
       refreshSelectionPaint(map);
       refreshMetroLgaFills(map);
@@ -1194,9 +1198,20 @@ export default function NigeriaMap({
         }
 
         // 3. Z-order restacking
-        restackOverlayLayers(map);
+        finalizeOverlayStack(map);
         restackLgaStack(map, readyLgas);
-        restackTopOverlayLayers(map);
+        finalizeOverlayStack(map);
+
+        addOverlayLayers(map);
+        syncAllOverlayVisibility(map, store.activeOverlays);
+        finalizeOverlayStack(map);
+        syncOverlayPresentation(
+          map,
+          store.activeLens,
+          store.activeOverlays,
+          store.overlayFeatureFocus,
+          store.mapType !== "election" && store.mapType !== "ranking"
+        );
 
         // 4. Progressive LGA label filters (click-to-label)
         syncLgaLabelFilters(map);
@@ -1456,9 +1471,9 @@ export default function NigeriaMap({
         readyVisible,
         store.draggedStateId
       );
-      restackOverlayLayers(map);
+      finalizeOverlayStack(map);
       restackLgaStack(map, readyVisible);
-      restackTopOverlayLayers(map);
+      finalizeOverlayStack(map);
       syncLgaLabelFilters(map);
       refreshSelectionPaint(map);
       refreshMetroLgaFills(map);
@@ -1512,9 +1527,9 @@ export default function NigeriaMap({
       }
 
       syncLgaLabelFilters(liveMap);
-      restackOverlayLayers(liveMap);
+      finalizeOverlayStack(liveMap);
       restackLgaStack(liveMap, readyVisible);
-      restackTopOverlayLayers(liveMap);
+      finalizeOverlayStack(liveMap);
       refreshSelectionPaint(liveMap);
       refreshMetroLgaFills(liveMap);
       setLgaReadyKey((k) => k + 1);
@@ -1559,38 +1574,67 @@ export default function NigeriaMap({
     return () => useMapStore.getState().registerLgaVisibilityHandler(null);
   }, []);
 
-  // ——— Overlay layer visibility ———
-  useEffect(() => {
-    const map = mapRef.current;
-    if (!map?.isStyleLoaded() || !mapReady) return;
-    syncAllOverlayVisibility(map, activeOverlays);
-    const effective = effectiveLgaStateIds(
-      useMapStore.getState().lgaVisibleStateIds,
-      useMapStore.getState().metroMapViews
+  const runOverlayPresentation = useCallback((map: maplibregl.Map) => {
+    const store = useMapStore.getState();
+    const enabled = store.mapType !== "election" && store.mapType !== "ranking";
+    syncOverlayPresentation(
+      map,
+      store.activeLens,
+      store.activeOverlays,
+      store.overlayFeatureFocus,
+      enabled
     );
-    restackLgaStack(map, readyLgaStateIds(map, effective));
-    restackTopOverlayLayers(map);
-  }, [activeOverlaysKey, mapReady, activeOverlays, effectiveLgaKey, readyLgaStateIds]);
+  }, []);
 
+  // ——— Overlay layer visibility + presentation ———
   useEffect(() => {
     const map = mapRef.current;
     if (!map?.isStyleLoaded() || !mapReady) return;
-    const enabled = mapType !== "election" && mapType !== "ranking";
-    const run = () =>
-      syncOverlayPresentation(
-        map,
-        activeLens,
-        activeOverlays,
-        overlayFeatureFocus,
-        enabled
+
+    const overlaySourceIds = new Set(
+      OVERLAY_LAYER_IDS.map((id) => OVERLAY_REGISTRY[id].sourceId)
+    );
+    overlaySourceIds.add(CITY_TOURS_SOURCE);
+
+    const refreshOverlays = () => {
+      const store = useMapStore.getState();
+      syncAllOverlayVisibility(map, store.activeOverlays);
+      const effective = effectiveLgaStateIds(
+        store.lgaVisibleStateIds,
+        store.metroMapViews
       );
-    run();
-    map.once("idle", run);
+      restackLgaStack(map, readyLgaStateIds(map, effective));
+      finalizeOverlayStack(map);
+      runOverlayPresentation(map);
+    };
+
+    refreshOverlays();
+
+    const onIdle = () => {
+      finalizeOverlayStack(map);
+      runOverlayPresentation(map);
+    };
+    const onData = (e: maplibregl.MapSourceDataEvent) => {
+      if (!e.isSourceLoaded || !e.sourceId) return;
+      if (!overlaySourceIds.has(e.sourceId)) return;
+      finalizeOverlayStack(map);
+      runOverlayPresentation(map);
+    };
+
+    map.on("idle", onIdle);
+    map.on("data", onData);
+    return () => {
+      map.off("idle", onIdle);
+      map.off("data", onData);
+    };
   }, [
-    activeLens,
     activeOverlaysKey,
     mapReady,
     activeOverlays,
+    effectiveLgaKey,
+    readyLgaStateIds,
+    runOverlayPresentation,
+    activeLens,
     overlayFocusKey,
     mapType,
   ]);

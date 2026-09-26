@@ -44,7 +44,6 @@ import ElectionPanel from "@/components/election/ElectionPanel";
 import ElectionMapLegend from "@/components/election/ElectionMapLegend";
 import RankingPanel from "@/components/ranking/RankingPanel";
 import RankingMapLegend from "@/components/ranking/RankingMapLegend";
-import ElectionCountdownCard from "@/components/election/ElectionCountdownCard";
 import MapCornerSlot from "@/components/map/MapCornerSlot";
 import ToastStack from "@/components/ui/ToastStack";
 
@@ -116,18 +115,11 @@ export default function ExplorerShell({
   // becomes eligible again — if they started false, a card that is hidden by
   // its parent could never mount, never report, and would be stuck hidden.
   const rankingEligible = isRankingMode;
-  // In election mode the side panel already lists the candidates.
-  const electionEligible = !isElectionMode;
   const [rankingHasContent, setRankingHasContent] = useState(true);
-  const [electionHasContent, setElectionHasContent] = useState(true);
 
   useEffect(() => {
     setRankingHasContent(true);
   }, [rankingEligible]);
-
-  useEffect(() => {
-    setElectionHasContent(true);
-  }, [electionEligible]);
 
   const cornerCards = useMemo(
     () => [
@@ -142,26 +134,8 @@ export default function ExplorerShell({
           />
         ),
       },
-      {
-        key: "election-countdown",
-        visible: electionEligible && electionHasContent,
-        node: (
-          <ElectionCountdownCard
-            presidential={politics.presidential}
-            onVisibleChange={setElectionHasContent}
-          />
-        ),
-      },
     ],
-    [
-      compareBundle,
-      states,
-      politics.presidential,
-      rankingEligible,
-      electionEligible,
-      rankingHasContent,
-      electionHasContent,
-    ]
+    [compareBundle, states, rankingEligible, rankingHasContent]
   );
 
   const capitalLgaByState = useMemo(
@@ -415,6 +389,7 @@ export default function ExplorerShell({
             countryNotes={countryNotes}
             peopleNotes={peopleNotes}
             lgaGeneral={lgaGeneral}
+            presidential={politics.presidential}
           />
         )}
       </main>
@@ -442,6 +417,7 @@ export default function ExplorerShell({
           compareBundle={compareBundle}
           countryNotes={countryNotes}
           peopleNotes={peopleNotes}
+          presidential={politics.presidential}
         />
       )}
 

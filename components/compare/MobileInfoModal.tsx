@@ -7,6 +7,7 @@ import type {
   PeopleNotesMap,
   StateLocation,
 } from "@/types/location";
+import type { PresidentialBundle } from "@/types/politics";
 import NigeriaOverview from "@/components/location/NigeriaOverview";
 
 interface MobileInfoModalProps {
@@ -17,6 +18,7 @@ interface MobileInfoModalProps {
   compareBundle: CompareBundle;
   countryNotes: CountryNotesMap;
   peopleNotes: PeopleNotesMap;
+  presidential: PresidentialBundle;
 }
 
 export default function MobileInfoModal({
@@ -27,6 +29,7 @@ export default function MobileInfoModal({
   compareBundle,
   countryNotes,
   peopleNotes,
+  presidential,
 }: MobileInfoModalProps) {
   if (!open) return null;
 
@@ -67,6 +70,7 @@ export default function MobileInfoModal({
             compareBundle={compareBundle}
             countryNotes={countryNotes}
             peopleNotes={peopleNotes}
+            presidential={presidential}
           />
         </div>
       </div>

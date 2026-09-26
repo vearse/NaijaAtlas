@@ -51,7 +51,18 @@ function setLayerPresentationPaint(
     if (enabled) {
       map.setPaintProperty(layerId, key, HIDDEN_OPACITY_EXPR);
     } else {
-      map.setPaintProperty(layerId, key, 1);
+      const mapWithRemove = map as MaplibreMap & {
+        removePaintProperty?: (layer: string, prop: string) => MaplibreMap;
+      };
+      try {
+        if (typeof mapWithRemove.removePaintProperty === "function") {
+          mapWithRemove.removePaintProperty(layerId, key);
+        } else {
+          map.setPaintProperty(layerId, key, 1);
+        }
+      } catch {
+        map.setPaintProperty(layerId, key, 1);
+      }
     }
   }
 }
@@ -117,12 +128,15 @@ function clearHiddenStates(map: MaplibreMap, sourceId: string): void {
     try {
       map.removeFeatureState({ source: sourceId, id: fid }, "overlayHidden");
     } catch {
-      /* ignore */
+      /* source may not support feature-state yet */
     }
   }
 }
 
-/** Hide non-matching overlay features (lens + optional category focus). */
+/**
+ * Hide non-matching overlay features when the user applies a category focus.
+ * Tourist/Invest lens alone does not hide toolbar layers — toggles always stack.
+ */
 export function syncOverlayPresentation(
   map: MaplibreMap,
   activeLens: LensId,
@@ -130,25 +144,26 @@ export function syncOverlayPresentation(
   focus: OverlayFocusSpec | null,
   enabled: boolean
 ): void {
-  const useFilter = enabled && (activeLens !== "learn" || focus != null);
+  const useFilter = enabled && focus != null;
 
   for (const layerId of OVERLAY_LAYER_IDS) {
     const entry = OVERLAY_REGISTRY[layerId];
     const visible = activeOverlays.has(layerId);
+    const filterThisLayer = useFilter && visible;
     for (const lid of entry.layers.map((l) => l.id)) {
       if (!map.getLayer(lid)) continue;
-      setLayerPresentationPaint(map, lid, useFilter && visible);
+      setLayerPresentationPaint(map, lid, filterThisLayer);
     }
   }
 
-  if (!useFilter) {
-    for (const layerId of OVERLAY_LAYER_IDS) {
-      for (const sourceId of sourcesForLayer(layerId)) {
-        if (map.getSource(sourceId)) clearHiddenStates(map, sourceId);
-      }
+  for (const layerId of OVERLAY_LAYER_IDS) {
+    for (const sourceId of sourcesForLayer(layerId)) {
+      if (!map.getSource(sourceId)) continue;
+      clearHiddenStates(map, sourceId);
     }
-    return;
   }
+
+  if (!useFilter) return;
 
   for (const layerId of OVERLAY_LAYER_IDS) {
     if (!activeOverlays.has(layerId)) continue;

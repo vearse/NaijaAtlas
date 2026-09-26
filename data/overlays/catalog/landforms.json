@@ -9,7 +9,9 @@
     "summary": "Volcanic highland in central Nigeria with a cooler climate and tin-mining history.",
     "description": "The Jos Plateau is a granite and volcanic upland rising sharply above the surrounding plains. Tin and columbite mining shaped 20th-century Jos. The height brings lower temperatures, Irish potatoes and vegetables, and tourism. Gully erosion is a modern hazard.",
     "elevationNote": "~1,200–1,829 m (Shere Hills)",
-    "statesCrossed": ["Plateau"],
+    "statesCrossed": [
+      "Plateau"
+    ],
     "character": "Inselbergs, temperate crops, mining scars, tourism.",
     "economy": "Tourism, remnant mining, highland farming, Jos urban services.",
     "agriculture": "Young volcanic and loamy soils with good structure. Cooler temperatures allow temperate vegetables that do not thrive in the lowlands. Mine-pond water is used for small-scale irrigation.",
@@ -34,8 +36,13 @@
       "Irrigate leafy greens through the dry season using shallow mine ponds and hand-dug wells",
       "Plant windbreak trees (Eucalyptus, Casuarina) on exposed plateau edges to reduce wind damage"
     ],
-    "highlights": ["Coolest large highland in Nigeria", "Tin heritage", "Shere Hills"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Jos_Plateau"
+    "highlights": [
+      "Coolest large highland in Nigeria",
+      "Tin heritage",
+      "Shere Hills"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Jos_Plateau",
+    "domain": "relief"
   },
   {
     "id": "landform-mambilla",
@@ -47,7 +54,9 @@
     "summary": "Nigeria's highest inhabited plateau on the Cameroon border in Taraba.",
     "description": "Mambilla is a grassland plateau with tea estates and a proposed mega hydropower project. Chappal Waddi (Gangirwal) in the Gashaka-Gumti / border highlands is often cited as Nigeria's highest peak. Access is via steep escarpment roads.",
     "elevationNote": "Plateau ~1,500–1,800 m; peaks above 2,000 m",
-    "statesCrossed": ["Taraba"],
+    "statesCrossed": [
+      "Taraba"
+    ],
     "character": "Tea, cattle, montane grassland, cloud forest fragments.",
     "economy": "Tea, livestock, proposed hydropower, limited tourism.",
     "agriculture": "High-altitude andosols and deep loams on ancient volcanic formations. Frosts occur on the highest ground in dry season; rainfall is heavy April–October with persistent cloud cover.",
@@ -72,8 +81,13 @@
       "Contour grass strips and bench terraces essential on steeper ground to halt sheet erosion",
       "Cattle should be excluded from young forest regeneration areas to protect water catchments"
     ],
-    "highlights": ["Highest inhabited plateau", "Tea estates", "Mambilla Power Project"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Mambilla_Plateau"
+    "highlights": [
+      "Highest inhabited plateau",
+      "Tea estates",
+      "Mambilla Power Project"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Mambilla_Plateau",
+    "domain": "relief"
   },
   {
     "id": "landform-mandara",
@@ -85,179 +99,19 @@
     "summary": "Volcanic range along the Nigeria–Cameroon border in southern Borno / northern Adamawa fringe.",
     "description": "The Mandara are culturally associated with hill peoples (Mandara, Sukur UNESCO cultural landscape on the Cameroon side). On the Nigerian side they form a rugged border highland above the Chad plains.",
     "elevationNote": "Up to ~1,494 m (Oupay / Mandara peaks)",
-    "statesCrossed": ["Borno", "Adamawa"],
+    "statesCrossed": [
+      "Borno",
+      "Adamawa"
+    ],
     "character": "Terraced hills, volcanic plugs, border cultures.",
     "economy": "Hill farming, limited cross-border trade.",
-    "highlights": ["Border range", "Volcanic plugs", "Sukur cultural landscape nearby"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Mandara_Mountains"
-  },
-  {
-    "id": "landform-niger-delta",
-    "name": "Niger Delta",
-    "featureKind": "area",
-    "landformType": "delta",
-    "sizeTier": "major",
-    "type": "Coastal sedimentary lowland",
-    "summary": "Africa's largest wetland delta where the Niger meets the Atlantic; Nigeria's petroleum heartland.",
-    "description": "The delta covers ~70,000 km² of mangrove, freshwater swamp, and barrier islands. It holds the bulk of Nigeria's oil and gas, a dense creek network, and highly politicised environmental and federal-revenue issues.",
-    "elevationNote": "Mostly near sea level; tidal mangrove",
-    "statesCrossed": ["Delta", "Bayelsa", "Rivers", "Akwa Ibom", "Cross River", "Edo", "Ondo", "Abia", "Imo"],
-    "character": "Mangrove, oilfields, riverine settlements, barrier islands.",
-    "economy": "Oil and gas, fisheries, boat transport, refining.",
-    "agriculture": "Hydromorphic gleysols, peat, and alluvial deposits on a landscape of seasonally flooded flats, backswamps, and levees. Oil-palm agroforest dominates the better-drained levee ridges; fisheries are economically vital.",
-    "crops": [
-      "Oil palm (Elaeis guineensis) — the delta is the heart of Nigeria's smallholder oil-palm belt; red palm oil and kernel extraction",
-      "Rubber (Hevea brasiliensis) — plantation and smallholder rubber on drier ridges (Edo, Delta)",
-      "Plantain and banana (Musa spp.) — staple carbohydrate on levee soils",
-      "Cassava — garri, lafun, and fufu processing across the delta hinterland",
-      "Yam — white and yellow yam in the drier northern delta fringe",
-      "Rice — both lowland swamp rice and fadama irrigation (Rivers, Delta State paddies)",
-      "Cocoyam (Colocasia & Xanthosoma) — shade-tolerant tuber under palm canopy",
-      "Fluted pumpkin (Telfairia occidentalis) — ugu leaf vegetable widely intercropped",
-      "Vegetables: amaranth, okra, peppers, garden egg — backyard and creek bank gardens",
-      "Coconut palm — barrier beaches and island fringes of the delta mouth",
-      "Mangrove (Rhizophora, Avicennia) — fuelwood, poles, and fisheries habitat",
-      "Fish, shrimp, and crab artisanal fisheries — the delta is Nigeria's richest inland/coastal fishery"
+    "highlights": [
+      "Border range",
+      "Volcanic plugs",
+      "Sukur cultural landscape nearby"
     ],
-    "planting": [
-      "Plant cassava and yam on levee ridges (higher drained ground) away from deep backswamps",
-      "Oil palms are usually retained on family farms — propagate by seedling and suckers at 9×9 m spacing",
-      "Use mounds and raised beds for vegetables in perennially waterlogged backswamp soils",
-      "Construct small fish ponds (earthen ponds) in abandoned rice fields for tilapia and catfish",
-      "Avoid draining mangrove wetlands — nursery habitat for fish stocks and shoreline protection"
-    ],
-    "highlights": ["World-class petroleum province", "Largest African delta", "Mangrove biodiversity"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Niger_Delta"
-  },
-  {
-    "id": "landform-sokoto-basin",
-    "name": "Sokoto Basin",
-    "featureKind": "area",
-    "landformType": "basin",
-    "sizeTier": "major",
-    "type": "Sedimentary basin / plains",
-    "summary": "Semi-arid sedimentary basin of the northwest drained by the Sokoto–Rima system.",
-    "description": "Cretaceous–Tertiary sediments underlie millet, sorghum, and irrigated fadama. The basin is drought-prone and depends on dams and groundwater. It is the core landscape of the Caliphate northwest.",
-    "elevationNote": "About 200–400 m",
-    "statesCrossed": ["Sokoto", "Kebbi", "Zamfara", "Niger", "Katsina"],
-    "character": "Sahel–Sudan plains, seasonal rivers, irrigation schemes.",
-    "economy": "Grain, livestock, onions (dry-season irrigation), limited oil exploration historically.",
-    "highlights": ["Sokoto–Rima irrigation", "Sahel fringe", "Caliphate heartland plains"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Sokoto_State"
-  },
-  {
-    "id": "landform-guinea-savanna",
-    "name": "Guinea Savanna",
-    "featureKind": "area",
-    "landformType": "savanna",
-    "sizeTier": "major",
-    "type": "Vegetation / landscape belt",
-    "summary": "Wooded savanna belt between southern rainforest and northern Sudan/Sahel savanna.",
-    "description": "Guinea savanna (southern and northern Guinea) is Nigeria's broad middle belt: shea, yam, sorghum, and cattle routes. Rainfall is typically 900–1,500 mm. It includes much of Kwara, Niger, Kogi, Benue, Nasarawa, and parts of Kaduna and FCT.",
-    "elevationNote": "Mostly 200–600 m plains and inselbergs",
-    "statesCrossed": ["Kwara", "Niger", "Kogi", "Benue", "Nassarawa", "Plateau", "Kaduna", "Federal Capital Territory"],
-    "character": "Parkland trees, seasonal burn, mixed farming.",
-    "economy": "Yam, shea, grains, livestock corridors, Abuja hinterland.",
-    "agriculture": "Deep ferric luvisols support root crops and cereals. Shea parklands are retained on farm fields across the belt. Short fallow rotations are common.",
-    "crops": [
-      "Yam (Dioscorea rotundata) — white guinea yam is the staple tuber crop",
-      "Cassava (Manihot esculenta) — processed into garri, fufu, and flour",
-      "Guinea corn / Sorghum (Sorghum bicolor) — guinea-corn for ogi, pap, and tuwo",
-      "Millet (Pennisetum glaucum) — early-maturing dry-season staple",
-      "Maize (Zea mays) — grown as second crop in yam/cassava rotations",
-      "Rice (Oryza sativa & O. glaberrima) — lowland fadama and upland varieties",
-      "Shea nut (Vitellaria paradoxa) — shea butter extraction, parkland agroforestry",
-      "Groundnut / Peanut (Arachis hypogaea) — oilseed and snack crop",
-      "Soybean (Glycine max) — expanding for oil and poultry feed",
-      "Cowpea (Vigna unguiculata) — beans and leaves as vegetable",
-      "Sesame (Sesamum indicum) — northern guinea fringe for oilseeds",
-      "Mango, citrus, and cashew — scattered commercial orchards"
-    ],
-    "planting": [
-      "Plant yam mounds (heaps) with stakes from November–December; seed yam setts planted February–April",
-      "Sorghum and millet sown at first rains (April–May); late maize July–August",
-      "Cassava stem cuttings planted March–May, harvested 9–18 months later",
-      "Shea trees retained as permanent parkland — do not clear mature shea on new farms",
-      "Use minimum tillage and tied ridges to reduce runoff on sloping ground"
-    ],
-    "highlights": ["Middle Belt landscape", "Shea belt", "Yam belt overlap"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Guinean_savanna"
-  },
-  {
-    "id": "landform-sudan-savanna",
-    "name": "Sudan Savanna",
-    "featureKind": "area",
-    "landformType": "savanna",
-    "sizeTier": "major",
-    "type": "Vegetation / landscape belt",
-    "summary": "Open-tree savanna of the far-north fringe — drier than Guinea, main cereal and legume zone.",
-    "description": "Sudan savanna is Nigeria's northern crop-and-livestock belt with 500–900 mm annual rainfall, shorter wet season (3–5 months), and scattered acacia and baobab trees. It covers most of Kano, Katsina, southern Sokoto, southern Borno, Jigawa, Bauchi and Gombe.",
-    "elevationNote": "Mostly 350–700 m undulating plains with inselbergs",
-    "statesCrossed": ["Kano", "Katsina", "Sokoto", "Kebbi", "Zamfara", "Kaduna", "Bauchi", "Gombe", "Jigawa", "Yobe", "Borno", "Niger"],
-    "character": "Acacia parkland, baobab, seasonal wadis, transhumance cattle corridors.",
-    "economy": "Cereals, legumes, livestock, irrigation dams, dry-season onion belts.",
-    "agriculture": "Shallow sandy-loam soils with low organic matter — rely on organic manure, mulch, and small-scale irrigation (tudun wada fadamas). Wind erosion and desertification pressures on the northern fringe.",
-    "crops": [
-      "Millet (Pennisetum glaucum) — early and extra-early varieties dominate (doro, maiwa)",
-      "Guinea corn / Sorghum (Sorghum bicolor) — tall late varieties on deeper soils",
-      "Cowpea (Vigna unguiculata) — dual-purpose grain and leaves (dan wake)",
-      "Groundnut (Arachis hypogaea) — historic groundnut pyramid belt (Kano, Katsina)",
-      "Sesame (Sesamum indicum) — Jigawa, Bauchi, Gombe are leading producers",
-      "Wheat (Triticum aestivum) — irrigated dry season on Hadejia-Jama'are fadamas",
-      "Onion (Allium cepa) — dry-season irrigated bulb crop (Aliero riba, Kano red)",
-      "Tomato & pepper — irrigated dry season vegetables, especially Kano/Jigawa",
-      "Sweet potato (Ipomoea batatas) — orange-fleshed varieties expanding",
-      "Baobab (Adansonia digitata) — fruit, leaves (kuka), and bark for traditional uses",
-      "Acacia gum (Acacia senegal) — gum arabic agroforestry on the fringe",
-      "Neem (Azadirachta indica) — multipurpose shade, medicinal, and windbreak tree"
-    ],
-    "planting": [
-      "Sow millet and sorghum at first effective rains (June–early July); use tied ridges to capture moisture",
-      "Intercrop cowpea with millet/sorghum to reduce erosion risk and maximise land",
-      "Dry-season onion and tomato: plant on raised beds October–November, irrigate through March",
-      "Construct small earthen bunds and zaï pits on degraded soils to capture runoff",
-      "Retain baobab, acacia, and faidherbia trees in farm fields for soil fertility and fodder"
-    ],
-    "highlights": ["Millet & sorghum heartland", "Groundnut pyramid heritage", "Fadama irrigation"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Sudanian_savanna"
-  },
-  {
-    "id": "landform-sahel-savanna",
-    "name": "Sahel Savanna",
-    "featureKind": "area",
-    "landformType": "savanna",
-    "sizeTier": "major",
-    "type": "Semi-arid vegetation belt at the desert fringe",
-    "summary": "Semi-arid grass and acacia steppe on the northern desert boundary — pastoral and resilient dry-crop zone.",
-    "description": "The Sahel is the narrow northernmost vegetation zone along the Niger border with <500 mm annual rainfall and frequent droughts. It is dominated by short grass, sparse acacia, and a pastoral economy based on cattle, sheep, and goats. Lake Chad and Komadougu-Yobe basins sustain irrigation oasis.",
-    "elevationNote": "250–450 m; flat to gently rolling sandy plains",
-    "statesCrossed": ["Sokoto", "Kebbi", "Zamfara", "Katsina", "Kano", "Jigawa", "Yobe", "Borno"],
-    "character": "Short annual grass, scattered thorny trees, wadis, transhumance routes and lake oases.",
-    "economy": "Pastoralism, drought-millet, lake-basin irrigation, gum arabic agroforestry.",
-    "agriculture": "Very fragile sandy soils with low water-holding capacity — depend on drought-tolerant crops, water-harvesting structures, and lake/fadama irrigation. Desertification and wind erosion are active challenges.",
-    "crops": [
-      "Drought millet (Pennisetum glaucum) — extra-early 60-day varieties (zuru, sara)",
-      "Sorghum (early-maturing drought types) — occasionally with supplemental watering",
-      "Cowpea — drought-tolerant black-eyed varieties for grain and fodder",
-      "Wheat — around Lake Chad pump-irrigation and Komadougu floodplain",
-      "Dryland rice — Oryza glaberrima on fadamas where water is available",
-      "Date palm (Phoenix dactylifera) — around Lake Chad oases (Bama, Dikwa belts)",
-      "Gum arabic (Acacia senegal) — agroforestry stands for export-grade gum",
-      "Balanites aegyptiaca (desert date) — edible fruit, oil seed, and medicinal",
-      "Acacia nilotica — shade, browse, and tannin tree",
-      "Wild melon / egusi-type gourds — drought-resilient minor crops",
-      "Roselle (Hibiscus sabdariffa) — zobo drink leaves and calyxes",
-      "Sorghum-sudangrass hybrids for fodder in the pastoral system"
-    ],
-    "planting": [
-      "Plant millet as early as possible once rains establish (late June) — delay causes crop failure in short rainy seasons",
-      "Use zaï / tassa pits and half-moons to concentrate scarce runoff water around planting holes",
-      "Integrate livestock into crop rotation — penning animals on fields overnight builds soil fertility (korji / dung manuring)",
-      "Plant gum arabic (A. senegal) windbreaks across farm fields to reduce wind erosion and diversify income",
-      "Rely on indigenous drought-tolerant varieties — avoid hybrids requiring reliable water"
-    ],
-    "highlights": ["Northern pastoral zone", "Lake Chad oases", "Gum arabic belt"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Sahel"
+    "wikiUrl": "https://en.wikipedia.org/wiki/Mandara_Mountains",
+    "domain": "relief"
   },
   {
     "id": "landform-idanre",
@@ -269,11 +123,18 @@
     "summary": "Dramatic granite inselberg cluster and UNESCO-adjacent cultural landscape in Ondo State.",
     "description": "Idanre Hills rise abruptly above the Ondo plain with steep ascents, ancient Oke-Idanre settlement ruins, and panoramic views. The hills are a major tourism and pilgrimage destination in southwestern Nigeria.",
     "elevationNote": "~900–1,050 m (Orosun peak area)",
-    "statesCrossed": ["Ondo"],
+    "statesCrossed": [
+      "Ondo"
+    ],
     "character": "Granite domes, sacred groves, heritage settlement.",
     "economy": "Tourism, cocoa hinterland farming.",
-    "highlights": ["Oke-Idanre heritage", "Granite domes", "Southwest tourism icon"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Idanre"
+    "highlights": [
+      "Oke-Idanre heritage",
+      "Granite domes",
+      "Southwest tourism icon"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Idanre",
+    "domain": "relief"
   },
   {
     "id": "landform-shere-hills",
@@ -285,11 +146,18 @@
     "summary": "Rocky highland within the Jos Plateau and a popular hiking destination.",
     "description": "Shere Hills form a jagged granite skyline near Jos with peaks including Peak 1 (~1,829 m). Rock climbing, hiking, and cool-climate tourism draw visitors from across Nigeria.",
     "elevationNote": "~1,500–1,829 m",
-    "statesCrossed": ["Plateau"],
+    "statesCrossed": [
+      "Plateau"
+    ],
     "character": "Granite tors, hiking trails, cool climate.",
     "economy": "Tourism, Jos weekend recreation.",
-    "highlights": ["Highest points near Jos", "Rock climbing", "Granite skyline"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Jos_Plateau"
+    "highlights": [
+      "Highest points near Jos",
+      "Rock climbing",
+      "Granite skyline"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Jos_Plateau",
+    "domain": "relief"
   },
   {
     "id": "landform-udi-escarpment",
@@ -301,49 +169,18 @@
     "summary": "Eastern Nigeria escarpment above the Cross River basin; Enugu coal belt.",
     "description": "The Udi Hills and Nsukka escarpment mark the edge of the Enugu Plateau. Coal seams here fuelled Nigeria's railway era. The ridge now hosts Enugu city, universities, and forest patches.",
     "elevationNote": "~300–500 m above surrounding lowlands",
-    "statesCrossed": ["Enugu"],
+    "statesCrossed": [
+      "Enugu"
+    ],
     "character": "Coal measures, forest patches, university towns.",
     "economy": "Coal heritage, Enugu urban economy, education.",
-    "highlights": ["Enugu coal history", "Escarpment forests", "Nsukka plateau edge"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Enugu"
-  },
-  {
-    "id": "landform-oban-hills",
-    "name": "Oban Hills",
-    "featureKind": "area",
-    "landformType": "forest",
-    "sizeTier": "medium",
-    "type": "Rainforest hill range",
-    "summary": "Cross River rainforest highlands linked to the Oban sector of Cross River National Park.",
-    "description": "Oban Hills lie in the Cross River–Cameroon biodiversity hotspot with lowland and montane rainforest, drill monkeys, and forest elephants (rare). Terrain is rugged and heavily forested.",
-    "elevationNote": "~200–900 m",
-    "statesCrossed": ["Cross River"],
-    "character": "Rainforest, biodiversity hotspot, protected areas.",
-    "economy": "Ecotourism, conservation, limited hill farming.",
-    "agriculture": "Acrisols and ferralsols on steep slopes — highly leached but suitable for tree crops. Land-use pressure is intense outside the park boundary with shifting cultivation and cocoa farms.",
-    "crops": [
-      "Cocoa (Theobroma cacao) — shaded cocoa agroforestry on park buffer-zone farms",
-      "Oil palm (Elaeis guineensis) — semi-wild stands and plantation palms",
-      "Rubber (Hevea brasiliensis) — smallholder rubber on gentler slopes",
-      "Plantain and banana — staple food of the Efik and Ejagham communities",
-      "Cassava and yam — shifting-cultivation staples in the wider district",
-      "Cocoyam, sweet potato, and taro — under-storey root crops",
-      "Okra, pepper, and amaranth — backyard vegetables in the villages",
-      "Citrus (oranges, tangerine, lime) — expanding market-garden orchards",
-      "Kolanut (Cola nitida & acuminata) — traditional cash crop with ceremonial uses",
-      "Bush mango (Irvingia gabonensis) — ogbono soup seeds from retained forest trees",
-      "Raffia palm (Raphia spp.) — palm wine, thatch, and raffia fibre",
-      "Timber species: mahogany, obeche, iroko — strictly protected inside the national park"
+    "highlights": [
+      "Enugu coal history",
+      "Escarpment forests",
+      "Nsukka plateau edge"
     ],
-    "planting": [
-      "Practice agroforestry: retain large native forest trees when planting cocoa — they shade the crop and protect watersheds",
-      "Build contour stone lines or grass barriers on hillsides to stop sheet erosion",
-      "Rotate cocoa farms with 10–15 year fallows under secondary forest to rebuild soil organic matter",
-      "Plant multi-purpose nitrogen-fixing trees (Gliricidia, Albizia) along farm boundaries",
-      "Respect park boundaries — avoid clearing new farms inside Cross River National Park"
-    ],
-    "highlights": ["Cross River National Park", "Biodiversity hotspot", "Rainforest hills"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Cross_River_National_Park"
+    "wikiUrl": "https://en.wikipedia.org/wiki/Enugu",
+    "domain": "relief"
   },
   {
     "id": "landform-aso-rock",
@@ -355,12 +192,19 @@
     "summary": "Iconic granite inselberg dominating Abuja's skyline and the Presidential Villa.",
     "description": "Aso Rock is a 400-metre monolith at the heart of the Federal Capital Territory. It gives its name to Aso Villa (Presidential residence) and is visible across Abuja's Central Area.",
     "elevationNote": "~936 m summit; ~400 m relief above plain",
-    "statesCrossed": ["Federal Capital Territory"],
+    "statesCrossed": [
+      "Federal Capital Territory"
+    ],
     "lon": 7.536,
     "lat": 9.08,
     "character": "Granite monolith, seat of government backdrop.",
-    "highlights": ["Presidential Villa backdrop", "Abuja landmark", "Granite inselberg"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Aso_Rock"
+    "highlights": [
+      "Presidential Villa backdrop",
+      "Abuja landmark",
+      "Granite inselberg"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Aso_Rock",
+    "domain": "relief"
   },
   {
     "id": "landform-zuma-rock",
@@ -372,12 +216,20 @@
     "summary": "Massive monolith on the Abuja–Kaduna corridor, nicknamed the Gateway to Abuja.",
     "description": "Zuma Rock rises ~725 m above the surrounding plain near Madalla in Niger State. Its distinctive face is visible from the Abuja–Kaduna expressway and features in Nigerian iconography.",
     "elevationNote": "~725 m above surrounding plain (~1,125 m AMSL)",
-    "statesCrossed": ["Niger", "Federal Capital Territory"],
+    "statesCrossed": [
+      "Niger",
+      "Federal Capital Territory"
+    ],
     "lon": 7.23,
     "lat": 9.128,
     "character": "Granite inselberg, expressway landmark.",
-    "highlights": ["Gateway to Abuja", "725 m monolith", "Niger–FCT border landmark"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Zuma_Rock"
+    "highlights": [
+      "Gateway to Abuja",
+      "725 m monolith",
+      "Niger–FCT border landmark"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Zuma_Rock",
+    "domain": "relief"
   },
   {
     "id": "landform-olumo-rock",
@@ -389,12 +241,19 @@
     "summary": "Historic Egba refuge rock in Abeokuta, Ogun State.",
     "description": "Olumo Rock served as a natural fortress during 19th-century inter-tribal wars. Today it is a major cultural tourism site with caves, carvings, and views over Abeokuta.",
     "elevationNote": "~137 m above Abeokuta",
-    "statesCrossed": ["Ogun"],
+    "statesCrossed": [
+      "Ogun"
+    ],
     "lon": 3.348,
     "lat": 7.155,
     "character": "Granite refuge, cultural tourism.",
-    "highlights": ["Egba heritage", "Abeokuta tourism", "Historic refuge"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Olumo_Rock"
+    "highlights": [
+      "Egba heritage",
+      "Abeokuta tourism",
+      "Historic refuge"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Olumo_Rock",
+    "domain": "relief"
   },
   {
     "id": "landform-chappal-waddi",
@@ -406,12 +265,19 @@
     "summary": "Nigeria's highest point (~2,419 m) on the Mambilla / Gashaka border highlands.",
     "description": "Chappal Waddi (also Gangirwal) lies in the Gashaka-Gumti / Mambilla border highlands in Taraba State. The peak is often cited as Nigeria's highest ground, in montane grassland and forest ecotone.",
     "elevationNote": "~2,419 m (commonly cited highest point)",
-    "statesCrossed": ["Taraba"],
+    "statesCrossed": [
+      "Taraba"
+    ],
     "lon": 11.583,
     "lat": 7.033,
     "character": "Montane grassland, border highlands, cloud forest fringe.",
-    "highlights": ["Highest point in Nigeria", "Gashaka-Gumti highlands", "Mambilla border"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Chappal_Waddi"
+    "highlights": [
+      "Highest point in Nigeria",
+      "Gashaka-Gumti highlands",
+      "Mambilla border"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Chappal_Waddi",
+    "domain": "relief"
   },
   {
     "id": "landform-wadi-kuru",
@@ -423,12 +289,18 @@
     "summary": "Notable peak on the Jos Plateau used for mountaineering practice.",
     "description": "Wadi Kuru is among the recognised high points on the Jos Plateau near Jos city, popular with hikers and mountaineering clubs.",
     "elevationNote": "~1,300–1,400 m",
-    "statesCrossed": ["Plateau"],
+    "statesCrossed": [
+      "Plateau"
+    ],
     "lon": 8.92,
     "lat": 9.78,
     "character": "Granite highland, hiking.",
-    "highlights": ["Jos hiking destination", "Plateau peak"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Jos_Plateau"
+    "highlights": [
+      "Jos hiking destination",
+      "Plateau peak"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Jos_Plateau",
+    "domain": "relief"
   },
   {
     "id": "landform-obudu-plateau",
@@ -440,7 +312,9 @@
     "summary": "Cool montane plateau and ranch resort in the Cross River highlands.",
     "description": "Obudu Plateau rises above the Cross River lowlands with grassland, ranch tourism, and a cable car. It is among Nigeria's best-known highland holiday destinations outside Jos and Mambilla.",
     "elevationNote": "~1,200–1,600 m",
-    "statesCrossed": ["Cross River"],
+    "statesCrossed": [
+      "Cross River"
+    ],
     "character": "Montane grassland, ranch tourism, cloud forest fringe.",
     "economy": "Tourism, ranching, hospitality.",
     "agriculture": "Acidic montane loams over basement rocks with high rainfall. The plateau supports high-value cool-season vegetables and ranching, but steep slopes need careful erosion control.",
@@ -465,8 +339,13 @@
       "Dry-season vegetables require reliable water — harvest into the cooler cloud-forest dew zone",
       "Retain riparian forest strips along streams to feed the Obudu water-catchment areas"
     ],
-    "highlights": ["Obudu Cattle Ranch", "Cable car", "Cross River highlands"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Obudu_Plateau"
+    "highlights": [
+      "Obudu Cattle Ranch",
+      "Cable car",
+      "Cross River highlands"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Obudu_Plateau",
+    "domain": "relief"
   },
   {
     "id": "landform-gashaka-highlands",
@@ -478,11 +357,19 @@
     "summary": "Nigeria's largest national park highlands on the Cameroon border, home to Chappal Waddi.",
     "description": "The Gashaka-Gumti sector spans rugged mountains, savanna corridors, and Nigeria's highest peaks along the Taraba–Cameroon border. It protects elephants, chimpanzees, and montane habitats.",
     "elevationNote": "Up to ~2,419 m (Chappal Waddi)",
-    "statesCrossed": ["Taraba", "Adamawa"],
+    "statesCrossed": [
+      "Taraba",
+      "Adamawa"
+    ],
     "character": "Montane forest, grassland, border peaks.",
     "economy": "Conservation, limited ecotourism.",
-    "highlights": ["Largest national park", "Chappal Waddi peak", "Border biodiversity"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Gashaka-Gumti_National_Park"
+    "highlights": [
+      "Largest national park",
+      "Chappal Waddi peak",
+      "Border biodiversity"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Gashaka-Gumti_National_Park",
+    "domain": "relief"
   },
   {
     "id": "landform-shebshi",
@@ -494,11 +381,18 @@
     "summary": "Granite range in eastern Adamawa rising above the Benue trough.",
     "description": "The Shebshi Mountains form a conspicuous highland block in Adamawa State with peaks over 1,400 m. They separate river basins and support mixed woodland and hill farming.",
     "elevationNote": "Up to ~1,450 m (Mount Dimlang area)",
-    "statesCrossed": ["Adamawa"],
+    "statesCrossed": [
+      "Adamawa"
+    ],
     "character": "Granite peaks, woodland, hill settlements.",
     "economy": "Hill farming, pastoralism.",
-    "highlights": ["Major Adamawa highland", "Granite peaks", "Benue hinterland relief"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Shebshi_Mountains"
+    "highlights": [
+      "Major Adamawa highland",
+      "Granite peaks",
+      "Benue hinterland relief"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Shebshi_Mountains",
+    "domain": "relief"
   },
   {
     "id": "landform-alantika",
@@ -510,10 +404,16 @@
     "summary": "Mountain chain on the Nigeria–Cameroon border in Adamawa.",
     "description": "The Alantika range continues the Cameroon line of highlands into northeastern Adamawa. Remote valleys and steep slopes support hill communities and transhumance routes.",
     "elevationNote": "Up to ~1,300 m",
-    "statesCrossed": ["Adamawa"],
+    "statesCrossed": [
+      "Adamawa"
+    ],
     "character": "Border range, steep valleys, hill farming.",
-    "highlights": ["Cameroon border highlands", "Remote hill communities"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Alantika_Mountains"
+    "highlights": [
+      "Cameroon border highlands",
+      "Remote hill communities"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Alantika_Mountains",
+    "domain": "relief"
   },
   {
     "id": "landform-bauchi-plateau",
@@ -525,11 +425,18 @@
     "summary": "Broad upland of northeastern Nigeria including Yankari and Bauchi city.",
     "description": "The Bauchi Plateau is a dissected upland of sandstones and inselbergs. Yankari National Park and Wikki Warm Springs sit on its margins. Bauchi city occupies a highland saddle.",
     "elevationNote": "~500–800 m",
-    "statesCrossed": ["Bauchi"],
+    "statesCrossed": [
+      "Bauchi"
+    ],
     "character": "Sandstone inselbergs, savanna woodland, springs.",
     "economy": "Agriculture, Yankari tourism, Bauchi urban services.",
-    "highlights": ["Yankari National Park", "Wikki Warm Springs", "Bauchi highland"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Yankari_National_Park"
+    "highlights": [
+      "Yankari National Park",
+      "Wikki Warm Springs",
+      "Bauchi highland"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Yankari_National_Park",
+    "domain": "relief"
   },
   {
     "id": "landform-gotels",
@@ -541,10 +448,16 @@
     "summary": "Highland range in eastern Adamawa along the Cameroon frontier.",
     "description": "The Gotel Mountains form part of the Cameroon highland chain entering Nigeria near the Taraba–Adamawa border. Terrain is rugged with forested slopes and seasonal streams.",
     "elevationNote": "Up to ~1,400 m",
-    "statesCrossed": ["Adamawa"],
+    "statesCrossed": [
+      "Adamawa"
+    ],
     "character": "Forest slopes, border highland, seasonal streams.",
-    "highlights": ["Cameroon chain extension", "Eastern Adamawa relief"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Gotel_Mountains"
+    "highlights": [
+      "Cameroon chain extension",
+      "Eastern Adamawa relief"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Gotel_Mountains",
+    "domain": "relief"
   },
   {
     "id": "landform-kabwir",
@@ -556,10 +469,16 @@
     "summary": "High farming plateau in central Plateau State east of Jos.",
     "description": "Kabwir is a granite plateau with cool-climate farming and scattered inselbergs. It is part of the wider Jos Plateau volcanic province but forms a distinct elevated block.",
     "elevationNote": "~1,200–1,400 m",
-    "statesCrossed": ["Plateau"],
+    "statesCrossed": [
+      "Plateau"
+    ],
     "character": "Granite plateau, potato and vegetable farming.",
-    "highlights": ["Central Plateau highland", "Cool-climate agriculture"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Plateau_State"
+    "highlights": [
+      "Central Plateau highland",
+      "Cool-climate agriculture"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Plateau_State",
+    "domain": "relief"
   },
   {
     "id": "landform-kufena-hills",
@@ -571,10 +490,16 @@
     "summary": "Granite hills near Zaria in Kaduna State with notable peaks and springs.",
     "description": "Kufena Hills rise above the Kaduna plain near Zaria. The range includes Kufena Hill itself and is culturally significant in Hausa geography.",
     "elevationNote": "~800–900 m",
-    "statesCrossed": ["Kaduna"],
+    "statesCrossed": [
+      "Kaduna"
+    ],
     "character": "Granite hills, springs, Zaria hinterland.",
-    "highlights": ["Zaria landmark hills", "Granite outcrops"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Kufena_Hill"
+    "highlights": [
+      "Zaria landmark hills",
+      "Granite outcrops"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kufena_Hill",
+    "domain": "relief"
   },
   {
     "id": "landform-erin-ijesha",
@@ -586,11 +511,18 @@
     "summary": "Famous seven-step Olumirin Falls in the Osun–Ekiti highlands.",
     "description": "The Erin-Ijesha hills drop in cascades at Olumirin Falls, one of southwestern Nigeria's best-known natural landmarks. The slopes are forested with tourist trails.",
     "elevationNote": "~300–500 m relief",
-    "statesCrossed": ["Osun", "Ekiti"],
+    "statesCrossed": [
+      "Osun",
+      "Ekiti"
+    ],
     "character": "Waterfalls, forested escarpment, tourism trails.",
     "economy": "Tourism, cocoa belt farming.",
-    "highlights": ["Olumirin Falls", "Major southwest attraction"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Erin-Ijesha_Waterfalls"
+    "highlights": [
+      "Olumirin Falls",
+      "Major southwest attraction"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Erin-Ijesha_Waterfalls",
+    "domain": "relief"
   },
   {
     "id": "landform-ezeagu-hills",
@@ -602,10 +534,16 @@
     "summary": "Hill and cave complex in Enugu State with a tourist cave and lake.",
     "description": "Ezeagu Hills include a limestone/sandstone cave system and natural lake popular for weekend tourism from Enugu city. The hills mark the western edge of the Enugu Plateau.",
     "elevationNote": "~400–550 m",
-    "statesCrossed": ["Enugu"],
+    "statesCrossed": [
+      "Enugu"
+    ],
     "character": "Caves, lake, weekend tourism.",
-    "highlights": ["Ezeagu Tourist Complex", "Enugu weekend destination"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Ezeagu"
+    "highlights": [
+      "Ezeagu Tourist Complex",
+      "Enugu weekend destination"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ezeagu",
+    "domain": "relief"
   },
   {
     "id": "landform-farin-ruwa",
@@ -617,10 +555,16 @@
     "summary": "Highland area of Nasarawa with one of West Africa's highest waterfalls.",
     "description": "Farin Ruwa Falls drops from the Nasarawa highlands near the Jos Plateau margin. The surrounding hills are grassy with seasonal burns and pastoral use.",
     "elevationNote": "~800–1,200 m",
-    "statesCrossed": ["Nasarawa"],
+    "statesCrossed": [
+      "Nasarawa"
+    ],
     "character": "Waterfall gorge, highland grassland.",
-    "highlights": ["Farin Ruwa Falls", "Nasarawa highlands"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Farin_Ruwa_Falls"
+    "highlights": [
+      "Farin Ruwa Falls",
+      "Nasarawa highlands"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Farin_Ruwa_Falls",
+    "domain": "relief"
   },
   {
     "id": "landform-mount-patti",
@@ -632,12 +576,18 @@
     "summary": "Lokoja hill with panoramic views over the Niger–Benue confluence.",
     "description": "Mount Patti overlooks Lokoja where the Niger and Benue rivers meet. It is historically linked to early colonial mapping and remains a key Kogi State landmark.",
     "elevationNote": "~550 m (~458 m prominence above Lokoja)",
-    "statesCrossed": ["Kogi"],
+    "statesCrossed": [
+      "Kogi"
+    ],
     "lon": 7.802,
     "lat": 7.796,
     "character": "Viewpoint, confluence overlook, historic trails.",
-    "highlights": ["Niger–Benue confluence views", "Lokoja landmark"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Mount_Patti"
+    "highlights": [
+      "Niger–Benue confluence views",
+      "Lokoja landmark"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Mount_Patti",
+    "domain": "relief"
   },
   {
     "id": "landform-riyom-rocks",
@@ -649,12 +599,18 @@
     "summary": "Famous balanced-rock inselbergs near Jos on the Plateau–Riyom road.",
     "description": "Riyom Rocks are granite inselbergs with dramatic balancing boulders, widely photographed as a symbol of Plateau State geology.",
     "elevationNote": "~1,200 m plateau margin",
-    "statesCrossed": ["Plateau"],
+    "statesCrossed": [
+      "Plateau"
+    ],
     "lon": 8.78,
     "lat": 9.55,
     "character": "Balancing granite boulders, roadside landmark.",
-    "highlights": ["Iconic Plateau geology photo spot", "Granite inselbergs"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Riyom"
+    "highlights": [
+      "Iconic Plateau geology photo spot",
+      "Granite inselbergs"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Riyom",
+    "domain": "relief"
   },
   {
     "id": "landform-wase-rock",
@@ -666,12 +622,18 @@
     "summary": "800 m volcanic inselberg rising from the Benue River plain near Wase.",
     "description": "Wase Rock is a striking isolated volcanic plug near the Benue River in Plateau State. It is protected as a bird sanctuary and is visible for kilometres across the plain.",
     "elevationNote": "~800 m height above surrounding plain",
-    "statesCrossed": ["Plateau"],
+    "statesCrossed": [
+      "Plateau"
+    ],
     "lon": 8.95,
     "lat": 8.88,
     "character": "Volcanic plug, bird sanctuary, plain landmark.",
-    "highlights": ["Volcanic inselberg", "Benue plain landmark"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Wase_Rock"
+    "highlights": [
+      "Volcanic inselberg",
+      "Benue plain landmark"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Wase_Rock",
+    "domain": "relief"
   },
   {
     "id": "landform-ado-awaye",
@@ -683,155 +645,17 @@
     "summary": "Oyo State hill famous for Iyake — one of Nigeria's only suspended lakes.",
     "description": "Ado Awaye is a steep hill near Iseyin with the Iyake Suspended Lake in a crater-like depression. It has become a major hiking and tourism destination in Oyo State.",
     "elevationNote": "~350–400 m above plain",
-    "statesCrossed": ["Oyo"],
+    "statesCrossed": [
+      "Oyo"
+    ],
     "lon": 3.43,
     "lat": 7.58,
     "character": "Suspended lake, steep hiking trail.",
-    "highlights": ["Iyake Suspended Lake", "Oyo tourism landmark"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Ado_Awaye"
-  },
-  {
-    "id": "landform-sambisa-forest",
-    "name": "Sambisa Forest",
-    "featureKind": "area",
-    "landformType": "forest",
-    "sizeTier": "major",
-    "type": "Dry woodland / forest reserve",
-    "summary": "Vast woodland–grassland complex south of Maiduguri, historically among Nigeria's largest forest blocks.",
-    "description": "Sambisa spans southern Borno with open woodland, grassland, and seasonal streams draining toward the Yedseram. It is ecologically important Sahel–Sudan transition habitat, though much of the reserve has been degraded by conflict and land-use change since the 2010s.",
-    "elevationNote": "~350–500 m",
-    "statesCrossed": ["Borno"],
-    "character": "Open woodland, seasonal streams, Sahel fringe ecology.",
-    "economy": "Limited ecotourism potential; historically grazing and dry-season farming.",
-    "highlights": ["Borno woodland belt", "Sahel–Sudan transition", "Yedseram drainage"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Sambisa_Forest"
-  },
-  {
-    "id": "landform-cross-river-np",
-    "name": "Cross River National Park",
-    "featureKind": "area",
-    "landformType": "reserve",
-    "sizeTier": "major",
-    "type": "Lowland & montane rainforest reserve",
-    "summary": "Nigeria's flagship rainforest park in two sectors — Oban and Okwangwo — in the Cross River biodiversity hotspot.",
-    "description": "Cross River National Park protects some of West Africa's last intact lowland and montane rainforest. The Oban Hills and Okwangwo sectors harbour drill monkeys, forest elephants, chimpanzees, and exceptional plant diversity on rugged terrain near the Cameroon border.",
-    "elevationNote": "~50–900 m across sectors",
-    "statesCrossed": ["Cross River"],
-    "character": "Rainforest, rugged hills, international biodiversity hotspot.",
-    "economy": "Ecotourism, research, conservation funding.",
-    "highlights": ["Oban sector", "Okwangwo sector", "Cross River–Cameroon hotspot"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Cross_River_National_Park"
-  },
-  {
-    "id": "landform-yankari-reserve",
-    "name": "Yankari Game Reserve",
-    "featureKind": "area",
-    "landformType": "reserve",
-    "sizeTier": "medium",
-    "type": "Savanna woodland reserve",
-    "summary": "Bauchi's premier wildlife reserve around Wikki Warm Springs and open savanna woodland.",
-    "description": "Yankari is one of Nigeria's most visited protected areas, combining Sudan savanna woodland with the Wikki Warm Springs. Elephants, baboons, and antelope remain, though poaching pressure has reduced populations since peak tourism in the 1980s–90s.",
-    "elevationNote": "~200–450 m",
-    "statesCrossed": ["Bauchi"],
-    "character": "Savanna woodland, warm springs, safari tourism.",
-    "economy": "Tourism, lodge hospitality, conservation.",
-    "highlights": ["Wikki Warm Springs", "Elephant populations", "Bauchi tourism hub"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Yankari_National_Park"
-  },
-  {
-    "id": "landform-okomu-forest",
-    "name": "Okomu National Park",
-    "featureKind": "area",
-    "landformType": "forest",
-    "sizeTier": "medium",
-    "type": "Lowland rainforest reserve",
-    "summary": "Edo State rainforest fragment of the Niger Delta–Guinea forest transition.",
-    "description": "Okomu protects one of the last significant lowland rainforest blocks in western Nigeria. White-throated monkeys, forest buffaloes, and rich birdlife persist amid oil-palm plantation pressures on its boundaries.",
-    "elevationNote": "Mostly below 150 m",
-    "statesCrossed": ["Edo"],
-    "character": "Lowland rainforest, primate habitat, plantation fringe.",
-    "economy": "Ecotourism, research, NGO conservation.",
-    "highlights": ["White-throated monkey", "Edo rainforest remnant", "Forest buffalo"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Okomu_National_Park"
-  },
-  {
-    "id": "landform-kamuku-forest",
-    "name": "Kamuku National Park",
-    "featureKind": "area",
-    "landformType": "reserve",
-    "sizeTier": "medium",
-    "type": "Guinea savanna woodland reserve",
-    "summary": "Kaduna–Niger border park of savanna woodland, inselbergs, and gallery forest.",
-    "description": "Kamuku lies on the Kaduna Plateau fringe with rocky outcrops, seasonal streams, and mixed woodland. It forms part of the wider savanna conservation landscape between Birnin Gwari and the FCT.",
-    "elevationNote": "~400–700 m",
-    "statesCrossed": ["Kaduna", "Niger"],
-    "character": "Savanna woodland, inselbergs, gallery forest.",
-    "economy": "Limited tourism, grazing buffer zones.",
-    "highlights": ["Kaduna–Niger border park", "Rocky inselbergs", "Savanna woodland"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Kamuku_National_Park"
-  },
-  {
-    "id": "landform-old-oyo-park",
-    "name": "Old Oyo National Park",
-    "featureKind": "area",
-    "landformType": "reserve",
-    "sizeTier": "medium",
-    "type": "Savanna woodland & heritage reserve",
-    "summary": "Oyo–Kwara park preserving savanna around the ruins of the Old Oyo Empire.",
-    "description": "Old Oyo National Park combines Sudan savanna woodland with archaeological sites of the Oyo Empire capital. Wildlife includes antelope and baboons, while cultural tourism focuses on the ancient city ruins.",
-    "elevationNote": "~250–400 m",
-    "statesCrossed": ["Oyo", "Kwara"],
-    "character": "Savanna woodland, empire ruins, cultural landscape.",
-    "economy": "Heritage tourism, research, limited safari.",
-    "highlights": ["Old Oyo ruins", "Empire heritage", "Savanna wildlife"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Old_Oyo_National_Park"
-  },
-  {
-    "id": "landform-kainji-park",
-    "name": "Kainji Lake National Park",
-    "featureKind": "area",
-    "landformType": "reserve",
-    "sizeTier": "medium",
-    "type": "Lake & savanna woodland reserve",
-    "summary": "Nigeria's first national park, wrapping Kainji Lake and Borgu Game Reserve woodlands.",
-    "description": "Created in 1979 around the Kainji Dam reservoir, the park merges lake fisheries, savanna woodland, and the Borgu sector's larger mammals. It remains a reference point for Nigerian protected-area management.",
-    "elevationNote": "~150–300 m",
-    "statesCrossed": ["Niger", "Kwara"],
-    "character": "Reservoir, savanna woodland, Borgu sector wildlife.",
-    "economy": "Hydropower (adjacent), tourism, fisheries.",
-    "highlights": ["First Nigerian national park", "Kainji Lake", "Borgu Game Reserve"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Kainji_Lake_National_Park"
-  },
-  {
-    "id": "landform-chad-basin-park",
-    "name": "Chad Basin National Park",
-    "featureKind": "area",
-    "landformType": "reserve",
-    "sizeTier": "medium",
-    "type": "Sahel floodplain & woodland reserve",
-    "summary": "Borno–Yobe park of Chad Basin wetlands, acacia woodland, and seasonal lakes.",
-    "description": "Chad Basin National Park protects Sahel floodplain and woodland near Lake Chad's former southern edge. Seasonal wetlands attract waterbirds, though drought and insecurity have reduced visitation and monitoring.",
-    "elevationNote": "~280–350 m",
-    "statesCrossed": ["Borno", "Yobe"],
-    "character": "Sahel woodland, seasonal wetlands, Chad Basin fringe.",
-    "economy": "Limited tourism; pastoralism in buffer zones.",
-    "highlights": ["Lake Chad basin ecology", "Seasonal wetlands", "Sahel birdlife"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Chad_Basin_National_Park"
-  },
-  {
-    "id": "landform-edumanom-forest",
-    "name": "Edumanom Forest Reserve",
-    "featureKind": "area",
-    "landformType": "forest",
-    "sizeTier": "medium",
-    "type": "Niger Delta rainforest fragment",
-    "summary": "Bayelsa rainforest block with Nigeria's last known population of Niger Delta red colobus.",
-    "description": "Edumanom is a critically important Niger Delta rainforest fragment near Nembe. It hosts endangered primates and rich lowland forest biodiversity amid intense oil-industry pressure and community land claims.",
-    "elevationNote": "Near sea level; freshwater swamp fringe",
-    "statesCrossed": ["Bayelsa"],
-    "character": "Lowland rainforest, primate refuge, delta ecology.",
-    "economy": "Conservation NGOs, limited research access.",
-    "highlights": ["Niger Delta red colobus", "Delta rainforest remnant", "Endangered primate habitat"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Edumanom_Forest"
+    "highlights": [
+      "Iyake Suspended Lake",
+      "Oyo tourism landmark"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ado_Awaye",
+    "domain": "relief"
   }
 ]

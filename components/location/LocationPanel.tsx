@@ -35,6 +35,7 @@ import type {
   LgaGeneral,
 } from "@/types/location";
 import type { CompareBundle } from "@/types/compare";
+import type { PresidentialBundle } from "@/types/politics";
 import { OVERLAY_LAYER_LABELS } from "@/types/overlay";
 import { resolveStateContent } from "@/lib/location/stateContent";
 
@@ -51,6 +52,7 @@ interface LocationPanelProps {
   countryNotes: CountryNotesMap;
   peopleNotes: PeopleNotesMap;
   lgaGeneral: Record<string, LgaGeneral>;
+  presidential: PresidentialBundle;
 }
 
 export default function LocationPanel({
@@ -66,6 +68,7 @@ export default function LocationPanel({
   countryNotes,
   peopleNotes,
   lgaGeneral,
+  presidential,
 }: LocationPanelProps) {
   const isMobile = useIsMobile();
   const [desktopCompareOpen, setDesktopCompareOpen] = useState(false);
@@ -268,6 +271,7 @@ export default function LocationPanel({
               compareBundle={compareBundle}
               countryNotes={countryNotes}
               peopleNotes={peopleNotes}
+              presidential={presidential}
             />
           )}
 

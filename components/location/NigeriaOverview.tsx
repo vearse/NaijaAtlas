@@ -6,7 +6,8 @@ import CountryProfile from "@/components/compare/CountryProfile";
 import OverlayItemList from "@/components/location/OverlayItemList";
 import { openStateOverlayItemOnMap } from "@/lib/map/openOverlayItem";
 import { useMapStore } from "@/lib/store/mapStore";
-import { resolveDefaultRankingMetric } from "@/lib/ranking/defaults";
+import OverviewMapModesCarousel from "@/components/location/OverviewMapModesCarousel";
+import type { PresidentialBundle } from "@/types/politics";
 import { totalLandAreaKm2 } from "@/lib/compare/landArea";
 import {
   getCategoryData,
@@ -42,6 +43,7 @@ interface NigeriaOverviewProps {
   compareBundle: CompareBundle;
   countryNotes?: CountryNotesMap;
   peopleNotes?: PeopleNotesMap;
+  presidential: PresidentialBundle;
 }
 
 const NOTE_CATEGORY_STYLES: Record<string, string> = {
@@ -65,7 +67,7 @@ const CATEGORY_ORDER = [
 const TOURIST_SECTIONS: { key: keyof StateOverlayBundle; title: string }[] = [
   { key: "cities", title: "Cities to visit" },
   { key: "places", title: "Places to visit" },
-  { key: "landforms", title: "Landforms & scenery" },
+  { key: "landforms", title: "Highlands & scenery" },
   { key: "lakes", title: "Lakes" },
 ];
 
@@ -238,9 +240,9 @@ export default function NigeriaOverview({
   compareBundle,
   countryNotes = {},
   peopleNotes = {},
+  presidential,
 }: NigeriaOverviewProps) {
   const openWikiModal = useMapStore((s) => s.openWikiModal);
-  const enterRankingMode = useMapStore((s) => s.enterRankingMode);
   const [openIndex, setOpenIndex] = useState(0);
   const { activeLens, matches } = useLensFilter();
   const totalLgas = states.reduce((n, s) => n + s.lgaCount, 0);
@@ -480,18 +482,11 @@ export default function NigeriaOverview({
         </div>
       </dl>
 
-      <button
-        type="button"
-        onClick={() =>
-          enterRankingMode(resolveDefaultRankingMetric(compareBundle, states))
-        }
-        className="w-full text-left rounded-xl border border-emerald-200/90 bg-gradient-to-r from-emerald-50 to-white px-4 py-3.5 shadow-sm hover:border-emerald-300 transition-colors"
-      >
-        <p className="text-sm font-bold text-slate-900">Rank states on the map</p>
-        <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-          Color every state by Economy or Social indicators — IGR, literacy, poverty, and more.
-        </p>
-      </button>
+      <OverviewMapModesCarousel
+        states={states}
+        compareBundle={compareBundle}
+        presidential={presidential}
+      />
 
       <div>
         <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">

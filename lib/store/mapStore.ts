@@ -117,7 +117,11 @@ import type { OverlayLayerId, SelectedOverlayFeature } from "@/types/overlay";
 import type { DrivingStep } from "@/lib/map/directionsApi";
 import type { LensId } from "@/lib/lenses/lensHelper";
 import { defaultOverlaysForLens } from "@/lib/lenses/lensMapLayers";
-import { syncAllOverlayVisibility } from "@/components/map/overlayLayers";
+import {
+  finalizeOverlayStack,
+  syncAllOverlayVisibility,
+} from "@/components/map/overlayLayers";
+import { syncOverlayPresentation } from "@/lib/map/syncOverlayPresentation";
 import type { PollingUnitShardEntry } from "@/types/politics";
 import type { LgaFocusPlan } from "@/lib/map/lgaMapFocus";
 import {
@@ -664,6 +668,10 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     const state = get();
     const next = new Set(state.activeOverlays);
     const turningOn = !next.has(id);
+    const focus =
+      !turningOn && state.overlayFeatureFocus?.layerId === id
+        ? null
+        : state.overlayFeatureFocus;
     if (turningOn) {
       next.add(id);
       set({
@@ -671,6 +679,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         activeOverlays: next,
         overlayGuideLayer: id,
         selectedOverlay: null,
+        overlayFeatureFocus: focus,
         selectedLgaId: null,
         activeRegionId: null,
         panelOpen: true,
@@ -686,7 +695,21 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         activeOverlays: next,
         overlayGuideLayer:
           state.overlayGuideLayer === id ? null : state.overlayGuideLayer,
+        overlayFeatureFocus: focus,
       });
+    }
+    const map = get().mapInstance;
+    if (map?.isStyleLoaded()) {
+      const latest = get();
+      syncAllOverlayVisibility(map, next);
+      finalizeOverlayStack(map);
+      syncOverlayPresentation(
+        map,
+        latest.activeLens,
+        next,
+        latest.overlayFeatureFocus,
+        latest.mapType !== "election" && latest.mapType !== "ranking"
+      );
     }
   },
 

@@ -1,0 +1,498 @@
+[
+  {
+    "id": "ecology-niger-delta",
+    "name": "Niger Delta",
+    "featureKind": "area",
+    "landformType": "delta",
+    "sizeTier": "major",
+    "type": "Coastal sedimentary lowland",
+    "summary": "Africa's largest wetland delta where the Niger meets the Atlantic; Nigeria's petroleum heartland.",
+    "description": "The delta covers ~70,000 km² of mangrove, freshwater swamp, and barrier islands. It holds the bulk of Nigeria's oil and gas, a dense creek network, and highly politicised environmental and federal-revenue issues.",
+    "elevationNote": "Mostly near sea level; tidal mangrove",
+    "statesCrossed": [
+      "Delta",
+      "Bayelsa",
+      "Rivers",
+      "Akwa Ibom",
+      "Cross River",
+      "Edo",
+      "Ondo",
+      "Abia",
+      "Imo"
+    ],
+    "character": "Mangrove, oilfields, riverine settlements, barrier islands.",
+    "economy": "Oil and gas, fisheries, boat transport, refining.",
+    "agriculture": "Hydromorphic gleysols, peat, and alluvial deposits on a landscape of seasonally flooded flats, backswamps, and levees. Oil-palm agroforest dominates the better-drained levee ridges; fisheries are economically vital.",
+    "crops": [
+      "Oil palm (Elaeis guineensis) — the delta is the heart of Nigeria's smallholder oil-palm belt; red palm oil and kernel extraction",
+      "Rubber (Hevea brasiliensis) — plantation and smallholder rubber on drier ridges (Edo, Delta)",
+      "Plantain and banana (Musa spp.) — staple carbohydrate on levee soils",
+      "Cassava — garri, lafun, and fufu processing across the delta hinterland",
+      "Yam — white and yellow yam in the drier northern delta fringe",
+      "Rice — both lowland swamp rice and fadama irrigation (Rivers, Delta State paddies)",
+      "Cocoyam (Colocasia & Xanthosoma) — shade-tolerant tuber under palm canopy",
+      "Fluted pumpkin (Telfairia occidentalis) — ugu leaf vegetable widely intercropped",
+      "Vegetables: amaranth, okra, peppers, garden egg — backyard and creek bank gardens",
+      "Coconut palm — barrier beaches and island fringes of the delta mouth",
+      "Mangrove (Rhizophora, Avicennia) — fuelwood, poles, and fisheries habitat",
+      "Fish, shrimp, and crab artisanal fisheries — the delta is Nigeria's richest inland/coastal fishery"
+    ],
+    "planting": [
+      "Plant cassava and yam on levee ridges (higher drained ground) away from deep backswamps",
+      "Oil palms are usually retained on family farms — propagate by seedling and suckers at 9×9 m spacing",
+      "Use mounds and raised beds for vegetables in perennially waterlogged backswamp soils",
+      "Construct small fish ponds (earthen ponds) in abandoned rice fields for tilapia and catfish",
+      "Avoid draining mangrove wetlands — nursery habitat for fish stocks and shoreline protection"
+    ],
+    "highlights": [
+      "World-class petroleum province",
+      "Largest African delta",
+      "Mangrove biodiversity"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Niger_Delta",
+    "domain": "ecology"
+  },
+  {
+    "id": "ecology-sokoto-basin",
+    "name": "Sokoto Basin",
+    "featureKind": "area",
+    "landformType": "basin",
+    "sizeTier": "major",
+    "type": "Sedimentary basin / plains",
+    "summary": "Semi-arid sedimentary basin of the northwest drained by the Sokoto–Rima system.",
+    "description": "Cretaceous–Tertiary sediments underlie millet, sorghum, and irrigated fadama. The basin is drought-prone and depends on dams and groundwater. It is the core landscape of the Caliphate northwest.",
+    "elevationNote": "About 200–400 m",
+    "statesCrossed": [
+      "Sokoto",
+      "Kebbi",
+      "Zamfara",
+      "Niger",
+      "Katsina"
+    ],
+    "character": "Sahel–Sudan plains, seasonal rivers, irrigation schemes.",
+    "economy": "Grain, livestock, onions (dry-season irrigation), limited oil exploration historically.",
+    "highlights": [
+      "Sokoto–Rima irrigation",
+      "Sahel fringe",
+      "Caliphate heartland plains"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Sokoto_State",
+    "domain": "ecology"
+  },
+  {
+    "id": "ecology-guinea-savanna",
+    "name": "Guinea Savanna",
+    "featureKind": "area",
+    "landformType": "savanna",
+    "sizeTier": "major",
+    "type": "Vegetation / landscape belt",
+    "summary": "Wooded savanna belt between southern rainforest and northern Sudan/Sahel savanna.",
+    "description": "Guinea savanna (southern and northern Guinea) is Nigeria's broad middle belt: shea, yam, sorghum, and cattle routes. Rainfall is typically 900–1,500 mm. It includes much of Kwara, Niger, Kogi, Benue, Nasarawa, and parts of Kaduna and FCT.",
+    "elevationNote": "Mostly 200–600 m plains and inselbergs",
+    "statesCrossed": [
+      "Kwara",
+      "Niger",
+      "Kogi",
+      "Benue",
+      "Nassarawa",
+      "Plateau",
+      "Kaduna",
+      "Federal Capital Territory"
+    ],
+    "character": "Parkland trees, seasonal burn, mixed farming.",
+    "economy": "Yam, shea, grains, livestock corridors, Abuja hinterland.",
+    "agriculture": "Deep ferric luvisols support root crops and cereals. Shea parklands are retained on farm fields across the belt. Short fallow rotations are common.",
+    "crops": [
+      "Yam (Dioscorea rotundata) — white guinea yam is the staple tuber crop",
+      "Cassava (Manihot esculenta) — processed into garri, fufu, and flour",
+      "Guinea corn / Sorghum (Sorghum bicolor) — guinea-corn for ogi, pap, and tuwo",
+      "Millet (Pennisetum glaucum) — early-maturing dry-season staple",
+      "Maize (Zea mays) — grown as second crop in yam/cassava rotations",
+      "Rice (Oryza sativa & O. glaberrima) — lowland fadama and upland varieties",
+      "Shea nut (Vitellaria paradoxa) — shea butter extraction, parkland agroforestry",
+      "Groundnut / Peanut (Arachis hypogaea) — oilseed and snack crop",
+      "Soybean (Glycine max) — expanding for oil and poultry feed",
+      "Cowpea (Vigna unguiculata) — beans and leaves as vegetable",
+      "Sesame (Sesamum indicum) — northern guinea fringe for oilseeds",
+      "Mango, citrus, and cashew — scattered commercial orchards"
+    ],
+    "planting": [
+      "Plant yam mounds (heaps) with stakes from November–December; seed yam setts planted February–April",
+      "Sorghum and millet sown at first rains (April–May); late maize July–August",
+      "Cassava stem cuttings planted March–May, harvested 9–18 months later",
+      "Shea trees retained as permanent parkland — do not clear mature shea on new farms",
+      "Use minimum tillage and tied ridges to reduce runoff on sloping ground"
+    ],
+    "highlights": [
+      "Middle Belt landscape",
+      "Shea belt",
+      "Yam belt overlap"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Guinean_savanna",
+    "domain": "ecology"
+  },
+  {
+    "id": "ecology-sudan-savanna",
+    "name": "Sudan Savanna",
+    "featureKind": "area",
+    "landformType": "savanna",
+    "sizeTier": "major",
+    "type": "Vegetation / landscape belt",
+    "summary": "Open-tree savanna of the far-north fringe — drier than Guinea, main cereal and legume zone.",
+    "description": "Sudan savanna is Nigeria's northern crop-and-livestock belt with 500–900 mm annual rainfall, shorter wet season (3–5 months), and scattered acacia and baobab trees. It covers most of Kano, Katsina, southern Sokoto, southern Borno, Jigawa, Bauchi and Gombe.",
+    "elevationNote": "Mostly 350–700 m undulating plains with inselbergs",
+    "statesCrossed": [
+      "Kano",
+      "Katsina",
+      "Sokoto",
+      "Kebbi",
+      "Zamfara",
+      "Kaduna",
+      "Bauchi",
+      "Gombe",
+      "Jigawa",
+      "Yobe",
+      "Borno",
+      "Niger"
+    ],
+    "character": "Acacia parkland, baobab, seasonal wadis, transhumance cattle corridors.",
+    "economy": "Cereals, legumes, livestock, irrigation dams, dry-season onion belts.",
+    "agriculture": "Shallow sandy-loam soils with low organic matter — rely on organic manure, mulch, and small-scale irrigation (tudun wada fadamas). Wind erosion and desertification pressures on the northern fringe.",
+    "crops": [
+      "Millet (Pennisetum glaucum) — early and extra-early varieties dominate (doro, maiwa)",
+      "Guinea corn / Sorghum (Sorghum bicolor) — tall late varieties on deeper soils",
+      "Cowpea (Vigna unguiculata) — dual-purpose grain and leaves (dan wake)",
+      "Groundnut (Arachis hypogaea) — historic groundnut pyramid belt (Kano, Katsina)",
+      "Sesame (Sesamum indicum) — Jigawa, Bauchi, Gombe are leading producers",
+      "Wheat (Triticum aestivum) — irrigated dry season on Hadejia-Jama'are fadamas",
+      "Onion (Allium cepa) — dry-season irrigated bulb crop (Aliero riba, Kano red)",
+      "Tomato & pepper — irrigated dry season vegetables, especially Kano/Jigawa",
+      "Sweet potato (Ipomoea batatas) — orange-fleshed varieties expanding",
+      "Baobab (Adansonia digitata) — fruit, leaves (kuka), and bark for traditional uses",
+      "Acacia gum (Acacia senegal) — gum arabic agroforestry on the fringe",
+      "Neem (Azadirachta indica) — multipurpose shade, medicinal, and windbreak tree"
+    ],
+    "planting": [
+      "Sow millet and sorghum at first effective rains (June–early July); use tied ridges to capture moisture",
+      "Intercrop cowpea with millet/sorghum to reduce erosion risk and maximise land",
+      "Dry-season onion and tomato: plant on raised beds October–November, irrigate through March",
+      "Construct small earthen bunds and zaï pits on degraded soils to capture runoff",
+      "Retain baobab, acacia, and faidherbia trees in farm fields for soil fertility and fodder"
+    ],
+    "highlights": [
+      "Millet & sorghum heartland",
+      "Groundnut pyramid heritage",
+      "Fadama irrigation"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Sudanian_savanna",
+    "domain": "ecology"
+  },
+  {
+    "id": "ecology-sahel-savanna",
+    "name": "Sahel Savanna",
+    "featureKind": "area",
+    "landformType": "savanna",
+    "sizeTier": "major",
+    "type": "Semi-arid vegetation belt at the desert fringe",
+    "summary": "Semi-arid grass and acacia steppe on the northern desert boundary — pastoral and resilient dry-crop zone.",
+    "description": "The Sahel is the narrow northernmost vegetation zone along the Niger border with <500 mm annual rainfall and frequent droughts. It is dominated by short grass, sparse acacia, and a pastoral economy based on cattle, sheep, and goats. Lake Chad and Komadougu-Yobe basins sustain irrigation oasis.",
+    "elevationNote": "250–450 m; flat to gently rolling sandy plains",
+    "statesCrossed": [
+      "Sokoto",
+      "Kebbi",
+      "Zamfara",
+      "Katsina",
+      "Kano",
+      "Jigawa",
+      "Yobe",
+      "Borno"
+    ],
+    "character": "Short annual grass, scattered thorny trees, wadis, transhumance routes and lake oases.",
+    "economy": "Pastoralism, drought-millet, lake-basin irrigation, gum arabic agroforestry.",
+    "agriculture": "Very fragile sandy soils with low water-holding capacity — depend on drought-tolerant crops, water-harvesting structures, and lake/fadama irrigation. Desertification and wind erosion are active challenges.",
+    "crops": [
+      "Drought millet (Pennisetum glaucum) — extra-early 60-day varieties (zuru, sara)",
+      "Sorghum (early-maturing drought types) — occasionally with supplemental watering",
+      "Cowpea — drought-tolerant black-eyed varieties for grain and fodder",
+      "Wheat — around Lake Chad pump-irrigation and Komadougu floodplain",
+      "Dryland rice — Oryza glaberrima on fadamas where water is available",
+      "Date palm (Phoenix dactylifera) — around Lake Chad oases (Bama, Dikwa belts)",
+      "Gum arabic (Acacia senegal) — agroforestry stands for export-grade gum",
+      "Balanites aegyptiaca (desert date) — edible fruit, oil seed, and medicinal",
+      "Acacia nilotica — shade, browse, and tannin tree",
+      "Wild melon / egusi-type gourds — drought-resilient minor crops",
+      "Roselle (Hibiscus sabdariffa) — zobo drink leaves and calyxes",
+      "Sorghum-sudangrass hybrids for fodder in the pastoral system"
+    ],
+    "planting": [
+      "Plant millet as early as possible once rains establish (late June) — delay causes crop failure in short rainy seasons",
+      "Use zaï / tassa pits and half-moons to concentrate scarce runoff water around planting holes",
+      "Integrate livestock into crop rotation — penning animals on fields overnight builds soil fertility (korji / dung manuring)",
+      "Plant gum arabic (A. senegal) windbreaks across farm fields to reduce wind erosion and diversify income",
+      "Rely on indigenous drought-tolerant varieties — avoid hybrids requiring reliable water"
+    ],
+    "highlights": [
+      "Northern pastoral zone",
+      "Lake Chad oases",
+      "Gum arabic belt"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Sahel",
+    "domain": "ecology"
+  },
+  {
+    "id": "ecology-oban-hills",
+    "name": "Oban Hills",
+    "featureKind": "area",
+    "landformType": "forest",
+    "sizeTier": "medium",
+    "type": "Rainforest hill range",
+    "summary": "Cross River rainforest highlands linked to the Oban sector of Cross River National Park.",
+    "description": "Oban Hills lie in the Cross River–Cameroon biodiversity hotspot with lowland and montane rainforest, drill monkeys, and forest elephants (rare). Terrain is rugged and heavily forested.",
+    "elevationNote": "~200–900 m",
+    "statesCrossed": [
+      "Cross River"
+    ],
+    "character": "Rainforest, biodiversity hotspot, protected areas.",
+    "economy": "Ecotourism, conservation, limited hill farming.",
+    "agriculture": "Acrisols and ferralsols on steep slopes — highly leached but suitable for tree crops. Land-use pressure is intense outside the park boundary with shifting cultivation and cocoa farms.",
+    "crops": [
+      "Cocoa (Theobroma cacao) — shaded cocoa agroforestry on park buffer-zone farms",
+      "Oil palm (Elaeis guineensis) — semi-wild stands and plantation palms",
+      "Rubber (Hevea brasiliensis) — smallholder rubber on gentler slopes",
+      "Plantain and banana — staple food of the Efik and Ejagham communities",
+      "Cassava and yam — shifting-cultivation staples in the wider district",
+      "Cocoyam, sweet potato, and taro — under-storey root crops",
+      "Okra, pepper, and amaranth — backyard vegetables in the villages",
+      "Citrus (oranges, tangerine, lime) — expanding market-garden orchards",
+      "Kolanut (Cola nitida & acuminata) — traditional cash crop with ceremonial uses",
+      "Bush mango (Irvingia gabonensis) — ogbono soup seeds from retained forest trees",
+      "Raffia palm (Raphia spp.) — palm wine, thatch, and raffia fibre",
+      "Timber species: mahogany, obeche, iroko — strictly protected inside the national park"
+    ],
+    "planting": [
+      "Practice agroforestry: retain large native forest trees when planting cocoa — they shade the crop and protect watersheds",
+      "Build contour stone lines or grass barriers on hillsides to stop sheet erosion",
+      "Rotate cocoa farms with 10–15 year fallows under secondary forest to rebuild soil organic matter",
+      "Plant multi-purpose nitrogen-fixing trees (Gliricidia, Albizia) along farm boundaries",
+      "Respect park boundaries — avoid clearing new farms inside Cross River National Park"
+    ],
+    "highlights": [
+      "Cross River National Park",
+      "Biodiversity hotspot",
+      "Rainforest hills"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Cross_River_National_Park",
+    "domain": "ecology"
+  },
+  {
+    "id": "ecology-sambisa-forest",
+    "name": "Sambisa Forest",
+    "featureKind": "area",
+    "landformType": "forest",
+    "sizeTier": "major",
+    "type": "Dry woodland / forest reserve",
+    "summary": "Vast woodland–grassland complex south of Maiduguri, historically among Nigeria's largest forest blocks.",
+    "description": "Sambisa spans southern Borno with open woodland, grassland, and seasonal streams draining toward the Yedseram. It is ecologically important Sahel–Sudan transition habitat, though much of the reserve has been degraded by conflict and land-use change since the 2010s.",
+    "elevationNote": "~350–500 m",
+    "statesCrossed": [
+      "Borno"
+    ],
+    "character": "Open woodland, seasonal streams, Sahel fringe ecology.",
+    "economy": "Limited ecotourism potential; historically grazing and dry-season farming.",
+    "highlights": [
+      "Borno woodland belt",
+      "Sahel–Sudan transition",
+      "Yedseram drainage"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Sambisa_Forest",
+    "domain": "ecology"
+  },
+  {
+    "id": "ecology-cross-river-np",
+    "name": "Cross River National Park",
+    "featureKind": "area",
+    "landformType": "reserve",
+    "sizeTier": "major",
+    "type": "Lowland & montane rainforest reserve",
+    "summary": "Nigeria's flagship rainforest park in two sectors — Oban and Okwangwo — in the Cross River biodiversity hotspot.",
+    "description": "Cross River National Park protects some of West Africa's last intact lowland and montane rainforest. The Oban Hills and Okwangwo sectors harbour drill monkeys, forest elephants, chimpanzees, and exceptional plant diversity on rugged terrain near the Cameroon border.",
+    "elevationNote": "~50–900 m across sectors",
+    "statesCrossed": [
+      "Cross River"
+    ],
+    "character": "Rainforest, rugged hills, international biodiversity hotspot.",
+    "economy": "Ecotourism, research, conservation funding.",
+    "highlights": [
+      "Oban sector",
+      "Okwangwo sector",
+      "Cross River–Cameroon hotspot"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Cross_River_National_Park",
+    "domain": "ecology"
+  },
+  {
+    "id": "ecology-yankari-reserve",
+    "name": "Yankari Game Reserve",
+    "featureKind": "area",
+    "landformType": "reserve",
+    "sizeTier": "medium",
+    "type": "Savanna woodland reserve",
+    "summary": "Bauchi's premier wildlife reserve around Wikki Warm Springs and open savanna woodland.",
+    "description": "Yankari is one of Nigeria's most visited protected areas, combining Sudan savanna woodland with the Wikki Warm Springs. Elephants, baboons, and antelope remain, though poaching pressure has reduced populations since peak tourism in the 1980s–90s.",
+    "elevationNote": "~200–450 m",
+    "statesCrossed": [
+      "Bauchi"
+    ],
+    "character": "Savanna woodland, warm springs, safari tourism.",
+    "economy": "Tourism, lodge hospitality, conservation.",
+    "highlights": [
+      "Wikki Warm Springs",
+      "Elephant populations",
+      "Bauchi tourism hub"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Yankari_National_Park",
+    "domain": "ecology"
+  },
+  {
+    "id": "ecology-okomu-forest",
+    "name": "Okomu National Park",
+    "featureKind": "area",
+    "landformType": "forest",
+    "sizeTier": "medium",
+    "type": "Lowland rainforest reserve",
+    "summary": "Edo State rainforest fragment of the Niger Delta–Guinea forest transition.",
+    "description": "Okomu protects one of the last significant lowland rainforest blocks in western Nigeria. White-throated monkeys, forest buffaloes, and rich birdlife persist amid oil-palm plantation pressures on its boundaries.",
+    "elevationNote": "Mostly below 150 m",
+    "statesCrossed": [
+      "Edo"
+    ],
+    "character": "Lowland rainforest, primate habitat, plantation fringe.",
+    "economy": "Ecotourism, research, NGO conservation.",
+    "highlights": [
+      "White-throated monkey",
+      "Edo rainforest remnant",
+      "Forest buffalo"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Okomu_National_Park",
+    "domain": "ecology"
+  },
+  {
+    "id": "ecology-kamuku-forest",
+    "name": "Kamuku National Park",
+    "featureKind": "area",
+    "landformType": "reserve",
+    "sizeTier": "medium",
+    "type": "Guinea savanna woodland reserve",
+    "summary": "Kaduna–Niger border park of savanna woodland, inselbergs, and gallery forest.",
+    "description": "Kamuku lies on the Kaduna Plateau fringe with rocky outcrops, seasonal streams, and mixed woodland. It forms part of the wider savanna conservation landscape between Birnin Gwari and the FCT.",
+    "elevationNote": "~400–700 m",
+    "statesCrossed": [
+      "Kaduna",
+      "Niger"
+    ],
+    "character": "Savanna woodland, inselbergs, gallery forest.",
+    "economy": "Limited tourism, grazing buffer zones.",
+    "highlights": [
+      "Kaduna–Niger border park",
+      "Rocky inselbergs",
+      "Savanna woodland"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kamuku_National_Park",
+    "domain": "ecology"
+  },
+  {
+    "id": "ecology-old-oyo-park",
+    "name": "Old Oyo National Park",
+    "featureKind": "area",
+    "landformType": "reserve",
+    "sizeTier": "medium",
+    "type": "Savanna woodland & heritage reserve",
+    "summary": "Oyo–Kwara park preserving savanna around the ruins of the Old Oyo Empire.",
+    "description": "Old Oyo National Park combines Sudan savanna woodland with archaeological sites of the Oyo Empire capital. Wildlife includes antelope and baboons, while cultural tourism focuses on the ancient city ruins.",
+    "elevationNote": "~250–400 m",
+    "statesCrossed": [
+      "Oyo",
+      "Kwara"
+    ],
+    "character": "Savanna woodland, empire ruins, cultural landscape.",
+    "economy": "Heritage tourism, research, limited safari.",
+    "highlights": [
+      "Old Oyo ruins",
+      "Empire heritage",
+      "Savanna wildlife"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Old_Oyo_National_Park",
+    "domain": "ecology"
+  },
+  {
+    "id": "ecology-kainji-park",
+    "name": "Kainji Lake National Park",
+    "featureKind": "area",
+    "landformType": "reserve",
+    "sizeTier": "medium",
+    "type": "Lake & savanna woodland reserve",
+    "summary": "Nigeria's first national park, wrapping Kainji Lake and Borgu Game Reserve woodlands.",
+    "description": "Created in 1979 around the Kainji Dam reservoir, the park merges lake fisheries, savanna woodland, and the Borgu sector's larger mammals. It remains a reference point for Nigerian protected-area management.",
+    "elevationNote": "~150–300 m",
+    "statesCrossed": [
+      "Niger",
+      "Kwara"
+    ],
+    "character": "Reservoir, savanna woodland, Borgu sector wildlife.",
+    "economy": "Hydropower (adjacent), tourism, fisheries.",
+    "highlights": [
+      "First Nigerian national park",
+      "Kainji Lake",
+      "Borgu Game Reserve"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kainji_Lake_National_Park",
+    "domain": "ecology"
+  },
+  {
+    "id": "ecology-chad-basin-park",
+    "name": "Chad Basin National Park",
+    "featureKind": "area",
+    "landformType": "reserve",
+    "sizeTier": "medium",
+    "type": "Sahel floodplain & woodland reserve",
+    "summary": "Borno–Yobe park of Chad Basin wetlands, acacia woodland, and seasonal lakes.",
+    "description": "Chad Basin National Park protects Sahel floodplain and woodland near Lake Chad's former southern edge. Seasonal wetlands attract waterbirds, though drought and insecurity have reduced visitation and monitoring.",
+    "elevationNote": "~280–350 m",
+    "statesCrossed": [
+      "Borno",
+      "Yobe"
+    ],
+    "character": "Sahel woodland, seasonal wetlands, Chad Basin fringe.",
+    "economy": "Limited tourism; pastoralism in buffer zones.",
+    "highlights": [
+      "Lake Chad basin ecology",
+      "Seasonal wetlands",
+      "Sahel birdlife"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Chad_Basin_National_Park",
+    "domain": "ecology"
+  },
+  {
+    "id": "ecology-edumanom-forest",
+    "name": "Edumanom Forest Reserve",
+    "featureKind": "area",
+    "landformType": "forest",
+    "sizeTier": "medium",
+    "type": "Niger Delta rainforest fragment",
+    "summary": "Bayelsa rainforest block with Nigeria's last known population of Niger Delta red colobus.",
+    "description": "Edumanom is a critically important Niger Delta rainforest fragment near Nembe. It hosts endangered primates and rich lowland forest biodiversity amid intense oil-industry pressure and community land claims.",
+    "elevationNote": "Near sea level; freshwater swamp fringe",
+    "statesCrossed": [
+      "Bayelsa"
+    ],
+    "character": "Lowland rainforest, primate refuge, delta ecology.",
+    "economy": "Conservation NGOs, limited research access.",
+    "highlights": [
+      "Niger Delta red colobus",
+      "Delta rainforest remnant",
+      "Endangered primate habitat"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Edumanom_Forest",
+    "domain": "ecology"
+  }
+]

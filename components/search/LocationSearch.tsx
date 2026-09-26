@@ -14,6 +14,7 @@ import { resolveLgaFocusPlan } from "@/lib/map/lgaMapFocus";
 
 const OVERLAY_LEVELS = new Set<OverlayLevel>([
   "landform",
+  "ecology",
   "resource",
   "city",
   "lake",
@@ -32,6 +33,7 @@ const LEVEL_EMOJI: Record<string, string> = {
   metro: "🌆",
   "state-note": "📌",
   landform: "🏔️",
+  ecology: "🌿",
   resource: "⛏️",
   city: "🏙️",
   lake: "💧",
@@ -199,7 +201,8 @@ export default function LocationSearch({ lgas = [] }: { lgas?: LgaLocation[] }) 
           for (const lid of layers) {
             if (lid === "cities") layerIds.push("overlay-cities-points");
             else if (lid === "resources") layerIds.push("overlay-resources-points");
-            else if (lid === "landforms") layerIds.push("overlay-landforms-points");
+            else if (lid === "landforms") layerIds.push("overlay-landforms-markers");
+            else if (lid === "ecology") layerIds.push("overlay-ecology-markers");
             else if (lid === "lakes") layerIds.push("overlay-lakes-points", "overlay-lakes-poly");
             else if (lid === "waterways") {
               layerIds.push("overlay-waterways-line", "overlay-waterways-point-icons");
@@ -259,6 +262,7 @@ export default function LocationSearch({ lgas = [] }: { lgas?: LgaLocation[] }) 
     if (entry.level === "city" && entry.typeLabel) return entry.typeLabel;
     if (entry.level === "resource" && entry.typeLabel) return entry.typeLabel;
     if (entry.level === "landform" && entry.typeLabel) return entry.typeLabel;
+    if (entry.level === "ecology" && entry.typeLabel) return entry.typeLabel;
     if (entry.level === "lake" && entry.typeLabel) return entry.typeLabel;
     return entry.stateName ?? "";
   }

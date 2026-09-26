@@ -106,7 +106,7 @@ export function mountOverlaySource(map: Map, layerId: OverlayLayerId): void {
 }
 
 export function mountOverlayLayersFor(map: Map, layerId: OverlayLayerId): void {
-  if (layerId === "landforms") removeStaleLandformLayers(map);
+  if (layerId === "landforms" || layerId === "ecology") removeStaleLandformLayers(map);
   if (layerId === "waterways") removeStaleWaterwayLayers(map);
   mountOverlaySource(map, layerId);
   const entry = OVERLAY_REGISTRY[layerId];
@@ -151,7 +151,7 @@ export function setOverlayVisibility(
   if (layerId === "lakes") registerLakeIcons(map);
   if (layerId === "waterways") registerWaterwayLayerIcons(map);
   if (layerId === "resources") registerResourceIcons(map);
-  if (layerId === "landforms") {
+  if (layerId === "landforms" || layerId === "ecology") {
     registerLandformIcons(map);
     removeStaleLandformLayers(map);
   }
@@ -169,9 +169,26 @@ export function setOverlayVisibility(
       | undefined;
     tourSource?.setData(visible ? getTourGeoJSON() : EMPTY_GEOJSON);
   }
-  if (layerId === "landforms" && visible) {
+  if ((layerId === "landforms" || layerId === "ecology") && visible) {
     registerLandformIcons(map);
     map.triggerRepaint();
+  }
+}
+
+/** Re-register icons before showing layers (style swaps can drop images). */
+export function prepareOverlayAssets(
+  map: Map,
+  active: Set<OverlayLayerId>
+): void {
+  if (active.has("cities")) {
+    registerCityIcons(map);
+    registerTourIcon(map);
+  }
+  if (active.has("lakes")) registerLakeIcons(map);
+  if (active.has("waterways")) registerWaterwayLayerIcons(map);
+  if (active.has("resources")) registerResourceIcons(map);
+  if (active.has("landforms") || active.has("ecology")) {
+    registerLandformIcons(map);
   }
 }
 
@@ -179,9 +196,15 @@ export function syncAllOverlayVisibility(
   map: Map,
   active: Set<OverlayLayerId>
 ): void {
+  prepareOverlayAssets(map, active);
   for (const layerId of OVERLAY_LAYER_IDS) {
     setOverlayVisibility(map, layerId, active.has(layerId));
   }
+  finalizeOverlayStack(map);
+}
+
+/** Keep ocean under states; symbol overlays above admin (cities on top). */
+export function finalizeOverlayStack(map: Map): void {
   restackOverlayLayers(map);
   restackTopOverlayLayers(map);
 }
@@ -189,12 +212,17 @@ export function syncAllOverlayVisibility(
 /**
  * Ocean + mid overlays. Lakes/landforms/cities are restacked on top separately.
  */
+function anchorBelowStatesFill(map: Map): string | undefined {
+  if (map.getLayer("states-fill")) return "states-fill";
+  if (map.getLayer(INSERT_ABOVE_STATES)) return INSERT_ABOVE_STATES;
+  if (map.getLayer(INSERT_BELOW_NEIGHBORS)) return INSERT_BELOW_NEIGHBORS;
+  return undefined;
+}
+
 export function restackOverlayLayers(map: Map): void {
-  if (map.getLayer(OCEAN_FILL_LAYER_ID)) {
-    map.moveLayer(
-      OCEAN_FILL_LAYER_ID,
-      map.getLayer("states-fill") ? "states-fill" : undefined
-    );
+  const belowFill = anchorBelowStatesFill(map);
+  if (map.getLayer(OCEAN_FILL_LAYER_ID) && belowFill) {
+    map.moveLayer(OCEAN_FILL_LAYER_ID, belowFill);
   }
 
   const aboveStates = map.getLayer(INSERT_ABOVE_STATES)
@@ -204,15 +232,24 @@ export function restackOverlayLayers(map: Map): void {
     .filter((l) => l.id !== OCEAN_FILL_LAYER_ID)
     .map((l) => l.id);
   for (const id of midOverlayIds) {
-    if (map.getLayer(id)) map.moveLayer(id, aboveStates);
+    if (!map.getLayer(id)) continue;
+    if (aboveStates) map.moveLayer(id, aboveStates);
   }
 }
 
-/** Lakes, landforms, cities, resources — always above states and LGA fills. */
+/**
+ * Symbol overlays above admin boundaries. Order (bottom → top): lakes → landforms
+ * → waterways (lines/icons) → cities → resources.
+ */
 export function restackTopOverlayLayers(map: Map): void {
+  const waterwayIds = OVERLAY_REGISTRY.waterways.layers
+    .filter((l) => l.id !== OCEAN_FILL_LAYER_ID)
+    .map((l) => l.id);
   const topIds = [
     ...OVERLAY_REGISTRY.lakes.layers.map((l) => l.id),
     ...OVERLAY_REGISTRY.landforms.layers.map((l) => l.id),
+    ...OVERLAY_REGISTRY.ecology.layers.map((l) => l.id),
+    ...waterwayIds,
     ...OVERLAY_REGISTRY.cities.layers.map((l) => l.id),
     ...OVERLAY_REGISTRY.resources.layers.map((l) => l.id),
   ];

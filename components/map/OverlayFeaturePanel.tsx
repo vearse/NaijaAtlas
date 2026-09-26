@@ -320,6 +320,7 @@ export default function OverlayFeaturePanel({
   const featureMapId = String(props.id ?? feature.id ?? name);
   const showViewOnMap =
     (layerId === "landforms" ||
+      layerId === "ecology" ||
       layerId === "resources" ||
       layerId === "lakes" ||
       layerId === "waterways") &&

@@ -9,7 +9,7 @@ import { CITY_TOURS_SOURCE } from "@/components/map/overlayLayers";
 import type { OverlayLayerId } from "@/types/overlay";
 import { OVERLAY_LAYER_IDS } from "@/types/overlay";
 
-const DIM_OPACITY = 0.22;
+const DIM_OPACITY = 0.25;
 const FULL_OPACITY = 1;
 
 const LENS_OPACITY_EXPR = [

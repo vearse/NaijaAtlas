@@ -7,7 +7,7 @@ export function defaultOverlaysForLens(lens: LensId): Set<OverlayLayerId> {
     case "tourist":
       return new Set<OverlayLayerId>(["cities", "landforms", "lakes"]);
     case "invest":
-      return new Set<OverlayLayerId>(["resources", "landforms", "cities"]);
+      return new Set<OverlayLayerId>(["resources", "ecology"]);
     case "learn":
     default:
       return new Set<OverlayLayerId>(["cities"]);

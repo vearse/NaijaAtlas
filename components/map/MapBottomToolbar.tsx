@@ -12,6 +12,7 @@ const LAYER_ACTIVE: Record<OverlayLayerId, string> = {
   waterways: "bg-sky-100 text-sky-900 ring-1 ring-sky-300/80",
   lakes: "bg-cyan-100 text-cyan-900 ring-1 ring-cyan-300/80",
   landforms: "bg-amber-100 text-amber-900 ring-1 ring-amber-300/80",
+  ecology: "bg-lime-100 text-lime-950 ring-1 ring-lime-300/80",
   cities: "bg-slate-200 text-slate-900 ring-1 ring-slate-300/80",
   resources: "bg-orange-100 text-orange-900 ring-1 ring-orange-300/80",
 };
@@ -43,6 +44,18 @@ function LayerIcon({ id }: { id: OverlayLayerId }) {
           <ellipse cx="10" cy="11" rx="7" ry="4.5" opacity="0.35" />
           <path
             d="M4 11c1.5-2 3-2.5 6-2.5s4.5.5 6 2.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
+        </svg>
+      );
+    case "ecology":
+      return (
+        <svg viewBox="0 0 20 20" fill="currentColor" className={cls} aria-hidden>
+          <ellipse cx="10" cy="12" rx="7" ry="4" opacity="0.35" />
+          <path
+            d="M4 11c2-1 4-2 6-2s5 1 7-1"
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"

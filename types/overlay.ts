@@ -3,6 +3,7 @@ export type OverlayLayerId =
   | "waterways"
   | "lakes"
   | "landforms"
+  | "ecology"
   | "cities"
   | "resources";
 
@@ -10,6 +11,7 @@ export const OVERLAY_LAYER_IDS: OverlayLayerId[] = [
   "waterways",
   "lakes",
   "landforms",
+  "ecology",
   "cities",
   "resources",
 ];
@@ -24,7 +26,16 @@ export const OVERLAY_LAYER_LABELS: Record<
     category: "Waterway",
   },
   lakes: { label: "Lakes", short: "Lakes", category: "Lake" },
-  landforms: { label: "Landforms", short: "Relief", category: "Landform" },
+  landforms: {
+    label: "Relief",
+    short: "Relief",
+    category: "Landform",
+  },
+  ecology: {
+    label: "Ecosystem",
+    short: "Ecosystem",
+    category: "Ecology",
+  },
   cities: { label: "Cities", short: "Cities", category: "City" },
   resources: { label: "Resources", short: "Minerals", category: "Resource" },
 };
@@ -350,13 +361,30 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
     tip: "Tap a lake polygon or power icon for capacity, operator, and linked dam details.",
   },
   landforms: {
-    title: "Landforms & relief",
-    summary: "Plateaus, hills, peaks, inselbergs, deltas, and landscape belts — styled by type and size.",
+    title: "Highlands & landmarks",
+    summary: "Plateaus, hills, peaks, inselbergs, and escarpments — visit-oriented relief.",
     description:
-      "Icons match the map legend: 🌿 grass for savanna, 🏜 sand for dry basins, 💧 for delta wetlands, 🌲 trees for forest, 🏞 park for reserves, and ⛰ for peaks and hills. Hills show one icon; larger belts use fewer spread markers. Tap any icon for soil/planting notes and landform details.",
-    includes: ["Jos, Mambilla, Obudu & Bauchi plateaus", "Sambisa, Cross River NP, Yankari & Okomu", "Idanre, Shebshi, Gashaka highlands", "Aso Rock, Zuma Rock, Mount Patti", "Guinea & Sudan savanna belts, Sokoto Basin, Niger Delta"],
+      "⛰ icons mark hills, peaks, plateaus, and monoliths. Tap any marker for elevation notes, tourism, and local character.",
+    includes: [
+      "Jos, Mambilla, Obudu & Bauchi plateaus",
+      "Idanre, Shebshi, Gashaka highlands",
+      "Aso Rock, Zuma Rock, Mount Patti",
+    ],
+    legend: ["⛰ highlands & peaks", "Plateau / escarpment / inselberg styling"],
+    tip: "Use the Ecology layer for savanna belts, forests, and farming zones.",
+  },
+  ecology: {
+    title: "Farming belts & ecosystems",
+    summary: "Savanna belts, basins, delta ecology, forests, and reserves — agro & land-use focus.",
+    description:
+      "Icons match belts and biomes: 🌿 savanna, 🏜 basin, 💧 delta, 🌲 forest, 🏞 reserve. Tap for soils, crops, planting windows, and economy notes.",
+    includes: [
+      "Guinea, Sudan & Sahel savanna belts",
+      "Niger Delta & Sokoto Basin",
+      "Sambisa, Okomu, Yankari, Cross River NP",
+    ],
     legend: LANDFORM_MAP_LEGEND.map((item) => `${item.emoji} ${item.label}`),
-    tip: "Multiple icons in one region show the extent of large landforms — tap any for planting guidance.",
+    tip: "Large regions use spread markers — tap any for planting guidance.",
   },
   cities: {
     title: "Cities",

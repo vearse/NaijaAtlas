@@ -5,6 +5,7 @@
 import citiesCatalog from "@/data/overlays/catalog/cities.json";
 import tourCatalog from "@/data/overlays/catalog/tour.json";
 import landformsCatalog from "@/data/overlays/catalog/landforms.json";
+import ecologyCatalog from "@/data/overlays/catalog/ecology.json";
 import resourcesCatalog from "@/data/overlays/catalog/resources.json";
 import lakesCatalog from "@/data/overlays/catalog/lakes.json";
 import type { Map as MaplibreMap } from "maplibre-gl";
@@ -30,6 +31,7 @@ function findCatalogRow(item: StateOverlayItem): CatalogRow | null {
     citiesCatalog,
     tourCatalog,
     landformsCatalog,
+    ecologyCatalog,
     resourcesCatalog,
     lakesCatalog,
   ];
@@ -128,7 +130,7 @@ function buildFeatureFromItem(item: StateOverlayItem): SelectedOverlayFeature {
         lat: item.lat,
       };
 
-  if (layerId === "landforms" && row) {
+  if ((layerId === "landforms" || layerId === "ecology") && row) {
     props.featureKind = row.featureKind ?? "point";
     props.landformType = row.landformType ?? item.category;
   }
@@ -215,7 +217,8 @@ export function openStateOverlayItemOnMap(item: StateOverlayItem): void {
 
   if (!map || !coords) return;
 
-  const zoomTarget = layerId === "landforms" ? 6.5 : 7.5;
+  const zoomTarget =
+    layerId === "landforms" || layerId === "ecology" ? 6.5 : 7.5;
 
   map.flyTo({
     center: coords,

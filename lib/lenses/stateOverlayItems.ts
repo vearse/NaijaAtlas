@@ -5,6 +5,7 @@
 import citiesCatalog from "@/data/overlays/catalog/cities.json";
 import tourCatalog from "@/data/overlays/catalog/tour.json";
 import landformsCatalog from "@/data/overlays/catalog/landforms.json";
+import ecologyCatalog from "@/data/overlays/catalog/ecology.json";
 import resourcesCatalog from "@/data/overlays/catalog/resources.json";
 import lakesCatalog from "@/data/overlays/catalog/lakes.json";
 import {
@@ -118,6 +119,7 @@ function toItem(
   const coverageStateIds = resolveCoverageStateIds(propsForCoverage);
   const showViewOnMap =
     (layerId === "landforms" ||
+      layerId === "ecology" ||
       layerId === "resources" ||
       layerId === "lakes") &&
     shouldOfferViewOnMap(propsForCoverage, coverageStateIds);
@@ -226,14 +228,14 @@ export function getStateOverlayItems(
     )
     .filter((x): x is StateOverlayItem => x != null);
 
-  const agriculture = asRows(landformsCatalog)
+  const agriculture = asRows(ecologyCatalog)
     .filter(inState)
     .filter((row) => {
       if (hasAgriFields(row)) return true;
-      return matchesLensByType(lensInputFromRow(row, "landforms"), "invest");
+      return matchesLensByType(lensInputFromRow(row, "ecology"), "invest");
     })
     .map((row, i) =>
-      toItem(row, "landforms", "agriculture", `agri-${stateId}-${i}`)
+      toItem(row, "ecology", "agriculture", `agri-${stateId}-${i}`)
     )
     .filter((x): x is StateOverlayItem => x != null);
 

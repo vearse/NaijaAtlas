@@ -14,6 +14,8 @@ interface ElectionCountdownCardProps {
   presidential: PresidentialBundle;
   /** Reported so the shared map slot can skip this card when it has nothing to show. */
   onVisibleChange?: (visible: boolean) => void;
+  /** `inline` drops the map-corner chrome for Nigeria overview carousel. */
+  variant?: "map-corner" | "inline";
 }
 
 /** Re-check the countdown hourly; the phrasing only changes on day boundaries. */
@@ -37,6 +39,7 @@ function useCountdown(isoDate: string | undefined): Countdown | null {
 export default function ElectionCountdownCard({
   presidential,
   onVisibleChange,
+  variant = "map-corner",
 }: ElectionCountdownCardProps) {
   const isMobile = useIsMobile();
   const setMapType = useMapStore((s) => s.setMapType);
@@ -62,13 +65,24 @@ export default function ElectionCountdownCard({
     if (isMobile) openMobileSheet();
   };
 
-  return (
-    <div className="rounded-xl border border-emerald-200/90 bg-white/95 backdrop-blur px-3 py-2.5 shadow-sm">
-      <p className="text-[10px] font-semibold uppercase tracking-wider text-emerald-700">
-        {election.country ?? "Nigeria"} · {election.year ?? ""} Elections
-      </p>
+  const shell =
+    variant === "inline"
+      ? "space-y-0"
+      : "rounded-xl border border-emerald-200/90 bg-white/95 backdrop-blur px-3 py-2.5 shadow-sm";
 
-      <p className="text-sm font-bold text-slate-900 mt-1 leading-snug">
+  return (
+    <div className={shell}>
+      {variant === "map-corner" && (
+        <p className="text-[10px] font-semibold uppercase tracking-wider text-emerald-700">
+          {election.country ?? "Nigeria"} · {election.year ?? ""} Elections
+        </p>
+      )}
+
+      <p
+        className={`text-sm font-bold text-slate-900 leading-snug ${
+          variant === "map-corner" ? "mt-1" : ""
+        }`}
+      >
         {countdown.past
           ? "Election day has arrived"
           : countdown.relative

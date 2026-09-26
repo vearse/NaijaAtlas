@@ -404,6 +404,7 @@ export async function buildGeo() {
   }
 
   const landformsCatalog = readCatalog<CatalogRow>("landforms");
+  const ecologyCatalog = readCatalog<CatalogRow>("ecology");
   const resourcesCatalog = readCatalog<CatalogRow>("resources");
   const citiesCatalog = readCatalog<CatalogRow>("cities");
   const lakesCatalog = readCatalog<CatalogRow>("lakes");
@@ -481,15 +482,9 @@ export async function buildGeo() {
     "landform-jos-plateau": [8.9, 9.6],
     "landform-mambilla": [11.0, 7.0],
     "landform-mandara": [13.55, 10.9],
-    "landform-niger-delta": [6.0, 5.0],
-    "landform-sokoto-basin": [5.5, 12.8],
-    "landform-guinea-savanna": [5.8, 8.8],
-    "landform-sudan-savanna": [8.0, 11.3],
-    "landform-sahel-savanna": [9.5, 13.2],
     "landform-idanre": [4.75, 7.15],
     "landform-shere-hills": [8.9, 9.95],
     "landform-udi-escarpment": [7.5, 6.45],
-    "landform-oban-hills": [8.8, 5.4],
     "landform-obudu-plateau": [9.6, 6.7],
     "landform-gashaka-highlands": [11.6, 7.6],
     "landform-shebshi": [9.6, 8.6],
@@ -501,15 +496,24 @@ export async function buildGeo() {
     "landform-erin-ijesha": [4.85, 7.58],
     "landform-ezeagu-hills": [7.22, 6.38],
     "landform-farin-ruwa": [8.72, 9.42],
-    "landform-sambisa-forest": [12.5, 11.0],
-    "landform-cross-river-np": [8.9, 5.8],
-    "landform-yankari-reserve": [9.95, 9.9],
-    "landform-okomu-forest": [5.4, 6.35],
-    "landform-kamuku-forest": [7.05, 10.75],
-    "landform-old-oyo-park": [4.05, 8.3],
-    "landform-kainji-park": [4.45, 9.9],
-    "landform-chad-basin-park": [13.0, 12.85],
-    "landform-edumanom-forest": [6.6, 5.05],
+  };
+
+  const ecologyCentroids: Record<string, [number, number]> = {
+    "ecology-niger-delta": [6.0, 5.0],
+    "ecology-sokoto-basin": [5.5, 12.8],
+    "ecology-guinea-savanna": [5.8, 8.8],
+    "ecology-sudan-savanna": [8.0, 11.3],
+    "ecology-sahel-savanna": [9.5, 13.2],
+    "ecology-oban-hills": [8.8, 5.4],
+    "ecology-sambisa-forest": [12.5, 11.0],
+    "ecology-cross-river-np": [8.9, 5.8],
+    "ecology-yankari-reserve": [9.95, 9.9],
+    "ecology-okomu-forest": [5.4, 6.35],
+    "ecology-kamuku-forest": [7.05, 10.75],
+    "ecology-old-oyo-park": [4.05, 8.3],
+    "ecology-kainji-park": [4.45, 9.9],
+    "ecology-chad-basin-park": [13.0, 12.85],
+    "ecology-edumanom-forest": [6.6, 5.05],
   };
 
   const searchIndex = [
@@ -543,6 +547,20 @@ export async function buildGeo() {
         typeLabel: landformTypeLabels[lfType] ?? lfType,
         stateName: row.statesCrossed?.[0],
         centroid: centroidOf(row, landformCentroids[row.id]),
+        summary: row.summary,
+      };
+    }),
+    ...ecologyCatalog.map((row) => {
+      const lfType = String(row.landformType ?? "savanna");
+      return {
+        id: row.id,
+        name: row.name,
+        level: "ecology" as const,
+        parentId: null,
+        layerId: "ecology" as const,
+        typeLabel: landformTypeLabels[lfType] ?? lfType,
+        stateName: row.statesCrossed?.[0],
+        centroid: centroidOf(row, ecologyCentroids[row.id]),
         summary: row.summary,
       };
     }),
