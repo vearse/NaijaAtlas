@@ -3,6 +3,13 @@ import path from "path";
 
 const nextConfig: NextConfig = {
   outputFileTracingRoot: path.join(__dirname),
+  /**
+   * Defaults to `.next`. Override with NEXT_DIST_DIR to run a production build
+   * without clobbering a `next dev` server sharing this project — a dev server
+   * and `next build` writing the same dist dir cause intermittent
+   * `PageNotFoundError: Cannot find module for page: /_not-found` failures.
+   */
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   /** Avoids SegmentViewNode client-manifest errors in dev after production builds. */
   experimental: {
     devtoolSegmentExplorer: false,

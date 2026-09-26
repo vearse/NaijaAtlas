@@ -107,33 +107,48 @@ export default function ExplorerShell({
   const [searchSpotlightOpen, setSearchSpotlightOpen] = useState(false);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
 
-  // The bottom-right map slot rotates between these cards. Each card reports
-  // whether it actually rendered something, so an empty legend is skipped
-  // instead of rotating to a blank frame.
-  const [rankingLegendUp, setRankingLegendUp] = useState(false);
-  const [electionCardUp, setElectionCardUp] = useState(false);
+  // The bottom-right map slot rotates between these cards every 15s.
+  //
+  // Eligibility is mode-based and decided here so it applies on the very first
+  // render. Separately, each card reports whether it actually rendered content
+  // so an empty legend is skipped rather than rotating to a blank frame. The
+  // content flags start optimistic (true) and reset to true whenever the card
+  // becomes eligible again — if they started false, a card that is hidden by
+  // its parent could never mount, never report, and would be stuck hidden.
+  const rankingEligible = isRankingMode;
+  // In election mode the side panel already lists the candidates.
+  const electionEligible = !isElectionMode;
+  const [rankingHasContent, setRankingHasContent] = useState(true);
+  const [electionHasContent, setElectionHasContent] = useState(true);
+
+  useEffect(() => {
+    setRankingHasContent(true);
+  }, [rankingEligible]);
+
+  useEffect(() => {
+    setElectionHasContent(true);
+  }, [electionEligible]);
 
   const cornerCards = useMemo(
     () => [
       {
         key: "ranking-legend",
-        visible: isRankingMode && rankingLegendUp,
+        visible: rankingEligible && rankingHasContent,
         node: (
           <RankingMapLegend
             compareBundle={compareBundle}
             states={states}
-            onVisibleChange={setRankingLegendUp}
+            onVisibleChange={setRankingHasContent}
           />
         ),
       },
       {
         key: "election-countdown",
-        // In election mode the side panel already lists the candidates.
-        visible: !isElectionMode && electionCardUp,
+        visible: electionEligible && electionHasContent,
         node: (
           <ElectionCountdownCard
             presidential={politics.presidential}
-            onVisibleChange={setElectionCardUp}
+            onVisibleChange={setElectionHasContent}
           />
         ),
       },
@@ -142,10 +157,10 @@ export default function ExplorerShell({
       compareBundle,
       states,
       politics.presidential,
-      isRankingMode,
-      isElectionMode,
-      rankingLegendUp,
-      electionCardUp,
+      rankingEligible,
+      electionEligible,
+      rankingHasContent,
+      electionHasContent,
     ]
   );
 

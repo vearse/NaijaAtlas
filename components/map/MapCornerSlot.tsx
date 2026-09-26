@@ -42,7 +42,11 @@ export default function MapCornerSlot({
   const shown = cards.filter((c) => c.visible !== false);
   const [active, setActive] = useState(0);
   const [outgoing, setOutgoing] = useState<number | null>(null);
-  const [paused, setPaused] = useState(false);
+  // Tracked separately: moving the mouse out must not resume rotation while a
+  // button inside still holds keyboard focus, and vice versa.
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const paused = hovered || focused;
   const slotRef = useRef<HTMLDivElement>(null);
 
   // Keep the index in range when the card set shrinks or reorders.
@@ -65,15 +69,11 @@ export default function MapCornerSlot({
     return () => window.clearTimeout(id);
   }, [outgoing]);
 
-  const onFocusCapture = useCallback(() => setPaused(true), []);
-  const onBlurCapture = useCallback(
-    (e: React.FocusEvent) => {
-      if (!slotRef.current?.contains(e.relatedTarget as Node | null)) {
-        setPaused(false);
-      }
-    },
-    []
-  );
+  const onBlurCapture = useCallback((e: React.FocusEvent) => {
+    if (!slotRef.current?.contains(e.relatedTarget as Node | null)) {
+      setFocused(false);
+    }
+  }, []);
 
   if (shown.length === 0) return null;
 
@@ -102,9 +102,9 @@ export default function MapCornerSlot({
     <div
       ref={slotRef}
       className={`absolute bottom-3 right-3 lg:bottom-20 z-10 w-[240px] ${className}`}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={onFocusCapture}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocusCapture={() => setFocused(true)}
       onBlurCapture={onBlurCapture}
     >
       {shown.map((_, i) => render(i))}

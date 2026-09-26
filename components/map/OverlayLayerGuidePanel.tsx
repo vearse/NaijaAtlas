@@ -20,10 +20,19 @@ interface GuideFeature {
 
 const MAX_VISIBLE = 8;
 
+/**
+ * One row per distinct feature id.
+ *
+ * Some layers render a single feature as many GeoJSON features that share one
+ * id — landforms, for example, are 162 scattered sample points across 39
+ * landforms, exactly one of which is flagged `isLabelAnchor`. Listing every
+ * point produced duplicate rows and duplicate React keys, so collapse them and
+ * keep the label-anchor geometry, which is the canonical point for the feature.
+ */
 function toGuideFeatures(json: unknown): GuideFeature[] {
   const fc = (json as { features?: unknown[] } | null)?.features;
   if (!Array.isArray(fc)) return [];
-  const out: GuideFeature[] = [];
+  const byId = new Map<string, GuideFeature>();
   for (const raw of fc) {
     const f = raw as {
       id?: string | number;
@@ -36,14 +45,17 @@ function toGuideFeatures(json: unknown): GuideFeature[] {
     const name =
       typeof props.name === "string" && props.name.trim() ? props.name : "";
     if (!id || !name) continue;
-    out.push({
+    const existing = byId.get(id);
+    // Keep the first sighting unless this one is the label anchor.
+    if (existing && props.isLabelAnchor !== true) continue;
+    byId.set(id, {
       id,
       name,
       properties: props,
       geometry: f?.geometry ?? null,
     });
   }
-  return out;
+  return [...byId.values()];
 }
 
 function useLayerFeatures(layerId: OverlayLayerId) {

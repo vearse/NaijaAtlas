@@ -125,10 +125,12 @@ export default function RankingPanel({
     el?.scrollIntoView({ block: "nearest", behavior: "smooth" });
   }, [highlightedId]);
 
+  // `states` holds 36 states plus the FCT, so phrase it as a location count
+  // rather than "N states and the FCT".
   const infoDescription = snapshot
     ? snapshot.field.footnote ??
       `${snapshot.field.label} for ${snapshot.periodLabel}, ranked across all ` +
-        `${states.length} states and the FCT.`
+        `${states.length} locations.`
     : "";
 
   const inner = (

@@ -11,9 +11,6 @@ function maxSelectedStates(mapType: MapTypeId): number {
 export type MobileSheetMode = "hidden" | "peek" | "open";
 export type MapTypeId = "minimal" | "osm" | "election" | "ranking";
 
-/** Phase of the election side panel. */
-export type ElectionViewId = "browse" | "presidential";
-
 /** Active comparison panel (state today; metro & LGA later). */
 export type CompareViewId = "state" | "metro" | "lga";
 
@@ -216,9 +213,6 @@ export interface MapSelectionState {
   setMapType: (id: MapTypeId) => void;
   selectedSenatorialDistrictId: string | null;
   setSelectedSenatorialDistrict: (id: string | null) => void;
-  /** Which election panel phase to show. "presidential" is deep-linkable from the map card. */
-  electionView: ElectionViewId;
-  setElectionView: (view: ElectionViewId) => void;
   /** Confirmed polling unit from the 2027 locator (persists until the user changes it). */
   confirmedPollingUnit: PollingUnitShardEntry | null;
   setConfirmedPollingUnit: (unit: PollingUnitShardEntry | null) => void;
@@ -314,7 +308,6 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   lgaVisibilityHandler: null,
   mapType: "minimal",
   selectedSenatorialDistrictId: null,
-  electionView: "browse",
   confirmedPollingUnit: null,
   activeLens: "learn",
   directions: {
@@ -451,7 +444,6 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       set({
         mapType: id,
         selectedSenatorialDistrictId: null,
-        electionView: "browse",
         lgaVisibleStateIds: new Set(),
         selectedLgaId: null,
         directionsPanelTarget: null,
@@ -507,7 +499,6 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         selectedOverlay: null,
         overlayGuideLayer: null,
         selectedSenatorialDistrictId: null,
-        electionView: "browse",
         lgaVisibleStateIds: lgaVisible,
         activeRegionId: null,
         directionsPanelTarget: null,
@@ -522,7 +513,6 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   },
   setSelectedSenatorialDistrict: (id) =>
     set({ selectedSenatorialDistrictId: id, mobileSheet: "open" }),
-  setElectionView: (view) => set({ electionView: view, mobileSheet: "open" }),
   setConfirmedPollingUnit: (unit) => set({ confirmedPollingUnit: unit }),
   setActiveLens: (lens) => {
     const mapType = get().mapType;
