@@ -1,4 +1,4 @@
-import type { LayerSpecification, Map, SourceSpecification, StyleSpecification } from "maplibre-gl";
+import type { ExpressionSpecification, LayerSpecification, Map, SourceSpecification, StyleSpecification } from "maplibre-gl";
 import { MAP_GLYPHS, MAP_FONT, MAP_FONT_EMPHASIS } from "@/lib/map/interaction";
 import { LGA_PALETTE, assignLgaPaletteColors, colorForIndex } from "@/lib/map/colors";
 import { enrichLgaSenatorialColors } from "@/lib/politics/senatorialColors";
@@ -157,6 +157,7 @@ export function getMapStyle(mapType: MapTypeId): StyleSpecification {
         ],
       };
     case "election":
+    case "ranking":
       return {
         version: 8,
         glyphs: MAP_GLYPHS,
@@ -520,6 +521,101 @@ export function applyStateSelectionPaint(
       0.95,
       0.85,
     ]);
+  }
+}
+
+const RANKING_MISSING_FILL = "#e2e8f0";
+
+const STATES_LABEL_LAYER = "states-labels";
+
+/** "Name" on line 1, "#12" on line 2, driven by the `rank` feature-state. */
+const STATE_RANK_TEXT_FIELD: ExpressionSpecification = [
+  "format",
+  ["get", "name"],
+  {},
+  "\n",
+  {},
+  [
+    "case",
+    ["boolean", ["feature-state", "rank"], false],
+    ["concat", "#", ["to-string", ["feature-state", "rank"]]],
+    ""
+  ],
+  { "font-scale": 0.78, "text-font": [MAP_FONT] },
+];
+
+/** Drop the rank line and restore the plain state-name label. */
+export function resetRankingStateRankLabels(map: Map): void {
+  if (!map.getLayer(STATES_LABEL_LAYER)) return;
+  map.setLayoutProperty(STATES_LABEL_LAYER, "text-field", ["get", "name"]);
+  const ids = rankStateIdsRef.get(map);
+  rankStateIdsRef.delete(map);
+  for (const stateId of ids ?? []) {
+    map.setFeatureState({ source: GEO_SOURCES.adm1, id: stateId }, { rank: null });
+  }
+}
+
+const rankStateIdsRef = new WeakMap<Map, string[]>();
+
+/**
+ * Render each state's rank under its name on the base state label layer.
+ * Ranks arrive via feature-state so switching metric/period never re-creates
+ * the source.
+ */
+export function applyRankingStateRankLabels(
+  map: Map,
+  rankByStateId: Record<string, number>
+): void {
+  if (!map.getLayer(STATES_LABEL_LAYER)) return;
+
+  // Clear ranks left over from a previous metric before applying the new set.
+  resetRankingStateRankLabels(map);
+
+  map.setLayoutProperty(STATES_LABEL_LAYER, "text-field", STATE_RANK_TEXT_FIELD);
+  const applied: string[] = [];
+  for (const [stateId, rank] of Object.entries(rankByStateId)) {
+    map.setFeatureState(
+      { source: GEO_SOURCES.adm1, id: stateId },
+      { rank }
+    );
+    applied.push(stateId);
+  }
+  rankStateIdsRef.set(map, applied);
+}
+
+/** Choropleth paint for ranking map type (all states colored by metric). */
+export function applyRankingChoroplethPaint(
+  map: Map,
+  fillByState: Record<string, string>,
+  highlightedStateId: string | null
+): void {
+  const fill = matchStateColors(fillByState, RANKING_MISSING_FILL);
+  const highlight = highlightedStateId;
+
+  if (map.getLayer("states-fill")) {
+    map.setPaintProperty("states-fill", "fill-color", fill);
+    map.setPaintProperty("states-fill", "fill-opacity", [
+      "case",
+      highlight != null && ["==", ["get", "id"], highlight],
+      0.95,
+      0.82,
+    ]);
+  }
+
+  if (map.getLayer("states-line")) {
+    map.setPaintProperty("states-line", "line-color", [
+      "case",
+      highlight != null && ["==", ["get", "id"], highlight],
+      "#003322",
+      "#475569",
+    ]);
+    map.setPaintProperty("states-line", "line-width", [
+      "case",
+      highlight != null && ["==", ["get", "id"], highlight],
+      3.5,
+      1.1,
+    ]);
+    map.setPaintProperty("states-line", "line-opacity", 0.9);
   }
 }
 

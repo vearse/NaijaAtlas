@@ -4,6 +4,11 @@ import { useEffect, useState } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
 import { parseMapTypeParam } from "@/lib/map/mapType";
 import { parseLensId } from "@/lib/lenses/lensHelper";
+import type { RankingCategoryId } from "@/lib/ranking/types";
+import {
+  encodeFocusParam,
+  parseFocusParam,
+} from "@/lib/map/overlayFocus";
 
 /** Sync map selection ↔ URL query params for shareable links */
 export default function UrlSync() {
@@ -17,6 +22,10 @@ export default function UrlSync() {
   const selectedSenatorialDistrictId = useMapStore(
     (s) => s.selectedSenatorialDistrictId
   );
+  const rankingCategory = useMapStore((s) => s.rankingCategory);
+  const rankingFieldKey = useMapStore((s) => s.rankingFieldKey);
+  const rankingPeriod = useMapStore((s) => s.rankingPeriod);
+  const overlayFeatureFocus = useMapStore((s) => s.overlayFeatureFocus);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -56,6 +65,29 @@ export default function UrlSync() {
       store.setActiveLens(parseLensId(lensParam));
     }
 
+    if (store.mapType === "ranking") {
+      const rankCat = params.get("rankCat");
+      const rankField = params.get("rankField");
+      const rankPeriod = params.get("rankPeriod");
+      if (rankCat && rankField) {
+        store.setRankingMetric(
+          rankCat as RankingCategoryId,
+          rankField
+        );
+      }
+      if (rankPeriod) store.setRankingPeriod(rankPeriod);
+    }
+
+    const focusParam = params.get("focus");
+    if (
+      focusParam &&
+      store.mapType !== "election" &&
+      store.mapType !== "ranking"
+    ) {
+      const spec = parseFocusParam(focusParam);
+      if (spec) store.setOverlayFeatureFocus(spec);
+    }
+
     setReady(true);
   }, []);
 
@@ -77,6 +109,18 @@ export default function UrlSync() {
     if (mapType === "election" && selectedSenatorialDistrictId) {
       params.set("sd", selectedSenatorialDistrictId);
     }
+    if (mapType === "ranking") {
+      params.set("rankCat", rankingCategory);
+      params.set("rankField", rankingFieldKey);
+      params.set("rankPeriod", rankingPeriod);
+    }
+    if (
+      overlayFeatureFocus &&
+      mapType !== "election" &&
+      mapType !== "ranking"
+    ) {
+      params.set("focus", encodeFocusParam(overlayFeatureFocus));
+    }
 
     const qs = params.toString();
     const next = qs
@@ -95,6 +139,10 @@ export default function UrlSync() {
     mapType,
     activeLens,
     selectedSenatorialDistrictId,
+    rankingCategory,
+    rankingFieldKey,
+    rankingPeriod,
+    overlayFeatureFocus,
   ]);
 
   return null;

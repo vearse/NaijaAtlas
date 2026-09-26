@@ -36,7 +36,7 @@ export default function CompareMenu() {
   const openCompareView = useMapStore((s) => s.openCompareView);
   const closeCompareView = useMapStore((s) => s.closeCompareView);
 
-  if (mapType === "election") return null;
+  if (mapType === "election" || mapType === "ranking") return null;
 
   const stateEligible = canCompareStates({
     mapType,

@@ -9,7 +9,10 @@ function maxSelectedStates(mapType: MapTypeId): number {
 }
 
 export type MobileSheetMode = "hidden" | "peek" | "open";
-export type MapTypeId = "minimal" | "osm" | "election";
+export type MapTypeId = "minimal" | "osm" | "election" | "ranking";
+
+/** Phase of the election side panel. */
+export type ElectionViewId = "browse" | "presidential";
 
 /** Active comparison panel (state today; metro & LGA later). */
 export type CompareViewId = "state" | "metro" | "lga";
@@ -19,7 +22,13 @@ export function canCompareStates(state: {
   selectedStateIds: Set<string>;
   selectedLgaId: string | null;
 }): boolean {
-  if (state.mapType === "election" || state.selectedLgaId) return false;
+  if (
+    state.mapType === "election" ||
+    state.mapType === "ranking" ||
+    state.selectedLgaId
+  ) {
+    return false;
+  }
   const n = state.selectedStateIds.size;
   return n >= 2 && n <= MAX_COMPARE_STATES;
 }
@@ -125,6 +134,9 @@ import {
   planToMetroView,
   assignMetroColorIndex,
 } from "@/lib/map/metroMapViews";
+import type { OverlayFocusSpec } from "@/lib/map/overlayFocus";
+import type { RankingCategoryId } from "@/lib/ranking/types";
+import { DEFAULT_RANKING } from "@/lib/ranking/defaults";
 
 const DEFAULT_ACTIVE_OVERLAYS = new Set<OverlayLayerId>(["cities"]);
 
@@ -204,6 +216,9 @@ export interface MapSelectionState {
   setMapType: (id: MapTypeId) => void;
   selectedSenatorialDistrictId: string | null;
   setSelectedSenatorialDistrict: (id: string | null) => void;
+  /** Which election panel phase to show. "presidential" is deep-linkable from the map card. */
+  electionView: ElectionViewId;
+  setElectionView: (view: ElectionViewId) => void;
   /** Confirmed polling unit from the 2027 locator (persists until the user changes it). */
   confirmedPollingUnit: PollingUnitShardEntry | null;
   setConfirmedPollingUnit: (unit: PollingUnitShardEntry | null) => void;
@@ -237,6 +252,21 @@ export interface MapSelectionState {
   compareView: CompareViewId | null;
   openCompareView: (view: CompareViewId) => void;
   closeCompareView: () => void;
+  rankingCategory: RankingCategoryId;
+  rankingFieldKey: string;
+  rankingPeriod: string;
+  rankingHighlightedStateId: string | null;
+  setRankingMetric: (categoryId: RankingCategoryId, fieldKey: string) => void;
+  setRankingPeriod: (period: string) => void;
+  setRankingHighlightedState: (stateId: string | null) => void;
+  enterRankingMode: (metric?: {
+    categoryId: RankingCategoryId;
+    fieldKey: string;
+    period: string;
+  }) => void;
+  overlayFeatureFocus: OverlayFocusSpec | null;
+  setOverlayFeatureFocus: (spec: OverlayFocusSpec | null) => void;
+  lensOverlaysCustomized: boolean;
 }
 
 function mobileSheetForSelection(count: number): MobileSheetMode {
@@ -284,6 +314,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   lgaVisibilityHandler: null,
   mapType: "minimal",
   selectedSenatorialDistrictId: null,
+  electionView: "browse",
   confirmedPollingUnit: null,
   activeLens: "learn",
   directions: {
@@ -297,6 +328,12 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   metroMapViews: [],
   activeMetroPanelId: null,
   compareView: null,
+  rankingCategory: DEFAULT_RANKING.categoryId,
+  rankingFieldKey: DEFAULT_RANKING.fieldKey,
+  rankingPeriod: DEFAULT_RANKING.period,
+  rankingHighlightedStateId: null,
+  overlayFeatureFocus: null,
+  lensOverlaysCustomized: false,
 
   registerMap: (map) => set({ mapInstance: map }),
 
@@ -414,12 +451,48 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       set({
         mapType: id,
         selectedSenatorialDistrictId: null,
+        electionView: "browse",
         lgaVisibleStateIds: new Set(),
         selectedLgaId: null,
         directionsPanelTarget: null,
         metroMapViews: [],
         activeMetroPanelId: null,
         compareView: null,
+      });
+      notifyLgaVisibility(get);
+      return;
+    }
+    if (prev === "ranking" && id !== "ranking") {
+      set({
+        mapType: id,
+        rankingHighlightedStateId: null,
+        selectedStateIds: new Set(),
+        selectedStateOrder: [],
+        lgaVisibleStateIds: new Set(),
+        selectedLgaId: null,
+        activeRegionId: null,
+        compareView: null,
+      });
+      notifyLgaVisibility(get);
+      return;
+    }
+    if (id === "ranking" && prev !== "ranking") {
+      set({
+        mapType: id,
+        activeOverlays: new Set(),
+        selectedOverlay: null,
+        overlayGuideLayer: null,
+        overlayFeatureFocus: null,
+        selectedSenatorialDistrictId: null,
+        lgaVisibleStateIds: new Set(),
+        selectedLgaId: null,
+        activeRegionId: null,
+        directionsPanelTarget: null,
+        metroMapViews: [],
+        activeMetroPanelId: null,
+        compareView: null,
+        rankingHighlightedStateId: null,
+        mobileSheet: "open",
       });
       notifyLgaVisibility(get);
       return;
@@ -434,6 +507,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         selectedOverlay: null,
         overlayGuideLayer: null,
         selectedSenatorialDistrictId: null,
+        electionView: "browse",
         lgaVisibleStateIds: lgaVisible,
         activeRegionId: null,
         directionsPanelTarget: null,
@@ -448,19 +522,48 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   },
   setSelectedSenatorialDistrict: (id) =>
     set({ selectedSenatorialDistrictId: id, mobileSheet: "open" }),
+  setElectionView: (view) => set({ electionView: view, mobileSheet: "open" }),
   setConfirmedPollingUnit: (unit) => set({ confirmedPollingUnit: unit }),
   setActiveLens: (lens) => {
-    if (get().mapType === "election") {
+    const mapType = get().mapType;
+    if (mapType === "election" || mapType === "ranking") {
       set({ activeLens: lens });
       return;
     }
+    const customized = get().lensOverlaysCustomized;
     set({
       activeLens: lens,
-      activeOverlays: defaultOverlaysForLens(lens),
+      activeOverlays: customized
+        ? get().activeOverlays
+        : defaultOverlaysForLens(lens),
       selectedOverlay: null,
       overlayGuideLayer: null,
     });
   },
+
+  setRankingMetric: (categoryId, fieldKey) => {
+    set({
+      rankingCategory: categoryId,
+      rankingFieldKey: fieldKey,
+      rankingHighlightedStateId: null,
+    });
+  },
+  setRankingPeriod: (period) =>
+    set({ rankingPeriod: period, rankingHighlightedStateId: null }),
+  setRankingHighlightedState: (stateId) =>
+    set({ rankingHighlightedStateId: stateId }),
+  enterRankingMode: (metric) => {
+    const m = metric ?? DEFAULT_RANKING;
+    get().setMapType("ranking");
+    set({
+      rankingCategory: m.categoryId,
+      rankingFieldKey: m.fieldKey,
+      rankingPeriod: m.period,
+      rankingHighlightedStateId: null,
+      mobileSheet: "open",
+    });
+  },
+  setOverlayFeatureFocus: (spec) => set({ overlayFeatureFocus: spec }),
 
   clearAllOverlays: () => {
     const empty = new Set<OverlayLayerId>();
@@ -574,6 +677,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     if (turningOn) {
       next.add(id);
       set({
+        lensOverlaysCustomized: true,
         activeOverlays: next,
         overlayGuideLayer: id,
         selectedOverlay: null,
@@ -588,6 +692,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     } else {
       next.delete(id);
       set({
+        lensOverlaysCustomized: true,
         activeOverlays: next,
         overlayGuideLayer:
           state.overlayGuideLayer === id ? null : state.overlayGuideLayer,

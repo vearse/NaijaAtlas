@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import type { PoliticsBundle, PollingUnitCountsBundle } from "@/types/politics";
 import type { LgaLocation } from "@/types/location";
 import { useIsMobile } from "@/hooks/useMediaQuery";
@@ -29,22 +29,23 @@ export default function ElectionPanel({
   const selectedSenatorialDistrictId = useMapStore(
     (s) => s.selectedSenatorialDistrictId
   );
+  const electionView = useMapStore((s) => s.electionView);
+  const setElectionView = useMapStore((s) => s.setElectionView);
   const district = selectedSenatorialDistrictId
     ? politics.lookups.districtById[selectedSenatorialDistrictId]
     : null;
 
-  const [viewPresidential, setViewPresidential] = useState(false);
-
   const inDistrictPhase = Boolean(selectedSenatorialDistrictId && district);
-  const inPresidentialPhase = viewPresidential && !inDistrictPhase;
+  const inPresidentialPhase = electionView === "presidential" && !inDistrictPhase;
 
+  // A concrete district always wins over the presidential deep-link.
   useEffect(() => {
-    if (selectedSenatorialDistrictId && viewPresidential) {
-      setViewPresidential(false);
+    if (selectedSenatorialDistrictId && electionView === "presidential") {
+      setElectionView("browse");
     }
-  }, [selectedSenatorialDistrictId, viewPresidential]);
+  }, [selectedSenatorialDistrictId, electionView, setElectionView]);
 
-  const openPresidential = () => setViewPresidential(true);
+  const openPresidential = () => setElectionView("presidential");
 
   const browsePhase = (
     <div className="flex flex-col h-full min-h-0">
@@ -79,7 +80,7 @@ export default function ElectionPanel({
   const presidentialPhase = (
     <PresidentialCandidatesDetail
       politics={politics}
-      onBack={() => setViewPresidential(false)}
+      onBack={() => setElectionView("browse")}
     />
   );
 

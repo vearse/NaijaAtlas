@@ -50,6 +50,17 @@ body {
     }
   }
 
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+
   @keyframes naija-attention {
     0%,
     100% {
@@ -75,6 +86,10 @@ body {
     animation: scale-in 0.24s ease-out both;
   }
 
+  .animate-fade-out {
+    animation: fade-out 0.7s ease-in both;
+  }
+
   .animate-naija-attention {
     animation: naija-attention 3.5s ease-in-out both;
   }
@@ -83,6 +98,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in,
   .animate-fade-in-soft,
+  .animate-fade-out,
   .animate-scale-in,
   .animate-naija-attention {
     animation: none;

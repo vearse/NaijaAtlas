@@ -34,6 +34,7 @@ export default function MapHints() {
   const selectedOverlay = useMapStore((s) => s.selectedOverlay);
   const activeLens = useMapStore((s) => s.activeLens);
   const mapType = useMapStore((s) => s.mapType);
+  const overlayFeatureFocus = useMapStore((s) => s.overlayFeatureFocus);
 
   useEffect(() => {
     setPanelHidden(localStorage.getItem(HINTS_DISMISSED_KEY) === "1");
@@ -63,8 +64,16 @@ export default function MapHints() {
       return "Election mode — select states to see senatorial districts; click an LGA for candidates";
     }
 
+    if (mapType === "ranking") {
+      return "Ranking mode — pick a metric in the panel; click a state to highlight it on the map and list";
+    }
+
+    if (overlayFeatureFocus) {
+      return `Focus active — only ${overlayFeatureFocus.label} shown · Clear in the feature panel`;
+    }
+
     if (activeLens !== "learn") {
-      return `${activeLens === "tourist" ? "Tourist" : "Invest"} lens — highlighted map markers and panel notes match this view`;
+      return `${activeLens === "tourist" ? "Tourist" : "Invest"} lens — map shows matching markers only; panel notes match this view`;
     }
 
     if (mapActionHint) return mapActionHint;
@@ -113,6 +122,7 @@ export default function MapHints() {
   }, [
     activeLens,
     mapType,
+    overlayFeatureFocus,
     mapActionHint,
     dragModeStateId,
     selectedOverlay,
@@ -140,6 +150,7 @@ export default function MapHints() {
   }, [
     activeLens,
     mapType,
+    overlayFeatureFocus,
     mapActionHint,
     dragModeStateId,
     selectedOverlay,

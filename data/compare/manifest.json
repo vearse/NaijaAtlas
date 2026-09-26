@@ -94,11 +94,21 @@
       "fields": [
         { "key": "igr", "label": "Internally Generated Revenue", "type": "text", "source": "data", "highlight": "max" },
         { "key": "igrPerCapita", "label": "IGR per capita", "type": "text", "source": "data", "highlight": "max" },
-        { "key": "faacAllocation", "label": "FAAC allocation", "type": "text", "source": "data" },
-        { "key": "totalRevenue", "label": "Total revenue", "type": "text", "source": "data" },
-        { "key": "igrShareOfRevenue", "label": "IGR share of revenue", "type": "text", "source": "data" },
+        { "key": "faacAllocation", "label": "FAAC allocation", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "totalRevenue", "label": "Total revenue", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "igrShareOfRevenue", "label": "IGR share of revenue", "type": "text", "source": "data", "highlight": "max" },
         { "key": "unemploymentRate", "label": "Unemployment rate", "type": "text", "source": "data", "highlight": "min" },
-        { "key": "povertyRate", "label": "Poverty rate", "type": "text", "source": "data", "highlight": "min" }
+        { "key": "povertyRate", "label": "Poverty rate", "type": "text", "source": "data", "highlight": "min" },
+        { "key": "stateGdp", "label": "State GDP", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "stateGdpPerCapita", "label": "GDP per capita", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "faacPerCapita", "label": "FAAC per capita", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "vatAllocation", "label": "VAT allocation", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "debtStock", "label": "State debt stock", "type": "text", "source": "data", "highlight": "min" },
+        { "key": "capitalExpenditure", "label": "Capital expenditure", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "recurrentExpenditure", "label": "Recurrent expenditure", "type": "text", "source": "data" },
+        { "key": "dependencyOnFaac", "label": "FAAC dependency (%)", "type": "text", "source": "data", "highlight": "min" },
+        { "key": "underemploymentRate", "label": "Underemployment rate", "type": "text", "source": "data", "highlight": "min" },
+        { "key": "multidimensionalPoverty", "label": "Multidimensional poverty", "type": "text", "source": "data", "highlight": "min" }
       ]
     },
     {
@@ -106,17 +116,30 @@
       "label": "Social",
       "temporal": true,
       "defaultPeriod": "2021",
-      "periods": [{ "id": "2021", "label": "2021 NDHS" }],
+      "periods": [
+        { "id": "2018", "label": "2018 NDHS" },
+        { "id": "2021", "label": "2021 NDHS" },
+        { "id": "2023", "label": "2023 NDHS" }
+      ],
       "dataPath": "social/{period}.json",
       "sourceNote": "Social indicators © NBS / NDHS",
       "fields": [
-        { "key": "literacyRate", "label": "Literacy rate", "type": "text", "source": "data" },
-        { "key": "primaryEnrollment", "label": "Primary enrollment", "type": "text", "source": "data" },
-        { "key": "secondaryEnrollment", "label": "Secondary enrollment", "type": "text", "source": "data" },
+        { "key": "literacyRate", "label": "Literacy rate", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "primaryEnrollment", "label": "Primary enrollment", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "secondaryEnrollment", "label": "Secondary enrollment", "type": "text", "source": "data", "highlight": "max" },
         { "key": "infantMortality", "label": "Infant mortality", "type": "text", "source": "data", "highlight": "min" },
-        { "key": "electricityAccess", "label": "Electricity access", "type": "text", "source": "data" },
-        { "key": "improvedWaterAccess", "label": "Improved water access", "type": "text", "source": "data" },
-        { "key": "internetPenetration", "label": "Internet penetration", "type": "text", "source": "data" }
+        { "key": "electricityAccess", "label": "Electricity access", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "improvedWaterAccess", "label": "Improved water access", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "internetPenetration", "label": "Internet penetration", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "under5Mortality", "label": "Under-5 mortality", "type": "text", "source": "data", "highlight": "min" },
+        { "key": "maternalMortality", "label": "Maternal mortality", "type": "text", "source": "data", "highlight": "min" },
+        { "key": "outOfSchoolChildren", "label": "Out-of-school children (%)", "type": "text", "source": "data", "highlight": "min" },
+        { "key": "netAttendancePrimary", "label": "Net attendance (primary)", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "netAttendanceSecondary", "label": "Net attendance (secondary)", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "sanitationAccess", "label": "Basic sanitation access", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "stuntingPrevalence", "label": "Child stunting", "type": "text", "source": "data", "highlight": "min" },
+        { "key": "contraceptivePrevalence", "label": "Contraceptive prevalence", "type": "text", "source": "data", "highlight": "max" },
+        { "key": "mobilePenetration", "label": "Mobile penetration", "type": "text", "source": "data", "highlight": "max" }
       ]
     }
   ],

@@ -19,6 +19,9 @@ import {
   removeLgaStateLayers,
   applyStateMaskForLgaVisibility,
   applyStateSelectionPaint,
+  applyRankingChoroplethPaint,
+  applyRankingStateRankLabels,
+  resetRankingStateRankLabels,
   restackLgaStack,
   geoSourceUrl,
   lgaSourceId,
@@ -49,7 +52,9 @@ import {
   queryPriorityLayers,
 } from "@/lib/map/interaction";
 import { OVERLAY_REGISTRY, resolveOverlayLayerId } from "@/lib/map/overlayRegistry";
-import { applyLensOverlayEmphasis } from "@/lib/map/lensOverlayEmphasis";
+import { syncOverlayPresentation } from "@/lib/map/syncOverlayPresentation";
+import { buildRankingSnapshot } from "@/lib/ranking/computeRanking";
+import type { CompareBundle } from "@/types/compare";
 import { OVERLAY_LAYER_LABELS, type OverlayLayerId } from "@/types/overlay";
 import {
   cloneGeometry,
@@ -82,6 +87,7 @@ interface NigeriaMapProps {
   lgas: LgaLocation[];
   capitalLgaByState: ReadonlyMap<string, string>;
   politicsLookups: PoliticsLookups;
+  compareBundle: CompareBundle;
 }
 
 type HitKind = "lga" | "state" | "region";
@@ -123,6 +129,7 @@ export default function NigeriaMap({
   lgas,
   capitalLgaByState,
   politicsLookups,
+  compareBundle,
 }: NigeriaMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
@@ -143,6 +150,10 @@ export default function NigeriaMap({
   regionsRef.current = regions;
   const politicsLookupsRef = useRef(politicsLookups);
   politicsLookupsRef.current = politicsLookups;
+  const compareBundleRef = useRef(compareBundle);
+  compareBundleRef.current = compareBundle;
+  const statesRef = useRef(states);
+  statesRef.current = states;
   const adm1FeaturesRef = useRef<Map<string, GeoJSON.Feature>>(new Map());
   const dragHandlersBoundRef = useRef(false);
   const draggedBaseGeometryRef = useRef<GeoJSON.Geometry | null>(null);
@@ -179,6 +190,13 @@ export default function NigeriaMap({
   const activeLens = useMapStore((s) => s.activeLens);
   const labeledLgaOrder = useMapStore((s) => s.labeledLgaOrder);
   const mapType: MapTypeId = useMapStore((s) => s.mapType);
+  const rankingCategory = useMapStore((s) => s.rankingCategory);
+  const rankingFieldKey = useMapStore((s) => s.rankingFieldKey);
+  const rankingPeriod = useMapStore((s) => s.rankingPeriod);
+  const rankingHighlightedStateId = useMapStore(
+    (s) => s.rankingHighlightedStateId
+  );
+  const overlayFeatureFocus = useMapStore((s) => s.overlayFeatureFocus);
   const directions = useMapStore((s) => s.directions);
   const featureMapViews = useMapStore((s) => s.featureMapViews);
   const loadedLgaRef = useRef(new Set<string>());
@@ -251,7 +269,7 @@ export default function NigeriaMap({
   );
 
   const setFeatureState = useCallback(
-    (source: string, id: string, state: Record<string, boolean>) => {
+    (source: string, id: string, state: Record<string, boolean | number | null>) => {
       const map = mapRef.current;
       if (!map?.getSource(source)) return;
       try {
@@ -344,6 +362,33 @@ export default function NigeriaMap({
     []
   );
 
+  const applyRankingPaint = useCallback((map: maplibregl.Map) => {
+    const store = useMapStore.getState();
+    if (store.mapType !== "ranking") {
+      resetRankingStateRankLabels(map);
+      return false;
+    }
+    const snap = buildRankingSnapshot(
+      compareBundleRef.current,
+      statesRef.current,
+      store.rankingCategory,
+      store.rankingFieldKey,
+      store.rankingPeriod
+    );
+    if (snap) {
+      applyRankingChoroplethPaint(
+        map,
+        snap.fillByStateId,
+        store.rankingHighlightedStateId
+      );
+      applyRankingStateRankLabels(map, snap.rankByStateId);
+    } else {
+      resetRankingStateRankLabels(map);
+    }
+    applyAdminLayersMapTypeTuning(map, "ranking");
+    return true;
+  }, []);
+
   const refreshSelectionPaint = useCallback(
     (map: maplibregl.Map) => {
       const store = useMapStore.getState();
@@ -353,16 +398,17 @@ export default function NigeriaMap({
       );
       const ready = readyLgaStateIds(map, effective);
       applyStateMaskForLgaVisibility(map, ready, store.draggedStateId);
-      applyStateSelectionPaint(
-        map,
-        store.selectedStateIds,
-        ready,
-        store.featureMapViews
-      );
-      // Final writer: keep OSM free of admin/region/LGA fills.
+      if (!applyRankingPaint(map)) {
+        applyStateSelectionPaint(
+          map,
+          store.selectedStateIds,
+          ready,
+          store.featureMapViews
+        );
+      }
       applyAdminLayersMapTypeTuning(map, useMapStore.getState().mapType);
     },
-    [readyLgaStateIds]
+    [readyLgaStateIds, applyRankingPaint]
   );
 
   const refreshMetroLgaFills = useCallback((map: maplibregl.Map) => {
@@ -597,6 +643,10 @@ export default function NigeriaMap({
       }
 
       if (hit.kind === "state") {
+        if (store.mapType === "ranking") {
+          store.setRankingHighlightedState(id);
+          return;
+        }
         store.toggleState(id);
         return;
       }
@@ -1080,7 +1130,13 @@ export default function NigeriaMap({
     // "Minimal stopped working" reports caused by diff-style reapplying
     // paint/layout to runtime-added layers when there was nothing to swap.
     const hasOsmLayer = Boolean(map.getLayer("osm-tiles"));
-    if ((mapType === "minimal" || mapType === "election") && !hasOsmLayer) return;
+    if (
+      (mapType === "minimal" ||
+        mapType === "election" ||
+        mapType === "ranking") &&
+      !hasOsmLayer
+    )
+      return;
     // Also skip if OSM already loaded + OSM requested (no re-fetch of tiles).
     if (mapType === "osm" && hasOsmLayer) return;
 
@@ -1128,12 +1184,14 @@ export default function NigeriaMap({
           readyLgas,
           store.draggedStateId
         );
-        applyStateSelectionPaint(
-          map,
-          store.selectedStateIds,
-          readyLgas,
-          store.featureMapViews
-        );
+        if (!applyRankingPaint(map)) {
+          applyStateSelectionPaint(
+            map,
+            store.selectedStateIds,
+            readyLgas,
+            store.featureMapViews
+          );
+        }
 
         // 3. Z-order restacking
         restackOverlayLayers(map);
@@ -1287,7 +1345,9 @@ export default function NigeriaMap({
     }
 
     if (map.getLayer("states-fill")) {
-      if (
+      if (useMapStore.getState().mapType === "ranking") {
+        applyRankingPaint(map);
+      } else if (
         activeRegionId &&
         activeRegion &&
         selectedStateIds.size === 0 &&
@@ -1322,7 +1382,21 @@ export default function NigeriaMap({
     // Map-type tuning must be the final writer so OSM stays uncluttered
     // no matter which selection/mask effect ran above.
     applyAdminLayersMapTypeTuning(map, useMapStore.getState().mapType);
-  }, [selectedKey, featureMapViewsKey, lgaVisibleKey, metroMapViewsKey, lgaReadyKey, activeRegionId, draggedStateId, states, regions, setFeatureState, mapReady, selectedStateIds, lgaVisibleStateIds, metroMapViews, readyLgaStateIds]);
+  }, [selectedKey, featureMapViewsKey, lgaVisibleKey, metroMapViewsKey, lgaReadyKey, activeRegionId, draggedStateId, states, regions, setFeatureState, mapReady, selectedStateIds, lgaVisibleStateIds, metroMapViews, readyLgaStateIds, applyRankingPaint]);
+
+  const rankingPaintKey = `${rankingCategory}|${rankingFieldKey}|${rankingPeriod}|${rankingHighlightedStateId ?? ""}`;
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map?.isStyleLoaded() || !mapReady || mapType !== "ranking") return;
+    applyRankingPaint(map);
+    const onIdle = () => applyRankingPaint(map);
+    map.once("idle", onIdle);
+  }, [mapType, rankingPaintKey, mapReady, compareBundle, applyRankingPaint]);
+
+  const overlayFocusKey = overlayFeatureFocus
+    ? `${overlayFeatureFocus.layerId}:${overlayFeatureFocus.matchKey}=${overlayFeatureFocus.matchValue}`
+    : "";
 
   // ——— LGA selected highlight ———
   useEffect(() => {
@@ -1501,11 +1575,25 @@ export default function NigeriaMap({
   useEffect(() => {
     const map = mapRef.current;
     if (!map?.isStyleLoaded() || !mapReady) return;
-    if (useMapStore.getState().mapType === "election") return;
-    const run = () => applyLensOverlayEmphasis(map, activeLens, activeOverlays);
+    const enabled = mapType !== "election" && mapType !== "ranking";
+    const run = () =>
+      syncOverlayPresentation(
+        map,
+        activeLens,
+        activeOverlays,
+        overlayFeatureFocus,
+        enabled
+      );
     run();
     map.once("idle", run);
-  }, [activeLens, activeOverlaysKey, mapReady, activeOverlays]);
+  }, [
+    activeLens,
+    activeOverlaysKey,
+    mapReady,
+    activeOverlays,
+    overlayFocusKey,
+    mapType,
+  ]);
 
   useEffect(() => {
     if (!mapReady) return;
@@ -1593,6 +1681,7 @@ export default function NigeriaMap({
           selected: false,
           inRegion: false,
           hover: false,
+          rank: null,
         });
       }
       for (const r of regions) {
@@ -1619,6 +1708,7 @@ export default function NigeriaMap({
         map.setLayoutProperty("states-labels", "visibility", "visible");
         map.setFilter("states-labels", null);
         map.setPaintProperty("states-labels", "text-opacity", 1);
+        resetRankingStateRankLabels(map);
         map.moveLayer("states-labels");
       }
       if (map.getLayer("country-label")) {

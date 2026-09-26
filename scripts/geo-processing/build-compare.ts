@@ -405,6 +405,69 @@ function csvEscape(v: string): string {
   return v;
 }
 
+const ECONOMY_STATE_COLUMNS = [
+  "stateId",
+  "igr",
+  "igrPerCapita",
+  "faacAllocation",
+  "totalRevenue",
+  "igrShareOfRevenue",
+  "unemploymentRate",
+  "povertyRate",
+  "stateGdp",
+  "stateGdpPerCapita",
+  "faacPerCapita",
+  "vatAllocation",
+  "debtStock",
+  "capitalExpenditure",
+  "recurrentExpenditure",
+  "dependencyOnFaac",
+  "underemploymentRate",
+  "multidimensionalPoverty",
+] as const;
+
+const SOCIAL_STATE_COLUMNS = [
+  "stateId",
+  "literacyRate",
+  "primaryEnrollment",
+  "secondaryEnrollment",
+  "infantMortality",
+  "electricityAccess",
+  "improvedWaterAccess",
+  "internetPenetration",
+  "under5Mortality",
+  "maternalMortality",
+  "outOfSchoolChildren",
+  "netAttendancePrimary",
+  "netAttendanceSecondary",
+  "sanitationAccess",
+  "stuntingPrevalence",
+  "contraceptivePrevalence",
+  "mobilePenetration",
+] as const;
+
+function ensureCsvColumns(
+  fileName: string,
+  columns: readonly string[],
+  states: StateRecord[]
+): void {
+  const filePath = path.join(sourcesDir, fileName);
+  const rows = fs.existsSync(filePath) ? readCsvFile(filePath) : [];
+  const byId = indexBy(rows.length ? rows : [], "stateId");
+  const lines = [
+    columns.join(","),
+    ...states.map((s) =>
+      columns
+        .map((col) => {
+          if (col === "stateId") return s.id;
+          return csvEscape(byId.get(s.id)?.[col] ?? "");
+        })
+        .join(",")
+    ),
+  ];
+  writeCsv(`data/compare/sources/${fileName}`, lines);
+}
+
 function ensureSourceTemplates(states: StateRecord[]) {
   ensureDir(sourcesDir);
 
@@ -469,28 +532,11 @@ function ensureSourceTemplates(states: StateRecord[]) {
   }
 
   for (const period of ["2022", "2023", "2024"]) {
-    const p = path.join(sourcesDir, `states-economy-${period}.csv`);
-    if (!fs.existsSync(p)) {
-      const header =
-        "stateId,igr,igrPerCapita,faacAllocation,totalRevenue,unemploymentRate,povertyRate";
-      const rows = states.map((s) =>
-        [s.id, "", "", "", "", "", ""].join(",")
-      );
-      writeCsv(`data/compare/sources/states-economy-${period}.csv`, [
-        header,
-        ...rows,
-      ]);
-    }
+    ensureCsvColumns(`states-economy-${period}.csv`, ECONOMY_STATE_COLUMNS, states);
   }
 
-  const socialPath = path.join(sourcesDir, "states-social-2021.csv");
-  if (!fs.existsSync(socialPath)) {
-    const header =
-      "stateId,literacyRate,primaryEnrollment,secondaryEnrollment,infantMortality,electricityAccess,improvedWaterAccess,internetPenetration";
-    const rows = states.map((s) =>
-      [s.id, "", "", "", "", "", "", ""].join(",")
-    );
-    writeCsv("data/compare/sources/states-social-2021.csv", [header, ...rows]);
+  for (const period of ["2018", "2021", "2023"]) {
+    ensureCsvColumns(`states-social-${period}.csv`, SOCIAL_STATE_COLUMNS, states);
   }
 
   for (const period of ["2022", "2023", "2024"]) {
@@ -714,16 +760,30 @@ function buildEconomy(states: StateRecord[], period: string) {
       igrPerCapita,
       faacAllocation: dashOr(row.faacAllocation),
       totalRevenue,
-      igrShareOfRevenue: igrShare,
+      igrShareOfRevenue: dashOr(row.igrShareOfRevenue) !== "—"
+        ? dashOr(row.igrShareOfRevenue)
+        : igrShare,
       unemploymentRate: dashOr(row.unemploymentRate),
       povertyRate: dashOr(row.povertyRate),
+      stateGdp: dashOr(row.stateGdp),
+      stateGdpPerCapita: dashOr(row.stateGdpPerCapita),
+      faacPerCapita: dashOr(row.faacPerCapita),
+      vatAllocation: dashOr(row.vatAllocation),
+      debtStock: dashOr(row.debtStock),
+      capitalExpenditure: dashOr(row.capitalExpenditure),
+      recurrentExpenditure: dashOr(row.recurrentExpenditure),
+      dependencyOnFaac: dashOr(row.dependencyOnFaac),
+      underemploymentRate: dashOr(row.underemploymentRate),
+      multidimensionalPoverty: dashOr(row.multidimensionalPoverty),
     };
   }
   writeJson(`data/compare/states/economy/${period}.json`, data);
 }
 
-function buildSocial(states: StateRecord[]) {
-  const rows = readCsvFile(path.join(sourcesDir, "states-social-2021.csv"));
+function buildSocial(states: StateRecord[], period: string) {
+  const rows = readCsvFile(
+    path.join(sourcesDir, `states-social-${period}.csv`)
+  );
   const byId = indexBy(rows, "stateId");
 
   const data: Record<string, Record<string, unknown>> = {};
@@ -737,9 +797,18 @@ function buildSocial(states: StateRecord[]) {
       electricityAccess: dashOr(row.electricityAccess),
       improvedWaterAccess: dashOr(row.improvedWaterAccess),
       internetPenetration: dashOr(row.internetPenetration),
+      under5Mortality: dashOr(row.under5Mortality),
+      maternalMortality: dashOr(row.maternalMortality),
+      outOfSchoolChildren: dashOr(row.outOfSchoolChildren),
+      netAttendancePrimary: dashOr(row.netAttendancePrimary),
+      netAttendanceSecondary: dashOr(row.netAttendanceSecondary),
+      sanitationAccess: dashOr(row.sanitationAccess),
+      stuntingPrevalence: dashOr(row.stuntingPrevalence),
+      contraceptivePrevalence: dashOr(row.contraceptivePrevalence),
+      mobilePenetration: dashOr(row.mobilePenetration),
     };
   }
-  writeJson("data/compare/states/social/2021.json", data);
+  writeJson(`data/compare/states/social/${period}.json`, data);
 }
 
 function buildCountryDemographics(period: string) {
@@ -912,7 +981,9 @@ function main() {
     buildCountryEconomy(period);
   }
 
-  buildSocial(states);
+  for (const period of ["2018", "2021", "2023"]) {
+    buildSocial(states, period);
+  }
 
   writeJson("data/compare/country/general.json", {
     NG: {

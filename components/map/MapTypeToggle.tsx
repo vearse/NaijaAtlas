@@ -23,7 +23,32 @@ const OPTIONS: Array<{
     label: "Election",
     desc: "Senatorial districts, polling units, and 2027 candidates",
   },
+  {
+    id: "ranking",
+    label: "Ranking",
+    desc: "Color states by Economy & Social indicators (NBS / NDHS)",
+  },
 ];
+
+function RankingIcon({ active }: { active: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      aria-hidden
+      className={`w-3.5 h-3.5 shrink-0 ${active ? "text-white" : "text-slate-500"}`}
+      fill="currentColor"
+    >
+      <path d="M3 13h2V7H3v6zm4 0h2V3H7v10zm4 0h2V9h-2v4z" />
+    </svg>
+  );
+}
+
+function mapTypeIcon(id: MapTypeId, active: boolean) {
+  if (id === "minimal") return <MinimalIcon active={active} />;
+  if (id === "osm") return <StreetIcon active={active} />;
+  if (id === "ranking") return <RankingIcon active={active} />;
+  return <ElectionIcon active={active} />;
+}
 
 function MinimalIcon({ active }: { active: boolean }) {
   return (
@@ -110,12 +135,6 @@ export default function MapTypeToggle() {
   }, [open]);
 
   const active = OPTIONS.find((o) => o.id === mapType) ?? OPTIONS[0];
-  const ActiveIcon =
-    active.id === "minimal"
-      ? MinimalIcon
-      : active.id === "osm"
-        ? StreetIcon
-        : ElectionIcon;
 
   return (
     <div ref={rootRef} className="relative">
@@ -132,7 +151,7 @@ export default function MapTypeToggle() {
         ].join(" ")}
       >
         <span className="flex h-5 w-5 items-center justify-center rounded-md bg-ng-green text-white">
-          <ActiveIcon active />
+          {mapTypeIcon(active.id, true)}
         </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -159,12 +178,8 @@ export default function MapTypeToggle() {
         >
           {OPTIONS.map((opt, idx) => {
             const on = mapType === opt.id;
-            const Icon =
-              opt.id === "minimal"
-                ? MinimalIcon
-                : opt.id === "osm"
-                  ? StreetIcon
-                  : ElectionIcon;
+            const Icon = (props: { active: boolean }) =>
+              mapTypeIcon(opt.id, props.active);
             return (
               <button
                 key={opt.id}

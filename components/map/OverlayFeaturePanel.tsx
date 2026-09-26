@@ -1,7 +1,8 @@
 "use client";
 
-import { type ReactNode } from "react";
+import { type ReactNode, useMemo } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
+import { focusFromFeature } from "@/lib/map/overlayFocus";
 import WikiDeepDiveLink from "@/components/map/WikiDeepDiveLink";
 import GetDirectionsButton from "@/components/directions/GetDirectionsButton";
 import ViewOnMapButton from "@/components/map/ViewOnMapButton";
@@ -258,8 +259,26 @@ export default function OverlayFeaturePanel({
   feature,
   states,
 }: OverlayFeaturePanelProps) {
-  const { clearSelectedOverlay, showLgas, addSelectedState } = useMapStore();
+  const {
+    clearSelectedOverlay,
+    showLgas,
+    addSelectedState,
+    mapType,
+    overlayFeatureFocus,
+    setOverlayFeatureFocus,
+  } = useMapStore();
   const { layerId, name, properties: props } = feature;
+  const focusSpec = useMemo(
+    () => focusFromFeature(layerId, props as Record<string, unknown>),
+    [layerId, props]
+  );
+  const focusDisabled = mapType === "election" || mapType === "ranking";
+  const focusActive =
+    focusSpec != null &&
+    overlayFeatureFocus != null &&
+    overlayFeatureFocus.layerId === focusSpec.layerId &&
+    overlayFeatureFocus.matchKey === focusSpec.matchKey &&
+    overlayFeatureFocus.matchValue === focusSpec.matchValue;
   const meta = OVERLAY_LAYER_LABELS[layerId];
   const cityCat = cityCategoryMeta(props.category);
   const isTour = props.isTour === true;
@@ -490,6 +509,31 @@ export default function OverlayFeaturePanel({
           Close
         </button>
       </div>
+
+      {focusSpec && !focusDisabled && (
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setOverlayFeatureFocus(focusSpec)}
+            className={`rounded-full px-3 py-1 text-xs font-semibold border transition-colors ${
+              focusActive
+                ? "border-ng-green bg-emerald-50 text-ng-green"
+                : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
+            }`}
+          >
+            Focus: {focusSpec.label}
+          </button>
+          {focusActive && (
+            <button
+              type="button"
+              onClick={() => setOverlayFeatureFocus(null)}
+              className="rounded-full px-3 py-1 text-xs font-medium text-slate-500 hover:text-slate-800"
+            >
+              Clear focus
+            </button>
+          )}
+        </div>
+      )}
 
       {text(props.summary) && (
         <p className="text-sm text-slate-600 leading-relaxed">{text(props.summary)}</p>

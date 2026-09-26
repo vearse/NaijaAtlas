@@ -42,6 +42,10 @@ import type { PoliticsBundle, PollingUnitCountsBundle } from "@/types/politics";
 import { buildCapitalLgaIdMap } from "@/lib/map/capitalLga";
 import ElectionPanel from "@/components/election/ElectionPanel";
 import ElectionMapLegend from "@/components/election/ElectionMapLegend";
+import RankingPanel from "@/components/ranking/RankingPanel";
+import RankingMapLegend from "@/components/ranking/RankingMapLegend";
+import ElectionCountdownCard from "@/components/election/ElectionCountdownCard";
+import MapCornerSlot from "@/components/map/MapCornerSlot";
 import ToastStack from "@/components/ui/ToastStack";
 
 const NigeriaMap = dynamic(() => import("@/components/map/NigeriaMap"), {
@@ -90,6 +94,8 @@ export default function ExplorerShell({
   const isMobile = useIsMobile();
   const mapType = useMapStore((s) => s.mapType);
   const isElectionMode = mapType === "election";
+  const isRankingMode = mapType === "ranking";
+  const isSpecialMapMode = isElectionMode || isRankingMode;
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
   const selectedLgaId = useMapStore((s) => s.selectedLgaId);
   const activeRegionId = useMapStore((s) => s.activeRegionId);
@@ -100,6 +106,48 @@ export default function ExplorerShell({
   const [compareModalOpen, setCompareModalOpen] = useState(false);
   const [searchSpotlightOpen, setSearchSpotlightOpen] = useState(false);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
+
+  // The bottom-right map slot rotates between these cards. Each card reports
+  // whether it actually rendered something, so an empty legend is skipped
+  // instead of rotating to a blank frame.
+  const [rankingLegendUp, setRankingLegendUp] = useState(false);
+  const [electionCardUp, setElectionCardUp] = useState(false);
+
+  const cornerCards = useMemo(
+    () => [
+      {
+        key: "ranking-legend",
+        visible: isRankingMode && rankingLegendUp,
+        node: (
+          <RankingMapLegend
+            compareBundle={compareBundle}
+            states={states}
+            onVisibleChange={setRankingLegendUp}
+          />
+        ),
+      },
+      {
+        key: "election-countdown",
+        // In election mode the side panel already lists the candidates.
+        visible: !isElectionMode && electionCardUp,
+        node: (
+          <ElectionCountdownCard
+            presidential={politics.presidential}
+            onVisibleChange={setElectionCardUp}
+          />
+        ),
+      },
+    ],
+    [
+      compareBundle,
+      states,
+      politics.presidential,
+      isRankingMode,
+      isElectionMode,
+      rankingLegendUp,
+      electionCardUp,
+    ]
+  );
 
   const capitalLgaByState = useMemo(
     () => buildCapitalLgaIdMap(lgas, compareBundle),
@@ -141,21 +189,23 @@ export default function ExplorerShell({
                   <p className="text-[11px] lg:text-xs text-slate-500 mt-0.5 hidden sm:block">
                     {isElectionMode
                       ? "2027 elections · PU locator · Senate districts"
-                      : "36 states · 774 LGAs · 6 regions"}
+                      : isRankingMode
+                        ? "State rankings · Economy & Social indicators"
+                        : "36 states · 774 LGAs · 6 regions"}
                   </p>
                 </div>
               </div>
               <PoweredByIseOwo />
             </div>
             <div className="hidden lg:flex flex-col items-stretch gap-1.5 lg:flex-1 lg:max-w-md">
-              {!isElectionMode && <LocationSearch lgas={lgas} />}
+              {!isSpecialMapMode && <LocationSearch lgas={lgas} />}
               <MapHints />
             </div>
           </div>
           <div className="mt-2 lg:mt-4 space-y-1.5 lg:space-y-2">
             <div className="flex items-center justify-between gap-2 flex-wrap w-full">
               <div className="flex items-center gap-2 flex-wrap">
-                {!isElectionMode && (
+                {!isSpecialMapMode && (
                   <>
                     <LensSelect />
                     <RegionSelect regions={regions} />
@@ -202,8 +252,19 @@ export default function ExplorerShell({
           </button>
         )}
 
+        {isMobile && isRankingMode && (
+          <button
+            type="button"
+            onClick={() => openMobileSheet()}
+            className="absolute top-2.5 right-14 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-ng-green text-white px-3 py-2 text-xs font-semibold shadow-md min-h-[36px]"
+            aria-label="Open ranking panel"
+          >
+            Rankings
+          </button>
+        )}
+
         {isMobile &&
-          !isElectionMode &&
+          !isSpecialMapMode &&
           (statePanelOpen || lgaSelected) &&
           mobileSheet === "open" && (
           <button
@@ -266,7 +327,7 @@ export default function ExplorerShell({
           )}
 
         {isMobile &&
-          !isElectionMode &&
+          !isSpecialMapMode &&
           !showStateCompare &&
           !compareStatesEligible &&
           !statePanelOpen &&
@@ -305,9 +366,11 @@ export default function ExplorerShell({
               lgas={lgas}
               capitalLgaByState={capitalLgaByState}
               politicsLookups={politics.lookups}
+              compareBundle={compareBundle}
             />
-            {!isElectionMode && <MapBottomToolbar />}
+            {!isSpecialMapMode && <MapBottomToolbar />}
             <ElectionMapLegend lookups={politics.lookups} />
+            <MapCornerSlot cards={cornerCards} />
             <MapControls />
           </div>
         </div>
@@ -316,6 +379,12 @@ export default function ExplorerShell({
             politics={politics}
             pollingCounts={pollingCounts}
             lgas={lgas}
+          />
+        ) : isRankingMode ? (
+          <RankingPanel
+            compareBundle={compareBundle}
+            states={states}
+            regions={regions}
           />
         ) : (
           <LocationPanel
