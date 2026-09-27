@@ -30,14 +30,12 @@ interface PollingUnitLocatorProps {
   pollingCounts: PollingUnitCountsBundle;
   lgas: LgaLocation[];
   politics: PoliticsBundle;
-  onShowPresidential: () => void;
 }
 
 export default function PollingUnitLocator({
   pollingCounts,
   lgas,
   politics,
-  onShowPresidential,
 }: PollingUnitLocatorProps) {
   const setSelectedSenatorialDistrict = useMapStore(
     (s) => s.setSelectedSenatorialDistrict
@@ -358,8 +356,13 @@ export default function PollingUnitLocator({
             </div>
             <button
               type="button"
-              onClick={onShowPresidential}
-              className="shrink-0 rounded-lg bg-ng-green px-3 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-emerald-700 transition flex items-center gap-1"
+              disabled={!senatorialDistrictId}
+              onClick={() => {
+                if (senatorialDistrictId) {
+                  setSelectedSenatorialDistrict(senatorialDistrictId);
+                }
+              }}
+              className="shrink-0 rounded-lg bg-ng-green px-3 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-emerald-700 transition flex items-center gap-1 disabled:opacity-50 disabled:pointer-events-none"
             >
               <span aria-hidden>🗳️</span>
               View candidates
@@ -369,7 +372,7 @@ export default function PollingUnitLocator({
           {senatorialDistrict && senatorialDistrictId && (
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 mb-1">
-                Senatorial district
+                Senate · your district
               </p>
               <button
                 type="button"
@@ -396,8 +399,8 @@ export default function PollingUnitLocator({
           {federalSeats.length > 0 && (
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400 mb-1">
-                Federal constituency
-                {federalSeats.length > 1 ? " (constituencies)" : ""}
+                House of Representatives
+                {federalSeats.length > 1 ? " · your constituencies" : " · your constituency"}
               </p>
               <ul className="text-xs text-slate-700 space-y-1">
                 {federalSeats.map((fc) => (
@@ -405,7 +408,9 @@ export default function PollingUnitLocator({
                     <button
                       type="button"
                       onClick={() =>
-                        setSelectedSenatorialDistrict(fc.senatorial_district_id)
+                        setSelectedSenatorialDistrict(fc.senatorial_district_id, {
+                          federalConstituencyId: fc.id,
+                        })
                       }
                       className="w-full flex items-center justify-between gap-2 rounded-md bg-white/80 px-2 py-1 text-left hover:bg-white transition"
                     >

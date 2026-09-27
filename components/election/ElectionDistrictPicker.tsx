@@ -3,6 +3,7 @@
 import type { PoliticsBundle } from "@/types/politics";
 import { useMapStore } from "@/lib/store/mapStore";
 import { colorForDistrict } from "@/lib/politics/senatorialColors";
+import NationalAssemblyIntro from "./NationalAssemblyIntro";
 
 interface ElectionDistrictPickerProps {
   politics: PoliticsBundle;
@@ -68,12 +69,14 @@ export default function ElectionDistrictPicker({
         </span>
       </button>
 
+      {selectedStateIds.size === 0 && <NationalAssemblyIntro />}
+
       <div>
-        <h2 className="text-sm font-bold text-slate-900">Senatorial districts</h2>
+        <h2 className="text-sm font-bold text-slate-900">Senate districts</h2>
         <p className="text-xs text-slate-500 mt-1">
           {selectedStateIds.size === 0
-            ? "Select one or more states on the map to list districts."
-            : "Tap a district for candidates, or click an LGA on the map."}
+            ? "Select states on the map, or find your polling unit above."
+            : "Tap a district for Senate & House candidates, or click an LGA on the map."}
         </p>
       </div>
 
@@ -107,7 +110,7 @@ export default function ElectionDistrictPicker({
                   </span>
                   {isYour && (
                     <span className="shrink-0 rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-800">
-                      Your constituency
+                      Your district
                     </span>
                   )}
                 </button>

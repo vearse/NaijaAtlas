@@ -216,7 +216,12 @@ export interface MapSelectionState {
   mapType: MapTypeId;
   setMapType: (id: MapTypeId) => void;
   selectedSenatorialDistrictId: string | null;
-  setSelectedSenatorialDistrict: (id: string | null) => void;
+  /** When set, House section in district detail expands this constituency. */
+  electionFederalConstituencyFocusId: string | null;
+  setSelectedSenatorialDistrict: (
+    id: string | null,
+    options?: { federalConstituencyId?: string | null }
+  ) => void;
   /** Confirmed polling unit from the 2027 locator (persists until the user changes it). */
   confirmedPollingUnit: PollingUnitShardEntry | null;
   setConfirmedPollingUnit: (unit: PollingUnitShardEntry | null) => void;
@@ -312,6 +317,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   lgaVisibilityHandler: null,
   mapType: "minimal",
   selectedSenatorialDistrictId: null,
+  electionFederalConstituencyFocusId: null,
   confirmedPollingUnit: null,
   activeLens: "learn",
   directions: {
@@ -515,8 +521,13 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     }
     set({ mapType: id });
   },
-  setSelectedSenatorialDistrict: (id) =>
-    set({ selectedSenatorialDistrictId: id, mobileSheet: "open" }),
+  setSelectedSenatorialDistrict: (id, options) =>
+    set({
+      selectedSenatorialDistrictId: id,
+      electionFederalConstituencyFocusId:
+        options?.federalConstituencyId ?? null,
+      mobileSheet: "open",
+    }),
   setConfirmedPollingUnit: (unit) => set({ confirmedPollingUnit: unit }),
   setActiveLens: (lens) => {
     const mapType = get().mapType;

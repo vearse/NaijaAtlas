@@ -541,7 +541,7 @@ const STATE_RANK_TEXT_FIELD: ExpressionSpecification = [
     ["concat", "#", ["to-string", ["feature-state", "rank"]]],
     ""
   ],
-  { "font-scale": 0.78, "text-font": [MAP_FONT] },
+  { "font-scale": 0.78, "text-font": ["literal", [MAP_FONT]] },
 ];
 
 /** Drop the rank line and restore the plain state-name label. */

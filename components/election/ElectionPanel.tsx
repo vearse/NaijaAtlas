@@ -62,7 +62,6 @@ export default function ElectionPanel({
           pollingCounts={pollingCounts}
           lgas={lgas}
           politics={politics}
-          onShowPresidential={openPresidential}
         />
         <ElectionDistrictPicker
           politics={politics}

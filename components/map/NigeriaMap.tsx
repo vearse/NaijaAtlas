@@ -1610,10 +1610,6 @@ export default function NigeriaMap({
 
     refreshOverlays();
 
-    const onIdle = () => {
-      finalizeOverlayStack(map);
-      runOverlayPresentation(map);
-    };
     const onData = (e: maplibregl.MapSourceDataEvent) => {
       if (!e.isSourceLoaded || !e.sourceId) return;
       if (!overlaySourceIds.has(e.sourceId)) return;
@@ -1621,10 +1617,8 @@ export default function NigeriaMap({
       runOverlayPresentation(map);
     };
 
-    map.on("idle", onIdle);
     map.on("data", onData);
     return () => {
-      map.off("idle", onIdle);
       map.off("data", onData);
     };
   }, [

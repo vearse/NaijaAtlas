@@ -1,3 +1,5 @@
+import { formatCompactNumber } from "@/lib/format/compactNumber";
+
 /** Parse compare cell strings into numbers for ranking (— and empty → null). */
 export function parseMetricValue(raw: unknown): number | null {
   if (raw === null || raw === undefined) return null;
@@ -12,5 +14,10 @@ export function parseMetricValue(raw: unknown): number | null {
 export function formatMetricDisplay(raw: unknown): string {
   if (raw === null || raw === undefined) return "—";
   const s = String(raw).trim();
-  return s || "—";
+  if (!s || s === "—" || s === "-" || s.toLowerCase() === "n/a") return "—";
+  const value = parseMetricValue(raw);
+  if (value != null && Math.abs(value) >= 1000) {
+    return formatCompactNumber(value);
+  }
+  return s;
 }

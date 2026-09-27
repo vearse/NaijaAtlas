@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { PoliticsBundle } from "@/types/politics";
 import { useMapStore } from "@/lib/store/mapStore";
 import { colorForDistrict } from "@/lib/politics/senatorialColors";
@@ -52,10 +52,22 @@ export default function ElectionDistrictDetail({
   const setSelectedSenatorialDistrict = useMapStore(
     (s) => s.setSelectedSenatorialDistrict
   );
+  const federalConstituencyFocusId = useMapStore(
+    (s) => s.electionFederalConstituencyFocusId
+  );
 
   const { lookups, presidential } = politics;
 
   const [openReps, setOpenReps] = useState<Set<string>>(() => new Set());
+
+  useEffect(() => {
+    if (!federalConstituencyFocusId) return;
+    setOpenReps((prev) => {
+      const next = new Set(prev);
+      next.add(federalConstituencyFocusId);
+      return next;
+    });
+  }, [federalConstituencyFocusId]);
 
   const chipDistricts = useMemo(() => {
     if (selectedStateIds.size === 0) {
@@ -88,7 +100,7 @@ export default function ElectionDistrictDetail({
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">
             <p className="text-[10px] font-semibold uppercase tracking-wider text-emerald-700">
-              District
+              Senate district
             </p>
             <h2 className="text-lg font-bold text-slate-900 truncate">
               {district.name}
