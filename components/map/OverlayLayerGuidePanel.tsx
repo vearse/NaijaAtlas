@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
 import {
   OVERLAY_LAYER_GUIDES,
   OVERLAY_LAYER_LABELS,
+  PROPOSED_ARMY_DIVISION_OPT_IN_GROUP,
+  PROPOSED_PORT_OPT_IN_GROUP,
   type OverlayLayerId,
   type SelectedOverlayFeature,
 } from "@/types/overlay";
@@ -19,6 +21,13 @@ interface GuideFeature {
 }
 
 const MAX_VISIBLE = 8;
+
+interface OptInGroup {
+  groupId: string;
+  title: string;
+  blurb: string;
+  features: GuideFeature[];
+}
 
 /**
  * One row per distinct feature id.
@@ -99,6 +108,21 @@ function useLayerFeatures(layerId: OverlayLayerId) {
   return { features, visibleCount, showAll, setShowAll };
 }
 
+/** Features flagged `optInGroup` are excluded from the default list and the
+ * default map filter. They surface only through their own reveal section.
+ */
+function groupOptInFeatures(
+  features: GuideFeature[] | null,
+  groupId: string
+): GuideFeature[] {
+  if (!features) return [];
+  return features.filter((f) => f.properties.optInGroup === groupId);
+}
+
+function text(value: unknown): string {
+  return typeof value === "string" ? value.trim() : "";
+}
+
 export default function OverlayLayerGuidePanel({
   layerId,
 }: {
@@ -106,10 +130,45 @@ export default function OverlayLayerGuidePanel({
 }) {
   const clearOverlayGuide = useMapStore((s) => s.clearOverlayGuide);
   const setSelectedOverlay = useMapStore((s) => s.setSelectedOverlay);
+  const toggleOverlay = useMapStore((s) => s.toggleOverlay);
+  const revealedOptInGroups = useMapStore((s) => s.revealedOptInGroups);
+  const toggleOptInGroup = useMapStore((s) => s.toggleOptInGroup);
   const guide = OVERLAY_LAYER_GUIDES[layerId];
   const meta = OVERLAY_LAYER_LABELS[layerId];
   const { features, visibleCount, showAll, setShowAll } =
     useLayerFeatures(layerId);
+
+  const optInGroups = useMemo<OptInGroup[]>(() => {
+    const groups: OptInGroup[] = [];
+    if (layerId !== "waterways") return groups;
+    groups.push({
+      groupId: PROPOSED_PORT_OPT_IN_GROUP,
+      title: "Proposed & upcoming ports",
+      blurb:
+        "Greenfield and planned deep sea ports that are not yet operating. Reveal them to plot their sites on the map, then open any one for its MOU, approval and status record.",
+      features: groupOptInFeatures(features, PROPOSED_PORT_OPT_IN_GROUP),
+    });
+    groups.push({
+      groupId: PROPOSED_ARMY_DIVISION_OPT_IN_GROUP,
+      title: "New Army divisions (forming)",
+      blurb:
+        "Divisional headquarters approved in the Nigerian Army's 2026 expansion from eight to twelve divisions, but not yet at full operational capability. Reveal them to plot the new headquarters, then open any one for its area of responsibility and phasing.",
+      features: groupOptInFeatures(
+        features,
+        PROPOSED_ARMY_DIVISION_OPT_IN_GROUP
+      ),
+    });
+    return groups.filter((g) => g.features.length > 0);
+  }, [features, layerId]);
+
+  // Opt-in rows have their own section, so keep them out of the default list.
+  const defaultFeatures = useMemo(
+    () =>
+      (features ?? []).filter(
+        (f) => f.properties.optInGroup === undefined
+      ),
+    [features]
+  );
 
   const openFeature = (f: GuideFeature) => {
     const feature: SelectedOverlayFeature = {
@@ -120,6 +179,13 @@ export default function OverlayLayerGuidePanel({
       geometry: f.geometry,
     };
     setSelectedOverlay(feature);
+  };
+
+  const revealGroup = (groupId: string) => {
+    if (!useMapStore.getState().activeOverlays.has(layerId)) {
+      toggleOverlay(layerId);
+    }
+    toggleOptInGroup(groupId);
   };
 
   return (
@@ -203,10 +269,10 @@ export default function OverlayLayerGuidePanel({
           </p>
         )}
 
-        {features != null && features.length > 0 && (
+        {defaultFeatures.length > 0 && (
           <>
             <ul className="space-y-1">
-              {features.slice(0, visibleCount).map((f) => (
+              {defaultFeatures.slice(0, visibleCount).map((f) => (
                 <li key={f.id}>
                   <button
                     type="button"
@@ -226,18 +292,94 @@ export default function OverlayLayerGuidePanel({
                 </li>
               ))}
             </ul>
-            {features.length > MAX_VISIBLE && (
+            {defaultFeatures.length > MAX_VISIBLE && (
               <button
                 type="button"
                 onClick={() => setShowAll((v) => !v)}
                 className="w-full rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-ng-green/30 hover:text-ng-green transition-colors"
               >
-                {showAll ? "Show fewer" : `Show all ${features.length} features`}
+                {showAll
+                  ? "Show fewer"
+                  : `Show all ${defaultFeatures.length} features`}
               </button>
             )}
           </>
         )}
       </div>
+
+      {optInGroups.map((group) => {
+        const revealed = revealedOptInGroups.has(group.groupId);
+        return (
+          <div
+            key={group.groupId}
+            className="rounded-xl border border-violet-100 bg-violet-50/50 p-3 space-y-2.5"
+          >
+            <div className="flex items-start justify-between gap-2 px-0.5">
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-violet-400">
+                  Not on the map by default
+                </p>
+                <p className="text-sm font-semibold text-slate-800">
+                  {group.title}
+                  <span className="ml-1.5 text-xs font-medium text-slate-400 tabular-nums">
+                    {group.features.length}
+                  </span>
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => revealGroup(group.groupId)}
+                aria-pressed={revealed}
+                className={`shrink-0 rounded-lg border px-2.5 py-1 text-xs font-semibold transition-colors ${
+                  revealed
+                    ? "border-violet-300 bg-white text-violet-700 hover:border-violet-400"
+                    : "border-violet-300 bg-violet-600 text-white hover:bg-violet-700"
+                }`}
+              >
+                {revealed ? "Hide from map" : "Show on map"}
+              </button>
+            </div>
+
+            <p className="text-xs text-slate-600 leading-relaxed px-0.5">
+              {group.blurb}
+            </p>
+
+            {revealed && (
+              <ul className="space-y-1">
+                {group.features.map((f) => {
+                  const status = text(f.properties.status);
+                  return (
+                    <li key={f.id}>
+                      <button
+                        type="button"
+                        onClick={() => openFeature(f)}
+                        className="w-full group flex items-start justify-between gap-2 rounded-lg border border-violet-100 bg-white px-3 py-2 text-left hover:border-violet-300 hover:bg-violet-50/60 transition-colors"
+                      >
+                        <span className="min-w-0">
+                          <span className="block text-sm font-medium text-slate-700 truncate">
+                            {f.name}
+                          </span>
+                          {status && (
+                            <span className="block text-[11px] text-slate-500 truncate">
+                              {status}
+                            </span>
+                          )}
+                        </span>
+                        <span
+                          aria-hidden
+                          className="shrink-0 mt-0.5 text-slate-400 group-hover:text-violet-700"
+                        >
+                          →
+                        </span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import type { Map } from "maplibre-gl";
 
 export const WATERWAY_MILITARY_CATEGORIES = [
   "army-division",
+  "proposed-army-division",
   "navy-base",
   "airforce-hq",
   "airforce-base",
@@ -57,8 +58,19 @@ function drawDelta(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: num
   ctx.closePath();
 }
 
+/** Approved but not yet established: the army shield drawn as an outline. */
+function drawArmyProposed(
+  ctx: CanvasRenderingContext2D,
+  cx: number,
+  cy: number,
+  r: number
+) {
+  drawArmy(ctx, cx, cy, r);
+}
+
 const DRAW: Record<WaterwayMilitaryCategory, DrawFn> = {
   "army-division": drawArmy,
+  "proposed-army-division": drawArmyProposed,
   "navy-base": drawShip,
   "airforce-hq": drawRoundel,
   "airforce-base": drawDelta,
@@ -66,6 +78,7 @@ const DRAW: Record<WaterwayMilitaryCategory, DrawFn> = {
 
 const FILL: Record<WaterwayMilitaryCategory, string> = {
   "army-division": "#3f6212",
+  "proposed-army-division": "#7c3aed",
   "navy-base": "#0f172a",
   "airforce-hq": "#0369a1",
   "airforce-base": "#1e40af",
@@ -84,14 +97,33 @@ function iconImage(category: WaterwayMilitaryCategory): ImageData {
   ctx.lineJoin = "round";
   ctx.lineCap = "round";
 
-  DRAW[category](ctx, cx, cy, r);
-  ctx.fillStyle = FILL[category];
-  ctx.fill();
-  ctx.strokeStyle = "#ffffff";
-  ctx.lineWidth = 3.5;
-  ctx.stroke();
+  const isProposed = category === "proposed-army-division";
 
-  if (category === "army-division") {
+  DRAW[category](ctx, cx, cy, r);
+  // Proposed formations are outlined, not filled, to read as "forming".
+  if (isProposed) {
+    ctx.strokeStyle = FILL[category];
+    ctx.lineWidth = 3;
+    ctx.setLineDash([4, 3]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    // Dashed outer ring, as with the proposed-port glyph.
+    ctx.beginPath();
+    ctx.arc(cx, cy, 21, 0, Math.PI * 2);
+    ctx.strokeStyle = FILL[category];
+    ctx.lineWidth = 2.5;
+    ctx.setLineDash([3.5, 3.5]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  } else {
+    ctx.fillStyle = FILL[category];
+    ctx.fill();
+    ctx.strokeStyle = "#ffffff";
+    ctx.lineWidth = 3.5;
+    ctx.stroke();
+  }
+
+  if (category === "army-division" || isProposed) {
     ctx.beginPath();
     ctx.moveTo(cx, cy - r * 0.28);
     ctx.lineTo(cx + r * 0.22, cy + r * 0.08);

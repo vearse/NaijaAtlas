@@ -101,6 +101,59 @@ function DetailRow({ label, value }: { label: string; value: ReactNode }) {
   );
 }
 
+/**
+ * Renders a `statesCrossed`-style array, which arrives as a JSON string once
+ * flattened into feature properties.
+ */
+function textArrayList(value: unknown): string | null {
+  if (Array.isArray(value)) {
+    const items = value.filter(
+      (v): v is string => typeof v === "string" && v.trim().length > 0
+    );
+    return items.length > 0 ? items.join(", ") : null;
+  }
+  if (typeof value === "string" && value.trim()) {
+    try {
+      return textArrayList(JSON.parse(value) as unknown);
+    } catch {
+      return value;
+    }
+  }
+  return null;
+}
+
+/** Dated timeline entries rendered as `date — event` rows. */
+function MilestoneList({ value }: { value: unknown }) {
+  const raw = parseObjectArray<{ date?: string; event?: string }>(value);
+  if (raw.length === 0) return null;
+  return (
+    <div>
+      <dt className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 mb-2">
+        Timeline
+      </dt>
+      <dd>
+        <ol className="space-y-1.5">
+          {raw.map((m, i) => {
+            const date = text(m.date);
+            const event = text(m.event) ?? text(m);
+            if (!event) return null;
+            return (
+              <li key={`${date}-${i}`} className="flex gap-2 text-sm text-slate-700">
+                {date && (
+                  <span className="shrink-0 w-[6.5rem] tabular-nums text-slate-500">
+                    {date}
+                  </span>
+                )}
+                <span className="leading-relaxed">{event}</span>
+              </li>
+            );
+          })}
+        </ol>
+      </dd>
+    </div>
+  );
+}
+
 function ChipList({ label, items }: { label: string; items: string[] }) {
   if (items.length === 0) return null;
   return (
@@ -337,6 +390,9 @@ export default function OverlayFeaturePanel({
     typeof props.lengthKm === "number"
       ? `${props.lengthKm.toLocaleString()} km`
       : text(props.lengthKm);
+  const isProposedPort = text(props.coastCategory) === "proposed-port";
+  const isProposedDivision =
+    text(props.militaryCategory) === "proposed-army-division";
 
   let toLonLat: [number, number] | null = null;
   {
@@ -576,6 +632,38 @@ export default function OverlayFeaturePanel({
         </div>
       )}
 
+      {isProposedPort && (
+        <div className="rounded-xl border border-violet-200 bg-violet-50/60 p-4 space-y-2">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-violet-500">
+            Not yet operational
+          </p>
+          <p className="text-sm text-slate-700 leading-relaxed">
+            {text(props.statusDetail) ?? text(props.status)}
+          </p>
+          {text(props.status) && (
+            <p className="text-sm font-semibold text-violet-800">
+              {text(props.status)}
+            </p>
+          )}
+        </div>
+      )}
+
+      {isProposedDivision && (
+        <div className="rounded-xl border border-violet-200 bg-violet-50/60 p-4 space-y-2">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-violet-500">
+            Approved · not yet fully operational
+          </p>
+          <p className="text-sm text-slate-700 leading-relaxed">
+            {text(props.statusDetail) ?? text(props.status)}
+          </p>
+          {text(props.status) && (
+            <p className="text-sm font-semibold text-violet-800">
+              {text(props.status)}
+            </p>
+          )}
+        </div>
+      )}
+
       <div className="flex flex-wrap items-center gap-3">
         {showViewOnMap && (
           <ViewOnMapButton
@@ -594,6 +682,57 @@ export default function OverlayFeaturePanel({
       </div>
 
       <dl className="space-y-3 rounded-xl border border-slate-100 bg-slate-50/80 p-4">
+        {isProposedPort && (
+          <>
+            <DetailRow label="Status" value={text(props.status)} />
+            <DetailRow label="MOU signed" value={text(props.mouSigned)} />
+            <DetailRow label="MOU parties" value={text(props.mouParties)} />
+            <DetailRow
+              label="What the MOU covers"
+              value={text(props.mouSignificance)}
+            />
+            <DetailRow
+              label="Estimated cost"
+              value={text(props.estimatedCost)}
+            />
+            <DetailRow label="Capacity" value={text(props.capacity)} />
+            <MilestoneList value={props.milestones} />
+          </>
+        )}
+        {isProposedDivision && (
+          <>
+            <DetailRow label="Status" value={text(props.status)} />
+            <DetailRow
+              label="Implementation phase"
+              value={text(props.phase)}
+            />
+            <DetailRow
+              label="Area of responsibility"
+              value={text(props.aorNote)}
+            />
+            <DetailRow
+              label="States covered"
+              value={textArrayList(props.statesCrossed)}
+            />
+            <DetailRow
+              label="Approved"
+              value={text(props.approvedOn)}
+            />
+            <DetailRow
+              label="GOC appointed"
+              value={text(props.gocAppointed)}
+            />
+            <DetailRow
+              label="Authorising parties"
+              value={text(props.mouParties)}
+            />
+            <DetailRow
+              label="Basis of creation"
+              value={text(props.mouSignificance)}
+            />
+            <MilestoneList value={props.milestones} />
+          </>
+        )}
         <DetailRow label="Founded" value={text(props.founded)} />
         <DetailRow label="Length" value={lengthKm} />
         <DetailRow label="Installed capacity" value={capacityLabel(props.capacityMw)} />

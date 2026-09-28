@@ -6,6 +6,10 @@ import fs from "fs";
 import https from "https";
 import * as turf from "@turf/turf";
 import { projectRoot, ensureDir, writeGeoJson } from "./shp-utils";
+import {
+  PROPOSED_ARMY_DIVISION_OPT_IN_GROUP,
+  PROPOSED_PORT_OPT_IN_GROUP,
+} from "../../types/overlay";
 import type {
   FeatureCollection,
   Feature,
@@ -512,6 +516,38 @@ const COAST_FEATURE_COORDS: Record<string, [number, number]> = {
   "historic-badagry": [2.88, 6.42],
 };
 
+/**
+ * Proposed / upcoming deep sea ports. These build into the same Waterways
+ * source but carry `optIn: true`, so the runtime keeps them off the map until
+ * the user reveals the group from the Waterways layer guide.
+ */
+const PROPOSED_PORT_COORDS: Record<string, [number, number]> = {
+  "prop-badagry": [2.883, 6.417],
+  "prop-lekki-blue": [3.966, 6.429],
+  "prop-olokola": [4.5, 6.333],
+  "prop-ibom-akanassa": [8.456, 4.571],
+  "prop-bakassi": [8.599, 4.473],
+  "prop-bonny": [7.17, 4.431],
+  "prop-agge": [5.592, 4.682],
+  "prop-ogidigben": [5.523, 5.516],
+};
+
+const OPT_IN_GROUP_FIELD = "optInGroup";
+
+/**
+ * Categories that ship in the source but stay off the map until revealed from
+ * the Waterways guide. Keyed by the feature's category value.
+ */
+const OPT_IN_GROUPS: Record<string, string> = {
+  "proposed-port": PROPOSED_PORT_OPT_IN_GROUP,
+  "proposed-army-division": PROPOSED_ARMY_DIVISION_OPT_IN_GROUP,
+};
+
+/** The opt-in group a category belongs to, or undefined if it is always shown. */
+function optInGroupFor(category: string): string | undefined {
+  return OPT_IN_GROUPS[category];
+}
+
 function normalizeWaterwayName(name: string): string {
   return name
     .normalize("NFD")
@@ -817,18 +853,63 @@ function coastPointFeature(
   const point = coords[row.id];
   if (!point) return null;
   const category = String(row.coastCategory ?? "seaport");
+  const optInGroup = optInGroupFor(category);
+  const isOptIn = optInGroup != null;
   return {
     type: "Feature",
     properties: {
+      // Catalog row first so `statesCrossed`/MOU details reach the runtime.
+      ...flattenCatalogRow(row),
       id: row.id,
       name: row.name,
       featureKind: "point",
       waterwayClass: category,
       coastCategory: category,
       iconId: `coast-icon-${category}`,
+      optIn: isOptIn,
+      ...(optInGroup ? { [OPT_IN_GROUP_FIELD]: optInGroup } : {}),
     },
     geometry: { type: "Point", coordinates: point },
   };
+}
+
+/**
+ * Opt-in military formations (e.g. the new Army divisional headquarters).
+ * Coordinates come from the catalog row so the vetted city centroids stay the
+ * single source of truth.
+ */
+function proposedMilitaryPointFeature(row: CatalogRow): Feature | null {
+  const lon = Number(row.lon);
+  const lat = Number(row.lat);
+  if (!Number.isFinite(lon) || !Number.isFinite(lat)) return null;
+  const category = String(row.militaryCategory ?? "army-division");
+  const optInGroup = optInGroupFor(category);
+  const isOptIn = optInGroup != null;
+  return {
+    type: "Feature",
+    properties: {
+      ...flattenCatalogRow(row),
+      id: row.id,
+      name: row.name,
+      featureKind: "point",
+      waterwayClass: "military",
+      militaryBranch: row.militaryBranch,
+      militaryCategory: category,
+      iconId: `waterway-icon-${category}`,
+      optIn: isOptIn,
+      ...(optInGroup ? { [OPT_IN_GROUP_FIELD]: optInGroup } : {}),
+    },
+    geometry: { type: "Point", coordinates: [lon, lat] },
+  };
+}
+
+function buildProposedMilitary(catalog: CatalogRow[]): Feature[] {
+  const features: Feature[] = [];
+  for (const row of catalog) {
+    const feature = proposedMilitaryPointFeature(row);
+    if (feature) features.push(feature);
+  }
+  return features;
 }
 
 /** Ocean, national coastline, coast zones, ports and coastal features. */
@@ -836,6 +917,7 @@ function buildCoast(
   coastCatalog: CatalogRow[],
   portsCatalog: CatalogRow[],
   coastFeaturesCatalog: CatalogRow[],
+  proposedPortsCatalog: CatalogRow[],
   adm0: FeatureCollection
 ): Feature[] {
   const features: Feature[] = [atlanticOcean()];
@@ -858,6 +940,12 @@ function buildCoast(
 
   for (const row of coastFeaturesCatalog) {
     const feature = coastPointFeature(row, COAST_FEATURE_COORDS);
+    if (feature) features.push(feature);
+  }
+
+  // Opt-in group: built into the source, hidden on the map until revealed.
+  for (const row of proposedPortsCatalog) {
+    const feature = coastPointFeature(row, PROPOSED_PORT_COORDS);
     if (feature) features.push(feature);
   }
 
@@ -932,6 +1020,8 @@ export async function buildOverlays(): Promise<void> {
   const coastCatalog = readCatalog("coast");
   const portsCatalog = readCatalog("ports");
   const coastFeaturesCatalog = readCatalog("coast-features");
+  const proposedPortsCatalog = readCatalog("ports-proposed");
+  const proposedArmyDivisionsCatalog = readCatalog("army-divisions-proposed");
   const resourcesCatalog = readCatalog("resources");
 
   const adm0 = readGeoJson("public/geo/nigeria-adm0.geojson");
@@ -945,6 +1035,7 @@ export async function buildOverlays(): Promise<void> {
     coastCatalog,
     portsCatalog,
     coastFeaturesCatalog,
+    proposedPortsCatalog,
     adm0
   );
   const coastMerged = coastFeatures.map((f) => {
@@ -957,13 +1048,23 @@ export async function buildOverlays(): Promise<void> {
     }
     const portRow = portsCatalog.find((c) => c.id === id);
     if (portRow) return mergeCatalog(f, portsCatalog, "waterways");
+    const proposedRow = proposedPortsCatalog.find((c) => c.id === id);
+    if (proposedRow) return mergeCatalog(f, proposedPortsCatalog, "waterways");
     const featureRow = coastFeaturesCatalog.find((c) => c.id === id);
     if (featureRow) return mergeCatalog(f, coastFeaturesCatalog, "waterways");
     const coastRow = coastCatalog.find((c) => c.id === id);
     if (coastRow) return mergeCatalog(f, coastCatalog, "waterways");
     return { ...f, properties: { ...f.properties, layerId: "waterways" } };
   });
-  waterFeatures.features = [...waterFeatures.features, ...coastMerged];
+  const proposedMilitary = buildProposedMilitary(proposedArmyDivisionsCatalog);
+  const proposedMilitaryMerged = proposedMilitary.map((f) =>
+    mergeCatalog(f, proposedArmyDivisionsCatalog, "waterways")
+  );
+  waterFeatures.features = [
+    ...waterFeatures.features,
+    ...coastMerged,
+    ...proposedMilitaryMerged,
+  ];
 
   writeGeoJson(
     projectRoot("public/geo/overlays/waterways.geojson"),

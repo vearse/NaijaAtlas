@@ -3,9 +3,12 @@ import { geoSourceUrl } from "./mapLayers";
 import {
   OVERLAY_REGISTRY,
   overlayLayerIdsForToggle,
+  waterwaysPointFilter,
   type OverlayRegistryEntry,
 } from "@/lib/map/overlayRegistry";
+import { useMapStore } from "@/lib/store/mapStore";
 import type { OverlayLayerId } from "@/types/overlay";
+import { OPT_IN_GROUPS } from "@/types/overlay";
 import { OVERLAY_LAYER_IDS } from "@/types/overlay";
 import { registerCityIcons, registerTourIcon } from "./cityIcons";
 import { registerCoastIcons } from "./coastIcons";
@@ -206,6 +209,35 @@ export function syncAllOverlayVisibility(
     setOverlayVisibility(map, layerId, active.has(layerId));
   }
   finalizeOverlayStack(map);
+  syncOptInGroupVisibility(map, active.has("waterways"));
+}
+
+/** Waterways point layers that opt-in features are filtered out of. */
+const OPT_IN_FILTERED_LAYERS = [
+  "overlay-waterways-point-icons",
+  "overlay-waterways-point-labels",
+];
+
+/**
+ * Apply the opt-in reveal state to the Waterways point layers.
+ *
+ * `setOverlayVisibility` re-mounts nothing once the layers exist, so the
+ * registry's default (hide opt-in) filter persists until it is replaced here.
+ */
+export function syncOptInGroupVisibility(
+  map: Map,
+  layerVisible: boolean
+): void {
+  if (!layerVisible) return;
+  const revealed = useMapStore.getState().revealedOptInGroups;
+  for (const lid of OPT_IN_FILTERED_LAYERS) {
+    if (!map.getLayer(lid)) continue;
+    try {
+      map.setFilter(lid, waterwaysPointFilter(revealed));
+    } catch (error) {
+      console.error(`Failed to set opt-in filter on ${lid}`, error);
+    }
+  }
 }
 
 /** Keep ocean under states; symbol overlays above admin (cities on top). */

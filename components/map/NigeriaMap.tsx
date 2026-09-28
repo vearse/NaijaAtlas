@@ -40,6 +40,7 @@ import type { StyleSpecification } from "maplibre-gl";
 import {
   addOverlayLayers,
   syncAllOverlayVisibility,
+  syncOptInGroupVisibility,
   finalizeOverlayStack,
   CITY_TOURS_SOURCE,
 } from "./overlayLayers";
@@ -190,6 +191,7 @@ export default function NigeriaMap({
   const activeRegionId = useMapStore((s) => s.activeRegionId);
   const resetCounter = useMapStore((s) => s.resetCounter);
   const activeOverlays = useMapStore((s) => s.activeOverlays);
+  const revealedOptInGroups = useMapStore((s) => s.revealedOptInGroups);
   const activeLens = useMapStore((s) => s.activeLens);
   const labeledLgaOrder = useMapStore((s) => s.labeledLgaOrder);
   const mapType: MapTypeId = useMapStore((s) => s.mapType);
@@ -1632,6 +1634,15 @@ export default function NigeriaMap({
     overlayFocusKey,
     mapType,
   ]);
+
+  // Revealing an opt-in group (e.g. proposed ports) only changes a layer
+  // filter, so it needs its own effect rather than a full overlay refresh.
+  useEffect(() => {
+    if (!mapReady) return;
+    const map = useMapStore.getState().mapInstance;
+    if (!map) return;
+    syncOptInGroupVisibility(map, activeOverlays.has("waterways"));
+  }, [mapReady, revealedOptInGroups, activeOverlays]);
 
   useEffect(() => {
     if (!mapReady) return;

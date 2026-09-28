@@ -79,6 +79,7 @@ export const TOURIST_TYPES: string[] = [
   "lagoon",
   "coast",
   "seaport",
+  "proposed-port",
   "estuary",
   "coast-zone",
   "ecotourism",
@@ -147,6 +148,11 @@ export const INVEST_TYPES: string[] = [
   "oil-terminal",
   "major-hydro",
   "regional-hydro",
+  "seaport",
+  "proposed-port",
+  // New Army divisional headquarters: national-security infrastructure, so it
+  // belongs with the other Invest-lens formations (matches 1 Division etc.).
+  "proposed-army-division",
   "reservoir",
 ];
 

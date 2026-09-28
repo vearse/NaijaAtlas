@@ -1,14 +1,56 @@
 import type {
   CircleLayerSpecification,
   FillLayerSpecification,
+  FilterSpecification,
   LayerSpecification,
   LineLayerSpecification,
   SymbolLayerSpecification,
 } from "maplibre-gl";
 import type { OverlayLayerId } from "@/types/overlay";
-import { OVERLAY_LAYER_IDS } from "@/types/overlay";
+import { OPT_IN_GROUPS, OVERLAY_LAYER_IDS } from "@/types/overlay";
 
 export type OverlaySlot = "belowNeighbors" | "belowStates" | "aboveStates" | "aboveLgas";
+
+/**
+ * Opt-in features (e.g. proposed deep sea ports) are built into the source but
+ * kept off the map until the user reveals their group from the layer guide.
+ *
+ * `["!=", ["get", "optIn"], true]` passes features where `optIn` is absent or
+ * `false`, and drops the ones flagged `true`.
+ */
+export const HIDE_OPT_IN_FILTER: FilterSpecification = [
+  "!=",
+  ["get", "optIn"],
+  true,
+];
+
+/**
+ * Filter for a waterways point layer, honouring which opt-in groups the user
+ * has revealed.
+ *
+ * A point passes when it is not an opt-in feature, or when its `optInGroup` is
+ * one the user has revealed. Falls back to the plain point filter when every
+ * known group is revealed, which keeps the expression cheap in the common case.
+ */
+export function waterwaysPointFilter(
+  revealedGroups?: ReadonlySet<string>
+): FilterSpecification {
+  const pointOnly: FilterSpecification = ["==", ["get", "featureKind"], "point"];
+  if (!revealedGroups || revealedGroups.size === 0) {
+    return ["all", pointOnly, HIDE_OPT_IN_FILTER] as FilterSpecification;
+  }
+  const allRevealed = [...OPT_IN_GROUPS].every((g) => revealedGroups.has(g));
+  if (allRevealed) return pointOnly;
+  return [
+    "all",
+    pointOnly,
+    [
+      "any",
+      ["!", ["has", "optInGroup"]],
+      ["in", ["get", "optInGroup"], ["literal", [...revealedGroups]]],
+    ],
+  ] as FilterSpecification;
+}
 
 export interface OverlayLayerDef {
   id: string;
@@ -383,7 +425,7 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
       {
         id: "overlay-waterways-point-icons",
         type: "symbol",
-        filter: ["==", ["get", "featureKind"], "point"],
+        filter: waterwaysPointFilter(),
         minzoom: 4,
         layout: {
           visibility: "none",
@@ -399,7 +441,7 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
       {
         id: "overlay-waterways-point-labels",
         type: "symbol",
-        filter: ["==", ["get", "featureKind"], "point"],
+        filter: waterwaysPointFilter(),
         minzoom: 6,
         layout: {
           visibility: "none",

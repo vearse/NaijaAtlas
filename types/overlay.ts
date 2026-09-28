@@ -100,6 +100,7 @@ export const TOUR_CATEGORY_LABELS: Record<
 
 export const WATERWAY_MILITARY_CATEGORIES = [
   "army-division",
+  "proposed-army-division",
   "navy-base",
   "airforce-hq",
   "airforce-base",
@@ -111,6 +112,7 @@ export const WATERWAY_MILITARY_CATEGORY_LABELS: Record<
   { label: string; color: string; branch: string }
 > = {
   "army-division": { label: "Army division", color: "#3f6212", branch: "Nigerian Army" },
+  "proposed-army-division": { label: "Proposed Army division", color: "#7c3aed", branch: "Nigerian Army" },
   "navy-base": { label: "Navy command", color: "#0f172a", branch: "Nigerian Navy" },
   "airforce-hq": { label: "Air Force HQ", color: "#0369a1", branch: "Nigerian Air Force" },
   "airforce-base": { label: "Air Force base", color: "#1e40af", branch: "Nigerian Air Force" },
@@ -150,6 +152,7 @@ export const POWER_PLANT_CATEGORY_LABELS: Record<
 
 export const COAST_CATEGORIES = [
   "seaport",
+  "proposed-port",
   "oil-terminal",
   "estuary",
   "environment",
@@ -162,11 +165,41 @@ export const COAST_CATEGORY_LABELS: Record<
   { label: string; color: string }
 > = {
   seaport: { label: "Seaport", color: "#1e3a8a" },
+  "proposed-port": { label: "Proposed / upcoming port", color: "#7c3aed" },
   "oil-terminal": { label: "Oil & gas terminal", color: "#d97706" },
   estuary: { label: "Estuary / lagoon", color: "#0891b2" },
   environment: { label: "Coastal environment", color: "#059669" },
   historic: { label: "Historic coast", color: "#92400e" },
 };
+
+/**
+ * Coast categories that are opt-in: they are built into the Waterways source
+ * but kept off the map until the user reveals them from the layer guide.
+ */
+/** Opt-in group id for the proposed / upcoming deep sea ports. */
+export const PROPOSED_PORT_OPT_IN_GROUP = "proposed-ports";
+
+/** Opt-in group id for the approved-but-forming new Army divisional HQs. */
+export const PROPOSED_ARMY_DIVISION_OPT_IN_GROUP = "proposed-army-divisions";
+
+/** Every opt-in group that ships hidden in the Waterways source. */
+export const OPT_IN_GROUPS = [
+  PROPOSED_PORT_OPT_IN_GROUP,
+  PROPOSED_ARMY_DIVISION_OPT_IN_GROUP,
+] as const;
+
+export const OPT_IN_COAST_CATEGORIES: readonly CoastCategory[] = [
+  "proposed-port",
+];
+
+export function isOptInCoastCategory(
+  category: unknown
+): category is CoastCategory {
+  return (
+    typeof category === "string" &&
+    (OPT_IN_COAST_CATEGORIES as readonly string[]).includes(category)
+  );
+}
 
 export const RESOURCE_TYPES = [
   "crude-oil",
@@ -321,7 +354,7 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
     summary:
       "Major rivers, tributaries, Niger Delta creeks, the Atlantic coastline and ports, and Armed Forces formations.",
     description:
-      "Blue lines show permanent waterways. Thicker dark blue lines are major rivers (Niger, Benue); lighter lines are tributaries and delta creeks. Light blue fills the Gulf of Guinea offshore, with a thick dark national coastline and coloured zone traces for the Lagos barrier coast, Niger Delta, and the eastern Cross River shore. Military markers show Army divisions (olive shields), Navy commands (slate ships), and Air Force bases (sky roundels/deltas). Tap any line or marker for details.",
+      "Blue lines show permanent waterways. Thicker dark blue lines are major rivers (Niger, Benue); lighter lines are tributaries and delta creeks. Light blue fills the Gulf of Guinea offshore, with a thick dark national coastline and coloured zone traces for the Lagos barrier coast, Niger Delta, and the eastern Cross River shore. Military markers show Army divisions (olive shields), Navy commands (slate ships), and Air Force bases (sky roundels/deltas). Dashed purple markers are planned or approved-but-not-yet-established formations and sites, kept off the map until you reveal them below. Tap any line or marker for details.",
     includes: [
       "Niger & Benue main stems",
       "Kaduna, Cross, Osun, Imo rivers",
@@ -330,7 +363,7 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
       "Apapa, Lekki, Port Harcourt, Calabar, Warri, Onne",
       "Forcados, Bonny, Escravos terminals",
       "Lagos Lagoon, Niger Delta & Cross River estuaries",
-      "9 Army divisions, 3 Navy commands, 5 Air Force formations",
+      "8 Army divisions + Army HQ & Guards Brigade, 3 Navy commands, 5 Air Force formations",
     ],
     legend: [
       "Light blue fill = ocean",
@@ -348,8 +381,10 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
       "~ cyan = estuary",
       "🍃 green = coastal environment",
       "🏛 brown = historic coast",
+      "🪖 dashed purple = new Army division (forming)",
+      "⚓ dashed purple = proposed port (hidden by default)",
     ],
-    tip: "Zoom in to read river and coastline names, then tap any line or icon for trade, ecology, and environment notes.",
+    tip: "Zoom in to read river and coastline names, then tap any line or icon for trade, ecology, and environment notes. Use the reveal sections below to plot proposed ports and the new Army divisions.",
   },
   lakes: {
     title: "Lakes & hydro",

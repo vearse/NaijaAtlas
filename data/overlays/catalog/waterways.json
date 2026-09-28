@@ -519,8 +519,7 @@
       "Katsina",
       "Sokoto",
       "Zamfara",
-      "Kebbi",
-      "Niger"
+      "Kebbi"
     ],
     "economy": "Defence garrison, barracks infrastructure, and military logistics hub.",
     "climate": "Guinea savanna with distinct harmattan season.",
@@ -531,7 +530,7 @@
     ],
     "highlights": [
       "Kaduna-based Division",
-      "NW + Niger AOR",
+      "Northwest states AOR",
       "Historic infantry formation"
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Army"
@@ -543,8 +542,8 @@
     "militaryBranch": "army",
     "militaryCategory": "army-division",
     "type": "Nigerian Army division / brigade-level formation",
-    "summary": "Headquarters at Ibadan; responsible for the southwest geo-political zone and Kwara.",
-    "description": "The 2 Division is the Nigerian Army's southwest-facing formation. Its area of responsibility spans the six southwest states plus Kwara, supporting internal security, border patrols with Benin, and national rapid-reaction tasking from Army HQ.",
+    "summary": "Headquarters at Ibadan; responsible for the southwest states outside the Lagos metropolitan command.",
+    "description": "The 2 Division is the Nigerian Army's southwest-facing formation. Its area of responsibility spans Oyo, Ogun, Osun, Ekiti and Ondo — with Lagos and Kwara covered by 81 and 9 Divisions respectively — supporting internal security, border patrols with Benin, and national rapid-reaction tasking from Army HQ.",
     "lon": 3.9,
     "lat": 7.4,
     "stateName": "Oyo",
@@ -556,9 +555,7 @@
       "Ogun",
       "Osun",
       "Ekiti",
-      "Ondo",
-      "Lagos",
-      "Kwara"
+      "Ondo"
     ],
     "economy": "Defence garrison and cantonment services for the southwest region.",
     "climate": "Tropical wet-and-dry; rainforest–savanna transition.",
@@ -569,7 +566,7 @@
     ],
     "highlights": [
       "Ibadan-based Division",
-      "SW + Kwara AOR",
+      "Five southwest states (excl. Lagos)",
       "Benin border flank"
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Army"
@@ -581,8 +578,8 @@
     "militaryBranch": "army",
     "militaryCategory": "army-division",
     "type": "Nigerian Army division / brigade-level formation",
-    "summary": "Headquarters near Jos; covers the north-central plateau and parts of the northeast interior.",
-    "description": "3 Division operates from the Jos Plateau, with brigades and forward operating bases extending across Plateau, Nasarawa, Benue, and parts of the northeast corridor. It has historically been engaged in plateau crisis management and Middle Belt internal security.",
+    "summary": "Headquarters near Jos; covers Plateau, Bauchi and Gombe after the 2026 divisional expansion.",
+    "description": "3 Division operates from the Jos Plateau. Following the July 2026 expansion to twelve divisions, Benue, Nasarawa and Kogi moved to 5 Division, Kwara and Niger to 9 Division, and Taraba and Adamawa to 10 Division. 3 Division now focuses on Plateau, Bauchi and Gombe.",
     "lon": 8.945,
     "lat": 9.99,
     "stateName": "Plateau",
@@ -591,12 +588,8 @@
     "founded": "Post-civil-war ground forces restructure",
     "coversStates": [
       "Plateau",
-      "Nasarawa",
-      "Benue",
       "Bauchi",
-      "Gombe",
-      "Taraba",
-      "Adamawa"
+      "Gombe"
     ],
     "economy": "Defence cantonments, peace-support logistics, and Middle Belt garrison network.",
     "climate": "Highland climate on the Jos Plateau; warmer southern sectors.",
@@ -619,8 +612,8 @@
     "militaryBranch": "army",
     "militaryCategory": "army-division",
     "type": "Nigerian Army division / brigade-level formation",
-    "summary": "Headquarters in Port Harcourt; area of responsibility covers the Niger Delta states.",
-    "description": "6 Division is the Nigerian Army's dedicated formation for the Niger Delta. It supports Joint Task Force (JTF) operations in the oil-producing states, providing internal security and pipeline protection across the south-south.",
+    "summary": "Headquarters in Port Harcourt; Rivers State after the 2026 split of the south-south theatre.",
+    "description": "6 Division is the Nigerian Army's Port Harcourt formation. After approval of 83 Division (Benin City) in July 2026, Edo, Delta and Bayelsa moved to the new division; 6 Division retains Rivers State and continues Joint Task Force support in the eastern delta.",
     "lon": 7.055,
     "lat": 4.82,
     "stateName": "Rivers",
@@ -628,10 +621,7 @@
     "nickname": "South-South Command",
     "founded": "Created to secure the Niger Delta theatre",
     "coversStates": [
-      "Rivers",
-      "Bayelsa",
-      "Delta",
-      "Edo"
+      "Rivers"
     ],
     "economy": "Oil-region security, JTF deployments, delta logistics support.",
     "climate": "Equatorial; heavy rainfall and mangrove delta.",
@@ -689,8 +679,8 @@
     "type": "Nigerian Army division / brigade-level formation",
     "summary": "Headquarters in Sokoto; area of responsibility for the far northwest states and Niger border arc.",
     "description": "8 Division is tasked with the far-northwest corridor, covering the Sokoto caliphate heartland and contiguous border states facing Niger. Responsibilities include border defence, anti-banditry operations, and coordination with regional security forces.",
-    "lon": 5.63,
-    "lat": 13.06,
+    "lon": 5.242,
+    "lat": 13.062,
     "stateName": "Sokoto",
     "stateId": "NG-SO",
     "nickname": "Far-Northwest & Niger Border Command",
@@ -723,18 +713,17 @@
     "militaryBranch": "army",
     "militaryCategory": "army-division",
     "type": "Nigerian Army division / brigade-level formation",
-    "summary": "Headquarters in Lagos; defends the federal economic capital, seaports, and southwest maritime flank.",
-    "description": "81 Division is the Nigerian Army's Lagos-based formation, responsible for the defence of the Lagos metropolis, Apapa and Lekki ports, and the immediate southwest maritime hinterland. It also provides ceremonial and national-capital standby roles.",
-    "lon": 3.4,
-    "lat": 6.55,
+    "summary": "Headquarters in Lagos; area of responsibility is Lagos and Ogun states only.",
+    "description": "81 Division is the Nigerian Army's Lagos garrison formation, responsible for the Lagos metropolis, Apapa and Lekki ports, and adjoining Ogun State (including the Lagos–Ogun industrial corridor). It provides ceremonial duties and port-sector security.",
+    "lon": 3.389,
+    "lat": 6.433,
     "stateName": "Lagos",
     "stateId": "NG-LA",
     "nickname": "Lagos Garrison & Southwest Quick Reaction",
     "founded": "Lagos garrison restructured as a division-level formation",
     "coversStates": [
       "Lagos",
-      "Ogun",
-      "Oyo (western corridor)"
+      "Ogun"
     ],
     "economy": "Lagos garrison, port security forces, state ceremonial duties.",
     "climate": "Tropical monsoon; high humidity year-round.",

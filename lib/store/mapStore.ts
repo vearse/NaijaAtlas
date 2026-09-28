@@ -157,6 +157,13 @@ export interface MapSelectionState {
   activeOverlays: Set<OverlayLayerId>;
   /** Layer guide shown in the panel when a toolbar layer is toggled on. */
   overlayGuideLayer: OverlayLayerId | null;
+  /**
+   * Opt-in overlay groups the user has revealed from a layer guide, keyed by
+   * group id (e.g. `proposed-ports`). Hidden from the map until revealed.
+   */
+  revealedOptInGroups: Set<string>;
+  toggleOptInGroup: (groupId: string) => void;
+  setOptInGroup: (groupId: string, revealed: boolean) => void;
   selectedOverlay: SelectedOverlayFeature | null;
   wikiModal: { url: string; title?: string } | null;
   directionsModalFeature: DirectionsTarget | null;
@@ -305,6 +312,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   resetCounter: 0,
   activeOverlays: new Set(DEFAULT_ACTIVE_OVERLAYS),
   overlayGuideLayer: null,
+  revealedOptInGroups: new Set<string>(),
   selectedOverlay: null,
   wikiModal: null,
   directionsModalFeature: null,
@@ -735,6 +743,23 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   },
 
   clearOverlayGuide: () => set({ overlayGuideLayer: null }),
+
+  toggleOptInGroup: (groupId) => {
+    const next = new Set(get().revealedOptInGroups);
+    if (next.has(groupId)) next.delete(groupId);
+    else next.add(groupId);
+    set({ revealedOptInGroups: next });
+  },
+
+  setOptInGroup: (groupId, revealed) => {
+    const current = get().revealedOptInGroups;
+    const has = current.has(groupId);
+    if (has === revealed) return;
+    const next = new Set(current);
+    if (revealed) next.add(groupId);
+    else next.delete(groupId);
+    set({ revealedOptInGroups: next });
+  },
 
   setSelectedOverlay: (feature) =>
     set({

@@ -80,10 +80,10 @@ function matchesLensByType(input: LensInput, lens: LensId): boolean {
 function stateNameMatches(
   row: CatalogRow,
   stateId: string,
-  stateName: string
+  stateName: string | undefined
 ): boolean {
   if (row.stateId && row.stateId === stateId) return true;
-  const name = stateName.trim().toLowerCase();
+  const name = typeof stateName === "string" ? stateName.trim().toLowerCase() : "";
   if (!name) return false;
   if (row.stateName && row.stateName.trim().toLowerCase() === name) return true;
   if (Array.isArray(row.statesCrossed)) {

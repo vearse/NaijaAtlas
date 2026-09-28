@@ -65,8 +65,33 @@ function drawShip(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: numb
   ctx.lineTo(cx, cy - r * 0.95);
 }
 
+/** Planned / not-yet-built: a hollow crane hook inside a dashed ring. */
+function drawPlanned(
+  ctx: CanvasRenderingContext2D,
+  cx: number,
+  cy: number,
+  r: number
+) {
+  ctx.save();
+  ctx.setLineDash([3.5, 3.5]);
+  ctx.beginPath();
+  ctx.arc(cx, cy, r * 0.98, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.restore();
+
+  ctx.beginPath();
+  ctx.arc(cx, cy - r * 0.4, r * 0.34, 0, Math.PI * 2);
+  ctx.moveTo(cx, cy - r * 0.06);
+  ctx.lineTo(cx, cy + r * 0.8);
+  ctx.moveTo(cx, cy + r * 0.36);
+  ctx.lineTo(cx + r * 0.44, cy + r * 0.36);
+  ctx.moveTo(cx, cy + r * 0.8);
+  ctx.lineTo(cx - r * 0.3, cy + r * 0.8);
+}
+
 const DRAW: Record<CoastCategory, DrawFn> = {
   seaport: drawAnchor,
+  "proposed-port": drawPlanned,
   "oil-terminal": drawDroplet,
   estuary: drawWaves,
   environment: drawLeaf,
@@ -75,6 +100,7 @@ const DRAW: Record<CoastCategory, DrawFn> = {
 
 const FILL: Record<CoastCategory, string> = {
   seaport: "#1e3a8a",
+  "proposed-port": "#7c3aed",
   "oil-terminal": "#d97706",
   estuary: "#0891b2",
   environment: "#059669",
@@ -100,13 +126,14 @@ function iconImage(category: CoastCategory): ImageData {
   ctx.fill();
   ctx.strokeStyle = FILL[category];
   ctx.lineWidth = 2.5;
-  ctx.stroke();
+  // The proposed-port glyph supplies its own dashed ring.
+  if (category !== "proposed-port") ctx.stroke();
 
   ctx.strokeStyle = FILL[category];
   ctx.fillStyle = FILL[category];
   ctx.lineWidth = 2.8;
   DRAW[category](ctx, cx, cy, r);
-  if (category === "estuary") ctx.stroke();
+  if (category === "estuary" || category === "proposed-port") ctx.stroke();
   else ctx.fill();
 
   return ctx.getImageData(0, 0, SIZE, SIZE);
