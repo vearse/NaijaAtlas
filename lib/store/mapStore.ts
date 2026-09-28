@@ -118,7 +118,6 @@ import type { DrivingStep } from "@/lib/map/directionsApi";
 import type { LensId } from "@/lib/lenses/lensHelper";
 import { defaultOverlaysForLens } from "@/lib/lenses/lensMapLayers";
 import {
-  finalizeOverlayStack,
   syncAllOverlayVisibility,
 } from "@/components/map/overlayLayers";
 import { syncOverlayPresentation } from "@/lib/map/syncOverlayPresentation";
@@ -572,14 +571,25 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
 
   clearAllOverlays: () => {
     const empty = new Set<OverlayLayerId>();
+    // Focus must go too: leaving it set keeps the `overlayHidden` feature
+    // states alive, so re-enabling a layer would re-apply a dismissed focus.
     set({
       activeOverlays: empty,
       selectedOverlay: null,
       overlayGuideLayer: null,
+      overlayFeatureFocus: null,
     });
     const map = get().mapInstance;
     if (map?.isStyleLoaded()) {
+      const latest = get();
       syncAllOverlayVisibility(map, empty);
+      syncOverlayPresentation(
+        map,
+        latest.activeLens,
+        empty,
+        null,
+        latest.mapType !== "election" && latest.mapType !== "ranking"
+      );
     }
   },
 
@@ -712,8 +722,8 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     const map = get().mapInstance;
     if (map?.isStyleLoaded()) {
       const latest = get();
+      // `syncAllOverlayVisibility` already ends with `finalizeOverlayStack`.
       syncAllOverlayVisibility(map, next);
-      finalizeOverlayStack(map);
       syncOverlayPresentation(
         map,
         latest.activeLens,

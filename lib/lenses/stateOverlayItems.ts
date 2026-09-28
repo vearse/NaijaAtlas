@@ -8,6 +8,7 @@ import landformsCatalog from "@/data/overlays/catalog/landforms.json";
 import ecologyCatalog from "@/data/overlays/catalog/ecology.json";
 import resourcesCatalog from "@/data/overlays/catalog/resources.json";
 import lakesCatalog from "@/data/overlays/catalog/lakes.json";
+import coastCatalog from "@/data/overlays/catalog/coast.json";
 import {
   resolveCoverageStateIds,
   shouldOfferViewOnMap,
@@ -28,7 +29,14 @@ export interface StateOverlayItem {
   wikiUrl: string | null;
   lon: number | null;
   lat: number | null;
-  section: "cities" | "places" | "landforms" | "lakes" | "resources" | "agriculture";
+  section:
+    | "cities"
+    | "places"
+    | "landforms"
+    | "lakes"
+    | "resources"
+    | "agriculture"
+    | "coast";
   coverageStateIds?: string[];
   showViewOnMap?: boolean;
 }
@@ -44,6 +52,7 @@ interface CatalogRow {
   stateName?: string;
   statesCrossed?: string[];
   coversStates?: string[];
+  coastalStates?: string[];
   locations?: Array<{ state?: string }> | string;
   summary?: string;
   description?: string;
@@ -78,7 +87,16 @@ function stateNameMatches(
   if (!name) return false;
   if (row.stateName && row.stateName.trim().toLowerCase() === name) return true;
   if (Array.isArray(row.statesCrossed)) {
-    return row.statesCrossed.some(
+    if (
+      row.statesCrossed.some(
+        (s) => typeof s === "string" && s.trim().toLowerCase() === name
+      )
+    ) {
+      return true;
+    }
+  }
+  if (Array.isArray(row.coastalStates)) {
+    return row.coastalStates.some(
       (s) => typeof s === "string" && s.trim().toLowerCase() === name
     );
   }
@@ -111,6 +129,7 @@ function toItem(
   const propsForCoverage: Record<string, unknown> = {
     statesCrossed: row.statesCrossed,
     coversStates: row.coversStates,
+    coastalStates: row.coastalStates,
     stateName: row.stateName,
     locations: Array.isArray(row.locations)
       ? JSON.stringify(row.locations)
@@ -121,7 +140,8 @@ function toItem(
     (layerId === "landforms" ||
       layerId === "ecology" ||
       layerId === "resources" ||
-      layerId === "lakes") &&
+      layerId === "lakes" ||
+      layerId === "waterways") &&
     shouldOfferViewOnMap(propsForCoverage, coverageStateIds);
 
   return {
@@ -163,6 +183,7 @@ export interface StateOverlayBundle {
   lakes: StateOverlayItem[];
   resources: StateOverlayItem[];
   agriculture: StateOverlayItem[];
+  coast: StateOverlayItem[];
 }
 
 export function getStateOverlayItems(
@@ -177,12 +198,21 @@ export function getStateOverlayItems(
     lakes: [],
     resources: [],
     agriculture: [],
+    coast: [],
   };
 
   if (lens === "learn") return empty;
 
   const inState = (row: CatalogRow) =>
     stateNameMatches(row, stateId, stateName);
+
+  // Coast zones ride the Waterways & Coast layer, so they get a
+  // `waterways` id and the same multi-state coverage highlight.
+  const coastItems = (): StateOverlayItem[] =>
+    asRows(coastCatalog)
+      .filter(inState)
+      .map((row, i) => toItem(row, "waterways", "coast", `coast-${stateId}-${i}`))
+      .filter((x): x is StateOverlayItem => x != null);
 
   if (lens === "tourist") {
     const cities = asRows(citiesCatalog)
@@ -217,7 +247,7 @@ export function getStateOverlayItems(
       .map((row, i) => toItem(row, "lakes", "lakes", `lake-${stateId}-${i}`))
       .filter((x): x is StateOverlayItem => x != null);
 
-    return { ...empty, cities, places, landforms, lakes };
+    return { ...empty, cities, places, landforms, lakes, coast: coastItems() };
   }
 
   // invest
@@ -248,7 +278,7 @@ export function getStateOverlayItems(
     .map((row, i) => toItem(row, "cities", "cities", `city-inv-${stateId}-${i}`))
     .filter((x): x is StateOverlayItem => x != null);
 
-  return { ...empty, resources, agriculture, cities };
+  return { ...empty, resources, agriculture, cities, coast: coastItems() };
 }
 
 /**
@@ -267,6 +297,7 @@ export function aggregateCountryOverlayItems(
     lakes: [],
     resources: [],
     agriculture: [],
+    coast: [],
   };
   if (lens === "learn") return bundle;
   const seen: Record<keyof StateOverlayBundle, Set<string>> = {
@@ -276,6 +307,7 @@ export function aggregateCountryOverlayItems(
     lakes: new Set(),
     resources: new Set(),
     agriculture: new Set(),
+    coast: new Set(),
   };
   for (const state of states) {
     const perState = getStateOverlayItems(state.id, state.name, lens);

@@ -12,6 +12,8 @@
     "ecology": "Mangrove, barrier lagoon, turtles, and heavily pressured urban shores at Lagos.",
     "significance": "Atlantic trade, oil terminals, fishing, mangrove ecosystems.",
     "highlights": ["Gulf of Guinea", "Niger Delta outlets", "Lagos barrier islands"],
+    "lon": 7.289,
+    "lat": 5.127,
     "wikiUrl": "https://en.wikipedia.org/wiki/Geography_of_Nigeria"
   },
   {
@@ -28,6 +30,8 @@
     "environment": "Erosion on Victoria Island and Lekki; wastewater and dredging.",
     "significance": "National trade gateway; most populated coastal strip.",
     "highlights": ["Lagos Lagoon", "Lekki Deep Sea Port", "Badagry heritage coast"],
+    "lon": 3.793,
+    "lat": 6.148,
     "wikiUrl": "https://en.wikipedia.org/wiki/Lagos_Lagoon"
   },
   {
@@ -44,6 +48,8 @@
     "environment": "Oil spills, gas flaring, mangrove loss, subsidence.",
     "significance": "National oil wealth; blue-carbon and fisheries asset.",
     "highlights": ["Forcados & Escravos mouths", "Bonny Island", "Mangrove belt"],
+    "lon": 6.048,
+    "lat": 5.049,
     "wikiUrl": "https://en.wikipedia.org/wiki/Niger_Delta"
   },
   {
@@ -60,6 +66,8 @@
     "environment": "Beach erosion; Bakassi transboundary wetland issues.",
     "significance": "Eastern seaport; ICJ Bakassi boundary.",
     "highlights": ["Calabar estuary", "Qua Iboe terminal area", "Bakassi peninsula"],
+    "lon": 8.143,
+    "lat": 4.825,
     "wikiUrl": "https://en.wikipedia.org/wiki/Calabar"
   }
 ]

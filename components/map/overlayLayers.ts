@@ -44,11 +44,16 @@ const STALE_WATERWAY_LAYER_IDS = [
   "overlay-coast-labels",
 ];
 
-let styleImageHookInstalled = false;
+/**
+ * Per-map guard. A module-level flag would survive `map.remove()` and leave
+ * every remounted map without its `styleimagemissing` handler, so lazily
+ * resolved landform icons would silently stop rendering.
+ */
+const styleImageHookMaps = new WeakSet<Map>();
 
 function ensureStyleImageMissingHook(map: Map): void {
-  if (styleImageHookInstalled) return;
-  styleImageHookInstalled = true;
+  if (styleImageHookMaps.has(map)) return;
+  styleImageHookMaps.add(map);
   map.on("styleimagemissing", (event) => {
     const kind = landformKindFromImageId(event.id);
     if (kind) registerLandformIcon(map, kind);
@@ -256,21 +261,4 @@ export function restackTopOverlayLayers(map: Map): void {
   for (const id of topIds) {
     if (map.getLayer(id)) map.moveLayer(id);
   }
-}
-
-/** @deprecated Use restackTopOverlayLayers */
-export function restackCityLayers(map: Map): void {
-  restackTopOverlayLayers(map);
-}
-
-/** @deprecated Use restackOverlayLayers */
-export function restackMapLayers(map: Map): void {
-  restackOverlayLayers(map);
-  restackTopOverlayLayers(map);
-}
-
-/** @deprecated Use restackOverlayLayers */
-export function restackOverlayHighLayers(map: Map): void {
-  restackOverlayLayers(map);
-  restackTopOverlayLayers(map);
 }

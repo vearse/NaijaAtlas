@@ -41,7 +41,6 @@ import {
   addOverlayLayers,
   syncAllOverlayVisibility,
   finalizeOverlayStack,
-  restackCityLayers,
   CITY_TOURS_SOURCE,
 } from "./overlayLayers";
 import MapTooltip from "./MapTooltip";
@@ -1598,6 +1597,7 @@ export default function NigeriaMap({
 
     const refreshOverlays = () => {
       const store = useMapStore.getState();
+      // Ends with `finalizeOverlayStack`; re-run it after the LGA restack below.
       syncAllOverlayVisibility(map, store.activeOverlays);
       const effective = effectiveLgaStateIds(
         store.lgaVisibleStateIds,

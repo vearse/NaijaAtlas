@@ -8,6 +8,7 @@ import landformsCatalog from "@/data/overlays/catalog/landforms.json";
 import ecologyCatalog from "@/data/overlays/catalog/ecology.json";
 import resourcesCatalog from "@/data/overlays/catalog/resources.json";
 import lakesCatalog from "@/data/overlays/catalog/lakes.json";
+import coastCatalog from "@/data/overlays/catalog/coast.json";
 import type { Map as MaplibreMap } from "maplibre-gl";
 import { useMapStore } from "@/lib/store/mapStore";
 import { buildCityOverlayFeature } from "@/lib/map/cityCoordsLookup";
@@ -34,6 +35,7 @@ function findCatalogRow(item: StateOverlayItem): CatalogRow | null {
     ecologyCatalog,
     resourcesCatalog,
     lakesCatalog,
+    coastCatalog,
   ];
   for (const pool of pools) {
     if (!Array.isArray(pool)) continue;

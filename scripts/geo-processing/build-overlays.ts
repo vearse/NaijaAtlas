@@ -759,7 +759,10 @@ function atlanticOcean(): Feature {
   };
 }
 
-function coastlineFromAdm0(adm0: FeatureCollection): Feature | null {
+function coastlineFromAdm0(
+  adm0: FeatureCollection,
+  row?: CatalogRow
+): Feature | null {
   const f = adm0.features[0];
   if (!f?.geometry) return null;
   try {
@@ -771,6 +774,9 @@ function coastlineFromAdm0(adm0: FeatureCollection): Feature | null {
     return {
       type: "Feature",
       properties: {
+        // Catalog row first so `coastalStates`/`lon`/`lat` reach the runtime
+        // (the feature panel resolves multi-state coverage from these).
+        ...(row ? flattenCatalogRow(row) : {}),
         id: "coastline-ng",
         name: "Nigeria Coastline",
         featureKind: "line",
@@ -791,6 +797,7 @@ function coastZoneLineFeature(row: CatalogRow): Feature | null {
   return {
     type: "Feature",
     properties: {
+      ...flattenCatalogRow(row),
       id: row.id,
       name: row.name,
       featureKind: "line",
@@ -832,13 +839,9 @@ function buildCoast(
   adm0: FeatureCollection
 ): Feature[] {
   const features: Feature[] = [atlanticOcean()];
-  const coast = coastlineFromAdm0(adm0);
+  const coastRow = coastCatalog.find((c) => c.id === "coastline-ng");
+  const coast = coastlineFromAdm0(adm0, coastRow);
   if (coast) {
-    const row = coastCatalog.find((c) => c.id === "coastline-ng");
-    coast.properties = {
-      ...coast.properties,
-      name: row?.name ?? "Nigeria Coastline",
-    };
     features.push(coast);
   }
 

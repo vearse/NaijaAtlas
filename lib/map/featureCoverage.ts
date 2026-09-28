@@ -67,6 +67,13 @@ export function shouldOfferViewOnMap(
   stateIds: string[]
 ): boolean {
   if (stateIds.length >= 2) return true;
+  // Waterways & coast subjects (ports, oil terminals, estuaries, creeks) are
+  // worth viewing even inside a single state — the highlight then just isolates
+  // that one state and fits the map to it. Keyed off `waterwayClass` so this
+  // stays scoped to the Waterways & Coast layer.
+  if (typeof props.waterwayClass === "string" && stateIds.length >= 1) {
+    return true;
+  }
   const sites = parseObjectArray<ResourceSite>(props.locations);
   if (sites.length >= 2 && stateIds.length >= 1) return true;
   if (parseStringArray(props.coversStates).length >= 2 && stateIds.length >= 1) {

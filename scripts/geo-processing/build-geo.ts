@@ -383,6 +383,8 @@ export async function buildGeo() {
     lakeCategory?: string;
     type?: string;
     statesCrossed?: string[];
+    coastalStates?: string[];
+    coastCategory?: string;
     landformLabel?: string;
     resourceLabel?: string;
   }
@@ -408,6 +410,7 @@ export async function buildGeo() {
   const resourcesCatalog = readCatalog<CatalogRow>("resources");
   const citiesCatalog = readCatalog<CatalogRow>("cities");
   const lakesCatalog = readCatalog<CatalogRow>("lakes");
+  const coastCatalog = readCatalog<CatalogRow>("coast");
 
   const landformTypeLabels: Record<string, string> = {
     plateau: "Plateau",
@@ -476,6 +479,13 @@ export async function buildGeo() {
     lagoon: "Coastal lagoon",
     "power-station": "Hydro power station",
     "power-distributor": "Power distribution (DISCO)",
+  };
+
+  const coastCategoryLabels: Record<string, string> = {
+    national: "National coastline",
+    "coast-zone": "Coast zone",
+    seaport: "Port",
+    landmark: "Coastal landmark",
   };
 
   const landformCentroids: Record<string, [number, number]> = {
@@ -604,6 +614,20 @@ export async function buildGeo() {
         summary: row.summary,
       };
     }),
+    ...coastCatalog.map((row) => ({
+      id: row.id,
+      name: row.name,
+      level: "coast" as const,
+      parentId: null,
+      layerId: "waterways" as const,
+      typeLabel:
+        coastCategoryLabels[String(row.coastCategory ?? "coast-zone")] ??
+        "Coast zone",
+      stateName: row.coastalStates?.[0] ?? row.statesCrossed?.[0],
+      stateIds: row.coastalStates ?? [],
+      centroid: centroidOf(row),
+      summary: row.summary,
+    })),
   ];
   writeJson(projectRoot("public/search-index.json"), searchIndex);
 

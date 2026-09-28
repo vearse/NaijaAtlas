@@ -6,7 +6,7 @@
     "type": "Container and general cargo seaport",
     "summary": "Nigeria's busiest seaport complex; handles most national container traffic.",
     "description": "Apapa and neighbouring Tin Can Island (TCIP) are the Lagos port cluster under the Nigerian Ports Authority, with private terminal operators. Congestion on the Apapa–Oshodi corridor has been a chronic logistics bottleneck. The ports remain the primary import gateway for the southwest and much of the north.",
-    "coastalStates": [
+    "statesCrossed": [
       "Lagos"
     ],
     "cargoNote": "Containers, bulk, RORO, tank farms",
@@ -26,7 +26,7 @@
     "type": "Deep-water container port",
     "summary": "New deep-water port east of Lagos on the Lekki peninsula; 16 m draft container terminal.",
     "description": "Lekki Deep Sea Port opened to relieve Lagos congestion with deeper draft and modern quay cranes. It sits within the Lekki Free Zone and connects to the Lekki–Epe expressway. Phase capacity targets multi-million TEU throughput.",
-    "coastalStates": [
+    "statesCrossed": [
       "Lagos"
     ],
     "cargoNote": "Containers, general cargo, free-zone logistics",
@@ -46,7 +46,7 @@
     "type": "River / oil port",
     "summary": "Oil and general cargo port on the Bonny River up from the Atlantic.",
     "description": "Port Harcourt's port (and nearby Onne) serve eastern Nigeria and the oil industry. Draft and dredging limit some vessel classes compared with Lagos; oil-service boats dominate. The city grew around this harbour from 1912.",
-    "coastalStates": [
+    "statesCrossed": [
       "Rivers"
     ],
     "cargoNote": "Oil export support, general cargo, project cargo",
@@ -66,7 +66,7 @@
     "type": "Eastern estuary port",
     "summary": "Deep-water port on the Cross River estuary serving the southeast and Cameroon trade.",
     "description": "Calabar has been a seaport since the Efik city-state era. The modern port handles general cargo and has been promoted for export processing. Silting and channel maintenance are recurring issues.",
-    "coastalStates": [
+    "statesCrossed": [
       "Cross River"
     ],
     "cargoNote": "General cargo, regional export, EPZ feedstock",
@@ -86,7 +86,7 @@
     "type": "Delta river port",
     "summary": "Delta port for oil, steel, and agricultural hinterland cargoes.",
     "description": "Warri Port on the Warri River serves the western delta industrial belt including the refinery and steel-related traffic. Access is via dredged delta channels toward Escravos.",
-    "coastalStates": [
+    "statesCrossed": [
       "Delta"
     ],
     "cargoNote": "Oil products, general cargo, delta hinterland",
@@ -105,7 +105,7 @@
     "type": "Oil and gas free-zone port",
     "summary": "Modern deep-water complex east of Port Harcourt; largest Nigerian port by land area.",
     "description": "Onne (Federal Ocean Terminal / Federal Lighter Terminal and oil-and-gas free zone) was developed for energy logistics: rigs, pipes, and project cargo. It complements congested Lagos for specialised energy shipments.",
-    "coastalStates": [
+    "statesCrossed": [
       "Rivers"
     ],
     "cargoNote": "Oil services, project cargo, containers (growing)",

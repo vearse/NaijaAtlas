@@ -69,12 +69,14 @@ const TOURIST_SECTIONS: { key: keyof StateOverlayBundle; title: string }[] = [
   { key: "places", title: "Places to visit" },
   { key: "landforms", title: "Highlands & scenery" },
   { key: "lakes", title: "Lakes" },
+  { key: "coast", title: "Coast & shoreline" },
 ];
 
 const INVEST_SECTIONS: { key: keyof StateOverlayBundle; title: string }[] = [
   { key: "resources", title: "Resources & minerals" },
   { key: "agriculture", title: "Agriculture & land" },
   { key: "cities", title: "Commercial & industrial cities" },
+  { key: "coast", title: "Coast & shoreline" },
 ];
 
 function formatPopulation(value: number): string {

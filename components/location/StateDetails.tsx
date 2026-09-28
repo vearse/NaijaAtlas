@@ -146,11 +146,13 @@ export default function StateDetails({
     overlayBundle.cities.length +
     overlayBundle.places.length +
     overlayBundle.landforms.length +
-    overlayBundle.lakes.length;
+    overlayBundle.lakes.length +
+    overlayBundle.coast.length;
   const investCount =
     overlayBundle.resources.length +
     overlayBundle.agriculture.length +
-    overlayBundle.cities.length;
+    overlayBundle.cities.length +
+    overlayBundle.coast.length;
 
   const wardTotal = stateLgas.reduce((n, l) => n + l.wardCount, 0);
   const landArea = formatStateLandArea(compareBundle, location.id);
@@ -500,6 +502,13 @@ export default function StateDetails({
                 openWikiModal={openWikiModal}
                 fallbackLonLat={location.centroid}
               />
+              <OverlayItemList
+                title="Coast & shoreline"
+                items={overlayBundle.coast}
+                onSelect={onOverlaySelect}
+                openWikiModal={openWikiModal}
+                fallbackLonLat={location.centroid}
+              />
             </>
           )}
         </div>
@@ -530,6 +539,13 @@ export default function StateDetails({
               <OverlayItemList
                 title="Commercial & industrial cities"
                 items={overlayBundle.cities}
+                onSelect={onOverlaySelect}
+                openWikiModal={openWikiModal}
+                fallbackLonLat={location.centroid}
+              />
+              <OverlayItemList
+                title="Coast & shoreline"
+                items={overlayBundle.coast}
                 onSelect={onOverlaySelect}
                 openWikiModal={openWikiModal}
                 fallbackLonLat={location.centroid}

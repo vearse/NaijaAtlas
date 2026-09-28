@@ -89,48 +89,76 @@ function shouldHideFeature(
   return !matchesActiveLens(input, activeLens);
 }
 
+/**
+ * Write `overlayHidden` without ever calling `removeFeatureState`.
+ *
+ * `map.removeFeatureState` queues a deletion that maplibre applies inside
+ * `SourceFeatureState.coalesceChanges`, which does
+ * `delete state[sourceLayer][feature][key]`. For a feature that never had the
+ * state set, `state[sourceLayer][feature]` is `undefined` and the delete
+ * throws `Cannot convert undefined or null to object` from inside the render
+ * loop — killing the frame and leaving the map stuck until reload.
+ *
+ * `HIDDEN_OPACITY_EXPR` treats an absent key and `false` identically, so
+ * writing `false` is behaviourally the same as removing the key.
+ */
+function writeHiddenState(
+  map: MaplibreMap,
+  sourceId: string,
+  featureId: string | number,
+  hidden: boolean
+): void {
+  try {
+    map.setFeatureState({ source: sourceId, id: featureId }, {
+      overlayHidden: hidden,
+    });
+  } catch {
+    /* source may not support feature-state yet */
+  }
+}
+
+/** Iterate each distinct feature id in a source exactly once. */
+function eachSourceFeatureId(
+  map: MaplibreMap,
+  sourceId: string,
+  visit: (
+    featureId: string | number,
+    props: Record<string, unknown>
+  ) => void
+): void {
+  const features = map.querySourceFeatures(sourceId);
+  const seen = new Set<string>();
+  for (const f of features) {
+    const fid = f.id;
+    if (fid == null) continue;
+    const key = String(fid);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    visit(fid, (f.properties ?? {}) as Record<string, unknown>);
+  }
+}
+
 function applyHiddenStates(
   map: MaplibreMap,
   sourceId: string,
   layerId: OverlayLayerId,
   activeLens: LensId,
-  focus: OverlayFocusSpec | null,
-  layerVisible: boolean
+  focus: OverlayFocusSpec | null
 ): void {
-  const features = map.querySourceFeatures(sourceId);
-  const seen = new Set<string | number>();
-  for (const f of features) {
-    const fid = f.id;
-    if (fid == null) continue;
-    const key = String(fid);
-    if (seen.has(key)) continue;
-    seen.add(key);
-    const props = (f.properties ?? {}) as Record<string, unknown>;
-    const hidden =
-      layerVisible &&
-      shouldHideFeature(layerId, props, activeLens, focus);
-    map.setFeatureState(
-      { source: sourceId, id: fid },
-      { overlayHidden: hidden }
+  eachSourceFeatureId(map, sourceId, (fid, props) => {
+    writeHiddenState(
+      map,
+      sourceId,
+      fid,
+      shouldHideFeature(layerId, props, activeLens, focus)
     );
-  }
+  });
 }
 
 function clearHiddenStates(map: MaplibreMap, sourceId: string): void {
-  const features = map.querySourceFeatures(sourceId);
-  const seen = new Set<string | number>();
-  for (const f of features) {
-    const fid = f.id;
-    if (fid == null) continue;
-    const key = String(fid);
-    if (seen.has(key)) continue;
-    seen.add(key);
-    try {
-      map.removeFeatureState({ source: sourceId, id: fid }, "overlayHidden");
-    } catch {
-      /* source may not support feature-state yet */
-    }
-  }
+  eachSourceFeatureId(map, sourceId, (fid) => {
+    writeHiddenState(map, sourceId, fid, false);
+  });
 }
 
 /**
@@ -159,6 +187,7 @@ export function syncOverlayPresentation(
   for (const layerId of OVERLAY_LAYER_IDS) {
     for (const sourceId of sourcesForLayer(layerId)) {
       if (!map.getSource(sourceId)) continue;
+      if (useFilter && activeOverlays.has(layerId)) continue;
       clearHiddenStates(map, sourceId);
     }
   }
@@ -169,14 +198,7 @@ export function syncOverlayPresentation(
     if (!activeOverlays.has(layerId)) continue;
     for (const sourceId of sourcesForLayer(layerId)) {
       if (!map.getSource(sourceId)) continue;
-      applyHiddenStates(
-        map,
-        sourceId,
-        layerId,
-        activeLens,
-        focus,
-        true
-      );
+      applyHiddenStates(map, sourceId, layerId, activeLens, focus);
     }
   }
 }
