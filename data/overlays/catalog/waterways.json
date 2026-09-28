@@ -504,22 +504,25 @@
     "militaryBranch": "army",
     "militaryCategory": "army-division",
     "type": "Nigerian Army division / brigade-level formation",
-    "summary": "Headquarters in Kaduna; area of responsibility covers the northwest and parts of the north-central belt.",
-    "description": "The 1 Division is one of the Nigerian Army's oldest fighting formations. Based in Kaduna, its AOR traditionally covers the northwest states and adjoining north-central areas, including internal security deployments and border defence along the Niger frontier.",
+    "summary": "Headquarters in Kaduna; northwest core states (Kaduna, Kano, Jigawa, Katsina).",
+    "description": "The 1 Division is one of the Nigerian Army's oldest fighting formations. Based in Kaduna, its AOR covers Kaduna, Kano, Jigawa and Katsina. Sokoto, Kebbi and Zamfara align with 8 Division; Niger State with 9 Division under the 2026 expansion.",
     "lon": 7.495,
     "lat": 10.56,
     "stateName": "Kaduna",
     "stateId": "NG-KD",
     "nickname": "Northwest Command",
     "founded": "1960s (post-independence restructuring)",
+    "statesCrossed": [
+      "Kaduna",
+      "Kano",
+      "Jigawa",
+      "Katsina"
+    ],
     "coversStates": [
       "Kaduna",
       "Kano",
       "Jigawa",
-      "Katsina",
-      "Sokoto",
-      "Zamfara",
-      "Kebbi"
+      "Katsina"
     ],
     "economy": "Defence garrison, barracks infrastructure, and military logistics hub.",
     "climate": "Guinea savanna with distinct harmattan season.",
@@ -543,16 +546,21 @@
     "militaryCategory": "army-division",
     "type": "Nigerian Army division / brigade-level formation",
     "summary": "Headquarters at Ibadan; responsible for the southwest states outside the Lagos metropolitan command.",
-    "description": "The 2 Division is the Nigerian Army's southwest-facing formation. Its area of responsibility spans Oyo, Ogun, Osun, Ekiti and Ondo — with Lagos and Kwara covered by 81 and 9 Divisions respectively — supporting internal security, border patrols with Benin, and national rapid-reaction tasking from Army HQ.",
+    "description": "The 2 Division is the Nigerian Army's southwest-facing formation. Its area of responsibility spans Oyo, Osun, Ekiti and Ondo. Lagos and Ogun are under 81 Division; Kwara under 9 Division (2026 expansion).",
     "lon": 3.9,
     "lat": 7.4,
     "stateName": "Oyo",
     "stateId": "NG-OY",
     "nickname": "Southwest Command",
     "founded": "1970s reorganisation after the civil war",
+    "statesCrossed": [
+      "Oyo",
+      "Osun",
+      "Ekiti",
+      "Ondo"
+    ],
     "coversStates": [
       "Oyo",
-      "Ogun",
       "Osun",
       "Ekiti",
       "Ondo"
@@ -566,7 +574,7 @@
     ],
     "highlights": [
       "Ibadan-based Division",
-      "Five southwest states (excl. Lagos)",
+      "Four states (excl. Lagos/Ogun/Kwara)",
       "Benin border flank"
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Army"
@@ -586,6 +594,11 @@
     "stateId": "NG-PL",
     "nickname": "North-Central & Northeast Command",
     "founded": "Post-civil-war ground forces restructure",
+    "statesCrossed": [
+      "Plateau",
+      "Bauchi",
+      "Gombe"
+    ],
     "coversStates": [
       "Plateau",
       "Bauchi",
@@ -612,16 +625,25 @@
     "militaryBranch": "army",
     "militaryCategory": "army-division",
     "type": "Nigerian Army division / brigade-level formation",
-    "summary": "Headquarters in Port Harcourt; Rivers State after the 2026 split of the south-south theatre.",
-    "description": "6 Division is the Nigerian Army's Port Harcourt formation. After approval of 83 Division (Benin City) in July 2026, Edo, Delta and Bayelsa moved to the new division; 6 Division retains Rivers State and continues Joint Task Force support in the eastern delta.",
+    "summary": "Headquarters in Port Harcourt; Niger Delta states under the active division (Rivers, Bayelsa, Delta, Edo).",
+    "description": "6 Division is the Nigerian Army's Port Harcourt formation and the lead division for Joint Task Force operations in the Niger Delta. Its active area of responsibility remains Rivers, Bayelsa, Delta and Edo until 83 Division (Benin City) reaches full operational capability; the approved 2026 plan then assigns Edo, Delta and Bayelsa to 83 Division while 6 Division focuses on Rivers.",
     "lon": 7.055,
     "lat": 4.82,
     "stateName": "Rivers",
     "stateId": "NG-RI",
     "nickname": "South-South Command",
     "founded": "Created to secure the Niger Delta theatre",
+    "statesCrossed": [
+      "Rivers",
+      "Bayelsa",
+      "Delta",
+      "Edo"
+    ],
     "coversStates": [
-      "Rivers"
+      "Rivers",
+      "Bayelsa",
+      "Delta",
+      "Edo"
     ],
     "economy": "Oil-region security, JTF deployments, delta logistics support.",
     "climate": "Equatorial; heavy rainfall and mangrove delta.",
@@ -652,6 +674,10 @@
     "stateId": "NG-BO",
     "nickname": "Northeast Counter-Insurgency Command",
     "founded": "2010s during the insurgency-era expansion",
+    "statesCrossed": [
+      "Borno",
+      "Yobe"
+    ],
     "coversStates": [
       "Borno",
       "Yobe"
@@ -685,12 +711,17 @@
     "stateId": "NG-SO",
     "nickname": "Far-Northwest & Niger Border Command",
     "founded": "Restructured to cover the far northwest frontier and border security corridor",
+    "statesCrossed": [
+      "Sokoto",
+      "Kebbi",
+      "Zamfara",
+      "Niger"
+    ],
     "coversStates": [
       "Sokoto",
       "Kebbi",
       "Zamfara",
-      "Katsina",
-      "Niger (western sectors)"
+      "Niger"
     ],
     "economy": "Border security, anti-banditry deployments, caliphate-region garrison.",
     "climate": "Sahel; short rains and intense harmattan.",
@@ -721,6 +752,10 @@
     "stateId": "NG-LA",
     "nickname": "Lagos Garrison & Southwest Quick Reaction",
     "founded": "Lagos garrison restructured as a division-level formation",
+    "statesCrossed": [
+      "Lagos",
+      "Ogun"
+    ],
     "coversStates": [
       "Lagos",
       "Ogun"
@@ -754,6 +789,15 @@
     "stateId": "NG-EN",
     "nickname": "Southeast & South-South East Command",
     "founded": "Post-civil-war reorganisation for the eastern theatre",
+    "statesCrossed": [
+      "Enugu",
+      "Abia",
+      "Imo",
+      "Anambra",
+      "Ebonyi",
+      "Cross River",
+      "Akwa Ibom"
+    ],
     "coversStates": [
       "Enugu",
       "Abia",
