@@ -22,6 +22,7 @@ export interface StateLocation {
   regionId: string;
   regionName: string;
   lgaCount: number;
+  pollingUnitCount?: number;
   bbox: [number, number, number, number];
   centroid: [number, number];
 }

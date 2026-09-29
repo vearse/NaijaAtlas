@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: `${siteConfig.name} — ${siteConfig.tagline}`,
     short_name: siteConfig.name,
     description: siteConfig.description,
-    start_url: "/",
+    start_url: "/explore",
     scope: "/",
     display: "standalone",
     display_override: ["standalone", "minimal-ui"],

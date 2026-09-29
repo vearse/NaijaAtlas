@@ -1,0 +1,45 @@
+.landing-topo-grid {
+  background-image: radial-gradient(rgba(112, 219, 157, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.landing-glass-card {
+  background: rgba(28, 32, 30, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.landing-glass-card:hover {
+  background: rgba(39, 43, 40, 0.85);
+  border-color: rgba(112, 219, 157, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px -8px rgba(0, 135, 81, 0.18);
+}
+
+@keyframes landing-pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.2);
+  }
+}
+
+.landing-pulse-radar {
+  animation: landing-pulse-dot 2s infinite ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-pulse-radar {
+    animation: none;
+  }
+
+  .landing-glass-card:hover {
+    transform: none;
+  }
+}
