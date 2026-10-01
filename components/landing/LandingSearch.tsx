@@ -5,20 +5,7 @@ import { useRouter } from "next/navigation";
 import Fuse from "fuse.js";
 import type { SearchEntry } from "@/types/location";
 import { exploreUrlFromSearch } from "@/lib/landing/exploreUrlFromSearch";
-import { IconSearch } from "@/components/landing/icons";
-
-const POPULAR = [
-  { label: "Lagos", href: "/explore?map=minimal&states=NG-LA" },
-  {
-    label: "Osun-Osogbo Festival",
-    href: "/explore?lens=tourist",
-  },
-  { label: "Kainji Lake", href: "/explore?lens=learn" },
-  {
-    label: "Senate districts",
-    href: "/explore?map=election",
-  },
-];
+import { IconArrow, IconSearch } from "@/components/landing/icons";
 
 type Props = {
   spotlightOpen?: boolean;
@@ -79,11 +66,11 @@ export default function LandingSearch({
   return (
     <div className="relative w-full max-w-xl">
       <div
-        className={`relative flex items-center w-full rounded-full bg-surface-container-lowest/80 border border-outline-variant/60 shadow-lg focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 backdrop-blur-lg transition-all ${
-          inSpotlight ? "ring-2 ring-primary/30" : ""
+        className={`relative flex items-center w-full rounded-full bg-surface-card border border-border-subtle shadow-sm focus-within:border-primary-container focus-within:ring-2 focus-within:ring-primary-container/20 transition-all ${
+          inSpotlight ? "ring-2 ring-primary-container/30" : ""
         }`}
       >
-        <span className="text-outline ml-4 shrink-0">
+        <span className="text-slate-400 ml-4 shrink-0">
           <IconSearch className="w-5 h-5" />
         </span>
         <input
@@ -93,32 +80,40 @@ export default function LandingSearch({
           onChange={(e) => search(e.target.value)}
           onFocus={() => query && search(query)}
           placeholder="Search a state, LGA, festival, candidate or polling unit…"
-          className="w-full bg-transparent border-0 py-3.5 px-3 text-body-md text-on-surface placeholder:text-outline-variant focus:ring-0 focus:outline-none"
+          className="w-full bg-transparent border-0 py-3.5 px-3 text-body-md text-text-primary placeholder:text-slate-400 focus:ring-0 focus:outline-none"
           aria-label="Search Nigeria"
           autoComplete="off"
         />
-        <div className="mr-3 hidden sm:flex items-center">
-          <kbd className="px-2.5 py-1 text-label-caps text-on-surface-variant bg-surface-container border border-outline-variant rounded-md">
+        <div className="mr-2 flex items-center gap-2">
+          <kbd className="hidden sm:inline-block px-2.5 py-1 text-[11px] text-text-muted bg-slate-100 border border-border-subtle rounded-md shadow-inner">
             ⌘K
           </kbd>
+          <button
+            type="button"
+            aria-label="Search submit"
+            onClick={() => query && search(query)}
+            className="bg-primary-container hover:bg-primary text-white p-2.5 rounded-full flex items-center justify-center transition-colors shadow-sm active:scale-95"
+          >
+            <IconArrow className="w-[18px] h-[18px]" />
+          </button>
         </div>
       </div>
 
       {showDropdown && (
         <ul
-          className="absolute z-50 mt-2 w-full rounded-xl border border-outline-variant/50 bg-surface-container-high shadow-2xl overflow-hidden"
+          className="absolute z-50 mt-2 w-full rounded-xl border border-border-subtle bg-surface-card shadow-2xl overflow-hidden"
           role="listbox"
         >
           {results.map((entry) => (
             <li key={`${entry.level}-${entry.id}`}>
               <button
                 type="button"
-                className="w-full text-left px-4 py-2.5 hover:bg-surface-container text-body-sm text-on-surface border-b border-outline-variant/20 last:border-0"
+                className="w-full text-left px-4 py-2.5 hover:bg-slate-50 text-body-sm text-text-primary border-b border-slate-100 last:border-0"
                 onMouseDown={() => pick(entry)}
               >
                 <span className="font-medium">{entry.name}</span>
                 {entry.stateName && (
-                  <span className="text-on-surface-variant ml-2">
+                  <span className="text-text-muted ml-2">
                     · {entry.stateName}
                   </span>
                 )}
@@ -128,20 +123,7 @@ export default function LandingSearch({
         </ul>
       )}
 
-      {!inSpotlight && (
-        <div className="flex flex-wrap items-center gap-2 text-label-md text-on-surface-variant pt-3">
-          <span className="text-outline text-body-sm">Popular:</span>
-          {POPULAR.map((p) => (
-            <a
-              key={p.label}
-              href={p.href}
-              className="px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high border border-outline-variant/50 text-on-surface transition-colors text-body-sm"
-            >
-              {p.label}
-            </a>
-          ))}
-        </div>
-      )}
+      {!inSpotlight && null}
     </div>
   );
 }

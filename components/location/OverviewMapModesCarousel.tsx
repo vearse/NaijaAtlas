@@ -74,24 +74,24 @@ export default function OverviewMapModesCarousel({
       >
         {slide === 0 ? (
           <>
-            <p className="text-sm font-bold text-slate-900">
+            <p className="text-sm font-bold text-text-primary">
               Rank states on the map
             </p>
-            <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+            <p className="text-xs text-text-secondary mt-1 leading-relaxed">
               Color every state by Economy or Social indicators — IGR,
               literacy, poverty, and more.
             </p>
           </>
         ) : countdown ? (
           <>
-            <p className="text-sm font-bold text-slate-900 leading-snug">
+            <p className="text-sm font-bold text-text-primary leading-snug">
               {countdown.past
                 ? "Election day has arrived"
                 : countdown.relative
                   ? `Election in ${countdown.relative}`
                   : "Election within 24 hours"}
             </p>
-            <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+            <p className="text-xs text-text-secondary mt-1 leading-relaxed">
               {formatElectionDate(electionDate)}
               {candidateCount > 0 ? ` · ${candidateCount} tickets` : ""}. Tap to
               open election mode — senatorial districts and candidates on the
@@ -100,8 +100,8 @@ export default function OverviewMapModesCarousel({
           </>
         ) : (
           <>
-            <p className="text-sm font-bold text-slate-900">Election mode</p>
-            <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+            <p className="text-sm font-bold text-text-primary">Election mode</p>
+            <p className="text-xs text-text-secondary mt-1 leading-relaxed">
               Tap to explore 2027 elections on the map.
             </p>
           </>

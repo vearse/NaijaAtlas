@@ -140,7 +140,7 @@ function MilestoneList({ value }: { value: unknown }) {
             return (
               <li key={`${date}-${i}`} className="flex gap-2 text-sm text-slate-700">
                 {date && (
-                  <span className="shrink-0 w-[6.5rem] tabular-nums text-slate-500">
+                  <span className="shrink-0 w-[6.5rem] tabular-nums text-text-muted">
                     {date}
                   </span>
                 )}
@@ -165,7 +165,7 @@ function ChipList({ label, items }: { label: string; items: string[] }) {
         {items.map((item) => (
           <li
             key={item}
-            className="rounded-full border border-slate-200 bg-white px-2.5 py-0.5 text-xs text-slate-700"
+            className="rounded-full border border-border-subtle bg-surface-card px-2.5 py-0.5 text-xs text-slate-700"
           >
             {item}
           </li>
@@ -442,12 +442,12 @@ export default function OverlayFeaturePanel({
           <button
             type="button"
             onClick={() => useMapStore.getState().clearSelectedOverlay()}
-            className="group inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1 rounded-md -ml-1 px-1 py-0.5 hover:text-slate-800 hover:bg-slate-100 transition-colors"
+            className="group inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-text-muted mb-1 rounded-md -ml-1 px-1 py-0.5 hover:text-slate-800 hover:bg-slate-100 transition-colors"
             aria-label={`Back to ${meta.label} layer guide`}
           >
             <svg
               viewBox="0 0 16 16"
-              className="h-3.5 w-3.5 shrink-0 text-slate-400 group-hover:text-slate-600"
+              className="h-3.5 w-3.5 shrink-0 text-slate-400 group-hover:text-text-secondary"
               fill="none"
               aria-hidden
             >
@@ -461,9 +461,9 @@ export default function OverlayFeaturePanel({
             </svg>
             {meta.label} layer
           </button>
-          <h2 className="text-2xl font-bold text-slate-900">{name}</h2>
+          <h2 className="text-2xl font-bold text-text-primary">{name}</h2>
           {text(props.nickname) || siteName ? (
-            <p className="text-sm text-slate-500 mt-1">
+            <p className="text-sm text-text-muted mt-1">
               {[text(props.nickname), siteName].filter(truthy).join(" · ")}
             </p>
           ) : null}
@@ -501,7 +501,7 @@ export default function OverlayFeaturePanel({
               </span>
             )}
             {landformSize && (
-              <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-[11px] font-medium text-slate-600">
+              <span className="inline-flex items-center rounded-full border border-border-subtle bg-slate-50 px-2.5 py-0.5 text-[11px] font-medium text-text-secondary">
                 {landformSize.label} · {landformSize.description}
               </span>
             )}
@@ -551,7 +551,7 @@ export default function OverlayFeaturePanel({
               </span>
             )}
             {text(props.type) && (
-              <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-[11px] font-medium text-slate-600">
+              <span className="inline-flex items-center rounded-full border border-border-subtle bg-slate-50 px-2.5 py-0.5 text-[11px] font-medium text-text-secondary">
                 {text(props.type)}
               </span>
             )}
@@ -560,7 +560,7 @@ export default function OverlayFeaturePanel({
         <button
           type="button"
           onClick={() => clearSelectedOverlay()}
-          className="shrink-0 rounded-lg border border-slate-200 px-2.5 py-1 text-xs font-medium text-slate-500 hover:bg-slate-50 hover:text-slate-700 transition-colors"
+          className="shrink-0 rounded-lg border border-border-subtle px-2.5 py-1 text-xs font-medium text-text-muted hover:bg-slate-50 hover:text-slate-700 transition-colors"
           aria-label="Close overlay details"
         >
           Close
@@ -575,7 +575,7 @@ export default function OverlayFeaturePanel({
             className={`rounded-full px-3 py-1 text-xs font-semibold border transition-colors ${
               focusActive
                 ? "border-ng-green bg-emerald-50 text-ng-green"
-                : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
+                : "border-border-subtle bg-surface-card text-slate-700 hover:border-slate-300"
             }`}
           >
             Focus: {focusSpec.label}
@@ -584,7 +584,7 @@ export default function OverlayFeaturePanel({
             <button
               type="button"
               onClick={() => setOverlayFeatureFocus(null)}
-              className="rounded-full px-3 py-1 text-xs font-medium text-slate-500 hover:text-slate-800"
+              className="rounded-full px-3 py-1 text-xs font-medium text-text-muted hover:text-slate-800"
             >
               Clear focus
             </button>
@@ -593,7 +593,7 @@ export default function OverlayFeaturePanel({
       )}
 
       {text(props.summary) && (
-        <p className="text-sm text-slate-600 leading-relaxed">{text(props.summary)}</p>
+        <p className="text-sm text-text-secondary leading-relaxed">{text(props.summary)}</p>
       )}
 
       {text(props.description) && (
@@ -622,7 +622,7 @@ export default function OverlayFeaturePanel({
                   <span className="text-slate-800 font-medium">
                     {site.siteName ?? site.state ?? "Site"}
                   </span>
-                  <span className="text-xs text-slate-500 shrink-0">
+                  <span className="text-xs text-text-muted shrink-0">
                     {site.state ?? ""}
                   </span>
                 </button>
@@ -782,7 +782,7 @@ export default function OverlayFeaturePanel({
                   addSelectedState(state.id);
                   showLgas(state.id);
                 }}
-                className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700 hover:border-ng-green/40 hover:bg-emerald-50 transition-colors"
+                className="rounded-full border border-border-subtle bg-surface-card px-3 py-1 text-xs font-medium text-slate-700 hover:border-ng-green/40 hover:bg-emerald-50 transition-colors"
               >
                 {state.name}
               </button>
@@ -790,7 +790,7 @@ export default function OverlayFeaturePanel({
             {unmatchedStateNames.map((stateName) => (
               <span
                 key={stateName}
-                className="rounded-full border border-slate-100 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-500"
+                className="rounded-full border border-slate-100 bg-slate-50 px-3 py-1 text-xs font-medium text-text-muted"
               >
                 {stateName}
               </span>
@@ -804,7 +804,7 @@ export default function OverlayFeaturePanel({
           <p className="text-[10px] font-semibold uppercase tracking-wider text-sky-700 mb-1">
             Deeper reading
           </p>
-          <p className="text-xs text-slate-600 mb-2">
+          <p className="text-xs text-text-secondary mb-2">
             Wikipedia has longer history, demographics, and references than this map card.
           </p>
           <WikiDeepDiveLink wikiUrl={wikiUrl} title={name} />

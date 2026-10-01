@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useLayoutEffect } from "react";
 import dynamic from "next/dynamic";
 import LocationSearch from "@/components/search/LocationSearch";
 import SearchSpotlight from "@/components/search/SearchSpotlight";
@@ -46,6 +46,10 @@ import RankingPanel from "@/components/ranking/RankingPanel";
 import RankingMapLegend from "@/components/ranking/RankingMapLegend";
 import MapCornerSlot from "@/components/map/MapCornerSlot";
 import ToastStack from "@/components/ui/ToastStack";
+import SectionMapHeader from "@/components/workspace/SectionMapHeader";
+import RankingsWorkspaceChrome from "@/components/workspace/RankingsWorkspaceChrome";
+import RankingsMapCallouts from "@/components/workspace/RankingsMapCallouts";
+import WorkspaceMapFooter from "@/components/workspace/WorkspaceMapFooter";
 
 const NigeriaMap = dynamic(() => import("@/components/map/NigeriaMap"), {
   ssr: false,
@@ -57,7 +61,10 @@ const NigeriaMap = dynamic(() => import("@/components/map/NigeriaMap"), {
   ),
 });
 
+export type SectionWorkspaceMode = "rankings" | "elections";
+
 interface ExplorerShellProps {
+  sectionWorkspace?: SectionWorkspaceMode;
   states: StateLocation[];
   lgas: LgaLocation[];
   regions: RegionLocation[];
@@ -75,6 +82,7 @@ interface ExplorerShellProps {
 }
 
 export default function ExplorerShell({
+  sectionWorkspace,
   states,
   lgas,
   regions,
@@ -92,9 +100,26 @@ export default function ExplorerShell({
 }: ExplorerShellProps) {
   const isMobile = useIsMobile();
   const mapType = useMapStore((s) => s.mapType);
-  const isElectionMode = mapType === "election";
-  const isRankingMode = mapType === "ranking";
+  const rankingPeriod = useMapStore((s) => s.rankingPeriod);
+
+  useLayoutEffect(() => {
+    if (sectionWorkspace === "rankings") {
+      useMapStore.getState().setMapType("ranking");
+    } else if (sectionWorkspace === "elections") {
+      useMapStore.getState().setMapType("election");
+    }
+  }, [sectionWorkspace]);
+  const isElectionMode =
+    mapType === "election" || sectionWorkspace === "elections";
+  const isRankingMode =
+    mapType === "ranking" || sectionWorkspace === "rankings";
   const isSpecialMapMode = isElectionMode || isRankingMode;
+  const defaultMapType =
+    sectionWorkspace === "rankings"
+      ? "ranking"
+      : sectionWorkspace === "elections"
+        ? "election"
+        : undefined;
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
   const selectedLgaId = useMapStore((s) => s.selectedLgaId);
   const activeRegionId = useMapStore((s) => s.activeRegionId);
@@ -161,9 +186,36 @@ export default function ExplorerShell({
   }, [isMobile, showStateCompare]);
 
   return (
-    <div className="flex flex-col h-[100dvh] bg-[#eef2f6]">
-      <UrlSync />
-      <header className="shrink-0 z-20 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl shadow-sm relative">
+    <div
+      className={`flex flex-col bg-surface-canvas ${
+        sectionWorkspace ? "min-h-screen" : "h-[100dvh]"
+      }`}
+    >
+      <UrlSync defaultMapType={defaultMapType} />
+      {sectionWorkspace === "rankings" && (
+        <SectionMapHeader
+          accent="data"
+          badge="Data"
+          title="Rankings · Internally generated revenue (IGR)"
+          subtitle="Color every state by one NBS indicator"
+          backHref="/explore?map=ranking"
+          backLabel="Back to Data"
+          statusChip={`Showing IGR rankings (${rankingPeriod})`}
+        />
+      )}
+      {sectionWorkspace === "elections" && (
+        <SectionMapHeader
+          accent="civic"
+          badge="Civic"
+          title="Election map"
+          subtitle="2027 · Districts · Polling units"
+          backHref="/explore?map=election"
+          backLabel="Back to Civic"
+          statusChip="Senate districts · Polling units"
+        />
+      )}
+      {!sectionWorkspace && (
+      <header className="shrink-0 z-20 border-b border-border-subtle/80 bg-surface-card/90 backdrop-blur-xl shadow-sm relative">
         <div className="max-w-[1600px] mx-auto px-3 lg:px-6 py-2 lg:py-4">
           <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4 justify-between">
             <div className="flex flex-col items-start gap-1.5 shrink-0">
@@ -172,10 +224,10 @@ export default function ExplorerShell({
                   🇳🇬
                 </div>
                 <div>
-                  <h1 className="text-lg lg:text-xl font-bold text-slate-900 tracking-tight leading-none">
+                  <h1 className="text-lg lg:text-xl font-bold text-text-primary tracking-tight leading-none">
                     NaijaAtlas
                   </h1>
-                  <p className="text-[11px] lg:text-xs text-slate-500 mt-0.5 hidden sm:block">
+                  <p className="text-[11px] lg:text-xs text-text-muted mt-0.5 hidden sm:block">
                     {isElectionMode
                       ? "2027 elections · PU locator · Senate districts"
                       : isRankingMode
@@ -259,7 +311,7 @@ export default function ExplorerShell({
           <button
             type="button"
             onClick={() => closeMobileSheet()}
-            className="absolute top-2.5 right-14 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-white text-slate-800 border border-slate-200 px-3 py-2 text-xs font-semibold shadow-sm min-h-[36px]"
+            className="absolute top-2.5 right-14 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-surface-card text-slate-800 border border-border-subtle px-3 py-2 text-xs font-semibold shadow-sm min-h-[36px]"
             aria-label="Return to map view"
           >
             <svg
@@ -325,7 +377,7 @@ export default function ExplorerShell({
             <button
               type="button"
               onClick={() => setInfoModalOpen(true)}
-              className="absolute top-2.5 right-14 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-white text-slate-800 border border-slate-200 px-3 py-2 text-xs font-semibold shadow-sm min-h-[36px]"
+              className="absolute top-2.5 right-14 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-surface-card text-slate-800 border border-border-subtle px-3 py-2 text-xs font-semibold shadow-sm min-h-[36px]"
               aria-label="Open Nigeria overview"
             >
               <svg
@@ -345,6 +397,7 @@ export default function ExplorerShell({
             </button>
           )}
       </header>
+      )}
 
       <main className="flex-1 flex flex-col lg:flex-row min-h-0 max-w-[1600px] mx-auto w-full">
         <div className="flex-1 relative p-2 lg:p-5 min-h-0 flex flex-col">
@@ -359,6 +412,12 @@ export default function ExplorerShell({
             />
             {!isSpecialMapMode && <MapBottomToolbar />}
             <ElectionMapLegend lookups={politics.lookups} />
+            {sectionWorkspace === "rankings" && (
+              <RankingsMapCallouts
+                compareBundle={compareBundle}
+                states={states}
+              />
+            )}
             <MapCornerSlot cards={cornerCards} />
             <MapControls />
           </div>
@@ -370,11 +429,19 @@ export default function ExplorerShell({
             lgas={lgas}
           />
         ) : isRankingMode ? (
-          <RankingPanel
-            compareBundle={compareBundle}
-            states={states}
-            regions={regions}
-          />
+          sectionWorkspace === "rankings" ? (
+            <RankingsWorkspaceChrome
+              compareBundle={compareBundle}
+              states={states}
+              regions={regions}
+            />
+          ) : (
+            <RankingPanel
+              compareBundle={compareBundle}
+              states={states}
+              regions={regions}
+            />
+          )
         ) : (
           <LocationPanel
             states={states}
@@ -431,6 +498,7 @@ export default function ExplorerShell({
       <WikipediaReaderModal />
       <DirectionsModal />
       <ToastStack />
+      {sectionWorkspace && <WorkspaceMapFooter />}
     </div>
   );
 }

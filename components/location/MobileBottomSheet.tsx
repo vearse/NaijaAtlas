@@ -35,7 +35,7 @@ export default function MobileBottomSheet({
       )}
 
       <div
-        className={`fixed inset-x-0 bottom-0 z-40 lg:hidden flex flex-col bg-white rounded-t-2xl shadow-[0_-4px_24px_rgba(0,0,0,0.12)] border-t border-slate-200/80 transition-[transform,max-height] duration-300 ease-out ${
+        className={`fixed inset-x-0 bottom-0 z-40 lg:hidden flex flex-col bg-surface-card rounded-t-2xl shadow-[0_-4px_24px_rgba(0,0,0,0.12)] border-t border-border-subtle/80 transition-[transform,max-height] duration-300 ease-out ${
           mobileSheet === "hidden"
             ? "translate-y-full pointer-events-none"
             : "translate-y-0"
@@ -54,11 +54,11 @@ export default function MobileBottomSheet({
             aria-expanded={isOpen}
           >
             <div className="min-w-0">
-              <p className="text-sm font-semibold text-slate-900 truncate">
+              <p className="text-sm font-semibold text-text-primary truncate">
                 {title}
               </p>
               {subtitle && (
-                <p className="text-[11px] text-slate-500 truncate">
+                <p className="text-[11px] text-text-muted truncate">
                   {subtitle}
                 </p>
               )}
@@ -70,7 +70,7 @@ export default function MobileBottomSheet({
           <button
             type="button"
             onClick={closeMobileSheet}
-            className="shrink-0 h-8 w-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 text-lg leading-none"
+            className="shrink-0 h-8 w-8 flex items-center justify-center rounded-full bg-slate-100 text-text-secondary hover:bg-slate-200 text-lg leading-none"
             aria-label="Dismiss panel"
           >
             ×

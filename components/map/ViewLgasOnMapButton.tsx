@@ -43,7 +43,7 @@ export default function ViewLgasOnMapButton({
       className={`text-[11px] font-semibold rounded-full px-2.5 py-1 transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
         active
           ? "bg-ng-green text-white shadow-sm"
-          : "bg-white text-ng-green border border-ng-green/40 hover:border-ng-green hover:bg-ng-green/5"
+          : "bg-surface-card text-ng-green border border-ng-green/40 hover:border-ng-green hover:bg-ng-green/5"
       } ${className}`}
       aria-pressed={active}
     >

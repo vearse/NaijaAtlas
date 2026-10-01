@@ -36,12 +36,14 @@ interface RankingPanelProps {
   compareBundle: CompareBundle;
   states: StateLocation[];
   regions: RegionLocation[];
+  variant?: "default" | "workspace";
 }
 
 export default function RankingPanel({
   compareBundle,
   states,
   regions,
+  variant = "default",
 }: RankingPanelProps) {
   const isMobile = useIsMobile();
   const mobileSheet = useMapStore((s) => s.mobileSheet);
@@ -135,33 +137,35 @@ export default function RankingPanel({
 
   const inner = (
     <div className="flex flex-col h-full min-h-0">
-      <div className="shrink-0 p-4 border-b border-slate-100 bg-gradient-to-r from-white to-emerald-50/50">
-        <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-1">
-          Rankings
-        </p>
-        <h2 className="text-lg font-bold text-slate-900">
-          {snapshot?.field.label ?? "State indicators"}
-        </h2>
-        <p className="text-xs text-slate-500 mt-1">
-          Economy & Social · NBS / NDHS data
-        </p>
-        {periods.length > 0 && (
-          <label className="mt-3 block">
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-              Period
-            </span>
-            <select
-              value={rankingPeriod}
-              onChange={(e) => setRankingPeriod(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-sm text-slate-800"
-            >
-              {periods.map((p) => (
-                <option key={p.id} value={p.id}>{p.label}</option>
-              ))}
-            </select>
-          </label>
-        )}
-      </div>
+      {variant === "default" && (
+        <div className="shrink-0 p-4 border-b border-slate-100 bg-gradient-to-r from-white to-emerald-50/50">
+          <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-1">
+            Rankings
+          </p>
+          <h2 className="text-lg font-bold text-text-primary">
+            {snapshot?.field.label ?? "State indicators"}
+          </h2>
+          <p className="text-xs text-text-muted mt-1">
+            Economy & Social · NBS / NDHS data
+          </p>
+          {periods.length > 0 && (
+            <label className="mt-3 block">
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+                Period
+              </span>
+              <select
+                value={rankingPeriod}
+                onChange={(e) => setRankingPeriod(e.target.value)}
+                className="mt-1 w-full rounded-lg border border-border-subtle bg-surface-card px-2.5 py-2 text-sm text-slate-800"
+              >
+                {periods.map((p) => (
+                  <option key={p.id} value={p.id}>{p.label}</option>
+                ))}
+              </select>
+            </label>
+          )}
+        </div>
+      )}
 
       <div className="shrink-0 px-4 py-3 border-b border-slate-100">
         <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 mb-2">
@@ -191,7 +195,7 @@ export default function RankingPanel({
                 className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-200 min-h-[32px] ${
                   isActive
                     ? "bg-ng-green text-white shadow-sm"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                    : "bg-slate-100 text-text-secondary hover:bg-slate-200"
                 }`}
               >
                 {tab.label}
@@ -207,7 +211,7 @@ export default function RankingPanel({
             className={`ml-auto shrink-0 grid place-items-center w-[32px] h-[32px] rounded-full transition-colors ${
               infoOpen
                 ? "bg-emerald-50 text-ng-green ring-1 ring-ng-green/40"
-                : "bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-700"
+                : "bg-slate-100 text-text-muted hover:bg-slate-200 hover:text-slate-700"
             }`}
           >
             <svg
@@ -232,17 +236,17 @@ export default function RankingPanel({
         {infoOpen && (
           <div
             id="ranking-metric-info"
-            className="mt-3 rounded-xl border border-slate-200 bg-slate-50/70 p-3"
+            className="mt-3 rounded-xl border border-border-subtle bg-slate-50/70 p-3"
           >
             <p className="text-xs font-semibold text-slate-800">
               {snapshot?.field.label ?? "This metric"}
             </p>
-            <p className="text-[11px] text-slate-500 mt-0.5">
+            <p className="text-[11px] text-text-muted mt-0.5">
               {categoryDef?.label ?? ""}
               {snapshot ? ` · ${snapshot.periodLabel}` : ""}
             </p>
             {infoDescription && (
-              <p className="text-[11px] leading-relaxed text-slate-600 mt-2">
+              <p className="text-[11px] leading-relaxed text-text-secondary mt-2">
                 {infoDescription}
               </p>
             )}
@@ -256,10 +260,10 @@ export default function RankingPanel({
                   {snapshot.legendSteps.map((step) => (
                     <li
                       key={step.label}
-                      className="flex items-center gap-2 text-[11px] text-slate-600"
+                      className="flex items-center gap-2 text-[11px] text-text-secondary"
                     >
                       <span
-                        className="h-3 w-6 rounded shrink-0 border border-slate-200/80"
+                        className="h-3 w-6 rounded shrink-0 border border-border-subtle/80"
                         style={{ backgroundColor: step.color }}
                         aria-hidden
                       />
@@ -292,7 +296,7 @@ export default function RankingPanel({
                 rankingCategory === f.categoryId &&
                 rankingFieldKey === f.fieldKey
                   ? "border-ng-green bg-emerald-50 text-emerald-900 font-semibold"
-                  : "border-slate-100 text-slate-600 hover:bg-slate-50"
+                  : "border-slate-100 text-text-secondary hover:bg-slate-50"
               }`}
             >
               {f.label}
@@ -303,7 +307,7 @@ export default function RankingPanel({
 
       <div ref={listRef} className="flex-1 overflow-y-auto p-4">
         {!snapshot?.hasData ? (
-          <p className="text-sm text-slate-500 rounded-xl border border-dashed border-slate-200 bg-slate-50 p-4">
+          <p className="text-sm text-text-muted rounded-xl border border-dashed border-border-subtle bg-slate-50 p-4">
             No state data for this metric yet. Add values in compare CSV sources
             and run build:compare.
           </p>
@@ -327,10 +331,10 @@ export default function RankingPanel({
                     #{row.rank}
                   </span>
                   <RegionDot region={regionByStateId.get(row.stateId)} />
-                  <span className="flex-1 text-sm font-medium text-slate-900 truncate">
+                  <span className="flex-1 text-sm font-medium text-text-primary truncate">
                     {row.stateName}
                   </span>
-                  <span className="text-sm text-slate-600 shrink-0">
+                  <span className="text-sm text-text-secondary shrink-0">
                     {snapshot
                       ? withUnit(row.display, snapshot.unit)
                       : row.display}
@@ -384,9 +388,10 @@ export default function RankingPanel({
     );
   }
 
-  return (
-    <aside className="w-full lg:w-[400px] xl:w-[420px] shrink-0 border-l border-slate-200/80 bg-white flex flex-col min-h-0 hidden lg:flex">
-      {inner}
-    </aside>
-  );
+  const asideClass =
+    variant === "workspace"
+      ? "w-full flex flex-col min-h-0 flex-1 border-0"
+      : "w-full lg:w-[400px] xl:w-[420px] shrink-0 border-l border-border-subtle/80 bg-surface-card flex flex-col min-h-0 hidden lg:flex";
+
+  return <aside className={asideClass}>{inner}</aside>;
 }

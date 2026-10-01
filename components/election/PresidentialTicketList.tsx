@@ -49,7 +49,7 @@ export default function PresidentialTicketList({
         return (
           <li
             key={id}
-            className={`overflow-hidden rounded-xl border bg-white transition-colors ${
+            className={`overflow-hidden rounded-xl border bg-surface-card transition-colors ${
               isOpen ? "border-ng-green/40" : "border-slate-100"
             }`}
           >
@@ -65,7 +65,7 @@ export default function PresidentialTicketList({
                 size="md"
               />
               <span className="min-w-0 flex-1">
-                <span className="block text-sm font-medium text-slate-900 truncate">
+                <span className="block text-sm font-medium text-text-primary truncate">
                   {ticket.presidential_candidate.name}
                 </span>
                 <span className="block text-[10px] text-slate-400 truncate">
@@ -77,10 +77,10 @@ export default function PresidentialTicketList({
             {isOpen && (
               <div className="px-3 pb-3 pt-1">
                 <div className="rounded-lg border border-slate-100 bg-slate-50/60 px-2.5 py-2 text-sm">
-                  <p className="text-slate-500 text-xs">
+                  <p className="text-text-muted text-xs">
                     Vice presidential candidate
                   </p>
-                  <p className="font-semibold text-slate-900 truncate">
+                  <p className="font-semibold text-text-primary truncate">
                     {ticket.vice_presidential_candidate.name}
                   </p>
                   {(ticket.vice_presidential_candidate.age ||

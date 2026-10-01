@@ -48,7 +48,7 @@ export default function ShowLgasButton({
       className={`h-8 w-8 flex items-center justify-center rounded-lg transition-colors ${
         visible
           ? "bg-ng-green text-white shadow-sm"
-          : "bg-slate-100 text-slate-600 hover:bg-emerald-50 hover:text-ng-green"
+          : "bg-slate-100 text-text-secondary hover:bg-emerald-50 hover:text-ng-green"
       }`}
       aria-pressed={visible}
       aria-label={

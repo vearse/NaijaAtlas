@@ -35,7 +35,7 @@ function RankingIcon({ active }: { active: boolean }) {
     <svg
       viewBox="0 0 16 16"
       aria-hidden
-      className={`w-3.5 h-3.5 shrink-0 ${active ? "text-white" : "text-slate-500"}`}
+      className={`w-3.5 h-3.5 shrink-0 ${active ? "text-white" : "text-text-muted"}`}
       fill="currentColor"
     >
       <path d="M3 13h2V7H3v6zm4 0h2V3H7v10zm4 0h2V9h-2v4z" />
@@ -55,7 +55,7 @@ function MinimalIcon({ active }: { active: boolean }) {
     <svg
       viewBox="0 0 16 16"
       aria-hidden
-      className={`w-3.5 h-3.5 shrink-0 ${active ? "text-white" : "text-slate-500"}`}
+      className={`w-3.5 h-3.5 shrink-0 ${active ? "text-white" : "text-text-muted"}`}
     >
       <rect x="1" y="2" width="5" height="4" rx="1" fill="currentColor" opacity="0.85" />
       <rect x="7" y="2" width="7" height="5" rx="1" fill="currentColor" opacity="0.6" />
@@ -70,7 +70,7 @@ function StreetIcon({ active }: { active: boolean }) {
     <svg
       viewBox="0 0 16 16"
       aria-hidden
-      className={`w-3.5 h-3.5 shrink-0 ${active ? "text-white" : "text-slate-500"}`}
+      className={`w-3.5 h-3.5 shrink-0 ${active ? "text-white" : "text-text-muted"}`}
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
@@ -91,7 +91,7 @@ function ElectionIcon({ active }: { active: boolean }) {
     <svg
       viewBox="0 0 16 16"
       aria-hidden
-      className={`w-3.5 h-3.5 shrink-0 ${active ? "text-white" : "text-slate-500"}`}
+      className={`w-3.5 h-3.5 shrink-0 ${active ? "text-white" : "text-text-muted"}`}
     >
       <rect x="2" y="2" width="12" height="12" rx="2" fill="none" stroke="currentColor" strokeWidth="1.2" />
       <path d="M5 6h6M5 9h4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
@@ -146,8 +146,8 @@ export default function MapTypeToggle() {
         aria-label="Select map type"
         title={active.desc}
         className={[
-          "inline-flex items-center gap-1.5 rounded-xl bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-lg",
-          "min-h-[30px] px-2 py-1 transition-colors hover:bg-white",
+          "inline-flex items-center gap-1.5 rounded-xl bg-surface-card/90 backdrop-blur-md border border-border-subtle/80 shadow-lg",
+          "min-h-[30px] px-2 py-1 transition-colors hover:bg-surface-card",
         ].join(" ")}
       >
         <span className="flex h-5 w-5 items-center justify-center rounded-md bg-ng-green text-white">
@@ -158,7 +158,7 @@ export default function MapTypeToggle() {
           viewBox="0 0 20 20"
           fill="currentColor"
           aria-hidden
-          className={`h-3.5 w-3.5 shrink-0 text-slate-500 transition-transform duration-200 ${
+          className={`h-3.5 w-3.5 shrink-0 text-text-muted transition-transform duration-200 ${
             open ? "rotate-180" : ""
           }`}
         >
@@ -174,7 +174,7 @@ export default function MapTypeToggle() {
         <div
           role="menu"
           aria-label="Map type options"
-          className="absolute right-0 z-50 mt-2 w-52 overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-xl"
+          className="absolute right-0 z-50 mt-2 w-52 overflow-hidden rounded-xl border border-border-subtle/80 bg-surface-card shadow-xl"
         >
           {OPTIONS.map((opt, idx) => {
             const on = mapType === opt.id;

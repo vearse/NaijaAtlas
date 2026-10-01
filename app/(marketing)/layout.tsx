@@ -20,7 +20,7 @@ export default function MarketingLayout({
 }) {
   return (
     <div
-      className={`${plusJakarta.variable} ${inter.variable} font-landing min-h-screen bg-[#f8fafc] text-slate-900`}
+      className={`${plusJakarta.variable} ${inter.variable} font-landing min-h-screen bg-surface-base text-text-primary antialiased selection:bg-primary-tint-soft selection:text-primary`}
     >
       {children}
     </div>

@@ -23,22 +23,22 @@ export default function DirectionsModal() {
         className="absolute inset-0 bg-black/40 backdrop-blur-[1px]"
         onClick={() => closeDirectionsModal()}
       />
-      <div className="relative z-10 w-full max-w-md max-h-[90vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl bg-[#eef2f6] shadow-xl border border-slate-200/80 mx-0 sm:mx-auto">
-        <div className="sticky top-0 flex items-center justify-between gap-2 border-b border-slate-200/80 bg-white/95 backdrop-blur px-4 py-3 rounded-t-2xl sm:rounded-t-2xl">
+      <div className="relative z-10 w-full max-w-md max-h-[90vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl bg-surface-canvas shadow-xl border border-border-subtle/80 mx-0 sm:mx-auto">
+        <div className="sticky top-0 flex items-center justify-between gap-2 border-b border-border-subtle/80 bg-surface-card/95 backdrop-blur px-4 py-3 rounded-t-2xl sm:rounded-t-2xl">
           <div className="min-w-0">
             <p
               id="directions-modal-title"
-              className="text-sm font-bold text-slate-900 truncate"
+              className="text-sm font-bold text-text-primary truncate"
             >
               Directions
             </p>
-            <p className="text-xs text-slate-500 truncate">{feature.name}</p>
+            <p className="text-xs text-text-muted truncate">{feature.name}</p>
           </div>
           <div className="flex items-center gap-1.5 shrink-0">
             <button
               type="button"
               onClick={() => openDirectionsPanel(feature)}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-slate-500 hover:bg-slate-100 hover:text-ng-green transition-colors"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-border-subtle text-text-muted hover:bg-slate-100 hover:text-ng-green transition-colors"
               aria-label="Focus in location panel"
               title="Show directions in the location panel"
             >
@@ -59,7 +59,7 @@ export default function DirectionsModal() {
             <button
               type="button"
               onClick={() => closeDirectionsModal()}
-              className="shrink-0 h-8 w-8 rounded-full border border-slate-200 text-slate-500 hover:bg-slate-100"
+              className="shrink-0 h-8 w-8 rounded-full border border-border-subtle text-text-muted hover:bg-slate-100"
               aria-label="Close"
             >
               ×

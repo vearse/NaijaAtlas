@@ -52,8 +52,8 @@ export default function ElectionPanel({
         <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-1">
           2027 elections · Browse
         </p>
-        <h2 className="text-lg font-bold text-slate-900">Find & explore</h2>
-        <p className="text-xs text-slate-500 mt-1">
+        <h2 className="text-lg font-bold text-text-primary">Find & explore</h2>
+        <p className="text-xs text-text-muted mt-1">
           Polling unit lookup and senatorial districts
         </p>
       </div>
@@ -130,7 +130,7 @@ export default function ElectionPanel({
   }
 
   return (
-    <aside className="w-full lg:w-[400px] xl:w-[420px] shrink-0 border-l border-slate-200/80 bg-white flex flex-col min-h-0 hidden lg:flex">
+    <aside className="w-full lg:w-[400px] xl:w-[420px] shrink-0 border-l border-border-subtle/80 bg-surface-card flex flex-col min-h-0 hidden lg:flex">
       {inner}
     </aside>
   );

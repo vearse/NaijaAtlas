@@ -28,12 +28,12 @@ export default function RegionDetails({
             className="h-4 w-4 rounded-full shrink-0 ring-2 ring-white shadow"
             style={{ backgroundColor: region.color }}
           />
-          <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+          <p className="text-xs font-semibold uppercase tracking-wider text-text-muted">
             Geopolitical region
           </p>
         </div>
-        <h2 className="text-2xl font-bold text-slate-900">{region.name}</h2>
-        <p className="text-sm text-slate-600 mt-2">
+        <h2 className="text-2xl font-bold text-text-primary">{region.name}</h2>
+        <p className="text-sm text-text-secondary mt-2">
           {memberStates.length} states · names and colours shown on the map.
           Click a state to explore its LGAs, or select all below.
         </p>

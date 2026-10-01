@@ -46,7 +46,7 @@ export default function GetDirectionsButton({
           ? "px-2.5 py-1 text-[11px]"
           : "px-3 py-1.5 text-xs",
         lonLat
-          ? "border-slate-200 bg-white text-slate-700 hover:border-ng-green/50 hover:text-ng-green"
+          ? "border-border-subtle bg-surface-card text-slate-700 hover:border-ng-green/50 hover:text-ng-green"
           : "border-slate-100 text-slate-300 cursor-not-allowed",
         className,
       ].join(" ")}

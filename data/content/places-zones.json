@@ -1,0 +1,35 @@
+{
+  "source": "Editorial zone summaries. Membership counts are derived from data/locations/regions.json; character lines describe the documented economy, terrain and settlement of each zone.",
+  "zones": [
+    {
+      "regionId": "NG-NC",
+      "character": "Middle Belt",
+      "blurb": "Agricultural plains, the Niger–Benue confluence valleys, mineral plateaus, and the seat of federal sovereignty in Abuja."
+    },
+    {
+      "regionId": "NG-NE",
+      "character": "Chad Basin & highlands",
+      "blurb": "Sahel savannah, Chad Basin aquifers, and the alpine ridge of Chappal Waddi on the Cameroon frontier."
+    },
+    {
+      "regionId": "NG-NW",
+      "character": "Sudano-Sahelian",
+      "blurb": "The country's highest demographic concentration — historic emirates, groundnut pyramids, and intense dry-season commercial farming."
+    },
+    {
+      "regionId": "NG-SE",
+      "character": "Palm belt & commerce",
+      "blurb": "High population density, the commercial markets of Onitsha and Aba, and sedimentary scarp lands along the Anambra Basin."
+    },
+    {
+      "regionId": "NG-SS",
+      "character": "Niger Delta littoral",
+      "blurb": "Mangrove swamps, hydrocarbon reserves, the Gulf of Guinea coastline, and rich rainforest biodiversity in Cross River."
+    },
+    {
+      "regionId": "NG-SW",
+      "character": "Industrial & Atlantic",
+      "blurb": "Industrial heartland, deepwater ports, academic centres, and historic Yoruba kingdoms spanning coastal lagoons to rolling hills."
+    }
+  ]
+}

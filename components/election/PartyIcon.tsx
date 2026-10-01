@@ -21,7 +21,7 @@ export default function PartyIcon({
       <img
         src={icon}
         alt=""
-        className={`${dim} shrink-0 rounded-lg object-cover ring-1 ring-slate-200/80 bg-white ${className}`}
+        className={`${dim} shrink-0 rounded-lg object-cover ring-1 ring-slate-200/80 bg-surface-card ${className}`}
         loading="lazy"
         decoding="async"
       />
@@ -29,7 +29,7 @@ export default function PartyIcon({
   }
   return (
     <span
-      className={`${dim} shrink-0 rounded-lg bg-slate-100 ring-1 ring-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600 ${className}`}
+      className={`${dim} shrink-0 rounded-lg bg-slate-100 ring-1 ring-slate-200 flex items-center justify-center text-[10px] font-bold text-text-secondary ${className}`}
       aria-hidden
     >
       {abbreviation.slice(0, 4)}

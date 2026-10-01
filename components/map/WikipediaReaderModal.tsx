@@ -75,7 +75,7 @@ function WikiArticleBody({
 
   if (loading) {
     return (
-      <div className="flex flex-1 flex-col items-center justify-center min-h-[70vh] text-slate-500 gap-3">
+      <div className="flex flex-1 flex-col items-center justify-center min-h-[70vh] text-text-muted gap-3">
         <div className="h-8 w-8 rounded-full border-2 border-sky-200 border-t-sky-600 animate-spin" />
         <p className="text-sm">Loading article…</p>
       </div>
@@ -99,7 +99,7 @@ function WikiArticleBody({
         srcDoc={article.html}
         title={article.title}
         onLoad={handleLoaded}
-        className="w-full flex-1 min-h-0 border-0 bg-white"
+        className="w-full flex-1 min-h-0 border-0 bg-surface-card"
         sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
       />
       <p className="shrink-0 text-[11px] text-slate-400 px-1 pt-2 border-t border-slate-100">
@@ -135,14 +135,14 @@ function WikiModalHeader({
             <button
               type="button"
               onClick={onBack}
-              className="inline-flex items-center gap-1 rounded-full border border-sky-200 bg-white px-2 py-0.5 text-[10px] font-semibold text-sky-700 hover:bg-sky-50 transition-colors"
+              className="inline-flex items-center gap-1 rounded-full border border-sky-200 bg-surface-card px-2 py-0.5 text-[10px] font-semibold text-sky-700 hover:bg-sky-50 transition-colors"
             >
               <span aria-hidden>←</span>
               {backLabel}
             </button>
           )}
         </div>
-        <h2 className="text-sm lg:text-lg font-bold text-slate-900 truncate mt-0.5">
+        <h2 className="text-sm lg:text-lg font-bold text-text-primary truncate mt-0.5">
           {heading}
         </h2>
         <a
@@ -158,7 +158,7 @@ function WikiModalHeader({
       <button
         type="button"
         onClick={onClose}
-        className="shrink-0 h-9 w-9 lg:h-10 lg:w-10 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors text-xl leading-none"
+        className="shrink-0 h-9 w-9 lg:h-10 lg:w-10 flex items-center justify-center rounded-full bg-slate-100 text-text-secondary hover:bg-slate-200 transition-colors text-xl leading-none"
         aria-label="Close"
       >
         ×
@@ -273,7 +273,7 @@ export default function WikipediaReaderModal() {
 
       {/* Mobile — tall reader shell (~85%+ viewport) */}
       <div
-        className="fixed inset-x-2 top-[3vh] sm:inset-x-3 sm:top-[4vh] z-[60] lg:hidden flex flex-col h-[min(94dvh,880px)] min-h-[85dvh] bg-white rounded-2xl shadow-2xl border border-slate-200/80 overflow-hidden animate-scale-in"
+        className="fixed inset-x-2 top-[3vh] sm:inset-x-3 sm:top-[4vh] z-[60] lg:hidden flex flex-col h-[min(94dvh,880px)] min-h-[85dvh] bg-surface-card rounded-2xl shadow-2xl border border-border-subtle/80 overflow-hidden animate-scale-in"
         role="dialog"
         aria-modal="true"
         aria-label={`Wikipedia: ${heading}`}
@@ -304,7 +304,7 @@ export default function WikipediaReaderModal() {
         aria-modal="true"
         aria-label={`Wikipedia: ${heading}`}
       >
-        <div className="pointer-events-auto w-full max-w-4xl h-[min(92vh,880px)] min-h-[80vh] flex flex-col bg-white rounded-2xl shadow-2xl border border-slate-200/80 overflow-hidden animate-scale-in">
+        <div className="pointer-events-auto w-full max-w-4xl h-[min(92vh,880px)] min-h-[80vh] flex flex-col bg-surface-card rounded-2xl shadow-2xl border border-border-subtle/80 overflow-hidden animate-scale-in">
           <WikiModalHeader
             heading={heading}
             pageUrl={current.url}

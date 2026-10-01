@@ -43,7 +43,7 @@ function ChipList({
         {items.map((item) => (
           <span
             key={item}
-            className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-700"
+            className="rounded-full border border-border-subtle bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-700"
           >
             {item}
           </span>
@@ -120,16 +120,16 @@ export default function LgaDetails({
     <div className="space-y-5">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+          <p className="text-xs font-medium uppercase tracking-wide text-text-muted">
             {content.stateName} State · LGA
           </p>
-          <h2 className="text-2xl font-bold text-slate-900">{content.name}</h2>
-          {nickname && <p className="text-sm text-slate-500 mt-0.5">{nickname}</p>}
+          <h2 className="text-2xl font-bold text-text-primary">{content.name}</h2>
+          {nickname && <p className="text-sm text-text-muted mt-0.5">{nickname}</p>}
         </div>
         <button
           type="button"
           onClick={() => setSelectedLga(null)}
-          className="shrink-0 rounded-lg border border-slate-200 px-2.5 py-1 text-xs font-medium text-slate-500 hover:bg-slate-50 hover:text-slate-700 transition-colors"
+          className="shrink-0 rounded-lg border border-border-subtle px-2.5 py-1 text-xs font-medium text-text-muted hover:bg-slate-50 hover:text-slate-700 transition-colors"
           aria-label="Close LGA details"
         >
           Close
@@ -137,9 +137,9 @@ export default function LgaDetails({
       </div>
 
       <dl className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
-        <dt className="text-slate-500">State</dt>
+        <dt className="text-text-muted">State</dt>
         <dd className="font-medium">{content.stateName}</dd>
-        <dt className="text-slate-500">Land area</dt>
+        <dt className="text-text-muted">Land area</dt>
         <dd className="font-medium">
           {location.areaKm2 != null
             ? `${location.areaKm2.toLocaleString()} km²`
@@ -147,40 +147,40 @@ export default function LgaDetails({
               ? `${content.areaKm2.toLocaleString()} km²`
               : "—"}
         </dd>
-        <dt className="text-slate-500">Wards</dt>
+        <dt className="text-text-muted">Wards</dt>
         <dd className="font-medium">{wardList.length || content.wardCount || "—"}</dd>
-        <dt className="text-slate-500">Region</dt>
+        <dt className="text-text-muted">Region</dt>
         <dd className="font-medium">{regionName ?? location.regionId}</dd>
         {headquarters && (
           <>
-            <dt className="text-slate-500">Headquarters</dt>
+            <dt className="text-text-muted">Headquarters</dt>
             <dd className="font-medium">{headquarters}</dd>
           </>
         )}
         {yearCreated && (
           <>
-            <dt className="text-slate-500">Created</dt>
+            <dt className="text-text-muted">Created</dt>
             <dd className="font-medium">{yearCreated}</dd>
           </>
         )}
         {chairman && (
           <>
-            <dt className="text-slate-500">Council chairman</dt>
+            <dt className="text-text-muted">Council chairman</dt>
             <dd className="font-medium">{chairman}</dd>
           </>
         )}
         {populationNote && (
           <>
-            <dt className="text-slate-500">Population</dt>
+            <dt className="text-text-muted">Population</dt>
             <dd className="font-medium">{populationNote}</dd>
           </>
         )}
-        <dt className="text-slate-500">Code</dt>
+        <dt className="text-text-muted">Code</dt>
         <dd className="font-mono text-xs font-medium text-slate-700">
           {location.id}
         </dd>
-        <dt className="text-slate-500">Centroid</dt>
-        <dd className="font-mono text-xs text-slate-600">
+        <dt className="text-text-muted">Centroid</dt>
+        <dd className="font-mono text-xs text-text-secondary">
           {lat.toFixed(4)}°N, {lon.toFixed(4)}°E
         </dd>
       </dl>
@@ -193,7 +193,7 @@ export default function LgaDetails({
         size="md"
       />
 
-      <p className="text-sm text-slate-600 leading-relaxed">
+      <p className="text-sm text-text-secondary leading-relaxed">
         {summary ?? content.description}
       </p>
 
@@ -221,13 +221,13 @@ export default function LgaDetails({
                 />
               </div>
               {m.memberIds.length > 0 && (
-                <p className="text-[11px] font-medium text-slate-500">
+                <p className="text-[11px] font-medium text-text-muted">
                   {m.memberIds.length} LGA
                   {m.memberIds.length === 1 ? "" : "s"} in this metro
                 </p>
               )}
               {m.description && (
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-xs text-text-secondary leading-relaxed">
                   {m.description}
                 </p>
               )}
@@ -236,7 +236,7 @@ export default function LgaDetails({
                   {m.wikiNotes.map((w, i) => (
                     <li
                       key={i}
-                      className="rounded-lg bg-white border border-slate-100 px-2.5 py-2"
+                      className="rounded-lg bg-surface-card border border-slate-100 px-2.5 py-2"
                     >
                       {w.url ? (
                         <button
@@ -249,7 +249,7 @@ export default function LgaDetails({
                             <span
                               className={`rounded-full border px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide ${
                                 NOTE_CATEGORY_STYLES[w.category] ??
-                                "bg-slate-50 text-slate-600 border-slate-200"
+                                "bg-slate-50 text-text-secondary border-border-subtle"
                               }`}
                             >
                               {w.category}
@@ -262,14 +262,14 @@ export default function LgaDetails({
                           <span
                             className={`rounded-full border px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide ${
                               NOTE_CATEGORY_STYLES[w.category] ??
-                              "bg-slate-50 text-slate-600 border-slate-200"
+                              "bg-slate-50 text-text-secondary border-border-subtle"
                             }`}
                           >
                             {w.category}
                           </span>
                         </span>
                       )}
-                      <p className="text-xs text-slate-500 leading-relaxed mt-1">
+                      <p className="text-xs text-text-muted leading-relaxed mt-1">
                         {w.note}
                       </p>
                     </li>
@@ -286,7 +286,7 @@ export default function LgaDetails({
           <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
             Economy
           </h3>
-          <p className="text-sm text-slate-600 leading-relaxed">{economy}</p>
+          <p className="text-sm text-text-secondary leading-relaxed">{economy}</p>
         </div>
       )}
 
@@ -295,7 +295,7 @@ export default function LgaDetails({
           <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
             Climate
           </h3>
-          <p className="text-sm text-slate-600 leading-relaxed">{climate}</p>
+          <p className="text-sm text-text-secondary leading-relaxed">{climate}</p>
         </div>
       )}
 
@@ -310,7 +310,7 @@ export default function LgaDetails({
           <p className="text-[10px] font-semibold uppercase tracking-wider text-sky-700 mb-1">
             Deeper reading
           </p>
-          <p className="text-xs text-slate-600 mb-2">
+          <p className="text-xs text-text-secondary mb-2">
             Wikipedia has longer history, demographics, and references than this
             card.
           </p>

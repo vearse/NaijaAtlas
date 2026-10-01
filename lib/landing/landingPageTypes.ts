@@ -9,6 +9,15 @@ export type LandingStateCard = {
   regionName: string;
   lgaCount: number;
   capital: string | null;
+  /** Most recent NPC/NBS estimate, in people. */
+  population: number | null;
+  populationYear: number | null;
+  /** UN SALB land area, km². */
+  landAreaKm2: number | null;
+  /** Annual internally generated revenue, in naira. */
+  igr: number | null;
+  /** `[lon, lat]` label point inside the state boundary. */
+  centroid: [number, number];
   pollingUnitCount: number;
   code: string;
 };

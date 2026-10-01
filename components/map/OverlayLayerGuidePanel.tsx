@@ -192,22 +192,22 @@ export default function OverlayLayerGuidePanel({
     <div className="space-y-5">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">
+          <p className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-1">
             {meta.label} layer · guide
           </p>
-          <h2 className="text-2xl font-bold text-slate-900">{guide.title}</h2>
+          <h2 className="text-2xl font-bold text-text-primary">{guide.title}</h2>
         </div>
         <button
           type="button"
           onClick={() => clearOverlayGuide()}
-          className="shrink-0 rounded-lg border border-slate-200 px-2.5 py-1 text-xs font-medium text-slate-500 hover:bg-slate-50 hover:text-slate-700 transition-colors"
+          className="shrink-0 rounded-lg border border-border-subtle px-2.5 py-1 text-xs font-medium text-text-muted hover:bg-slate-50 hover:text-slate-700 transition-colors"
           aria-label="Close layer guide"
         >
           Close
         </button>
       </div>
 
-      <p className="text-sm text-slate-600 leading-relaxed">{guide.summary}</p>
+      <p className="text-sm text-text-secondary leading-relaxed">{guide.summary}</p>
       <p className="text-sm text-slate-700 leading-relaxed">{guide.description}</p>
 
       <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-4 space-y-4">
@@ -234,7 +234,7 @@ export default function OverlayLayerGuidePanel({
           </p>
           <ul className="space-y-1">
             {guide.legend.map((item) => (
-              <li key={item} className="text-xs text-slate-600">
+              <li key={item} className="text-xs text-text-secondary">
                 {item}
               </li>
             ))}
@@ -242,12 +242,12 @@ export default function OverlayLayerGuidePanel({
         </div>
       </div>
 
-      <p className="text-xs text-slate-500 rounded-lg border border-emerald-100 bg-emerald-50/60 px-3 py-2.5 leading-relaxed">
+      <p className="text-xs text-text-muted rounded-lg border border-emerald-100 bg-emerald-50/60 px-3 py-2.5 leading-relaxed">
         <span className="font-semibold text-emerald-800">Tip · </span>
         {guide.tip}
       </p>
 
-      <div className="rounded-xl border border-slate-100 bg-white p-3 space-y-2">
+      <div className="rounded-xl border border-slate-100 bg-surface-card p-3 space-y-2">
         <div className="flex items-center justify-between gap-2 px-0.5">
           <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
             Explore {meta.short} features
@@ -296,7 +296,7 @@ export default function OverlayLayerGuidePanel({
               <button
                 type="button"
                 onClick={() => setShowAll((v) => !v)}
-                className="w-full rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-ng-green/30 hover:text-ng-green transition-colors"
+                className="w-full rounded-lg border border-border-subtle bg-surface-card px-3 py-1.5 text-xs font-semibold text-text-secondary hover:border-ng-green/30 hover:text-ng-green transition-colors"
               >
                 {showAll
                   ? "Show fewer"
@@ -332,7 +332,7 @@ export default function OverlayLayerGuidePanel({
                 aria-pressed={revealed}
                 className={`shrink-0 rounded-lg border px-2.5 py-1 text-xs font-semibold transition-colors ${
                   revealed
-                    ? "border-violet-300 bg-white text-violet-700 hover:border-violet-400"
+                    ? "border-violet-300 bg-surface-card text-violet-700 hover:border-violet-400"
                     : "border-violet-300 bg-violet-600 text-white hover:bg-violet-700"
                 }`}
               >
@@ -340,7 +340,7 @@ export default function OverlayLayerGuidePanel({
               </button>
             </div>
 
-            <p className="text-xs text-slate-600 leading-relaxed px-0.5">
+            <p className="text-xs text-text-secondary leading-relaxed px-0.5">
               {group.blurb}
             </p>
 
@@ -353,14 +353,14 @@ export default function OverlayLayerGuidePanel({
                       <button
                         type="button"
                         onClick={() => openFeature(f)}
-                        className="w-full group flex items-start justify-between gap-2 rounded-lg border border-violet-100 bg-white px-3 py-2 text-left hover:border-violet-300 hover:bg-violet-50/60 transition-colors"
+                        className="w-full group flex items-start justify-between gap-2 rounded-lg border border-violet-100 bg-surface-card px-3 py-2 text-left hover:border-violet-300 hover:bg-violet-50/60 transition-colors"
                       >
                         <span className="min-w-0">
                           <span className="block text-sm font-medium text-slate-700 truncate">
                             {f.name}
                           </span>
                           {status && (
-                            <span className="block text-[11px] text-slate-500 truncate">
+                            <span className="block text-[11px] text-text-muted truncate">
                               {status}
                             </span>
                           )}

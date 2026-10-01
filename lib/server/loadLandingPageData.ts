@@ -9,6 +9,7 @@ import type {
   EthnicSpotlightCard,
 } from "@/lib/landing/ethnicGroupTypes";
 import type { StateContent, StateLocation } from "@/types/location";
+import { loadStateFacts, loadStateIgr } from "@/lib/server/stateFacts";
 
 function loadJson<T>(filePath: string): T {
   return JSON.parse(fs.readFileSync(filePath, "utf-8")) as T;
@@ -23,8 +24,12 @@ export function loadLandingPageData(root = process.cwd()): LandingPageData {
   const stateContent = loadJson<StateContent[]>(
     path.join(root, "data/content/states.json")
   );
+  // `data/content/states.json` only has a capital for 9 of 37 states, so the
+  // complete `compare` bundle wins whenever it has one.
+  const facts = loadStateFacts(root);
+  const igrById = loadStateIgr(root);
   const capitalById = new Map(
-    stateContent.map((s) => [s.id, s.capital] as const)
+    stateContent.map((s) => [s.id, s.capital ?? facts[s.id]?.capital ?? null] as const)
   );
   const regions = loadJson(
     path.join(root, "data/locations/regions.json")
@@ -75,6 +80,11 @@ export function loadLandingPageData(root = process.cwd()): LandingPageData {
       regionName: s.regionName,
       lgaCount: s.lgaCount,
       capital: capitalById.get(s.id) ?? null,
+      population: facts[s.id]?.population ?? null,
+      populationYear: facts[s.id]?.populationYear ?? null,
+      landAreaKm2: facts[s.id]?.landAreaKm2 ?? null,
+      igr: igrById[s.id] ?? null,
+      centroid: s.centroid,
       pollingUnitCount: s.pollingUnitCount ?? 0,
       code: s.id.replace("NG-", ""),
     };

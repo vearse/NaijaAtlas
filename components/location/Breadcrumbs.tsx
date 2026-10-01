@@ -71,8 +71,8 @@ export default function Breadcrumbs({ states, lgas }: BreadcrumbsProps) {
             onClick={c.onClick}
             className={`hover:text-ng-green transition-colors ${
               i === crumbs.length - 1
-                ? "font-semibold text-slate-900"
-                : "text-slate-500"
+                ? "font-semibold text-text-primary"
+                : "text-text-muted"
             }`}
           >
             {c.label}

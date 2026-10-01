@@ -326,10 +326,10 @@ export default function LocationPanel({
             !showDirectionsPanel &&
             selectedStates.length > MAX_COMPARE_STATES && (
             <div className="space-y-4">
-              <h3 className="text-lg font-bold text-slate-900">
+              <h3 className="text-lg font-bold text-text-primary">
                 {selectedStates.length} states selected
               </h3>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-text-secondary">
                 Exploring LGAs for all selected states on the map. Click an LGA
                 for ward details.
               </p>
@@ -340,7 +340,7 @@ export default function LocationPanel({
                     className="rounded-xl border border-slate-100 bg-slate-50 px-4 py-3"
                   >
                     <p className="font-semibold text-slate-800">{s.name}</p>
-                    <p className="text-xs text-slate-500 mt-0.5">
+                    <p className="text-xs text-text-muted mt-0.5">
                       {s.regionName} · {s.lgaCount} LGAs
                     </p>
                   </li>
@@ -364,7 +364,7 @@ export default function LocationPanel({
         <button
           type="button"
           onClick={() => useMapStore.getState().peekMobileSheet()}
-          className="fixed bottom-4 left-1/2 -translate-x-1/2 z-30 lg:hidden rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-800 shadow-lg border border-slate-200/80 flex items-center gap-2"
+          className="fixed bottom-4 left-1/2 -translate-x-1/2 z-30 lg:hidden rounded-full bg-surface-card px-4 py-2 text-sm font-medium text-slate-800 shadow-lg border border-border-subtle/80 flex items-center gap-2"
         >
           <span className="h-2 w-2 rounded-full bg-ng-green" />
           {sheetTitle}
@@ -386,7 +386,7 @@ export default function LocationPanel({
   }
 
   return (
-    <aside className="w-full lg:w-[400px] xl:w-[440px] shrink-0 bg-white border-l border-slate-200/80 flex flex-col h-full shadow-xl lg:shadow-none">
+    <aside className="w-full lg:w-[400px] xl:w-[440px] shrink-0 bg-surface-card border-l border-border-subtle/80 flex flex-col h-full shadow-xl lg:shadow-none">
       {inner}
       {!isMobile && showStateCompare && (
         <DesktopCompareModal

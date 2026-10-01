@@ -106,7 +106,7 @@ function RankBadge({ rank }: { rank: number }) {
       ? "bg-ng-green text-white"
       : rank <= 3
         ? "bg-emerald-100 text-ng-green"
-        : "bg-slate-100 text-slate-500";
+        : "bg-slate-100 text-text-muted";
   return (
     <span
       className={`w-6 h-6 shrink-0 flex items-center justify-center rounded-full text-[11px] font-bold ${badge}`}
@@ -139,7 +139,7 @@ function RankedList({
               </span>
             )}
           </span>
-          <span className="text-sm font-semibold text-slate-600 tabular-nums">
+          <span className="text-sm font-semibold text-text-secondary tabular-nums">
             {formatValue(row.value)}
           </span>
         </li>
@@ -158,7 +158,7 @@ function YearList({
   if (rows.length === 0) return null;
   return (
     <div>
-      <h4 className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 mb-1.5">
+      <h4 className="text-[10px] font-semibold uppercase tracking-wider text-text-muted mb-1.5">
         {title}
       </h4>
       <ol className="rounded-lg border border-slate-100 divide-y divide-slate-100">
@@ -174,7 +174,7 @@ function YearList({
                 </span>
               )}
             </span>
-            <span className="text-sm font-semibold text-slate-600 tabular-nums">
+            <span className="text-sm font-semibold text-text-secondary tabular-nums">
               {row.value}
             </span>
           </li>
@@ -210,7 +210,7 @@ function AccordionItem({
             {title}
           </span>
           {count !== undefined && (
-            <span className="rounded-full bg-slate-100 text-slate-500 text-[10px] font-semibold px-2 py-0.5">
+            <span className="rounded-full bg-slate-100 text-text-muted text-[10px] font-semibold px-2 py-0.5">
               {count}
             </span>
           )}
@@ -442,8 +442,8 @@ export default function NigeriaOverview({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-bold text-slate-900">Nigeria</h2>
-        <p className="text-sm text-slate-600 mt-1 leading-relaxed">
+        <h2 className="text-xl font-bold text-text-primary">Nigeria</h2>
+        <p className="text-sm text-text-secondary mt-1 leading-relaxed">
           The Federal Republic of Nigeria — 36 states, the Federal Capital
           Territory, 774 local government areas, and 6 geopolitical regions.
           Click a state on the map, pick a region above, or search to explore.
@@ -502,7 +502,7 @@ export default function NigeriaOverview({
           <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
             Highlights
             {activeLens !== "learn" && (
-              <span className="normal-case font-medium text-slate-500 ml-1.5">
+              <span className="normal-case font-medium text-text-muted ml-1.5">
                 · {LENS_LABELS[activeLens]}
               </span>
             )}
@@ -524,7 +524,7 @@ export default function NigeriaOverview({
                         ? "Tourist picks across Nigeria"
                         : "Investment picks across Nigeria"}
                     </span>
-                    <span className="rounded-full bg-slate-100 text-slate-500 text-[10px] font-semibold px-2 py-0.5">
+                    <span className="rounded-full bg-slate-100 text-text-muted text-[10px] font-semibold px-2 py-0.5">
                       {countryLensPicks.total}
                     </span>
                   </span>
@@ -548,7 +548,7 @@ export default function NigeriaOverview({
                   from {activeLens === "tourist" ? "tourist sites" : "industries"}{" "}
                   across Nigeria.
                 </p>
-                <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
+                <p className="text-[11px] text-text-muted mt-1 leading-relaxed">
                   {activeLens === "tourist"
                     ? "Select a state on the map (or search above) to see its full tourist guide with local places, landforms and lakes."
                     : "Select a state on the map (or search above) to see its full investment guide with resources, agriculture and cities."}
@@ -564,7 +564,7 @@ export default function NigeriaOverview({
                   <span className="text-sm font-semibold text-slate-800">
                     Interesting history
                   </span>
-                  <span className="rounded-full bg-slate-100 text-slate-500 text-[10px] font-semibold px-2 py-0.5">
+                  <span className="rounded-full bg-slate-100 text-text-muted text-[10px] font-semibold px-2 py-0.5">
                     {filteredCountryNotes.length}
                   </span>
                 </span>
@@ -574,7 +574,7 @@ export default function NigeriaOverview({
                   const notes = groupedNotes.get(category) ?? [];
                   return (
                     <div key={category}>
-                      <h4 className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 mb-1.5">
+                      <h4 className="text-[10px] font-semibold uppercase tracking-wider text-text-muted mb-1.5">
                         {category}
                       </h4>
                       <ul className="space-y-2">
@@ -596,14 +596,14 @@ export default function NigeriaOverview({
                                 <span
                                   className={`rounded-full border px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide ${
                                     NOTE_CATEGORY_STYLES[n.category] ??
-                                    "bg-slate-50 text-slate-600 border-slate-200"
+                                    "bg-slate-50 text-text-secondary border-border-subtle"
                                   }`}
                                 >
                                   {n.category}
                                 </span>
                               </span>
                             </button>
-                            <p className="text-xs text-slate-500 leading-relaxed mt-1">
+                            <p className="text-xs text-text-muted leading-relaxed mt-1">
                               {n.note}
                             </p>
                           </li>
@@ -626,7 +626,7 @@ export default function NigeriaOverview({
           >
             <div className="space-y-2">
               {populationRanking.sourceNote && (
-                <p className="text-[10px] font-medium text-slate-500">
+                <p className="text-[10px] font-medium text-text-muted">
                   {populationRanking.sourceNote}
                 </p>
               )}
@@ -644,11 +644,11 @@ export default function NigeriaOverview({
             onToggle={() => toggle(2)}
           >
             <div className="space-y-2">
-              <p className="text-[10px] font-medium text-slate-500">
+              <p className="text-[10px] font-medium text-text-muted">
                 Internal revenue (IGR)
               </p>
               {economyRanking.sourceNote && (
-                <p className="text-[10px] font-medium text-slate-500">
+                <p className="text-[10px] font-medium text-text-muted">
                   {economyRanking.sourceNote}
                 </p>
               )}
@@ -722,14 +722,14 @@ export default function NigeriaOverview({
                         <span
                           className={`rounded-full border px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide ${
                             NOTE_CATEGORY_STYLES[n.category] ??
-                            "bg-slate-50 text-slate-600 border-slate-200"
+                            "bg-slate-50 text-text-secondary border-border-subtle"
                           }`}
                         >
                           {n.category}
                         </span>
                       </span>
                     </button>
-                    <p className="text-xs text-slate-500 leading-relaxed mt-1">
+                    <p className="text-xs text-text-muted leading-relaxed mt-1">
                       {n.note}
                     </p>
                   </li>

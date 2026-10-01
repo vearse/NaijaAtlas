@@ -33,8 +33,8 @@ export default function MetricsBand({
   ];
 
   return (
-    <section className="mt-28 py-12 px-6 md:px-8 rounded-3xl bg-surface-container-low border border-outline-variant/30 shadow-xl relative overflow-hidden">
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 divide-y lg:divide-y-0 lg:divide-x divide-outline-variant/40">
+    <section className="mt-28 py-12 px-6 md:px-8 rounded-3xl bg-surface-card border border-border-subtle shadow-md relative overflow-hidden">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 divide-y lg:divide-y-0 lg:divide-x divide-border-subtle">
         {items.map((item, i) => (
           <div
             key={item.title}
@@ -47,10 +47,10 @@ export default function MetricsBand({
             >
               {item.value}
             </span>
-            <span className="text-body-md text-on-surface font-semibold">
+            <span className="text-body-md text-text-primary font-semibold">
               {item.title}
             </span>
-            <span className="text-body-sm text-on-surface-variant">
+            <span className="text-body-sm text-text-secondary">
               {item.sub}
             </span>
           </div>

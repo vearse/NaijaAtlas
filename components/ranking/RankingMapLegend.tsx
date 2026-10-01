@@ -50,13 +50,13 @@ export default function RankingMapLegend({
   if (!visible) return null;
 
   return (
-    <div className="rounded-xl border border-slate-200/90 bg-white/95 backdrop-blur px-3 py-2 shadow-sm text-xs">
+    <div className="rounded-xl border border-border-subtle/90 bg-surface-card/95 backdrop-blur px-3 py-2 shadow-sm text-xs">
       <p className="font-semibold text-slate-800 mb-1.5 truncate">
         {snapshot.field.label}
       </p>
       <ul className="space-y-1">
         {snapshot.legendSteps.slice(0, 6).map((step) => (
-          <li key={step.label} className="flex items-center gap-2 text-slate-600">
+          <li key={step.label} className="flex items-center gap-2 text-text-secondary">
             <span
               className="h-2.5 w-4 rounded-sm shrink-0"
               style={{ backgroundColor: step.color }}

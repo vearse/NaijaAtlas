@@ -12,7 +12,7 @@ const COLOR_CYCLE_MS = 4000;
 
 /** Three accents; index 0 is the original neutral Tips bar. */
 const TIP_ACCENT_STYLES = [
-  "border-slate-200/90 bg-white/95 backdrop-blur text-slate-600",
+  "border-border-subtle/90 bg-surface-card/95 backdrop-blur text-text-secondary",
   "border-amber-200/90 bg-amber-50/95 text-amber-950",
   "border-sky-200/90 bg-sky-50/95 text-sky-950",
 ] as const;
@@ -214,7 +214,7 @@ export default function MapHints() {
       <button
         type="button"
         onClick={show}
-        className={`${barClass} border-slate-200 bg-white/95 backdrop-blur text-slate-500 hover:bg-slate-50 hover:text-slate-700 ${motionClass}`}
+        className={`${barClass} border-border-subtle bg-surface-card/95 backdrop-blur text-text-muted hover:bg-slate-50 hover:text-slate-700 ${motionClass}`}
         aria-label="Show map hints"
         title="Show hints"
       >
@@ -243,7 +243,7 @@ export default function MapHints() {
         <button
           type="button"
           onClick={dismiss}
-          className="shrink-0 text-slate-400 hover:text-slate-600 px-1"
+          className="shrink-0 text-slate-400 hover:text-text-secondary px-1"
           aria-label="Dismiss hints"
         >
           ✕

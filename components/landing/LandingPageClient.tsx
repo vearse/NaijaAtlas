@@ -40,7 +40,7 @@ export default function LandingPageClient(props: LandingPageData) {
         </div>
       )}
 
-      <main className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-8 pb-16">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-10 pb-16">
         <LandingHero spotlightOpen={false} onSpotlightClose={close} />
         <LiveNowStrip />
         <SectionDoorsGrid
@@ -50,6 +50,7 @@ export default function LandingPageClient(props: LandingPageData) {
         <PlacesExplorer
           regions={props.regions}
           statesByRegion={props.statesByRegion}
+          totalPollingUnits={props.totalPollingUnits}
         />
         <PeopleSpotlight
           spotlight={props.ethnicSpotlight}

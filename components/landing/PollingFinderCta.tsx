@@ -9,18 +9,18 @@ export default function PollingFinderCta() {
 
   const locate = () => {
     const q = query.trim();
-    const base = "/explore?map=election";
+    const base = "/civic/map/elections";
     router.push(q ? `${base}&vin=${encodeURIComponent(q)}` : base);
   };
 
   return (
     <section
       id="polling-finder"
-      className="mt-24 p-6 md:p-8 rounded-2xl bg-surface-container-high border border-primary/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl scroll-mt-24"
+      className="mt-24 p-6 md:p-8 rounded-2xl bg-surface-card border border-border-subtle flex flex-col md:flex-row items-center justify-between gap-6 shadow-md scroll-mt-24"
     >
       <div className="flex items-start gap-4">
         <div
-          className="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container shrink-0 mt-1"
+          className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-primary shrink-0 mt-1"
           aria-hidden
         >
           <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
@@ -33,13 +33,13 @@ export default function PollingFinderCta() {
           </svg>
         </div>
         <div>
-          <span className="text-label-caps text-primary tracking-widest uppercase">
+          <span className="text-label-caps text-primary uppercase">
             Instant delimitation
           </span>
-          <h3 className="font-landing-display text-headline-md text-on-surface mt-1">
+          <h3 className="font-landing-display text-headline-md text-text-primary mt-1 font-bold">
             Need to verify your polling station for 2027?
           </h3>
-          <p className="text-body-md text-on-surface-variant max-w-xl mt-1">
+          <p className="text-body-md text-text-secondary max-w-xl mt-1">
             Input your voter card VIN or state and LGA to reveal the street
             address, registration volume, and past election turnouts on the
             electoral map.
@@ -53,12 +53,12 @@ export default function PollingFinderCta() {
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && locate()}
           placeholder="Enter VIN or State..."
-          className="bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-3 text-body-md text-on-surface placeholder:text-outline w-full md:w-64 focus:ring-1 focus:ring-primary focus:border-primary focus:outline-none"
+          className="bg-surface-card border border-border-subtle rounded-xl px-4 py-3 text-body-md text-text-primary placeholder:text-slate-400 w-full md:w-64 focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container focus:outline-none"
         />
         <button
           type="button"
           onClick={locate}
-          className="bg-primary-container hover:bg-inverse-primary text-on-primary-container font-label-md px-6 py-3 rounded-xl whitespace-nowrap shadow-md transition-all active:scale-95"
+          className="bg-primary-container hover:bg-[#006d40] text-white font-label-md px-6 py-3 rounded-xl whitespace-nowrap shadow-md transition-all active:scale-95"
         >
           Locate unit
         </button>

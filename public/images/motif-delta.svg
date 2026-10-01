@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" role="img" aria-label="Niger Delta aquatic motif with canoe forms and rippling water in teal and cyan.">
+  <title>Delta aquatic motif</title>
+  <defs>
+    <linearGradient id="delta-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f766e" />
+      <stop offset="55%" stop-color="#0891b2" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+  <rect width="480" height="160" fill="url(#delta-bg)" />
+  <!-- rippling water lines -->
+  <g stroke="#a5f3fc" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round">
+    <path d="M0 26 q 30 -12 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0" />
+    <path d="M0 58 q 30 -12 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0" />
+    <path d="M0 104 q 30 -12 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0" />
+    <path d="M0 136 q 30 -12 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0" />
+  </g>
+  <!-- canoe hulls -->
+  <g>
+    <path d="M56 84 q 40 22 80 0 q -40 12 -80 0 z" fill="#ecfeff" opacity="0.9" />
+    <path d="M216 116 q 46 24 92 0 q -46 13 -92 0 z" fill="#ecfeff" opacity="0.8" />
+    <path d="M376 76 q 40 22 80 0 q -40 12 -80 0 z" fill="#ecfeff" opacity="0.9" />
+  </g>
+  <!-- paddles -->
+  <g stroke="#ccfbf1" stroke-width="3" stroke-linecap="round" opacity="0.85">
+    <path d="M120 84 L138 44" />
+    <path d="M292 116 L310 76" />
+    <path d="M446 76 L462 38" />
+  </g>
+  <!-- mangrove stilt roots -->
+  <g stroke="#5eead4" stroke-width="2.5" fill="none" opacity="0.5" stroke-linecap="round">
+    <path d="M20 160 v-40 M10 140 l10 -14 10 14" />
+    <path d="M180 160 v-34 M172 142 l8 -12 8 12" />
+    <path d="M340 160 v-38 M332 140 l8 -12 8 12" />
+    <path d="M460 160 v-32 M454 144 l6 -10 6 10" />
+  </g>
+</svg>

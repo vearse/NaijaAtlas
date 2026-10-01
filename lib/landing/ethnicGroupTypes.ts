@@ -15,6 +15,8 @@ export type EthnicSpotlightCard = {
   cultureId: string;
   motifLabel: string;
   motifAccentClass: string;
+  /** Local SVG textile / aquatic motif used as the card artwork. */
+  image?: string;
   overlayClass: string;
   gradientClass: string;
   description: string;

@@ -1,13 +1,32 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import HubShell from "@/components/hub/HubShell";
 import HubHeader from "@/components/hub/HubHeader";
 import HubFooter from "@/components/hub/HubFooter";
 import StatePickerMiniMap from "@/components/places/StatePickerMiniMap";
+import ProfileSynthesis from "@/components/places/profile/ProfileSynthesis";
+import ProfileLgaSection from "@/components/places/profile/ProfileLgaSection";
+import ProfileLandSection from "@/components/places/profile/ProfileLandSection";
+import ProfilePeopleSection from "@/components/places/profile/ProfilePeopleSection";
+import ProfileTravelSection from "@/components/places/profile/ProfileTravelSection";
+import ProfileCivicSection from "@/components/places/profile/ProfileCivicSection";
+import ProfileEconomySection from "@/components/places/profile/ProfileEconomySection";
+import ProfileDataSection from "@/components/places/profile/ProfileDataSection";
 import type { StateProfileData } from "@/lib/server/loadPlacesPageData";
-import { regionShortCode } from "@/lib/landing/regionShortCode";
+import {
+  formatNaira,
+  formatNumber,
+  formatPopulation,
+} from "@/lib/places/formatters";
+import {
+  IconArrow,
+  IconChevronRight,
+  IconLandmark,
+  IconMap,
+  IconWater,
+} from "@/components/landing/icons";
 
 type Props = StateProfileData;
 
@@ -26,251 +45,377 @@ type TabId = (typeof TABS)[number]["id"];
 export default function StateProfileClient(props: Props) {
   const [tab, setTab] = useState<TabId>("overview");
   const [lgaQuery, setLgaQuery] = useState("");
+  const [selectedLgaId, setSelectedLgaId] = useState<string | null>(null);
 
-  const { state, content } = props;
+  /* The reference profile is one long page with #land, #people, #civic anchors.
+     The tabbed shell keeps the same anchors by syncing them both ways, so
+     /places/lagos#economy deep-links into a tab and the browser back button
+     steps between sections. */
+  useEffect(() => {
+    const sync = () => {
+      const id = window.location.hash.replace("#", "") as TabId;
+      if (TABS.some((t) => t.id === id)) setTab(id);
+    };
+    sync();
+    window.addEventListener("hashchange", sync);
+    return () => window.removeEventListener("hashchange", sync);
+  }, []);
+
+  const selectTab = (id: TabId) => {
+    setTab(id);
+    if (typeof window !== "undefined" && window.location.hash !== `#${id}`) {
+      window.history.replaceState(null, "", `#${id}`);
+    }
+  };
+
+  const { state, content, facts, igr } = props;
   const sid = state.id;
 
   const mapLinks = useMemo(
     () => [
-      {
-        label: "Election map",
-        href: `/explore?map=election&states=${sid}`,
-      },
-      {
-        label: "Travel map",
-        href: `/explore?lens=tourist&states=${sid}`,
-      },
-      {
-        label: "Rankings map",
-        href: `/explore?map=ranking`,
-      },
-      {
-        label: "Physical map",
-        href: `/explore?map=minimal&states=${sid}`,
-      },
+      { label: "Election map", href: `/civic/map/elections?states=${sid}` },
+      { label: "Travel map", href: `/explore?lens=tourist&states=${sid}` },
+      { label: "Rankings map", href: `/data/map/rankings` },
+      { label: "Physical map", href: `/explore?map=minimal&states=${sid}` },
     ],
     [sid]
   );
 
-  const filteredLgas = useMemo(() => {
-    const q = lgaQuery.trim().toLowerCase();
-    if (!q) return props.lgas;
-    return props.lgas.filter((l) => l.name.toLowerCase().includes(q));
-  }, [props.lgas, lgaQuery]);
+  /** Sibling states in the same zone, for the "compare around the region" rail. */
+  const zoneSiblings = useMemo(
+    () =>
+      props.allStates
+        .filter((s) => s.regionId === state.regionId && s.id !== sid)
+        .sort((a, b) => a.name.localeCompare(b.name)),
+    [props.allStates, state.regionId, sid]
+  );
+
+  const stats = [
+    { label: "Capital", value: content.capital ?? "—" },
+    {
+      label: "Population",
+      value: formatPopulation(facts.population) ?? "—",
+      note: facts.populationYear ? `${facts.populationYear} estimate` : undefined,
+    },
+    {
+      label: "Land area",
+      value: facts.landAreaKm2 ? `${formatNumber(facts.landAreaKm2)} km²` : "—",
+    },
+    { label: "LGAs", value: formatNumber(state.lgaCount) },
+    {
+      label: "Polling units",
+      value: formatNumber(state.pollingUnitCount ?? 0),
+    },
+    {
+      label: "Senate seats",
+      value: props.senateSeatCount ? String(props.senateSeatCount) : "—",
+    },
+    {
+      label: "IGR (2024)",
+      value: formatNaira(igr) ?? "—",
+      note: igr ? "internally generated revenue" : "not published",
+    },
+  ];
 
   return (
     <HubShell>
       <HubHeader
-        active="places"
         primaryCta={{
           label: "Open on map",
           href: `/explore?map=minimal&states=${sid}`,
         }}
       />
 
-      <div className="sticky top-16 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
-        <div className="max-w-[1280px] mx-auto px-4 md:px-6 py-2 text-body-sm text-slate-500 flex flex-wrap gap-1">
-          <Link href="/places" className="hover:text-[#008751]">Places</Link>
-          <span>/</span>
-          <span className="text-slate-900 font-medium">{state.name}</span>
-        </div>
-        <div className="max-w-[1280px] mx-auto px-4 md:px-6 overflow-x-auto">
-          <div className="flex gap-1 min-w-max border-t border-slate-100 pt-1">
+      {/* Section bar, matching the Places hub. */}
+      <div className="sticky top-16 z-40 bg-surface-card/95 backdrop-blur-lg border-b border-border-subtle">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 flex items-center gap-4">
+          <nav
+            aria-label="Breadcrumb"
+            className="hidden md:flex items-center gap-1.5 text-label-md text-text-muted shrink-0"
+          >
+            <Link href="/" className="hover:text-primary font-semibold">
+              Home
+            </Link>
+            <IconChevronRight className="w-3.5 h-3.5" />
+            <Link href="/places" className="hover:text-primary font-semibold">
+              Places
+            </Link>
+            <IconChevronRight className="w-3.5 h-3.5" />
+            <span className="text-text-primary font-bold">{state.name}</span>
+          </nav>
+          <div className="flex items-center gap-1.5 overflow-x-auto">
             {TABS.map((t) => (
               <button
                 key={t.id}
                 type="button"
-                onClick={() => setTab(t.id)}
-                className={`px-4 py-2.5 text-label-md rounded-t-lg border-b-2 -mb-px ${
+                onClick={() => selectTab(t.id)}
+                aria-current={tab === t.id ? "true" : undefined}
+                className={`px-3 py-1.5 rounded-full text-label-md whitespace-nowrap transition-colors ${
                   tab === t.id
-                    ? "border-[#008751] text-[#008751] font-semibold bg-white"
-                    : "border-transparent text-slate-600 hover:text-slate-900"
+                    ? "bg-primary-container text-white font-bold"
+                    : "bg-slate-100 text-text-secondary hover:bg-slate-200"
                 }`}
               >
                 {t.label}
               </button>
             ))}
           </div>
+          <Link
+            href="/places"
+            className="ml-auto hidden sm:inline-flex items-center gap-1.5 shrink-0 px-3.5 py-1.5 rounded-lg bg-[#043828] text-white text-label-md font-bold hover:bg-[#065a41]"
+          >
+            All states
+            <IconArrow />
+          </Link>
         </div>
       </div>
 
-      <main className="max-w-[1280px] mx-auto px-4 md:px-6 py-10 pb-16">
+      <main className="max-w-7xl mx-auto px-4 md:px-8 py-8 pb-16">
         {tab === "overview" && (
           <>
-            <div className="grid lg:grid-cols-2 gap-10 items-start">
-              <div>
-                <p className="text-label-caps text-[#008751] tracking-widest">
-                  {content.region} · {regionShortCode(state.regionId)}
-                </p>
-                <h1 className="font-landing-display text-headline-xl md:text-display-hero-mobile text-slate-900 mt-2">
-                  {state.name}
-                </h1>
-                <p className="text-body-lg text-slate-600 mt-4">{content.description}</p>
-
-                <dl className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {[
-                    { label: "Capital", value: content.capital ?? "—" },
-                    { label: "LGAs", value: String(state.lgaCount) },
-                    {
-                      label: "Polling units",
-                      value: (state.pollingUnitCount ?? 0).toLocaleString(),
-                    },
-                    {
-                      label: "Senate seats",
-                      value: String(props.senateSeatCount || "—"),
-                    },
-                    { label: "Region", value: content.region },
-                    { label: "Code", value: state.id.replace("NG-", "") },
-                  ].map((stat) => (
-                    <div
-                      key={stat.label}
-                      className="rounded-xl bg-white border border-slate-200 p-3"
-                    >
-                      <dt className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-                        {stat.label}
-                      </dt>
-                      <dd className="text-sm font-semibold text-slate-900 mt-0.5">
-                        {stat.value}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-
-                <div className="mt-8">
-                  <p className="text-label-md font-semibold text-slate-900 mb-3">
-                    Open on map
+            {/* Hero band */}
+            <div className="overflow-hidden rounded-3xl border border-border-subtle bg-surface-card shadow-sm">
+              <div className="grid grid-cols-1 items-center gap-8 p-6 md:p-8 lg:grid-cols-12">
+                <div className="lg:col-span-7">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-tint-light px-3 py-1.5 text-label-caps uppercase text-primary">
+                      <IconMap className="h-3.5 w-3.5" />
+                      {content.region}
+                    </span>
+                    {props.insights?.general.nickname ? (
+                      <span className="inline-flex items-center rounded-full border border-border-subtle px-3 py-1.5 text-label-caps uppercase text-text-muted">
+                        {props.insights.general.nickname}
+                      </span>
+                    ) : null}
+                  </div>
+                  <h1 className="mt-4 font-landing-display text-display-lg text-text-primary">
+                    {state.name} State
+                  </h1>
+                  <p className="mt-3 max-w-xl text-body-lg text-text-secondary">
+                    {content.description}
                   </p>
-                  <div className="flex flex-wrap gap-2">
+
+                  <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3">
+                    {[
+                      { term: "Capital", value: content.capital ?? "—" },
+                      { term: "Population", value: formatPopulation(facts.population) ?? "—" },
+                      { term: "Total area", value: facts.landAreaKm2 ? `${formatNumber(facts.landAreaKm2)} km²` : "—" },
+                      { term: "LGAs", value: formatNumber(state.lgaCount) },
+                      { term: "Polling units", value: formatNumber(state.pollingUnitCount ?? 0) },
+                      { term: "Senators", value: props.senateSeatCount ? String(props.senateSeatCount) : "—" },
+                    ].map((chip) => (
+                      <div key={chip.term}>
+                        <dt className="text-label-caps uppercase text-text-muted">{chip.term}</dt>
+                        <dd className="font-display text-headline-sm font-bold tabular-nums text-text-primary">
+                          {chip.value}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <Link
+                      href={`/places#compare`}
+                      className="inline-flex items-center gap-2 rounded-xl border border-border-subtle bg-surface-card px-5 py-2.5 text-label-md font-bold text-text-primary transition-colors hover:border-primary-container/50"
+                    >
+                      Compare states
+                      <IconArrow />
+                    </Link>
+                    <Link
+                      href={`/explore?map=minimal&states=${sid}`}
+                      className="inline-flex items-center gap-2 rounded-xl bg-primary-container px-5 py-2.5 text-label-md font-bold text-white transition-colors hover:bg-primary"
+                    >
+                      <IconMap />
+                      Open on Places map
+                    </Link>
+                  </div>
+                </div>
+                <div className="lg:col-span-5">
+                  <StatePickerMiniMap
+                    selectedStateId={state.id}
+                    slugByStateId={props.slugByStateId}
+                    className="aspect-[4/3] min-h-[240px] w-full overflow-hidden rounded-2xl border border-border-subtle"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Facts */}
+            <dl className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
+              {stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-2xl bg-surface-card border border-border-subtle p-4"
+                >
+                  <dt className="text-label-caps text-slate-400 font-bold uppercase tracking-wider">
+                    {stat.label}
+                  </dt>
+                  <dd className="font-landing-display text-headline-md text-text-primary tabular-nums leading-tight mt-0.5">
+                    {stat.value}
+                  </dd>
+                  {stat.note && (
+                    <dd className="text-[10px] text-slate-400 leading-tight">
+                      {stat.note}
+                    </dd>
+                  )}
+                </div>
+              ))}
+            </dl>
+
+            <ProfileSynthesis
+              insights={props.insights}
+              content={content}
+              stateName={state.name}
+              stateId={sid}
+            />
+
+            <div className="mt-12">
+              <ProfileLgaSection
+                lgas={props.lgas}
+                selectedId={selectedLgaId}
+                onSelect={setSelectedLgaId}
+                query={lgaQuery}
+                onQueryChange={setLgaQuery}
+                stateId={sid}
+                stateName={state.name}
+              />
+            </div>
+
+            <div className="mt-12 grid grid-cols-1 gap-8 items-start lg:grid-cols-12">
+              {/* Sidebar */}
+              <aside className="lg:col-span-5 space-y-6">
+                <div className="rounded-2xl border border-border-subtle bg-surface-card p-5">
+                  <h2 className="font-landing-display text-headline-md text-text-primary">
+                    Open on map
+                  </h2>
+                  <div className="mt-3 flex flex-wrap gap-2">
                     {mapLinks.map((link) => (
                       <Link
                         key={link.label}
                         href={link.href}
-                        className="px-3 py-2 rounded-xl border border-slate-200 bg-white text-label-md text-[#008751] font-medium hover:border-[#008751]/50"
+                        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-border-subtle bg-surface-card text-label-md text-primary font-bold hover:border-primary-container/50"
                       >
                         {link.label}
                       </Link>
                     ))}
                   </div>
                 </div>
-              </div>
 
-              <StatePickerMiniMap
-                selectedStateId={state.id}
-                slugByStateId={props.slugByStateId}
-                className="aspect-[4/3] min-h-[280px] w-full"
-              />
+                {props.landFeatures.length > 0 && (
+                  <div className="rounded-2xl border border-border-subtle bg-surface-card p-5">
+                    <h2 className="font-landing-display text-headline-md text-text-primary">
+                      Land &amp; waters
+                    </h2>
+                    <ul className="mt-3 space-y-2">
+                      {props.landFeatures.map((f) => (
+                        <li key={f.id}>
+                          <Link
+                            href={f.exploreHref}
+                            className="flex items-center gap-3 rounded-xl bg-slate-50 border border-border-subtle px-3.5 py-3 hover:border-primary-container/40"
+                          >
+                            <span
+                              className={
+                                f.tone === "sky"
+                                  ? "text-sky-600 shrink-0"
+                                  : "text-lime-600 shrink-0"
+                              }
+                            >
+                              {f.tone === "sky" ? <IconWater /> : <IconLandmark />}
+                            </span>
+                            <span className="min-w-0 flex-1">
+                              <span className="block text-label-md font-bold text-text-primary truncate">
+                                {f.name}
+                              </span>
+                              <span className="block text-[11px] text-text-muted truncate">
+                                {f.metric} · {f.badge}
+                              </span>
+                            </span>
+                            <IconChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {zoneSiblings.length > 0 && (
+                  <div className="rounded-2xl border border-border-subtle bg-surface-card p-5">
+                    <h2 className="font-landing-display text-headline-md text-text-primary">
+                      Elsewhere in {content.region}
+                    </h2>
+                    <ul className="mt-3 flex flex-wrap gap-2">
+                      {zoneSiblings.map((s) => (
+                        <li key={s.id}>
+                          <Link
+                            href={`/places/${s.slug}`}
+                            className="inline-block px-3 py-1.5 rounded-lg bg-slate-100 text-label-md font-semibold text-slate-700 hover:bg-primary-container hover:text-white transition-colors"
+                          >
+                            {s.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </aside>
             </div>
-
-            <section className="mt-14">
-              <h2 className="font-landing-display text-headline-md text-slate-900">
-                Local government areas
-              </h2>
-              <input
-                type="search"
-                value={lgaQuery}
-                onChange={(e) => setLgaQuery(e.target.value)}
-                placeholder="Filter LGAs…"
-                className="mt-4 w-full max-w-md px-4 py-2.5 rounded-xl border border-slate-200"
-              />
-              <ul className="mt-4 grid sm:grid-cols-2 md:grid-cols-3 gap-2 max-h-[420px] overflow-y-auto pr-1">
-                {filteredLgas.map((lga) => (
-                  <li key={lga.id}>
-                    <Link
-                      href={`/explore?map=minimal&states=${sid}&lgas=1&lga=${lga.id}`}
-                      className="block px-3 py-2 rounded-lg bg-white border border-slate-100 hover:border-[#008751]/30 text-body-sm"
-                    >
-                      {lga.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-body-sm text-slate-500 mt-3">
-                Per-LGA profile URLs are coming soon — use the map links above for
-                now.
-              </p>
-            </section>
-
-            {content.languages.length > 0 && (
-              <section className="mt-10">
-                <h2 className="font-landing-display text-headline-md text-slate-900">
-                  Languages
-                </h2>
-                <ul className="mt-3 flex flex-wrap gap-2">
-                  {content.languages.map((lang) => (
-                    <li key={lang.name}>
-                      <a
-                        href={lang.wikiUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 rounded-full bg-slate-100 text-body-sm hover:bg-emerald-50"
-                      >
-                        {lang.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
           </>
         )}
 
         {tab === "land" && (
-          <SectionTeaser
-            title="Land & terrain"
-            body="Relief, rivers, lakes, and coast for this state — use the physical map workspace."
-            cta={{ label: "View on physical map", href: `/explore?map=minimal&states=${sid}` }}
+          <ProfileLandSection
+            insights={props.insights}
+            landFeatures={props.landFeatures}
+            stateName={state.name}
+            stateId={sid}
           />
         )}
+
         {tab === "people" && (
-          <SectionTeaser
-            title="People & culture"
-            body="Ethnic homelands and cultural notes are in the People lens on the atlas."
-            cta={{ label: "Open People lens", href: `/explore?states=${sid}` }}
+          <ProfilePeopleSection
+            insights={props.insights}
+            content={content}
+            stateName={state.name}
+            stateId={sid}
           />
         )}
+
         {tab === "travel" && (
-          <SectionTeaser
-            title="Travel & heritage"
-            body="Destinations, parks, and tours — tourist lens on the map."
-            cta={{
-              label: "View on travel map",
-              href: `/explore?lens=tourist&states=${sid}`,
-            }}
+          <ProfileTravelSection
+            insights={props.insights}
+            festivals={props.festivals}
+            landFeatures={props.landFeatures}
+            stateName={state.name}
+            stateId={sid}
           />
         )}
+
         {tab === "civic" && (
-          <SectionTeaser
-            title="Civic & elections"
-            body={`Senate districts, constituencies, and polling units for ${state.name}.`}
-            cta={{
-              label: "View on election map",
-              href: `/explore?map=election&states=${sid}`,
-            }}
-            extra={
-              props.senateSeatCount > 0
-                ? `${props.senateSeatCount} senatorial district(s) in ${state.name}.`
-                : undefined
-            }
+          <ProfileCivicSection
+            insights={props.insights}
+            stateName={state.name}
+            stateId={sid}
+            lgaCount={state.lgaCount}
+            pollingUnitCount={state.pollingUnitCount ?? 0}
+            senateSeatCount={props.senateSeatCount}
           />
         )}
+
         {tab === "economy" && (
-          <SectionTeaser
-            title="Economy"
-            body="Minerals, ports, and power projects — explore via the invest lens."
-            cta={{
-              label: "View on economy map",
-              href: `/explore?lens=invest&states=${sid}`,
-            }}
+          <ProfileEconomySection
+            insights={props.insights}
+            stateName={state.name}
+            stateId={sid}
           />
         )}
+
         {tab === "data" && (
-          <SectionTeaser
-            title="Data & rankings"
-            body="Compare indicators and rank states — full Data hub charts coming soon."
-            cta={{
-              label: "Open rankings map",
-              href: `/explore?map=ranking`,
-            }}
+          <ProfileDataSection
+            insights={props.insights}
+            compareGroups={props.compareGroups}
+            allStates={props.allStates}
+            currentState={state}
+            stateName={state.name}
           />
         )}
       </main>
@@ -292,15 +437,21 @@ function SectionTeaser({
   extra?: string;
 }) {
   return (
-    <div className="max-w-2xl">
-      <h2 className="font-landing-display text-headline-lg text-slate-900">{title}</h2>
-      <p className="text-body-md text-slate-600 mt-3">{body}</p>
-      {extra && <p className="text-body-sm text-slate-500 mt-2">{extra}</p>}
+    <div className="max-w-2xl py-6">
+      <span className="text-label-caps text-primary tracking-widest uppercase block mb-1">
+        State profile
+      </span>
+      <h2 className="font-landing-display text-headline-lg text-text-primary">
+        {title}
+      </h2>
+      <p className="text-body-md text-text-secondary mt-3">{body}</p>
+      {extra && <p className="text-body-sm text-text-muted mt-2">{extra}</p>}
       <Link
         href={cta.href}
-        className="inline-flex mt-6 h-11 items-center px-5 rounded-xl bg-[#008751] text-white font-label-md"
+        className="inline-flex mt-6 items-center gap-2 h-11 px-5 rounded-xl bg-primary-container text-white font-label-md font-bold hover:bg-[#006d40]"
       >
         {cta.label}
+        <IconArrow />
       </Link>
     </div>
   );

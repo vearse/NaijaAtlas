@@ -13,7 +13,7 @@ const LAYER_ACTIVE: Record<OverlayLayerId, string> = {
   lakes: "bg-cyan-100 text-cyan-900 ring-1 ring-cyan-300/80",
   landforms: "bg-amber-100 text-amber-900 ring-1 ring-amber-300/80",
   ecology: "bg-lime-100 text-lime-950 ring-1 ring-lime-300/80",
-  cities: "bg-slate-200 text-slate-900 ring-1 ring-slate-300/80",
+  cities: "bg-slate-200 text-text-primary ring-1 ring-slate-300/80",
   resources: "bg-orange-100 text-orange-900 ring-1 ring-orange-300/80",
 };
 
@@ -114,7 +114,7 @@ function ZoomButton({
       onClick={onClick}
       aria-label={label}
       title={label}
-      className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/95 text-slate-700 shadow border border-slate-200/80 hover:bg-white transition-colors text-lg leading-none font-medium"
+      className="flex h-9 w-9 items-center justify-center rounded-lg bg-surface-card/95 text-slate-700 shadow border border-border-subtle/80 hover:bg-surface-card transition-colors text-lg leading-none font-medium"
     >
       {children}
     </button>
@@ -126,7 +126,7 @@ function LayersStackIcon() {
     <svg
       viewBox="0 0 20 20"
       fill="currentColor"
-      className="h-4 w-4 text-slate-600 shrink-0"
+      className="h-4 w-4 text-text-secondary shrink-0"
       aria-hidden
     >
       <path d="M3.25 3A2.25 2.25 0 001 5.25v9.5A2.25 2.25 0 003.25 17h13.5A2.25 2.25 0 0019 14.75v-9.5A2.25 2.25 0 0016.75 3H3.25zM2.25 5.25a1 1 0 011-1h13.5a1 1 0 011 1v9.5a1 1 0 01-1 1H3.25a1 1 0 01-1-1v-9.5zm4.47 2.47a.75.75 0 011.06 0l2.22 2.22 3.28-3.28a.75.75 0 111.06 1.06l-3.81 3.81a.75.75 0 01-1.06 0l-2.75-2.75a.75.75 0 010-1.06z" />
@@ -153,7 +153,7 @@ export default function MapBottomToolbar() {
             type="button"
             onClick={() => toggleOverlay(id)}
             className={`flex items-center gap-1.5 rounded-lg px-2 py-2 text-[11px] font-medium transition-colors ${
-              on ? LAYER_ACTIVE[id] : "text-slate-600 hover:bg-slate-50"
+              on ? LAYER_ACTIVE[id] : "text-text-secondary hover:bg-slate-50"
             }`}
             aria-pressed={on}
             title={label}
@@ -173,7 +173,7 @@ export default function MapBottomToolbar() {
       role="group"
       aria-label="Map layers and zoom"
     >
-      <div className="rounded-xl bg-white/90 backdrop-blur-md p-2 shadow-lg border border-slate-200/80">
+      <div className="rounded-xl bg-surface-card/90 backdrop-blur-md p-2 shadow-lg border border-border-subtle/80">
         {!layersOpen ? (
           <button
             type="button"
@@ -201,14 +201,14 @@ export default function MapBottomToolbar() {
                   type="button"
                   onClick={() => clearAllOverlays()}
                   disabled={activeOverlays.size === 0}
-                  className="text-[10px] font-semibold text-slate-500 hover:text-slate-800 px-1.5 py-0.5 rounded-md hover:bg-slate-100 disabled:opacity-40 disabled:pointer-events-none"
+                  className="text-[10px] font-semibold text-text-muted hover:text-slate-800 px-1.5 py-0.5 rounded-md hover:bg-slate-100 disabled:opacity-40 disabled:pointer-events-none"
                 >
                   Clear all
                 </button>
                 <button
                   type="button"
                   onClick={() => setLayersOpen(false)}
-                  className="h-6 w-6 flex items-center justify-center rounded-md text-slate-400 hover:bg-slate-100 hover:text-slate-600 text-sm"
+                  className="h-6 w-6 flex items-center justify-center rounded-md text-slate-400 hover:bg-slate-100 hover:text-text-secondary text-sm"
                   aria-label="Collapse layers"
                 >
                   ✕

@@ -95,21 +95,21 @@ export default function PwaInstallPrompt() {
 
   return (
     <div className="fixed bottom-4 left-4 z-[45] max-w-[320px] animate-fade-in">
-      <div className="rounded-2xl border border-slate-200/90 bg-white/95 backdrop-blur px-3.5 py-3 shadow-lg">
+      <div className="rounded-2xl border border-border-subtle/90 bg-surface-card/95 backdrop-blur px-3.5 py-3 shadow-lg">
         <div className="flex items-start gap-3">
           <span className="shrink-0 flex h-9 w-9 items-center justify-center rounded-xl bg-ng-green text-white text-lg shadow-sm">
             🇳🇬
           </span>
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-bold text-slate-900">
+            <p className="text-sm font-bold text-text-primary">
               Install NaijaAtlas
             </p>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-text-muted mt-0.5">
               Add to your home screen for one-tap access & smoother offline
               browsing.
             </p>
             {showIosHelp && (
-              <div className="mt-2 rounded-lg bg-slate-50 border border-slate-200 px-2.5 py-2 text-[11px] leading-snug text-slate-600">
+              <div className="mt-2 rounded-lg bg-slate-50 border border-border-subtle px-2.5 py-2 text-[11px] leading-snug text-text-secondary">
                 Tap the <b>Share</b> button in Safari, then choose{" "}
                 <b>Add to Home Screen</b>.
               </div>
@@ -134,7 +134,7 @@ export default function PwaInstallPrompt() {
               <button
                 type="button"
                 onClick={dismiss}
-                className="rounded-lg px-2 py-1.5 text-xs font-semibold text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition"
+                className="rounded-lg px-2 py-1.5 text-xs font-semibold text-slate-400 hover:text-text-secondary hover:bg-slate-100 transition"
               >
                 Not now
               </button>

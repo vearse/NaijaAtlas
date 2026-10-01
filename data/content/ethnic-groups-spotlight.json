@@ -10,7 +10,8 @@
     "description": "Urbanized kingdom civilization centered in South West Nigeria with sacred crowns in Ile-Ife, Oyo, and Benin links.",
     "homelandLgaCount": 137,
     "zonesLabel": "SW & NC Zones",
-    "exploreHref": "/explore?map=minimal&states=NG-OY"
+    "exploreHref": "/explore?map=minimal&states=NG-OY",
+    "image": "/images/motif-adire.svg"
   },
   {
     "id": "spotlight-hausa-fulani",
@@ -23,7 +24,8 @@
     "description": "Historic trans-Saharan trading empires, Sahelian architecture, Kano dye pits, and the Sokoto Caliphate legacy.",
     "homelandLgaCount": 185,
     "zonesLabel": "NW & NE Zones",
-    "exploreHref": "/explore?map=minimal&states=NG-KN"
+    "exploreHref": "/explore?map=minimal&states=NG-KN",
+    "image": "/images/motif-hausa.svg"
   },
   {
     "id": "spotlight-igbo",
@@ -36,7 +38,8 @@
     "description": "Egalitarian republican heritage, Nri civilization, ancient bronze casting at Igbo-Ukwu, and vibrant trade networks.",
     "homelandLgaCount": 95,
     "zonesLabel": "SE & SS Zones",
-    "exploreHref": "/explore?map=minimal&states=NG-AN"
+    "exploreHref": "/explore?map=minimal&states=NG-AN",
+    "image": "/images/motif-akwete.svg"
   },
   {
     "id": "spotlight-ijaw",
@@ -49,6 +52,7 @@
     "description": "Indigenous maritime custodians of the Niger Delta mangrove creeks, canoe regattas, and artisanal fishing traditions.",
     "homelandLgaCount": 28,
     "zonesLabel": "South South",
-    "exploreHref": "/explore?map=minimal&states=NG-BY"
+    "exploreHref": "/explore?map=minimal&states=NG-BY",
+    "image": "/images/motif-delta.svg"
   }
 ]

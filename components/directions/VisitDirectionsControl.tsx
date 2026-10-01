@@ -236,7 +236,7 @@ export default function VisitDirectionsControl({
   }
 
   return (
-    <div className="rounded-xl bg-white border border-slate-100 shadow-sm p-3 space-y-3">
+    <div className="rounded-xl bg-surface-card border border-slate-100 shadow-sm p-3 space-y-3">
       <div className="flex items-start justify-between gap-2">
         <div className="flex items-center gap-2">
           <span
@@ -245,7 +245,7 @@ export default function VisitDirectionsControl({
           >
             🧭
           </span>
-          <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+          <p className="text-xs font-semibold uppercase tracking-wider text-text-muted">
             Plan visit
           </p>
         </div>
@@ -260,7 +260,7 @@ export default function VisitDirectionsControl({
               setRouteStats(null);
               setFallbackUsed(false);
             }}
-            className="text-[11px] font-medium text-slate-400 hover:text-slate-600 transition-colors"
+            className="text-[11px] font-medium text-slate-400 hover:text-text-secondary transition-colors"
           >
             Clear route
           </button>
@@ -280,10 +280,10 @@ export default function VisitDirectionsControl({
                   value={fromQuery}
                   onChange={(e) => setFromQuery(e.target.value)}
                   placeholder="Type a city to start from…"
-                  className="w-full rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-ng-green/40 focus:border-ng-green"
+                  className="w-full rounded-lg border border-border-subtle bg-surface-card px-3 py-1.5 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-ng-green/40 focus:border-ng-green"
                 />
                 {fromQuery.trim() ? (
-                  <ul className="absolute z-20 mt-1 w-full max-h-44 overflow-y-auto rounded-lg border border-slate-200 bg-white shadow-lg py-1">
+                  <ul className="absolute z-20 mt-1 w-full max-h-44 overflow-y-auto rounded-lg border border-border-subtle bg-surface-card shadow-lg py-1">
                     {fromSuggestions.map((s) => (
                       <li key={s.name}>
                         <button
@@ -315,7 +315,7 @@ export default function VisitDirectionsControl({
                   }}
                   aria-label="Cancel location selection"
                   title="Cancel"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 flex items-center justify-center rounded-md text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 flex items-center justify-center rounded-md text-slate-400 hover:text-text-secondary hover:bg-slate-100 transition-colors"
                 >
                   ✕
                 </button>
@@ -331,7 +331,7 @@ export default function VisitDirectionsControl({
                     {directions.from.name}
                   </span>
                 ) : (
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 text-slate-500 px-3 py-1 text-xs font-medium">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-border-subtle bg-slate-50 text-text-muted px-3 py-1 text-xs font-medium">
                     <span aria-hidden>📍</span>
                     Your current location
                   </span>
@@ -343,7 +343,7 @@ export default function VisitDirectionsControl({
                 type="button"
                 onClick={handleUseMyLocation}
                 disabled={locationLoading || fromPickerOpen}
-                className="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-medium text-slate-600 hover:bg-slate-50 hover:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="rounded-lg border border-border-subtle bg-surface-card px-2.5 py-1 text-[11px] font-medium text-text-secondary hover:bg-slate-50 hover:border-slate-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {locationLoading ? "Detecting…" : "Use my location"}
               </button>
@@ -405,7 +405,7 @@ export default function VisitDirectionsControl({
           onClick={handleCloseDirections}
           aria-label="Close directions"
           title="Close directions"
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-400 hover:bg-slate-50 hover:text-slate-600 hover:border-slate-300 transition-colors"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border-subtle bg-surface-card text-slate-400 hover:bg-slate-50 hover:text-text-secondary hover:border-slate-300 transition-colors"
         >
           ✕
         </button>
@@ -477,11 +477,11 @@ export default function VisitDirectionsControl({
             ? displaySteps.map((step, i) => (
                 <li
                   key={`${i}-${step.name}-${step.instruction}`}
-                  className="relative flex items-start gap-2.5 py-1 pl-0.5 border-l border-slate-200 ml-[4px]"
+                  className="relative flex items-start gap-2.5 py-1 pl-0.5 border-l border-border-subtle ml-[4px]"
                 >
                   <span
                     aria-hidden
-                    className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-white border border-slate-200 text-[10px] text-slate-600 shrink-0"
+                    className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-surface-card border border-border-subtle text-[10px] text-text-secondary shrink-0"
                   >
                     {maneuverGlyph(step)}
                   </span>
@@ -490,7 +490,7 @@ export default function VisitDirectionsControl({
                       {step.name || step.instruction}
                     </p>
                     {step.name ? (
-                      <p className="text-[11px] text-slate-500 truncate">
+                      <p className="text-[11px] text-text-muted truncate">
                         {step.instruction}
                       </p>
                     ) : null}

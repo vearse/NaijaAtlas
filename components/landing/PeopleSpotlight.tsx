@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { IconArrow } from "@/components/landing/icons";
 import type { EthnicSpotlightCard } from "@/lib/landing/ethnicGroupTypes";
@@ -12,20 +13,20 @@ export default function PeopleSpotlight({ spotlight, totalCount }: Props) {
     <section className="mt-28 scroll-mt-24" id="people-spotlight">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
         <div>
-          <span className="text-label-caps text-secondary tracking-widest uppercase block mb-1">
+          <span className="text-label-caps text-primary uppercase block mb-1">
             Indigenous civilizations
           </span>
-          <h2 className="font-landing-display text-headline-xl text-on-surface">
+          <h2 className="font-landing-display text-headline-xl text-text-primary font-extrabold">
             Meet the people.
           </h2>
-          <p className="text-body-md text-on-surface-variant mt-1">
+          <p className="text-body-md text-text-secondary mt-1">
             Homelands, languages, and traditional arts spanning {totalCount}{" "}
             documented ethnic identities.
           </p>
         </div>
         <Link
           href="/explore"
-          className="inline-flex items-center gap-2 text-label-md text-primary font-semibold hover:underline shrink-0"
+          className="inline-flex items-center gap-2 text-label-md text-primary font-bold hover:underline shrink-0"
         >
           <span>Explore all {totalCount} ethnic groups</span>
           <IconArrow />
@@ -37,15 +38,23 @@ export default function PeopleSpotlight({ spotlight, totalCount }: Props) {
           <Link
             key={card.id}
             href={card.exploreHref}
-            className="landing-glass-card rounded-2xl p-6 flex flex-col justify-between group"
+            className="landing-light-card rounded-2xl p-6 flex flex-col justify-between group bg-surface-card"
           >
             <div>
-              <div
-                className="h-28 w-full rounded-xl mb-4 overflow-hidden border border-outline-variant/40 bg-surface-container relative"
-              >
-                <div
-                  className={`absolute inset-0 ${card.overlayClass} z-10`}
-                />
+              <div className="h-28 w-full rounded-xl mb-4 overflow-hidden border border-border-subtle bg-slate-100 relative">
+                {card.image ? (
+                  <Image
+                    src={card.image}
+                    alt={`${card.motifLabel.toLowerCase()} — ${card.name} cultural motif`}
+                    fill
+                    sizes="(min-width: 1024px) 22vw, (min-width: 768px) 45vw, 92vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div
+                    className={`absolute inset-0 ${card.overlayClass}`}
+                  />
+                )}
                 <div
                   className={`absolute inset-0 z-20 flex flex-col justify-end p-3 bg-gradient-to-r ${card.gradientClass} opacity-60`}
                 />
@@ -60,15 +69,14 @@ export default function PeopleSpotlight({ spotlight, totalCount }: Props) {
                   </span>
                 </div>
               </div>
-              <p className="text-body-sm text-on-surface-variant">
+              <p className="text-body-sm text-text-secondary">
                 {card.description}
               </p>
             </div>
-            <div className="pt-4 mt-4 border-t border-outline-variant/30 flex items-center justify-between text-body-sm">
-              <span className="text-outline">
-                {card.homelandLgaCount} Homeland LGAs
+            <div className="pt-4 mt-4 border-t border-border-subtle flex items-center justify-between text-body-sm">
+              <span className="text-text-muted font-medium">                {card.homelandLgaCount} Homeland LGAs
               </span>
-              <span className="text-primary font-semibold">
+              <span className="text-primary font-bold">
                 {card.zonesLabel}
               </span>
             </div>

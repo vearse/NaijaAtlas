@@ -68,7 +68,7 @@ export default function ElectionCountdownCard({
   const shell =
     variant === "inline"
       ? "space-y-0"
-      : "rounded-xl border border-emerald-200/90 bg-white/95 backdrop-blur px-3 py-2.5 shadow-sm";
+      : "rounded-xl border border-emerald-200/90 bg-surface-card/95 backdrop-blur px-3 py-2.5 shadow-sm";
 
   return (
     <div className={shell}>
@@ -79,7 +79,7 @@ export default function ElectionCountdownCard({
       )}
 
       <p
-        className={`text-sm font-bold text-slate-900 leading-snug ${
+        className={`text-sm font-bold text-text-primary leading-snug ${
           variant === "map-corner" ? "mt-1" : ""
         }`}
       >
@@ -90,7 +90,7 @@ export default function ElectionCountdownCard({
             : "Election within 24 hours"}
       </p>
 
-      <p className="text-[11px] text-slate-500 mt-0.5">
+      <p className="text-[11px] text-text-muted mt-0.5">
         {formatElectionDate(electionDate)}
         {candidateCount > 0 ? ` · ${candidateCount} tickets` : ""}
       </p>

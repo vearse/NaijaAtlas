@@ -40,6 +40,32 @@ const config: Config = {
         "tertiary-container": "#008477",
         error: "#ffb4ab",
         "error-container": "#93000a",
+
+        /* Light section-hub palette (NaijaAtlas light mode).
+           Section hubs are light-only; `primary` stays the dark-surface
+           token, `primary-container` is the light-mode green fill. */
+        "primary-tint-soft": "#d1fae5",
+        "primary-tint-light": "#ecfdf5",
+        "primary-fixed-dim": "#70db9d",
+        "surface-card": "#ffffff",
+        "surface-canvas": "#f8fafc",
+        "border-subtle": "#e2e8f0",
+        "text-primary": "#0c0a09",
+        "text-muted": "#64748b",
+        "metric-teal": "#0d9488",
+        "metric-teal-tint": "#f0fdfa",
+        "heritage-amber": "#d97706",
+        "heritage-amber-tint": "#fffbeb",
+        "alert-coral": "#e11d48",
+        "alert-coral-tint": "#ffe4e6",
+        "people-violet": "#7c3aed",
+        "people-violet-tint": "#f5f3ff",
+        "land-stone": "#4d7c0f",
+        "land-stone-tint": "#f7fee7",
+        "data-cyan": "#0891b2",
+        "data-cyan-tint": "#ecfeff",
+        "learn-mint": "#0d9488",
+        "learn-mint-tint": "#f0fdfa",
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],

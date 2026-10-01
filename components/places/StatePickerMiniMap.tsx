@@ -132,10 +132,10 @@ export default function StatePickerMiniMap({
 
   return (
     <div
-      className={`relative rounded-2xl overflow-hidden border border-slate-200 shadow-md bg-slate-100 ${className}`}
+      className={`relative rounded-2xl overflow-hidden border border-border-subtle shadow-md bg-slate-100 ${className}`}
     >
       <div ref={containerRef} className="absolute inset-0" />
-      <p className="absolute bottom-3 left-3 right-3 text-center text-[11px] text-slate-600 bg-white/90 backdrop-blur rounded-lg py-1.5 border border-slate-200">
+      <p className="absolute bottom-3 left-3 right-3 text-center text-[11px] text-text-secondary bg-surface-card/90 backdrop-blur rounded-lg py-1.5 border border-border-subtle">
         Click a state to switch profile
       </p>
     </div>
