@@ -97,7 +97,7 @@ export default function EnergyGrid({
           <h3 className="font-landing-display text-headline-sm text-text-primary">
             Stations, largest first
           </h3>
-          <ul className="mt-3 divide-y divide-slate-100 overflow-hidden rounded-2xl border border-border-subtle bg-surface-card">
+          <ul className="mt-3 grid gap-3 sm:grid-cols-2 divide-y divide-slate-100 overflow-hidden rounded-2xl border border-border-subtle bg-surface-card">
             {power.stations.map((s) => (
               <li key={s.id} className="flex flex-wrap gap-4 px-5 py-4">
                 <div className="min-w-0 flex-1">

@@ -2,174 +2,235 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import NigeriaThumb from "@/components/hub/NigeriaThumb";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import EmptyState from "@/components/hub/EmptyState";
 import SourceNote from "@/components/hub/SourceNote";
+import StateOverviewPanel from "@/components/places/StateOverviewPanel";
+import { useWikiReader } from "@/hooks/useWikiReader";
 import { sectionMapHref } from "@/lib/navigation/sectionMaps";
 import type { PeopleHubData } from "@/lib/server/loadPeopleHubData";
 
-/** The cultural-group directory, searchable and filterable by state. */
-export default function GroupDirectory({ data }: { data: PeopleHubData }) {
-  const [query, setQuery] = useState("");
-  const [stateId, setStateId] = useState("all");
+const DEFAULT_STATE = "NG-LA";
+const PAGE = 9;
 
+const CONFIDENCE_BADGE: Record<string, string> = {
+  high: "border-emerald-200 bg-emerald-50 text-emerald-800",
+  medium: "border-amber-200 bg-amber-50 text-amber-800",
+};
+
+/** One state at a time: its cultural groups first, then the state profile. */
+export default function GroupDirectory({ data }: { data: PeopleHubData }) {
+  const reduceMotion = useReducedMotion();
+  const { openArticle, openByName, resolving } = useWikiReader();
+
+  const stateOptions = useMemo(
+    () =>
+      Object.values(data.stateOverviews).sort((a, b) => a.name.localeCompare(b.name)),
+    [data.stateOverviews]
+  );
+  const [stateId, setStateId] = useState(
+    data.stateOverviews[DEFAULT_STATE] ? DEFAULT_STATE : (stateOptions[0]?.id ?? "")
+  );
+  const [query, setQuery] = useState("");
+  const [limit, setLimit] = useState(PAGE);
+
+  const overview = data.stateOverviews[stateId];
   const q = query.trim().toLowerCase();
 
-  const visible = useMemo(
+  const matched = useMemo(
     () =>
       data.groups.filter((g) => {
-        if (stateId !== "all" && !g.stateIds.includes(stateId)) return false;
+        if (!g.stateIds.includes(stateId)) return false;
         if (!q) return true;
         return (
           g.name.toLowerCase().includes(q) ||
           g.description.toLowerCase().includes(q) ||
-          g.stateNames.join(" ").toLowerCase().includes(q) ||
           g.makeup.map((m) => m.name).join(" ").toLowerCase().includes(q)
         );
       }),
     [data.groups, q, stateId]
   );
 
-  const stateOptions = useMemo(() => {
-    const m = new Map<string, string>();
-    for (const g of data.groups) {
-      for (const id of g.stateIds) {
-        const name = data.slugByStateId[id];
-        if (name) m.set(id, name);
-      }
-    }
-    return [...m.entries()].sort((a, b) => a[1].localeCompare(b[1]));
-  }, [data.groups, data.slugByStateId]);
+  // A new state or a new search restarts the "see more" window.
+  const stateQueryKey = `${stateId}-${q}`;
+  const visible = matched.slice(0, limit);
+  const hidden = matched.length - visible.length;
 
   return (
     <div>
       <div className="flex flex-wrap items-end gap-3">
         <label className="block">
-          <span className="text-label-caps tracking-wider text-text-muted">
-            State
-          </span>
+          <span className="text-label-caps tracking-wider text-text-muted">State</span>
           <select
             value={stateId}
-            onChange={(e) => setStateId(e.target.value)}
-            className="mt-2 h-11 min-w-[12rem] rounded-xl border border-border-subtle bg-surface-card px-3 text-body-md text-text-primary focus:border-primary-container focus:outline-none focus:ring-4 focus:ring-emerald-500/10"
+            onChange={(e) => {
+              setStateId(e.target.value);
+              setQuery("");
+              setLimit(PAGE);
+            }}
+            className="mt-2 h-11 min-w-[14rem] rounded-xl border border-border-subtle bg-surface-card px-3 text-body-md font-semibold text-text-primary focus:border-primary-container focus:outline-none focus:ring-4 focus:ring-emerald-500/10"
           >
-            <option value="all">All states</option>
-            {stateOptions.map(([id, slug]) => (
-              <option key={id} value={id}>
-                {slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+            {stateOptions.map((s) => (
+              <option key={s.id} value={s.id}>
+                {s.name}
               </option>
             ))}
           </select>
         </label>
-        <label className="block flex-1">
-          <span className="text-label-caps tracking-wider text-text-muted">
-            Search
-          </span>
-          <input
-            type="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Group, community, state or language"
-            className="mt-2 h-11 w-full rounded-xl border border-border-subtle bg-surface-card px-4 text-body-md text-text-primary placeholder:text-slate-400 focus:border-primary-container focus:outline-none focus:ring-4 focus:ring-emerald-500/10"
-          />
-        </label>
         <p className="pb-3 text-body-sm text-text-muted">
-          {visible.length} of {data.groups.length}
+          Choose a state to meet its cultural groups, then read the state profile.
         </p>
       </div>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-[240px_minmax(0,1fr)]">
-        <div className="rounded-2xl border border-border-subtle bg-slate-50 p-4">
-          <NigeriaThumb
-            source="states"
-            highlight={
-              stateId === "all"
-                ? [...new Set(visible.flatMap((g) => g.stateIds))]
-                : [stateId]
-            }
-            accent="#7c3aed"
-            className="h-48 w-full"
-            title="States with documented groups"
-          />
-          <Link
-            href={sectionMapHref("people/groups", {
-              stateIds: stateId === "all" ? undefined : [stateId],
-            })}
-            className="mt-3 inline-flex h-11 w-full items-center justify-center rounded-xl border border-primary-container text-label-md font-semibold text-primary hover:bg-emerald-50"
-          >
-            Open homelands map
-          </Link>
-          <p className="mt-2 text-[11px] text-text-muted">
-            The map shows states and LGAs; it has no homeland polygons to draw.
-          </p>
+      {/* Cultural groups come first — the state selector drives this list. */}
+      <div className="mt-8">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <h3 className="font-landing-display text-headline-sm text-text-primary">
+            Cultural groups in {overview?.name ?? "this state"}
+          </h3>
+          <div className="flex flex-wrap items-center gap-3">
+            <label className="block">
+              <span className="sr-only">Search groups</span>
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setLimit(PAGE);
+                }}
+                placeholder="Search a group or community"
+                className="h-10 w-64 rounded-full border border-border-subtle bg-surface-card px-4 text-body-sm text-text-primary placeholder:text-slate-400 focus:border-primary-container focus:outline-none focus:ring-4 focus:ring-emerald-500/10"
+              />
+            </label>
+            <Link
+              href={sectionMapHref("people/groups", { stateIds: [stateId] })}
+              className="text-label-md font-semibold text-primary hover:underline"
+            >
+              Homelands map →
+            </Link>
+          </div>
         </div>
 
-        {visible.length === 0 ? (
-          <EmptyState title="No groups match" badge="0 results">
-            Nothing in the {data.groups.length}-group catalogue matches that
-            filter.
-          </EmptyState>
-        ) : (
-          <ul className="grid gap-3 md:grid-cols-2">
-            {visible.map((g) => (
-              <li
-                key={g.id}
-                className="flex flex-col rounded-2xl border border-border-subtle bg-surface-card p-4 shadow-sm"
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <h3 className="text-body-md font-semibold text-text-primary">
-                    {g.name}
-                  </h3>
-                  <span
-                    className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold ${
-                      g.confidence === "high"
-                        ? "border-emerald-200 bg-emerald-50 text-emerald-800"
-                        : "border-border-subtle bg-slate-50 text-text-muted"
-                    }`}
-                  >
-                    {g.confidence}
-                  </span>
-                </div>
-                {g.description && (
-                  <p className="mt-1.5 line-clamp-3 text-body-sm text-text-secondary">
-                    {g.description}
-                  </p>
-                )}
-                {g.makeup.length > 0 && (
-                  <p className="mt-2 text-[11px] text-text-muted">
-                    {g.makeup
-                      .slice(0, 3)
-                      .map((m) => `${m.name}${m.role === "dominant" ? " (dominant)" : ""}`)
-                      .join(" · ")}
-                  </p>
-                )}
-                <div className="mt-auto flex flex-wrap items-center gap-1.5 pt-3">
-                  <span className="text-[11px] text-slate-400">
-                    {g.memberCount} LGA area{g.memberCount === 1 ? "" : "s"}
-                  </span>
-                  {g.stateNames.slice(0, 3).map((name) => {
-                    const id = data.stateIdByName[name];
-                    return (
-                      <Link
-                        key={name}
-                        href={`/places/${id ? data.slugByStateId[id] : name.toLowerCase()}`}
-                        className="rounded-full border border-border-subtle bg-surface-card px-2.5 py-1 text-[11px] font-semibold text-text-secondary hover:border-primary-container hover:text-primary"
+        <div className="mt-4">
+          {matched.length === 0 ? (
+            <EmptyState title="No groups match" badge="No results">
+              No documented cultural group in {overview?.name ?? "this state"} matches
+              that search.
+            </EmptyState>
+          ) : (
+            <>
+              <AnimatePresence mode="wait">
+                <motion.ul
+                  key={stateQueryKey}
+                  className="grid gap-3 md:grid-cols-2 lg:grid-cols-3"
+                  {...(reduceMotion
+                    ? {}
+                    : {
+                        initial: { opacity: 0, y: 8 },
+                        animate: { opacity: 1, y: 0 },
+                        exit: { opacity: 0 },
+                        transition: { duration: 0.22 },
+                      })}
+                >
+                  {visible.map((g) => (
+                    <li
+                      key={g.id}
+                      className="flex flex-col rounded-2xl border border-border-subtle bg-surface-card p-4 shadow-sm"
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <h4 className="text-body-md font-semibold text-text-primary">
+                          {g.name}
+                        </h4>
+                        <span
+                          className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold ${
+                            CONFIDENCE_BADGE[g.confidence] ??
+                            "border-border-subtle bg-slate-50 text-text-muted"
+                          }`}
+                        >
+                          {g.confidence}
+                        </span>
+                      </div>
+                      {g.description && (
+                        <p className="mt-1.5 line-clamp-3 text-body-sm text-text-secondary">
+                          {g.description}
+                        </p>
+                      )}
+                      {g.makeup.length > 0 && (
+                        <p className="mt-2 text-[11px] text-text-muted">
+                          {g.makeup
+                            .slice(0, 3)
+                            .map((m) => `${m.name}${m.role === "dominant" ? " (dominant)" : ""}`)
+                            .join(" · ")}
+                        </p>
+                      )}
+                      {g.stateNames.length > 1 && (
+                        <div className="mt-3 flex flex-wrap gap-1.5">
+                          {g.stateNames
+                            .filter((name) => data.stateIdByName[name] !== stateId)
+                            .slice(0, 3)
+                            .map((name) => {
+                              const id = data.stateIdByName[name];
+                              return (
+                                <button
+                                  key={name}
+                                  type="button"
+                                  onClick={() => {
+                                    if (id) setStateId(id);
+                                    setLimit(PAGE);
+                                  }}
+                                  className="rounded-full border border-border-subtle bg-surface-card px-2.5 py-1 text-[11px] font-semibold text-text-secondary hover:border-primary-container/50 hover:text-primary"
+                                >
+                                  Also in {name}
+                                </button>
+                              );
+                            })}
+                        </div>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => void openByName(g.name)}
+                        disabled={resolving === g.name}
+                        className="mt-auto inline-flex w-fit items-center gap-1 pt-4 text-label-md font-semibold text-primary transition-opacity hover:underline disabled:opacity-60"
                       >
-                        {name}
-                      </Link>
-                    );
-                  })}
-                  {g.stateNames.length > 3 && (
-                    <span className="text-[11px] text-slate-400">
-                      +{g.stateNames.length - 3}
-                    </span>
-                  )}
+                        {resolving === g.name ? "Loading…" : "Read more"}
+                        <span aria-hidden>→</span>
+                      </button>
+                    </li>
+                  ))}
+                </motion.ul>
+              </AnimatePresence>
+
+              {hidden > 0 ? (
+                <div className="mt-5 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setLimit((n) => n + PAGE)}
+                    className="inline-flex items-center gap-2 rounded-full border border-border-subtle bg-surface-card px-5 py-2.5 text-label-md font-semibold text-text-secondary shadow-sm transition-colors hover:border-primary-container/40 hover:text-primary"
+                  >
+                    See more groups ({hidden} left)
+                    <span aria-hidden>▾</span>
+                  </button>
                 </div>
-              </li>
-            ))}
-          </ul>
-        )}
+              ) : null}
+
+              <p className="mt-4 text-center text-body-sm text-text-muted">
+                Showing {visible.length} of {matched.length} documented groups
+                {overview ? ` in ${overview.name}` : ""}.
+              </p>
+            </>
+          )}
+        </div>
       </div>
+
+      {/* State details follow the groups they belong to. */}
+      {overview ? (
+        <div className="mt-12 border-t border-border-subtle pt-10">
+          <h3 className="mb-4 font-landing-display text-headline-sm text-text-primary">
+            {overview.name} state details
+          </h3>
+          <StateOverviewPanel overview={overview} accent="#008751" />
+        </div>
+      ) : null}
 
       <SourceNote className="mt-8" source={data.sources} updated="Repository catalogues" />
     </div>

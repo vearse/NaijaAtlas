@@ -1,20 +1,24 @@
 "use client";
 
+import Image from "next/image";
 import HubShell from "@/components/hub/HubShell";
 import HubHeader from "@/components/hub/HubHeader";
 import HubFooter from "@/components/hub/HubFooter";
 import HubBreadcrumb from "@/components/hub/HubBreadcrumb";
 import HubSection from "@/components/hub/HubSection";
 import MapWorkspaceCard from "@/components/hub/MapWorkspaceCard";
-import StatTile from "@/components/hub/StatTile";
 import SourceNote from "@/components/hub/SourceNote";
 import EmptyState from "@/components/hub/EmptyState";
-import CultureSpotlight from "@/components/people/CultureSpotlight";
 import GroupDirectory from "@/components/people/GroupDirectory";
 import LanguageTable from "@/components/people/LanguageTable";
+import FestivalList from "@/components/people/FestivalList";
 import type { PeopleHubData } from "@/lib/server/loadPeopleHubData";
+import type { Festival } from "@/lib/festivals";
 
-export default function PeopleHubClient(data: PeopleHubData) {
+export default function PeopleHubClient({
+  festivals,
+  ...data
+}: PeopleHubData & { festivals: Festival[] }) {
   return (
     <HubShell>
       <HubHeader
@@ -29,71 +33,58 @@ export default function PeopleHubClient(data: PeopleHubData) {
       />
 
       <main className="mx-auto max-w-[1280px] px-4 md:px-6">
-        {/* Hero */}
-        <section className="pt-12 md:pt-16">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-label-caps text-violet-800">
-              <span className="h-1.5 w-1.5 rounded-full bg-people-violet" />
-              PEOPLE &amp; CULTURE
-            </span>
-            <span className="inline-flex rounded-full border border-border-subtle bg-surface-card px-3 py-1 text-label-caps text-text-secondary">
-              {data.counts.states} states covered
-            </span>
-          </div>
-
-          <h1 className="mt-5 max-w-3xl font-landing-display text-headline-xl-mobile tracking-tight text-text-primary md:text-display-hero">
-            The people, not the numbers.
-          </h1>
-          <p className="mt-4 max-w-2xl text-body-lg text-text-secondary">
-            {data.counts.groups} documented cultural groups across{" "}
-            {data.counts.lgaAreas} LGA areas, {data.counts.languages} recorded
-            languages, and the states each group is found in.
-          </p>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <StatTile
-              label="Cultural groups"
-              value={data.counts.groups.toString()}
-              hint="Documented in the catalogue"
+        <section className="pt-8 md:pt-10">
+          <div className="relative h-[420px] overflow-hidden rounded-3xl border border-border-subtle shadow-sm md:h-[480px]">
+            <Image
+              src="/images/people-hero.jpg"
+              alt="Nigerian family and friends laughing together at a market street"
+              fill
+              priority
+              sizes="(min-width: 1280px) 1280px, 100vw"
+              className="object-cover object-right"
             />
-            <StatTile
-              label="LGA areas"
-              value={data.counts.lgaAreas.toString()}
-              hint="Group homelands"
-            />
-            <StatTile
-              label="Languages"
-              value={data.counts.languages.toString()}
-              hint="Across state profiles"
-            />
-            <StatTile
-              label="States covered"
-              value={data.counts.states.toString()}
-              hint="Of 37"
-            />
+            {/* Brand green wash so the hero reads as one piece with the atlas. */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary-container/25 via-transparent to-primary-container/10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/75 to-transparent" />
+            <div className="absolute inset-0 flex flex-col justify-center p-6 md:p-12">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-label-caps text-primary-container">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary-container" />
+                PEOPLE &amp; CULTURE
+              </span>
+              <h1 className="mt-5 max-w-xl font-landing-display text-headline-xl-mobile tracking-tight text-text-primary md:text-display-hero">
+                The people, not the numbers.
+              </h1>
+              <p className="mt-4 max-w-md text-body-lg text-text-secondary">
+                Hundreds of languages, kingdoms and communities share one map.
+                Pick a state to meet the people who call it home.
+              </p>
+              <a
+                href="#groups"
+                className="mt-6 inline-flex h-11 w-fit items-center rounded-xl bg-primary-container px-5 text-label-md font-semibold text-white transition-colors hover:bg-primary"
+              >
+                Explore a state
+              </a>
+            </div>
           </div>
         </section>
 
-        {/* Spotlight */}
-        <HubSection
-          eyebrow="Spotlight"
-          title="Four cultures to start with"
-          lede="The four largest documented cultural groupings, with their LGA footprint and zone."
-        >
-          <CultureSpotlight
-            spotlight={data.spotlight}
-            slugByStateId={data.slugByStateId}
-          />
-        </HubSection>
-
-        {/* Directory */}
         <HubSection
           id="groups"
-          eyebrow="Directory"
-          title="Cultural groups"
-          lede="Search by group, community, state or language. Each entry carries its own confidence rating, because homelands are contested and our source says so."
+          eyebrow="State by state"
+          title="Languages, peoples and stories"
+          lede="Choose a state to meet the cultural groups found there, then read the state profile behind them."
         >
           <GroupDirectory data={data} />
+        </HubSection>
+
+        {/* Festivals sit directly after the state detail they explain. */}
+        <HubSection
+          id="festivals"
+          eyebrow="Celebrations"
+          title="Festivals &amp; cultural gatherings"
+          lede="The recurring festivals that mark Nigeria's calendar year, across every state in the catalogue."
+        >
+          <FestivalList festivals={festivals} />
         </HubSection>
 
         {/* Languages */}
@@ -116,7 +107,7 @@ export default function PeopleHubClient(data: PeopleHubData) {
           <div className="grid gap-5 md:grid-cols-2">
             <MapWorkspaceCard
               map="people/groups"
-              kicker={`${data.counts.groups} groups`}
+              kicker="Cultural groups"
             />
             <MapWorkspaceCard
               map="land/zones"

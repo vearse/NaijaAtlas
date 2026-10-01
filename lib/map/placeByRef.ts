@@ -1,4 +1,5 @@
 import citiesCatalog from "@/data/overlays/catalog/cities.json";
+import tourCatalog from "@/data/overlays/catalog/tour.json";
 import statesCatalog from "@/data/locations/states.json";
 import type { DirectionsTarget } from "@/lib/store/mapStore";
 
@@ -19,11 +20,12 @@ interface StateRow {
 }
 
 const cities = citiesCatalog as CityRow[];
+const tours = tourCatalog as CityRow[];
 const states = statesCatalog as unknown as StateRow[];
 
 /**
  * Resolve a `?dirFrom=` / `?dirTo=` value to a mappable place. Accepts a city
- * id (`city-lagos`), a city name, a state id (`NG-LA`) or a state slug.
+ * or tour destination id/name, a state id (`NG-LA`) or a state slug.
  */
 export function findPlaceByRef(
   ref: string | null | undefined
@@ -44,6 +46,13 @@ export function findPlaceByRef(
       lonLat: [city.lon, city.lat],
       kind: "overlay",
     };
+  }
+
+  const tour = tours.find(
+    (t) => t.id?.toLowerCase() === key || t.name.trim().toLowerCase() === key
+  );
+  if (tour && typeof tour.lon === "number" && typeof tour.lat === "number") {
+    return { name: tour.name, lonLat: [tour.lon, tour.lat], kind: "overlay" };
   }
 
   const state = states.find(

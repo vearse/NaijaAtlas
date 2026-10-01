@@ -16,7 +16,7 @@ import CompareMenu from "@/components/compare/CompareMenu";
 import LocationPanel from "@/components/location/LocationPanel";
 import CompareModal from "@/components/compare/CompareModal";
 import MobileInfoModal from "@/components/compare/MobileInfoModal";
-import WikipediaReaderModal from "@/components/map/WikipediaReaderModal";
+
 import DirectionsModal from "@/components/directions/DirectionsModal";
 import UrlSync from "@/components/UrlSync";
 import {
@@ -495,7 +495,6 @@ export default function ExplorerShell({
         lgas={lgas}
       />
 
-      <WikipediaReaderModal />
       <DirectionsModal />
       <ToastStack />
       {sectionWorkspace && <WorkspaceMapFooter />}

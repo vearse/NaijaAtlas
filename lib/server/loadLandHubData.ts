@@ -30,7 +30,28 @@ const strList = (v: unknown): string[] =>
 const num = (v: unknown): number | null =>
   typeof v === "number" && Number.isFinite(v) ? v : null;
 
-export type HubLandform = {
+/** Prose shared by every land catalogue entry. */
+export type HubLandProse = {
+  description: string;
+  highlights: string[];
+  significance: string;
+  ecology: string;
+  economy: string;
+  wikiUrl: string;
+};
+
+function prose(r: Row): HubLandProse {
+  return {
+    description: str(r.description),
+    highlights: strList(r.highlights),
+    significance: str(r.significance),
+    ecology: str(r.ecology),
+    economy: str(r.economy),
+    wikiUrl: str(r.wikiUrl),
+  };
+}
+
+export type HubLandform = HubLandProse & {
   id: string;
   name: string;
   landformType: string;
@@ -43,7 +64,7 @@ export type HubLandform = {
   character: string;
 };
 
-export type HubLake = {
+export type HubLake = HubLandProse & {
   id: string;
   name: string;
   lakeCategory: string;
@@ -57,7 +78,7 @@ export type HubLake = {
   isPower: boolean;
 };
 
-export type HubWaterway = {
+export type HubWaterway = HubLandProse & {
   id: string;
   name: string;
   class: string;
@@ -70,15 +91,24 @@ export type HubWaterway = {
   stateIds: string[];
 };
 
-export type HubCoast = {
+export type HubCoast = HubLandProse & {
   id: string;
   name: string;
   type: string;
   summary: string;
   lengthNote: string;
   states: string[];
+  stateIds: string[];
   lon: number | null;
   lat: number | null;
+};
+
+/** Country-level note, the same set the atlas overview shows as Highlights. */
+export type HubCountryNote = {
+  title: string;
+  note: string;
+  category: string;
+  url: string;
 };
 
 export type LandHubData = {
@@ -86,6 +116,7 @@ export type LandHubData = {
   lakes: HubLake[];
   waterways: HubWaterway[];
   coast: HubCoast[];
+  highlights: HubCountryNote[];
   regions: { id: string; name: string; shortCode: string; states: string[] }[];
   counts: { landforms: number; lakes: number; rivers: number; coast: number; states: number };
   longestRiver: HubWaterway | null;
@@ -102,7 +133,7 @@ let cache: LandHubData | null = null;
 export function loadLandHubData(): LandHubData {
   if (cache) return cache;
 
-  const { states } = loadExplorerPageData(process.cwd());
+  const { states, countryNotes } = loadExplorerPageData(process.cwd());
   const toIds = (names: string[]) =>
     names
       .map((n) => resolveStateByName(states, n)?.id)
@@ -113,6 +144,7 @@ export function loadLandHubData(): LandHubData {
     .map((r) => {
       const st = strList(r.statesCrossed);
       return {
+        ...prose(r),
         id: str(r.id),
         name: str(r.name),
         landformType: str(r.landformType),
@@ -133,6 +165,7 @@ export function loadLandHubData(): LandHubData {
     const st = strList(r.statesCrossed);
     const cat = str(r.lakeCategory);
     return {
+      ...prose(r),
       id: str(r.id),
       name: str(r.name),
       lakeCategory: cat,
@@ -147,9 +180,13 @@ export function loadLandHubData(): LandHubData {
     };
   });
 
-  const waterways: HubWaterway[] = readCatalog("waterways").map((r) => {
+  // Military formations share the waterways catalogue but belong to Civic.
+  const waterways: HubWaterway[] = readCatalog("waterways")
+    .filter((r) => str(r.waterwayClass) !== "military")
+    .map((r) => {
     const st = strList(r.statesCrossed);
     return {
+      ...prose(r),
       id: str(r.id),
       name: str(r.name),
       class: str(r.waterwayClass),
@@ -166,12 +203,14 @@ export function loadLandHubData(): LandHubData {
   const coast: HubCoast[] = readCatalog("coast").map((r) => {
     const st = strList(r.coastalStates ?? r.statesCrossed);
     return {
+      ...prose(r),
       id: str(r.id),
       name: str(r.name),
       type: str(r.type),
       summary: str(r.summary),
       lengthNote: str(r.lengthNote),
       states: st,
+      stateIds: toIds(st),
       lon: num(r.lon),
       lat: num(r.lat),
     };
@@ -192,11 +231,22 @@ export function loadLandHubData(): LandHubData {
     .filter((w) => w.lengthKm != null)
     .sort((a, b) => (b.lengthKm ?? 0) - (a.lengthKm ?? 0))[0];
 
+  const highlights: HubCountryNote[] = Object.values(countryNotes ?? {})
+    .flat()
+    .map((n) => ({
+      title: n.title,
+      note: n.note,
+      category: n.category,
+      url: n.url ?? "",
+    }))
+    .filter((n) => n.title && n.note);
+
   cache = {
     landforms,
     lakes,
     waterways,
     coast,
+    highlights,
     regions,
     counts: {
       landforms: landforms.length,

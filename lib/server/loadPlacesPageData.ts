@@ -8,6 +8,7 @@ import { loadStateProfileInsights } from "@/lib/server/stateProfileInsights";
 import type { StateProfileInsights } from "@/lib/server/stateProfileInsights";
 import { loadStateFestivals } from "@/lib/server/loadFestivalsCalendar";
 import type { Festival } from "@/lib/server/loadFestivalsCalendar";
+import { loadStateOverviews, type StateOverviewData } from "@/lib/server/stateOverview";
 import type { LandingStateCard } from "@/lib/landing/landingPageTypes";
 import type { LgaLocation, MetroGroup, StateLocation } from "@/types/location";
 
@@ -803,6 +804,7 @@ export type StateProfileData = {
   insights: StateProfileInsights | null;
   compareGroups: PlacesCompareGroup[];
   festivals: Festival[];
+  overview: StateOverviewData | null;
 };
 
 export function loadStateProfileData(
@@ -863,6 +865,7 @@ export function loadStateProfileData(
     insights,
     compareGroups: directory.compareGroups,
     festivals: loadStateFestivals(state.name, root),
+    overview: loadStateOverviews(root)[state.id] ?? null,
   };
 }
 

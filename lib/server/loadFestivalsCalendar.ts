@@ -1,23 +1,8 @@
 import fs from "fs";
 import path from "path";
+import { monthIndex, type Festival } from "@/lib/festivals";
 
-export type FestivalTone = "primary" | "amber" | "slate";
-
-export type Festival = {
-  id: string;
-  name: string;
-  /** Short month token used on the date chip, e.g. `OCT`. */
-  month: string;
-  /** Long month name, used to decide whether the event is in the current month. */
-  window: string;
-  startDay: number;
-  endDay: number;
-  stateName: string;
-  venue: string;
-  category: string;
-  tone: FestivalTone;
-  summary: string;
-};
+export type { Festival, FestivalTone } from "@/lib/festivals";
 
 export type FestivalsCalendarData = {
   events: Festival[];
@@ -28,21 +13,6 @@ export type FestivalsCalendarData = {
   monthLabel: string;
   total: number;
 };
-
-const MONTH_ORDER = [
-  "january",
-  "february",
-  "march",
-  "april",
-  "may",
-  "june",
-  "july",
-  "august",
-  "september",
-  "october",
-  "november",
-  "december",
-];
 
 function readFestivals(root = process.cwd()): Festival[] {
   const file = path.join(root, "data/festivals.json");
@@ -61,7 +31,7 @@ export function loadStateFestivals(stateName: string, root = process.cwd()): Fes
 export function loadFestivalsCalendar(now = new Date()): FestivalsCalendarData {
   const events = readFestivals();
   const currentMonth = now.toLocaleString("en-NG", { month: "long" }).toLowerCase();
-  const currentIndex = MONTH_ORDER.indexOf(currentMonth);
+  const currentIndex = monthIndex(currentMonth);
 
   const thisMonth = events.filter(
     (e) => e.window.toLowerCase() === currentMonth
@@ -69,7 +39,7 @@ export function loadFestivalsCalendar(now = new Date()): FestivalsCalendarData {
 
   const upcoming = [...events].sort((a, b) => {
     const monthsAway = (m: string) =>
-      ((MONTH_ORDER.indexOf(m.toLowerCase()) - currentIndex + 12) % 12) || 0;
+      ((monthIndex(m) - currentIndex + 12) % 12) || 0;
     return (
       monthsAway(a.window) - monthsAway(b.window) || a.startDay - b.startDay
     );

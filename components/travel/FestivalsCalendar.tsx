@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import type { Festival, FestivalsCalendarData } from "@/lib/server/loadFestivalsCalendar";
 import { IconMap } from "@/components/landing/icons";
+import { useWikiReader } from "@/hooks/useWikiReader";
 
 const TONE_BADGE: Record<Festival["tone"], string> = {
   primary: "bg-slate-100 text-text-secondary",
@@ -27,6 +30,7 @@ export default function FestivalsCalendar({
   calendar: FestivalsCalendarData;
 }) {
   const { featured, isCurrentMonth, monthLabel, total } = calendar;
+  const { openByName, resolving } = useWikiReader();
 
   if (featured.length === 0) return null;
 
@@ -82,7 +86,18 @@ export default function FestivalsCalendar({
               </div>
             </div>
 
-            <div className="flex shrink-0 items-center gap-3 self-end md:self-center">
+            <div className="flex shrink-0 flex-wrap items-center gap-3 self-end md:self-center">
+              <button
+                type="button"
+                onClick={() => void openByName(festival.name)}
+                disabled={resolving === festival.name}
+                className="inline-flex items-center gap-1 font-label-md text-label-md text-primary transition-opacity hover:underline disabled:opacity-60"
+              >
+                {resolving === festival.name ? "Loading…" : "Read more"}
+              </button>
+              <span className="text-slate-300" aria-hidden>
+                |
+              </span>
               <Link
                 href={`/people?festival=${festival.id}`}
                 className="inline-flex items-center gap-1 font-label-md text-label-md text-primary hover:underline"

@@ -6,6 +6,7 @@ import HubShell from "@/components/hub/HubShell";
 import HubHeader from "@/components/hub/HubHeader";
 import HubFooter from "@/components/hub/HubFooter";
 import StatePickerMiniMap from "@/components/places/StatePickerMiniMap";
+import StateOverviewPanel from "@/components/places/StateOverviewPanel";
 import ProfileSynthesis from "@/components/places/profile/ProfileSynthesis";
 import ProfileLgaSection from "@/components/places/profile/ProfileLgaSection";
 import ProfileLandSection from "@/components/places/profile/ProfileLandSection";
@@ -282,6 +283,23 @@ export default function StateProfileClient(props: Props) {
             </div>
 
             <div className="mt-12 grid grid-cols-1 gap-8 items-start lg:grid-cols-12">
+              {props.overview && (
+                <section
+                  id="state-overview"
+                  className="rounded-3xl border border-border-subtle bg-surface-card p-6 lg:col-span-7"
+                >
+                  <span className="block text-label-caps uppercase tracking-widest text-primary">
+                    State overview
+                  </span>
+                  <h2 className="mt-1 font-landing-display text-headline-lg text-text-primary">
+                    Languages, stories and places to explore
+                  </h2>
+                  <div className="mt-5">
+                    <StateOverviewPanel overview={props.overview} variant="full" />
+                  </div>
+                </section>
+              )}
+
               {/* Sidebar */}
               <aside className="lg:col-span-5 space-y-6">
                 <div className="rounded-2xl border border-border-subtle bg-surface-card p-5">

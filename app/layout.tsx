@@ -4,6 +4,7 @@ import "./globals.css";
 import PostHogProvider from "@/components/PostHogProvider";
 import PwaRegister from "@/components/PwaRegister";
 import PwaInstallPrompt from "@/components/PwaInstallPrompt";
+import WikipediaReaderModal from "@/components/map/WikipediaReaderModal";
 import JsonLd from "@/components/seo/JsonLd";
 import { buildRootJsonLd } from "@/lib/seo/jsonLd";
 import { defaultTitle, siteConfig } from "@/lib/seo/site";
@@ -111,6 +112,7 @@ export default function RootLayout({
           <PwaRegister />
           <PwaInstallPrompt />
           {children}
+          <WikipediaReaderModal />
         </PostHogProvider>
       </body>
     </html>

@@ -6,7 +6,6 @@ import HubFooter from "@/components/hub/HubFooter";
 import HubSectionSwitcher from "@/components/hub/HubSectionSwitcher";
 import HubSection from "@/components/hub/HubSection";
 import MapWorkspaceCard from "@/components/hub/MapWorkspaceCard";
-import StatTile from "@/components/hub/StatTile";
 import SourceNote from "@/components/hub/SourceNote";
 import NationalPulse from "@/components/data/NationalPulse";
 import IgrTrend from "@/components/data/IgrTrend";
@@ -45,7 +44,7 @@ export default function DataHubClient(data: DataHubData) {
           },
           {
             href: "#more",
-            label: `More Indicators (${indicators.length})`,
+            label: "More Indicators",
             tone: "sky",
             dot: "bg-sky-600",
           },
@@ -59,54 +58,41 @@ export default function DataHubClient(data: DataHubData) {
 
       <main className="mx-auto max-w-[1280px] px-4 md:px-6">
         {/* Hero */}
-        <section className="relative overflow-hidden border-b border-border-subtle bg-gradient-to-b from-emerald-50 via-[#f7fdfa] to-[#f8fafc] pt-12 pb-16">
+        <section className="relative overflow-hidden border-b border-border-subtle bg-gradient-to-b from-emerald-50 via-[#f7fdfa] to-[#f8fafc] pt-10 pb-10">
           <div
             className="pointer-events-none absolute inset-0 opacity-40 mix-blend-multiply"
             aria-hidden
           >
             <div className="absolute inset-0 landing-contour-overlay-dark" />
           </div>
-          <div className="relative z-10 mx-auto max-w-[1280px] px-4 md:px-8">
-            <div className="flex flex-wrap items-center gap-2">
+          <div className="relative z-10 mx-auto flex max-w-[1280px] flex-col gap-6 px-4 md:flex-row md:items-end md:justify-between md:px-8">
+            <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-100/80 px-3 py-1 text-label-caps text-primary">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary-container" />
                 DATA INTELLIGENCE
               </span>
-              <span className="inline-flex rounded-full border border-border-subtle bg-surface-card px-3 py-1 text-label-caps text-text-secondary">
-                {data.stateCount} states + FCT
-              </span>
-              <span className="inline-flex rounded-full border border-border-subtle bg-surface-card px-3 py-1 text-label-caps text-text-secondary">
-                {indicators.length} indicators collected
-              </span>
+              <h1 className="mt-5 max-w-3xl font-landing-display text-headline-xl-mobile tracking-tight text-text-primary md:text-display-hero">
+                How every state{" "}
+                <span className="text-primary-container">measures up.</span>
+              </h1>
+              <p className="mt-4 max-w-xl text-body-lg leading-relaxed text-text-secondary">
+                Revenue, literacy, health and more, ranked and mapped straight
+                from official records. Nothing is modelled or estimated.
+              </p>
             </div>
-
-            <h1 className="mt-5 max-w-3xl font-landing-display text-headline-xl-mobile tracking-tight text-text-primary md:text-display-hero">
-              Nigeria by the{" "}
-              <span className="text-primary-container">numbers.</span>
-            </h1>
-            <p className="mt-4 max-w-xl text-body-lg leading-relaxed text-text-secondary">
-              Economic and social indicators for all {data.stateCount} states
-              and the FCT, ranked, mapped, and sourced directly from official
-              records. Every figure comes from a source CSV — nothing is
-              modelled or estimated.
-            </p>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              <StatTile
-                label="Indicators with data"
-                value={indicators.length.toString()}
-                hint={`${reserved.length} reserved, still empty`}
-              />
-              <StatTile
-                label="Fiscal years"
-                value={(igr?.periods.length ?? 0).toString()}
-                hint="IGR series, all states"
-              />
-              <StatTile
-                label="States reporting"
-                value={data.stateCount.toString()}
-                hint="36 states + the FCT"
-              />
+            <div className="flex shrink-0 flex-wrap gap-3">
+              <a
+                href="#pulse"
+                className="inline-flex h-11 items-center rounded-xl bg-primary-container px-5 text-label-md font-semibold text-white hover:bg-[#006d40]"
+              >
+                See the headlines
+              </a>
+              <a
+                href="/data/map/rankings"
+                className="inline-flex h-11 items-center rounded-xl border border-primary-container bg-white px-5 text-label-md font-semibold text-primary hover:bg-emerald-50"
+              >
+                Rankings map
+              </a>
             </div>
           </div>
         </section>
@@ -115,7 +101,7 @@ export default function DataHubClient(data: DataHubData) {
         <HubSection
           id="pulse"
           eyebrow="National pulse"
-          title="The headline numbers"
+          title="The headlines that matter"
           lede="Aggregates we can actually compute: IGR sums across states, while the social indicators are rates, so we report the median and the spread."
         >
           <NationalPulse indicators={indicators} states={states} />
@@ -172,7 +158,7 @@ export default function DataHubClient(data: DataHubData) {
         <HubSection
           id="more"
           eyebrow="Directory"
-          title={`${indicators.length} indicators, and the ones we don’t have`}
+          title="Every indicator, and the ones we don’t have"
           lede="The complete list of what this dataset contains, including the reserved columns that are still empty."
         >
           <IndicatorDirectory indicators={indicators} reserved={reserved} />

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PeopleHubClient from "@/components/people/PeopleHubClient";
 import { loadPeopleHubData } from "@/lib/server/loadPeopleHubData";
+import { loadFestivalsCalendar } from "@/lib/server/loadFestivalsCalendar";
 import { siteConfig } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
@@ -12,5 +13,6 @@ export const metadata: Metadata = {
 
 export default function PeopleHubPage() {
   const data = loadPeopleHubData();
-  return <PeopleHubClient {...data} />;
+  const festivals = loadFestivalsCalendar();
+  return <PeopleHubClient {...data} festivals={festivals.events} />;
 }

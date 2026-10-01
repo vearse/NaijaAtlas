@@ -29,9 +29,6 @@ export default function RegionGrid({
                 {r.shortCode}
               </span>
             </div>
-            <p className="mt-1 text-body-sm text-text-muted">
-              {r.states.length} state{r.states.length === 1 ? "" : "s"}
-            </p>
             <ul className="mt-3 flex-1 space-y-1">
               {r.states.map((name) => (
                 <li key={name}>

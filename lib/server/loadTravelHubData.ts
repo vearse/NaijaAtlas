@@ -31,11 +31,39 @@ export type HubPlace = {
   note: string;
   landmarks: string[];
   highlights: string[];
+  wikiUrl: string | null;
+};
+
+export type MetroVibe =
+  | "capital"
+  | "heritage"
+  | "trade"
+  | "port"
+  | "campus"
+  | "rising";
+
+export type HubMetro = {
+  id: string;
+  name: string;
+  /** City the route planner resolves, when the cities catalogue has it. */
+  cityName: string | null;
+  vibe: MetroVibe;
+  stateIds: string[];
+  stateNames: string[];
+  slug: string | null;
+  lon: number | null;
+  lat: number | null;
+  description: string;
+  peoples: string[];
+  notes: { title: string; note: string; category: string; url: string }[];
+  /** Article for the seat city, used by the in-site "Read more" reader. */
+  wikiUrl: string | null;
 };
 
 export type TravelHubData = {
   destinations: HubPlace[];
   cities: HubPlace[];
+  metros: HubMetro[];
   categoryCounts: { key: string; label: string; count: number }[];
   cityCategoryCounts: { key: string; label: string; count: number }[];
   topStates: { name: string; count: number }[];
@@ -74,6 +102,33 @@ const labelFor = (key: string) =>
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
 
+const VIBE_BY_CITY_CATEGORY: Record<string, MetroVibe> = {
+  "federal-capital": "capital",
+  "mega-city": "capital",
+  historic: "heritage",
+  commercial: "trade",
+  industrial: "trade",
+  "port-city": "port",
+  university: "campus",
+};
+
+/** Metro ids whose seat city is named differently from the metro itself. */
+const METRO_CITY_OVERRIDES: Record<string, string> = {
+  "group-ife-ijesa-cluster": "city-ile-ife",
+  "group-egbaland": "city-abeokuta",
+  "group-ijebuland": "city-ijebu-ode",
+};
+
+const normName = (s: string) => s.toLowerCase().replace(/[^a-z]/g, "");
+
+function metroSeatName(name: string): string {
+  return name
+    .replace(/\(.*\)/g, "")
+    .replace(/\b(Metropolis|Metro|Cluster|Axis)\b/g, "")
+    .split(/[\/-]/)[0]
+    .trim();
+}
+
 let cache: TravelHubData | null = null;
 
 export function loadTravelHubData(): TravelHubData {
@@ -101,6 +156,7 @@ export function loadTravelHubData(): TravelHubData {
       note: noteKeys.map((k) => str(r[k])).find((v) => v !== "") ?? "",
       landmarks: strList(r.landmarks),
       highlights: strList(r.highlights),
+      wikiUrl: str(r.wikiUrl) || null,
     };
   };
 
@@ -111,6 +167,56 @@ export function loadTravelHubData(): TravelHubData {
   const cities = readCatalog("cities")
     .map((r) => toPlace(r, ["populationNote", "nickname"]))
     .filter((p) => p.name);
+
+  const nameById = new Map(states.map((s) => [s.id, s.name]));
+  const slugById = new Map(states.map((s) => [s.id, s.slug]));
+  const cityRows = readCatalog("cities");
+  const metroFile = path.join(process.cwd(), "data/content/metro.json");
+  const metroRows: Row[] = fs.existsSync(metroFile)
+    ? (JSON.parse(fs.readFileSync(metroFile, "utf8")) as Row[])
+    : [];
+
+  const metros: HubMetro[] = metroRows
+    .filter((m) => m.groupType === "metro-area")
+    .map((m) => {
+      const id = str(m.id);
+      const name = str(m.name);
+      const seat = normName(metroSeatName(name));
+      const city =
+        cityRows.find((c) => c.id === METRO_CITY_OVERRIDES[id]) ??
+        cityRows.find((c) => normName(str(c.name)) === seat) ??
+        (seat.length >= 3
+          ? cityRows.find((c) => normName(str(c.name)).startsWith(seat))
+          : undefined);
+      const stateIds = strList(m.stateIds);
+      const rawNotes = Array.isArray(m.wikiNotes) ? (m.wikiNotes as Row[]) : [];
+      const notes = rawNotes.map((n) => ({
+        title: str(n.title),
+        note: str(n.note),
+        category: str(n.category),
+        url: str(n.url),
+      }));
+      const peoples = Array.isArray(m.ethnicMakeup)
+        ? (m.ethnicMakeup as Row[]).map((e) => str(e.name)).filter(Boolean)
+        : [];
+      return {
+        id,
+        name,
+        cityName: city ? str(city.name) : null,
+        vibe: VIBE_BY_CITY_CATEGORY[str(city?.category)] ?? "rising",
+        stateIds,
+        stateNames: stateIds
+          .map((s) => nameById.get(s))
+          .filter((x): x is string => x != null),
+        slug: slugById.get(stateIds[0] ?? "") ?? null,
+        lon: num(city?.lon),
+        lat: num(city?.lat),
+        description: str(m.description),
+        peoples,
+        notes,
+        wikiUrl: notes.find((n) => n.url)?.url || str(city?.wikiUrl) || null,
+      };
+    });
 
   const countBy = (rows: HubPlace[]) => {
     const m = new Map<string, number>();
@@ -128,6 +234,7 @@ export function loadTravelHubData(): TravelHubData {
   cache = {
     destinations,
     cities,
+    metros,
     categoryCounts: countBy(destinations),
     cityCategoryCounts: countBy(cities),
     topStates: [...byState.entries()]

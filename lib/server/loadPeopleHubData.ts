@@ -3,6 +3,7 @@ import path from "path";
 import { loadExplorerPageData } from "@/lib/server/loadExplorerPageData";
 import { loadCompareBundle } from "@/lib/compare/loadCompareBundle";
 import { getCategoryData } from "@/lib/compare/compareUtils";
+import { loadStateOverviews, type StateOverviewData } from "@/lib/server/stateOverview";
 
 type Row = Record<string, unknown>;
 
@@ -56,6 +57,7 @@ export type PeopleHubData = {
   languageCount: number;
   slugByStateId: Record<string, string>;
   stateIdByName: Record<string, string>;
+  stateOverviews: Record<string, StateOverviewData>;
   counts: { groups: number; states: number; languages: number; lgaAreas: number };
   /** The map has no homelands layer, so we say so rather than faking one. */
   homelandsLayerAvailable: false;
@@ -125,6 +127,7 @@ export function loadPeopleHubData(): PeopleHubData {
     languageCount: languageSet.size,
     slugByStateId: Object.fromEntries(states.map((s) => [s.id, s.slug])),
     stateIdByName: Object.fromEntries(states.map((s) => [s.name, s.id])),
+    stateOverviews: loadStateOverviews(),
     counts: {
       groups: groups.length,
       states: new Set(groups.flatMap((g) => g.stateIds)).size,
