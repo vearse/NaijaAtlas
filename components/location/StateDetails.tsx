@@ -126,6 +126,7 @@ export default function StateDetails({
 }: StateDetailsProps) {
   const activeLens = useMapStore((s) => s.activeLens);
   const setActiveLens = useMapStore((s) => s.setActiveLens);
+  const sectionMap = useMapStore((s) => s.sectionMap);
   const openWikiModal = useMapStore((s) => s.openWikiModal);
 
   const stateLgas = lgas
@@ -277,7 +278,7 @@ export default function StateDetails({
       <ShowLgasButton stateId={location.id} stateName={location.name} />
 
       <div className="flex items-center gap-1.5 mb-1" role="tablist" aria-label="Focus lens">
-        {LENS_IDS.map((l) => (
+        {!sectionMap && LENS_IDS.map((l) => (
           <button
             key={l}
             type="button"

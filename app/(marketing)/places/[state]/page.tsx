@@ -5,6 +5,7 @@ import {
   allStateSlugs,
   loadStateProfileData,
 } from "@/lib/server/loadPlacesPageData";
+import { loadStateLgaSvg } from "@/lib/server/stateLgaSvg";
 import { siteConfig } from "@/lib/seo/site";
 
 type PageProps = { params: Promise<{ state: string }> };
@@ -27,5 +28,7 @@ export default async function StatePlacesPage({ params }: PageProps) {
   const { state: slug } = await params;
   const profile = loadStateProfileData(slug);
   if (!profile) notFound();
-  return <StateProfileClient {...profile} />;
+  return (
+    <StateProfileClient {...profile} lgaSvg={loadStateLgaSvg(profile.state.id)} />
+  );
 }

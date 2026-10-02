@@ -251,7 +251,7 @@ export default function MetroCities({
                     {resolving === metro.name ? "Loading…" : "Read more"}
                   </button>
                   <Link
-                    href={`/explore?lens=tourist&states=${metro.stateIds.join(",")}`}
+                    href={`/travel/map?states=${metro.stateIds.join(",")}`}
                     className="inline-flex h-10 items-center rounded-xl border border-border-subtle bg-white px-4 text-label-md font-semibold text-text-secondary hover:text-primary"
                   >
                     On the map

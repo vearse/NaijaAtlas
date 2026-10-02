@@ -85,7 +85,7 @@ export default function SectionDoorsGrid({
           title="Plan a trip."
           body="From Lekki walkways to Obudu and Yankari — verified destinations on the tourist lens."
           stat="120+ DESTINATIONS"
-          href="/explore?lens=tourist"
+          href="/travel/map"
           cta="Explore routes"
           accent="text-amber-700"
         />
@@ -98,7 +98,7 @@ export default function SectionDoorsGrid({
           title="Find opportunities."
           body="Solid minerals, ports, and power infrastructure on the invest lens."
           stat="INVEST LENS"
-          href="/explore?lens=invest"
+          href="/economy/map"
           cta="View data"
           accent="text-teal-700"
         />
@@ -170,7 +170,7 @@ export default function SectionDoorsGrid({
           title="Test yourself."
           body="Geography challenges and civic literacy on the learn lens."
           stat="INTERACTIVE QUIZ"
-          href="/explore?lens=learn"
+          href="/places/map"
           cta='Play "Find the State"'
           accent="text-primary"
         />

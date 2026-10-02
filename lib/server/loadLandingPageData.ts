@@ -54,8 +54,8 @@ export function loadLandingPageData(root = process.cwd()): LandingPageData {
       exploreHref:
         card.exploreHref ??
         (culture?.stateIds[0]
-          ? `/explore?map=minimal&states=${culture.stateIds[0]}`
-          : "/explore"),
+          ? `/places/map?states=${culture.stateIds[0]}`
+          : "/places/map"),
     };
   });
 

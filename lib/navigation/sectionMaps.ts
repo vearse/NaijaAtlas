@@ -59,6 +59,7 @@ export const SECTION_MAPS: Record<SectionMapId, SectionMapMeta> = {
   },
   "civic/security": {
     id: "civic/security",
+    path: "/civic/map/security",
     title: "Security map",
     blurb:
       "Army divisions, naval commands and air force formations — the civic security view.",
@@ -79,15 +80,17 @@ export const SECTION_MAPS: Record<SectionMapId, SectionMapMeta> = {
   },
   "data/compare": {
     id: "data/compare",
+    path: "/places/map",
     title: "Compare map",
-    blurb: "See the states you picked on a single metric, side by side.",
-    hub: "data",
+    blurb: "Pick two or three states on the Places map and compare them side by side.",
+    hub: "land",
     thumb: { source: "states", highlight: ["NG-LA", "NG-KN", "NG-RI"] },
     cta: "Go to compare map",
     variant: "outline",
   },
   "land/physical": {
     id: "land/physical",
+    path: "/places/map",
     title: "Terrain & water map",
     blurb: "Relief, rivers, lakes, coastline and ecosystem bands.",
     hub: "land",
@@ -97,6 +100,7 @@ export const SECTION_MAPS: Record<SectionMapId, SectionMapMeta> = {
   },
   "land/zones": {
     id: "land/zones",
+    path: "/places/map",
     title: "Zones map",
     blurb: "The six geopolitical zones, one colour each.",
     hub: "land",
@@ -106,6 +110,7 @@ export const SECTION_MAPS: Record<SectionMapId, SectionMapMeta> = {
   },
   "travel/places": {
     id: "travel/places",
+    path: "/travel/map",
     title: "Destinations map",
     blurb: "Cities, parks, heritage sites and resort towns in one view.",
     hub: "travel",
@@ -115,6 +120,7 @@ export const SECTION_MAPS: Record<SectionMapId, SectionMapMeta> = {
   },
   "travel/directions": {
     id: "travel/directions",
+    path: "/travel/map",
     title: "Directions map",
     blurb: "Turn-by-turn routes between any two documented Nigerian cities.",
     hub: "travel",
@@ -124,6 +130,7 @@ export const SECTION_MAPS: Record<SectionMapId, SectionMapMeta> = {
   },
   "economy/resources": {
     id: "economy/resources",
+    path: "/economy/map",
     title: "Resources map",
     blurb: "Solid minerals, farming belts and export commodities by state.",
     hub: "economy",
@@ -133,6 +140,7 @@ export const SECTION_MAPS: Record<SectionMapId, SectionMapMeta> = {
   },
   "economy/power": {
     id: "economy/power",
+    path: "/economy/map",
     title: "Power & hydropower map",
     blurb:
       "Hydroelectric stations on the lakes layer, plus the eleven grid distribution companies.",
@@ -143,6 +151,7 @@ export const SECTION_MAPS: Record<SectionMapId, SectionMapMeta> = {
   },
   "economy/ports": {
     id: "economy/ports",
+    path: "/economy/map",
     title: "Ports & trade map",
     blurb: "Active seaports, river ports and the proposed deep-water terminals.",
     hub: "economy",
@@ -152,6 +161,7 @@ export const SECTION_MAPS: Record<SectionMapId, SectionMapMeta> = {
   },
   "people/groups": {
     id: "people/groups",
+    path: "/people/map",
     title: "Homelands map",
     blurb: "Where the documented cultural groups live, state by state.",
     hub: "people",
@@ -193,7 +203,6 @@ export function sectionMapHref(
       }
       break;
     case "civic/security":
-      params.set("lens", "learn");
       params.set("reveal", "proposed-army-divisions");
       params.set(
         "focus",
@@ -219,7 +228,6 @@ export function sectionMapHref(
       }
       break;
     case "land/physical":
-      params.set("lens", "learn");
       params.set(
         "focus",
         options.focus
@@ -236,21 +244,17 @@ export function sectionMapHref(
       );
       break;
     case "land/zones":
-      params.set("lens", "learn");
       if (options.regionId) params.set("regions", options.regionId);
       break;
     case "travel/places":
-      params.set("lens", "tourist");
       break;
     case "travel/directions":
-      params.set("lens", "tourist");
       if (options.directions) {
         params.set("dirFrom", options.directions.from);
         params.set("dirTo", options.directions.to);
       }
       break;
     case "economy/resources":
-      params.set("lens", "invest");
       params.set(
         "focus",
         options.focus
@@ -267,7 +271,6 @@ export function sectionMapHref(
       );
       break;
     case "economy/ports":
-      params.set("lens", "invest");
       params.set("reveal", "proposed-ports");
       params.set(
         "focus",
@@ -280,7 +283,6 @@ export function sectionMapHref(
       );
       break;
     case "economy/power":
-      params.set("lens", "invest");
       params.set("layers", "lakes");
       params.set(
         "focus",
@@ -293,7 +295,6 @@ export function sectionMapHref(
       );
       break;
     case "people/groups":
-      params.set("lens", "learn");
       if (options.stateIds?.length) {
         params.set("states", options.stateIds.join(","));
       }

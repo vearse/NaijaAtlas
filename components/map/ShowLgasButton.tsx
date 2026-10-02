@@ -38,8 +38,9 @@ export default function ShowLgasButton({
   compact = false,
   hideDrag = false,
 }: ShowLgasButtonProps) {
-  const { lgaVisibleStateIds, showLgas, hideLgas } = useMapStore();
+  const { lgaVisibleStateIds, showLgas, hideLgas, lgaUi } = useMapStore();
   const visible = lgaVisibleStateIds.has(stateId);
+  if (!lgaUi) return null;
 
   const lgaButton = compact ? (
     <button

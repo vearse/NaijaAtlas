@@ -234,7 +234,7 @@ export default function TopMetroCities({ metros, onRouteTo }: Props) {
               ) : null}
 
               <Link
-                href={`/explore?lens=tourist&states=${metro.stateIds.join(",")}`}
+                href={`/travel/map?states=${metro.stateIds.join(",")}`}
                 className="inline-flex h-10 items-center rounded-xl border border-border-subtle bg-surface-base px-4 text-label-md font-semibold text-text-secondary transition-colors hover:border-primary-container/50 hover:text-primary"
               >
                 On the map

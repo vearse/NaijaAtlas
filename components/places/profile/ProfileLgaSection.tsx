@@ -147,7 +147,7 @@ export default function ProfileLgaSection({
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Link
-                    href={`/explore?map=minimal&states=${stateId}&lgas=1&lga=${selected.id}`}
+                    href={`/places/map?states=${stateId}&lgas=1&lga=${selected.id}`}
                     className="inline-flex items-center gap-2 rounded-xl bg-primary-container px-4 py-2.5 text-label-md font-bold text-white transition-colors hover:bg-primary"
                   >
                     <IconMap className="h-4 w-4" />

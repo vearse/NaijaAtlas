@@ -245,6 +245,7 @@ export default function NigeriaOverview({
   presidential,
 }: NigeriaOverviewProps) {
   const openWikiModal = useMapStore((s) => s.openWikiModal);
+  const fullAtlas = !useMapStore((s) => s.sectionMap);
   const [openIndex, setOpenIndex] = useState(0);
   const { activeLens, matches } = useLensFilter();
   const totalLgas = states.reduce((n, s) => n + s.lgaCount, 0);
@@ -484,11 +485,13 @@ export default function NigeriaOverview({
         </div>
       </dl>
 
-      <OverviewMapModesCarousel
-        states={states}
-        compareBundle={compareBundle}
-        presidential={presidential}
-      />
+      {fullAtlas && (
+        <OverviewMapModesCarousel
+          states={states}
+          compareBundle={compareBundle}
+          presidential={presidential}
+        />
+      )}
 
       <div>
         <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">

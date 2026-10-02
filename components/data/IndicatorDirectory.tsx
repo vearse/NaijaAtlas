@@ -135,7 +135,7 @@ export default function IndicatorDirectory({
 
       <p className="mt-6 text-body-sm text-text-muted">
         Want the numbers side by side?{" "}
-        <Link href="/explore?map=ranking" className="font-semibold text-primary hover:underline">
+        <Link href="/data/map/rankings" className="font-semibold text-primary hover:underline">
           Open the rankings map
         </Link>{" "}
         or{" "}

@@ -158,7 +158,7 @@ export default function FestivalList({ festivals }: { festivals: Festival[] }) {
                 {resolving === festival.name ? "Loading…" : "Read more"}
               </button>
               <Link
-                href={`/explore?map=minimal&states=${festival.stateName}`}
+                href={`/people/map?states=${festival.stateName}`}
                 className="text-label-md font-semibold text-text-secondary transition-colors hover:text-text-primary"
               >
                 On map →

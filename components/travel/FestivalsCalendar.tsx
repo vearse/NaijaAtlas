@@ -109,7 +109,7 @@ export default function FestivalsCalendar({
                 |
               </span>
               <Link
-                href={`/explore?map=minimal&states=${festival.stateName}`}
+                href={`/travel/map?states=${festival.stateName}`}
                 className="inline-flex items-center gap-1 font-label-md text-label-md text-text-secondary transition-colors hover:text-text-primary"
               >
                 <IconMap className="w-4 h-4" />

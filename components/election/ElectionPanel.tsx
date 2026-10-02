@@ -130,7 +130,7 @@ export default function ElectionPanel({
   }
 
   return (
-    <aside className="w-full lg:w-[400px] xl:w-[420px] shrink-0 border-l border-border-subtle/80 bg-surface-card flex flex-col min-h-0 hidden lg:flex">
+    <aside className="w-full lg:w-[var(--panel-w,400px)] xl:w-[var(--panel-wx,420px)] shrink-0 border-l border-border-subtle/80 bg-surface-card flex flex-col min-h-0 hidden lg:flex">
       {inner}
     </aside>
   );

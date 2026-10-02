@@ -20,6 +20,16 @@ type Props = {
   tagline?: string;
 };
 
+const SECTION_MAP_HREF: Record<HubNavId, string> = {
+  land: "/places/map",
+  people: "/people/map",
+  travel: "/travel/map",
+  civic: "/civic/map/elections",
+  economy: "/economy/map",
+  data: "/data/map/rankings",
+  learn: "/explore",
+};
+
 export default function HubHeader({
   active,
   onSearchOpen,
@@ -142,7 +152,7 @@ export default function HubHeader({
               </Link>
             ))}
             <Link
-              href="/explore"
+              href={active ? SECTION_MAP_HREF[active] : "/explore"}
               className="mt-4 text-center bg-primary-container text-white py-3 rounded-lg text-label-md"
               onClick={() => setMenuOpen(false)}
             >

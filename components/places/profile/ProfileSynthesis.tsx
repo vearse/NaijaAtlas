@@ -97,7 +97,7 @@ export default function ProfileSynthesis({ insights, content, stateName, stateId
               <IconArrow className="h-3.5 w-3.5" />
             </Link>
             <Link
-              href={`/explore?map=minimal&states=${stateId}`}
+              href={`/places/map?states=${stateId}`}
               className="inline-flex items-center gap-1.5 rounded-lg border border-border-subtle px-3 py-1.5 text-xs font-semibold text-text-primary transition-colors hover:bg-slate-50"
             >
               <IconMap className="h-3.5 w-3.5" />

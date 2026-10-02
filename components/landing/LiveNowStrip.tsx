@@ -118,7 +118,7 @@ export default function LiveNowStrip() {
           </div>
         </div>
         <Link
-          href="/explore?lens=tourist"
+          href="/travel/map"
           className="inline-flex items-center justify-between w-full pt-2 text-label-md text-primary hover:text-primary-container font-semibold transition-colors"
         >
           <span>Discover festival guide</span>

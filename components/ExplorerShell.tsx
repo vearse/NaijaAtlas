@@ -50,6 +50,10 @@ import SectionMapHeader from "@/components/workspace/SectionMapHeader";
 import RankingsWorkspaceChrome from "@/components/workspace/RankingsWorkspaceChrome";
 import RankingsMapCallouts from "@/components/workspace/RankingsMapCallouts";
 import WorkspaceMapFooter from "@/components/workspace/WorkspaceMapFooter";
+import {
+  SECTION_PRESETS,
+  type SectionWorkspaceMode,
+} from "@/lib/map/sectionPresets";
 
 const NigeriaMap = dynamic(() => import("@/components/map/NigeriaMap"), {
   ssr: false,
@@ -61,7 +65,7 @@ const NigeriaMap = dynamic(() => import("@/components/map/NigeriaMap"), {
   ),
 });
 
-export type SectionWorkspaceMode = "rankings" | "elections";
+export type { SectionWorkspaceMode };
 
 interface ExplorerShellProps {
   sectionWorkspace?: SectionWorkspaceMode;
@@ -100,15 +104,29 @@ export default function ExplorerShell({
 }: ExplorerShellProps) {
   const isMobile = useIsMobile();
   const mapType = useMapStore((s) => s.mapType);
-  const rankingPeriod = useMapStore((s) => s.rankingPeriod);
+  const preset = sectionWorkspace ? SECTION_PRESETS[sectionWorkspace] : null;
 
+  // Runs before UrlSync's effect, so `layers=` / `focus=` in the URL still win.
   useLayoutEffect(() => {
-    if (sectionWorkspace === "rankings") {
-      useMapStore.getState().setMapType("ranking");
-    } else if (sectionWorkspace === "elections") {
-      useMapStore.getState().setMapType("election");
+    if (!preset) {
+      useMapStore.setState({ lgaUi: true, sectionMap: false });
+      return;
     }
-  }, [sectionWorkspace]);
+    const store = useMapStore.getState();
+    if (preset.id === "rankings") store.setMapType("ranking");
+    else if (preset.id === "elections") store.setMapType("election");
+    else if (store.mapType === "election" || store.mapType === "ranking") {
+      store.setMapType("minimal");
+    }
+    store.setActiveLens(preset.lens);
+    useMapStore.setState({
+      sectionMap: true,
+      lgaUi: !!preset.lgaAndCompare || preset.id === "elections",
+      activeOverlays: new Set(preset.defaultLayers),
+      lensOverlaysCustomized: false,
+    });
+    for (const group of preset.reveal ?? []) store.setOptInGroup(group, true);
+  }, [preset]);
   const isElectionMode =
     mapType === "election" || sectionWorkspace === "elections";
   const isRankingMode =
@@ -192,29 +210,8 @@ export default function ExplorerShell({
       }`}
     >
       <UrlSync defaultMapType={defaultMapType} />
-      {sectionWorkspace === "rankings" && (
-        <SectionMapHeader
-          accent="data"
-          badge="Data"
-          title="Rankings · Internally generated revenue (IGR)"
-          subtitle="Color every state by one NBS indicator"
-          backHref="/explore?map=ranking"
-          backLabel="Back to Data"
-          statusChip={`Showing IGR rankings (${rankingPeriod})`}
-        />
-      )}
-      {sectionWorkspace === "elections" && (
-        <SectionMapHeader
-          accent="civic"
-          badge="Civic"
-          title="Election map"
-          subtitle="2027 · Districts · Polling units"
-          backHref="/explore?map=election"
-          backLabel="Back to Civic"
-          statusChip="Senate districts · Polling units"
-        />
-      )}
-      {!sectionWorkspace && (
+      {preset && <SectionMapHeader preset={preset} />}
+      {!preset && (
       <header className="shrink-0 z-20 border-b border-border-subtle/80 bg-surface-card/90 backdrop-blur-xl shadow-sm relative">
         <div className="max-w-[1600px] mx-auto px-3 lg:px-6 py-2 lg:py-4">
           <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4 justify-between">
@@ -399,9 +396,19 @@ export default function ExplorerShell({
       </header>
       )}
 
-      <main className="flex-1 flex flex-col lg:flex-row min-h-0 max-w-[1600px] mx-auto w-full">
-        <div className="flex-1 relative p-2 lg:p-5 min-h-0 flex flex-col">
-          <div className="relative flex-1 min-h-0">
+      <main
+        className={`flex flex-col lg:flex-row min-h-0 mx-auto w-full ${
+          preset
+            ? "flex-none max-w-[1680px] h-[calc(100dvh-6.5rem)] overflow-hidden lg:gap-5 lg:p-5 [--panel-w:min(560px,42vw)] [--panel-wx:620px]"
+            : "flex-1 max-w-[1600px]"
+        }`}
+      >
+        <div className={`flex-1 relative min-h-0 flex flex-col ${preset ? "p-2 lg:p-0" : "p-2 lg:p-5"}`}>
+          <div
+            className={`relative flex-1 min-h-0 ${
+              preset ? "rounded-2xl overflow-hidden border border-slate-200 bg-[#dbe5ee]" : ""
+            }`}
+          >
             <NigeriaMap
               states={states}
               regions={regions}
@@ -410,7 +417,18 @@ export default function ExplorerShell({
               politicsLookups={politics.lookups}
               compareBundle={compareBundle}
             />
-            {!isSpecialMapMode && <MapBottomToolbar />}
+            {preset?.lgaAndCompare && (
+              <div className="absolute top-3 left-3 z-10 flex flex-wrap items-center gap-2">
+                <RegionSelect regions={regions} />
+                <CompareMenu />
+              </div>
+            )}
+            {!isSpecialMapMode && (!preset || preset.layers.length > 0) && (
+              <MapBottomToolbar
+                layers={preset?.layers}
+                basemapToggle={preset ? !!preset.basemapToggle : false}
+              />
+            )}
             <ElectionMapLegend lookups={politics.lookups} />
             {sectionWorkspace === "rankings" && (
               <RankingsMapCallouts

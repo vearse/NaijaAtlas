@@ -146,7 +146,7 @@ function PlacesSectionBar() {
           ))}
         </div>
         <Link
-          href="/explore"
+          href="/places/map"
           className="ml-auto hidden sm:inline-flex items-center gap-1.5 shrink-0 px-3.5 py-1.5 rounded-lg bg-[#043828] text-white text-label-md font-bold hover:bg-[#065a41]"
         >
           <IconMap />
@@ -675,7 +675,7 @@ function CompareStates({
           </div>
           <div className="flex items-center gap-2">
             <Link
-              href="/explore?lens=economy"
+              href="/economy/map"
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-border-subtle text-label-md font-bold text-text-secondary hover:bg-slate-50"
             >
               <IconMap />
@@ -1057,7 +1057,7 @@ function MapCta({ landFeatures }: { landFeatures: PlacesLandFeature[] }) {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
-                href="/explore"
+                href="/places/map"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary-container text-white text-label-md font-bold hover:bg-[#006d40]"
               >
                 <IconExplore />
@@ -1147,7 +1147,7 @@ export default function PlacesHubClient(props: PlacesDirectoryData) {
 
   return (
     <HubShell>
-      <HubHeader primaryCta={{ label: "Explore map", href: "/explore" }} />
+      <HubHeader primaryCta={{ label: "Places map", href: "/places/map" }} />
       <PlacesSectionBar />
 
       <PlacesHero

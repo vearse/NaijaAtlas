@@ -10,6 +10,7 @@ import PeopleSpotlight from "@/components/landing/PeopleSpotlight";
 import MetricsBand from "@/components/landing/MetricsBand";
 import PollingFinderCta from "@/components/landing/PollingFinderCta";
 import OpenCivicSources from "@/components/landing/OpenCivicSources";
+import SponsorsBand from "@/components/landing/SponsorsBand";
 import LandingFooter from "@/components/landing/LandingFooter";
 import LandingSearch from "@/components/landing/LandingSearch";
 import { useLandingSpotlight } from "@/components/landing/useLandingSpotlight";
@@ -63,6 +64,7 @@ export default function LandingPageClient(props: LandingPageData) {
         />
         <OpenCivicSources />
         <PollingFinderCta />
+        <SponsorsBand />
       </main>
 
       <LandingFooter />

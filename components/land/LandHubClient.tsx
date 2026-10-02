@@ -80,7 +80,7 @@ export default function LandHubClient(data: LandHubData) {
         <HubSection id="map" eyebrow="Map workspaces" title="Take it to the map">
           <div className="grid gap-5 md:grid-cols-2">
             <MapWorkspaceCard map="land/physical" kicker="Relief, rivers, coast" />
-            <MapWorkspaceCard map="land/zones" kicker="Six zones" />
+            <MapWorkspaceCard map="data/compare" kicker="States & LGAs" />
           </div>
         </HubSection>
 

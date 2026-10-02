@@ -1012,7 +1012,12 @@ export default function NigeriaMap({
       setTooltip(null);
     };
 
+    // Section workspaces size the map card with CSS, after MapLibre measures it.
+    const resizeObserver = new ResizeObserver(() => map.resize());
+    resizeObserver.observe(containerRef.current);
+
     map.on("load", () => {
+      map.resize();
       map.fitBounds(NIGERIA_BOUNDS, { padding: 48, duration: 0 });
 
       map.addSource(GEO_SOURCES.neighbors, geoSourceUrl("/geo/neighbors.geojson"));
@@ -1115,6 +1120,7 @@ export default function NigeriaMap({
       map.off("touchend", onTouchEnd);
       map.off("touchmove", onTouchMove);
       map.off("touchcancel", onTouchEnd);
+      resizeObserver.disconnect();
       map.remove();
       mapRef.current = null;
       hoverRef.current = null;

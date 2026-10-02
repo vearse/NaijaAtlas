@@ -134,8 +134,16 @@ function LayersStackIcon() {
   );
 }
 
-export default function MapBottomToolbar() {
+export default function MapBottomToolbar({
+  layers = OVERLAY_LAYER_IDS,
+  basemapToggle = false,
+}: {
+  layers?: OverlayLayerId[];
+  basemapToggle?: boolean;
+} = {}) {
   const [layersOpen, setLayersOpen] = useState(false);
+  const mapType = useMapStore((s) => s.mapType);
+  const setMapType = useMapStore((s) => s.setMapType);
   const activeOverlays = useMapStore((s) => s.activeOverlays);
   const toggleOverlay = useMapStore((s) => s.toggleOverlay);
   const clearAllOverlays = useMapStore((s) => s.clearAllOverlays);
@@ -144,7 +152,7 @@ export default function MapBottomToolbar() {
 
   const layerGrid = (
     <div className="grid grid-cols-2 gap-1 w-[14rem]">
-      {OVERLAY_LAYER_IDS.map((id) => {
+      {layers.map((id) => {
         const { label, short } = OVERLAY_LAYER_LABELS[id];
         const on = activeOverlays.has(id);
         return (
@@ -216,6 +224,28 @@ export default function MapBottomToolbar() {
               </div>
             </div>
             {layerGrid}
+            {basemapToggle && (
+              <div className="mt-2 border-t border-border-subtle/80 pt-2">
+                <p className="px-1 pb-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+                  Basemap
+                </p>
+                <div className="grid grid-cols-2 gap-1 rounded-lg bg-slate-100 p-0.5 text-[11px] font-semibold">
+                  {(["minimal", "osm"] as const).map((id) => (
+                    <button
+                      key={id}
+                      type="button"
+                      onClick={() => setMapType(id)}
+                      aria-pressed={mapType === id}
+                      className={`rounded-md py-1.5 ${
+                        mapType === id ? "bg-white text-slate-900 shadow-sm" : "text-slate-500"
+                      }`}
+                    >
+                      {id === "minimal" ? "Minimal" : "Street"}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </>
         )}
       </div>

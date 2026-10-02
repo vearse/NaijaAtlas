@@ -6,6 +6,8 @@ import HubShell from "@/components/hub/HubShell";
 import HubHeader from "@/components/hub/HubHeader";
 import HubFooter from "@/components/hub/HubFooter";
 import StatePickerMiniMap from "@/components/places/StatePickerMiniMap";
+import StateLgaSvg from "@/components/places/StateLgaSvg";
+import type { StateLgaSvg as StateLgaSvgData } from "@/lib/server/stateLgaSvg";
 import StateOverviewPanel from "@/components/places/StateOverviewPanel";
 import ProfileSynthesis from "@/components/places/profile/ProfileSynthesis";
 import ProfileLgaSection from "@/components/places/profile/ProfileLgaSection";
@@ -29,7 +31,7 @@ import {
   IconWater,
 } from "@/components/landing/icons";
 
-type Props = StateProfileData;
+type Props = StateProfileData & { lgaSvg?: StateLgaSvgData | null };
 
 const TABS = [
   { id: "overview", label: "Overview" },
@@ -75,9 +77,10 @@ export default function StateProfileClient(props: Props) {
   const mapLinks = useMemo(
     () => [
       { label: "Election map", href: `/civic/map/elections?states=${sid}` },
-      { label: "Travel map", href: `/explore?lens=tourist&states=${sid}` },
+      { label: "Travel map", href: `/travel/map?states=${sid}` },
       { label: "Rankings map", href: `/data/map/rankings` },
-      { label: "Physical map", href: `/explore?map=minimal&states=${sid}` },
+      { label: "Places & Land map", href: `/places/map?states=${sid}&lgas=1` },
+      { label: "Economy map", href: `/economy/map?states=${sid}` },
     ],
     [sid]
   );
@@ -123,7 +126,7 @@ export default function StateProfileClient(props: Props) {
       <HubHeader
         primaryCta={{
           label: "Open on map",
-          href: `/explore?map=minimal&states=${sid}`,
+          href: `/places/map?states=${sid}`,
         }}
       />
 
@@ -223,7 +226,7 @@ export default function StateProfileClient(props: Props) {
                       <IconArrow />
                     </Link>
                     <Link
-                      href={`/explore?map=minimal&states=${sid}`}
+                      href={`/places/map?states=${sid}`}
                       className="inline-flex items-center gap-2 rounded-xl bg-primary-container px-5 py-2.5 text-label-md font-bold text-white transition-colors hover:bg-primary"
                     >
                       <IconMap />
@@ -232,11 +235,20 @@ export default function StateProfileClient(props: Props) {
                   </div>
                 </div>
                 <div className="lg:col-span-5">
-                  <StatePickerMiniMap
-                    selectedStateId={state.id}
-                    slugByStateId={props.slugByStateId}
-                    className="aspect-[4/3] min-h-[240px] w-full overflow-hidden rounded-2xl border border-border-subtle"
-                  />
+                  {props.lgaSvg ? (
+                    <StateLgaSvg
+                      data={props.lgaSvg}
+                      stateId={state.id}
+                      stateName={state.name}
+                      className="aspect-[4/3] min-h-[240px] w-full overflow-hidden rounded-2xl border border-border-subtle"
+                    />
+                  ) : (
+                    <StatePickerMiniMap
+                      selectedStateId={state.id}
+                      slugByStateId={props.slugByStateId}
+                      className="aspect-[4/3] min-h-[240px] w-full overflow-hidden rounded-2xl border border-border-subtle"
+                    />
+                  )}
                 </div>
               </div>
             </div>

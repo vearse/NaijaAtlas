@@ -41,7 +41,7 @@ export default function ProfileLandSection({
       title="Land & waters"
       action={
         <Link
-          href={`/explore?map=minimal&states=${stateId}`}
+          href={`/places/map?states=${stateId}`}
           className="inline-flex items-center gap-2 rounded-xl border border-sky-200 bg-surface-card px-4 py-2.5 text-label-md font-bold text-text-primary transition-colors hover:border-sky-400"
         >
           <IconMap className="h-4 w-4" />

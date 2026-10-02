@@ -22,6 +22,8 @@ export default function ViewLgasOnMapButton({
   const active = views.some((v) => v.id === plan.id);
   const atCap = views.length >= MAX_METRO_MAP_VIEWS && !active;
   const disabled = plan.stateIds.length === 0 || atCap;
+  const lgaUi = useMapStore((s) => s.lgaUi);
+  if (!lgaUi) return null;
 
   return (
     <button

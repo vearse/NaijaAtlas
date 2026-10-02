@@ -10,10 +10,10 @@ export default function WorkspaceMapFooter() {
         </div>
         <div className="flex flex-wrap gap-4">
           <Link href="/places" className="hover:text-primary">Places</Link>
-          <Link href="/explore?map=ranking" className="hover:text-primary">
+          <Link href="/data/map/rankings" className="hover:text-primary">
             Data methodology
           </Link>
-          <Link href="/explore?map=election" className="hover:text-primary">
+          <Link href="/civic/map/elections" className="hover:text-primary">
             INEC sources
           </Link>
         </div>

@@ -172,7 +172,6 @@ export default function DataHubClient(data: DataHubData) {
         >
           <div className="grid gap-5 md:grid-cols-2">
             <MapWorkspaceCard map="data/rankings" kicker="Choropleth by indicator" />
-            <MapWorkspaceCard map="data/compare" kicker="Side-by-side states" />
           </div>
         </HubSection>
 

@@ -386,7 +386,7 @@ export default function LocationPanel({
   }
 
   return (
-    <aside className="w-full lg:w-[400px] xl:w-[440px] shrink-0 bg-surface-card border-l border-border-subtle/80 flex flex-col h-full shadow-xl lg:shadow-none">
+    <aside className="w-full lg:w-[var(--panel-w,400px)] xl:w-[var(--panel-wx,440px)] shrink-0 bg-surface-card border-l border-border-subtle/80 flex flex-col h-full shadow-xl lg:shadow-none">
       {inner}
       {!isMobile && showStateCompare && (
         <DesktopCompareModal

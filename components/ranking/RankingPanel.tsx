@@ -391,7 +391,7 @@ export default function RankingPanel({
   const asideClass =
     variant === "workspace"
       ? "w-full flex flex-col min-h-0 flex-1 border-0"
-      : "w-full lg:w-[400px] xl:w-[420px] shrink-0 border-l border-border-subtle/80 bg-surface-card flex flex-col min-h-0 hidden lg:flex";
+      : "w-full lg:w-[var(--panel-w,400px)] xl:w-[var(--panel-wx,420px)] shrink-0 border-l border-border-subtle/80 bg-surface-card flex flex-col min-h-0 hidden lg:flex";
 
   return <aside className={asideClass}>{inner}</aside>;
 }

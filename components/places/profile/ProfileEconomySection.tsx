@@ -53,7 +53,7 @@ export default function ProfileEconomySection({ insights, stateName, stateId }: 
       title="Economy & trade"
       action={
         <Link
-          href={`/explore?lens=invest&states=${stateId}`}
+          href={`/economy/map?states=${stateId}`}
           className="inline-flex items-center gap-2 rounded-xl border border-emerald-200 bg-surface-card px-4 py-2.5 text-label-md font-bold text-text-primary transition-colors hover:border-emerald-400"
         >
           Open economy map

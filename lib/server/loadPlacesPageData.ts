@@ -325,7 +325,7 @@ function buildLandFeatures(root: string): PlacesLandFeature[] {
         summary: row.summary,
         detail: where,
         tone: "sky" as const,
-        exploreHref: "/explore?lens=waterways",
+        exploreHref: "/places/map?layers=waterways",
       };
     }
     if ("areaNote" in row) {
@@ -338,7 +338,7 @@ function buildLandFeatures(root: string): PlacesLandFeature[] {
         summary: row.summary,
         detail: where,
         tone: "sky" as const,
-        exploreHref: "/explore?lens=waterways",
+        exploreHref: "/places/map?layers=waterways",
       };
     }
     const landform = row as LandformRow;
@@ -350,7 +350,7 @@ function buildLandFeatures(root: string): PlacesLandFeature[] {
       summary: row.summary,
       detail: where,
       tone: "lime" as const,
-      exploreHref: "/explore?lens=terrain",
+      exploreHref: "/places/map?layers=landforms",
     };
   });
 }
@@ -413,7 +413,7 @@ function stateDossier(state: PlacesDirectoryStateRow): PlacesDossier {
       { label: "People & languages", icon: "group", href: "/people", tone: "bg-amber-50 text-[#d97706]" },
       { label: "Economy & fiscal output", icon: "finance", href: "/economy", tone: "bg-lime-50 text-[#4d7c0f]" },
     ],
-    mapHref: `/explore?map=minimal&states=${state.id}`,
+    mapHref: `/places/map?states=${state.id}`,
     profileHref: `/places/${state.slug}`,
   };
 }
@@ -456,7 +456,7 @@ function buildSpotlight(
       ).toLocaleString("en-NG")} km² of territory.`,
       detail: `Capital: ${state.capital ?? "—"}`,
       href: `/places/${state.slug}`,
-      exploreHref: `/explore?map=minimal&states=${state.id}`,
+      exploreHref: `/places/map?states=${state.id}`,
       dossier: stateDossier(state),
     });
   }
@@ -473,7 +473,7 @@ function buildSpotlight(
       summary: metro.description,
       detail: `${metro.memberIds?.length ?? 0} component LGAs`,
       href: null,
-      exploreHref: `/explore?map=minimal&states=${hostStates[0]?.id ?? ""}`,
+      exploreHref: `/places/map?states=${hostStates[0]?.id ?? ""}`,
       dossier: {
         category: "METRO",
         title: metro.name,
@@ -517,7 +517,7 @@ function buildSpotlight(
           { label: "Ports & fiscal output", icon: "finance", href: "/economy", tone: "bg-sky-50 text-[#0284c7]" },
           { label: "Demographics & languages", icon: "group", href: "/people", tone: "bg-amber-50 text-[#d97706]" },
         ],
-        mapHref: `/explore?map=minimal&states=${hostStates[0]?.id ?? ""}`,
+        mapHref: `/places/map?states=${hostStates[0]?.id ?? ""}`,
         profileHref: hostStates[0] ? `/places/${hostStates[0].slug}` : null,
       },
     });
@@ -543,7 +543,7 @@ function buildSpotlight(
       } terrain.`,
       detail: `Seat: ${lga.name}`,
       href: host ? `/places/${host.slug}` : null,
-      exploreHref: `/explore?map=minimal&states=${lga.parentId}&lgas=1&lga=${lga.id}`,
+      exploreHref: `/places/map?states=${lga.parentId}&lgas=1&lga=${lga.id}`,
     });
   }
 
@@ -734,7 +734,7 @@ function buildBrowseRows(
       href: `/places/${state.slug}`,
       actionLabel: "Dossier",
       tone: "primary",
-      exploreHref: `/explore?map=minimal&states=${state.id}`,
+      exploreHref: `/places/map?states=${state.id}`,
     });
   }
 
@@ -783,7 +783,7 @@ function buildBrowseRows(
       href: null,
       actionLabel: "Inspect",
       tone: "sky",
-      exploreHref: `/explore?map=minimal&states=${lga.parentId}&lgas=1&lga=${lga.id}`,
+      exploreHref: `/places/map?states=${lga.parentId}&lgas=1&lga=${lga.id}`,
     });
   }
 

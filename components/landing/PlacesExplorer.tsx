@@ -165,7 +165,7 @@ export default function PlacesExplorer({
                   </span>
                   <div className="flex items-center gap-3 shrink-0">
                     <Link
-                      href={`/explore?map=minimal&states=${selected.id}`}
+                      href={`/places/map?states=${selected.id}`}
                       className="text-label-md text-text-secondary font-bold hover:underline flex items-center gap-1"
                     >
                       <span>Map</span>
