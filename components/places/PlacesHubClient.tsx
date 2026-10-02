@@ -15,6 +15,7 @@ import type {
   PlacesSpotlightItem,
   PlacesZoneCard,
 } from "@/lib/server/loadPlacesPageData";
+import NigeriaStateMap from "@/components/places/NigeriaStateMap";
 import {
   formatCompareValue,
   formatNumber,
@@ -184,6 +185,14 @@ function PlacesHero({
   categoryCounts: Record<BrowseMode, number>;
 }) {
   const popular = ["Lagos", "Kano", "Rivers", "Borno", "Osun"];
+  const mapStates = data.allStates.map((s) => ({
+    id: s.id,
+    name: s.name,
+    slug: s.slug,
+    regionName: s.regionName,
+    capital: s.capital,
+    population: s.population,
+  }));
 
   return (
     <section className="relative overflow-hidden bg-surface-canvas">
@@ -191,97 +200,149 @@ function PlacesHero({
         className="absolute inset-0 landing-topo-grid opacity-60 pointer-events-none"
         aria-hidden
       />
-      <div className="relative max-w-7xl mx-auto px-4 md:px-8 pt-14 pb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-lime-300 text-[#1a2e05] text-label-caps font-bold tracking-widest uppercase border border-lime-400">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#1a2e05] landing-pulse-radar" />
-          Live directory
-        </div>
-        <h1 className="font-landing-display text-display-lg text-text-primary mt-4 max-w-3xl">
-          Where in Nigeria do you want to explore?
-        </h1>
-        <p className="text-body-lg text-text-secondary mt-3 max-w-2xl">
-          Every state, LGA, metropolis and geomorphic feature in one place —
-          capitals, populations, land area, revenue and governance, straight from
-          the atlas data.
-        </p>
-
-        {/* Search */}
-        <form
-          className="mt-7 max-w-2xl"
-          onSubmit={(e) => {
-            e.preventDefault();
-            document
-              .getElementById("browse")
-              ?.scrollIntoView({ behavior: "smooth", block: "start" });
-          }}
-        >
-          <div className="flex items-center gap-3 bg-surface-card rounded-2xl border border-border-subtle shadow-sm focus-within:border-primary-container focus-within:ring-4 focus-within:ring-emerald-100 px-4 py-3">
-            <IconSearch className="w-5 h-5 text-slate-400 shrink-0" />
-            <input
-              type="search"
-              value={query}
-              onChange={(e) => onQueryChange(e.target.value)}
-              placeholder="Search a state, LGA, metropolis or land feature…"
-              aria-label="Search the Places directory"
-              className="flex-1 bg-transparent text-body-md text-text-primary placeholder:text-slate-400 outline-none"
-            />
-            <kbd className="hidden sm:block text-label-caps text-slate-400 border border-border-subtle rounded-md px-1.5 py-0.5">
-              ⌘K
-            </kbd>
-            <button
-              type="submit"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-primary-container text-white text-label-md font-bold hover:bg-[#006d40] shrink-0"
-            >
-              <span>Search</span>
-              <IconArrow />
-            </button>
+      <div className="relative max-w-7xl mx-auto px-4 md:px-8 pt-14 pb-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div className="lg:col-span-7">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-lime-300 text-[#1a2e05] text-label-caps font-bold tracking-widest uppercase border border-lime-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1a2e05] landing-pulse-radar" />
+            Live directory
           </div>
-        </form>
+          <h1 className="font-landing-display text-display-lg text-text-primary mt-4">
+            Where in Nigeria do you want to explore?
+          </h1>
+          <p className="text-body-lg text-text-secondary mt-3 max-w-2xl">
+            Every state, LGA, metropolis and geomorphic feature in one place —
+            capitals, populations, land area, revenue and governance, straight from
+            the atlas data.
+          </p>
 
-        <div className="mt-3 flex flex-wrap items-center gap-2 text-body-sm text-text-muted">
-          <span className="text-label-caps font-semibold">Popular:</span>
-          {popular.map((name) => (
-            <button
-              key={name}
-              type="button"
-              onClick={() => onQueryChange(name)}
-              className="px-2.5 py-1 rounded-full bg-surface-card border border-border-subtle hover:border-primary-container hover:text-primary font-semibold transition-colors"
+          {/* Search */}
+          <form
+            className="mt-7 max-w-2xl"
+            onSubmit={(e) => {
+              e.preventDefault();
+              document
+                .getElementById("browse")
+                ?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+          >
+            <div className="flex items-center gap-3 bg-surface-card rounded-2xl border border-border-subtle shadow-sm focus-within:border-primary-container focus-within:ring-4 focus-within:ring-emerald-100 px-4 py-3">
+              <IconSearch className="w-5 h-5 text-slate-400 shrink-0" />
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => onQueryChange(e.target.value)}
+                placeholder="Search a state, LGA, metropolis or land feature…"
+                aria-label="Search the Places directory"
+                className="flex-1 bg-transparent text-body-md text-text-primary placeholder:text-slate-400 outline-none"
+              />
+              <kbd className="hidden sm:block text-label-caps text-slate-400 border border-border-subtle rounded-md px-1.5 py-0.5">
+                ⌘K
+              </kbd>
+              <button
+                type="submit"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-primary-container text-white text-label-md font-bold hover:bg-[#006d40] shrink-0"
+              >
+                <span>Search</span>
+                <IconArrow />
+              </button>
+            </div>
+          </form>
+
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-body-sm text-text-muted">
+            <span className="text-label-caps font-semibold">Popular:</span>
+            {popular.map((name) => (
+              <button
+                key={name}
+                type="button"
+                onClick={() => onQueryChange(name)}
+                className="px-2.5 py-1 rounded-full bg-surface-card border border-border-subtle hover:border-primary-container hover:text-primary font-semibold transition-colors"
+              >
+                {name}
+              </button>
+            ))}
+          </div>
+
+          {/* Browse-by segmented control */}
+          <div className="mt-7">
+            <span className="text-label-caps text-text-muted font-bold tracking-widest uppercase block mb-2">
+              Browse by
+            </span>
+            <div
+              role="tablist"
+              aria-label="Browse by category"
+              className="inline-flex flex-wrap gap-1 p-1 rounded-xl bg-slate-100 border border-border-subtle"
             >
-              {name}
-            </button>
-          ))}
+              {BROWSE_MODES.map((m) => {
+                const count = categoryCounts[m.id];
+                return (
+                  <button
+                    key={m.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={mode === m.id}
+                    onClick={() => onModeChange(m.id)}
+                    className={`px-3.5 py-1.5 rounded-lg text-label-md transition-all ${
+                      mode === m.id
+                        ? "bg-[#043828] text-white font-bold shadow-sm"
+                        : "text-text-secondary font-semibold hover:text-text-primary"
+                    }`}
+                  >
+                    {m.label}
+                    <span className="ml-1.5 opacity-70 tabular-nums">{count}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
-        {/* Browse-by segmented control */}
-        <div className="mt-7">
-          <span className="text-label-caps text-text-muted font-bold tracking-widest uppercase block mb-2">
-            Browse by
-          </span>
-          <div
-            role="tablist"
-            aria-label="Browse by category"
-            className="inline-flex flex-wrap gap-1 p-1 rounded-xl bg-slate-100 border border-border-subtle"
-          >
-            {BROWSE_MODES.map((m) => {
-              const count = categoryCounts[m.id];
-              return (
-                <button
-                  key={m.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={mode === m.id}
-                  onClick={() => onModeChange(m.id)}
-                  className={`px-3.5 py-1.5 rounded-lg text-label-md transition-all ${
-                    mode === m.id
-                      ? "bg-[#043828] text-white font-bold shadow-sm"
-                      : "text-text-secondary font-semibold hover:text-text-primary"
-                  }`}
+        <div className="lg:col-span-5">
+          <NigeriaStateMap states={mapStates} className="pb-12" />
+          <div className="-mt-6 rounded-2xl border border-border-subtle bg-surface-card shadow-sm p-5">
+            <div className="flex items-baseline justify-between gap-3">
+              <h2 className="font-landing-display text-headline-md text-text-primary">
+                Nigeria in numbers
+              </h2>
+              <span className="text-label-caps text-text-muted font-bold uppercase">
+                {data.country.officialName}
+              </span>
+            </div>
+            <p className="text-body-sm text-text-secondary mt-1">
+              {[
+                data.country.capital ? `Capital ${data.country.capital}` : null,
+                data.country.independence
+                  ? `Independent since ${data.country.independence}`
+                  : null,
+                data.country.governmentType,
+                data.country.currency,
+              ]
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+            <dl className="mt-4 grid grid-cols-2 gap-3">
+              {data.country.stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className={`rounded-xl border border-border-subtle border-l-4 ${TONE_RING[stat.tone]} bg-slate-50/60 px-3 py-2.5`}
                 >
-                  {m.label}
-                  <span className="ml-1.5 opacity-70 tabular-nums">{count}</span>
-                </button>
-              );
-            })}
+                  <dt className="text-label-caps text-text-muted font-bold uppercase">
+                    {stat.label}
+                  </dt>
+                  <dd className="font-landing-display text-headline-sm text-text-primary tabular-nums">
+                    {stat.value}
+                  </dd>
+                  <dd className="text-[11px] text-text-muted">{stat.note}</dd>
+                </div>
+              ))}
+            </dl>
+            {data.country.languages && (
+              <p className="mt-4 text-body-sm text-text-secondary">
+                <span className="text-label-caps text-text-muted font-bold uppercase mr-1.5">
+                  Languages
+                </span>
+                {data.country.languages}
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -365,7 +426,7 @@ function SpotlightCard({
   );
 }
 
-function DossierDrawer({
+function SpotlightPanel({
   item,
   onClose,
 }: {
@@ -376,16 +437,16 @@ function DossierDrawer({
 
   return (
     <aside
-      aria-label={`${item.name} dossier`}
+      aria-label={`${item.name} profile snapshot`}
       className="rounded-2xl border border-border-subtle bg-surface-card shadow-xl p-6 flex flex-col"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <span className="text-label-caps text-primary font-bold tracking-widest uppercase">
-            {item.category} dossier
+            {item.category} snapshot
           </span>
           <h3 className="font-landing-display text-headline-md text-text-primary truncate">
-            {dossier?.title ?? `${item.name} dossier`}
+            {dossier?.title ?? `${item.name} at a glance`}
           </h3>
           {dossier && (
             <p className="text-body-sm text-text-muted">{dossier.subtitle}</p>
@@ -394,7 +455,7 @@ function DossierDrawer({
         <button
           type="button"
           onClick={onClose}
-          aria-label="Close dossier"
+          aria-label="Close snapshot"
           className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 shrink-0"
         >
           <IconClose className="w-5 h-5" />
@@ -473,7 +534,7 @@ function DiscoverToday({ items }: { items: PlacesSpotlightItem[] }) {
             Start anywhere in the country
           </h2>
           <p className="text-body-md text-text-secondary mt-1 max-w-2xl">
-            Eight fresh entry points from the atlas — open one to read its dossier,
+            Eight fresh entry points from the atlas — open one to read its snapshot,
             or follow it straight into the explorer.
           </p>
         </div>
@@ -502,11 +563,11 @@ function DiscoverToday({ items }: { items: PlacesSpotlightItem[] }) {
         <div className="lg:col-span-5">
           {open ? (
             <div className="lg:sticky lg:top-32">
-              <DossierDrawer item={open} onClose={() => setOpenId(null)} />
+              <SpotlightPanel item={open} onClose={() => setOpenId(null)} />
             </div>
           ) : (
             <div className="lg:sticky lg:top-32 rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-6 text-body-sm text-text-muted">
-              Open a state, metro or LGA card to read its dossier here.
+              Open a state, metro or LGA card to read its snapshot here.
             </div>
           )}
         </div>
@@ -572,7 +633,7 @@ function MetricRow({
               <p className="font-landing-display text-headline-sm text-text-primary tabular-nums leading-tight">
                 {formatCompareValue(value, metric.format)}
                 {metric.unit && (
-                  <span className="text-[11px] text-slate-400 font-sans">
+                  <span className="ml-0.5 text-[11px] text-slate-400 font-sans">
                     {metric.unit}
                   </span>
                 )}
@@ -596,6 +657,12 @@ function MetricRow({
   );
 }
 
+const COMPARE_GROUP_ICON: Record<string, typeof IconTrend> = {
+  territory: IconMap,
+  people: IconUsers,
+  fiscal: IconTrend,
+};
+
 function CompareGroup({
   group,
   ids,
@@ -605,15 +672,12 @@ function CompareGroup({
   ids: string[];
   names: Record<string, string>;
 }) {
+  const Icon = COMPARE_GROUP_ICON[group.id] ?? IconTrend;
   return (
     <div className="rounded-2xl border border-border-subtle bg-surface-card shadow-sm overflow-hidden">
       <div className="flex items-center gap-2 px-4 sm:px-5 py-3 border-b border-border-subtle bg-slate-50">
         <span className="text-primary">
-          {group.icon === "family_restroom" ? (
-            <IconUsers />
-          ) : (
-            <IconTrend />
-          )}
+          <Icon />
         </span>
         <h3 className="font-landing-display text-headline-sm text-text-primary">
           {group.label}
@@ -632,12 +696,33 @@ function CompareStates({
   groups,
   states,
   defaultCompare,
+  initialCompare,
 }: {
   groups: PlacesCompareGroup[];
   states: PlacesDirectoryData["allStates"];
   defaultCompare: [string, string, string];
+  initialCompare?: string[];
 }) {
-  const [ids, setIds] = useState<string[]>([...defaultCompare]);
+  const starting = useMemo<[string, string, string]>(() => {
+    const known = new Set(states.map((s) => s.id));
+    const wanted = (initialCompare ?? defaultCompare).filter((id) =>
+      known.has(id)
+    );
+    if (wanted.length === 3) return wanted as [string, string, string];
+    const fill = defaultCompare.filter((id) => !wanted.includes(id));
+    return [
+      wanted[0] ?? fill[0],
+      wanted[1] ?? fill[1],
+      wanted[2] ?? fill[2],
+    ] as [string, string, string];
+  }, [defaultCompare, initialCompare, states]);
+
+  const [ids, setIds] = useState<string[]>(starting);
+
+  useEffect(() => {
+    setIds(starting);
+  }, [starting]);
+
   const names = useMemo(
     () => Object.fromEntries(states.map((s) => [s.id, s.name])),
     [states]
@@ -747,8 +832,10 @@ function CompareStates({
 
         <p className="mt-4 text-body-sm text-text-muted">
           Figures come from the atlas general dataset, 2023 population estimates
-          and 2024 internally generated revenue. GDP is not published per state, so
-          revenue stands in for fiscal weight.
+          and 2024 internally generated revenue. Land area is UN SALB, wards and
+          polling units are INEC delimitation, and per-capita and per-LGA revenue
+          are derived from those same published totals. State GDP is not published
+          per state, so revenue stands in for fiscal weight.
         </p>
       </div>
     </section>
@@ -1108,6 +1195,20 @@ export default function PlacesHubClient(props: PlacesDirectoryData) {
   const [mode, setMode] = useState<BrowseMode>("states");
   const [query, setQuery] = useState("");
 
+  /* `?compare=NG-LA,NG-KN` seeds the matrix from a state profile link. Read
+     after mount so the prerendered page stays static and hydration matches. */
+  const [compareSeed, setCompareSeed] = useState<string[] | undefined>();
+  useEffect(() => {
+    const raw = new URLSearchParams(window.location.search).get("compare");
+    if (!raw) return;
+    setCompareSeed(
+      raw
+        .split(",")
+        .map((id) => id.trim().toUpperCase())
+        .filter(Boolean)
+    );
+  }, []);
+
   const filteredSpotlight = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return props.spotlight;
@@ -1165,6 +1266,7 @@ export default function PlacesHubClient(props: PlacesDirectoryData) {
         groups={props.compareGroups}
         states={allStates}
         defaultCompare={props.defaultCompare}
+        initialCompare={compareSeed}
       />
 
       <BrowseDirectory rows={filteredBrowse} />

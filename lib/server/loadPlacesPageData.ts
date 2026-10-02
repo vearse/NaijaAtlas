@@ -8,6 +8,9 @@ import { loadStateProfileInsights } from "@/lib/server/stateProfileInsights";
 import type { StateProfileInsights } from "@/lib/server/stateProfileInsights";
 import { loadStateFestivals } from "@/lib/server/loadFestivalsCalendar";
 import type { Festival } from "@/lib/server/loadFestivalsCalendar";
+import { loadCompareBundle } from "@/lib/compare/loadCompareBundle";
+import { getCategoryData } from "@/lib/compare/compareUtils";
+import { formatPopulation } from "@/lib/places/formatters";
 import { loadStateOverviews, type StateOverviewData } from "@/lib/server/stateOverview";
 import type { LandingStateCard } from "@/lib/landing/landingPageTypes";
 import type { LgaLocation, MetroGroup, StateLocation } from "@/types/location";
@@ -39,7 +42,7 @@ export type PlacesSpotlightItem = {
   detail: string;
   href: string | null;
   exploreHref: string;
-  /** Only set for rows that can be opened in the in-place dossier drawer. */
+  /** Only set for rows that can be opened in the in-place snapshot drawer. */
   dossier?: PlacesDossier;
 };
 
@@ -73,7 +76,7 @@ export type PlacesCompareMetric = {
   note: string;
   /** `higher` marks the larger value as the better one (the design's medal). */
   direction: "higher" | "lower";
-  format: "naira" | "compact" | "count" | "int";
+  format: "naira" | "compact" | "count" | "int" | "percent";
   unit?: string;
   values: Record<string, number | null>;
   /** 1-based rank per state id; ties share a rank. */
@@ -100,6 +103,24 @@ export type PlacesZoneCard = {
   accent: string;
 };
 
+/** National-level facts for the Places hero, all from the compare registry. */
+export type PlacesCountryOverview = {
+  officialName: string;
+  capital: string | null;
+  governmentType: string | null;
+  independence: string | null;
+  currency: string | null;
+  languages: string | null;
+  callingCode: string | null;
+  /** Headline figures with the year they belong to, ready for the stat rail. */
+  stats: {
+    label: string;
+    value: string;
+    note: string;
+    tone: "primary" | "sky" | "amber" | "lime" | "neutral";
+  }[];
+};
+
 export type PlacesDirectoryData = {
   regions: ReturnType<typeof loadLandingPageData>["regions"];
   statesByRegion: Record<string, PlacesDirectoryStateRow[]>;
@@ -111,6 +132,7 @@ export type PlacesDirectoryData = {
   spotlight: PlacesSpotlightItem[];
   landFeatures: PlacesLandFeature[];
   compareGroups: PlacesCompareGroup[];
+  country: PlacesCountryOverview;
   /** Default three-state comparison, matching the design's opening state. */
   defaultCompare: [string, string, string];
   /** Table rows for Browse Territories & Features. */
@@ -235,6 +257,7 @@ export function loadPlacesDirectoryData(root = process.cwd()): PlacesDirectoryDa
   const spotlight = buildSpotlight(root, allStates, lgas, landFeatures);
   const compareGroups = buildCompareGroups(root, allStates);
   const browseRows = buildBrowseRows(allStates, spotlight, lgas);
+  const country = buildCountryOverview(root, landing);
 
   return {
     regions: landing.regions,
@@ -247,8 +270,120 @@ export function loadPlacesDirectoryData(root = process.cwd()): PlacesDirectoryDa
     spotlight,
     landFeatures,
     compareGroups,
+    country,
     defaultCompare: defaultCompareIds(allStates),
     browseRows,
+  };
+}
+
+function buildCountryOverview(
+  root: string,
+  landing: ReturnType<typeof loadLandingPageData>
+): PlacesCountryOverview {
+  const bundle = loadCompareBundle(root);
+  const general = getCategoryData(bundle, "country", "general", "default") as Record<
+    string,
+    Record<string, string | null>
+  >;
+  const demographics = getCategoryData(
+    bundle,
+    "country",
+    "demographics",
+    "2023"
+  ) as Record<string, Record<string, string | number | null>>;
+  const governance = getCategoryData(
+    bundle,
+    "country",
+    "governance",
+    "2023-2027"
+  ) as Record<string, Record<string, string | number | null>>;
+  const economy = getCategoryData(bundle, "country", "economy", "2023") as Record<
+    string,
+    Record<string, string | number | null>
+  >;
+
+  const g = general.NG ?? {};
+  const d = demographics.NG ?? {};
+  const gov = governance.NG ?? {};
+  const e = economy.NG ?? {};
+
+  const text = (value: unknown): string | null =>
+    value === null || value === undefined || value === "" || value === "—"
+      ? null
+      : String(value);
+
+  const totalPopulation = Object.values(landing.statesByRegion)
+    .flat()
+    .reduce((sum, s) => sum + (s.population ?? 0), 0);
+
+  const population = typeof d.population === "number" ? d.population : null;
+  const stats: PlacesCountryOverview["stats"] = [
+    {
+      label: "Population",
+      value: population ? (formatPopulation(population) ?? "—") : "—",
+      note: "NPC / NBS projection 2023",
+      tone: "primary",
+    },
+    {
+      label: "States & FCT",
+      value: String(landing.stateCount),
+      note: `${landing.lgaCount.toLocaleString("en-NG")} local government areas`,
+      tone: "neutral",
+    },
+    {
+      label: "Urban population",
+      value: text(d.urbanPercent) ? `${text(d.urbanPercent)}%` : "—",
+      note: "Share living in cities, 2023",
+      tone: "sky",
+    },
+    {
+      label: "Literacy rate",
+      value: text(d.literacyRate) ? `${text(d.literacyRate)}%` : "—",
+      note: "Adult literacy rate",
+      tone: "lime",
+    },
+    {
+      label: "Population growth",
+      value: text(d.growthRate) ? `${text(d.growthRate)}%` : "—",
+      note: "Annual rate, 2023",
+      tone: "amber",
+    },
+    {
+      label: "Median age",
+      value: text(d.medianAge) ?? "—",
+      note: "Years, 2023",
+      tone: "neutral",
+    },
+    {
+      label: "National legislature",
+      value: `${gov.senateSeats ?? 109} + ${gov.houseSeats ?? 360}`,
+      note: "Senate + House of Representatives seats",
+      tone: "sky",
+    },
+    {
+      label: "Inflation rate",
+      value: text(e.inflationRate) ? `${text(e.inflationRate)}%` : "—",
+      note: "Year-on-year, 2023",
+      tone: "amber",
+    },
+  ];
+
+  if (totalPopulation && population && Math.abs(totalPopulation - population) > 1) {
+    stats[0] = {
+      ...stats[0],
+      note: "Sum of the 37 state projections",
+    };
+  }
+
+  return {
+    officialName: text(g.officialName) ?? "Federal Republic of Nigeria",
+    capital: text(g.capital),
+    governmentType: text(g.governmentType),
+    independence: text(g.independence),
+    currency: text(g.currency),
+    languages: text(g.languages),
+    callingCode: text(g.callingCode),
+    stats,
   };
 }
 
@@ -569,9 +704,37 @@ function buildCompareGroups(
   allStates: PlacesDirectoryStateRow[]
 ): PlacesCompareGroup[] {
   const igr = loadStateIgr(root);
-  const demographics = loadJson<Record<string, { populationDensity?: number | null }>>(
-    path.join(root, "data/compare/states/demographics/2023.json")
-  );
+  const bundle = loadCompareBundle(root);
+  const demographics = getCategoryData(
+    bundle,
+    "state",
+    "demographics",
+    "2023"
+  ) as Record<string, Record<string, unknown>>;
+  const demographics2006 = getCategoryData(
+    bundle,
+    "state",
+    "demographics",
+    "2006"
+  ) as Record<string, Record<string, unknown>>;
+  const geography = getCategoryData(
+    bundle,
+    "state",
+    "geography",
+    "default"
+  ) as Record<string, Record<string, unknown>>;
+  const governance = getCategoryData(
+    bundle,
+    "state",
+    "governance",
+    "2023-2027"
+  ) as Record<string, Record<string, unknown>>;
+  const social = getCategoryData(
+    bundle,
+    "state",
+    "social",
+    "2021"
+  ) as Record<string, Record<string, unknown>>;
   const wards = loadJson<{ stateName: string }[]>(
     path.join(root, "data/locations/wards.json")
   );
@@ -594,6 +757,19 @@ function buildCompareGroups(
     allStates
       .map(pick)
       .filter((v): v is number => v !== null);
+
+  /** Numeric values only: the compare sheet uses "—" for unpublished cells. */
+  const numeric = (
+    source: Record<string, Record<string, unknown>>,
+    field: string
+  ): ((s: PlacesDirectoryStateRow) => number | null) => {
+    return (s) => {
+      const raw = source[s.id]?.[field];
+      if (raw === null || raw === undefined || raw === "—") return null;
+      const value = typeof raw === "number" ? raw : Number(raw);
+      return Number.isFinite(value) ? value : null;
+    };
+  };
 
   const metric = (
     key: string,
@@ -618,46 +794,9 @@ function buildCompareGroups(
 
   return [
     {
-      id: "fiscal",
-      label: "Group 1: fiscal & economic capacity",
-      icon: "trending_up",
-      metrics: [
-        metric(
-          "igr",
-          "Annual IGR",
-          "Internally generated revenue, 2024",
-          "naira",
-          undefined,
-          "higher",
-          byState((s) => igr[s.id] ?? null),
-          presentValues((s) => igr[s.id] ?? null)
-        ),
-        metric(
-          "population",
-          "Estimated population",
-          "NPC / NBS projection 2023",
-          "compact",
-          undefined,
-          "higher",
-          byState((s) => s.population),
-          presentValues((s) => s.population)
-        ),
-        metric(
-          "density",
-          "Population density",
-          "People per km², 2023",
-          "int",
-          "/km²",
-          "higher",
-          byState((s) => demographics[s.id]?.populationDensity ?? null),
-          presentValues((s) => demographics[s.id]?.populationDensity ?? null)
-        ),
-      ],
-    },
-    {
       id: "territory",
-      label: "Group 2: territory & representation",
-      icon: "family_restroom",
+      label: "Territory & representation",
+      icon: "map",
       metrics: [
         metric(
           "landArea",
@@ -690,14 +829,162 @@ function buildCompareGroups(
           presentValues((s) => wardsByState.get(s.name) ?? null)
         ),
         metric(
-          "senate",
-          "Senate seats",
-          "Of 109 senatorial districts",
+          "pollingUnits",
+          "Polling units",
+          "INEC delimitation register",
           "int",
           undefined,
           "higher",
+          byState((s) => s.pollingUnitCount),
+          presentValues((s) => s.pollingUnitCount)
+        ),
+        metric(
+          "houseSeats",
+          "House of Assembly seats",
+          "State legislature, 2023–2027",
+          "int",
+          undefined,
+          "higher",
+          byState(numeric(governance, "houseSeats")),
+          presentValues(numeric(governance, "houseSeats"))
+        ),
+        metric(
+          "senators",
+          "Senators",
+          "Of 109 senatorial districts",
+          "int",
+          undefined,
+          "lower",
           byState((s) => senateByState.get(s.name) ?? null),
           presentValues((s) => senateByState.get(s.name) ?? null)
+        ),
+        metric(
+          "distanceToAbuja",
+          "Distance to Abuja",
+          "Straight-line, state capital to Abuja",
+          "int",
+          "km",
+          "lower",
+          byState(numeric(geography, "distanceToAbujaKm")),
+          presentValues(numeric(geography, "distanceToAbujaKm"))
+        ),
+      ],
+    },
+    {
+      id: "people",
+      label: "People & society",
+      icon: "users",
+      metrics: [
+        metric(
+          "population",
+          "Estimated population",
+          "NPC / NBS projection 2023",
+          "compact",
+          undefined,
+          "higher",
+          byState((s) => s.population),
+          presentValues((s) => s.population)
+        ),
+        metric(
+          "density",
+          "Population density",
+          "People per km², 2023",
+          "int",
+          "/km²",
+          "higher",
+          byState(numeric(demographics, "populationDensity")),
+          presentValues(numeric(demographics, "populationDensity"))
+        ),
+        metric(
+          "nationalPopRank",
+          "National population rank",
+          "Position among the 36 states, 2023",
+          "int",
+          undefined,
+          "lower",
+          byState(numeric(geography, "nationalPopRank")),
+          presentValues(numeric(geography, "nationalPopRank"))
+        ),
+        metric(
+          "population2006",
+          "Population 2006",
+          "NPC census figure",
+          "compact",
+          undefined,
+          "higher",
+          byState(numeric(demographics2006, "population")),
+          presentValues(numeric(demographics2006, "population"))
+        ),
+        metric(
+          "literacyRate",
+          "Literacy rate",
+          "Adult literacy, 2021",
+          "percent",
+          undefined,
+          "higher",
+          byState(numeric(social, "literacyRate")),
+          presentValues(numeric(social, "literacyRate"))
+        ),
+        metric(
+          "primaryEnrollment",
+          "Primary net enrolment",
+          "Share of primary-age children enrolled, 2021",
+          "percent",
+          undefined,
+          "higher",
+          byState(numeric(social, "primaryEnrollment")),
+          presentValues(numeric(social, "primaryEnrollment"))
+        ),
+        metric(
+          "secondaryEnrollment",
+          "Secondary net enrolment",
+          "Share of secondary-age children enrolled, 2021",
+          "percent",
+          undefined,
+          "higher",
+          byState(numeric(social, "secondaryEnrollment")),
+          presentValues(numeric(social, "secondaryEnrollment"))
+        ),
+      ],
+    },
+    {
+      id: "fiscal",
+      label: "Fiscal capacity",
+      icon: "trend",
+      metrics: [
+        metric(
+          "igr",
+          "Annual IGR",
+          "Internally generated revenue, 2024",
+          "naira",
+          undefined,
+          "higher",
+          byState((s) => igr[s.id] ?? null),
+          presentValues((s) => igr[s.id] ?? null)
+        ),
+        metric(
+          "igrPerCapita",
+          "IGR per capita",
+          "Derived: 2024 IGR ÷ 2023 population",
+          "naira",
+          undefined,
+          "higher",
+          byState((s) =>
+            igr[s.id] && s.population ? igr[s.id] / s.population : null
+          ),
+          presentValues((s) =>
+            igr[s.id] && s.population ? igr[s.id] / s.population : null
+          )
+        ),
+        metric(
+          "igrPerLga",
+          "IGR per LGA",
+          "Derived: 2024 IGR ÷ local government areas",
+          "naira",
+          undefined,
+          "higher",
+          byState((s) => (igr[s.id] ? igr[s.id] / s.lgaCount : null)),
+          presentValues((s) => (igr[s.id] ? igr[s.id] / s.lgaCount : null))
         ),
       ],
     },
@@ -732,7 +1019,7 @@ function buildBrowseRows(
         ? state.population.toLocaleString("en-NG")
         : "—",
       href: `/places/${state.slug}`,
-      actionLabel: "Dossier",
+      actionLabel: "Profile",
       tone: "primary",
       exploreHref: `/places/map?states=${state.id}`,
     });
@@ -755,7 +1042,7 @@ function buildBrowseRows(
       lgaCount: item.category === "METRO" ? null : null,
       population: item.category === "METRO" ? item.detail : "—",
       href: item.href,
-      actionLabel: item.dossier ? "Inspect" : "On map",
+      actionLabel: item.dossier ? "Snapshot" : "On map",
       tone:
         item.category === "METRO"
           ? "amber"
@@ -781,7 +1068,7 @@ function buildBrowseRows(
       lgaCount: 1,
       population: `${Math.round(lga.areaKm2 ?? 0).toLocaleString("en-NG")} km²`,
       href: null,
-      actionLabel: "Inspect",
+      actionLabel: "Snapshot",
       tone: "sky",
       exploreHref: `/places/map?states=${lga.parentId}&lgas=1&lga=${lga.id}`,
     });

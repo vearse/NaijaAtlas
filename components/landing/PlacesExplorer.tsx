@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import type { RegionLocation } from "@/types/location";
 import type { LandingStateCard } from "@/lib/landing/landingPageTypes";
@@ -38,6 +38,8 @@ export default function PlacesExplorer({
     [statesByRegion, activeRegionId]
   );
   const [selectedId, setSelectedId] = useState<string | null>("NG-LA");
+  const previewRef = useRef<HTMLDivElement | null>(null);
+  const [previewHeight, setPreviewHeight] = useState(0);
 
   const selected = useMemo(() => {
     const inZone = states.find((s) => s.id === selectedId);
@@ -66,6 +68,19 @@ export default function PlacesExplorer({
 
   const accent = ZONE_ACCENT[activeRegionId] ?? "#10b981";
 
+  // The preview docks to the bottom of the frame, so the map is padded by its
+  // measured height. That keeps the whole country visible instead of letting
+  // the card cover the southern states.
+  useEffect(() => {
+    const node = previewRef.current;
+    if (!node) return;
+    const observer = new ResizeObserver(([entry]) =>
+      setPreviewHeight(entry.contentRect.height)
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [selected?.id]);
+
   return (
     <section
       id="geopolitical-directory"
@@ -80,8 +95,11 @@ export default function PlacesExplorer({
       <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         {/* Left: cartographic state preview drawn from the real UN SALB zones. */}
         <div className="lg:col-span-6 relative">
-          <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/15 relative shadow-2xl bg-emerald-950/40">
-            <div className="absolute inset-0 flex items-center justify-center p-6">
+          <div className="w-full aspect-[5/4] rounded-2xl overflow-hidden border border-white/15 relative shadow-2xl bg-emerald-950/40">
+            <div
+              className="absolute inset-0 flex items-center justify-center p-3"
+              style={{ paddingBottom: previewHeight + 16 }}
+            >
               <NigeriaThumb
                 source="regions"
                 className="h-full w-full"
@@ -106,13 +124,16 @@ export default function PlacesExplorer({
             <div className="absolute inset-0 bg-gradient-to-t from-[#043828] via-transparent to-transparent pointer-events-none" />
 
             {selected && (
-              <div className="absolute bottom-6 left-4 right-4 md:left-6 md:right-6 p-5 rounded-xl bg-surface-card/95 backdrop-blur-xl border border-emerald-300 shadow-2xl text-text-primary">
-                <div className="flex items-center justify-between gap-3 border-b border-border-subtle pb-3 mb-3">
+              <div
+                ref={previewRef}
+                className="absolute bottom-0 left-0 right-0 p-4 md:p-5 bg-surface-card/95 backdrop-blur-xl border-t border-emerald-300 shadow-2xl text-text-primary"
+              >
+                <div className="flex items-center justify-between gap-3 border-b border-border-subtle pb-2.5 mb-2.5">
                   <div className="min-w-0">
                     <span className="text-label-caps text-primary uppercase">
                       Selected state
                     </span>
-                    <h4 className="font-landing-display text-headline-md text-text-primary truncate font-bold">
+                    <h4 className="font-landing-display text-headline-md text-text-primary truncate font-bold leading-tight">
                       {selected.name} State
                     </h4>
                   </div>
@@ -121,7 +142,7 @@ export default function PlacesExplorer({
                   </span>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-body-sm">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-center text-body-sm">
                   <div>
                     <span className="text-slate-400 text-[11px] block font-semibold">
                       CAPITAL
@@ -158,7 +179,7 @@ export default function PlacesExplorer({
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-border-subtle flex items-center justify-between gap-3">
+                <div className="mt-2.5 pt-2.5 border-t border-border-subtle flex items-center justify-between gap-3">
                   <span className="text-body-sm text-text-muted font-medium">
                     {selected.pollingUnitCount.toLocaleString("en-NG")}{" "}
                     polling units

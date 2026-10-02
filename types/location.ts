@@ -151,6 +151,8 @@ export interface MetroGroup {
   effectiveTo: string | null;
   description: string;
   wikiNotes: WikiNote[];
+  /** How firm the catalogue is about this grouping's boundaries. */
+  confidence?: string;
 }
 
 /** Per-state exploration hints keyed by state id (data/content/state-notes.json). */

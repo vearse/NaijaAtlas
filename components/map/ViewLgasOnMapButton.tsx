@@ -7,6 +7,8 @@ import { MAX_METRO_MAP_VIEWS } from "@/lib/map/metroMapViews";
 interface ViewLgasOnMapButtonProps {
   plan: LgaFocusPlan;
   className?: string;
+  /** What the plan covers, for the tooltip copy. */
+  noun?: string;
 }
 
 /**
@@ -15,6 +17,7 @@ interface ViewLgasOnMapButtonProps {
 export default function ViewLgasOnMapButton({
   plan,
   className = "",
+  noun = "metro",
 }: ViewLgasOnMapButtonProps) {
   const views = useMapStore((s) => s.metroMapViews);
   const toggleMetroMapView = useMapStore((s) => s.toggleMetroMapView);
@@ -31,12 +34,12 @@ export default function ViewLgasOnMapButton({
       disabled={disabled}
       title={
         atCap
-          ? `Remove a metro from the map first (max ${MAX_METRO_MAP_VIEWS})`
+          ? `Remove an entry from the map first (max ${MAX_METRO_MAP_VIEWS})`
           : disabled
             ? "Member LGAs could not be resolved for this place"
             : active
-              ? "Remove metro from map"
-              : "Show metro LGAs on the map"
+              ? `Remove ${noun} from map`
+              : `Show ${noun} LGAs on the map`
       }
       onClick={(e) => {
         e.stopPropagation();

@@ -39,6 +39,11 @@ export default function StateOverviewPanel({
   const preview = variant === "preview";
   const notes = preview ? o.notes.slice(0, 3) : o.notes;
   const metros = preview ? o.metros.slice(0, 2) : o.metros;
+  // Cultural groups carry the People story, so the hub preview still shows a few.
+  const culturalGroups = o.groups.filter((g) => g.groupType === "cultural-group");
+  const groups = preview ? culturalGroups.slice(0, 4) : culturalGroups;
+  const institutions = preview ? o.institutions.slice(0, 3) : o.institutions;
+  const celebrations = preview ? o.celebrations.slice(0, 4) : o.celebrations;
 
   const details = (
     <div className="min-w-0 space-y-6">
@@ -127,6 +132,125 @@ export default function StateOverviewPanel({
         </div>
       )}
 
+      {groups.length > 0 && (
+        <div>
+          <h4 className="text-label-caps uppercase tracking-wider text-text-muted">
+            Cultural groups &amp; homelands
+          </h4>
+          <ul className="mt-2 grid gap-2 sm:grid-cols-2">
+            {groups.map((g) => (
+              <li
+                key={g.id}
+                className="rounded-xl border border-border-subtle bg-slate-50/70 px-3.5 py-3"
+              >
+                <div className="flex items-baseline justify-between gap-2">
+                  <p className="text-body-sm font-semibold text-text-primary">
+                    {g.name}
+                  </p>
+                  {g.memberCount > 0 && (
+                    <span className="shrink-0 text-[10px] font-medium uppercase tracking-wide text-text-muted">
+                      {g.memberCount} {g.memberCount === 1 ? "LGA" : "LGAs"}
+                    </span>
+                  )}
+                </div>
+                {g.description && (
+                  <p
+                    className={`mt-0.5 text-[12px] leading-snug text-text-secondary ${
+                      preview ? "line-clamp-2" : ""
+                    }`}
+                  >
+                    {g.description}
+                  </p>
+                )}
+              </li>
+            ))}
+          </ul>
+          {preview && culturalGroups.length > groups.length ? (
+            <p className="mt-2 text-[11px] text-text-muted">
+              +{culturalGroups.length - groups.length} more cultural groups in {o.name}
+            </p>
+          ) : null}
+        </div>
+      )}
+
+      {celebrations.length > 0 && (
+        <div>
+          <h4 className="text-label-caps uppercase tracking-wider text-text-muted">
+            Major celebrations
+          </h4>
+          <ul
+            className={`mt-2 grid gap-2 ${preview ? "" : "sm:grid-cols-2 lg:grid-cols-3"}`}
+          >
+            {celebrations.map((n, i) => (
+              <li
+                key={`${n.title}-${i}`}
+                className="rounded-xl border border-pink-100 bg-pink-50/40 px-3.5 py-3"
+              >
+                <button
+                  type="button"
+                  onClick={() => openArticle(n.url, n.title)}
+                  className="text-left text-body-sm font-semibold text-text-primary hover:text-primary"
+                >
+                  {n.title}
+                </button>
+                {n.period && formatPeriod(n.period) && (
+                  <span className="mt-1 block text-[10px] font-medium uppercase tracking-wide text-pink-700">
+                    {formatPeriod(n.period)}
+                  </span>
+                )}
+                {n.locations?.length ? (
+                  <span className="mt-0.5 block text-[10px] text-text-muted">
+                    {n.locations
+                      .slice(0, 3)
+                      .map((l) => l.name)
+                      .join(" · ")}
+                  </span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {institutions.length > 0 && (
+        <div>
+          <h4 className="text-label-caps uppercase tracking-wider text-text-muted">
+            Cultural institutions
+          </h4>
+          <ul className="mt-2 space-y-2">
+            {institutions.map((n, i) => (
+              <li
+                key={`${n.title}-${i}`}
+                className="rounded-xl border border-orange-100 bg-orange-50/40 px-3.5 py-3"
+              >
+                <button
+                  type="button"
+                  onClick={() => openArticle(n.url, n.title)}
+                  className="text-left text-body-sm font-semibold text-text-primary hover:text-primary"
+                >
+                  {n.title}
+                </button>
+                <p
+                  className={`mt-0.5 text-[12px] leading-snug text-text-secondary ${
+                    preview ? "line-clamp-2" : ""
+                  }`}
+                >
+                  {n.note}
+                </p>
+                {n.locations?.length ? (
+                  <p className="mt-1 text-[10px] text-text-muted">
+                    {n.locations
+                      .slice(0, 4)
+                      .map((l) => l.name)
+                      .join(" · ")}
+                  </p>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {metros.length > 0 && (
         <div>
           <h4 className="text-label-caps uppercase tracking-wider text-text-muted">
@@ -145,6 +269,17 @@ export default function StateOverviewPanel({
             ))}
           </ul>
         </div>
+      )}
+
+      {groups.length > 0 && (
+        <Link
+          href={`/people/map?states=${o.id}`}
+          className="inline-flex items-center gap-1.5 text-label-md font-semibold transition-opacity hover:opacity-75"
+          style={{ color: accent }}
+        >
+          Map the people of {o.name}
+          <span aria-hidden>→</span>
+        </Link>
       )}
 
       {preview && (

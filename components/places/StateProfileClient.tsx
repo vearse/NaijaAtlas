@@ -48,7 +48,9 @@ type TabId = (typeof TABS)[number]["id"];
 export default function StateProfileClient(props: Props) {
   const [tab, setTab] = useState<TabId>("overview");
   const [lgaQuery, setLgaQuery] = useState("");
-  const [selectedLgaId, setSelectedLgaId] = useState<string | null>(null);
+  const [selectedLgaId, setSelectedLgaId] = useState<string | null>(
+    props.lgas[0]?.id ?? null
+  );
 
   /* The reference profile is one long page with #land, #people, #civic anchors.
      The tabbed shell keeps the same anchors by syncing them both ways, so
@@ -106,10 +108,6 @@ export default function StateProfileClient(props: Props) {
       value: facts.landAreaKm2 ? `${formatNumber(facts.landAreaKm2)} km²` : "—",
     },
     { label: "LGAs", value: formatNumber(state.lgaCount) },
-    {
-      label: "Polling units",
-      value: formatNumber(state.pollingUnitCount ?? 0),
-    },
     {
       label: "Senate seats",
       value: props.senateSeatCount ? String(props.senateSeatCount) : "—",
@@ -205,8 +203,8 @@ export default function StateProfileClient(props: Props) {
                       { term: "Population", value: formatPopulation(facts.population) ?? "—" },
                       { term: "Total area", value: facts.landAreaKm2 ? `${formatNumber(facts.landAreaKm2)} km²` : "—" },
                       { term: "LGAs", value: formatNumber(state.lgaCount) },
-                      { term: "Polling units", value: formatNumber(state.pollingUnitCount ?? 0) },
                       { term: "Senators", value: props.senateSeatCount ? String(props.senateSeatCount) : "—" },
+                      { term: "IGR (2024)", value: formatNaira(igr) ?? "—" },
                     ].map((chip) => (
                       <div key={chip.term}>
                         <dt className="text-label-caps uppercase text-text-muted">{chip.term}</dt>
@@ -219,10 +217,10 @@ export default function StateProfileClient(props: Props) {
 
                   <div className="mt-6 flex flex-wrap gap-3">
                     <Link
-                      href={`/places#compare`}
+                      href={`/places?compare=${[sid, zoneSiblings[0]?.id].filter(Boolean).join(",")}#compare`}
                       className="inline-flex items-center gap-2 rounded-xl border border-border-subtle bg-surface-card px-5 py-2.5 text-label-md font-bold text-text-primary transition-colors hover:border-primary-container/50"
                     >
-                      Compare states
+                      Compare with {zoneSiblings[0]?.name ?? "another state"}
                       <IconArrow />
                     </Link>
                     <Link
@@ -254,7 +252,7 @@ export default function StateProfileClient(props: Props) {
             </div>
 
             {/* Facts */}
-            <dl className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
+            <dl className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
               {stats.map((stat) => (
                 <div
                   key={stat.label}
@@ -291,29 +289,30 @@ export default function StateProfileClient(props: Props) {
                 onQueryChange={setLgaQuery}
                 stateId={sid}
                 stateName={state.name}
+                regionName={state.regionName}
+                stateAreaKm2={facts.landAreaKm2}
               />
             </div>
 
-            <div className="mt-12 grid grid-cols-1 gap-8 items-start lg:grid-cols-12">
-              {props.overview && (
-                <section
-                  id="state-overview"
-                  className="rounded-3xl border border-border-subtle bg-surface-card p-6 lg:col-span-7"
-                >
-                  <span className="block text-label-caps uppercase tracking-widest text-primary">
-                    State overview
-                  </span>
-                  <h2 className="mt-1 font-landing-display text-headline-lg text-text-primary">
-                    Languages, stories and places to explore
-                  </h2>
-                  <div className="mt-5">
-                    <StateOverviewPanel overview={props.overview} variant="full" />
-                  </div>
-                </section>
-              )}
+            {props.overview && (
+              <section
+                id="state-overview"
+                className="mt-12 rounded-3xl border border-border-subtle bg-surface-card p-6"
+              >
+                <span className="block text-label-caps uppercase tracking-widest text-primary">
+                  State overview
+                </span>
+                <h2 className="mt-1 font-landing-display text-headline-lg text-text-primary">
+                  Languages, stories and places to explore
+                </h2>
+                <div className="mt-5">
+                  <StateOverviewPanel overview={props.overview} variant="full" />
+                </div>
+              </section>
+            )}
 
-              {/* Sidebar */}
-              <aside className="lg:col-span-5 space-y-6">
+            <div className="mt-12 grid grid-cols-1 gap-8 items-start lg:grid-cols-12">
+              <aside className="lg:col-span-7 space-y-6">
                 <div className="rounded-2xl border border-border-subtle bg-surface-card p-5">
                   <h2 className="font-landing-display text-headline-md text-text-primary">
                     Open on map
@@ -368,6 +367,9 @@ export default function StateProfileClient(props: Props) {
                   </div>
                 )}
 
+              </aside>
+
+              <div className="lg:col-span-5 space-y-6">
                 {zoneSiblings.length > 0 && (
                   <div className="rounded-2xl border border-border-subtle bg-surface-card p-5">
                     <h2 className="font-landing-display text-headline-md text-text-primary">
@@ -387,7 +389,7 @@ export default function StateProfileClient(props: Props) {
                     </ul>
                   </div>
                 )}
-              </aside>
+              </div>
             </div>
           </>
         )}

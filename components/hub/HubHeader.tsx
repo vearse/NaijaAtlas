@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { HUB_NAV, type HubNavId } from "@/lib/navigation/hubNav";
+import NaijaAtlasMark from "@/components/brand/NaijaAtlasMark";
 import {
   IconClose,
   IconExplore,
@@ -42,21 +43,10 @@ export default function HubHeader({
     <>
       <header className="sticky top-0 z-50 bg-surface-card border-b border-border-subtle shadow-sm">
         <div className="max-w-7xl mx-auto h-16 px-4 md:px-8 flex justify-between items-center gap-4">
-          <Link href="/" className="flex items-center gap-3 shrink-0 group">
-            <span className="w-9 h-9 rounded-xl bg-primary-container flex items-center justify-center text-white shadow-sm transition-transform group-hover:scale-105">
-              <IconExplore className="w-5 h-5" />
-            </span>
-            <span className="flex flex-col">
-              <span className="font-landing-display text-headline-md font-bold text-primary tracking-tight leading-none">
-                NaijaAtlas
-              </span>
-              {tagline && (
-                <span className="hidden lg:inline text-[10px] text-text-muted font-medium tracking-tight -mt-0.5">
-                  {tagline}
-                </span>
-              )}
-            </span>
-          </Link>
+          <NaijaAtlasMark
+            tagline={tagline}
+            wordmarkClassName="font-landing-display text-headline-md font-bold text-primary tracking-tight leading-none"
+          />
 
           <nav
             className="hidden md:flex items-center gap-8 h-full"

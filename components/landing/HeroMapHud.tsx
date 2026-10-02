@@ -5,7 +5,7 @@ import NigeriaThumb from "@/components/hub/NigeriaThumb";
 
 const BADGES = [
   {
-    label: "Lagos Island · Polling Unit 042",
+    label: "Lagos Island · Victoria Island",
     className: "top-6 left-6 -rotate-1",
     dot: true,
   },

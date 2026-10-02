@@ -37,7 +37,6 @@ export default function ProfileDataSection({
   stateName,
 }: Props) {
   const metrics = insights?.metrics ?? [];
-  const [picks, setPicks] = useState<string[]>([currentState.id]);
 
   const names = useMemo(
     () => new Map(allStates.map((s) => [s.id, s])),
@@ -61,17 +60,21 @@ export default function ProfileDataSection({
       .sort(
         (a, b) => (popRank.get(a.id) ?? 99) - (popRank.get(b.id) ?? 99)
       );
-    const picks: string[] = [];
+    const chosen: string[] = [];
     for (const candidate of candidates) {
-      if (picks.length >= 2) break;
+      if (chosen.length >= 2) break;
       const regions = new Set(
-        [currentState.id, ...picks].map((id) => names.get(id)?.regionId)
+        [currentState.id, ...chosen].map((id) => names.get(id)?.regionId)
       );
       if (regions.has(candidate.regionId)) continue;
-      picks.push(candidate.id);
+      chosen.push(candidate.id);
     }
-    return [currentState.id, ...picks];
+    return [currentState.id, ...chosen];
   }, [allStates, compareGroups, currentState.id, names]);
+
+  /* The state being viewed is always locked into the comparison; picks starts
+     from the cross-zone default and can be swapped one state at a time. */
+  const [picks, setPicks] = useState<string[]>(() => comparison);
 
   const toggle = (id: string) => {
     setPicks((current) => {
@@ -172,7 +175,7 @@ export default function ProfileDataSection({
           <span className="text-xs font-semibold text-text-muted">
             Active comparison:
           </span>
-          {[currentState.id, ...comparison.slice(1)].map((id) => (
+          {picks.map((id) => (
             <span
               key={id}
               className="inline-flex items-center gap-1.5 rounded-lg bg-surface-card px-2.5 py-1 text-xs font-bold text-text-primary ring-1 ring-border-subtle"
@@ -195,7 +198,7 @@ export default function ProfileDataSection({
           >
             <option value="">Choose a state…</option>
             {allStates
-              .filter((s) => ![currentState.id, ...comparison.slice(1)].includes(s.id))
+              .filter((s) => !picks.includes(s.id))
               .map((s) => (
                 <option key={s.id} value={s.id}>
                   {s.name}
@@ -215,7 +218,7 @@ export default function ProfileDataSection({
                   <thead>
                     <tr className="border-b border-border-subtle text-left">
                       <th className="py-2 pr-3 font-semibold text-text-muted">Metric</th>
-                      {[currentState.id, ...comparison.slice(1)].map((id) => (
+                      {picks.map((id) => (
                         <th key={id} className="py-2 pr-3 font-semibold text-text-primary">
                           {names.get(id)?.name ?? id}
                         </th>
@@ -227,7 +230,7 @@ export default function ProfileDataSection({
                       <CompareRow
                         key={metric.key}
                         metric={metric}
-                        ids={[currentState.id, ...comparison.slice(1)]}
+                        ids={picks}
                       />
                     ))}
                   </tbody>
@@ -283,6 +286,7 @@ function CompareRow({ metric, ids }: { metric: PlacesCompareMetric; ids: string[
 }
 
 function formatMetric(metric: PlacesCompareMetric, value: number): string {
+  if (metric.format === "percent") return `${value.toFixed(1)}%`;
   if (metric.format === "naira") {
     if (value >= 1_000_000_000_000) return `₦${(value / 1_000_000_000_000).toFixed(2)}T`;
     if (value >= 1_000_000_000) return `₦${(value / 1_000_000_000).toFixed(2)}B`;

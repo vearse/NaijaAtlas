@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import type { Festival, FestivalsCalendarData } from "@/lib/server/loadFestivalsCalendar";
+import { festivalDayRange } from "@/lib/festivals";
 import { IconMap } from "@/components/landing/icons";
 import { useWikiReader } from "@/hooks/useWikiReader";
 
@@ -19,9 +20,7 @@ const TONE_CHIP: Record<Festival["tone"], string> = {
 };
 
 function dayLabel(festival: Festival) {
-  return festival.endDay > festival.startDay
-    ? `${festival.startDay}–${festival.endDay}`
-    : String(festival.startDay);
+  return festival.dateLabel ?? festivalDayRange(festival);
 }
 
 export default function FestivalsCalendar({

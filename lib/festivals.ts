@@ -16,6 +16,20 @@ export type Festival = {
   category: string;
   tone: FestivalTone;
   summary: string;
+  /**
+   * Month-only entries (state-notes) carry no fixed day, so the chip shows the
+   * recorded months and frequency instead of a day range.
+   */
+  dateLabel?: string;
+  /** Sub-type from the source note, e.g. `masquerade`. */
+  variant?: string;
+  /** State id, so map links can target `/people/map?states=NG-xx`. */
+  stateId?: string;
+  /** Towns the celebration is held in. */
+  locations?: string[];
+  sourceUrl?: string | null;
+  /** Which catalogue the entry came from. */
+  origin?: "catalogue" | "state-notes";
 };
 
 export const FESTIVAL_MONTHS = [

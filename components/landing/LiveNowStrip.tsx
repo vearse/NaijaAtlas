@@ -80,7 +80,7 @@ export default function LiveNowStrip() {
           </div>
         </div>
         <Link
-          href="/civic/map/elections"
+          href="/civic"
           className="inline-flex items-center justify-between w-full pt-2 text-label-md text-primary hover:text-primary-container font-semibold transition-colors"
         >
           <span>View candidates &amp; ballot specs</span>
@@ -118,7 +118,7 @@ export default function LiveNowStrip() {
           </div>
         </div>
         <Link
-          href="/travel/map"
+          href="/travel"
           className="inline-flex items-center justify-between w-full pt-2 text-label-md text-primary hover:text-primary-container font-semibold transition-colors"
         >
           <span>Discover festival guide</span>

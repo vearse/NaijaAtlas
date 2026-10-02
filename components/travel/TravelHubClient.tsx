@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import Link from "next/link";
 import HubShell from "@/components/hub/HubShell";
 import HubHeader from "@/components/hub/HubHeader";
 import HubFooter from "@/components/hub/HubFooter";
@@ -17,6 +18,7 @@ import MetroCities from "@/components/travel/MetroCities";
 import PlacesBrowser from "@/components/travel/PlacesBrowser";
 import type { TravelHubData } from "@/lib/server/loadTravelHubData";
 import type { FestivalsCalendarData } from "@/lib/server/loadFestivalsCalendar";
+import { PARTNER_JOIN_URL } from "@/lib/partners";
 
 const DEFAULT_FROM = "city-lagos";
 const DEFAULT_TO = "place-obudu-mountain-resort";
@@ -122,28 +124,80 @@ export default function TravelHubClient({
         </HubSection>
 
         <section className="border-t border-border-subtle py-12">
-          <h2 className="font-landing-display text-headline-lg text-text-primary">
-            What this hub does not cover
-          </h2>
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            <EmptyState
-              title="Hotels, flights and fares"
-              badge="No dataset"
-              className="border-dashed"
-            >
-              No accommodation, airline or fare data is in the repository. Trip
-              times in the planner are estimates from straight-line distance;
-              the directions map draws the actual road route.
-            </EmptyState>
-            <EmptyState
-              title="Live festival dates"
-              badge="Curated, not live"
-              className="border-dashed"
-            >
-              The festival calendar tracks the recurring national dates that
-              festivals are widely documented to hold, but exact dates shift each
-              year. Confirm with the state tourism board before travelling.
-            </EmptyState>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:items-center">
+            <div>
+              <span className="font-label-caps uppercase tracking-wider text-heritage-amber">
+                Partner with us
+              </span>
+              <h2 className="mt-1 font-landing-display text-headline-lg text-text-primary">
+                Run a hotel, resort or travel place?
+              </h2>
+              <p className="mt-3 max-w-xl text-body-md text-text-secondary">
+                The atlas maps every state, LGA, ward and cultural group in the
+                country — but it does not list properties, and we would rather
+                not list them badly. Hotels, lodges, resorts, restaurants and
+                tour operators can join the hub with a verified profile that
+                sits next to the state, people and festival data travellers are
+                already reading.
+              </p>
+              <p className="mt-3 max-w-xl text-body-md text-text-secondary">
+                Partnerships fund the map work and keep NaijaAtlas free for
+                everyone. Reach us and we will send the partner details.
+              </p>
+              <div className="mt-5 flex flex-wrap items-center gap-3">
+                <a
+                  href={PARTNER_JOIN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-11 items-center rounded-xl bg-primary-container px-5 text-label-md font-semibold text-white transition-colors hover:bg-primary"
+                >
+                  Become a partner
+                  <span aria-hidden className="ml-2">
+                    →
+                  </span>
+                </a>
+                <Link
+                  href="/places"
+                  className="inline-flex h-11 items-center rounded-xl border border-border-subtle bg-surface-card px-5 text-label-md font-semibold text-text-secondary transition-colors hover:border-primary-container/50 hover:text-primary"
+                >
+                  See how places are listed
+                </Link>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <div className="rounded-2xl border border-border-subtle bg-surface-card p-5 shadow-sm">
+                <h3 className="font-headline-sm text-headline-sm font-bold text-text-primary">
+                  What partners get
+                </h3>
+                <ul className="mt-3 space-y-2 text-body-sm text-text-secondary">
+                  <li className="flex gap-2">
+                    <span aria-hidden className="text-primary">✓</span>
+                    A profile in the Places and Travel hubs, linked to your
+                    state, LGA and the nearest cultural groups.
+                  </li>
+                  <li className="flex gap-2">
+                    <span aria-hidden className="text-primary">✓</span>
+                    A pin on the tourist and places maps, with directions from
+                    the nearest documented city.
+                  </li>
+                  <li className="flex gap-2">
+                    <span aria-hidden className="text-primary">✓</span>
+                    Placement next to the festivals and state profiles
+                    travellers browse while planning.
+                  </li>
+                </ul>
+              </div>
+              <EmptyState
+                title="Hotels, flights and fares"
+                badge="Not in the atlas"
+                className="border-dashed"
+              >
+                No accommodation, airline or fare data is in the repository.
+                Trip times in the planner are estimates from straight-line
+                distance; the directions map draws the actual road route.
+              </EmptyState>
+            </div>
           </div>
           <SourceNote
             className="mt-6"

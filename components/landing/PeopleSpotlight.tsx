@@ -25,7 +25,7 @@ export default function PeopleSpotlight({ spotlight, totalCount }: Props) {
           </p>
         </div>
         <Link
-          href="/people/map"
+          href="/people"
           className="inline-flex items-center gap-2 text-label-md text-primary font-bold hover:underline shrink-0"
         >
           <span>Explore all {totalCount} ethnic groups</span>

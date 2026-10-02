@@ -4,7 +4,7 @@
  * client components.
  */
 
-export type CompactFormat = "naira" | "compact" | "count" | "int";
+export type CompactFormat = "naira" | "compact" | "count" | "int" | "percent";
 
 /** Compact population label, e.g. `21M` or `1.4M`. */
 export function formatPopulation(value: number | null): string | null {
@@ -43,6 +43,8 @@ export function formatCompareValue(
       return formatNaira(value) ?? "—";
     case "compact":
       return formatPopulation(value) ?? "—";
+    case "percent":
+      return `${value.toFixed(1)}%`;
     case "int":
     case "count":
     default:

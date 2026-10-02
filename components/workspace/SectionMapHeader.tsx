@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import NaijaAtlasMark from "@/components/brand/NaijaAtlasMark";
 import { HUB_NAV } from "@/lib/navigation/hubNav";
 import type { SectionPreset } from "@/lib/map/sectionPresets";
 
@@ -9,19 +9,12 @@ export default function SectionMapHeader({ preset }: { preset: SectionPreset }) 
   return (
     <header className="shrink-0 z-20 bg-white border-b border-slate-200">
       <div className="max-w-[1680px] mx-auto px-4 lg:px-6 h-14 flex items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-2.5 min-w-0">
-          <Image
-            src="/logo.jpeg"
-            alt=""
-            width={32}
-            height={32}
-            className="w-8 h-8 rounded-full object-cover"
-          />
-          <span className="font-bold text-slate-900 tracking-tight">NaijaAtlas</span>
-          <span className="hidden sm:inline text-body-sm text-slate-500 truncate">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <NaijaAtlasMark size="sm" wordmarkClassName="font-bold text-slate-900 tracking-tight" />
+          <span className="hidden sm:inline text-body-sm text-slate-500 truncate border-l border-slate-200 pl-2.5">
             {preset.subtitle}
           </span>
-        </Link>
+        </div>
         <nav className="hidden xl:flex items-center gap-5 text-label-md text-slate-600" aria-label="Sections">
           {HUB_NAV.map((item) => {
             const active =

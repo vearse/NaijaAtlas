@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PeopleHubClient from "@/components/people/PeopleHubClient";
 import { loadPeopleHubData } from "@/lib/server/loadPeopleHubData";
-import { loadFestivalsCalendar } from "@/lib/server/loadFestivalsCalendar";
+import { loadAllFestivals } from "@/lib/server/loadFestivalsCalendar";
 import { siteConfig } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
@@ -13,6 +13,8 @@ export const metadata: Metadata = {
 
 export default function PeopleHubPage() {
   const data = loadPeopleHubData();
-  const festivals = loadFestivalsCalendar();
-  return <PeopleHubClient {...data} festivals={festivals.events} />;
+  // The dated catalogue misses most of the majors, so state-note celebrations
+  // join it: the Celebration section is meant to show the whole year.
+  const festivals = loadAllFestivals();
+  return <PeopleHubClient {...data} festivals={festivals} />;
 }

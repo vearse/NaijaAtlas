@@ -4,9 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { HUB_NAV } from "@/lib/navigation/hubNav";
+import NaijaAtlasMark from "@/components/brand/NaijaAtlasMark";
 import {
   IconClose,
-  IconExplore,
   IconMenu,
   IconSearch,
   IconVote,
@@ -23,14 +23,7 @@ export default function LandingHeader({ onSearchOpen }: Props) {
     <>
       <header className="sticky top-0 z-50 bg-surface-card/85 backdrop-blur-md border-b border-border-subtle/80 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
         <div className="flex justify-between items-center w-full px-4 md:px-6 py-3.5 max-w-7xl mx-auto">
-          <Link href="/" className="flex items-center gap-3 group">
-            <span className="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-white shadow-sm border border-emerald-600/30 group-hover:scale-105 transition-transform duration-150">
-              <IconExplore className="w-[20px] h-[20px]" />
-            </span>
-            <span className="font-landing-display text-headline-sm font-extrabold text-primary tracking-tight">
-              NaijaAtlas
-            </span>
-          </Link>
+          <NaijaAtlasMark />
 
           <nav className="hidden md:flex items-center gap-8" aria-label="Sections">
             {HUB_NAV.map((s) => (

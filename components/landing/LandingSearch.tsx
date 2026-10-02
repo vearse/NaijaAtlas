@@ -79,7 +79,7 @@ export default function LandingSearch({
           value={query}
           onChange={(e) => search(e.target.value)}
           onFocus={() => query && search(query)}
-          placeholder="Search a state, LGA, festival, candidate or polling unit…"
+          placeholder="Search a state, LGA, festival, or candidate…"
           className="w-full bg-transparent border-0 py-3.5 px-3 text-body-md text-text-primary placeholder:text-slate-400 focus:ring-0 focus:outline-none"
           aria-label="Search Nigeria"
           autoComplete="off"

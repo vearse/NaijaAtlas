@@ -4,6 +4,7 @@ import Link from "next/link";
 import ProfileSection from "./ProfileSection";
 import type { StateProfileInsights } from "@/lib/server/stateProfileInsights";
 import type { Festival } from "@/lib/server/loadFestivalsCalendar";
+import { festivalDayRange } from "@/lib/festivals";
 import type { PlacesLandFeature } from "@/lib/server/loadPlacesPageData";
 import {
   IconArrow,
@@ -40,7 +41,7 @@ export default function ProfileTravelSection({
       id: f.id,
       kicker: `${f.category} · ${f.stateName}`,
       name: f.name,
-      metric: `${f.window} ${f.startDay}–${f.endDay}`,
+      metric: f.dateLabel ?? `${f.window} ${festivalDayRange(f)}`,
       body: f.summary,
       href: `/travel#festivals`,
     })),

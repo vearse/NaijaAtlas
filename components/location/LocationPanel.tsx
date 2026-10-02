@@ -18,6 +18,8 @@ import DesktopCompareModal from "@/components/compare/DesktopCompareModal";
 import OverlayFeaturePanel from "@/components/map/OverlayFeaturePanel";
 import OverlayLayerGuidePanel from "@/components/map/OverlayLayerGuidePanel";
 import MetroMapPanel from "@/components/location/MetroMapPanel";
+import CulturalGroupsPanel from "@/components/location/CulturalGroupsPanel";
+import type { SectionWorkspaceMode } from "@/lib/map/sectionPresets";
 import DirectionsPanel from "@/components/directions/DirectionsPanel";
 import FadeIn from "@/components/ui/FadeIn";
 import { useIsMobile } from "@/hooks/useMediaQuery";
@@ -40,6 +42,8 @@ import { OVERLAY_LAYER_LABELS } from "@/types/overlay";
 import { resolveStateContent } from "@/lib/location/stateContent";
 
 interface LocationPanelProps {
+  /** Section maps swap the default panel, e.g. People shows homelands. */
+  sectionWorkspace?: SectionWorkspaceMode;
   states: StateLocation[];
   lgas: LgaLocation[];
   regions: RegionLocation[];
@@ -56,6 +60,7 @@ interface LocationPanelProps {
 }
 
 export default function LocationPanel({
+  sectionWorkspace,
   states,
   lgas,
   regions,
@@ -166,7 +171,11 @@ export default function LocationPanel({
       ? `compare-${selectedStates.map((s) => s.id).sort().join(",")}`
       : null) ??
     activeRegion?.id ??
-    (showOverview ? "overview" : "empty");
+    (showOverview
+      ? sectionWorkspace === "people"
+        ? "cultural-groups"
+        : "overview"
+      : "empty");
 
   useEffect(() => {
     if (!showStateCompare) setDesktopCompareOpen(false);
@@ -183,7 +192,9 @@ export default function LocationPanel({
     : selectedOverlay
     ? selectedOverlay.name
     : showMetroMap
-      ? activeMetro?.label ?? "Metro areas"
+      ? sectionWorkspace === "people"
+        ? activeMetro?.label ?? "Cultural groups"
+      : activeMetro?.label ?? "Metro areas"
     : guideLayer
       ? OVERLAY_LAYER_LABELS[guideLayer].label
     : lgaLoc
@@ -194,16 +205,22 @@ export default function LocationPanel({
       ? panelState.name
       : activeRegion
           ? activeRegion.name
-          : "NaijaAtlas";
+          : sectionWorkspace === "people"
+            ? "Cultural groups"
+            : "NaijaAtlas";
 
   const sheetSubtitle = showDirectionsPanel
     ? "Directions · location panel"
     : selectedOverlay
     ? `${OVERLAY_LAYER_LABELS[selectedOverlay.layerId].label} · Map feature`
     : showMetroMap
-      ? metroMapViews.length > 1
-        ? `${metroMapViews.length} metros on map`
-        : "Metro · LGAs highlighted on map"
+      ? sectionWorkspace === "people"
+        ? metroMapViews.length > 1
+          ? `${metroMapViews.length} groups on map`
+          : "Peoples · member LGAs highlighted on map"
+        : metroMapViews.length > 1
+          ? `${metroMapViews.length} metros on map`
+          : "Metro · LGAs highlighted on map"
     : guideLayer
       ? "Layer guide · tap features on the map"
     : lgaLoc
@@ -218,7 +235,9 @@ export default function LocationPanel({
         }`
       : activeRegion
           ? `${activeRegion.stateIds.length} states`
-          : undefined;
+          : sectionWorkspace === "people"
+            ? "Peoples · homelands and their LGAs"
+            : undefined;
 
   const inner = (
     <div className="flex flex-col h-full">
@@ -233,12 +252,16 @@ export default function LocationPanel({
             : showStateCompare
               ? "Compare"
             : showMetroMap
-              ? "Metro"
+              ? sectionWorkspace === "people"
+                ? "Peoples"
+                : "Metro"
             : hasMapSelection
               ? "Location"
               : activeRegionId
                 ? "Region"
-                : "Overview"}
+                : sectionWorkspace === "people"
+                  ? "Peoples"
+                  : "Overview"}
         </p>
         {!showOverlay && !showDirectionsPanel && <Breadcrumbs states={states} lgas={lgas} />}
       </div>
@@ -260,11 +283,19 @@ export default function LocationPanel({
             <OverlayLayerGuidePanel layerId={guideLayer} />
           )}
 
-          {showMetroMap && !showDirectionsPanel && (
-            <MetroMapPanel metroGroups={metroGroups} lgas={lgas} />
-          )}
+          {showMetroMap &&
+            !showDirectionsPanel &&
+            sectionWorkspace !== "people" && (
+              <MetroMapPanel metroGroups={metroGroups} lgas={lgas} />
+            )}
 
-          {showOverview && !showDirectionsPanel && (
+          {(showOverview || showMetroMap) &&
+            sectionWorkspace === "people" &&
+            !showDirectionsPanel && (
+              <CulturalGroupsPanel metroGroups={metroGroups} lgas={lgas} states={states} />
+            )}
+
+          {showOverview && sectionWorkspace !== "people" && !showDirectionsPanel && (
             <NigeriaOverview
               states={states}
               lgas={lgas}

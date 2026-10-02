@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect, useLayoutEffect } from "react";
 import dynamic from "next/dynamic";
 import LocationSearch from "@/components/search/LocationSearch";
 import SearchSpotlight from "@/components/search/SearchSpotlight";
-import PoweredByIseOwo from "@/components/PoweredByIseOwo";
+import HubHeader from "@/components/hub/HubHeader";
 import LensSelect from "@/components/map/LensSelect";
 import RegionSelect from "@/components/map/RegionSelect";
 import SelectedStatesBar from "@/components/map/SelectedStatesBar";
@@ -121,7 +121,11 @@ export default function ExplorerShell({
     store.setActiveLens(preset.lens);
     useMapStore.setState({
       sectionMap: true,
-      lgaUi: !!preset.lgaAndCompare || preset.id === "elections",
+      lgaUi:
+        !!preset.lgaAndCompare ||
+        preset.id === "elections" ||
+        // The People map highlights each cultural group's member LGAs.
+        preset.id === "people",
       activeOverlays: new Set(preset.defaultLayers),
       lensOverlaysCustomized: false,
     });
@@ -212,31 +216,30 @@ export default function ExplorerShell({
       <UrlSync defaultMapType={defaultMapType} />
       {preset && <SectionMapHeader preset={preset} />}
       {!preset && (
+      <>
+      <HubHeader
+        onSearchOpen={() => setSearchSpotlightOpen(true)}
+        primaryCta={{
+          label: "Find my polling unit",
+          href: "/civic/map/elections",
+          icon: "vote",
+        }}
+        tagline={
+          isElectionMode
+            ? "2027 elections · PU locator · Senate districts"
+            : isRankingMode
+              ? "State rankings · Economy & Social indicators"
+              : "36 states · 774 LGAs · 6 regions"
+        }
+      />
       <header className="shrink-0 z-20 border-b border-border-subtle/80 bg-surface-card/90 backdrop-blur-xl shadow-sm relative">
         <div className="max-w-[1600px] mx-auto px-3 lg:px-6 py-2 lg:py-4">
-          <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4 justify-between">
-            <div className="flex flex-col items-start gap-1.5 shrink-0">
-              <div className="flex items-center gap-2.5">
-                <div className="flex h-9 w-9 lg:h-10 lg:w-10 items-center justify-center rounded-xl bg-ng-green text-lg lg:text-xl shadow-sm">
-                  🇳🇬
-                </div>
-                <div>
-                  <h1 className="text-lg lg:text-xl font-bold text-text-primary tracking-tight leading-none">
-                    NaijaAtlas
-                  </h1>
-                  <p className="text-[11px] lg:text-xs text-text-muted mt-0.5 hidden sm:block">
-                    {isElectionMode
-                      ? "2027 elections · PU locator · Senate districts"
-                      : isRankingMode
-                        ? "State rankings · Economy & Social indicators"
-                        : "36 states · 774 LGAs · 6 regions"}
-                  </p>
-                </div>
-              </div>
-              <PoweredByIseOwo />
-            </div>
-            <div className="hidden lg:flex flex-col items-stretch gap-1.5 lg:flex-1 lg:max-w-md">
+          <div className="flex flex-col gap-2 lg:gap-4">
+            <div className="hidden lg:flex flex-col items-stretch gap-1.5 lg:flex-1 lg:max-w-md lg:ml-auto">
               {!isSpecialMapMode && <LocationSearch lgas={lgas} />}
+              <MapHints />
+            </div>
+            <div className="lg:hidden">
               <MapHints />
             </div>
           </div>
@@ -394,6 +397,7 @@ export default function ExplorerShell({
             </button>
           )}
       </header>
+      </>
       )}
 
       <main
@@ -462,6 +466,7 @@ export default function ExplorerShell({
           )
         ) : (
           <LocationPanel
+            sectionWorkspace={sectionWorkspace}
             states={states}
             lgas={lgas}
             regions={regions}

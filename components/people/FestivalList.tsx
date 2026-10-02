@@ -125,7 +125,7 @@ export default function FestivalList({ festivals }: { festivals: Festival[] }) {
                   {festival.month}
                 </span>
                 <span className="font-headline-sm text-headline-sm font-bold leading-none text-text-primary">
-                  {festivalDayRange(festival)}
+                  {festival.dateLabel ?? festivalDayRange(festival)}
                 </span>
               </div>
 
@@ -158,7 +158,7 @@ export default function FestivalList({ festivals }: { festivals: Festival[] }) {
                 {resolving === festival.name ? "Loading…" : "Read more"}
               </button>
               <Link
-                href={`/people/map?states=${festival.stateName}`}
+                href={`/people/map?states=${festival.stateId ?? festival.stateName}`}
                 className="text-label-md font-semibold text-text-secondary transition-colors hover:text-text-primary"
               >
                 On map →

@@ -84,7 +84,7 @@ export const SECTION_PRESETS: Record<SectionWorkspaceMode, SectionPreset> = {
     backHref: "/people",
     backLabel: "Back to People",
     path: "/people/map",
-    status: "Select a state to read its peoples and languages",
+    status: "Pick a cultural group to highlight the LGAs it covers",
     lens: "learn",
     layers: ["cities"],
     defaultLayers: [],

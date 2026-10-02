@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import NigeriaThumb from "@/components/hub/NigeriaThumb";
@@ -10,6 +10,15 @@ import type { HubMetro } from "@/lib/server/loadTravelHubData";
 
 const PAGE = 6;
 
+function shuffle<T>(items: T[]): T[] {
+  const out = [...items];
+  for (let i = out.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
 type Props = {
   metros: HubMetro[];
   /** Called with the seat city name so the route planner can resolve it. */
@@ -17,21 +26,28 @@ type Props = {
 };
 
 /**
- * The opening picks: metro cities rather than parks, six at a time, expandable
- * to the full catalogue. Picking a card sets it as the route destination.
+ * The opening picks: a fresh mix of metro cities, six at a time, expandable to
+ * the full catalogue. Picking a card sets it as the route destination.
  */
 export default function TopMetroCities({ metros, onRouteTo }: Props) {
   const reduceMotion = useReducedMotion();
   const { openArticle, openByName, resolving } = useWikiReader();
 
   const [expanded, setExpanded] = useState(false);
-  const [activeId, setActiveId] = useState(metros[0]?.id ?? "");
+  const [activeId, setActiveId] = useState("");
+  // Randomized after mount so the server-rendered markup stays deterministic.
+  const [picks, setPicks] = useState<HubMetro[] | null>(null);
 
+  useEffect(() => {
+    setPicks(shuffle(metros));
+  }, [metros]);
+
+  const sample = picks ?? metros;
   const visible = useMemo(
-    () => (expanded ? metros : metros.slice(0, PAGE)),
-    [expanded, metros]
+    () => (expanded ? metros : sample.slice(0, PAGE)),
+    [expanded, metros, sample]
   );
-  const metro = metros.find((m) => m.id === activeId) ?? metros[0];
+  const metro = visible.find((m) => m.id === activeId) ?? visible[0];
 
   const pick = (id: string) => {
     setActiveId(id);
@@ -54,18 +70,22 @@ export default function TopMetroCities({ metros, onRouteTo }: Props) {
             Start in a metro city.
           </h2>
           <p className="max-w-xl text-body-md text-text-secondary">
-            Where the crowds, the jobs and the night life are. Tap a city to set
-            it as your destination — the route bar at the bottom follows along.
+            Where the crowds, the jobs and the night life are. Six picks change
+            on every visit — tap a city to set it as your destination and the
+            route bar at the bottom follows along.
           </p>
         </div>
 
         <button
           type="button"
-          onClick={() => setExpanded((v) => !v)}
+          onClick={() => {
+            setExpanded((v) => !v);
+            setActiveId("");
+          }}
           aria-expanded={expanded}
           className="inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-border-subtle bg-surface-card px-4 py-2 text-label-md font-semibold text-text-secondary shadow-sm transition-colors hover:border-primary-container/40 hover:text-primary sm:self-auto"
         >
-          {expanded ? "Show top 6" : `See more (${remaining})`}
+          {expanded ? "Show 6 picks" : `See all (${remaining} more)`}
           <span
             className={`inline-block transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
             aria-hidden
@@ -124,7 +144,7 @@ export default function TopMetroCities({ metros, onRouteTo }: Props) {
 
       {!expanded && remaining > 0 ? (
         <p className="text-center text-body-sm text-text-muted">
-          Showing {PAGE} of {metros.length} metro cities.
+          6 of {metros.length} metro cities this visit.
         </p>
       ) : null}
 

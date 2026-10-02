@@ -11,9 +11,9 @@ import {
 } from "@/components/landing/icons";
 
 /**
- * Local government areas: the searchable list from the existing profile, plus the
- * design's active-selection dossier for whichever LGA is selected. Selecting a
- * row fills the panel instead of navigating, so the map link stays explicit.
+ * Local government areas: the searchable list from the existing profile, plus a
+ * full detail panel for whichever LGA is selected. Selecting a row fills the
+ * panel instead of navigating, so the map link stays explicit.
  */
 export default function ProfileLgaSection({
   lgas,
@@ -23,6 +23,8 @@ export default function ProfileLgaSection({
   onQueryChange,
   stateId,
   stateName,
+  regionName,
+  stateAreaKm2,
 }: {
   lgas: LgaLocation[];
   selectedId: string | null;
@@ -31,6 +33,8 @@ export default function ProfileLgaSection({
   onQueryChange: (value: string) => void;
   stateId: string;
   stateName: string;
+  regionName: string;
+  stateAreaKm2: number | null;
 }) {
   const q = query.trim().toLowerCase();
   const filtered = q ? lgas.filter((l) => l.name.toLowerCase().includes(q)) : lgas;
@@ -110,7 +114,7 @@ export default function ProfileLgaSection({
           ) : null}
         </div>
 
-        {/* Active selection dossier */}
+        {/* Selected LGA details */}
         <aside className="lg:col-span-5">
           <div
             className={`rounded-2xl border p-5 ${
@@ -127,12 +131,30 @@ export default function ProfileLgaSection({
                 <h3 className="mt-2 font-landing-display text-headline-md text-text-primary">
                   {selected.name} LGA
                 </h3>
+                <p className="mt-1 text-body-sm text-text-muted">
+                  {selected.stateName} State · {regionName} zone
+                </p>
                 <dl className="mt-4 grid grid-cols-2 gap-3">
-                  <Cell term="LGA ID" value={selected.id} />
                   <Cell term="Electoral wards" value={formatNumber(selected.wardCount)} />
                   <Cell
                     term="Land area"
                     value={selected.areaKm2 ? `${formatNumber(selected.areaKm2)} km²` : "Not published"}
+                  />
+                  <Cell
+                    term="Share of state"
+                    value={
+                      selected.areaKm2 && stateAreaKm2
+                        ? `${((selected.areaKm2 / stateAreaKm2) * 100).toFixed(1)}%`
+                        : "—"
+                    }
+                  />
+                  <Cell
+                    term="Density of wards"
+                    value={
+                      selected.areaKm2
+                        ? `${(selected.wardCount / selected.areaKm2).toFixed(3)} /km²`
+                        : "—"
+                    }
                   />
                   <Cell
                     term="Centroid"
@@ -140,10 +162,12 @@ export default function ProfileLgaSection({
                       selected.centroid[0]
                     ).toFixed(3)}°E`}
                   />
+                  <Cell term="LGA reference" value={selected.id} />
                 </dl>
                 <p className="mt-4 rounded-xl bg-slate-50 px-3 py-2 text-xs text-text-muted">
                   Ward and area figures come from the INEC delimitation register and
-                  the location gazetteer.
+                  the location gazetteer. Population is not published at LGA level in
+                  the source bundle, so the state projection is not split here.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Link
@@ -154,17 +178,18 @@ export default function ProfileLgaSection({
                     Open on Places map
                   </Link>
                   <Link
-                    href={`/civic/polling-units?states=${stateId}&lga=${selected.id}`}
+                    href={`/people/map?states=${stateId}&lgas=1&lga=${selected.id}`}
                     className="inline-flex items-center gap-2 rounded-xl border border-border-subtle px-4 py-2.5 text-label-md font-bold text-text-primary transition-colors hover:bg-slate-50"
                   >
-                    Polling units
+                    People &amp; languages
                     <IconArrow className="h-3.5 w-3.5" />
                   </Link>
                 </div>
               </>
             ) : (
               <p className="mt-2 text-body-sm text-text-secondary">
-                Select an LGA on the left to see its wards, land area and map links.
+                Select an LGA on the left to see its wards, land area, share of the
+                state and map links.
               </p>
             )}
           </div>

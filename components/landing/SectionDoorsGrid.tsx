@@ -67,13 +67,21 @@ export default function SectionDoorsGrid({
                 </span>
               ))}
             </div>
-            <Link
-              href="/civic/map/elections"
-              className="inline-flex items-center gap-2 text-label-md text-primary font-bold group-hover:translate-x-1 transition-transform"
-            >
-              <span>Open election map</span>
-              <IconArrow />
-            </Link>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href="/civic"
+                className="inline-flex items-center gap-2 text-label-md text-primary font-bold group-hover:translate-x-1 transition-transform"
+              >
+                <span>Civic hub</span>
+                <IconArrow />
+              </Link>
+              <Link
+                href="/civic/map/elections"
+                className="text-label-md text-text-secondary font-semibold hover:text-primary"
+              >
+                Election map
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -85,8 +93,8 @@ export default function SectionDoorsGrid({
           title="Plan a trip."
           body="From Lekki walkways to Obudu and Yankari — verified destinations on the tourist lens."
           stat="120+ DESTINATIONS"
-          href="/travel/map"
-          cta="Explore routes"
+          href="/travel"
+          cta="Travel hub"
           accent="text-amber-700"
         />
 
@@ -98,8 +106,8 @@ export default function SectionDoorsGrid({
           title="Find opportunities."
           body="Solid minerals, ports, and power infrastructure on the invest lens."
           stat="INVEST LENS"
-          href="/economy/map"
-          cta="View data"
+          href="/economy"
+          cta="Economy hub"
           accent="text-teal-700"
         />
 
@@ -111,8 +119,8 @@ export default function SectionDoorsGrid({
           title="Compare states."
           body="Benchmark metrics side-by-side with ranking mode and compare tools."
           stat="LIVE RANKINGS"
-          href="/data/map/rankings"
-          cta="Rankings map"
+          href="/data"
+          cta="Data hub"
           accent="text-cyan-700"
           sparkline
         />
@@ -170,8 +178,8 @@ export default function SectionDoorsGrid({
           title="Test yourself."
           body="Geography challenges and civic literacy on the learn lens."
           stat="INTERACTIVE QUIZ"
-          href="/places/map"
-          cta='Play "Find the State"'
+          href="/learn"
+          cta="Learn hub"
           accent="text-primary"
         />
       </div>

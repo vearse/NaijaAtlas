@@ -48,15 +48,15 @@ export default function LandingHero({
           className="font-landing-display text-display-hero-mobile md:text-display-hero text-text-primary leading-[1.08] tracking-tight"
           {...fade(0.05)}
         >
-          Know Nigeria. Every state, every LGA, every polling unit.
+          Understand Nigeria. Discover every corner. Reimagine it with data.
         </motion.h1>
 
         <motion.p
           className="text-body-lg text-text-secondary max-w-xl"
           {...fade(0.1)}
         >
-          Explore the land, meet the people, plan a trip, find opportunities and
-          follow the 2027 elections, all on one living map of Nigeria.
+          States, LGAs, homelands, rankings, and elections — connected on one
+          living map for Nigerians and the world.
         </motion.p>
 
         <motion.div className="pt-2" {...fade(0.15)}>
