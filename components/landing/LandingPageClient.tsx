@@ -42,7 +42,11 @@ export default function LandingPageClient(props: LandingPageData) {
       )}
 
       <main className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-10 pb-16">
-        <LandingHero spotlightOpen={false} onSpotlightClose={close} />
+        <LandingHero
+          spotlightOpen={false}
+          onSpotlightClose={close}
+          states={Object.values(props.statesByRegion).flat()}
+        />
         <LiveNowStrip />
         <SectionDoorsGrid
           totalPollingUnits={props.totalPollingUnits}
