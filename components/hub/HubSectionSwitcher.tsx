@@ -78,7 +78,7 @@ export default function HubSectionSwitcher({
       className={`sticky ${offsetClassName} z-40 border-b border-border-subtle bg-surface-card/95 backdrop-blur-md shadow-sm`}
     >
       <div
-        className={`${containerClassName} flex items-center justify-between gap-4 py-2.5`}
+        className={`${containerClassName} flex flex-col gap-2 py-2.5 sm:flex-row sm:items-center sm:gap-3`}
       >
         {leading ? (
           <div className="hidden shrink-0 items-center gap-2 text-body-sm font-body-sm text-text-muted md:flex">
@@ -86,7 +86,7 @@ export default function HubSectionSwitcher({
           </div>
         ) : null}
 
-        <div className="flex min-w-0 items-center gap-2 overflow-x-auto">
+        <div className="flex min-w-0 flex-1 items-center gap-2 overflow-x-auto pb-0.5 sm:pb-0">
           {label ? (
             <span className="mr-2 whitespace-nowrap font-label-caps text-label-caps text-text-muted">
               {label}
@@ -96,7 +96,7 @@ export default function HubSectionSwitcher({
             className={
               variant === "segmented"
                 ? "flex items-center gap-1 rounded-full border border-border-subtle bg-slate-100 p-1"
-                : "flex items-center gap-2"
+                : "flex items-center gap-1.5"
             }
           >
             {items.map((item) => {
@@ -137,9 +137,9 @@ export default function HubSectionSwitcher({
         </div>
 
         {note ? (
-          <div className="hidden items-center gap-2 text-body-sm font-body-sm text-text-muted lg:flex">
+          <div className="flex shrink-0 items-center gap-2 text-body-sm font-body-sm text-text-muted sm:ml-auto">
             <span className="inline-block h-2 w-2 rounded-full bg-primary-container" />
-            <span>{note}</span>
+            <span className="whitespace-nowrap">{note}</span>
           </div>
         ) : null}
       </div>

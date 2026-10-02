@@ -9,7 +9,8 @@ export type SectionWorkspaceMode =
   | "places"
   | "travel"
   | "economy"
-  | "people";
+  | "people"
+  | "fullAtlas";
 
 export type SectionPreset = {
   id: SectionWorkspaceMode;
@@ -129,4 +130,22 @@ export const SECTION_PRESETS: Record<SectionWorkspaceMode, SectionPreset> = {
     layers: [],
     defaultLayers: [],
   },
+  fullAtlas: {
+    id: "fullAtlas",
+    badge: "Atlas",
+    title: "Full atlas",
+    subtitle: "All lenses · All layers · Compare & explore",
+    backHref: "/",
+    backLabel: "Back to Home",
+    path: "/explore",
+    status: "Click a state to select · Layers bottom-right",
+    lens: "learn",
+    layers: [],
+    defaultLayers: [],
+    lgaAndCompare: true,
+    basemapToggle: true,
+  },
 };
+
+/** Chrome for `/explore` — same header pattern as section map routes. */
+export const FULL_ATLAS_CHROME = SECTION_PRESETS.fullAtlas;

@@ -48,6 +48,7 @@ const config: Config = {
         "primary-tint-light": "#ecfdf5",
         "primary-fixed-dim": "#70db9d",
         "surface-card": "#ffffff",
+        "surface-base": "#fafaf9",
         "surface-canvas": "#f8fafc",
         "border-subtle": "#e2e8f0",
         "text-primary": "#0c0a09",

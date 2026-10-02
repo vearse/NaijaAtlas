@@ -137,6 +137,8 @@ export type PlacesDirectoryData = {
   defaultCompare: [string, string, string];
   /** Table rows for Browse Territories & Features. */
   browseRows: PlacesBrowseRow[];
+  /** Hero snapshot for every state, opened by tapping the map. */
+  stateDossiers: Record<string, PlacesDossier>;
 };
 
 export type PlacesBrowseRow = {
@@ -273,6 +275,9 @@ export function loadPlacesDirectoryData(root = process.cwd()): PlacesDirectoryDa
     country,
     defaultCompare: defaultCompareIds(allStates),
     browseRows,
+    stateDossiers: Object.fromEntries(
+      allStates.map((s) => [s.id, stateDossier(s)])
+    ),
   };
 }
 
@@ -1010,7 +1015,7 @@ function buildBrowseRows(
   for (const state of allStates) {
     rows.push({
       id: state.id,
-      name: `${state.name} State`,
+      name: state.name,
       category: "STATE",
       seat: state.capital ?? "—",
       zone: state.regionName,

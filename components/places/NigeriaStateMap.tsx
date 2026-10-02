@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import {
   NIGERIA_STATE_PATHS,
   NIGERIA_VIEW_BOX,
@@ -23,49 +22,65 @@ export type NigeriaStateMapEntry = {
  */
 export default function NigeriaStateMap({
   states,
+  selectedId = null,
+  onSelect,
   className = "",
+  mapClassName = "h-80 w-full md:h-[28rem]",
 }: {
   states: NigeriaStateMapEntry[];
+  /** When set, that state stays highlighted on the map. */
+  selectedId?: string | null;
+  onSelect?: (stateId: string) => void;
   className?: string;
+  mapClassName?: string;
 }) {
-  const router = useRouter();
   const [hover, setHover] = useState<string | null>(null);
   const byId = new Map(states.map((s) => [s.id, s]));
-  const active = hover ? byId.get(hover) : null;
+  const focusId = selectedId ?? hover;
+  const active = focusId ? byId.get(focusId) : null;
+
+  const pick = (id: string) => {
+    if (onSelect) onSelect(id);
+  };
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={className}>
       <svg
         viewBox={NIGERIA_VIEW_BOX}
-        className="w-full h-auto"
+        className={`mx-auto ${mapClassName}`}
         role="group"
-        aria-label="Nigeria by state — select a state to open its Places profile"
+        aria-label="Nigeria by state — select a state to see its snapshot"
         preserveAspectRatio="xMidYMid meet"
       >
         <g stroke="#ffffff" strokeWidth={0.25}>
           {NIGERIA_STATE_PATHS.map((p) => {
             const state = byId.get(p.key);
+            const isSelected = selectedId === p.key;
             const isHover = hover === p.key;
-            const isDim = hover !== null && !isHover;
+            const isActive = isSelected || isHover;
+            const isDim =
+              (selectedId && selectedId !== p.key) ||
+              (hover !== null && !isHover && !isSelected);
             return (
               <path
                 key={p.key}
                 d={p.d}
                 tabIndex={0}
-                role="link"
-                aria-label={state ? `Open ${state.name} profile` : p.key}
-                fill={isHover ? "#043828" : "#008751"}
-                fillOpacity={isDim ? 0.35 : isHover ? 0.95 : 0.82}
+                role="button"
+                aria-label={state ? `Select ${state.name}` : p.key}
+                aria-pressed={isSelected}
+                fill={isActive ? "#043828" : "#008751"}
+                fillOpacity={isDim ? 0.35 : isActive ? 0.95 : 0.82}
                 className="cursor-pointer transition-[fill-opacity] duration-150 outline-none focus-visible:fill-[#043828]"
                 onMouseEnter={() => setHover(p.key)}
                 onMouseLeave={() => setHover(null)}
                 onFocus={() => setHover(p.key)}
                 onBlur={() => setHover(null)}
-                onClick={() => state && router.push(`/places/${state.slug}`)}
+                onClick={() => state && pick(p.key)}
                 onKeyDown={(event) => {
                   if (event.key === "Enter" || event.key === " ") {
                     event.preventDefault();
-                    if (state) router.push(`/places/${state.slug}`);
+                    if (state) pick(p.key);
                   }
                 }}
               >
@@ -75,20 +90,12 @@ export default function NigeriaStateMap({
           })}
         </g>
       </svg>
-
-      <div className="absolute left-0 right-0 bottom-0 flex items-center justify-between gap-3 rounded-xl bg-surface-card/95 border border-border-subtle px-3 py-2 shadow-sm">
-        <span className="min-w-0">
-          <span className="block text-label-caps text-text-muted font-bold uppercase">
-            {active ? active.regionName : "Tap a state"}
-          </span>
-          <span className="block font-landing-display text-headline-sm text-text-primary truncate">
-            {active ? active.name : "37 states, one outline"}
-          </span>
-        </span>
-        <span className="text-[11px] text-text-muted shrink-0 text-right tabular-nums">
-          {active?.capital ? `Capital ${active.capital}` : "Open any state"}
-        </span>
-      </div>
+      {active && (
+        <p className="sr-only">
+          {active.name}, {active.regionName}
+          {active.capital ? `, capital ${active.capital}` : ""}
+        </p>
+      )}
     </div>
   );
 }

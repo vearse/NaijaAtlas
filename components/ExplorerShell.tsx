@@ -2,9 +2,7 @@
 
 import { useState, useMemo, useEffect, useLayoutEffect } from "react";
 import dynamic from "next/dynamic";
-import LocationSearch from "@/components/search/LocationSearch";
 import SearchSpotlight from "@/components/search/SearchSpotlight";
-import HubHeader from "@/components/hub/HubHeader";
 import LensSelect from "@/components/map/LensSelect";
 import RegionSelect from "@/components/map/RegionSelect";
 import SelectedStatesBar from "@/components/map/SelectedStatesBar";
@@ -52,6 +50,7 @@ import RankingsMapCallouts from "@/components/workspace/RankingsMapCallouts";
 import WorkspaceMapFooter from "@/components/workspace/WorkspaceMapFooter";
 import {
   SECTION_PRESETS,
+  FULL_ATLAS_CHROME,
   type SectionWorkspaceMode,
 } from "@/lib/map/sectionPresets";
 
@@ -217,33 +216,21 @@ export default function ExplorerShell({
       {preset && <SectionMapHeader preset={preset} />}
       {!preset && (
       <>
-      <HubHeader
-        onSearchOpen={() => setSearchSpotlightOpen(true)}
-        primaryCta={{
-          label: "Find my polling unit",
-          href: "/civic/map/elections",
-          icon: "vote",
-        }}
-        tagline={
-          isElectionMode
-            ? "2027 elections · PU locator · Senate districts"
+      <SectionMapHeader
+        preset={{
+          ...FULL_ATLAS_CHROME,
+          subtitle: isElectionMode
+            ? "2027 elections · Senate districts"
             : isRankingMode
               ? "State rankings · Economy & Social indicators"
-              : "36 states · 774 LGAs · 6 regions"
-        }
+              : FULL_ATLAS_CHROME.subtitle,
+        }}
+        hideFullAtlasLink
+        statusSlot={<MapHints variant="status" />}
       />
       <header className="shrink-0 z-20 border-b border-border-subtle/80 bg-surface-card/90 backdrop-blur-xl shadow-sm relative">
-        <div className="max-w-[1600px] mx-auto px-3 lg:px-6 py-2 lg:py-4">
-          <div className="flex flex-col gap-2 lg:gap-4">
-            <div className="hidden lg:flex flex-col items-stretch gap-1.5 lg:flex-1 lg:max-w-md lg:ml-auto">
-              {!isSpecialMapMode && <LocationSearch lgas={lgas} />}
-              <MapHints />
-            </div>
-            <div className="lg:hidden">
-              <MapHints />
-            </div>
-          </div>
-          <div className="mt-2 lg:mt-4 space-y-1.5 lg:space-y-2">
+        <div className="max-w-[1680px] mx-auto px-3 lg:px-6 py-2 lg:py-3">
+          <div className="space-y-1.5 lg:space-y-2">
             <div className="flex items-center justify-between gap-2 flex-wrap w-full">
               <div className="flex items-center gap-2 flex-wrap">
                 {!isSpecialMapMode && (
@@ -407,10 +394,16 @@ export default function ExplorerShell({
             : "flex-1 max-w-[1600px]"
         }`}
       >
-        <div className={`flex-1 relative min-h-0 flex flex-col ${preset ? "p-2 lg:p-0" : "p-2 lg:p-5"}`}>
+        <div
+          className={`flex-1 relative min-h-0 flex flex-col ${
+            preset ? "p-2 lg:p-0" : "p-2 lg:p-5"
+          }`}
+        >
           <div
             className={`relative flex-1 min-h-0 ${
-              preset ? "rounded-2xl overflow-hidden border border-slate-200 bg-[#dbe5ee]" : ""
+              preset
+                ? "rounded-2xl overflow-hidden border border-slate-200 bg-[#dbe5ee]"
+                : ""
             }`}
           >
             <NigeriaMap

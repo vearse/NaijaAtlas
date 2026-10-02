@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PlacesHubClient from "@/components/places/PlacesHubClient";
 import { loadPlacesDirectoryData } from "@/lib/server/loadPlacesPageData";
+import { loadExplorerPageData } from "@/lib/server/loadExplorerPageData";
 import { siteConfig } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
@@ -10,6 +11,15 @@ export const metadata: Metadata = {
 };
 
 export default function PlacesPage() {
-  const data = loadPlacesDirectoryData();
-  return <PlacesHubClient {...data} />;
+  const directory = loadPlacesDirectoryData();
+  const explorer = loadExplorerPageData();
+  return (
+    <PlacesHubClient
+      directory={directory}
+      compareStates={explorer.states}
+      compareContents={explorer.stateContent}
+      compareLgas={explorer.lgas}
+      compareBundle={explorer.compareBundle}
+    />
+  );
 }

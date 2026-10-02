@@ -1,11 +1,24 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
 import NaijaAtlasMark from "@/components/brand/NaijaAtlasMark";
 import { HUB_NAV } from "@/lib/navigation/hubNav";
 import type { SectionPreset } from "@/lib/map/sectionPresets";
 
-export default function SectionMapHeader({ preset }: { preset: SectionPreset }) {
+type Props = {
+  preset: SectionPreset;
+  /** Replaces the static emerald status chip (e.g. live map hints on full atlas). */
+  statusSlot?: ReactNode;
+  /** Hide the “Full atlas” CTA when you are already on `/explore`. */
+  hideFullAtlasLink?: boolean;
+};
+
+export default function SectionMapHeader({
+  preset,
+  statusSlot,
+  hideFullAtlasLink = false,
+}: Props) {
   return (
     <header className="shrink-0 z-20 bg-white border-b border-slate-200">
       <div className="max-w-[1680px] mx-auto px-4 lg:px-6 h-14 flex items-center justify-between gap-4">
@@ -18,8 +31,9 @@ export default function SectionMapHeader({ preset }: { preset: SectionPreset }) 
         <nav className="hidden xl:flex items-center gap-5 text-label-md text-slate-600" aria-label="Sections">
           {HUB_NAV.map((item) => {
             const active =
-              preset.backHref === item.href ||
-              (preset.id === "places" && item.id === "land");
+              preset.id !== "fullAtlas" &&
+              (preset.backHref === item.href ||
+                (preset.id === "places" && item.id === "land"));
             return (
               <Link
                 key={item.id}
@@ -35,12 +49,14 @@ export default function SectionMapHeader({ preset }: { preset: SectionPreset }) 
             );
           })}
         </nav>
-        <Link
-          href="/explore"
-          className="inline-flex h-9 items-center px-4 rounded-lg bg-[#043828] text-white text-label-md font-semibold whitespace-nowrap"
-        >
-          Full atlas
-        </Link>
+        {!hideFullAtlasLink && (
+          <Link
+            href="/explore"
+            className="inline-flex h-9 items-center px-4 rounded-lg bg-[#043828] text-white text-label-md font-semibold whitespace-nowrap"
+          >
+            Full atlas
+          </Link>
+        )}
       </div>
 
       <div className="border-t border-slate-100 bg-slate-50/70">
@@ -57,10 +73,12 @@ export default function SectionMapHeader({ preset }: { preset: SectionPreset }) 
               {preset.path}
             </span>
           </div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-body-sm text-emerald-900">
-            <span className="h-2 w-2 rounded-full bg-[#008751]" aria-hidden />
-            {preset.status}
-          </span>
+          {statusSlot ?? (
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-body-sm text-emerald-900 max-w-full min-w-0">
+              <span className="h-2 w-2 shrink-0 rounded-full bg-[#008751]" aria-hidden />
+              <span className="truncate">{preset.status}</span>
+            </span>
+          )}
         </div>
       </div>
     </header>
