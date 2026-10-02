@@ -21,6 +21,7 @@ import AssemblyExplainer from "@/components/civic/AssemblyExplainer";
 import EmptyState from "@/components/hub/EmptyState";
 import type { CivicHubData } from "@/lib/server/loadCivicHubData";
 import type { FindPollingUnitResult } from "@/app/(marketing)/civic/actions";
+import { useToastStore } from "@/lib/store/toastStore";
 
 function pickDefaultStateId(states: CivicHubData["states"]): string {
   if (states.length === 0) return "NG-LA";
@@ -52,12 +53,30 @@ export default function CivicHubClient(data: CivicHubData) {
     [lgas, states]
   );
 
-  const handleResultChange = useCallback((result: FindPollingUnitResult | null) => {
-    setFinderResult(result);
-    if (result?.primary) {
-      setRosterStateId(result.primary.hit.stateId);
-    }
-  }, []);
+  const pushToast = useToastStore((s) => s.pushToast);
+
+  const handleResultChange = useCallback(
+    (result: FindPollingUnitResult | null) => {
+      setFinderResult(result);
+      if (result?.primary) {
+        setRosterStateId(result.primary.hit.stateId);
+        pushToast(
+          `Polling unit found — ${result.primary.hit.wardName}, ${result.primary.hit.lgaName}`,
+          "success"
+        );
+        return;
+      }
+      if (!result) return;
+      if (result.note) {
+        pushToast(result.note, "tip");
+        return;
+      }
+      if (result.query) {
+        pushToast("No polling unit found for that lookup.", "info");
+      }
+    },
+    [pushToast]
+  );
 
   const openCandidatesFromBallot = useCallback((office: BallotOffice) => {
     setRosterPosition(office);
@@ -83,22 +102,22 @@ export default function CivicHubClient(data: CivicHubData) {
 
       <main className="mx-auto max-w-7xl space-y-12 px-4 py-8 md:px-6">
         <section id="find" className="scroll-mt-28">
-          <div className="grid grid-cols-12 gap-8">
-            <div className="col-span-12 space-y-6 lg:col-span-7">
-              <div>
-                <span className="mb-1 block font-label-caps text-label-caps uppercase tracking-widest text-text-muted">
-                  Civic &amp; Elections
-                </span>
-                <h1 className="font-landing-display text-display-hero leading-tight tracking-tight text-text-primary">
-                  Find where you vote.
-                </h1>
-                <p className="mt-2 text-body-md text-text-secondary">
-                  Locate your official biometric polling unit, senatorial
-                  district, and federal constituency ahead of the{" "}
-                  {election.year} General Elections.
-                </p>
-              </div>
+          <div>
+            <span className="mb-1 block font-label-caps text-label-caps uppercase tracking-widest text-text-muted">
+              Civic &amp; Elections
+            </span>
+            <h1 className="font-landing-display text-headline-xl-mobile leading-tight tracking-tight text-text-primary md:text-display-hero">
+              Find where you vote.
+            </h1>
+            <p className="mt-2 max-w-2xl text-body-md text-text-secondary">
+              Locate your official biometric polling unit, senatorial district,
+              and federal constituency ahead of the {election.year} General
+              Elections.
+            </p>
+          </div>
 
+          <div className="mt-8 flex flex-col gap-6 lg:flex-row lg:items-stretch">
+            <div className="min-w-0 flex-1">
               <PollingUnitFinder
                 stateCount={totals.states}
                 pollingUnitTotal={totals.pollingUnits}
@@ -106,14 +125,17 @@ export default function CivicHubClient(data: CivicHubData) {
                 onResultChange={handleResultChange}
               />
             </div>
-
-            <div className="col-span-12 lg:col-span-5">
+            <div className="w-full shrink-0 lg:w-[min(100%,340px)]">
               <ElectionCountdown
                 date={election.date}
                 year={election.year}
                 source={election.source ?? "INEC"}
+                className="h-full"
               />
             </div>
+          </div>
+
+          <div className="grid grid-cols-12 gap-8">
 
             {finderResult?.note && !finderResult.primary && (
               <p
@@ -125,10 +147,12 @@ export default function CivicHubClient(data: CivicHubData) {
             )}
 
             {finderResult?.primary && (
-              <PollingUnitResultPanel
-                match={finderResult.primary}
-                onOpenCandidates={openCandidatesFromBallot}
-              />
+              <div className="col-span-12">
+                <PollingUnitResultPanel
+                  match={finderResult.primary}
+                  onOpenCandidates={openCandidatesFromBallot}
+                />
+              </div>
             )}
 
             {finderResult &&
@@ -192,6 +216,7 @@ export default function CivicHubClient(data: CivicHubData) {
             onStateIdChange={setRosterStateId}
             position={rosterPosition}
             onPositionChange={setRosterPosition}
+            senatorialLookups={data.senatorialLookups}
           />
         </HubSection>
 

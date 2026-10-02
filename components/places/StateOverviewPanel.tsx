@@ -312,7 +312,7 @@ export default function StateOverviewPanel({
                 transition: { duration: 0.28, ease: [0.16, 1, 0.3, 1] as const },
               })}
         >
-          <div className="relative bg-gradient-to-br from-emerald-50 via-white to-slate-50 p-6 landing-topo-grid lg:col-span-5">
+          <div className="relative bg-slate-50/80 p-6 lg:col-span-5">
             <NigeriaThumb
               source="states"
               highlight={[o.id]}

@@ -4,8 +4,12 @@ import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import SourceNote from "@/components/hub/SourceNote";
 import EmptyState from "@/components/hub/EmptyState";
+import PartyIcon from "@/components/election/PartyIcon";
 import { sectionMapHref } from "@/lib/navigation/sectionMaps";
+import StateSenatorialDistrictMap from "@/components/civic/StateSenatorialDistrictMap";
+import { colorForSenatorialIndex } from "@/lib/politics/senatorialColors";
 import type {
+  CivicSenatorialLookups,
   HubCandidate,
   HubOfficeholder,
   HubRepsRace,
@@ -59,6 +63,7 @@ type Props = {
   presidential: {
     party: string;
     partyName: string;
+    partyIcon?: string | null;
     candidate: string;
     runningMate: string;
   }[];
@@ -69,6 +74,7 @@ type Props = {
   onStateIdChange: (id: string) => void;
   position: RosterPosition;
   onPositionChange: (p: RosterPosition) => void;
+  senatorialLookups: CivicSenatorialLookups;
 };
 
 export default function CandidateRoster({
@@ -82,11 +88,12 @@ export default function CandidateRoster({
   onStateIdChange,
   position,
   onPositionChange,
+  senatorialLookups,
 }: Props) {
-  const [party, setParty] = useState("all");
   const [query, setQuery] = useState("");
   const [senateRaceId, setSenateRaceId] = useState("all");
   const [page, setPage] = useState(0);
+  const [hoverDistrictId, setHoverDistrictId] = useState<string | null>(null);
   const [selected, setSelected] = useState<{
     kind: "senate" | "reps" | "president";
     raceId: string;
@@ -100,19 +107,8 @@ export default function CandidateRoster({
     [senateRaces, stateId]
   );
 
-  const parties = useMemo(() => {
-    const set = new Set<string>();
-    for (const r of senateInState) for (const c of r.candidates) set.add(c.party);
-    for (const r of repsRaces.filter((x) => x.stateId === stateId)) {
-      for (const c of r.candidates) set.add(c.party);
-    }
-    for (const t of presidential) set.add(t.party);
-    return [...set].sort();
-  }, [presidential, repsRaces, senateInState, stateId]);
-
   const matchCandidate = useCallback(
     (c: HubCandidate): boolean => {
-      if (party !== "all" && c.party !== party) return false;
       const q = query.trim().toLowerCase();
       if (!q) return true;
       return (
@@ -120,14 +116,13 @@ export default function CandidateRoster({
         c.party.toLowerCase().includes(q)
       );
     },
-    [party, query]
+    [query]
   );
 
   const visible = useMemo(() => {
     const out: Race[] = [];
     if (position === "president") {
       presidential.forEach((t, i) => {
-        if (party !== "all" && t.party !== party) return;
         const q = query.trim().toLowerCase();
         if (q && !`${t.candidate} ${t.partyName}`.toLowerCase().includes(q)) {
           return;
@@ -154,6 +149,7 @@ export default function CandidateRoster({
     if (position === "reps") {
       for (const race of repsRaces) {
         if (race.stateId !== stateId) continue;
+        if (senateRaceId !== "all" && race.districtId !== senateRaceId) continue;
         const candidates = race.candidates.filter(matchCandidate);
         if (candidates.length === 0) continue;
         out.push({ kind: "reps", race: { ...race, candidates } });
@@ -162,7 +158,6 @@ export default function CandidateRoster({
     return out;
   }, [
     matchCandidate,
-    party,
     position,
     presidential,
     query,
@@ -183,6 +178,17 @@ export default function CandidateRoster({
     () => offices.find((o) => o.stateId === stateId),
     [offices, stateId]
   );
+
+  const selectedDistrictId =
+    selected?.kind === "senate"
+      ? selected.raceId
+      : selected?.kind === "reps"
+        ? (repsRaces.find((r) => r.id === selected.raceId)?.districtId ?? null)
+        : null;
+  const mapHighlight =
+    hoverDistrictId ??
+    selectedDistrictId ??
+    (senateRaceId !== "all" ? senateRaceId : null);
 
   const selectClass =
     "h-10 rounded-lg border border-border-subtle bg-surface-card px-3 text-xs font-semibold text-slate-800 focus:border-primary-container focus:outline-none focus:ring-4 focus:ring-emerald-500/10";
@@ -229,7 +235,7 @@ export default function CandidateRoster({
                 </option>
               ))}
             </select>
-            {position === "senate" && senateInState.length > 0 && (
+            {position !== "president" && position !== "governor" && senateInState.length > 0 && (
               <select
                 aria-label="Senatorial district"
                 value={senateRaceId}
@@ -267,38 +273,75 @@ export default function CandidateRoster({
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap items-center gap-2 border-t border-slate-100 pt-3">
-          <span className="text-[11px] font-bold uppercase text-slate-400">
-            Parties:
-          </span>
-          <button
-            type="button"
-            onClick={() => setParty("all")}
-            className={`rounded px-2.5 py-1 text-xs font-semibold ${
-              party === "all"
-                ? "bg-slate-800 text-white"
-                : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-            }`}
-          >
-            All
-          </button>
-          {parties.slice(0, 8).map((p) => (
-            <button
-              key={p}
-              type="button"
-              onClick={() => setParty(p)}
-              className={`rounded px-2.5 py-1 text-xs font-medium ${
-                party === p
-                  ? "bg-slate-800 text-white"
-                  : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-              }`}
-            >
-              {p}
-            </button>
-          ))}
-        </div>
       </div>
 
+      <div
+        className={
+          position === "president"
+            ? ""
+            : "grid items-start gap-6 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)]"
+        }
+      >
+      {position !== "president" && (
+        <aside className="space-y-3 lg:sticky lg:top-32">
+          <StateSenatorialDistrictMap
+            stateId={stateId}
+            stateName={stateName}
+            lookups={senatorialLookups}
+            highlightDistrictId={mapHighlight}
+            className="aspect-square w-full"
+          />
+          {senateInState.length > 0 && (
+            <div className="rounded-xl border border-border-subtle bg-surface-card p-3">
+              <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-text-muted">
+                {senateInState.length} senatorial districts
+                {position === "governor" ? "" : " · tap to filter"}
+              </p>
+              <ul className="space-y-1">
+                {senateInState.map((r) => {
+                  const active = senateRaceId === r.id;
+                  const seats = repsRaces.filter((x) => x.districtId === r.id).length;
+                  return (
+                    <li key={r.id}>
+                      <button
+                        type="button"
+                        disabled={position === "governor"}
+                        onClick={() => {
+                          setSenateRaceId(active ? "all" : r.id);
+                          setPage(0);
+                        }}
+                        onMouseEnter={() => setHoverDistrictId(r.id)}
+                        onMouseLeave={() => setHoverDistrictId(null)}
+                        className={`flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left text-xs transition-colors ${
+                          active
+                            ? "bg-emerald-50 font-bold text-primary"
+                            : "text-text-secondary hover:bg-slate-50 disabled:hover:bg-transparent"
+                        }`}
+                      >
+                        <span
+                          className="h-2.5 w-2.5 shrink-0 rounded-full"
+                          style={{
+                            backgroundColor: colorForSenatorialIndex(
+                              senatorialLookups.districtColorIndex[r.id] ?? 0
+                            ),
+                          }}
+                          aria-hidden
+                        />
+                        <span className="min-w-0 flex-1 truncate">{r.name}</span>
+                        <span className="shrink-0 tabular-nums text-text-muted">
+                          {r.candidates.length} sen · {seats} reps
+                        </span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+        </aside>
+      )}
+
+      <div className="min-w-0">
       {position === "governor" && (
         <GovernorPanel
           stateName={stateName}
@@ -319,58 +362,135 @@ export default function CandidateRoster({
 
           {visible.length === 0 ? (
             <EmptyState title="No candidate matches those filters">
-              Try another party chip or clear the search box. Data follows the
+              Try another search or switch office. Data follows the
               INEC {electionYear} candidate list for {stateName}.
             </EmptyState>
           ) : (
             <>
-              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              <div
+                className={`grid gap-3 sm:grid-cols-2 ${
+                  position === "president" ? "lg:grid-cols-3" : ""
+                }`}
+              >
                 {pageSlice.map((row) => {
                   const isSelected =
                     selected?.kind === row.kind &&
                     selected.raceId === row.race.id;
-                  const leadName =
-                    row.kind === "president"
-                      ? presidential[row.race.ticketIndex]?.candidate
-                      : row.race.candidates[0]?.name;
+                  const key = `${row.kind}-${row.race.id}`;
+                  if (row.kind === "president") {
+                    const t = presidential[row.race.ticketIndex];
+                    return (
+                      <button
+                        key={key}
+                        type="button"
+                        onClick={() =>
+                          setSelected({ kind: row.kind, raceId: row.race.id })
+                        }
+                        className={`flex items-center gap-3 rounded-xl border bg-surface-card p-3 text-left shadow-sm transition-colors ${
+                          isSelected
+                            ? "border-primary-container ring-2 ring-emerald-500/20"
+                            : "border-border-subtle hover:border-slate-300"
+                        }`}
+                      >
+                        <PartyIcon
+                          icon={t?.partyIcon}
+                          abbreviation={t?.party ?? "—"}
+                          size="md"
+                          className="!h-10 !w-10 !rounded-full"
+                        />
+                        <div className="min-w-0">
+                          <p className="truncate text-sm font-bold text-text-primary">
+                            {t?.candidate}
+                          </p>
+                          <p className="truncate text-[11px] text-text-muted">
+                            VP: {t?.runningMate}
+                          </p>
+                          <p className="truncate text-[10px] font-semibold uppercase tracking-wide text-primary">
+                            {t?.partyName}
+                          </p>
+                        </div>
+                      </button>
+                    );
+                  }
+                  const districtId =
+                    row.kind === "senate" ? row.race.id : row.race.districtId;
+                  const lgaNames = row.race.lgaNames;
+                  const cands = row.race.candidates;
                   return (
                     <button
-                      key={`${row.kind}-${row.race.id}`}
+                      key={key}
                       type="button"
                       onClick={() =>
                         setSelected({ kind: row.kind, raceId: row.race.id })
                       }
-                      className={`flex min-h-[180px] flex-col rounded-xl border bg-surface-card p-4 text-left shadow-sm transition-colors ${
+                      onMouseEnter={() => setHoverDistrictId(districtId)}
+                      onMouseLeave={() => setHoverDistrictId(null)}
+                      onFocus={() => setHoverDistrictId(districtId)}
+                      onBlur={() => setHoverDistrictId(null)}
+                      className={`flex flex-col rounded-xl border bg-surface-card p-3 text-left shadow-sm transition-colors ${
                         isSelected
-                          ? "border-2 border-primary-container ring-2 ring-emerald-500/20"
-                          : "border-border-subtle hover:border-slate-300"
+                          ? "border-primary-container ring-2 ring-emerald-500/20"
+                          : "border-border-subtle hover:border-primary-container/40"
                       }`}
                     >
-                      <div className="flex items-center gap-3">
-                        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-border-subtle bg-slate-50 text-label-md font-bold text-primary">
-                          {initials(leadName ?? row.race.name)}
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex min-w-0 items-start gap-2">
+                          <span
+                            className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full"
+                            style={{
+                              backgroundColor: colorForSenatorialIndex(
+                                senatorialLookups.districtColorIndex[districtId] ?? 0
+                              ),
+                            }}
+                            aria-hidden
+                          />
+                          <div className="min-w-0">
+                            <p className="truncate text-sm font-bold text-text-primary">
+                              {row.race.name}
+                            </p>
+                            {row.kind === "reps" && row.race.districtName && (
+                              <p className="truncate text-[11px] text-text-muted">
+                                {row.race.districtName} Senatorial District
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                        <span className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold tabular-nums text-text-secondary">
+                          {cands.length} candidate{cands.length === 1 ? "" : "s"}
                         </span>
-                        <div className="min-w-0">
-                          <p className="truncate text-base font-bold text-text-primary">
-                            {leadName ?? "Ticket"}
-                          </p>
-                          <p className="truncate text-xs text-text-muted">
-                            {row.race.name}
-                          </p>
-                        </div>
                       </div>
-                      {"candidates" in row.race && (
-                        <div className="mt-3 flex flex-wrap gap-1.5">
-                          {row.race.candidates.slice(0, 4).map((c) => (
-                            <span
-                              key={`${c.name}-${c.party}`}
-                              className={`rounded-full border px-2 py-0.5 text-[10px] font-bold ${partyClass(c.party)}`}
-                            >
-                              {c.party}
-                            </span>
-                          ))}
-                        </div>
+
+                      {lgaNames.length > 0 && (
+                        <p className="mt-2 line-clamp-1 text-[11px] text-text-secondary">
+                          <span className="font-semibold text-text-muted">
+                            {lgaNames.length} LGA{lgaNames.length === 1 ? "" : "s"}:
+                          </span>{" "}
+                          {lgaNames.slice(0, 3).join(", ")}
+                          {lgaNames.length > 3 ? ` +${lgaNames.length - 3}` : ""}
+                        </p>
                       )}
+
+                      <div className="mt-2.5 flex items-center justify-between gap-2">
+                        <div className="flex -space-x-1.5">
+                          {cands.slice(0, 6).map((c) => (
+                            <PartyIcon
+                              key={`${c.name}-${c.party}`}
+                              icon={c.partyIcon}
+                              abbreviation={c.party}
+                              size="sm"
+                              className="!h-7 !w-7 !rounded-full ring-2 ring-white"
+                            />
+                          ))}
+                          {cands.length > 6 && (
+                            <span className="grid h-7 w-7 place-items-center rounded-full bg-slate-100 text-[10px] font-bold text-text-secondary ring-2 ring-white">
+                              +{cands.length - 6}
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-[11px] font-semibold text-primary">
+                          View roster →
+                        </span>
+                      </div>
                     </button>
                   );
                 })}
@@ -401,6 +521,8 @@ export default function CandidateRoster({
           )}
         </>
       )}
+      </div>
+      </div>
 
       {selected && position !== "governor" && (
         <DossierDrawer
@@ -590,14 +712,16 @@ function DossierDrawer({
                   key={`${c.name}-${c.party}`}
                   className="rounded-xl border border-border-subtle p-4"
                 >
-                  <p className="text-body-md font-semibold text-text-primary">
-                    {c.name}
-                  </p>
-                  <span
-                    className={`mt-2 inline-flex rounded-full border px-2 py-0.5 text-[11px] font-semibold ${partyClass(c.party)}`}
-                  >
-                    {c.party}
-                  </span>
+                  <div className="flex items-center gap-3">
+                    <PartyIcon
+                      icon={c.partyIcon}
+                      abbreviation={c.party}
+                      size="md"
+                    />
+                    <p className="text-body-md font-semibold text-text-primary">
+                      {c.name}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>

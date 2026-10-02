@@ -17,7 +17,12 @@ const TIP_ACCENT_STYLES = [
   "border-sky-200/90 bg-sky-50/95 text-sky-950",
 ] as const;
 
-export default function MapHints() {
+type Props = {
+  /** Matches the emerald status chip on section map breadcrumbs. */
+  variant?: "bar" | "status";
+};
+
+export default function MapHints({ variant = "bar" }: Props) {
   const [panelHidden, setPanelHidden] = useState(true);
   const [accentIdx, setAccentIdx] = useState(0);
   const [attention, setAttention] = useState(false);
@@ -208,6 +213,49 @@ export default function MapHints() {
     !isTransient && (attention || hintPulse)
       ? "animate-naija-attention ring-2 ring-amber-300/80"
       : "";
+
+  if (variant === "status") {
+    const text = isTransient ? hint : panelHidden ? "Map tips hidden · tap to show" : hint;
+    const pillClass =
+      "inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-body-sm text-emerald-900 max-w-[min(100%,36rem)] min-w-0";
+
+    if (panelHidden && !isTransient) {
+      return (
+        <button
+          type="button"
+          onClick={show}
+          className={`${pillClass} hover:border-[#008751] transition-colors`}
+          aria-label="Show map hints"
+        >
+          <span className="h-2 w-2 shrink-0 rounded-full bg-[#008751]" aria-hidden />
+          <span className="truncate">Show map tips</span>
+        </button>
+      );
+    }
+
+    return (
+      <div key={hint} className={`${pillClass} ${motionClass}`}>
+        <span
+          className={`h-2 w-2 shrink-0 rounded-full ${
+            isTransient ? "bg-emerald-500" : "bg-[#008751] animate-pulse"
+          }`}
+          aria-hidden
+        />
+        <p className="min-w-0 truncate hidden sm:block">{text}</p>
+        <p className="min-w-0 truncate sm:hidden">{mobileHint}</p>
+        {!isTransient && (
+          <button
+            type="button"
+            onClick={dismiss}
+            className="shrink-0 text-emerald-700/60 hover:text-emerald-900 px-0.5"
+            aria-label="Dismiss hints"
+          >
+            ✕
+          </button>
+        )}
+      </div>
+    );
+  }
 
   if (panelHidden && !isTransient) {
     return (

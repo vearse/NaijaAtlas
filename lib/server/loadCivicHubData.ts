@@ -13,6 +13,7 @@ import type { StateLocation } from "@/types/location";
 export type HubCandidate = {
   name: string;
   party: string;
+  partyIcon?: string | null;
 };
 
 export type HubSenateRace = {
@@ -57,6 +58,12 @@ export type HubStateOffice = {
   assemblySpeaker: HubOfficeholder | null;
 };
 
+export type CivicSenatorialLookups = {
+  lgaToDistrictId: Record<string, string>;
+  districtColorIndex: Record<string, number>;
+  districtById: Record<string, { id: string; name: string }>;
+};
+
 export type CivicHubData = {
   election: {
     year: number;
@@ -86,6 +93,7 @@ export type CivicHubData = {
   presidential: {
     party: string;
     partyName: string;
+    partyIcon?: string | null;
     candidate: string;
     runningMate: string;
   }[];
@@ -99,6 +107,7 @@ export type CivicHubData = {
   }[];
   lgas: { id: string; name: string; stateId: string }[];
   offices: HubStateOffice[];
+  senatorialLookups: CivicSenatorialLookups;
 };
 
 function toPerson(value: unknown): HubOfficeholder | null {
@@ -154,6 +163,7 @@ export function loadCivicHubData(root = process.cwd()): CivicHubData {
       candidates: race.candidates.map((c) => ({
         name: c.name,
         party: c.party,
+        partyIcon: c.party_icon ?? null,
       })),
     };
   });
@@ -177,6 +187,7 @@ export function loadCivicHubData(root = process.cwd()): CivicHubData {
       candidates: race.candidates.map((c) => ({
         name: c.name,
         party: c.party,
+        partyIcon: c.party_icon ?? null,
       })),
     };
   });
@@ -261,6 +272,7 @@ export function loadCivicHubData(root = process.cwd()): CivicHubData {
     presidential: presidential.candidates.map((t) => ({
       party: t.party.abbreviation,
       partyName: t.party.name,
+      partyIcon: t.party.icon ?? null,
       candidate: t.presidential_candidate.name,
       runningMate: t.vice_presidential_candidate.name,
     })),
@@ -278,5 +290,15 @@ export function loadCivicHubData(root = process.cwd()): CivicHubData {
       stateId: l.parentId,
     })),
     offices,
+    senatorialLookups: {
+      lgaToDistrictId: politics.lookups.lgaToSenatorialDistrictId,
+      districtColorIndex: politics.lookups.districtColorIndex,
+      districtById: Object.fromEntries(
+        Object.values(politics.lookups.districtById).map((d) => [
+          d.id,
+          { id: d.id, name: d.name },
+        ])
+      ),
+    },
   };
 }

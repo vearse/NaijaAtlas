@@ -18,7 +18,9 @@ const MS_PER_DAY = 86_400_000;
 
 function parseElectionDate(iso: string | undefined): Date | null {
   if (!iso) return null;
-  const ms = Date.parse(iso);
+  const ms = /^\d{4}-\d{2}-\d{2}$/.test(iso)
+    ? Date.parse(`${iso}T08:00:00+01:00`)
+    : Date.parse(iso);
   return Number.isNaN(ms) ? null : new Date(ms);
 }
 

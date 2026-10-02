@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import ToastStack from "@/components/ui/ToastStack";
 
 const CANVAS: Record<string, string> = {
   /** #f8fafc — the default cool-gray hub canvas. */
@@ -9,6 +10,8 @@ const CANVAS: Record<string, string> = {
   warm: "bg-surface-base",
   /** #f8fafc alias for the economy hub, which uses a warmer near-white. */
   economy: "bg-slate-50",
+  /** Clean white canvas for directory-style hubs. */
+  white: "bg-white",
 };
 
 export default function HubShell({
@@ -23,6 +26,7 @@ export default function HubShell({
       className={`min-h-screen ${CANVAS[canvas]} text-text-primary font-landing font-body-md antialiased selection:bg-primary-tint-soft selection:text-primary`}
     >
       {children}
+      <ToastStack />
     </div>
   );
 }

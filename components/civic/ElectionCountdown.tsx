@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { formatElectionDate } from "@/lib/election/countdown";
+import { GENERAL_ELECTION_DATE_ISO } from "@/lib/election/schedule";
 
 type Props = {
   /** ISO date, e.g. `2027-01-16`. */
   date: string | null;
   year: number;
   source: string;
+  className?: string;
 };
 
 type Remaining = {
@@ -19,8 +21,11 @@ type Remaining = {
 };
 
 function remainingTo(iso: string | null): Remaining | null {
-  if (!iso) return null;
-  const target = Date.parse(iso);
+  const resolved = iso ?? GENERAL_ELECTION_DATE_ISO;
+  const target =
+    /^\d{4}-\d{2}-\d{2}$/.test(resolved)
+      ? Date.parse(`${resolved}T08:00:00+01:00`)
+      : Date.parse(resolved);
   if (Number.isNaN(target)) return null;
   const delta = target - Date.now();
   const abs = Math.abs(delta);
@@ -38,6 +43,7 @@ export default function ElectionCountdown({
   date,
   year,
   source,
+  className = "",
 }: Props) {
   const [remaining, setRemaining] = useState<Remaining | null>(() =>
     remainingTo(date)
@@ -52,7 +58,9 @@ export default function ElectionCountdown({
   if (!remaining) return null;
 
   return (
-    <div className="space-y-5 rounded-xl border border-border-subtle bg-surface-card p-6 shadow-sm">
+    <div
+      className={`flex h-full flex-col justify-between space-y-5 rounded-xl border border-border-subtle bg-surface-card p-6 shadow-sm ${className}`}
+    >
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           {!remaining.past && (

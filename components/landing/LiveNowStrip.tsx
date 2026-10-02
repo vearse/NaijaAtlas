@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { GENERAL_ELECTION_DATE_MS } from "@/lib/election/schedule";
 import { IconArrow } from "@/components/landing/icons";
 
-const ELECTION_DATE = new Date("2027-02-21T08:00:00+01:00");
+const ELECTION_DATE = new Date(GENERAL_ELECTION_DATE_MS);
 
 function useCountdown(target: Date) {
   const [parts, setParts] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
