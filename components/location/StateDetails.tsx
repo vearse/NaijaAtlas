@@ -126,6 +126,7 @@ export default function StateDetails({
 }: StateDetailsProps) {
   const activeLens = useMapStore((s) => s.activeLens);
   const setActiveLens = useMapStore((s) => s.setActiveLens);
+  const sectionMap = useMapStore((s) => s.sectionMap);
   const openWikiModal = useMapStore((s) => s.openWikiModal);
 
   const stateLgas = lgas
@@ -196,9 +197,9 @@ export default function StateDetails({
         <p className="text-xs font-medium uppercase tracking-wide text-ng-green">
           {content.region}
         </p>
-        <h2 className="text-2xl font-bold text-slate-900">{content.name}</h2>
-        {nickname && <p className="text-sm text-slate-500 mt-1">{nickname}</p>}
-        <p className="text-xs text-slate-600 leading-relaxed">
+        <h2 className="text-2xl font-bold text-text-primary">{content.name}</h2>
+        {nickname && <p className="text-sm text-text-muted mt-1">{nickname}</p>}
+        <p className="text-xs text-text-secondary leading-relaxed">
           {content.description}
         </p>
       </div>
@@ -277,7 +278,7 @@ export default function StateDetails({
       <ShowLgasButton stateId={location.id} stateName={location.name} />
 
       <div className="flex items-center gap-1.5 mb-1" role="tablist" aria-label="Focus lens">
-        {LENS_IDS.map((l) => (
+        {!sectionMap && LENS_IDS.map((l) => (
           <button
             key={l}
             type="button"
@@ -287,7 +288,7 @@ export default function StateDetails({
             className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
               activeLens === l
                 ? "bg-ng-green text-white shadow-sm"
-                : "bg-white text-slate-600 border border-slate-200 hover:border-ng-green/40 hover:text-ng-green"
+                : "bg-surface-card text-text-secondary border border-border-subtle hover:border-ng-green/40 hover:text-ng-green"
             }`}
           >
             {LENS_LABELS[l]}
@@ -319,7 +320,7 @@ export default function StateDetails({
                       {m.name}
                     </p>
                     {m.memberIds.length > 0 && (
-                      <p className="text-[11px] font-medium text-slate-500 mt-0.5">
+                      <p className="text-[11px] font-medium text-text-muted mt-0.5">
                         {m.memberIds.length} LGA
                         {m.memberIds.length === 1 ? "" : "s"}
                       </p>
@@ -334,7 +335,7 @@ export default function StateDetails({
                   />
                 </div>
                 {m.description && (
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-text-secondary leading-relaxed">
                     {m.description}
                   </p>
                 )}
@@ -350,7 +351,7 @@ export default function StateDetails({
                           type="button"
                           onClick={() => onSelectLga?.(lga.id)}
                           title={`Open ${lga.name} details`}
-                          className="text-xs text-slate-600 underline underline-offset-2 rounded px-0.5 transition-colors hover:text-ng-green"
+                          className="text-xs text-text-secondary underline underline-offset-2 rounded px-0.5 transition-colors hover:text-ng-green"
                         >
                           {lga.name}
                         </button>
@@ -363,7 +364,7 @@ export default function StateDetails({
                     {m.wikiNotes.map((w, i) => (
                       <li
                         key={i}
-                        className="rounded-lg bg-white border border-slate-100 px-2.5 py-2"
+                        className="rounded-lg bg-surface-card border border-slate-100 px-2.5 py-2"
                       >
                         <button
                           type="button"
@@ -375,14 +376,14 @@ export default function StateDetails({
                             <span
                               className={`rounded-full border px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide ${
                                 NOTE_CATEGORY_STYLES[w.category] ??
-                                "bg-slate-50 text-slate-600 border-slate-200"
+                                "bg-slate-50 text-text-secondary border-border-subtle"
                               }`}
                             >
                               {w.category}
                             </span>
                           </span>
                         </button>
-                        <p className="text-[11px] text-slate-500 leading-snug mt-1">
+                        <p className="text-[11px] text-text-muted leading-snug mt-1">
                           {w.note}
                         </p>
                       </li>
@@ -417,7 +418,7 @@ export default function StateDetails({
                     <span
                       className={`rounded-full border px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide ${
                         NOTE_CATEGORY_STYLES[n.category] ??
-                        "bg-slate-50 text-slate-600 border-slate-200"
+                        "bg-slate-50 text-text-secondary border-border-subtle"
                       }`}
                     >
                       {n.category}
@@ -428,7 +429,7 @@ export default function StateDetails({
                 {(n.period || n.locations || n.type) && (
                   <div className="flex items-center flex-wrap gap-1.5 mt-1.5 text-[10px]">
                     {n.type && (
-                      <span className="rounded-full bg-slate-50 border border-slate-200 px-1.5 py-px font-semibold uppercase tracking-wide text-slate-500">
+                      <span className="rounded-full bg-slate-50 border border-border-subtle px-1.5 py-px font-semibold uppercase tracking-wide text-text-muted">
                         {n.type}
                       </span>
                     )}
@@ -449,7 +450,7 @@ export default function StateDetails({
                   </div>
                 )}
 
-                <p className="text-xs text-slate-500 leading-relaxed mt-1">
+                <p className="text-xs text-text-muted leading-relaxed mt-1">
                   {n.note}
                 </p>
                 <div className="mt-2">
@@ -469,7 +470,7 @@ export default function StateDetails({
       {activeLens === "tourist" && (
         <div className="space-y-5">
           {touristCount === 0 ? (
-            <p className="text-xs text-slate-500 text-center leading-relaxed">
+            <p className="text-xs text-text-muted text-center leading-relaxed">
               No tourist places catalogued for {content.name} yet.
             </p>
           ) : (
@@ -517,7 +518,7 @@ export default function StateDetails({
       {activeLens === "invest" && (
         <div className="space-y-5">
           {investCount === 0 ? (
-            <p className="text-xs text-slate-500 text-center leading-relaxed">
+            <p className="text-xs text-text-muted text-center leading-relaxed">
               No investment-related places catalogued for {content.name} yet.
             </p>
           ) : (

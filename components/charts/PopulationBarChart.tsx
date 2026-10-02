@@ -102,7 +102,7 @@ export default function PopulationBarChart({
         <h4 className="text-xs font-semibold uppercase text-slate-400">
           LGA count — top states
         </h4>
-        <p className="text-[10px] font-medium text-slate-500">
+        <p className="text-[10px] font-medium text-text-muted">
           Total{" "}
           <span className="text-ng-green font-bold">{totalLgas}</span> LGAs
         </p>

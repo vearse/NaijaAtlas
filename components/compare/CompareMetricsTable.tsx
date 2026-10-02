@@ -89,7 +89,7 @@ export default function CompareMetricsTable({
           const cell = row.values[0];
           return (
             <div key={row.key} className="px-3 py-2.5 flex flex-col gap-1 sm:flex-row sm:gap-3">
-              <dt className="text-xs font-medium text-slate-500 sm:w-[40%] shrink-0">
+              <dt className="text-xs font-medium text-text-muted sm:w-[40%] shrink-0">
                 {row.label}
               </dt>
               <dd className="text-sm font-medium text-slate-800 sm:flex-1 min-w-0">
@@ -125,7 +125,7 @@ export default function CompareMetricsTable({
             const hi = highlightIndices(row);
             return (
               <tr key={row.key} className="border-t border-slate-100">
-                <td className="px-3 py-2.5 text-slate-500 align-top sticky left-0 bg-white">
+                <td className="px-3 py-2.5 text-text-muted align-top sticky left-0 bg-surface-card">
                   {row.label}
                 </td>
                 {row.values.map((_, i) => {

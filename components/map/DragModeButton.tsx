@@ -29,7 +29,7 @@ export default function DragModeButton({
           ? "bg-slate-50 text-slate-300 cursor-not-allowed border border-slate-100"
           : dragMode
             ? "bg-amber-500 text-white shadow-sm border border-amber-500"
-            : "bg-slate-100 text-slate-600 hover:bg-amber-50 hover:text-amber-800 border border-slate-200"
+            : "bg-slate-100 text-text-secondary hover:bg-amber-50 hover:text-amber-800 border border-border-subtle"
       }`}
       aria-pressed={dragMode}
       aria-label={

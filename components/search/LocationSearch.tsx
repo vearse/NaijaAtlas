@@ -283,13 +283,13 @@ export default function LocationSearch({ lgas = [] }: { lgas?: LgaLocation[] }) 
           value={query}
           onChange={(e) => search(e.target.value)}
           onFocus={() => query && setOpen(true)}
-          className="w-full rounded-xl border border-slate-200 bg-white/95 backdrop-blur pl-10 pr-4 py-2.5 text-sm shadow-sm min-h-[42px] focus:outline-none focus:ring-2 focus:ring-ng-green/40"
+          className="w-full rounded-xl border border-border-subtle bg-surface-card/95 backdrop-blur pl-10 pr-4 py-2.5 text-sm shadow-sm min-h-[42px] focus:outline-none focus:ring-2 focus:ring-ng-green/40"
           autoComplete="off"
         />
       </div>
       {open && results.length > 0 && (
         <ul
-          className="absolute z-50 mt-1 w-full rounded-xl border border-slate-200 bg-white shadow-xl overflow-hidden max-h-[60vh] overflow-y-auto"
+          className="absolute z-50 mt-1 w-full rounded-xl border border-border-subtle bg-surface-card shadow-xl overflow-hidden max-h-[60vh] overflow-y-auto"
           role="listbox"
         >
           {results.map((r) => (
@@ -307,7 +307,7 @@ export default function LocationSearch({ lgas = [] }: { lgas?: LgaLocation[] }) 
                   </span>
                   <span className="font-medium text-slate-800 truncate">{r.name}</span>
                 </span>
-                <span className="text-xs text-slate-500 shrink-0 text-right">
+                <span className="text-xs text-text-muted shrink-0 text-right">
                   {resultLabel(r)}
                 </span>
               </button>

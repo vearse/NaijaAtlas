@@ -47,20 +47,20 @@ export default function DesktopCompareModal({
         aria-modal="true"
         aria-label="Expanded state comparison"
       >
-        <div className="pointer-events-auto w-full max-w-5xl max-h-[min(90vh,880px)] flex flex-col bg-white rounded-2xl shadow-2xl border border-slate-200/80 overflow-hidden animate-scale-in">
+        <div className="pointer-events-auto w-full max-w-5xl max-h-[min(90vh,880px)] flex flex-col bg-surface-card rounded-2xl shadow-2xl border border-border-subtle/80 overflow-hidden animate-scale-in">
           <div className="shrink-0 flex items-center justify-between gap-4 px-6 py-4 border-b border-slate-100 bg-gradient-to-r from-white to-slate-50/80">
             <div className="min-w-0">
               <p className="text-xs font-semibold uppercase tracking-wider text-ng-green">
                 Compare {states.length} states
               </p>
-              <p className="text-lg font-bold text-slate-900 truncate">
+              <p className="text-lg font-bold text-text-primary truncate">
                 {states.map((s) => s.name).join(" · ")}
               </p>
             </div>
             <button
               type="button"
               onClick={onClose}
-              className="shrink-0 h-10 w-10 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors text-xl leading-none"
+              className="shrink-0 h-10 w-10 flex items-center justify-center rounded-full bg-slate-100 text-text-secondary hover:bg-slate-200 transition-colors text-xl leading-none"
               aria-label="Close"
             >
               ×

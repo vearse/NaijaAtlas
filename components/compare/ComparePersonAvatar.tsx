@@ -69,7 +69,7 @@ export function ComparePersonBlock({
           {person.name}
         </p>
         {person.party && (
-          <p className="text-[10px] text-slate-500 mt-0.5">{person.party}</p>
+          <p className="text-[10px] text-text-muted mt-0.5">{person.party}</p>
         )}
       </div>
     </div>

@@ -44,7 +44,7 @@ export default function SearchSpotlight({ open, onClose, lgas }: SearchSpotlight
         onClick={onClose}
         aria-hidden
       />
-      <div className="relative w-full max-w-lg rounded-2xl bg-white shadow-2xl ring-1 ring-slate-900/10 overflow-hidden">
+      <div className="relative w-full max-w-lg rounded-2xl bg-surface-card shadow-2xl ring-1 ring-slate-900/10 overflow-hidden">
         <LocationSearch lgas={lgas} />
       </div>
     </div>

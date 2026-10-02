@@ -203,8 +203,8 @@ export default function PollingUnitLocator({
   return (
     <section className="space-y-4">
       <div>
-        <h2 className="text-sm font-bold text-slate-900">Find your polling unit</h2>
-        <p className="text-xs text-slate-500 mt-1">
+        <h2 className="text-sm font-bold text-text-primary">Find your polling unit</h2>
+        <p className="text-xs text-text-muted mt-1">
           Code or search an LGA, then pick ward and unit.
         </p>
       </div>
@@ -226,7 +226,7 @@ export default function PollingUnitLocator({
               if (e.key === "Enter") void onLookupCode();
             }}
             placeholder="01-01-01-005"
-            className="flex-1 rounded-lg border border-slate-200 px-3 py-2 text-sm font-mono tracking-wide"
+            className="flex-1 rounded-lg border border-border-subtle px-3 py-2 text-sm font-mono tracking-wide"
             autoComplete="off"
           />
           <button
@@ -283,10 +283,10 @@ export default function PollingUnitLocator({
             }}
             onFocus={() => setShowLgaSuggestions(true)}
             placeholder="Search LGA name…"
-            className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm"
+            className="w-full rounded-lg border border-border-subtle px-3 py-2 text-sm"
           />
           {showLgaSuggestions && lgaSuggestions.length > 0 && (
-            <ul className="absolute z-20 mt-1 max-h-48 w-full overflow-y-auto rounded-lg border border-slate-200 bg-white shadow-lg">
+            <ul className="absolute z-20 mt-1 max-h-48 w-full overflow-y-auto rounded-lg border border-border-subtle bg-surface-card shadow-lg">
               {lgaSuggestions.map((lga) => (
                 <li key={lga.id}>
                   <button
@@ -296,7 +296,7 @@ export default function PollingUnitLocator({
                     onClick={() => pickLga(lga)}
                   >
                     <span className="font-medium">{lga.name}</span>
-                    <span className="text-slate-500 text-xs ml-1">
+                    <span className="text-text-muted text-xs ml-1">
                       · {lga.stateName}
                     </span>
                   </button>
@@ -314,7 +314,7 @@ export default function PollingUnitLocator({
                 setBrowseWardId(e.target.value);
                 setBrowsePuId("");
               }}
-              className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm"
+              className="w-full rounded-lg border border-border-subtle px-3 py-2 text-sm"
             >
               <option value="">Ward</option>
               {wardOptions.map((w) => (
@@ -327,7 +327,7 @@ export default function PollingUnitLocator({
               value={browsePuId}
               disabled={!browseWardId || loadingWard}
               onChange={(e) => onBrowsePuChange(e.target.value)}
-              className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm disabled:opacity-50"
+              className="w-full rounded-lg border border-border-subtle px-3 py-2 text-sm disabled:opacity-50"
             >
               <option value="">
                 {loadingWard ? "Loading units…" : "Polling unit"}
@@ -346,12 +346,12 @@ export default function PollingUnitLocator({
         <div className="rounded-xl border border-emerald-100 bg-emerald-50/60 p-3 text-sm space-y-3">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className="font-semibold text-slate-900">{resolved.name}</p>
-              <p className="text-xs text-slate-600 mt-1 font-mono">
+              <p className="font-semibold text-text-primary">{resolved.name}</p>
+              <p className="text-xs text-text-secondary mt-1 font-mono">
                 {formatDelimitationDisplay(resolved.delimitation)}
               </p>
               {resolved.status && (
-                <p className="text-xs text-slate-500 mt-1">{resolved.status}</p>
+                <p className="text-xs text-text-muted mt-1">{resolved.status}</p>
               )}
             </div>
             <button
@@ -379,7 +379,7 @@ export default function PollingUnitLocator({
                 onClick={() =>
                   setSelectedSenatorialDistrict(senatorialDistrictId)
                 }
-                className="inline-flex items-center gap-2 rounded-lg border border-emerald-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-emerald-900 hover:border-ng-green"
+                className="inline-flex items-center gap-2 rounded-lg border border-emerald-200 bg-surface-card px-2.5 py-1.5 text-xs font-semibold text-emerald-900 hover:border-ng-green"
               >
                 <span
                   className="h-2.5 w-2.5 rounded-sm shrink-0"
@@ -412,7 +412,7 @@ export default function PollingUnitLocator({
                           federalConstituencyId: fc.id,
                         })
                       }
-                      className="w-full flex items-center justify-between gap-2 rounded-md bg-white/80 px-2 py-1 text-left hover:bg-white transition"
+                      className="w-full flex items-center justify-between gap-2 rounded-md bg-surface-card/80 px-2 py-1 text-left hover:bg-surface-card transition"
                     >
                       <span className="min-w-0">{fc.name}</span>
                       <span

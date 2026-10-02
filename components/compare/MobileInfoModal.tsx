@@ -42,7 +42,7 @@ export default function MobileInfoModal({
         onClick={onClose}
       />
       <div
-        className="fixed inset-x-2 top-10 bottom-1.5 sm:inset-x-3 sm:top-14 sm:bottom-3 z-50 lg:hidden flex flex-col bg-white rounded-2xl shadow-2xl border border-slate-200/80 overflow-hidden"
+        className="fixed inset-x-2 top-10 bottom-1.5 sm:inset-x-3 sm:top-14 sm:bottom-3 z-50 lg:hidden flex flex-col bg-surface-card rounded-2xl shadow-2xl border border-border-subtle/80 overflow-hidden"
         role="dialog"
         aria-modal="true"
         aria-label="Nigeria overview"
@@ -52,12 +52,12 @@ export default function MobileInfoModal({
             <p className="text-xs font-semibold uppercase tracking-wider text-ng-green">
               NaijaAtlas
             </p>
-            <p className="text-sm font-bold text-slate-900">Nigeria overview</p>
+            <p className="text-sm font-bold text-text-primary">Nigeria overview</p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="h-9 w-9 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 text-xl leading-none"
+            className="h-9 w-9 flex items-center justify-center rounded-full bg-slate-100 text-text-secondary hover:bg-slate-200 text-xl leading-none"
             aria-label="Close"
           >
             ×

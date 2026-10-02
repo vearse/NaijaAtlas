@@ -30,7 +30,7 @@ function ChevronDown({ open }: { open: boolean }) {
       viewBox="0 0 20 20"
       fill="currentColor"
       aria-hidden
-      className={`h-3.5 w-3.5 shrink-0 text-slate-500 transition-transform duration-200 ${
+      className={`h-3.5 w-3.5 shrink-0 text-text-muted transition-transform duration-200 ${
         open ? "rotate-180" : ""
       }`}
     >
@@ -89,7 +89,7 @@ export default function MapChromeDropdown<T extends string>({
   const iconWrap =
     variant === "accent"
       ? "bg-ng-green text-white"
-      : "bg-slate-100 text-slate-600";
+      : "bg-slate-100 text-text-secondary";
 
   return (
     <div ref={rootRef} className="relative">
@@ -100,7 +100,7 @@ export default function MapChromeDropdown<T extends string>({
         aria-haspopup="menu"
         aria-label={ariaLabel}
         title={active.desc ?? active.label}
-        className="inline-flex items-center gap-1.5 rounded-xl bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-lg min-h-[30px] px-2 py-1 transition-colors hover:bg-white"
+        className="inline-flex items-center gap-1.5 rounded-xl bg-surface-card/90 backdrop-blur-md border border-border-subtle/80 shadow-lg min-h-[30px] px-2 py-1 transition-colors hover:bg-surface-card"
       >
         <span
           className={`flex h-5 w-5 items-center justify-center rounded-md ${iconWrap}`}
@@ -119,7 +119,7 @@ export default function MapChromeDropdown<T extends string>({
         <div
           role="menu"
           aria-label={ariaLabel}
-          className={`absolute z-50 mt-2 ${menuWidthClass} overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-xl ${
+          className={`absolute z-50 mt-2 ${menuWidthClass} overflow-hidden rounded-xl border border-border-subtle/80 bg-surface-card shadow-xl ${
             menuAlign === "left" ? "left-0" : "right-0"
           }`}
         >
@@ -146,9 +146,9 @@ export default function MapChromeDropdown<T extends string>({
                   rowAccent
                     ? "bg-ng-green text-white shadow-inner"
                     : on
-                      ? "bg-slate-100 text-slate-900"
+                      ? "bg-slate-100 text-text-primary"
                       : disabled
-                        ? "text-slate-500"
+                        ? "text-text-muted"
                         : "text-slate-700 hover:bg-slate-50",
                   idx === 0 ? "rounded-t-xl" : "",
                   idx === options.length - 1 ? "rounded-b-xl" : "",

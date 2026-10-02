@@ -27,14 +27,14 @@ function CompareModalHeader({
         <p className="text-xs font-semibold uppercase tracking-wider text-ng-green">
           Compare {states.length} states
         </p>
-        <p className="text-sm lg:text-lg font-bold text-slate-900 truncate">
+        <p className="text-sm lg:text-lg font-bold text-text-primary truncate">
           {states.map((s) => s.name).join(" · ")}
         </p>
       </div>
       <button
         type="button"
         onClick={onClose}
-        className="shrink-0 h-9 w-9 lg:h-10 lg:w-10 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors text-xl leading-none"
+        className="shrink-0 h-9 w-9 lg:h-10 lg:w-10 flex items-center justify-center rounded-full bg-slate-100 text-text-secondary hover:bg-slate-200 transition-colors text-xl leading-none"
         aria-label="Close"
       >
         ×
@@ -84,7 +84,7 @@ export default function CompareModal({
       />
 
       <div
-        className="fixed inset-x-2 top-[3vh] sm:inset-x-3 sm:top-[4vh] z-50 lg:hidden flex flex-col h-[min(94dvh,880px)] min-h-[85dvh] bg-white rounded-2xl shadow-2xl border border-slate-200/80 overflow-hidden animate-scale-in"
+        className="fixed inset-x-2 top-[3vh] sm:inset-x-3 sm:top-[4vh] z-50 lg:hidden flex flex-col h-[min(94dvh,880px)] min-h-[85dvh] bg-surface-card rounded-2xl shadow-2xl border border-border-subtle/80 overflow-hidden animate-scale-in"
         role="dialog"
         aria-modal="true"
         aria-label="State comparison"
@@ -101,7 +101,7 @@ export default function CompareModal({
         aria-modal="true"
         aria-label="State comparison"
       >
-        <div className="pointer-events-auto w-full max-w-5xl h-[min(92vh,880px)] min-h-[85vh] flex flex-col bg-white rounded-2xl shadow-2xl border border-slate-200/80 overflow-hidden animate-scale-in">
+        <div className="pointer-events-auto w-full max-w-5xl h-[min(92vh,880px)] min-h-[85vh] flex flex-col bg-surface-card rounded-2xl shadow-2xl border border-border-subtle/80 overflow-hidden animate-scale-in">
           <CompareModalHeader states={states} onClose={onClose} />
           <div className="flex-1 overflow-y-auto overscroll-contain px-6 py-5 min-h-0">
             {body}

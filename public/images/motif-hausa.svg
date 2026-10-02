@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" role="img" aria-label="Northern Nigerian embroidery motif in emerald and gold.">
+  <title>North embroidery motif</title>
+  <defs>
+    <linearGradient id="hausa-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#047857" />
+      <stop offset="50%" stop-color="#0f766e" />
+      <stop offset="100%" stop-color="#065f46" />
+    </linearGradient>
+  </defs>
+  <rect width="480" height="160" fill="url(#hausa-bg)" />
+  <g stroke="#fde68a" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.92">
+    <!-- interlocking stepped key pattern -->
+    <path d="M24 40 h28 v-14 h28 v14 h28 v14 h-28 v14 h-28 v-14 h-28 z" />
+    <path d="M180 40 h28 v-14 h28 v14 h28 v14 h-28 v14 h-28 v-14 h-28 z" />
+    <path d="M336 40 h28 v-14 h28 v14 h28 v14 h-28 v14 h-28 v-14 h-28 z" />
+    <path d="M24 110 h28 v-14 h28 v14 h28 v14 h-28 v14 h-28 v-14 h-28 z" />
+    <path d="M180 110 h28 v-14 h28 v14 h28 v14 h-28 v14 h-28 v-14 h-28 z" />
+    <path d="M336 110 h28 v-14 h28 v14 h28 v14 h-28 v14 h-28 v-14 h-28 z" />
+  </g>
+  <g fill="#a7f3d0" opacity="0.7">
+    <circle cx="138" cy="20" r="4" />
+    <circle cx="294" cy="20" r="4" />
+    <circle cx="138" cy="90" r="4" />
+    <circle cx="294" cy="90" r="4" />
+    <circle cx="450" cy="55" r="4" />
+    <circle cx="30" cy="55" r="4" />
+  </g>
+  <g stroke="#6ee7b7" stroke-width="2" opacity="0.55" fill="none">
+    <path d="M0 80 h480" stroke-dasharray="6 8" />
+  </g>
+</svg>

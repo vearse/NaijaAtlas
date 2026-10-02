@@ -1,6 +1,5 @@
 import fs from "fs";
 import path from "path";
-import ExplorerShell from "@/components/ExplorerShell";
 import { loadCompareBundle } from "@/lib/compare/loadCompareBundle";
 import { buildPoliticsBundle } from "@/lib/politics/buildLookups";
 import type {
@@ -25,13 +24,31 @@ import type {
   SenateRace,
   SenatorialDistrict,
 } from "@/types/politics";
+import type { CompareBundle } from "@/types/compare";
+import type { PoliticsBundle } from "@/types/politics";
 
 function loadJson<T>(filePath: string): T {
   return JSON.parse(fs.readFileSync(filePath, "utf-8")) as T;
 }
 
-export default function HomePage() {
-  const root = process.cwd();
+export type ExplorerPageData = {
+  states: StateLocation[];
+  lgas: LgaLocation[];
+  regions: RegionLocation[];
+  stateContent: StateContent[];
+  lgaContent: LgaContent[];
+  wardsByLga: WardsByLga;
+  compareBundle: CompareBundle;
+  metroGroups: MetroGroup[];
+  stateNotes: StateNotesMap;
+  countryNotes: CountryNotesMap;
+  peopleNotes: PeopleNotesMap;
+  lgaGeneral: Record<string, LgaGeneral>;
+  politics: PoliticsBundle;
+  pollingCounts: PollingUnitCountsBundle;
+};
+
+export function loadExplorerPageData(root = process.cwd()): ExplorerPageData {
   const states = loadJson<StateLocation[]>(
     path.join(root, "data/locations/states.json")
   );
@@ -78,7 +95,8 @@ export default function HomePage() {
     path.join(root, "data/politics/constituencies/senatorial-districts.json")
   );
   const federalConstituencies = loadJson<FederalConstituency[]>(
-    path.join(root, "data/politics/constituencies/federal-constituencies.json")
+    path.join(root, "data/politics/constituencies/federal-constituencies.json"
+    )
   );
   const senateRaces = loadJson<SenateRace[]>(
     path.join(root, "data/politics/candidate/2027/seneate/senate.json")
@@ -101,22 +119,20 @@ export default function HomePage() {
     path.join(root, "data/locations/polling-unit-counts.json")
   );
 
-  return (
-    <ExplorerShell
-      states={states}
-      lgas={lgas}
-      regions={regions}
-      stateContent={stateContent}
-      lgaContent={lgaContent}
-      wardsByLga={wardsByLga}
-      compareBundle={compareBundle}
-      metroGroups={metroGroups}
-      stateNotes={stateNotes}
-      countryNotes={countryNotes}
-      peopleNotes={peopleNotes}
-      lgaGeneral={lgaGeneral}
-      politics={politics}
-      pollingCounts={pollingCounts}
-    />
-  );
+  return {
+    states,
+    lgas,
+    regions,
+    stateContent,
+    lgaContent,
+    wardsByLga,
+    compareBundle,
+    metroGroups,
+    stateNotes,
+    countryNotes,
+    peopleNotes,
+    lgaGeneral,
+    politics,
+    pollingCounts,
+  };
 }

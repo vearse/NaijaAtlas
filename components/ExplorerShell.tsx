@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useLayoutEffect } from "react";
 import dynamic from "next/dynamic";
 import LocationSearch from "@/components/search/LocationSearch";
 import SearchSpotlight from "@/components/search/SearchSpotlight";
-import PoweredByIseOwo from "@/components/PoweredByIseOwo";
+import HubHeader from "@/components/hub/HubHeader";
 import LensSelect from "@/components/map/LensSelect";
 import RegionSelect from "@/components/map/RegionSelect";
 import SelectedStatesBar from "@/components/map/SelectedStatesBar";
@@ -16,7 +16,7 @@ import CompareMenu from "@/components/compare/CompareMenu";
 import LocationPanel from "@/components/location/LocationPanel";
 import CompareModal from "@/components/compare/CompareModal";
 import MobileInfoModal from "@/components/compare/MobileInfoModal";
-import WikipediaReaderModal from "@/components/map/WikipediaReaderModal";
+
 import DirectionsModal from "@/components/directions/DirectionsModal";
 import UrlSync from "@/components/UrlSync";
 import {
@@ -46,6 +46,14 @@ import RankingPanel from "@/components/ranking/RankingPanel";
 import RankingMapLegend from "@/components/ranking/RankingMapLegend";
 import MapCornerSlot from "@/components/map/MapCornerSlot";
 import ToastStack from "@/components/ui/ToastStack";
+import SectionMapHeader from "@/components/workspace/SectionMapHeader";
+import RankingsWorkspaceChrome from "@/components/workspace/RankingsWorkspaceChrome";
+import RankingsMapCallouts from "@/components/workspace/RankingsMapCallouts";
+import WorkspaceMapFooter from "@/components/workspace/WorkspaceMapFooter";
+import {
+  SECTION_PRESETS,
+  type SectionWorkspaceMode,
+} from "@/lib/map/sectionPresets";
 
 const NigeriaMap = dynamic(() => import("@/components/map/NigeriaMap"), {
   ssr: false,
@@ -57,7 +65,10 @@ const NigeriaMap = dynamic(() => import("@/components/map/NigeriaMap"), {
   ),
 });
 
+export type { SectionWorkspaceMode };
+
 interface ExplorerShellProps {
+  sectionWorkspace?: SectionWorkspaceMode;
   states: StateLocation[];
   lgas: LgaLocation[];
   regions: RegionLocation[];
@@ -75,6 +86,7 @@ interface ExplorerShellProps {
 }
 
 export default function ExplorerShell({
+  sectionWorkspace,
   states,
   lgas,
   regions,
@@ -92,9 +104,44 @@ export default function ExplorerShell({
 }: ExplorerShellProps) {
   const isMobile = useIsMobile();
   const mapType = useMapStore((s) => s.mapType);
-  const isElectionMode = mapType === "election";
-  const isRankingMode = mapType === "ranking";
+  const preset = sectionWorkspace ? SECTION_PRESETS[sectionWorkspace] : null;
+
+  // Runs before UrlSync's effect, so `layers=` / `focus=` in the URL still win.
+  useLayoutEffect(() => {
+    if (!preset) {
+      useMapStore.setState({ lgaUi: true, sectionMap: false });
+      return;
+    }
+    const store = useMapStore.getState();
+    if (preset.id === "rankings") store.setMapType("ranking");
+    else if (preset.id === "elections") store.setMapType("election");
+    else if (store.mapType === "election" || store.mapType === "ranking") {
+      store.setMapType("minimal");
+    }
+    store.setActiveLens(preset.lens);
+    useMapStore.setState({
+      sectionMap: true,
+      lgaUi:
+        !!preset.lgaAndCompare ||
+        preset.id === "elections" ||
+        // The People map highlights each cultural group's member LGAs.
+        preset.id === "people",
+      activeOverlays: new Set(preset.defaultLayers),
+      lensOverlaysCustomized: false,
+    });
+    for (const group of preset.reveal ?? []) store.setOptInGroup(group, true);
+  }, [preset]);
+  const isElectionMode =
+    mapType === "election" || sectionWorkspace === "elections";
+  const isRankingMode =
+    mapType === "ranking" || sectionWorkspace === "rankings";
   const isSpecialMapMode = isElectionMode || isRankingMode;
+  const defaultMapType =
+    sectionWorkspace === "rankings"
+      ? "ranking"
+      : sectionWorkspace === "elections"
+        ? "election"
+        : undefined;
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
   const selectedLgaId = useMapStore((s) => s.selectedLgaId);
   const activeRegionId = useMapStore((s) => s.activeRegionId);
@@ -161,33 +208,38 @@ export default function ExplorerShell({
   }, [isMobile, showStateCompare]);
 
   return (
-    <div className="flex flex-col h-[100dvh] bg-[#eef2f6]">
-      <UrlSync />
-      <header className="shrink-0 z-20 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl shadow-sm relative">
+    <div
+      className={`flex flex-col bg-surface-canvas ${
+        sectionWorkspace ? "min-h-screen" : "h-[100dvh]"
+      }`}
+    >
+      <UrlSync defaultMapType={defaultMapType} />
+      {preset && <SectionMapHeader preset={preset} />}
+      {!preset && (
+      <>
+      <HubHeader
+        onSearchOpen={() => setSearchSpotlightOpen(true)}
+        primaryCta={{
+          label: "Find my polling unit",
+          href: "/civic/map/elections",
+          icon: "vote",
+        }}
+        tagline={
+          isElectionMode
+            ? "2027 elections · PU locator · Senate districts"
+            : isRankingMode
+              ? "State rankings · Economy & Social indicators"
+              : "36 states · 774 LGAs · 6 regions"
+        }
+      />
+      <header className="shrink-0 z-20 border-b border-border-subtle/80 bg-surface-card/90 backdrop-blur-xl shadow-sm relative">
         <div className="max-w-[1600px] mx-auto px-3 lg:px-6 py-2 lg:py-4">
-          <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4 justify-between">
-            <div className="flex flex-col items-start gap-1.5 shrink-0">
-              <div className="flex items-center gap-2.5">
-                <div className="flex h-9 w-9 lg:h-10 lg:w-10 items-center justify-center rounded-xl bg-ng-green text-lg lg:text-xl shadow-sm">
-                  🇳🇬
-                </div>
-                <div>
-                  <h1 className="text-lg lg:text-xl font-bold text-slate-900 tracking-tight leading-none">
-                    NaijaAtlas
-                  </h1>
-                  <p className="text-[11px] lg:text-xs text-slate-500 mt-0.5 hidden sm:block">
-                    {isElectionMode
-                      ? "2027 elections · PU locator · Senate districts"
-                      : isRankingMode
-                        ? "State rankings · Economy & Social indicators"
-                        : "36 states · 774 LGAs · 6 regions"}
-                  </p>
-                </div>
-              </div>
-              <PoweredByIseOwo />
-            </div>
-            <div className="hidden lg:flex flex-col items-stretch gap-1.5 lg:flex-1 lg:max-w-md">
+          <div className="flex flex-col gap-2 lg:gap-4">
+            <div className="hidden lg:flex flex-col items-stretch gap-1.5 lg:flex-1 lg:max-w-md lg:ml-auto">
               {!isSpecialMapMode && <LocationSearch lgas={lgas} />}
+              <MapHints />
+            </div>
+            <div className="lg:hidden">
               <MapHints />
             </div>
           </div>
@@ -259,7 +311,7 @@ export default function ExplorerShell({
           <button
             type="button"
             onClick={() => closeMobileSheet()}
-            className="absolute top-2.5 right-14 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-white text-slate-800 border border-slate-200 px-3 py-2 text-xs font-semibold shadow-sm min-h-[36px]"
+            className="absolute top-2.5 right-14 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-surface-card text-slate-800 border border-border-subtle px-3 py-2 text-xs font-semibold shadow-sm min-h-[36px]"
             aria-label="Return to map view"
           >
             <svg
@@ -325,7 +377,7 @@ export default function ExplorerShell({
             <button
               type="button"
               onClick={() => setInfoModalOpen(true)}
-              className="absolute top-2.5 right-14 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-white text-slate-800 border border-slate-200 px-3 py-2 text-xs font-semibold shadow-sm min-h-[36px]"
+              className="absolute top-2.5 right-14 z-30 lg:hidden flex items-center gap-1.5 rounded-full bg-surface-card text-slate-800 border border-border-subtle px-3 py-2 text-xs font-semibold shadow-sm min-h-[36px]"
               aria-label="Open Nigeria overview"
             >
               <svg
@@ -345,10 +397,22 @@ export default function ExplorerShell({
             </button>
           )}
       </header>
+      </>
+      )}
 
-      <main className="flex-1 flex flex-col lg:flex-row min-h-0 max-w-[1600px] mx-auto w-full">
-        <div className="flex-1 relative p-2 lg:p-5 min-h-0 flex flex-col">
-          <div className="relative flex-1 min-h-0">
+      <main
+        className={`flex flex-col lg:flex-row min-h-0 mx-auto w-full ${
+          preset
+            ? "flex-none max-w-[1680px] h-[calc(100dvh-6.5rem)] overflow-hidden lg:gap-5 lg:p-5 [--panel-w:min(560px,42vw)] [--panel-wx:620px]"
+            : "flex-1 max-w-[1600px]"
+        }`}
+      >
+        <div className={`flex-1 relative min-h-0 flex flex-col ${preset ? "p-2 lg:p-0" : "p-2 lg:p-5"}`}>
+          <div
+            className={`relative flex-1 min-h-0 ${
+              preset ? "rounded-2xl overflow-hidden border border-slate-200 bg-[#dbe5ee]" : ""
+            }`}
+          >
             <NigeriaMap
               states={states}
               regions={regions}
@@ -357,8 +421,25 @@ export default function ExplorerShell({
               politicsLookups={politics.lookups}
               compareBundle={compareBundle}
             />
-            {!isSpecialMapMode && <MapBottomToolbar />}
+            {preset?.lgaAndCompare && (
+              <div className="absolute top-3 left-3 z-10 flex flex-wrap items-center gap-2">
+                <RegionSelect regions={regions} />
+                <CompareMenu />
+              </div>
+            )}
+            {!isSpecialMapMode && (!preset || preset.layers.length > 0) && (
+              <MapBottomToolbar
+                layers={preset?.layers}
+                basemapToggle={preset ? !!preset.basemapToggle : false}
+              />
+            )}
             <ElectionMapLegend lookups={politics.lookups} />
+            {sectionWorkspace === "rankings" && (
+              <RankingsMapCallouts
+                compareBundle={compareBundle}
+                states={states}
+              />
+            )}
             <MapCornerSlot cards={cornerCards} />
             <MapControls />
           </div>
@@ -370,13 +451,22 @@ export default function ExplorerShell({
             lgas={lgas}
           />
         ) : isRankingMode ? (
-          <RankingPanel
-            compareBundle={compareBundle}
-            states={states}
-            regions={regions}
-          />
+          sectionWorkspace === "rankings" ? (
+            <RankingsWorkspaceChrome
+              compareBundle={compareBundle}
+              states={states}
+              regions={regions}
+            />
+          ) : (
+            <RankingPanel
+              compareBundle={compareBundle}
+              states={states}
+              regions={regions}
+            />
+          )
         ) : (
           <LocationPanel
+            sectionWorkspace={sectionWorkspace}
             states={states}
             lgas={lgas}
             regions={regions}
@@ -428,9 +518,9 @@ export default function ExplorerShell({
         lgas={lgas}
       />
 
-      <WikipediaReaderModal />
       <DirectionsModal />
       <ToastStack />
+      {sectionWorkspace && <WorkspaceMapFooter />}
     </div>
   );
 }

@@ -10,7 +10,7 @@ const ICONS: Record<ToastKind, string> = {
 };
 
 const KIND_STYLES: Record<ToastKind, string> = {
-  info: "border-slate-200",
+  info: "border-border-subtle",
   success: "border-emerald-200",
   tip: "border-sky-200",
 };
@@ -32,7 +32,7 @@ function ToastItem({ toast }: { toast: Toast }) {
     <button
       type="button"
       onClick={() => dismissToast(toast.id)}
-      className={`animate-fade-in pointer-events-auto flex items-start gap-2 rounded-xl border bg-white/95 backdrop-blur px-3.5 py-2.5 text-left text-sm shadow-lg hover:bg-white ${KIND_STYLES[toast.kind]}`}
+      className={`animate-fade-in pointer-events-auto flex items-start gap-2 rounded-xl border bg-surface-card/95 backdrop-blur px-3.5 py-2.5 text-left text-sm shadow-lg hover:bg-surface-card ${KIND_STYLES[toast.kind]}`}
       role="status"
       aria-live="polite"
     >

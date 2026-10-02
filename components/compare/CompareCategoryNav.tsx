@@ -39,7 +39,7 @@ export default function CompareCategoryNav({
               className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-200 min-h-[32px] ${
                 isActive
                   ? "bg-ng-green text-white shadow-sm"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                  : "bg-slate-100 text-text-secondary hover:bg-slate-200"
               }`}
             >
               {cat.label}
@@ -60,7 +60,7 @@ export default function CompareCategoryNav({
             id="compare-period"
             value={activePeriod}
             onChange={(e) => onPeriodChange(e.target.value)}
-            className="flex-1 min-w-0 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium text-slate-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-ng-green/30"
+            className="flex-1 min-w-0 rounded-lg border border-border-subtle bg-surface-card px-2.5 py-1.5 text-xs font-medium text-slate-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-ng-green/30"
           >
             {periods.map((p) => (
               <option key={p.id} value={p.id}>

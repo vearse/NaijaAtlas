@@ -57,10 +57,10 @@ export default function ElectionDistrictPicker({
           🗳️
         </span>
         <span className="min-w-0 flex-1">
-          <span className="font-bold text-slate-900 block">
+          <span className="font-bold text-text-primary block">
             Presidential candidates
           </span>
-          <span className="text-xs text-slate-500 block">
+          <span className="text-xs text-text-muted block">
             All {ticketCount} tickets · 2027
           </span>
         </span>
@@ -72,8 +72,8 @@ export default function ElectionDistrictPicker({
       {selectedStateIds.size === 0 && <NationalAssemblyIntro />}
 
       <div>
-        <h2 className="text-sm font-bold text-slate-900">Senate districts</h2>
-        <p className="text-xs text-slate-500 mt-1">
+        <h2 className="text-sm font-bold text-text-primary">Senate districts</h2>
+        <p className="text-xs text-text-muted mt-1">
           {selectedStateIds.size === 0
             ? "Select states on the map, or find your polling unit above."
             : "Tap a district for Senate & House candidates, or click an LGA on the map."}
@@ -89,7 +89,7 @@ export default function ElectionDistrictPicker({
                 <button
                   type="button"
                   onClick={() => setSelectedSenatorialDistrict(d.id)}
-                  className={`w-full text-left rounded-xl border bg-white px-3 py-3 shadow-sm hover:shadow transition flex items-center gap-3 ${
+                  className={`w-full text-left rounded-xl border bg-surface-card px-3 py-3 shadow-sm hover:shadow transition flex items-center gap-3 ${
                     isYour
                       ? "border-emerald-300 ring-1 ring-emerald-200"
                       : "border-slate-100 hover:border-ng-green/40"
@@ -103,10 +103,10 @@ export default function ElectionDistrictPicker({
                     aria-hidden
                   />
                   <span className="min-w-0 flex-1">
-                    <span className="font-semibold text-slate-900 block truncate">
+                    <span className="font-semibold text-text-primary block truncate">
                       {d.name}
                     </span>
-                    <span className="text-xs text-slate-500">{d.state}</span>
+                    <span className="text-xs text-text-muted">{d.state}</span>
                   </span>
                   {isYour && (
                     <span className="shrink-0 rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-800">
@@ -119,7 +119,7 @@ export default function ElectionDistrictPicker({
           })}
         </ul>
       ) : (
-        <div className="rounded-xl border border-dashed border-slate-200 bg-slate-50/80 px-4 py-6 text-center text-sm text-slate-500">
+        <div className="rounded-xl border border-dashed border-border-subtle bg-slate-50/80 px-4 py-6 text-center text-sm text-text-muted">
           Map states appear here with distinct district colors from a shared
           palette.
         </div>

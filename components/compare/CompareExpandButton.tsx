@@ -11,7 +11,7 @@ export default function CompareExpandButton({
     <button
       type="button"
       onClick={onClick}
-      className="shrink-0 h-9 w-9 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 hover:text-ng-green hover:border-ng-green/30 hover:bg-emerald-50/50 transition-colors shadow-sm"
+      className="shrink-0 h-9 w-9 flex items-center justify-center rounded-lg border border-border-subtle bg-surface-card text-text-muted hover:text-ng-green hover:border-ng-green/30 hover:bg-emerald-50/50 transition-colors shadow-sm"
       aria-label={label}
       title={label}
     >

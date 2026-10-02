@@ -30,7 +30,7 @@ export default function PoweredByIseOwo() {
       aria-label="Powered by Ise Owo — visit iseowoapp.com"
       className={[
         "inline-flex items-center gap-2 rounded-lg px-2 md:px-3 py-1 md:py-1.5",
-        "text-slate-500 hover:text-slate-700 hover:bg-slate-50 transition-colors shrink-0",
+        "text-text-muted hover:text-slate-700 hover:bg-slate-50 transition-colors shrink-0",
         attention ? "animate-naija-attention bg-amber-50 ring-1 ring-amber-300" : "",
       ]
         .filter(Boolean)

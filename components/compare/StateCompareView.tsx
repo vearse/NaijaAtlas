@@ -101,7 +101,7 @@ export default function StateCompareView({
             <p className="text-xs font-semibold uppercase tracking-wider text-ng-green">
               Compare {states.length} states
             </p>
-            <h2 className="text-xl font-bold text-slate-900 mt-1 leading-snug">
+            <h2 className="text-xl font-bold text-text-primary mt-1 leading-snug">
               {states.map((s) => s.name).join(" · ")}
             </h2>
           </div>

@@ -27,6 +27,42 @@ function titleFromHtml(html: string, fallback: string): string {
   return match?.[1]?.trim() || fallback;
 }
 
+/** Canonical /wiki/ URL for a known article title. */
+export function wikipediaUrlForTitle(title: string): string {
+  return `https://en.wikipedia.org/wiki/${encodeURIComponent(
+    title.trim().replace(/ /g, "_")
+  )}`;
+}
+
+/**
+ * Best-matching article title for a free-text name.
+ *
+ * Catalogue names are often descriptive ("Aguleri Festival", "Oke-Ogun") rather
+ * than exact article titles, so a search beats guessing a /wiki/ path.
+ */
+export async function searchWikipediaTitle(query: string): Promise<string | null> {
+  const q = query.trim();
+  if (!q) return null;
+
+  const res = await fetch(
+    `https://en.wikipedia.org/w/rest.php/v1/search/title?q=${encodeURIComponent(
+      q
+    )}&limit=1`,
+    { headers: { Accept: "application/json" } }
+  );
+  if (!res.ok) return null;
+
+  const data = (await res.json()) as { pages?: { title?: string }[] | null };
+  const title = data.pages?.[0]?.title;
+  return typeof title === "string" && title ? title : null;
+}
+
+/** Resolve a free-text name to a /wiki/ URL, or `null` when nothing matches. */
+export async function resolveWikipediaUrl(query: string): Promise<string | null> {
+  const title = await searchWikipediaTitle(query);
+  return title ? wikipediaUrlForTitle(title) : null;
+}
+
 /** Fetch the full Wikipedia article HTML (same page as the wiki URL). */
 export async function fetchWikipediaArticle(
   wikiUrl: string

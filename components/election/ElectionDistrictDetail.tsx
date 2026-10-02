@@ -96,21 +96,21 @@ export default function ElectionDistrictDetail({
 
   return (
     <div className="flex flex-col h-full min-h-0">
-      <div className="shrink-0 border-b border-slate-100 bg-white px-3 py-3 space-y-2">
+      <div className="shrink-0 border-b border-slate-100 bg-surface-card px-3 py-3 space-y-2">
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">
             <p className="text-[10px] font-semibold uppercase tracking-wider text-emerald-700">
               Senate district
             </p>
-            <h2 className="text-lg font-bold text-slate-900 truncate">
+            <h2 className="text-lg font-bold text-text-primary truncate">
               {district.name}
             </h2>
-            <p className="text-xs text-slate-500">{district.state}</p>
+            <p className="text-xs text-text-muted">{district.state}</p>
           </div>
           <button
             type="button"
             onClick={() => setSelectedSenatorialDistrict(null)}
-            className="shrink-0 h-8 w-8 rounded-full border border-slate-200 text-slate-500 hover:bg-slate-100 flex items-center justify-center"
+            className="shrink-0 h-8 w-8 rounded-full border border-border-subtle text-text-muted hover:bg-slate-100 flex items-center justify-center"
             aria-label="Back to browse"
           >
             ×
@@ -129,7 +129,7 @@ export default function ElectionDistrictDetail({
                   className={`shrink-0 flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
                     active
                       ? "border-ng-green bg-emerald-50 text-emerald-900"
-                      : "border-slate-200 bg-white text-slate-600 hover:border-slate-300"
+                      : "border-border-subtle bg-surface-card text-text-secondary hover:border-slate-300"
                   }`}
                 >
                   <span
@@ -164,7 +164,7 @@ export default function ElectionDistrictDetail({
               ))}
             </ul>
           ) : (
-            <p className="text-sm text-slate-500">No senate candidates loaded.</p>
+            <p className="text-sm text-text-muted">No senate candidates loaded.</p>
           )}
         </section>
 
@@ -181,7 +181,7 @@ export default function ElectionDistrictDetail({
                 return (
                   <li
                     key={fc.id}
-                    className="overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm"
+                    className="overflow-hidden rounded-xl border border-slate-100 bg-surface-card shadow-sm"
                   >
                     <button
                       type="button"
@@ -190,10 +190,10 @@ export default function ElectionDistrictDetail({
                       className="w-full flex items-center gap-2 px-3 py-2.5 text-left transition-colors hover:bg-slate-50"
                     >
                       <span className="min-w-0 flex-1">
-                        <span className="block text-sm font-semibold text-slate-900 truncate">
+                        <span className="block text-sm font-semibold text-text-primary truncate">
                           {fc.name}
                         </span>
-                        <span className="block text-xs text-slate-500">
+                        <span className="block text-xs text-text-muted">
                           {candidateCount > 0
                             ? `${candidateCount} candidate${candidateCount === 1 ? "" : "s"}`
                             : "No candidates loaded"}
@@ -215,7 +215,7 @@ export default function ElectionDistrictDetail({
                               className="flex items-center gap-2 rounded-lg border border-slate-100 bg-slate-50/60 px-2.5 py-2"
                             >
                               <div className="min-w-0 flex-1">
-                                <p className="text-sm font-medium text-slate-900 truncate">
+                                <p className="text-sm font-medium text-text-primary truncate">
                                   {c.name}
                                 </p>
                                 {(c.gender || c.age) && (
@@ -246,7 +246,7 @@ export default function ElectionDistrictDetail({
                             </li>
                           ))
                         ) : (
-                          <li className="text-sm text-slate-500 px-2 py-1">
+                          <li className="text-sm text-text-muted px-2 py-1">
                             No candidates loaded for this constituency.
                           </li>
                         )}
@@ -257,7 +257,7 @@ export default function ElectionDistrictDetail({
               })}
             </ul>
           ) : (
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-text-muted">
               No federal constituencies for this district.
             </p>
           )}
@@ -271,8 +271,8 @@ export default function ElectionDistrictDetail({
         </section>
 
         <section className="border-t border-slate-100 pt-4">
-          <h3 className="text-sm font-bold text-slate-900">State elections</h3>
-          <p className="mt-2 text-sm text-slate-600 rounded-xl border border-dashed border-slate-200 bg-slate-50 p-3">
+          <h3 className="text-sm font-bold text-text-primary">State elections</h3>
+          <p className="mt-2 text-sm text-text-secondary rounded-xl border border-dashed border-border-subtle bg-slate-50 p-3">
             Governorship & State Assembly lists when INEC publishes them.
           </p>
         </section>

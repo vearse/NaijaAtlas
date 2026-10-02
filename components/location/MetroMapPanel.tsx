@@ -38,10 +38,10 @@ export default function MetroMapPanel({
         <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
           Metro on map
         </p>
-        <h2 className="text-xl font-bold text-slate-900">
+        <h2 className="text-xl font-bold text-text-primary">
           {activeView?.label ?? "Metro areas"}
         </h2>
-        <p className="text-xs text-slate-500 mt-1">
+        <p className="text-xs text-text-muted mt-1">
           {metroMapViews.length} of {MAX_METRO_MAP_VIEWS} on map · states not
           selected
         </p>
@@ -91,7 +91,7 @@ export default function MetroMapPanel({
       </div>
 
       {meta?.description && (
-        <p className="text-sm text-slate-600 leading-relaxed">
+        <p className="text-sm text-text-secondary leading-relaxed">
           {meta.description}
         </p>
       )}

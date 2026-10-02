@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" role="img" aria-label="Akwete ikat weaving pattern in amber, ochre and cream.">
+  <title>Akwete weaving pattern</title>
+  <defs>
+    <linearGradient id="akwete-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b45309" />
+      <stop offset="50%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#a16207" />
+    </linearGradient>
+  </defs>
+  <rect width="480" height="160" fill="url(#akwete-bg)" />
+  <!-- ikat warp stripes -->
+  <g opacity="0.5">
+    <rect x="0" y="0" width="16" height="160" fill="#fef3c7" />
+    <rect x="24" y="0" width="8" height="160" fill="#fde68a" />
+    <rect x="120" y="0" width="16" height="160" fill="#fef3c7" />
+    <rect x="144" y="0" width="8" height="160" fill="#fde68a" />
+    <rect x="240" y="0" width="16" height="160" fill="#fef3c7" />
+    <rect x="264" y="0" width="8" height="160" fill="#fde68a" />
+    <rect x="360" y="0" width="16" height="160" fill="#fef3c7" />
+    <rect x="384" y="0" width="8" height="160" fill="#fde68a" />
+  </g>
+  <!-- weft chevrons -->
+  <g stroke="#fffbeb" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+    <path d="M52 30 L70 46 L88 30" />
+    <path d="M52 58 L70 74 L88 58" />
+    <path d="M52 86 L70 102 L88 86" />
+    <path d="M52 114 L70 130 L88 114" />
+    <path d="M172 30 L190 46 L208 30" />
+    <path d="M172 58 L190 74 L208 58" />
+    <path d="M172 86 L190 102 L208 86" />
+    <path d="M172 114 L190 130 L208 114" />
+    <path d="M292 30 L310 46 L328 30" />
+    <path d="M292 58 L310 74 L328 58" />
+    <path d="M292 86 L310 102 L328 86" />
+    <path d="M292 114 L310 130 L328 114" />
+    <path d="M412 30 L430 46 L448 30" />
+    <path d="M412 58 L430 74 L448 58" />
+    <path d="M412 86 L430 102 L448 86" />
+    <path d="M412 114 L430 130 L448 114" />
+  </g>
+  <g fill="#7c2d12" opacity="0.55">
+    <circle cx="36" cy="80" r="5" />
+    <circle cx="156" cy="80" r="5" />
+    <circle cx="276" cy="80" r="5" />
+    <circle cx="396" cy="80" r="5" />
+  </g>
+</svg>

@@ -154,6 +154,10 @@ export interface MapSelectionState {
   panelOpen: boolean;
   mobileSheet: MobileSheetMode;
   resetCounter: number;
+  /** LGA drill-down controls; off on section maps other than Places. */
+  lgaUi: boolean;
+  /** True on section map routes; hides full-atlas-only controls. */
+  sectionMap: boolean;
   activeOverlays: Set<OverlayLayerId>;
   /** Layer guide shown in the panel when a toolbar layer is toggled on. */
   overlayGuideLayer: OverlayLayerId | null;
@@ -310,6 +314,8 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   panelOpen: false,
   mobileSheet: "hidden",
   resetCounter: 0,
+  lgaUi: true,
+  sectionMap: false,
   activeOverlays: new Set(DEFAULT_ACTIVE_OVERLAYS),
   overlayGuideLayer: null,
   revealedOptInGroups: new Set<string>(),

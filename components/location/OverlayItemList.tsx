@@ -38,13 +38,13 @@ export default function OverlayItemList({
             >
               <span className="flex items-center flex-wrap gap-1.5 text-sm font-semibold text-slate-800 group-hover:text-ng-green">
                 {item.name}
-                <span className="rounded-full border border-slate-200 bg-slate-50 px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide text-slate-500">
+                <span className="rounded-full border border-border-subtle bg-slate-50 px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide text-text-muted">
                   {item.category}
                 </span>
               </span>
             </button>
             {item.summary && (
-              <p className="text-xs text-slate-500 leading-relaxed mt-1 line-clamp-3">
+              <p className="text-xs text-text-muted leading-relaxed mt-1 line-clamp-3">
                 {item.summary}
               </p>
             )}

@@ -5,13 +5,21 @@ import { useMapStore } from "@/lib/store/mapStore";
 import { parseMapTypeParam } from "@/lib/map/mapType";
 import { parseLensId } from "@/lib/lenses/lensHelper";
 import type { RankingCategoryId } from "@/lib/ranking/types";
+import type { MapTypeId } from "@/lib/store/mapStore";
 import {
   encodeFocusParam,
   parseFocusParam,
 } from "@/lib/map/overlayFocus";
+import { findPlaceByRef } from "@/lib/map/placeByRef";
+import { OVERLAY_LAYER_IDS, type OverlayLayerId } from "@/types/overlay";
+
+type UrlSyncProps = {
+  /** Used when `?map=` is absent (section map routes). */
+  defaultMapType?: MapTypeId;
+};
 
 /** Sync map selection ↔ URL query params for shareable links */
-export default function UrlSync() {
+export default function UrlSync({ defaultMapType }: UrlSyncProps = {}) {
   const [ready, setReady] = useState(false);
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
   const lgaVisibleStateIds = useMapStore((s) => s.lgaVisibleStateIds);
@@ -26,13 +34,18 @@ export default function UrlSync() {
   const rankingFieldKey = useMapStore((s) => s.rankingFieldKey);
   const rankingPeriod = useMapStore((s) => s.rankingPeriod);
   const overlayFeatureFocus = useMapStore((s) => s.overlayFeatureFocus);
+  const revealedOptInGroups = useMapStore((s) => s.revealedOptInGroups);
+  const directionsFrom = useMapStore((s) => s.directions.from);
+  const directionsTo = useMapStore((s) => s.directions.to);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const store = useMapStore.getState();
 
     const mapParam = params.get("map");
-    store.setMapType(parseMapTypeParam(mapParam));
+    store.setMapType(
+      parseMapTypeParam(mapParam ?? defaultMapType ?? null)
+    );
 
     const regionParam =
       params.get("region") ?? params.get("regions")?.split(",")[0];
@@ -88,8 +101,44 @@ export default function UrlSync() {
       if (spec) store.setOverlayFeatureFocus(spec);
     }
 
+    // Hub CTAs hand off to a layer the lens preset may not include (ports live
+    // in `waterways`, security formations too), so `layers=` wins over `lens=`.
+    const layerParam = params.get("layers")?.split(",").filter(Boolean);
+    if (layerParam?.length) {
+      store.clearAllOverlays();
+      for (const id of layerParam) {
+        if (OVERLAY_LAYER_IDS.includes(id as OverlayLayerId)) {
+          store.toggleOverlay(id as OverlayLayerId);
+        }
+      }
+    } else if (focusParam) {
+      const spec = parseFocusParam(focusParam);
+      if (spec && store.mapType !== "election" && store.mapType !== "ranking") {
+        store.clearAllOverlays();
+        store.toggleOverlay(spec.layerId);
+      }
+    }
+
+    // Opt-in groups (proposed ports, new Army divisions) ship hidden.
+    const reveal = params.get("reveal")?.split(",").filter(Boolean);
+    if (reveal?.length) {
+      for (const group of reveal) store.setOptInGroup(group, true);
+    }
+
+    const dirFrom = params.get("dirFrom");
+    const dirTo = params.get("dirTo");
+    if (dirFrom && dirTo) {
+      const from = findPlaceByRef(dirFrom);
+      const to = findPlaceByRef(dirTo);
+      if (from && to) {
+        store.setDirectionsFrom(from);
+        store.setDirectionsTo(to);
+        store.toggleDirections(true);
+      }
+    }
+
     setReady(true);
-  }, []);
+  }, [defaultMapType]);
 
   useEffect(() => {
     if (!ready) return;
@@ -121,6 +170,13 @@ export default function UrlSync() {
     ) {
       params.set("focus", encodeFocusParam(overlayFeatureFocus));
     }
+    // Preserve hub hand-off params so the deep link stays shareable.
+    const revealed = [...revealedOptInGroups];
+    if (revealed.length) params.set("reveal", revealed.sort().join(","));
+    if (directionsFrom && directionsTo) {
+      params.set("dirFrom", directionsFrom.name);
+      params.set("dirTo", directionsTo.name);
+    }
 
     const qs = params.toString();
     const next = qs
@@ -143,6 +199,9 @@ export default function UrlSync() {
     rankingFieldKey,
     rankingPeriod,
     overlayFeatureFocus,
+    revealedOptInGroups,
+    directionsFrom,
+    directionsTo,
   ]);
 
   return null;

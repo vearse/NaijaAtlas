@@ -7,6 +7,8 @@ import { MAX_METRO_MAP_VIEWS } from "@/lib/map/metroMapViews";
 interface ViewLgasOnMapButtonProps {
   plan: LgaFocusPlan;
   className?: string;
+  /** What the plan covers, for the tooltip copy. */
+  noun?: string;
 }
 
 /**
@@ -15,6 +17,7 @@ interface ViewLgasOnMapButtonProps {
 export default function ViewLgasOnMapButton({
   plan,
   className = "",
+  noun = "metro",
 }: ViewLgasOnMapButtonProps) {
   const views = useMapStore((s) => s.metroMapViews);
   const toggleMetroMapView = useMapStore((s) => s.toggleMetroMapView);
@@ -22,6 +25,8 @@ export default function ViewLgasOnMapButton({
   const active = views.some((v) => v.id === plan.id);
   const atCap = views.length >= MAX_METRO_MAP_VIEWS && !active;
   const disabled = plan.stateIds.length === 0 || atCap;
+  const lgaUi = useMapStore((s) => s.lgaUi);
+  if (!lgaUi) return null;
 
   return (
     <button
@@ -29,12 +34,12 @@ export default function ViewLgasOnMapButton({
       disabled={disabled}
       title={
         atCap
-          ? `Remove a metro from the map first (max ${MAX_METRO_MAP_VIEWS})`
+          ? `Remove an entry from the map first (max ${MAX_METRO_MAP_VIEWS})`
           : disabled
             ? "Member LGAs could not be resolved for this place"
             : active
-              ? "Remove metro from map"
-              : "Show metro LGAs on the map"
+              ? `Remove ${noun} from map`
+              : `Show ${noun} LGAs on the map`
       }
       onClick={(e) => {
         e.stopPropagation();
@@ -43,7 +48,7 @@ export default function ViewLgasOnMapButton({
       className={`text-[11px] font-semibold rounded-full px-2.5 py-1 transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
         active
           ? "bg-ng-green text-white shadow-sm"
-          : "bg-white text-ng-green border border-ng-green/40 hover:border-ng-green hover:bg-ng-green/5"
+          : "bg-surface-card text-ng-green border border-ng-green/40 hover:border-ng-green hover:bg-ng-green/5"
       } ${className}`}
       aria-pressed={active}
     >

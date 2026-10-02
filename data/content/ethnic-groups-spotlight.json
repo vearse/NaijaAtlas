@@ -1,0 +1,58 @@
+[
+  {
+    "id": "spotlight-yoruba",
+    "name": "Yoruba",
+    "cultureId": "culture-oyo-kingdom",
+    "motifLabel": "ADIRE TEXTILE WEAVE",
+    "motifAccentClass": "text-blue-300",
+    "overlayClass": "bg-blue-950/70",
+    "gradientClass": "from-blue-900 to-indigo-800",
+    "description": "Urbanized kingdom civilization centered in South West Nigeria with sacred crowns in Ile-Ife, Oyo, and Benin links.",
+    "homelandLgaCount": 137,
+    "zonesLabel": "SW & NC Zones",
+    "exploreHref": "/explore?map=minimal&states=NG-OY",
+    "image": "/images/motif-adire.svg"
+  },
+  {
+    "id": "spotlight-hausa-fulani",
+    "name": "Hausa-Fulani",
+    "cultureId": "culture-daura-emirate",
+    "motifLabel": "NORTH EMBROIDERY MOTIF",
+    "motifAccentClass": "text-primary-fixed",
+    "overlayClass": "bg-emerald-950/70",
+    "gradientClass": "from-emerald-900 to-teal-900",
+    "description": "Historic trans-Saharan trading empires, Sahelian architecture, Kano dye pits, and the Sokoto Caliphate legacy.",
+    "homelandLgaCount": 185,
+    "zonesLabel": "NW & NE Zones",
+    "exploreHref": "/explore?map=minimal&states=NG-KN",
+    "image": "/images/motif-hausa.svg"
+  },
+  {
+    "id": "spotlight-igbo",
+    "name": "Igbo",
+    "cultureId": "culture-ngwa-ukwa",
+    "motifLabel": "AKWETE WEAVING PATTERN",
+    "motifAccentClass": "text-amber-300",
+    "overlayClass": "bg-amber-950/70",
+    "gradientClass": "from-amber-900 to-orange-900",
+    "description": "Egalitarian republican heritage, Nri civilization, ancient bronze casting at Igbo-Ukwu, and vibrant trade networks.",
+    "homelandLgaCount": 95,
+    "zonesLabel": "SE & SS Zones",
+    "exploreHref": "/explore?map=minimal&states=NG-AN",
+    "image": "/images/motif-akwete.svg"
+  },
+  {
+    "id": "spotlight-ijaw",
+    "name": "Ijaw",
+    "cultureId": "culture-ijaw-bayelsa",
+    "motifLabel": "DELTA AQUATIC MOTIF",
+    "motifAccentClass": "text-tertiary",
+    "overlayClass": "bg-teal-950/70",
+    "gradientClass": "from-teal-950 to-cyan-900",
+    "description": "Indigenous maritime custodians of the Niger Delta mangrove creeks, canoe regattas, and artisanal fishing traditions.",
+    "homelandLgaCount": 28,
+    "zonesLabel": "South South",
+    "exploreHref": "/explore?map=minimal&states=NG-BY",
+    "image": "/images/motif-delta.svg"
+  }
+]

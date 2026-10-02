@@ -22,6 +22,7 @@ export interface StateLocation {
   regionId: string;
   regionName: string;
   lgaCount: number;
+  pollingUnitCount?: number;
   bbox: [number, number, number, number];
   centroid: [number, number];
 }
@@ -150,6 +151,8 @@ export interface MetroGroup {
   effectiveTo: string | null;
   description: string;
   wikiNotes: WikiNote[];
+  /** How firm the catalogue is about this grouping's boundaries. */
+  confidence?: string;
 }
 
 /** Per-state exploration hints keyed by state id (data/content/state-notes.json). */

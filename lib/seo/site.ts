@@ -2,10 +2,10 @@
 
 export const siteConfig = {
   name: "NaijaAtlas",
-  tagline: "Interactive Map of Nigeria's States & LGAs",
+  tagline: "Explore Nigeria with Data & Maps",
   /** Primary meta description for search snippets and social cards. */
   description:
-    "Explore Nigeria on an interactive atlas: 36 states, 774 local government areas (LGAs), and 6 geopolitical regions. Compare states, browse tourist and investment map layers, search places, and share direct links.",
+    "Explore, discover, and reimagine Nigeria with data and maps. Interactive atlas of 36 states, 774 LGAs, polling units, elections, rankings, and cultural homelands.",
   /** Longer copy for Open Graph when a shorter default is not enough. */
   ogDescription:
     "Map Nigeria's states, LGAs, and regions with Learn, Tourist, and Invest lenses. Compare metrics, open cities and landmarks on the map, and share bookmarkable URLs.",

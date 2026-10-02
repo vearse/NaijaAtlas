@@ -32,12 +32,12 @@ export function CandidateRow({
   subtitle?: string;
 }) {
   return (
-    <li className="flex items-center gap-3 rounded-xl border border-slate-100 bg-white px-3 py-2.5 shadow-sm">
+    <li className="flex items-center gap-3 rounded-xl border border-slate-100 bg-surface-card px-3 py-2.5 shadow-sm">
       <CandidateAvatar name={name} />
       <div className="min-w-0 flex-1">
-        <p className="text-sm font-medium text-slate-900 truncate">{name}</p>
+        <p className="text-sm font-medium text-text-primary truncate">{name}</p>
         {subtitle && (
-          <p className="text-xs text-slate-500 truncate">{subtitle}</p>
+          <p className="text-xs text-text-muted truncate">{subtitle}</p>
         )}
       </div>
       <div className="flex items-center gap-1.5 shrink-0">
@@ -62,7 +62,7 @@ export function PresidentialTicketRow({
   vice: string;
 }) {
   return (
-    <li className="flex items-start gap-3 rounded-xl border border-slate-100 bg-white px-3 py-2.5">
+    <li className="flex items-start gap-3 rounded-xl border border-slate-100 bg-surface-card px-3 py-2.5">
       <CandidateAvatar name={president} />
       <div className="min-w-0 flex-1 text-sm">
         <p>
@@ -71,8 +71,8 @@ export function PresidentialTicketRow({
             <span className="text-slate-400 text-xs ml-1">{partyName}</span>
           )}
         </p>
-        <p className="font-medium text-slate-900 mt-0.5">{president}</p>
-        <p className="text-xs text-slate-500">VP: {vice}</p>
+        <p className="font-medium text-text-primary mt-0.5">{president}</p>
+        <p className="text-xs text-text-muted">VP: {vice}</p>
       </div>
     </li>
   );
