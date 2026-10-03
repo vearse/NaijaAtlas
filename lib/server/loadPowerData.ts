@@ -4,6 +4,7 @@ import { loadExplorerPageData } from "@/lib/server/loadExplorerPageData";
 import { resolveStateByName } from "@/lib/location/resolveStateByName";
 import {
   POWER_PLANT_CATEGORIES,
+  isHydroCategory,
   type PowerPlantCategory,
 } from "@/types/overlay";
 
@@ -24,6 +25,8 @@ export type HubPowerPlant = {
   summary: string;
   description: string;
   capacityMw: number | null;
+  gridConnected: boolean;
+  gridConnectedNote: string;
   units: string;
   commissioned: string;
   operator: string;
@@ -83,9 +86,14 @@ export type PowerData = {
   totalCapacityMw: number;
   hydroCapacityMw: number;
   thermalCapacityMw: number;
+  majorHydroCapacityMw: number;
   /** Share of installed capacity that is gas-fired, 0-100. */
   gasSharePercent: number;
   generationCount: number;
+  majorCount: number;
+  regionalCount: number;
+  /** Capacity of plants that actually feed the national grid. */
+  gridCapacityMw: number;
   stateIds: string[];
 };
 
@@ -131,6 +139,8 @@ export function loadPowerData(): PowerData {
       summary: str(r.summary),
       description: str(r.description),
       capacityMw: num(r.capacityMw),
+      gridConnected: r.gridConnected !== false,
+      gridConnectedNote: str(r.gridConnectedNote),
       units: str(r.units),
       commissioned: str(r.commissioned),
       operator: str(r.operator),
@@ -187,13 +197,21 @@ export function loadPowerData(): PowerData {
     }))
     .sort((a, b) => b.voltageKv - a.voltageKv || a.name.localeCompare(b.name));
 
-  const hydroCapacityMw = stations
-    .filter((s) => s.plantCategory === "hydro")
+  const hydroStations = stations.filter((s) => isHydroCategory(s.plantCategory));
+  const hydroCapacityMw = hydroStations.reduce(
+    (sum, s) => sum + (s.capacityMw ?? 0),
+    0
+  );
+  const majorHydroCapacityMw = stations
+    .filter((s) => s.plantCategory === "major-hydro")
     .reduce((sum, s) => sum + (s.capacityMw ?? 0), 0);
   const totalCapacityMw = stations.reduce(
     (sum, s) => sum + (s.capacityMw ?? 0),
     0
   );
+  const gridCapacityMw = stations
+    .filter((s) => s.gridConnected)
+    .reduce((sum, s) => sum + (s.capacityMw ?? 0), 0);
 
   cache = {
     stations,
@@ -203,6 +221,11 @@ export function loadPowerData(): PowerData {
     totalCapacityMw,
     hydroCapacityMw,
     thermalCapacityMw: totalCapacityMw - hydroCapacityMw,
+    majorHydroCapacityMw,
+    gridCapacityMw,
+    majorCount: stations.filter((s) => s.plantCategory === "major-hydro").length,
+    regionalCount: stations.filter((s) => s.plantCategory === "regional-hydro")
+      .length,
     gasSharePercent:
       totalCapacityMw > 0
         ? Math.round(((totalCapacityMw - hydroCapacityMw) / totalCapacityMw) * 100)

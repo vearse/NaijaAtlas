@@ -212,6 +212,20 @@ function powerPlantCategoryMeta(value: unknown) {
 }
 
 /**
+ * Regional dam schemes are often irrigation or water-supply projects rather than
+ * grid-connected generating stations, so the popup says so explicitly instead
+ * of implying they carry load.
+ */
+function gridConnectedLabel(props: Record<string, unknown>): ReactNode {
+  const note = text(props.gridConnectedNote);
+  if (note) return note;
+  if (props.featureKind !== "power-plant") return null;
+  return props.gridConnected === false
+    ? "Not connected to the national grid."
+    : "Grid-connected generating station.";
+}
+
+/**
  * Generation stations carry a technology badge, so only the non-generation
  * feature kinds (DisCo, substation, corridor) need a kind badge here.
  */
@@ -783,6 +797,10 @@ export default function OverlayFeaturePanel({
         <DetailRow label="Installed capacity" value={capacityLabel(props.capacityMw)} />
         <DetailRow label="Units" value={text(props.units)} />
         <DetailRow label="Commissioned" value={text(props.commissioned)} />
+        <DetailRow
+          label="National grid"
+          value={gridConnectedLabel(props)}
+        />
         <DetailRow label="Operator" value={text(props.operator)} />
         <DetailRow label="Shareholding" value={text(props.shareholding)} />
         <DetailRow label="Voltage" value={text(props.voltageLabel)} />

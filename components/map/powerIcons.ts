@@ -2,6 +2,7 @@ import type { Map } from "maplibre-gl";
 import {
   GRID_VOLTAGE_CLASSES,
   POWER_PLANT_CATEGORIES,
+  isHydroCategory,
   type PowerPlantCategory,
 } from "@/types/overlay";
 
@@ -9,7 +10,8 @@ const SIZE = 48;
 
 /** Icon palette, keyed to POWER_PLANT_CATEGORY_LABELS in types/overlay.ts. */
 const PLANT_COLORS: Record<PowerPlantCategory, string> = {
-  hydro: "#0e7490",
+  "major-hydro": "#ca8a04",
+  "regional-hydro": "#64748b",
   "gas-ccgt": "#b45309",
   "gas-ocgt": "#d97706",
   steam: "#7c2d12",
@@ -41,20 +43,20 @@ function plantIconImage(category: PowerPlantCategory): ImageData {
 
   const cx = SIZE / 2;
   const cy = SIZE / 2;
-  // Hydro is the scarce, strategically important resource in Nigeria's mix, so
-  // it gets the larger disc; the gas fleet reads slightly smaller.
-  const r = category === "hydro" ? 17 : 15;
+  // The four NEPA majors carry the grid, so they get the largest disc and a
+  // heavier ring; regional schemes and the gas fleet read smaller.
+  const r = category === "major-hydro" ? 18 : isHydroCategory(category) ? 15 : 15;
 
   ctx.beginPath();
   ctx.arc(cx, cy, r, 0, Math.PI * 2);
   ctx.fillStyle = PLANT_COLORS[category];
   ctx.fill();
   ctx.strokeStyle = "#ffffff";
-  ctx.lineWidth = 3.5;
+  ctx.lineWidth = category === "major-hydro" ? 4 : 3.5;
   ctx.stroke();
 
   ctx.fillStyle = "#ffffff";
-  drawBolt(ctx, cx, cy - 1, category === "hydro" ? 0.95 : 0.82);
+  drawBolt(ctx, cx, cy - 1, category === "major-hydro" ? 1 : 0.82);
   ctx.fill();
 
   return ctx.getImageData(0, 0, SIZE, SIZE);
@@ -73,7 +75,9 @@ function distributorIconImage(): ImageData {
 
   const cx = SIZE / 2;
   const cy = SIZE / 2;
-  const r = 16;
+  // A regular hexagon of circumradius r covers far less area than a circle of
+  // the same r, so it is drawn larger to read at the same weight as a station.
+  const r = 20;
 
   ctx.beginPath();
   for (let i = 0; i < 6; i += 1) {
@@ -87,16 +91,16 @@ function distributorIconImage(): ImageData {
   ctx.fillStyle = "#1d4ed8";
   ctx.fill();
   ctx.strokeStyle = "#ffffff";
-  ctx.lineWidth = 3.5;
+  ctx.lineWidth = 4;
   ctx.stroke();
 
-  // Three descending pylon bars: distribution, not generation.
+  // Three stepped pylon bars: distribution, not generation.
   ctx.fillStyle = "#ffffff";
   const bar = (offset: number, height: number) =>
-    ctx.fillRect(cx - 7 + offset, cy + 7 - height, 3.2, height);
-  bar(0, 8);
-  bar(4.6, 11);
-  bar(9.2, 14);
+    ctx.fillRect(cx - 9 + offset, cy + 9 - height, 4.6, height);
+  bar(0, 10);
+  bar(6.2, 14);
+  bar(12.4, 18);
 
   return ctx.getImageData(0, 0, SIZE, SIZE);
 }

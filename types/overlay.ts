@@ -161,12 +161,16 @@ export const LAKE_CATEGORY_LABELS: Record<
 };
 
 /**
- * Generation technology for a grid-connected power station. Nigeria's mix is
- * overwhelmingly gas, so gas turbines are split by cycle type and steam
- * turbines (Egbin, Sapele) are kept separate from the open-cycle fleet.
+ * Generation technology for a power station. Nigeria's mix is overwhelmingly
+ * gas, so gas turbines are split by cycle type and steam turbines (Egbin,
+ * Sapele) are kept separate from the open-cycle fleet.
+ *
+ * Hydro is split into the four NEPA majors and the regional dam schemes, so the
+ * map can weight the stations that actually carry the grid.
  */
 export const POWER_PLANT_CATEGORIES = [
-  "hydro",
+  "major-hydro",
+  "regional-hydro",
   "gas-ccgt",
   "gas-ocgt",
   "steam",
@@ -175,13 +179,20 @@ export type PowerPlantCategory = (typeof POWER_PLANT_CATEGORIES)[number];
 
 export const POWER_PLANT_CATEGORY_LABELS: Record<
   PowerPlantCategory,
-  { label: string; color: string }
+  { label: string; short: string; color: string }
 > = {
-  hydro: { label: "Hydroelectric station", color: "#0e7490" },
-  "gas-ccgt": { label: "Gas combined cycle", color: "#b45309" },
-  "gas-ocgt": { label: "Gas turbine (open cycle)", color: "#d97706" },
-  steam: { label: "Gas-fired steam station", color: "#7c2d12" },
+  "major-hydro": { label: "Major hydroelectric station", short: "Major hydro", color: "#ca8a04" },
+  "regional-hydro": { label: "Regional dam / small hydro", short: "Regional hydro", color: "#64748b" },
+  "gas-ccgt": { label: "Gas combined cycle", short: "CCGT", color: "#b45309" },
+  "gas-ocgt": { label: "Gas turbine (open cycle)", short: "OCGT", color: "#d97706" },
+  steam: { label: "Gas-fired steam station", short: "Steam", color: "#7c2d12" },
 };
+
+export function isHydroCategory(
+  category: PowerPlantCategory
+): boolean {
+  return category === "major-hydro" || category === "regional-hydro";
+}
 
 export const POWER_FEATURE_KINDS = [
   "power-plant",
@@ -461,19 +472,21 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
     summary:
       "Nigeria's generating stations, the 11 distribution companies, and the 330/132 kV transmission network.",
     description:
-      "Generation icons show the 19 major grid-connected power stations, split by technology: hydro, combined-cycle gas, open-cycle gas turbines, and gas-fired steam. Blue distribution markers show the 11 DisCos at their head offices, with their licensed states in the popup. Teal squares are TCN transmission substations, and the grey lines are documented 330 kV and 132 kV corridors. Unlike the other layers, generation, distribution and transmission are separate feature kinds, so you can focus on any one of them.",
+      "Generation icons show 26 stations. The four NEPA majors — Kainji, Zungeru, Shiroro and Jebba — are gold, because they carry the hydro load. Grey markers are regional dam schemes, many of which are irrigation or water-supply dams rather than grid-connected generating stations, so they are drawn smaller. The gas fleet is split into combined-cycle (amber), open-cycle turbines (orange) and gas-fired steam (brown). Blue hexagons are the 11 DisCos at their head offices, with their licensed states in the popup. Teal squares are TCN transmission substations, and the grey lines are documented 330 kV and 132 kV corridors. Generation, distribution and transmission are separate feature kinds, so you can focus on any one of them.",
     includes: [
-      "Egbin 1,320 MW — largest station in Nigeria",
-      "Kainji, Jebba, Shiroro, Zungeru, Dadin Kowa hydro",
+      "Egbin and Afam — the two largest stations on the grid",
+      "Kainji, Zungeru, Shiroro, Jebba — the NEPA hydro majors",
+      "8 regional dam schemes, several not grid connected",
       "11 DisCos across all 36 states and the FCT",
       "37 documented 330/132 kV corridors",
     ],
     legend: [
-      "⚡ teal = hydroelectric",
+      "⚡ gold = major hydroelectric station",
+      "⚡ grey = regional dam / small hydro",
       "⚡ amber = gas combined cycle",
       "⚡ orange = gas turbine (open cycle)",
       "⚡ brown = gas-fired steam",
-      "🔵 blue = distribution company (DisCo)",
+      "🔵 blue hexagon = distribution company (DisCo)",
       "🟦 teal square = transmission substation",
       "— line = 330 kV (dark) or 132 kV (light)",
     ],

@@ -496,7 +496,8 @@ export async function buildGeo() {
   };
 
   const powerPlantCategoryLabels: Record<string, string> = {
-    hydro: "Hydroelectric station",
+    "major-hydro": "Major hydroelectric station",
+    "regional-hydro": "Regional dam / small hydro",
     "gas-ccgt": "Gas combined cycle",
     "gas-ocgt": "Gas turbine (open cycle)",
     steam: "Gas-fired steam station",

@@ -1,49 +1,329 @@
 [
   {
-    "id": "plant-egbin",
-    "name": "Egbin Power Station",
+    "id": "plant-kainji",
+    "name": "Kainji Hydroelectric Power Station",
     "featureKind": "power-plant",
-    "plantCategory": "steam",
-    "type": "Gas-fired steam power station",
-    "summary": "Nigeria's largest thermal plant — 1,320 MW at Ijede, Ikorodu, Lagos.",
-    "description": "Six 220 MW steam turbine units commissioned between 1985 and 1987. Egbin is the single biggest contributor to national generation and sits at the head of the Lagos 330 kV transmission ring. Privatised in 2013 to Sahara Group and KEPCO.",
-    "capacityMw": 1320,
-    "units": "6 x 220 MW",
-    "commissioned": "1985-1987",
-    "operator": "Egbin Power Plc (KEPCO Energy Resources)",
-    "statesCrossed": ["Lagos"],
-    "lon": 3.615082,
-    "lat": 6.563713,
+    "plantCategory": "major-hydro",
+    "type": "Large hydroelectric dam",
+    "summary": "Nigeria's first major hydro plant (760 MW), on the Niger at Kainji Dam.",
+    "description": "Commissioned in 1968, Kainji was the centrepiece of post-independence power expansion. Twelve turbine units draw from Kainji Lake. Two further 110 MW units are being installed to raise the station to 980 MW. Output fluctuates with river flow and rehabilitation works.",
+    "capacityMw": 760,
+    "commissioned": "1968",
+    "operator": "Mainstream Energy Solutions Ltd",
+    "riverName": "Niger River",
+    "linkedLakeId": "lake-kainji",
+    "statesCrossed": [
+      "Niger",
+      "Kebbi"
+    ],
+    "lon": 4.61333,
+    "lat": 9.8625,
     "highlights": [
-      "Largest generating station in Nigeria",
-      "Six 220 MW steam units",
-      "Head of the Lagos 330 kV ring"
+      "First large Nigerian hydro dam",
+      "760 MW installed capacity",
+      "Expansion to 980 MW under way",
+      "Created Kainji Lake"
     ],
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "wikiUrl": "https://en.wikipedia.org/wiki/Egbin_Thermal_Power_Station"
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kainji_Dam",
+    "gridConnected": true,
+    "gridConnectedNote": "Feeds the national grid."
   },
   {
-    "id": "plant-ughelli",
-    "name": "Ughelli Power Station (Delta)",
+    "id": "plant-zungeru",
+    "name": "Zungeru Hydroelectric Power Station",
     "featureKind": "power-plant",
-    "plantCategory": "gas-ocgt",
-    "type": "Gas turbine combined utility complex",
-    "summary": "Transcorp's 900 MW gas complex at Ughelli, the oldest large thermal site in Nigeria.",
-    "description": "Commissioned from the late 1960s and expanded with six 100 MW units from 1991. Now operated by Transcorp Power Plc. Ughelli anchors the western end of the Delta-Port Harcourt 330 kV backbone.",
-    "capacityMw": 900,
-    "units": "6 x 100 MW plus earlier units",
-    "commissioned": "1966-1990",
-    "operator": "Transcorp Power Plc",
-    "statesCrossed": ["Delta"],
-    "lon": 5.915909,
-    "lat": 5.541314,
+    "plantCategory": "major-hydro",
+    "type": "Large hydroelectric dam",
+    "summary": "700 MW plant on the Kaduna River — Nigeria's newest major hydro asset.",
+    "description": "Built between 2013 and 2023 with Chinese financing and first evacuated onto the grid in 2024. At 700 MW it is among the largest single hydro installations in Nigeria and now carries the highest availability of any grid plant.",
+    "capacityMw": 700,
+    "commissioned": "2023",
+    "operator": "Zungeru Hydropower Consortium / Mainstream Energy Solutions Ltd",
+    "riverName": "Kaduna River",
+    "statesCrossed": [
+      "Niger"
+    ],
+    "lon": 6.29222,
+    "lat": 9.905,
     "highlights": [
-      "900 MW installed capacity",
-      "Western anchor of the Delta-Port Harcourt 330 kV line",
-      "Operating since the 1960s"
+      "700 MW capacity",
+      "Newest major hydro plant",
+      "First grid evacuation 2024",
+      "Highest plant availability factor in 2025"
     ],
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "gemUrl": "https://www.gem.wiki/Ughelli_power_station"
+    "wikiUrl": "https://en.wikipedia.org/wiki/Zungeru_Hydroelectric_Power_Station",
+    "gridConnected": true,
+    "gridConnectedNote": "Feeds the national grid."
+  },
+  {
+    "id": "plant-shiroro",
+    "name": "Shiroro Hydroelectric Power Station",
+    "featureKind": "power-plant",
+    "plantCategory": "major-hydro",
+    "type": "Large hydroelectric dam",
+    "summary": "600 MW plant on the Kaduna River in Niger State.",
+    "description": "Shiroro Dam impounds the Kaduna River gorge east of Minna. The 600 MW plant is among Nigeria's most reliable hydro assets and supports the northern grid.",
+    "capacityMw": 600,
+    "commissioned": "1990",
+    "operator": "North South Power Company Ltd",
+    "riverName": "Kaduna River",
+    "statesCrossed": [
+      "Niger"
+    ],
+    "lon": 6.83444,
+    "lat": 9.975,
+    "highlights": [
+      "600 MW Kaduna River plant",
+      "Niger State power hub",
+      "Gorge dam design"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "wikiUrl": "https://en.wikipedia.org/wiki/Shiroro_Hydroelectric_Power_Station",
+    "gridConnected": true,
+    "gridConnectedNote": "Feeds the national grid."
+  },
+  {
+    "id": "plant-jebba",
+    "name": "Jebba Hydroelectric Power Station",
+    "featureKind": "power-plant",
+    "plantCategory": "major-hydro",
+    "type": "Run-of-river hydroelectric dam",
+    "summary": "578 MW plant on the Niger downstream of Kainji, between Niger and Kwara states.",
+    "description": "Jebba Dam regulates Niger flow for a 578 MW station operated downstream of Kainji. The dam itself straddles the Niger and Kwara state boundary. It is a key link in the Niger cascade and supports grid stability in central Nigeria.",
+    "capacityMw": 578,
+    "commissioned": "1985",
+    "operator": "Mainstream Energy Solutions Ltd",
+    "riverName": "Niger River",
+    "statesCrossed": [
+      "Niger",
+      "Kwara"
+    ],
+    "lon": 4.78778,
+    "lat": 9.13556,
+    "highlights": [
+      "Second Niger cascade dam",
+      "578 MW capacity",
+      "Dam straddles the Niger-Kwara boundary"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "wikiUrl": "https://en.wikipedia.org/wiki/Jebba_Hydroelectric_Power_Station",
+    "gridConnected": true,
+    "gridConnectedNote": "Feeds the national grid."
+  },
+  {
+    "id": "plant-obudu",
+    "name": "Obudu Dam Hydroelectric Station",
+    "featureKind": "power-plant",
+    "plantCategory": "regional-hydro",
+    "type": "Small hydroelectric dam",
+    "summary": "70 MW plant in Cross River State supporting the southeast grid.",
+    "description": "Obudu Dam on the Cross River system provides peaking power and supports tourism in the Obudu Plateau area. It is among the smaller but strategically placed hydro assets in the south.",
+    "capacityMw": 70,
+    "commissioned": "1999",
+    "operator": "Cross River State government / concession",
+    "riverName": "Cross River tributary",
+    "statesCrossed": [
+      "Cross River"
+    ],
+    "lon": 9.35,
+    "lat": 6.67,
+    "highlights": [
+      "70 MW southeast plant",
+      "Obudu Plateau area",
+      "Peaking power role"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Obudu_Dam",
+    "gridConnected": false,
+    "gridConnectedNote": "Regional dam scheme — not connected to the national grid."
+  },
+  {
+    "id": "plant-ikere",
+    "name": "Ikere Gorge Hydroelectric Station",
+    "featureKind": "power-plant",
+    "plantCategory": "regional-hydro",
+    "type": "Medium hydroelectric dam",
+    "summary": "60 MW plant on the Ogun River in Oyo State.",
+    "description": "Ikere Gorge Dam impounds the Ogun River for power generation and downstream flow regulation. It complements Asejire further upstream on the Oshun/Ogun system.",
+    "capacityMw": 60,
+    "commissioned": "1983",
+    "operator": "Ogun-Osun River Basin Development Authority",
+    "riverName": "Ogun River",
+    "statesCrossed": [
+      "Oyo"
+    ],
+    "lon": 3.22,
+    "lat": 7.58,
+    "highlights": [
+      "60 MW Ogun River plant",
+      "Oyo–Ogun basin regulation",
+      "Gorge dam site"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ikere_Gorge_Dam",
+    "gridConnected": false,
+    "gridConnectedNote": "Regional dam scheme — not connected to the national grid."
+  },
+  {
+    "id": "plant-dadin-kowa",
+    "name": "Dadin Kowa Hydroelectric Power Station",
+    "featureKind": "power-plant",
+    "plantCategory": "regional-hydro",
+    "type": "Medium hydroelectric dam",
+    "summary": "40 MW plant on the Gongola River in Gombe State.",
+    "description": "Dadin Kowa hydro uses the Dadin Kowa reservoir to generate power for the northeast grid while supplying irrigation water downstream. Licensed to Mabon Limited.",
+    "capacityMw": 40,
+    "commissioned": "1984",
+    "operator": "Mabon Limited",
+    "riverName": "Gongola River",
+    "linkedLakeId": "lake-dadin-kowa",
+    "statesCrossed": [
+      "Gombe"
+    ],
+    "lon": 11.4814,
+    "lat": 10.3213,
+    "highlights": [
+      "40 MW Gongola plant",
+      "Irrigation and power",
+      "Only grid hydro plant in the northeast"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "wikiUrl": "https://en.wikipedia.org/wiki/Dadin_Kowa_Dam",
+    "gridConnected": true,
+    "gridConnectedNote": "Feeds the national grid."
+  },
+  {
+    "id": "plant-challawa",
+    "name": "Challawa Gorge Hydroelectric Station",
+    "featureKind": "power-plant",
+    "plantCategory": "regional-hydro",
+    "type": "Medium hydroelectric dam",
+    "summary": "39 MW plant on the Challawa River in Kano State.",
+    "description": "Challawa Gorge Dam supports Kano basin irrigation and runs a 39 MW hydro station. It is part of the broader Hadejia–Jama'are water management system.",
+    "capacityMw": 39,
+    "commissioned": "1992",
+    "operator": "Hadejia-Jama'are River Basin Development Authority",
+    "riverName": "Challawa River",
+    "linkedLakeId": "lake-challawa",
+    "statesCrossed": [
+      "Kano"
+    ],
+    "lon": 8.52,
+    "lat": 11.42,
+    "highlights": [
+      "39 MW Kano basin plant",
+      "Irrigation supply",
+      "Hadejia system"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Challawa_Gorge_Dam",
+    "gridConnected": false,
+    "gridConnectedNote": "Regional dam scheme — not connected to the national grid."
+  },
+  {
+    "id": "plant-tiga",
+    "name": "Tiga Hydroelectric Power Station",
+    "featureKind": "power-plant",
+    "plantCategory": "regional-hydro",
+    "type": "Medium hydroelectric dam",
+    "summary": "20 MW plant on the Hadejia River in Kano State.",
+    "description": "Tiga Dam was built in the 1970s for irrigation and includes a 20 MW hydro station. It is upstream of Challawa in the Hadejia–Jama'are basin.",
+    "capacityMw": 20,
+    "commissioned": "1974",
+    "operator": "Hadejia-Jama'are River Basin Development Authority",
+    "riverName": "Hadejia River",
+    "statesCrossed": [
+      "Kano"
+    ],
+    "lon": 8.72,
+    "lat": 11.55,
+    "highlights": [
+      "20 MW Hadejia plant",
+      "1970s irrigation scheme",
+      "Upstream of Challawa"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Tiga_Dam",
+    "gridConnected": false,
+    "gridConnectedNote": "Regional dam scheme — not connected to the national grid."
+  },
+  {
+    "id": "plant-goronyo",
+    "name": "Goronyo Dam Power & Irrigation",
+    "featureKind": "power-plant",
+    "plantCategory": "regional-hydro",
+    "type": "Irrigation dam (small hydro potential)",
+    "summary": "Sokoto basin dam primarily for irrigation and water supply.",
+    "description": "Goronyo Dam regulates the Rima River for dry-season farming in Sokoto State. While primarily an irrigation asset, it is listed among Nigeria's major water-control structures.",
+    "capacityMw": 0,
+    "commissioned": "1984",
+    "operator": "Sokoto Rima River Basin Development Authority",
+    "riverName": "Rima River",
+    "linkedLakeId": "lake-goronyo",
+    "statesCrossed": [
+      "Sokoto"
+    ],
+    "lon": 5.67,
+    "lat": 13.02,
+    "highlights": [
+      "Sokoto irrigation lifeline",
+      "Rima River regulation",
+      "Water-security asset"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Goronyo_Dam",
+    "gridConnected": false,
+    "gridConnectedNote": "Regional dam scheme — not connected to the national grid."
+  },
+  {
+    "id": "plant-bakolori",
+    "name": "Bakolori Dam",
+    "featureKind": "power-plant",
+    "plantCategory": "regional-hydro",
+    "type": "Irrigation dam",
+    "summary": "Controversial Sokoto irrigation dam on the Sokoto River.",
+    "description": "Bakolori Dam was built for irrigated wheat and rice schemes in Sokoto State. It became notable for downstream community displacement and water-access disputes, and is studied in Nigerian environmental history.",
+    "capacityMw": 0,
+    "commissioned": "1983",
+    "operator": "Sokoto Rima River Basin Development Authority",
+    "riverName": "Sokoto River",
+    "statesCrossed": [
+      "Sokoto"
+    ],
+    "lon": 5.17,
+    "lat": 13.07,
+    "highlights": [
+      "Sokoto irrigation scheme",
+      "Environmental justice case study",
+      "Downstream impact debates"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Bakolori_Dam",
+    "gridConnected": false,
+    "gridConnectedNote": "Regional dam scheme — not connected to the national grid."
+  },
+  {
+    "id": "plant-asejire",
+    "name": "Asejire Dam",
+    "featureKind": "power-plant",
+    "plantCategory": "regional-hydro",
+    "type": "Multipurpose dam (water supply)",
+    "summary": "Multipurpose dam supplying Ibadan; linked to Asejire reservoir.",
+    "description": "Asejire Dam primarily provides raw water for Ibadan and irrigation in the Oshun valley. It is a key urban water asset for southwestern Nigeria.",
+    "capacityMw": 0,
+    "commissioned": "1968",
+    "operator": "Ogun-Osun River Basin Development Authority",
+    "riverName": "Oshun River",
+    "linkedLakeId": "lake-asejire",
+    "statesCrossed": [
+      "Oyo"
+    ],
+    "lon": 4.0,
+    "lat": 7.45,
+    "highlights": [
+      "Ibadan water supply",
+      "Oshun River impoundment",
+      "Weekend recreation lake"
+    ],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Asejire_Dam",
+    "gridConnected": false,
+    "gridConnectedNote": "Regional dam scheme — not connected to the national grid."
   },
   {
     "id": "plant-afam",
@@ -57,7 +337,9 @@
     "units": "Afam I 726 MW, Afam VI 650 MW, Afam II 180 MW",
     "commissioned": "1982, 2010, 2025",
     "operator": "Transcorp Power Plc, Shell Petroleum Development Co, Sahara Power / FIPL",
-    "statesCrossed": ["Rivers"],
+    "statesCrossed": [
+      "Rivers"
+    ],
     "lon": 7.254611,
     "lat": 4.851444,
     "highlights": [
@@ -66,30 +348,9 @@
       "Newest block commissioned 2025"
     ],
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "gemUrl": "https://www.gem.wiki/Afam_VI_power_station"
-  },
-  {
-    "id": "plant-sapele",
-    "name": "Sapele Power Station",
-    "featureKind": "power-plant",
-    "plantCategory": "steam",
-    "type": "Gas-fired steam station and OCGT plant",
-    "summary": "1,220 MW at Sapele, Delta State — steam units plus the newer Sapele II turbines.",
-    "description": "Phase one consists of six 120 MW gas-fired steam units commissioned from 1978, two of which are mothballed. Sapele II added four 113 MW open-cycle gas turbines in 2012. Both blocks sit on the Escravos gas pipeline system.",
-    "capacityMw": 1220,
-    "units": "Steam 720 MW, Sapele II 500 MW",
-    "commissioned": "1978-1980, 2012",
-    "operator": "Sapele Power Plc, Ogorode Generation Company Ltd",
-    "statesCrossed": ["Delta"],
-    "lon": 5.644983,
-    "lat": 5.926139,
-    "highlights": [
-      "1,220 MW combined at one site",
-      "Two separate operators",
-      "Fed from the Escravos pipeline system"
-    ],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "gemUrl": "https://www.gem.wiki/Sapele_power_station"
+    "gemUrl": "https://www.gem.wiki/Afam_VI_power_station",
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station."
   },
   {
     "id": "plant-olorunsogo",
@@ -103,7 +364,9 @@
     "units": "Olorunsogo I 335 MW, Olorunsogo II 750 MW",
     "commissioned": "2007, 2015",
     "operator": "Pacific Energy Company Ltd, Olorunsogo Generation Company Ltd",
-    "statesCrossed": ["Ogun"],
+    "statesCrossed": [
+      "Ogun"
+    ],
     "lon": 3.316268,
     "lat": 6.885316,
     "highlights": [
@@ -112,99 +375,9 @@
       "Feeds the Lagos and Ogun transmission ring"
     ],
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "gemUrl": "https://www.gem.wiki/Olorunsogo_II_power_station"
-  },
-  {
-    "id": "plant-ihovbor",
-    "name": "Ihovbor Power Station",
-    "featureKind": "power-plant",
-    "plantCategory": "gas-ocgt",
-    "type": "Gas turbine power station",
-    "summary": "961 MW at Ihovbor, Benin City, Edo State.",
-    "description": "Two open-cycle blocks built for the National Integrated Power Project: 500 MW commissioned around 2012 and a further 461 MW unit group alongside it. Supply comes from the Escravos-Lagos pipeline system.",
-    "capacityMw": 961,
-    "units": "500 MW and 461 MW blocks",
-    "commissioned": "2012-2013",
-    "operator": "Benin Generation Company Ltd",
-    "statesCrossed": ["Edo"],
-    "lon": 5.68333,
-    "lat": 6.40556,
-    "highlights": [
-      "961 MW at one Edo State site",
-      "Fed from the Escravos-Lagos pipeline",
-      "Connects into Benin North and Ajaokuta"
-    ],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "gemUrl": "https://www.gem.wiki/Ihovbor_power_station"
-  },
-  {
-    "id": "plant-geregu",
-    "name": "Geregu Power Station",
-    "featureKind": "power-plant",
-    "plantCategory": "gas-ocgt",
-    "type": "Gas turbine power station",
-    "summary": "870 MW at Geregu, Ajaokuta LGA, Kogi State.",
-    "description": "Two open-cycle blocks each of 435 MW on the Oben-Geregu gas pipeline. Geregu II is part of the National Integrated Power Project programme and feeds the Ajaokuta and Lokoja transmission nodes on the Niger bend.",
-    "capacityMw": 870,
-    "units": "Two 435 MW blocks",
-    "commissioned": "2007, 2012",
-    "operator": "Amperion Power Distribution Co Ltd, Geregu Power Plc",
-    "statesCrossed": ["Kogi"],
-    "lon": 6.660861,
-    "lat": 7.471056,
-    "highlights": [
-      "870 MW of open-cycle gas",
-      "On the Oben-Geregu pipeline",
-      "Feeds the Ajaokuta node"
-    ],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "gemUrl": "https://www.gem.wiki/Geregu_I_power_station"
-  },
-  {
-    "id": "plant-omotosho",
-    "name": "Omotosho Power Station",
-    "featureKind": "power-plant",
-    "plantCategory": "gas-ocgt",
-    "type": "Gas turbine power station",
-    "summary": "835 MW at Omotosho, Odigbo, Ondo State.",
-    "description": "Eight 42 MW units commissioned in 2005, followed by a 500 MW open-cycle block in 2012. Omotosho feeds the Omotosho-Epe-Ajah 330 kV corridor that links the coastal plants into the Lagos ring.",
-    "capacityMw": 835,
-    "units": "Omotosho I 335 MW, Omotosho II 500 MW",
-    "commissioned": "2005, 2012",
-    "operator": "Omotosho Power Plc, Omotosho Generation Company Ltd",
-    "statesCrossed": ["Ondo"],
-    "lon": 4.710611,
-    "lat": 6.735694,
-    "highlights": [
-      "835 MW on the coastal corridor",
-      "Evacuates over the Omotosho-Epe-Ajah 330 kV line",
-      "Supplies the Lagos industrial belt"
-    ],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "gemUrl": "https://www.gem.wiki/Omotosho_II_power_station"
-  },
-  {
-    "id": "plant-odukpani",
-    "name": "Odukpani Power Station (Calabar)",
-    "featureKind": "power-plant",
-    "plantCategory": "gas-ocgt",
-    "type": "Gas turbine power station",
-    "summary": "625 MW at Odukpani, Calabar, Cross River State.",
-    "description": "Five gas turbine units commissioned in 2015 for the National Integrated Power Project. Odukpani is the main generation source for the Calabar and southern Cross River corridor.",
-    "capacityMw": 625,
-    "units": "5 x 113 MW",
-    "commissioned": "2015",
-    "operator": "Calabar Generation Company Ltd",
-    "statesCrossed": ["Cross River"],
-    "lon": 8.272566,
-    "lat": 5.1897,
-    "highlights": [
-      "625 MW near Calabar",
-      "NIPP generation plant",
-      "Feeds the Cross River and Akwa Ibom load centres"
-    ],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "gemUrl": "https://www.gem.wiki/Calabar_power_station"
+    "gemUrl": "https://www.gem.wiki/Olorunsogo_II_power_station",
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station."
   },
   {
     "id": "plant-okpai",
@@ -218,7 +391,9 @@
     "units": "Single 480 MW combined-cycle block",
     "commissioned": "2005",
     "operator": "Nigerian Agip Oil Company Ltd (Oando PLC)",
-    "statesCrossed": ["Delta"],
+    "statesCrossed": [
+      "Delta"
+    ],
     "lon": 6.575917,
     "lat": 5.709692,
     "highlights": [
@@ -227,7 +402,144 @@
       "Runs on associated gas"
     ],
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "gemUrl": "https://www.gem.wiki/Oando_Kwale_power_station"
+    "gemUrl": "https://www.gem.wiki/Oando_Kwale_power_station",
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station."
+  },
+  {
+    "id": "plant-ihovbor",
+    "name": "Ihovbor Power Station",
+    "featureKind": "power-plant",
+    "plantCategory": "gas-ocgt",
+    "type": "Gas turbine power station",
+    "summary": "961 MW at Ihovbor, Benin City, Edo State.",
+    "description": "Two open-cycle blocks built for the National Integrated Power Project: 500 MW commissioned around 2012 and a further 461 MW unit group alongside it. Supply comes from the Escravos-Lagos pipeline system.",
+    "capacityMw": 961,
+    "units": "500 MW and 461 MW blocks",
+    "commissioned": "2012-2013",
+    "operator": "Benin Generation Company Ltd",
+    "statesCrossed": [
+      "Edo"
+    ],
+    "lon": 5.68333,
+    "lat": 6.40556,
+    "highlights": [
+      "961 MW at one Edo State site",
+      "Fed from the Escravos-Lagos pipeline",
+      "Connects into Benin North and Ajaokuta"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "gemUrl": "https://www.gem.wiki/Ihovbor_power_station",
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station."
+  },
+  {
+    "id": "plant-ughelli",
+    "name": "Ughelli Power Station (Delta)",
+    "featureKind": "power-plant",
+    "plantCategory": "gas-ocgt",
+    "type": "Gas turbine combined utility complex",
+    "summary": "Transcorp's 900 MW gas complex at Ughelli, the oldest large thermal site in Nigeria.",
+    "description": "Commissioned from the late 1960s and expanded with six 100 MW units from 1991. Now operated by Transcorp Power Plc. Ughelli anchors the western end of the Delta-Port Harcourt 330 kV backbone.",
+    "capacityMw": 900,
+    "units": "6 x 100 MW plus earlier units",
+    "commissioned": "1966-1990",
+    "operator": "Transcorp Power Plc",
+    "statesCrossed": [
+      "Delta"
+    ],
+    "lon": 5.915909,
+    "lat": 5.541314,
+    "highlights": [
+      "900 MW installed capacity",
+      "Western anchor of the Delta-Port Harcourt 330 kV line",
+      "Operating since the 1960s"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "gemUrl": "https://www.gem.wiki/Ughelli_power_station",
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station."
+  },
+  {
+    "id": "plant-geregu",
+    "name": "Geregu Power Station",
+    "featureKind": "power-plant",
+    "plantCategory": "gas-ocgt",
+    "type": "Gas turbine power station",
+    "summary": "870 MW at Geregu, Ajaokuta LGA, Kogi State.",
+    "description": "Two open-cycle blocks each of 435 MW on the Oben-Geregu gas pipeline. Geregu II is part of the National Integrated Power Project programme and feeds the Ajaokuta and Lokoja transmission nodes on the Niger bend.",
+    "capacityMw": 870,
+    "units": "Two 435 MW blocks",
+    "commissioned": "2007, 2012",
+    "operator": "Amperion Power Distribution Co Ltd, Geregu Power Plc",
+    "statesCrossed": [
+      "Kogi"
+    ],
+    "lon": 6.660861,
+    "lat": 7.471056,
+    "highlights": [
+      "870 MW of open-cycle gas",
+      "On the Oben-Geregu pipeline",
+      "Feeds the Ajaokuta node"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "gemUrl": "https://www.gem.wiki/Geregu_I_power_station",
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station."
+  },
+  {
+    "id": "plant-omotosho",
+    "name": "Omotosho Power Station",
+    "featureKind": "power-plant",
+    "plantCategory": "gas-ocgt",
+    "type": "Gas turbine power station",
+    "summary": "835 MW at Omotosho, Odigbo, Ondo State.",
+    "description": "Eight 42 MW units commissioned in 2005, followed by a 500 MW open-cycle block in 2012. Omotosho feeds the Omotosho-Epe-Ajah 330 kV corridor that links the coastal plants into the Lagos ring.",
+    "capacityMw": 835,
+    "units": "Omotosho I 335 MW, Omotosho II 500 MW",
+    "commissioned": "2005, 2012",
+    "operator": "Omotosho Power Plc, Omotosho Generation Company Ltd",
+    "statesCrossed": [
+      "Ondo"
+    ],
+    "lon": 4.710611,
+    "lat": 6.735694,
+    "highlights": [
+      "835 MW on the coastal corridor",
+      "Evacuates over the Omotosho-Epe-Ajah 330 kV line",
+      "Supplies the Lagos industrial belt"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "gemUrl": "https://www.gem.wiki/Omotosho_II_power_station",
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station."
+  },
+  {
+    "id": "plant-odukpani",
+    "name": "Odukpani Power Station (Calabar)",
+    "featureKind": "power-plant",
+    "plantCategory": "gas-ocgt",
+    "type": "Gas turbine power station",
+    "summary": "625 MW at Odukpani, Calabar, Cross River State.",
+    "description": "Five gas turbine units commissioned in 2015 for the National Integrated Power Project. Odukpani is the main generation source for the Calabar and southern Cross River corridor.",
+    "capacityMw": 625,
+    "units": "5 x 113 MW",
+    "commissioned": "2015",
+    "operator": "Calabar Generation Company Ltd",
+    "statesCrossed": [
+      "Cross River"
+    ],
+    "lon": 8.272566,
+    "lat": 5.1897,
+    "highlights": [
+      "625 MW near Calabar",
+      "NIPP generation plant",
+      "Feeds the Cross River and Akwa Ibom load centres"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "gemUrl": "https://www.gem.wiki/Calabar_power_station",
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station."
   },
   {
     "id": "plant-alaoji",
@@ -241,7 +553,9 @@
     "units": "4 x 124 MW",
     "commissioned": "2012-2015",
     "operator": "Alaoji Generation Company Ltd",
-    "statesCrossed": ["Abia"],
+    "statesCrossed": [
+      "Abia"
+    ],
     "lon": 7.32181,
     "lat": 5.066768,
     "highlights": [
@@ -250,7 +564,9 @@
       "Southeast generation anchor"
     ],
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "gemUrl": "https://www.gem.wiki/Alaoji_power_station"
+    "gemUrl": "https://www.gem.wiki/Alaoji_power_station",
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station."
   },
   {
     "id": "plant-ibom",
@@ -264,7 +580,9 @@
     "units": "2 x 63 MW Frame 6B, 1 x 63 MW Frame 9E",
     "commissioned": "2009",
     "operator": "Ibom Power Company Limited (AKSG)",
-    "statesCrossed": ["Akwa Ibom"],
+    "statesCrossed": [
+      "Akwa Ibom"
+    ],
     "lon": 7.567409,
     "lat": 4.564635,
     "highlights": [
@@ -273,7 +591,9 @@
       "Three gas turbines in simple cycle"
     ],
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "wikiUrl": "https://en.wikipedia.org/wiki/Ibom_Power_Plant"
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ibom_Power_Plant",
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station."
   },
   {
     "id": "plant-omoku",
@@ -287,7 +607,9 @@
     "units": "Open-cycle gas turbines",
     "commissioned": "2005",
     "operator": "First Independent Power Ltd",
-    "statesCrossed": ["Rivers"],
+    "statesCrossed": [
+      "Rivers"
+    ],
     "lon": 6.663194,
     "lat": 5.39,
     "highlights": [
@@ -295,7 +617,9 @@
       "Second phase incomplete",
       "Operated by First Independent Power"
     ],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf"
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station."
   },
   {
     "id": "plant-trans-amadi",
@@ -309,7 +633,9 @@
     "units": "4 x 25 MW",
     "commissioned": "2009",
     "operator": "First Independent Power Ltd",
-    "statesCrossed": ["Rivers"],
+    "statesCrossed": [
+      "Rivers"
+    ],
     "lon": 7.031361,
     "lat": 4.815917,
     "highlights": [
@@ -317,126 +643,1529 @@
       "Phase II of the FIPL Trans-Amadi site",
       "Shell gas supply"
     ],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf"
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station."
   },
   {
-    "id": "plant-kainji",
-    "name": "Kainji Hydroelectric Power Station",
+    "id": "plant-egbin",
+    "name": "Egbin Power Station",
     "featureKind": "power-plant",
-    "plantCategory": "hydro",
-    "type": "Large hydroelectric dam",
-    "summary": "Nigeria's first major hydro plant (760 MW), on the Niger at Kainji Dam.",
-    "description": "Commissioned in 1968, Kainji was the centrepiece of post-independence power expansion. Twelve turbine units draw from Kainji Lake. Two further 110 MW units are being installed to raise the station to 980 MW. Output fluctuates with river flow and rehabilitation works.",
-    "capacityMw": 760,
-    "commissioned": "1968",
-    "operator": "Mainstream Energy Solutions Ltd",
-    "riverName": "Niger River",
-    "linkedLakeId": "lake-kainji",
-    "statesCrossed": ["Niger", "Kebbi"],
-    "lon": 4.61333,
-    "lat": 9.8625,
+    "plantCategory": "steam",
+    "type": "Gas-fired steam power station",
+    "summary": "Nigeria's largest thermal plant — 1,320 MW at Ijede, Ikorodu, Lagos.",
+    "description": "Six 220 MW steam turbine units commissioned between 1985 and 1987. Egbin is the single biggest contributor to national generation and sits at the head of the Lagos 330 kV transmission ring. Privatised in 2013 to Sahara Group and KEPCO.",
+    "capacityMw": 1320,
+    "units": "6 x 220 MW",
+    "commissioned": "1985-1987",
+    "operator": "Egbin Power Plc (KEPCO Energy Resources)",
+    "statesCrossed": [
+      "Lagos"
+    ],
+    "lon": 3.615082,
+    "lat": 6.563713,
     "highlights": [
-      "First large Nigerian hydro dam",
-      "760 MW installed capacity",
-      "Expansion to 980 MW under way",
-      "Created Kainji Lake"
+      "Largest generating station in Nigeria",
+      "Six 220 MW steam units",
+      "Head of the Lagos 330 kV ring"
     ],
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "wikiUrl": "https://en.wikipedia.org/wiki/Kainji_Dam"
+    "wikiUrl": "https://en.wikipedia.org/wiki/Egbin_Thermal_Power_Station",
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station."
   },
   {
-    "id": "plant-zungeru",
-    "name": "Zungeru Hydroelectric Power Station",
+    "id": "plant-sapele",
+    "name": "Sapele Power Station",
     "featureKind": "power-plant",
-    "plantCategory": "hydro",
-    "type": "Large hydroelectric dam",
-    "summary": "700 MW plant on the Kaduna River — Nigeria's newest major hydro asset.",
-    "description": "Built between 2013 and 2023 with Chinese financing and first evacuated onto the grid in 2024. At 700 MW it is among the largest single hydro installations in Nigeria and now carries the highest availability of any grid plant.",
-    "capacityMw": 700,
-    "commissioned": "2023",
-    "operator": "Zungeru Hydropower Consortium / Mainstream Energy Solutions Ltd",
-    "riverName": "Kaduna River",
-    "statesCrossed": ["Niger"],
-    "lon": 6.29222,
-    "lat": 9.905,
+    "plantCategory": "steam",
+    "type": "Gas-fired steam station and OCGT plant",
+    "summary": "1,220 MW at Sapele, Delta State — steam units plus the newer Sapele II turbines.",
+    "description": "Phase one consists of six 120 MW gas-fired steam units commissioned from 1978, two of which are mothballed. Sapele II added four 113 MW open-cycle gas turbines in 2012. Both blocks sit on the Escravos gas pipeline system.",
+    "capacityMw": 1220,
+    "units": "Steam 720 MW, Sapele II 500 MW",
+    "commissioned": "1978-1980, 2012",
+    "operator": "Sapele Power Plc, Ogorode Generation Company Ltd",
+    "statesCrossed": [
+      "Delta"
+    ],
+    "lon": 5.644983,
+    "lat": 5.926139,
     "highlights": [
-      "700 MW capacity",
-      "Newest major hydro plant",
-      "First grid evacuation 2024",
-      "Highest plant availability factor in 2025"
+      "1,220 MW combined at one site",
+      "Two separate operators",
+      "Fed from the Escravos pipeline system"
     ],
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "wikiUrl": "https://en.wikipedia.org/wiki/Zungeru_Hydroelectric_Power_Station"
+    "gemUrl": "https://www.gem.wiki/Sapele_power_station",
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station."
   },
   {
-    "id": "plant-shiroro",
-    "name": "Shiroro Hydroelectric Power Station",
-    "featureKind": "power-plant",
-    "plantCategory": "hydro",
-    "type": "Large hydroelectric dam",
-    "summary": "600 MW plant on the Kaduna River in Niger State.",
-    "description": "Shiroro Dam impounds the Kaduna River gorge east of Minna. The 600 MW plant is among Nigeria's most reliable hydro assets and supports the northern grid.",
-    "capacityMw": 600,
-    "commissioned": "1990",
-    "operator": "North South Power Company Ltd",
-    "riverName": "Kaduna River",
-    "statesCrossed": ["Niger"],
-    "lon": 6.83444,
-    "lat": 9.975,
-    "highlights": [
-      "600 MW Kaduna River plant",
-      "Niger State power hub",
-      "Gorge dam design"
+    "id": "grid-egbin",
+    "name": "Egbin (Ijede)",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330/132/33 kV node at the country's largest power station.",
+    "statesCrossed": [
+      "Lagos"
     ],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "wikiUrl": "https://en.wikipedia.org/wiki/Shiroro_Hydroelectric_Power_Station"
+    "voltageKv": 330,
+    "voltageLabel": "330/132/33 kV",
+    "role": "Generation connection and ring node",
+    "lon": 3.601,
+    "lat": 6.565
   },
   {
-    "id": "plant-jebba",
-    "name": "Jebba Hydroelectric Power Station",
-    "featureKind": "power-plant",
-    "plantCategory": "hydro",
-    "type": "Run-of-river hydroelectric dam",
-    "summary": "578 MW plant on the Niger downstream of Kainji, between Niger and Kwara states.",
-    "description": "Jebba Dam regulates Niger flow for a 578 MW station operated downstream of Kainji. The dam itself straddles the Niger and Kwara state boundary. It is a key link in the Niger cascade and supports grid stability in central Nigeria.",
-    "capacityMw": 578,
-    "commissioned": "1985",
-    "operator": "Mainstream Energy Solutions Ltd",
-    "riverName": "Niger River",
-    "statesCrossed": ["Niger", "Kwara"],
-    "lon": 4.78778,
-    "lat": 9.13556,
-    "highlights": [
-      "Second Niger cascade dam",
-      "578 MW capacity",
-      "Dam straddles the Niger-Kwara boundary"
+    "id": "grid-ajah",
+    "name": "Ajah",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330/132 kV node feeding the Lekki and coastal corridor.",
+    "statesCrossed": [
+      "Lagos"
     ],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "wikiUrl": "https://en.wikipedia.org/wiki/Jebba_Hydroelectric_Power_Station"
+    "voltageKv": 330,
+    "voltageLabel": "330/132 kV",
+    "role": "Bulk supply point",
+    "lon": 3.591,
+    "lat": 6.468
   },
   {
-    "id": "plant-dadin-kowa",
-    "name": "Dadin Kowa Hydroelectric Power Station",
-    "featureKind": "power-plant",
-    "plantCategory": "hydro",
-    "type": "Medium hydroelectric dam",
-    "summary": "40 MW plant on the Gongola River in Gombe State.",
-    "description": "Dadin Kowa hydro uses the Dadin Kowa reservoir to generate power for the northeast grid while supplying irrigation water downstream. Licensed to Mabon Limited.",
-    "capacityMw": 40,
-    "commissioned": "1984",
-    "operator": "Mabon Limited",
-    "riverName": "Gongola River",
-    "linkedLakeId": "lake-dadin-kowa",
-    "statesCrossed": ["Gombe"],
-    "lon": 11.4814,
-    "lat": 10.3213,
-    "highlights": [
-      "40 MW Gongola plant",
-      "Irrigation and power",
-      "Only grid hydro plant in the northeast"
+    "id": "grid-lekki",
+    "name": "Lekki",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330/132 kV node on the Lekki industrial corridor.",
+    "statesCrossed": [
+      "Lagos"
     ],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "wikiUrl": "https://en.wikipedia.org/wiki/Dadin_Kowa_Dam"
+    "voltageKv": 330,
+    "voltageLabel": "330/132 kV",
+    "role": "Bulk supply point",
+    "lon": 3.509,
+    "lat": 6.465
+  },
+  {
+    "id": "grid-alagbon",
+    "name": "Alagbon (Agbara)",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330/132 kV node at the Agbara industrial estate in Ogun State.",
+    "statesCrossed": [
+      "Ogun"
+    ],
+    "voltageKv": 330,
+    "voltageLabel": "330/132 kV",
+    "role": "Interstate bulk supply point",
+    "lon": 3.387,
+    "lat": 6.447
+  },
+  {
+    "id": "grid-ikeja-west",
+    "name": "Ikeja West",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330/132/33 kV node in mainland Lagos.",
+    "statesCrossed": [
+      "Lagos"
+    ],
+    "voltageKv": 330,
+    "voltageLabel": "330/132/33 kV",
+    "role": "Bulk supply point",
+    "lon": 3.334,
+    "lat": 6.579
+  },
+  {
+    "id": "grid-akangba",
+    "name": "Akangba",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node, one of EKEDP's two bulk supply points.",
+    "statesCrossed": [
+      "Lagos"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "DisCo bulk supply point",
+    "lon": 3.359,
+    "lat": 6.547
+  },
+  {
+    "id": "grid-oke-aro",
+    "name": "Oke Aro",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330/132 kV node on the Egbin-Ikeja West corridor.",
+    "statesCrossed": [
+      "Ogun"
+    ],
+    "voltageKv": 330,
+    "voltageLabel": "330/132 kV",
+    "role": "Ring node",
+    "lon": 3.311,
+    "lat": 6.604
+  },
+  {
+    "id": "grid-epe",
+    "name": "Epe",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "Node on the Omotosho-Epe-Ajah 330 kV coastal corridor.",
+    "statesCrossed": [
+      "Lagos"
+    ],
+    "voltageKv": 330,
+    "voltageLabel": "330 kV",
+    "role": "Interconnector",
+    "lon": 3.655,
+    "lat": 6.583
+  },
+  {
+    "id": "grid-shagamu",
+    "name": "Shagamu",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Shagamu in Ogun State.",
+    "statesCrossed": [
+      "Ogun"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 3.648,
+    "lat": 6.849
+  },
+  {
+    "id": "grid-benin-north",
+    "name": "Benin North",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Benin City feeding the Auchi and Akure spurs.",
+    "statesCrossed": [
+      "Edo"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 5.697,
+    "lat": 6.333
+  },
+  {
+    "id": "grid-auchi",
+    "name": "Auchi",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Auchi in northern Edo State.",
+    "statesCrossed": [
+      "Edo"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 6.268,
+    "lat": 7.067
+  },
+  {
+    "id": "grid-akure",
+    "name": "Akure",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330/132/33 kV node reached from Benin North.",
+    "statesCrossed": [
+      "Ondo"
+    ],
+    "voltageKv": 330,
+    "voltageLabel": "330/132/33 kV",
+    "role": "Bulk supply point",
+    "lon": 5.195,
+    "lat": 7.25
+  },
+  {
+    "id": "grid-okeagbe",
+    "name": "Okeagbe",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Okeagbe in Ondo State.",
+    "statesCrossed": [
+      "Ondo"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Regional node",
+    "lon": 5.15,
+    "lat": 7.65
+  },
+  {
+    "id": "grid-ondo",
+    "name": "Ondo",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Ondo town.",
+    "statesCrossed": [
+      "Ondo"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 4.841,
+    "lat": 7.1
+  },
+  {
+    "id": "grid-ose",
+    "name": "Ose",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Ose in Ondo State.",
+    "statesCrossed": [
+      "Ondo"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Regional node",
+    "lon": 5.428,
+    "lat": 7.221
+  },
+  {
+    "id": "grid-osogbo",
+    "name": "New Osogbo",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Osogbo, head of the Ilesha-Ife-Ondo route.",
+    "statesCrossed": [
+      "Osun"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 4.541,
+    "lat": 7.782
+  },
+  {
+    "id": "grid-ilesha",
+    "name": "Ilesha",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Ilesha in Osun State.",
+    "statesCrossed": [
+      "Osun"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 4.737,
+    "lat": 7.627
+  },
+  {
+    "id": "grid-ife",
+    "name": "Ife",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Ile-Ife in Osun State.",
+    "statesCrossed": [
+      "Osun"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 4.562,
+    "lat": 7.488
+  },
+  {
+    "id": "grid-ayede",
+    "name": "Ayede",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Ayede in Oyo State.",
+    "statesCrossed": [
+      "Oyo"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 3.909,
+    "lat": 7.26
+  },
+  {
+    "id": "grid-omuaran",
+    "name": "Omuaran",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Omuaran in Kwara State.",
+    "statesCrossed": [
+      "Kwara"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 5.096,
+    "lat": 8.142
+  },
+  {
+    "id": "grid-egbe",
+    "name": "Egbe",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Egbe in Kogi State.",
+    "statesCrossed": [
+      "Kogi"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 5.517,
+    "lat": 8.215
+  },
+  {
+    "id": "grid-obajana",
+    "name": "Obajana",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Obajana, the cement industrial belt in Kogi State.",
+    "statesCrossed": [
+      "Kogi"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Industrial bulk supply point",
+    "lon": 6.431,
+    "lat": 7.928
+  },
+  {
+    "id": "grid-ajaokuta",
+    "name": "Ajaokuta",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330/132 kV node at Ajaokuta, the steel complex and mid-Niger hub.",
+    "statesCrossed": [
+      "Kogi"
+    ],
+    "voltageKv": 330,
+    "voltageLabel": "330/132 kV",
+    "role": "Regional hub",
+    "lon": 6.696,
+    "lat": 7.46
+  },
+  {
+    "id": "grid-gwagwolada",
+    "name": "Gwagwolada (Abuja)",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/330 kV node serving the Federal Capital Territory.",
+    "statesCrossed": [
+      "Federal Capital Territory"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/330 kV",
+    "role": "Regional hub",
+    "lon": 7.49,
+    "lat": 9.06
+  },
+  {
+    "id": "grid-keffi",
+    "name": "Keffi",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Keffi in Nasarawa State.",
+    "statesCrossed": [
+      "Nassarawa"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 7.877,
+    "lat": 8.847
+  },
+  {
+    "id": "grid-kwoi",
+    "name": "Kwoi",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Kwoi in Kaduna State.",
+    "statesCrossed": [
+      "Kaduna"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Regional node",
+    "lon": 7.963,
+    "lat": 9.457
+  },
+  {
+    "id": "grid-kachia",
+    "name": "Kachia",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Kachia in Kaduna State.",
+    "statesCrossed": [
+      "Kaduna"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Regional node",
+    "lon": 7.96,
+    "lat": 9.873
+  },
+  {
+    "id": "grid-kaduna",
+    "name": "Kaduna (Mando)",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330 kV node at Mando, the northern terminus of the Kaduna-Kano circuit.",
+    "statesCrossed": [
+      "Kaduna"
+    ],
+    "voltageKv": 330,
+    "voltageLabel": "330 kV",
+    "role": "Regional hub",
+    "lon": 7.447,
+    "lat": 10.596
+  },
+  {
+    "id": "grid-kano",
+    "name": "Kano (Kumbotso)",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330 kV node at Kumbotso, serving the Kano metropolis.",
+    "statesCrossed": [
+      "Kano"
+    ],
+    "voltageKv": 330,
+    "voltageLabel": "330 kV",
+    "role": "Regional hub",
+    "lon": 8.514,
+    "lat": 11.888
+  },
+  {
+    "id": "grid-katsina",
+    "name": "Katsina",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Katsina, on the Daura-Jogano-Kura route.",
+    "statesCrossed": [
+      "Katsina"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 7.6,
+    "lat": 12.99
+  },
+  {
+    "id": "grid-daura",
+    "name": "Daura",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Daura in Katsina State.",
+    "statesCrossed": [
+      "Katsina"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 7.3,
+    "lat": 11.7
+  },
+  {
+    "id": "grid-birnin-kebbi",
+    "name": "Birnin Kebbi",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330 kV node on the Kainji-Birnin Kebbi-Sokoto corridor.",
+    "statesCrossed": [
+      "Kebbi"
+    ],
+    "voltageKv": 330,
+    "voltageLabel": "330 kV",
+    "role": "Regional node",
+    "lon": 4.5508,
+    "lat": 12.48
+  },
+  {
+    "id": "grid-sokoto",
+    "name": "Sokoto",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330 kV node at Sokoto, the northern terminus of the Kebbi line.",
+    "statesCrossed": [
+      "Sokoto"
+    ],
+    "voltageKv": 330,
+    "voltageLabel": "330 kV",
+    "role": "Regional node",
+    "lon": 5.2476,
+    "lat": 13.0058
+  },
+  {
+    "id": "grid-jos",
+    "name": "Jos",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330/132 kV node on the Jos-Gombe corridor.",
+    "statesCrossed": [
+      "Plateau"
+    ],
+    "voltageKv": 330,
+    "voltageLabel": "330/132 kV",
+    "role": "Regional hub",
+    "lon": 8.858,
+    "lat": 9.896
+  },
+  {
+    "id": "grid-gombe",
+    "name": "Gombe",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330/132 kV node serving the northeast, including Dadin Kowa.",
+    "statesCrossed": [
+      "Gombe"
+    ],
+    "voltageKv": 330,
+    "voltageLabel": "330/132 kV",
+    "role": "Regional hub",
+    "lon": 11.17,
+    "lat": 10.289
+  },
+  {
+    "id": "grid-bauchi",
+    "name": "Bauchi",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Bauchi.",
+    "statesCrossed": [
+      "Bauchi"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Regional node",
+    "lon": 9.845,
+    "lat": 10.315
+  },
+  {
+    "id": "grid-yola",
+    "name": "Yola",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Yola, head of the northeast feeder chain.",
+    "statesCrossed": [
+      "Adamawa"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Regional hub",
+    "lon": 12.495,
+    "lat": 9.203
+  },
+  {
+    "id": "grid-song",
+    "name": "Song",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Song in Adamawa State.",
+    "statesCrossed": [
+      "Adamawa"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Regional node",
+    "lon": 12.625,
+    "lat": 9.824
+  },
+  {
+    "id": "grid-little-gombi",
+    "name": "Little Gombi",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Little Gombi in Adamawa State.",
+    "statesCrossed": [
+      "Adamawa"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Regional node",
+    "lon": 12.736,
+    "lat": 10.353
+  },
+  {
+    "id": "grid-mubi",
+    "name": "Mubi",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Mubi, near the Cameroon border.",
+    "statesCrossed": [
+      "Adamawa"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Border node",
+    "lon": 13.264,
+    "lat": 10.268
+  },
+  {
+    "id": "grid-gulak",
+    "name": "Gulak",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Gulak in Adamawa State.",
+    "statesCrossed": [
+      "Adamawa"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Regional node",
+    "lon": 13.456,
+    "lat": 10.726
+  },
+  {
+    "id": "grid-maiduguri",
+    "name": "Maiduguri",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Maiduguri, head of the Borno feeder.",
+    "statesCrossed": [
+      "Borno"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Regional hub",
+    "lon": 13.152,
+    "lat": 11.834
+  },
+  {
+    "id": "grid-new-marte",
+    "name": "New Marte",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at New Marte in Borno State.",
+    "statesCrossed": [
+      "Borno"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Regional node",
+    "lon": 13.409,
+    "lat": 12.367
+  },
+  {
+    "id": "grid-monguno",
+    "name": "Monguno",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Monguno in Borno State.",
+    "statesCrossed": [
+      "Borno"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Regional node",
+    "lon": 13.614,
+    "lat": 12.672
+  },
+  {
+    "id": "grid-yenagoa",
+    "name": "Yenagoa",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Yenagoa, head of the Bayelsa feeder chain.",
+    "statesCrossed": [
+      "Bayelsa"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional hub",
+    "lon": 6.265,
+    "lat": 4.917
+  },
+  {
+    "id": "grid-amassoma",
+    "name": "Amassoma",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Amassoma in Bayelsa State.",
+    "statesCrossed": [
+      "Bayelsa"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 6.109,
+    "lat": 4.971
+  },
+  {
+    "id": "grid-oporoma",
+    "name": "Oporoma",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Oporoma in Bayelsa State.",
+    "statesCrossed": [
+      "Bayelsa"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 6.08,
+    "lat": 4.801
+  },
+  {
+    "id": "grid-igbumatoru",
+    "name": "Igbumatoru",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Igbumatoro in Bayelsa State.",
+    "statesCrossed": [
+      "Bayelsa"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Regional node",
+    "lon": 6.316,
+    "lat": 4.559
+  },
+  {
+    "id": "grid-port-harcourt",
+    "name": "Port Harcourt",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330 kV node at Port Harcourt, the eastern end of the Delta-Port Harcourt line.",
+    "statesCrossed": [
+      "Rivers"
+    ],
+    "voltageKv": 330,
+    "voltageLabel": "330 kV",
+    "role": "Regional hub",
+    "lon": 7.049,
+    "lat": 4.815
+  },
+  {
+    "id": "grid-delta",
+    "name": "Delta (Asaba)",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330 kV node at Asaba, the western end of the Delta-Port Harcourt line.",
+    "statesCrossed": [
+      "Delta"
+    ],
+    "voltageKv": 330,
+    "voltageLabel": "330 kV",
+    "role": "Regional hub",
+    "lon": 6.2023,
+    "lat": 6.7299
+  },
+  {
+    "id": "grid-onitsha",
+    "name": "Onitsha",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "330 kV node at Onitsha, reached from Alaoji.",
+    "statesCrossed": [
+      "Anambra"
+    ],
+    "voltageKv": 330,
+    "voltageLabel": "330 kV",
+    "role": "Regional hub",
+    "lon": 6.15,
+    "lat": 6.15
+  },
+  {
+    "id": "grid-ugwuaji",
+    "name": "Ugwuaji",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Ugwuaji in Enugu State.",
+    "statesCrossed": [
+      "Enugu"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 7.499,
+    "lat": 6.378
+  },
+  {
+    "id": "grid-nenwe",
+    "name": "Nenwe",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Nenwe in Enugu State.",
+    "statesCrossed": [
+      "Enugu"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 7.529,
+    "lat": 6.133
+  },
+  {
+    "id": "grid-mpu",
+    "name": "Mpu",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Mpu in Enugu State.",
+    "statesCrossed": [
+      "Enugu"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 7.74,
+    "lat": 6.049
+  },
+  {
+    "id": "grid-new-haven",
+    "name": "New Haven",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at New Haven, Enugu.",
+    "statesCrossed": [
+      "Enugu"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 7.529,
+    "lat": 6.432
+  },
+  {
+    "id": "grid-abakaliki",
+    "name": "Abakaliki",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Abakaliki in Ebonyi State.",
+    "statesCrossed": [
+      "Ebonyi"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 8.113,
+    "lat": 6.323
+  },
+  {
+    "id": "grid-amasiri",
+    "name": "Amasiri",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Amasiri in Ebonyi State.",
+    "statesCrossed": [
+      "Ebonyi"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 7.833,
+    "lat": 5.883
+  },
+  {
+    "id": "grid-nkalagu",
+    "name": "Nkalagu",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Nkalagu in Ebonyi State.",
+    "statesCrossed": [
+      "Ebonyi"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 7.77,
+    "lat": 6.519
+  },
+  {
+    "id": "grid-nnewi",
+    "name": "Nnewi",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Nnewi in Anambra State.",
+    "statesCrossed": [
+      "Anambra"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Industrial bulk supply point",
+    "lon": 6.85,
+    "lat": 6.01
+  },
+  {
+    "id": "grid-ngodo",
+    "name": "Ngodo",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Ngodo in Abia State.",
+    "statesCrossed": [
+      "Abia"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Regional node",
+    "lon": 7.329,
+    "lat": 5.598
+  },
+  {
+    "id": "grid-okigwe",
+    "name": "Okigwe",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132 kV node at Okigwe in Imo State.",
+    "statesCrossed": [
+      "Imo"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132 kV",
+    "role": "Regional node",
+    "lon": 7.341,
+    "lat": 5.829
+  },
+  {
+    "id": "grid-ibono",
+    "name": "Ibono",
+    "featureKind": "grid-substation",
+    "type": "Transmission substation",
+    "summary": "132/33 kV node at Ibono in Akwa Ibom State.",
+    "statesCrossed": [
+      "Akwa Ibom"
+    ],
+    "voltageKv": 132,
+    "voltageLabel": "132/33 kV",
+    "role": "Regional node",
+    "lon": 7.863,
+    "lat": 5.192
+  },
+  {
+    "id": "line-kainji-kebbi",
+    "name": "Kainji - Birnin Kebbi 330 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "Northwest 330 kV line from Kainji to Birnin Kebbi.",
+    "fromNode": "plant-kainji",
+    "toNode": "grid-birnin-kebbi",
+    "voltageKv": 330,
+    "statesCrossed": [
+      "Niger",
+      "Kebbi"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-kebbi-sokoto",
+    "name": "Birnin Kebbi - Sokoto 330 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "Northwest 330 kV line from Birnin Kebbi to Sokoto.",
+    "fromNode": "grid-birnin-kebbi",
+    "toNode": "grid-sokoto",
+    "voltageKv": 330,
+    "statesCrossed": [
+      "Kebbi",
+      "Sokoto"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-kaduna-kano",
+    "name": "Kaduna - Kano 330 kV (second circuit)",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "330 kV DC circuit linking the Kaduna and Kano hubs.",
+    "fromNode": "grid-kaduna",
+    "toNode": "grid-kano",
+    "voltageKv": 330,
+    "statesCrossed": [
+      "Kaduna",
+      "Kano"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-katsina-daura",
+    "name": "Katsina - Daura 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "Northeast Katsina feeder, part of the Katsina-Daura-Gwiwo-Jogano-Kura route.",
+    "fromNode": "grid-katsina",
+    "toNode": "grid-daura",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Katsina"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-keffi-kwoi",
+    "name": "Keffi - Kwoi 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "First segment of the Keffi-Kwoi-Kachia route.",
+    "fromNode": "grid-keffi",
+    "toNode": "grid-kwoi",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Nassarawa",
+      "Kaduna"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-kwoi-kachia",
+    "name": "Kwoi - Kachia 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "Second segment of the Keffi-Kwoi-Kachia route.",
+    "fromNode": "grid-kwoi",
+    "toNode": "grid-kachia",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Kaduna"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-jos-gombe",
+    "name": "Jos - Gombe 330 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "330 kV line linking the Plateau and Gombe hubs.",
+    "fromNode": "grid-jos",
+    "toNode": "grid-gombe",
+    "voltageKv": 330,
+    "statesCrossed": [
+      "Plateau",
+      "Gombe"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-yola-song",
+    "name": "Yola - Song 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "First segment of the Yola-Song-Little Gombi-Mubi-Gulak route.",
+    "fromNode": "grid-yola",
+    "toNode": "grid-song",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Adamawa"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-song-little-gombi",
+    "name": "Song - Little Gombi 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "Second segment of the Yola-Song-Little Gombi-Mubi-Gulak route.",
+    "fromNode": "grid-song",
+    "toNode": "grid-little-gombi",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Adamawa"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-little-gombi-mubi",
+    "name": "Little Gombi - Mubi 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "Third segment of the Yola-Song-Little Gombi-Mubi-Gulak route.",
+    "fromNode": "grid-little-gombi",
+    "toNode": "grid-mubi",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Adamawa"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-mubi-gulak",
+    "name": "Mubi - Gulak 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "Final segment of the Yola-Song-Little Gombi-Mubi-Gulak route.",
+    "fromNode": "grid-mubi",
+    "toNode": "grid-gulak",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Adamawa"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-maiduguri-new-marte",
+    "name": "Maiduguri - New Marte 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "First segment of the Maiduguri-New Marte-Monguno route.",
+    "fromNode": "grid-maiduguri",
+    "toNode": "grid-new-marte",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Borno"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-new-marte-monguno",
+    "name": "New Marte - Monguno 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "Second segment of the Maiduguri-New Marte-Monguno route.",
+    "fromNode": "grid-new-marte",
+    "toNode": "grid-monguno",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Borno"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-yenagoa-amassoma",
+    "name": "Yenagoa - Amassoma 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "First segment of the Yenagoa-Amassoma-Oporoma-Igbumatoro route.",
+    "fromNode": "grid-yenagoa",
+    "toNode": "grid-amassoma",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Bayelsa"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-amassoma-oporoma",
+    "name": "Amassoma - Oporoma 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "Second segment of the Yenagoa-Amassoma-Oporoma-Igbumatoro route.",
+    "fromNode": "grid-amassoma",
+    "toNode": "grid-oporoma",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Bayelsa"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-oporoma-igbumatoru",
+    "name": "Oporoma - Igbumatoro 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "Final segment of the Yenagoa-Amassoma-Oporoma-Igbumatoro route.",
+    "fromNode": "grid-oporoma",
+    "toNode": "grid-igbumatoru",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Bayelsa"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-delta-port-harcourt",
+    "name": "Delta - Port Harcourt 330 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "330 kV line across the Niger Delta from Asaba to Port Harcourt.",
+    "fromNode": "grid-delta",
+    "toNode": "grid-port-harcourt",
+    "voltageKv": 330,
+    "statesCrossed": [
+      "Delta",
+      "Rivers"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-alaoji-onitsha",
+    "name": "Alaoji - Onitsha 330 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "330 kV line carrying Imo and Abia generation east to the Onitsha node.",
+    "fromNode": "plant-alaoji",
+    "toNode": "grid-onitsha",
+    "voltageKv": 330,
+    "statesCrossed": [
+      "Abia",
+      "Anambra"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-benin-auchi",
+    "name": "Benin North - Auchi 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "132 kV line from Benin City to Auchi.",
+    "fromNode": "grid-benin-north",
+    "toNode": "grid-auchi",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Edo"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-benin-akure",
+    "name": "Benin North - Akure 330 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "330 kV line energising the Akure 330/132/33 kV substation.",
+    "fromNode": "grid-benin-north",
+    "toNode": "grid-akure",
+    "voltageKv": 330,
+    "statesCrossed": [
+      "Edo",
+      "Ondo"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-benin-ajaokuta",
+    "name": "Benin - Ajaokuta 330 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "330 kV line from the Benin area to the Ajaokuta hub on the Niger.",
+    "fromNode": "grid-benin-north",
+    "toNode": "grid-ajaokuta",
+    "voltageKv": 330,
+    "statesCrossed": [
+      "Edo",
+      "Kogi"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-omotosho-epe",
+    "name": "Omotosho - Epe 330 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "135 km 330 kV line carrying Omotosho output to Epe.",
+    "fromNode": "plant-omotosho",
+    "toNode": "grid-epe",
+    "voltageKv": 330,
+    "statesCrossed": [
+      "Ondo",
+      "Lagos"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-epe-ajah",
+    "name": "Epe - Ajah 330 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "330 kV DC line linking Epe into the Lagos ring at Ajah.",
+    "fromNode": "grid-epe",
+    "toNode": "grid-ajah",
+    "voltageKv": 330,
+    "statesCrossed": [
+      "Lagos"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-ajah-lekki",
+    "name": "Ajah - Lekki 330 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "330 kV line along the Lekki coastal corridor.",
+    "fromNode": "grid-ajah",
+    "toNode": "grid-lekki",
+    "voltageKv": 330,
+    "statesCrossed": [
+      "Lagos"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-lekki-alagbon",
+    "name": "Lekki - Alagbon 330 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "330 kV line from Lekki to the Agbara node in Ogun State.",
+    "fromNode": "grid-lekki",
+    "toNode": "grid-alagbon",
+    "voltageKv": 330,
+    "statesCrossed": [
+      "Lagos",
+      "Ogun"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-egbin-oke-aro",
+    "name": "Egbin - Oke Aro 330 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "330 kV line from Egbin to the Oke Aro node.",
+    "fromNode": "plant-egbin",
+    "toNode": "grid-oke-aro",
+    "voltageKv": 330,
+    "statesCrossed": [
+      "Lagos",
+      "Ogun"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-oke-aro-ikeja-west",
+    "name": "Oke Aro - Ikeja West 330 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "330 kV line closing the Lagos ring at Ikeja West.",
+    "fromNode": "grid-oke-aro",
+    "toNode": "grid-ikeja-west",
+    "voltageKv": 330,
+    "statesCrossed": [
+      "Ogun",
+      "Lagos"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-shagamu-ayede",
+    "name": "Shagamu - Ayede 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "132 kV line from Shagamu in Ogun to Ayede in Oyo State.",
+    "fromNode": "grid-shagamu",
+    "toNode": "grid-ayede",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Ogun",
+      "Oyo"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-osogbo-ilesha",
+    "name": "New Osogbo - Ilesha 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "First segment of the New Osogbo-Ilesha-Ife-Ondo route.",
+    "fromNode": "grid-osogbo",
+    "toNode": "grid-ilesha",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Osun"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-ilesha-ife",
+    "name": "Ilesha - Ife 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "Second segment of the New Osogbo-Ilesha-Ife-Ondo route.",
+    "fromNode": "grid-ilesha",
+    "toNode": "grid-ife",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Osun"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-ife-ondo",
+    "name": "Ife - Ondo 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "Final segment of the New Osogbo-Ilesha-Ife-Ondo route.",
+    "fromNode": "grid-ife",
+    "toNode": "grid-ondo",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Osun",
+      "Ondo"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-omuaran-egbe",
+    "name": "Omuaran - Egbe 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "132 kV line across the Kwara-Kogi boundary.",
+    "fromNode": "grid-omuaran",
+    "toNode": "grid-egbe",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Kwara",
+      "Kogi"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-obajana-okeagbe",
+    "name": "Obajana - Okeagbe 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "132 kV line from the Obajana cement belt to Okeagbe.",
+    "fromNode": "grid-obajana",
+    "toNode": "grid-okeagbe",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Kogi",
+      "Ondo"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-ugwuaji-nenwe",
+    "name": "Ugwuaji - Nenwe 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "First segment of the Ugwuaji-Nenwe-Mpu route.",
+    "fromNode": "grid-ugwuaji",
+    "toNode": "grid-nenwe",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Enugu"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-nenwe-mpu",
+    "name": "Nenwe - Mpu 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "Second segment of the Ugwuaji-Nenwe-Mpu route.",
+    "fromNode": "grid-nenwe",
+    "toNode": "grid-mpu",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Enugu"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-new-haven-nkalagu",
+    "name": "New Haven - Nkalagu 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "132 kV line from Enugu into Ebonyi State.",
+    "fromNode": "grid-new-haven",
+    "toNode": "grid-nkalagu",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Enugu",
+      "Ebonyi"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
+  },
+  {
+    "id": "line-abakaliki-amasiri",
+    "name": "Abakaliki - Amasiri 132 kV",
+    "featureKind": "grid-corridor",
+    "type": "Transmission corridor",
+    "summary": "132 kV line across Ebonyi State.",
+    "fromNode": "grid-abakaliki",
+    "toNode": "grid-amasiri",
+    "voltageKv": 132,
+    "statesCrossed": [
+      "Ebonyi"
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
   },
   {
     "id": "disco-aedc",
@@ -447,7 +2176,12 @@
     "description": "AEDC distributes grid power across the FCT and Niger, Kogi and Nasarawa states from its Abuja headquarters, serving residential, government and industrial load centres on the Abuja-Lokoja-Minna corridor.",
     "operator": "Abuja Electricity Distribution Plc",
     "shareholding": "Core Infrastructure Investment, FCT and Kogi state governments",
-    "statesCrossed": ["Federal Capital Territory", "Niger", "Kogi", "Nassarawa"],
+    "statesCrossed": [
+      "Federal Capital Territory",
+      "Niger",
+      "Kogi",
+      "Nassarawa"
+    ],
     "lon": 7.49,
     "lat": 9.06,
     "highlights": [
@@ -467,7 +2201,12 @@
     "description": "BEDC operates from Benin City, distributing electricity across the Niger Delta fringe and the Edo-Ekiti-Ondo axis, including major cities such as Benin, Warri, Asaba, Akure and Ado-Ekiti.",
     "operator": "Benin Electricity Distribution Plc",
     "shareholding": "Infrastructure Trust Fund (Amethi), BEDC staff and state governments",
-    "statesCrossed": ["Edo", "Delta", "Ekiti", "Ondo"],
+    "statesCrossed": [
+      "Edo",
+      "Delta",
+      "Ekiti",
+      "Ondo"
+    ],
     "lon": 5.62,
     "lat": 6.34,
     "highlights": [
@@ -487,7 +2226,10 @@
     "description": "EKEDP covers the southern part of Lagos State across twelve districts including Lekki, Apapa, Islands and Ajah, plus Agbara in Ogun State. It takes bulk supply from the Ajah and Akangba 330/132 kV transmission nodes.",
     "operator": "Eko Electricity Distribution Plc",
     "shareholding": "Kekehohoduke family and Arise Integrated Industrial Platforms",
-    "statesCrossed": ["Lagos", "Ogun"],
+    "statesCrossed": [
+      "Lagos",
+      "Ogun"
+    ],
     "lon": 3.42,
     "lat": 6.44,
     "highlights": [
@@ -507,7 +2249,13 @@
     "description": "EEDC distributes power across Enugu, Abia, Imo, Anambra and Ebonyi from Enugu, anchoring the eastern grid's urban and industrial consumers.",
     "operator": "Enugu Electricity Distribution Plc",
     "shareholding": "Stanbic IBTC, Access Holdings and Enugu State Government",
-    "statesCrossed": ["Enugu", "Abia", "Imo", "Anambra", "Ebonyi"],
+    "statesCrossed": [
+      "Enugu",
+      "Abia",
+      "Imo",
+      "Anambra",
+      "Ebonyi"
+    ],
     "lon": 7.49,
     "lat": 6.44,
     "highlights": [
@@ -527,7 +2275,15 @@
     "description": "IBEDC has the largest franchise area in Nigeria, covering Oyo, Ogun, Osun and Kwara plus parts of Ekiti, Kogi and Niger. It is organised into five regions and is the biggest DisCo by customer count.",
     "operator": "Ibadan Electricity Distribution Plc",
     "shareholding": "Ibadan Electricity Distribution Holding and Fashola Sanusi consortium",
-    "statesCrossed": ["Oyo", "Ogun", "Osun", "Kwara", "Ekiti", "Kogi", "Niger"],
+    "statesCrossed": [
+      "Oyo",
+      "Ogun",
+      "Osun",
+      "Kwara",
+      "Ekiti",
+      "Kogi",
+      "Niger"
+    ],
     "lon": 3.95,
     "lat": 7.39,
     "highlights": [
@@ -547,7 +2303,9 @@
     "description": "Ikeja Electric serves mainland Lagos, Ikeja, Oshodi and the northern Lagos industrial corridors from its Ikeja headquarters, complementing EKEDP's southern and island franchise. It bills the highest revenue of any DisCo.",
     "operator": "Ikeja Electric Plc",
     "shareholding": "Consortium led by Access Holdings, Arthur Jarvis and Stephen Jennings",
-    "statesCrossed": ["Lagos"],
+    "statesCrossed": [
+      "Lagos"
+    ],
     "lon": 3.35,
     "lat": 6.58,
     "highlights": [
@@ -567,7 +2325,12 @@
     "description": "JEDC distributes electricity from Jos across the Plateau highlands and into Bauchi, Benue and Gombe, serving mining towns, universities and farming communities.",
     "operator": "Jos Electricity Distribution Plc",
     "shareholding": "MIH Holdings and Broad Street Investments",
-    "statesCrossed": ["Plateau", "Bauchi", "Benue", "Gombe"],
+    "statesCrossed": [
+      "Plateau",
+      "Bauchi",
+      "Benue",
+      "Gombe"
+    ],
     "lon": 8.9,
     "lat": 9.89,
     "highlights": [
@@ -587,7 +2350,12 @@
     "description": "KAEDCO operates from Kaduna city, distributing power across the northwestern savanna states with major load centres in Kaduna, Zaria, Sokoto and Gusau.",
     "operator": "Kaduna Electricity Distribution Plc",
     "shareholding": "Kaduna State Government, Federal Government and APTN staff",
-    "statesCrossed": ["Kaduna", "Sokoto", "Kebbi", "Zamfara"],
+    "statesCrossed": [
+      "Kaduna",
+      "Sokoto",
+      "Kebbi",
+      "Zamfara"
+    ],
     "lon": 7.44,
     "lat": 10.52,
     "highlights": [
@@ -607,7 +2375,11 @@
     "description": "KEDCO distributes electricity from Kano across Nigeria's most populous northern metropolis and into Jigawa and Katsina, including major markets and textile clusters.",
     "operator": "Kano Electricity Distribution Plc",
     "shareholding": "Kano State Government and Smart Energy International",
-    "statesCrossed": ["Kano", "Jigawa", "Katsina"],
+    "statesCrossed": [
+      "Kano",
+      "Jigawa",
+      "Katsina"
+    ],
     "lon": 8.52,
     "lat": 12.0,
     "highlights": [
@@ -627,7 +2399,12 @@
     "description": "PHEDC operates from Port Harcourt, distributing power across the Niger Delta oil cities and the eastern coastal states, including major industrial and export facilities.",
     "operator": "Port Harcourt Electricity Distribution Plc",
     "shareholding": "Crown Trust Asset Management and APTN staff",
-    "statesCrossed": ["Rivers", "Bayelsa", "Cross River", "Akwa Ibom"],
+    "statesCrossed": [
+      "Rivers",
+      "Bayelsa",
+      "Cross River",
+      "Akwa Ibom"
+    ],
     "lon": 7.01,
     "lat": 4.82,
     "highlights": [
@@ -647,7 +2424,12 @@
     "description": "YEDC distributes grid power from Yola across the northeast savanna and Sahel fringe, including state capitals and agricultural towns in Adamawa, Taraba, Borno and Yobe.",
     "operator": "Yola Electricity Distribution Plc",
     "shareholding": "Revrest Financial Partners and Yola Electricity Distribution staff",
-    "statesCrossed": ["Adamawa", "Taraba", "Borno", "Yobe"],
+    "statesCrossed": [
+      "Adamawa",
+      "Taraba",
+      "Borno",
+      "Yobe"
+    ],
     "lon": 12.5,
     "lat": 9.2,
     "highlights": [
@@ -657,1255 +2439,5 @@
     ],
     "sourceUrl": "https://www.nbs.gov.ng/",
     "wikiUrl": "https://en.wikipedia.org/wiki/Yola_Electricity_Distribution_Company"
-  },
-  {
-    "id": "grid-egbin",
-    "name": "Egbin (Ijede)",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330/132/33 kV node at the country's largest power station.",
-    "statesCrossed": ["Lagos"],
-    "voltageKv": 330,
-    "voltageLabel": "330/132/33 kV",
-    "role": "Generation connection and ring node",
-    "lon": 3.601,
-    "lat": 6.565
-  },
-  {
-    "id": "grid-ajah",
-    "name": "Ajah",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330/132 kV node feeding the Lekki and coastal corridor.",
-    "statesCrossed": ["Lagos"],
-    "voltageKv": 330,
-    "voltageLabel": "330/132 kV",
-    "role": "Bulk supply point",
-    "lon": 3.591,
-    "lat": 6.468
-  },
-  {
-    "id": "grid-lekki",
-    "name": "Lekki",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330/132 kV node on the Lekki industrial corridor.",
-    "statesCrossed": ["Lagos"],
-    "voltageKv": 330,
-    "voltageLabel": "330/132 kV",
-    "role": "Bulk supply point",
-    "lon": 3.509,
-    "lat": 6.465
-  },
-  {
-    "id": "grid-alagbon",
-    "name": "Alagbon (Agbara)",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330/132 kV node at the Agbara industrial estate in Ogun State.",
-    "statesCrossed": ["Ogun"],
-    "voltageKv": 330,
-    "voltageLabel": "330/132 kV",
-    "role": "Interstate bulk supply point",
-    "lon": 3.387,
-    "lat": 6.447
-  },
-  {
-    "id": "grid-ikeja-west",
-    "name": "Ikeja West",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330/132/33 kV node in mainland Lagos.",
-    "statesCrossed": ["Lagos"],
-    "voltageKv": 330,
-    "voltageLabel": "330/132/33 kV",
-    "role": "Bulk supply point",
-    "lon": 3.334,
-    "lat": 6.579
-  },
-  {
-    "id": "grid-akangba",
-    "name": "Akangba",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node, one of EKEDP's two bulk supply points.",
-    "statesCrossed": ["Lagos"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "DisCo bulk supply point",
-    "lon": 3.359,
-    "lat": 6.547
-  },
-  {
-    "id": "grid-oke-aro",
-    "name": "Oke Aro",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330/132 kV node on the Egbin-Ikeja West corridor.",
-    "statesCrossed": ["Ogun"],
-    "voltageKv": 330,
-    "voltageLabel": "330/132 kV",
-    "role": "Ring node",
-    "lon": 3.311,
-    "lat": 6.604
-  },
-  {
-    "id": "grid-epe",
-    "name": "Epe",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "Node on the Omotosho-Epe-Ajah 330 kV coastal corridor.",
-    "statesCrossed": ["Lagos"],
-    "voltageKv": 330,
-    "voltageLabel": "330 kV",
-    "role": "Interconnector",
-    "lon": 3.655,
-    "lat": 6.583
-  },
-  {
-    "id": "grid-shagamu",
-    "name": "Shagamu",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Shagamu in Ogun State.",
-    "statesCrossed": ["Ogun"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 3.648,
-    "lat": 6.849
-  },
-  {
-    "id": "grid-benin-north",
-    "name": "Benin North",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Benin City feeding the Auchi and Akure spurs.",
-    "statesCrossed": ["Edo"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 5.697,
-    "lat": 6.333
-  },
-  {
-    "id": "grid-auchi",
-    "name": "Auchi",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Auchi in northern Edo State.",
-    "statesCrossed": ["Edo"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 6.268,
-    "lat": 7.067
-  },
-  {
-    "id": "grid-akure",
-    "name": "Akure",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330/132/33 kV node reached from Benin North.",
-    "statesCrossed": ["Ondo"],
-    "voltageKv": 330,
-    "voltageLabel": "330/132/33 kV",
-    "role": "Bulk supply point",
-    "lon": 5.195,
-    "lat": 7.25
-  },
-  {
-    "id": "grid-okeagbe",
-    "name": "Okeagbe",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Okeagbe in Ondo State.",
-    "statesCrossed": ["Ondo"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Regional node",
-    "lon": 5.15,
-    "lat": 7.65
-  },
-  {
-    "id": "grid-ondo",
-    "name": "Ondo",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Ondo town.",
-    "statesCrossed": ["Ondo"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 4.841,
-    "lat": 7.1
-  },
-  {
-    "id": "grid-ose",
-    "name": "Ose",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Ose in Ondo State.",
-    "statesCrossed": ["Ondo"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Regional node",
-    "lon": 5.428,
-    "lat": 7.221
-  },
-  {
-    "id": "grid-osogbo",
-    "name": "New Osogbo",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Osogbo, head of the Ilesha-Ife-Ondo route.",
-    "statesCrossed": ["Osun"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 4.541,
-    "lat": 7.782
-  },
-  {
-    "id": "grid-ilesha",
-    "name": "Ilesha",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Ilesha in Osun State.",
-    "statesCrossed": ["Osun"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 4.737,
-    "lat": 7.627
-  },
-  {
-    "id": "grid-ife",
-    "name": "Ife",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Ile-Ife in Osun State.",
-    "statesCrossed": ["Osun"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 4.562,
-    "lat": 7.488
-  },
-  {
-    "id": "grid-ayede",
-    "name": "Ayede",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Ayede in Oyo State.",
-    "statesCrossed": ["Oyo"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 3.909,
-    "lat": 7.26
-  },
-  {
-    "id": "grid-omuaran",
-    "name": "Omuaran",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Omuaran in Kwara State.",
-    "statesCrossed": ["Kwara"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 5.096,
-    "lat": 8.142
-  },
-  {
-    "id": "grid-egbe",
-    "name": "Egbe",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Egbe in Kogi State.",
-    "statesCrossed": ["Kogi"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 5.517,
-    "lat": 8.215
-  },
-  {
-    "id": "grid-obajana",
-    "name": "Obajana",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Obajana, the cement industrial belt in Kogi State.",
-    "statesCrossed": ["Kogi"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Industrial bulk supply point",
-    "lon": 6.431,
-    "lat": 7.928
-  },
-  {
-    "id": "grid-ajaokuta",
-    "name": "Ajaokuta",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330/132 kV node at Ajaokuta, the steel complex and mid-Niger hub.",
-    "statesCrossed": ["Kogi"],
-    "voltageKv": 330,
-    "voltageLabel": "330/132 kV",
-    "role": "Regional hub",
-    "lon": 6.696,
-    "lat": 7.46
-  },
-  {
-    "id": "grid-gwagwolada",
-    "name": "Gwagwolada (Abuja)",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/330 kV node serving the Federal Capital Territory.",
-    "statesCrossed": ["Federal Capital Territory"],
-    "voltageKv": 132,
-    "voltageLabel": "132/330 kV",
-    "role": "Regional hub",
-    "lon": 7.49,
-    "lat": 9.06
-  },
-  {
-    "id": "grid-keffi",
-    "name": "Keffi",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Keffi in Nasarawa State.",
-    "statesCrossed": ["Nassarawa"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 7.877,
-    "lat": 8.847
-  },
-  {
-    "id": "grid-kwoi",
-    "name": "Kwoi",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Kwoi in Kaduna State.",
-    "statesCrossed": ["Kaduna"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Regional node",
-    "lon": 7.963,
-    "lat": 9.457
-  },
-  {
-    "id": "grid-kachia",
-    "name": "Kachia",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Kachia in Kaduna State.",
-    "statesCrossed": ["Kaduna"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Regional node",
-    "lon": 7.96,
-    "lat": 9.873
-  },
-  {
-    "id": "grid-kaduna",
-    "name": "Kaduna (Mando)",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330 kV node at Mando, the northern terminus of the Kaduna-Kano circuit.",
-    "statesCrossed": ["Kaduna"],
-    "voltageKv": 330,
-    "voltageLabel": "330 kV",
-    "role": "Regional hub",
-    "lon": 7.447,
-    "lat": 10.596
-  },
-  {
-    "id": "grid-kano",
-    "name": "Kano (Kumbotso)",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330 kV node at Kumbotso, serving the Kano metropolis.",
-    "statesCrossed": ["Kano"],
-    "voltageKv": 330,
-    "voltageLabel": "330 kV",
-    "role": "Regional hub",
-    "lon": 8.514,
-    "lat": 11.888
-  },
-  {
-    "id": "grid-katsina",
-    "name": "Katsina",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Katsina, on the Daura-Jogano-Kura route.",
-    "statesCrossed": ["Katsina"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 7.6,
-    "lat": 12.99
-  },
-  {
-    "id": "grid-daura",
-    "name": "Daura",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Daura in Katsina State.",
-    "statesCrossed": ["Katsina"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 7.3,
-    "lat": 11.7
-  },
-  {
-    "id": "grid-birnin-kebbi",
-    "name": "Birnin Kebbi",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330 kV node on the Kainji-Birnin Kebbi-Sokoto corridor.",
-    "statesCrossed": ["Kebbi"],
-    "voltageKv": 330,
-    "voltageLabel": "330 kV",
-    "role": "Regional node",
-    "lon": 4.5508,
-    "lat": 12.48
-  },
-  {
-    "id": "grid-sokoto",
-    "name": "Sokoto",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330 kV node at Sokoto, the northern terminus of the Kebbi line.",
-    "statesCrossed": ["Sokoto"],
-    "voltageKv": 330,
-    "voltageLabel": "330 kV",
-    "role": "Regional node",
-    "lon": 5.2476,
-    "lat": 13.0058
-  },
-  {
-    "id": "grid-jos",
-    "name": "Jos",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330/132 kV node on the Jos-Gombe corridor.",
-    "statesCrossed": ["Plateau"],
-    "voltageKv": 330,
-    "voltageLabel": "330/132 kV",
-    "role": "Regional hub",
-    "lon": 8.858,
-    "lat": 9.896
-  },
-  {
-    "id": "grid-gombe",
-    "name": "Gombe",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330/132 kV node serving the northeast, including Dadin Kowa.",
-    "statesCrossed": ["Gombe"],
-    "voltageKv": 330,
-    "voltageLabel": "330/132 kV",
-    "role": "Regional hub",
-    "lon": 11.17,
-    "lat": 10.289
-  },
-  {
-    "id": "grid-bauchi",
-    "name": "Bauchi",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Bauchi.",
-    "statesCrossed": ["Bauchi"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Regional node",
-    "lon": 9.845,
-    "lat": 10.315
-  },
-  {
-    "id": "grid-yola",
-    "name": "Yola",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Yola, head of the northeast feeder chain.",
-    "statesCrossed": ["Adamawa"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Regional hub",
-    "lon": 12.495,
-    "lat": 9.203
-  },
-  {
-    "id": "grid-song",
-    "name": "Song",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Song in Adamawa State.",
-    "statesCrossed": ["Adamawa"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Regional node",
-    "lon": 12.625,
-    "lat": 9.824
-  },
-  {
-    "id": "grid-little-gombi",
-    "name": "Little Gombi",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Little Gombi in Adamawa State.",
-    "statesCrossed": ["Adamawa"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Regional node",
-    "lon": 12.736,
-    "lat": 10.353
-  },
-  {
-    "id": "grid-mubi",
-    "name": "Mubi",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Mubi, near the Cameroon border.",
-    "statesCrossed": ["Adamawa"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Border node",
-    "lon": 13.264,
-    "lat": 10.268
-  },
-  {
-    "id": "grid-gulak",
-    "name": "Gulak",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Gulak in Adamawa State.",
-    "statesCrossed": ["Adamawa"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Regional node",
-    "lon": 13.456,
-    "lat": 10.726
-  },
-  {
-    "id": "grid-maiduguri",
-    "name": "Maiduguri",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Maiduguri, head of the Borno feeder.",
-    "statesCrossed": ["Borno"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Regional hub",
-    "lon": 13.152,
-    "lat": 11.834
-  },
-  {
-    "id": "grid-new-marte",
-    "name": "New Marte",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at New Marte in Borno State.",
-    "statesCrossed": ["Borno"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Regional node",
-    "lon": 13.409,
-    "lat": 12.367
-  },
-  {
-    "id": "grid-monguno",
-    "name": "Monguno",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Monguno in Borno State.",
-    "statesCrossed": ["Borno"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Regional node",
-    "lon": 13.614,
-    "lat": 12.672
-  },
-  {
-    "id": "grid-yenagoa",
-    "name": "Yenagoa",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Yenagoa, head of the Bayelsa feeder chain.",
-    "statesCrossed": ["Bayelsa"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional hub",
-    "lon": 6.265,
-    "lat": 4.917
-  },
-  {
-    "id": "grid-amassoma",
-    "name": "Amassoma",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Amassoma in Bayelsa State.",
-    "statesCrossed": ["Bayelsa"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 6.109,
-    "lat": 4.971
-  },
-  {
-    "id": "grid-oporoma",
-    "name": "Oporoma",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Oporoma in Bayelsa State.",
-    "statesCrossed": ["Bayelsa"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 6.08,
-    "lat": 4.801
-  },
-  {
-    "id": "grid-igbumatoru",
-    "name": "Igbumatoru",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Igbumatoro in Bayelsa State.",
-    "statesCrossed": ["Bayelsa"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Regional node",
-    "lon": 6.316,
-    "lat": 4.559
-  },
-  {
-    "id": "grid-port-harcourt",
-    "name": "Port Harcourt",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330 kV node at Port Harcourt, the eastern end of the Delta-Port Harcourt line.",
-    "statesCrossed": ["Rivers"],
-    "voltageKv": 330,
-    "voltageLabel": "330 kV",
-    "role": "Regional hub",
-    "lon": 7.049,
-    "lat": 4.815
-  },
-  {
-    "id": "grid-delta",
-    "name": "Delta (Asaba)",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330 kV node at Asaba, the western end of the Delta-Port Harcourt line.",
-    "statesCrossed": ["Delta"],
-    "voltageKv": 330,
-    "voltageLabel": "330 kV",
-    "role": "Regional hub",
-    "lon": 6.2023,
-    "lat": 6.7299
-  },
-  {
-    "id": "grid-onitsha",
-    "name": "Onitsha",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "330 kV node at Onitsha, reached from Alaoji.",
-    "statesCrossed": ["Anambra"],
-    "voltageKv": 330,
-    "voltageLabel": "330 kV",
-    "role": "Regional hub",
-    "lon": 6.15,
-    "lat": 6.15
-  },
-  {
-    "id": "grid-ugwuaji",
-    "name": "Ugwuaji",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Ugwuaji in Enugu State.",
-    "statesCrossed": ["Enugu"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 7.499,
-    "lat": 6.378
-  },
-  {
-    "id": "grid-nenwe",
-    "name": "Nenwe",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Nenwe in Enugu State.",
-    "statesCrossed": ["Enugu"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 7.529,
-    "lat": 6.133
-  },
-  {
-    "id": "grid-mpu",
-    "name": "Mpu",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Mpu in Enugu State.",
-    "statesCrossed": ["Enugu"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 7.74,
-    "lat": 6.049
-  },
-  {
-    "id": "grid-new-haven",
-    "name": "New Haven",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at New Haven, Enugu.",
-    "statesCrossed": ["Enugu"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 7.529,
-    "lat": 6.432
-  },
-  {
-    "id": "grid-abakaliki",
-    "name": "Abakaliki",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Abakaliki in Ebonyi State.",
-    "statesCrossed": ["Ebonyi"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 8.113,
-    "lat": 6.323
-  },
-  {
-    "id": "grid-amasiri",
-    "name": "Amasiri",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Amasiri in Ebonyi State.",
-    "statesCrossed": ["Ebonyi"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 7.833,
-    "lat": 5.883
-  },
-  {
-    "id": "grid-nkalagu",
-    "name": "Nkalagu",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Nkalagu in Ebonyi State.",
-    "statesCrossed": ["Ebonyi"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 7.77,
-    "lat": 6.519
-  },
-  {
-    "id": "grid-nnewi",
-    "name": "Nnewi",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Nnewi in Anambra State.",
-    "statesCrossed": ["Anambra"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Industrial bulk supply point",
-    "lon": 6.85,
-    "lat": 6.01
-  },
-  {
-    "id": "grid-ngodo",
-    "name": "Ngodo",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Ngodo in Abia State.",
-    "statesCrossed": ["Abia"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Regional node",
-    "lon": 7.329,
-    "lat": 5.598
-  },
-  {
-    "id": "grid-okigwe",
-    "name": "Okigwe",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132 kV node at Okigwe in Imo State.",
-    "statesCrossed": ["Imo"],
-    "voltageKv": 132,
-    "voltageLabel": "132 kV",
-    "role": "Regional node",
-    "lon": 7.341,
-    "lat": 5.829
-  },
-  {
-    "id": "grid-ibono",
-    "name": "Ibono",
-    "featureKind": "grid-substation",
-    "type": "Transmission substation",
-    "summary": "132/33 kV node at Ibono in Akwa Ibom State.",
-    "statesCrossed": ["Akwa Ibom"],
-    "voltageKv": 132,
-    "voltageLabel": "132/33 kV",
-    "role": "Regional node",
-    "lon": 7.863,
-    "lat": 5.192
-  },
-  {
-    "id": "line-kainji-kebbi",
-    "name": "Kainji - Birnin Kebbi 330 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "Northwest 330 kV line from Kainji to Birnin Kebbi.",
-    "fromNode": "plant-kainji",
-    "toNode": "grid-birnin-kebbi",
-    "voltageKv": 330,
-    "statesCrossed": ["Niger", "Kebbi"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-kebbi-sokoto",
-    "name": "Birnin Kebbi - Sokoto 330 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "Northwest 330 kV line from Birnin Kebbi to Sokoto.",
-    "fromNode": "grid-birnin-kebbi",
-    "toNode": "grid-sokoto",
-    "voltageKv": 330,
-    "statesCrossed": ["Kebbi", "Sokoto"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-kaduna-kano",
-    "name": "Kaduna - Kano 330 kV (second circuit)",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "330 kV DC circuit linking the Kaduna and Kano hubs.",
-    "fromNode": "grid-kaduna",
-    "toNode": "grid-kano",
-    "voltageKv": 330,
-    "statesCrossed": ["Kaduna", "Kano"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-katsina-daura",
-    "name": "Katsina - Daura 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "Northeast Katsina feeder, part of the Katsina-Daura-Gwiwo-Jogano-Kura route.",
-    "fromNode": "grid-katsina",
-    "toNode": "grid-daura",
-    "voltageKv": 132,
-    "statesCrossed": ["Katsina"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-keffi-kwoi",
-    "name": "Keffi - Kwoi 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "First segment of the Keffi-Kwoi-Kachia route.",
-    "fromNode": "grid-keffi",
-    "toNode": "grid-kwoi",
-    "voltageKv": 132,
-    "statesCrossed": ["Nassarawa", "Kaduna"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-kwoi-kachia",
-    "name": "Kwoi - Kachia 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "Second segment of the Keffi-Kwoi-Kachia route.",
-    "fromNode": "grid-kwoi",
-    "toNode": "grid-kachia",
-    "voltageKv": 132,
-    "statesCrossed": ["Kaduna"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-jos-gombe",
-    "name": "Jos - Gombe 330 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "330 kV line linking the Plateau and Gombe hubs.",
-    "fromNode": "grid-jos",
-    "toNode": "grid-gombe",
-    "voltageKv": 330,
-    "statesCrossed": ["Plateau", "Gombe"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-yola-song",
-    "name": "Yola - Song 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "First segment of the Yola-Song-Little Gombi-Mubi-Gulak route.",
-    "fromNode": "grid-yola",
-    "toNode": "grid-song",
-    "voltageKv": 132,
-    "statesCrossed": ["Adamawa"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-song-little-gombi",
-    "name": "Song - Little Gombi 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "Second segment of the Yola-Song-Little Gombi-Mubi-Gulak route.",
-    "fromNode": "grid-song",
-    "toNode": "grid-little-gombi",
-    "voltageKv": 132,
-    "statesCrossed": ["Adamawa"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-little-gombi-mubi",
-    "name": "Little Gombi - Mubi 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "Third segment of the Yola-Song-Little Gombi-Mubi-Gulak route.",
-    "fromNode": "grid-little-gombi",
-    "toNode": "grid-mubi",
-    "voltageKv": 132,
-    "statesCrossed": ["Adamawa"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-mubi-gulak",
-    "name": "Mubi - Gulak 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "Final segment of the Yola-Song-Little Gombi-Mubi-Gulak route.",
-    "fromNode": "grid-mubi",
-    "toNode": "grid-gulak",
-    "voltageKv": 132,
-    "statesCrossed": ["Adamawa"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-maiduguri-new-marte",
-    "name": "Maiduguri - New Marte 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "First segment of the Maiduguri-New Marte-Monguno route.",
-    "fromNode": "grid-maiduguri",
-    "toNode": "grid-new-marte",
-    "voltageKv": 132,
-    "statesCrossed": ["Borno"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-new-marte-monguno",
-    "name": "New Marte - Monguno 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "Second segment of the Maiduguri-New Marte-Monguno route.",
-    "fromNode": "grid-new-marte",
-    "toNode": "grid-monguno",
-    "voltageKv": 132,
-    "statesCrossed": ["Borno"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-yenagoa-amassoma",
-    "name": "Yenagoa - Amassoma 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "First segment of the Yenagoa-Amassoma-Oporoma-Igbumatoro route.",
-    "fromNode": "grid-yenagoa",
-    "toNode": "grid-amassoma",
-    "voltageKv": 132,
-    "statesCrossed": ["Bayelsa"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-amassoma-oporoma",
-    "name": "Amassoma - Oporoma 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "Second segment of the Yenagoa-Amassoma-Oporoma-Igbumatoro route.",
-    "fromNode": "grid-amassoma",
-    "toNode": "grid-oporoma",
-    "voltageKv": 132,
-    "statesCrossed": ["Bayelsa"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-oporoma-igbumatoru",
-    "name": "Oporoma - Igbumatoro 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "Final segment of the Yenagoa-Amassoma-Oporoma-Igbumatoro route.",
-    "fromNode": "grid-oporoma",
-    "toNode": "grid-igbumatoru",
-    "voltageKv": 132,
-    "statesCrossed": ["Bayelsa"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-delta-port-harcourt",
-    "name": "Delta - Port Harcourt 330 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "330 kV line across the Niger Delta from Asaba to Port Harcourt.",
-    "fromNode": "grid-delta",
-    "toNode": "grid-port-harcourt",
-    "voltageKv": 330,
-    "statesCrossed": ["Delta", "Rivers"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-alaoji-onitsha",
-    "name": "Alaoji - Onitsha 330 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "330 kV line carrying Imo and Abia generation east to the Onitsha node.",
-    "fromNode": "plant-alaoji",
-    "toNode": "grid-onitsha",
-    "voltageKv": 330,
-    "statesCrossed": ["Abia", "Anambra"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-benin-auchi",
-    "name": "Benin North - Auchi 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "132 kV line from Benin City to Auchi.",
-    "fromNode": "grid-benin-north",
-    "toNode": "grid-auchi",
-    "voltageKv": 132,
-    "statesCrossed": ["Edo"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-benin-akure",
-    "name": "Benin North - Akure 330 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "330 kV line energising the Akure 330/132/33 kV substation.",
-    "fromNode": "grid-benin-north",
-    "toNode": "grid-akure",
-    "voltageKv": 330,
-    "statesCrossed": ["Edo", "Ondo"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-benin-ajaokuta",
-    "name": "Benin - Ajaokuta 330 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "330 kV line from the Benin area to the Ajaokuta hub on the Niger.",
-    "fromNode": "grid-benin-north",
-    "toNode": "grid-ajaokuta",
-    "voltageKv": 330,
-    "statesCrossed": ["Edo", "Kogi"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-omotosho-epe",
-    "name": "Omotosho - Epe 330 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "135 km 330 kV line carrying Omotosho output to Epe.",
-    "fromNode": "plant-omotosho",
-    "toNode": "grid-epe",
-    "voltageKv": 330,
-    "statesCrossed": ["Ondo", "Lagos"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-epe-ajah",
-    "name": "Epe - Ajah 330 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "330 kV DC line linking Epe into the Lagos ring at Ajah.",
-    "fromNode": "grid-epe",
-    "toNode": "grid-ajah",
-    "voltageKv": 330,
-    "statesCrossed": ["Lagos"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-ajah-lekki",
-    "name": "Ajah - Lekki 330 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "330 kV line along the Lekki coastal corridor.",
-    "fromNode": "grid-ajah",
-    "toNode": "grid-lekki",
-    "voltageKv": 330,
-    "statesCrossed": ["Lagos"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-lekki-alagbon",
-    "name": "Lekki - Alagbon 330 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "330 kV line from Lekki to the Agbara node in Ogun State.",
-    "fromNode": "grid-lekki",
-    "toNode": "grid-alagbon",
-    "voltageKv": 330,
-    "statesCrossed": ["Lagos", "Ogun"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-egbin-oke-aro",
-    "name": "Egbin - Oke Aro 330 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "330 kV line from Egbin to the Oke Aro node.",
-    "fromNode": "plant-egbin",
-    "toNode": "grid-oke-aro",
-    "voltageKv": 330,
-    "statesCrossed": ["Lagos", "Ogun"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-oke-aro-ikeja-west",
-    "name": "Oke Aro - Ikeja West 330 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "330 kV line closing the Lagos ring at Ikeja West.",
-    "fromNode": "grid-oke-aro",
-    "toNode": "grid-ikeja-west",
-    "voltageKv": 330,
-    "statesCrossed": ["Ogun", "Lagos"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-shagamu-ayede",
-    "name": "Shagamu - Ayede 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "132 kV line from Shagamu in Ogun to Ayede in Oyo State.",
-    "fromNode": "grid-shagamu",
-    "toNode": "grid-ayede",
-    "voltageKv": 132,
-    "statesCrossed": ["Ogun", "Oyo"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-osogbo-ilesha",
-    "name": "New Osogbo - Ilesha 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "First segment of the New Osogbo-Ilesha-Ife-Ondo route.",
-    "fromNode": "grid-osogbo",
-    "toNode": "grid-ilesha",
-    "voltageKv": 132,
-    "statesCrossed": ["Osun"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-ilesha-ife",
-    "name": "Ilesha - Ife 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "Second segment of the New Osogbo-Ilesha-Ife-Ondo route.",
-    "fromNode": "grid-ilesha",
-    "toNode": "grid-ife",
-    "voltageKv": 132,
-    "statesCrossed": ["Osun"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-ife-ondo",
-    "name": "Ife - Ondo 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "Final segment of the New Osogbo-Ilesha-Ife-Ondo route.",
-    "fromNode": "grid-ife",
-    "toNode": "grid-ondo",
-    "voltageKv": 132,
-    "statesCrossed": ["Osun", "Ondo"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-omuaran-egbe",
-    "name": "Omuaran - Egbe 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "132 kV line across the Kwara-Kogi boundary.",
-    "fromNode": "grid-omuaran",
-    "toNode": "grid-egbe",
-    "voltageKv": 132,
-    "statesCrossed": ["Kwara", "Kogi"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-obajana-okeagbe",
-    "name": "Obajana - Okeagbe 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "132 kV line from the Obajana cement belt to Okeagbe.",
-    "fromNode": "grid-obajana",
-    "toNode": "grid-okeagbe",
-    "voltageKv": 132,
-    "statesCrossed": ["Kogi", "Ondo"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-ugwuaji-nenwe",
-    "name": "Ugwuaji - Nenwe 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "First segment of the Ugwuaji-Nenwe-Mpu route.",
-    "fromNode": "grid-ugwuaji",
-    "toNode": "grid-nenwe",
-    "voltageKv": 132,
-    "statesCrossed": ["Enugu"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-nenwe-mpu",
-    "name": "Nenwe - Mpu 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "Second segment of the Ugwuaji-Nenwe-Mpu route.",
-    "fromNode": "grid-nenwe",
-    "toNode": "grid-mpu",
-    "voltageKv": 132,
-    "statesCrossed": ["Enugu"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-new-haven-nkalagu",
-    "name": "New Haven - Nkalagu 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "132 kV line from Enugu into Ebonyi State.",
-    "fromNode": "grid-new-haven",
-    "toNode": "grid-nkalagu",
-    "voltageKv": 132,
-    "statesCrossed": ["Enugu", "Ebonyi"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
-  },
-  {
-    "id": "line-abakaliki-amasiri",
-    "name": "Abakaliki - Amasiri 132 kV",
-    "featureKind": "grid-corridor",
-    "type": "Transmission corridor",
-    "summary": "132 kV line across Ebonyi State.",
-    "fromNode": "grid-abakaliki",
-    "toNode": "grid-amasiri",
-    "voltageKv": 132,
-    "statesCrossed": ["Ebonyi"],
-    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2025/07/TCN-NISO-PIP-Order-2025.pdf"
   }
 ]
