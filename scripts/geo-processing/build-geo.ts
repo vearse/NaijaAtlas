@@ -411,6 +411,7 @@ export async function buildGeo() {
   const citiesCatalog = readCatalog<CatalogRow>("cities");
   const lakesCatalog = readCatalog<CatalogRow>("lakes");
   const powerCatalog = readCatalog<CatalogRow>("power");
+  const securityCatalog = readCatalog<CatalogRow>("security");
   const coastCatalog = readCatalog<CatalogRow>("coast");
 
   const landformTypeLabels: Record<string, string> = {
@@ -484,6 +485,14 @@ export async function buildGeo() {
     "power-plant": "Power station",
     "power-distributor": "Distribution company (DisCo)",
     "grid-substation": "Transmission substation",
+  };
+
+  const securityFormationLabels: Record<string, string> = {
+    "army-division": "Army formation",
+    "proposed-army-division": "Proposed Army division",
+    "navy-base": "Naval command",
+    "airforce-hq": "Air Force HQ",
+    "airforce-base": "Air Force base",
   };
 
   const powerPlantCategoryLabels: Record<string, string> = {
@@ -640,6 +649,19 @@ export async function buildGeo() {
           summary: row.summary,
         };
       }),
+    ...securityCatalog.map((row) => ({
+      id: row.id,
+      name: row.name,
+      level: "security" as const,
+      parentId: null,
+      layerId: "security" as const,
+      typeLabel:
+        securityFormationLabels[String(row.militaryCategory ?? "")] ??
+        "Security formation",
+      stateName: row.stateName ?? row.statesCrossed?.[0],
+      centroid: centroidOf(row),
+      summary: row.summary,
+    })),
     ...coastCatalog.map((row) => ({
       id: row.id,
       name: row.name,

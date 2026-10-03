@@ -101,7 +101,7 @@ export default function EconomyHubClient(
           eyebrow="Sub-national signal"
           title="States to watch"
         >
-          <StatesToWatch watch={data.watch} sampleSize={4} />
+          <StatesToWatch watch={data.watch} sampleSize={6} />
         </HubSection>
 
 

@@ -6,6 +6,7 @@ export type OverlayLevel =
   | "city"
   | "lake"
   | "power"
+  | "security"
   | "waterway"
   | "coast";
 
@@ -69,6 +70,7 @@ export interface SearchEntry {
     | "cities"
     | "lakes"
     | "power"
+    | "security"
     | "waterways";
   typeLabel?: string;
   centroid?: [number, number];

@@ -180,10 +180,7 @@ export function loadLandHubData(): LandHubData {
     };
   });
 
-  // Military formations share the waterways catalogue but belong to Civic.
-  const waterways: HubWaterway[] = readCatalog("waterways")
-    .filter((r) => str(r.waterwayClass) !== "military")
-    .map((r) => {
+  const waterways: HubWaterway[] = readCatalog("waterways").map((r) => {
     const st = strList(r.statesCrossed);
     return {
       ...prose(r),

@@ -52,6 +52,34 @@ export function waterwaysPointFilter(
   ] as FilterSpecification;
 }
 
+/**
+ * Filter for the security formation layers, honouring the revealed opt-in
+ * groups. The four new Army divisions are approved but still forming, so they
+ * ship hidden until the reader reveals them from the guide.
+ */
+export function securityPointFilter(
+  revealedGroups?: ReadonlySet<string>
+): FilterSpecification {
+  const formation: FilterSpecification = [
+    "==",
+    ["get", "featureKind"],
+    "security-formation",
+  ];
+  if (!revealedGroups || revealedGroups.size === 0) {
+    return ["all", formation, HIDE_OPT_IN_FILTER] as FilterSpecification;
+  }
+  if ([...OPT_IN_GROUPS].every((g) => revealedGroups.has(g))) return formation;
+  return [
+    "all",
+    formation,
+    [
+      "any",
+      ["!", ["has", "optInGroup"]],
+      ["in", ["get", "optInGroup"], ["literal", [...revealedGroups]]],
+    ],
+  ] as FilterSpecification;
+}
+
 export interface OverlayLayerDef {
   id: string;
   source: string;
@@ -160,19 +188,32 @@ const WATERWAY_LINE_PAINT: LineLayerSpecification["paint"] = {
   "line-opacity": 0.92,
 };
 
-/** Military formations and coast points share one label colour lookup. */
-const WATERWAY_POINT_LABEL_PAINT: SymbolLayerSpecification["paint"] = {
+/** Formation labels are coloured by military category, matching the icons. */
+const SECURITY_LABEL_PAINT: SymbolLayerSpecification["paint"] = {
   "text-color": [
     "match",
-    ["coalesce", ["get", "militaryCategory"], ["get", "waterwayClass"]],
+    ["get", "militaryCategory"],
     "army-division",
     "#365314",
+    "proposed-army-division",
+    "#6d28d9",
     "navy-base",
     "#0f172a",
     "airforce-hq",
     "#075985",
     "airforce-base",
     "#1e3a8a",
+    "#334155",
+  ],
+  "text-halo-color": "#ffffff",
+  "text-halo-width": 2,
+};
+
+/** Coast points share one label colour lookup. */
+const WATERWAY_POINT_LABEL_PAINT: SymbolLayerSpecification["paint"] = {
+  "text-color": [
+    "match",
+    ["get", "waterwayClass"],
     "seaport",
     "#1e3a8a",
     "oil-terminal",
@@ -429,7 +470,7 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
         minzoom: 4,
         layout: {
           visibility: "none",
-          // `iconId` is stamped by the overlay build (waterway-icon-* / coast-icon-*).
+          // `iconId` is stamped by the overlay build (coast-icon-*).
           "icon-image": ["get", "iconId"],
           "icon-size": ["interpolate", ["linear"], ["zoom"], 4, 0.9, 8, 1.1, 11, 1.4],
           "icon-allow-overlap": true,
@@ -719,6 +760,61 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
       },
     ],
   },
+  security: {
+    id: "security",
+    sourceId: "overlays-security",
+    geoPath: "/geo/overlays/security.geojson",
+    slot: "aboveLgas",
+    interactiveLayerIds: [
+      "overlay-security-icons",
+      "overlay-security-labels",
+    ],
+    layers: [
+      {
+        id: "overlay-security-icons",
+        type: "symbol",
+        filter: securityPointFilter(),
+        minzoom: 4,
+        layout: {
+          visibility: "none",
+          // `iconId` is stamped by the overlay build (security-icon-*).
+          "icon-image": ["get", "iconId"],
+          "icon-size": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            4,
+            0.85,
+            8,
+            1.05,
+            11,
+            1.3,
+          ],
+          "icon-allow-overlap": true,
+          "icon-ignore-placement": true,
+          "icon-padding": 8,
+          "icon-anchor": "center",
+        },
+      },
+      {
+        id: "overlay-security-labels",
+        type: "symbol",
+        filter: securityPointFilter(),
+        minzoom: 6,
+        layout: {
+          visibility: "none",
+          "text-field": ["get", "name"],
+          "text-size": 10,
+          "text-offset": [0, 1.4],
+          "text-font": ["Open Sans Semibold"],
+          "text-anchor": "top",
+          "text-optional": true,
+          "text-max-width": 12,
+        },
+        paint: SECURITY_LABEL_PAINT,
+      },
+    ],
+  },
   landforms: createReliefOverlayEntry(
     "landforms",
     "overlays-landforms",
@@ -961,18 +1057,18 @@ export function allOverlayLayerIds(): string[] {
   );
 }
 
+/**
+ * Pointer-event layers for every active overlay.
+ *
+ * Derived from `OVERLAY_LAYER_IDS` rather than a hand-maintained list: this list
+ * is what makes a layer clickable, and a hardcoded copy silently dropped new
+ * layers from the hit test (power rendered but could not be clicked).
+ */
 export function interactiveLayersForActive(
   active: Set<OverlayLayerId>
 ): string[] {
   const ids: string[] = [];
-  for (const layerId of [
-    "cities",
-    "waterways",
-    "lakes",
-    "landforms",
-    "ecology",
-    "resources",
-  ] as OverlayLayerId[]) {
+  for (const layerId of OVERLAY_LAYER_IDS) {
     if (!active.has(layerId)) continue;
     ids.push(...OVERLAY_REGISTRY[layerId].interactiveLayerIds);
   }

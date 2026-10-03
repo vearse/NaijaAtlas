@@ -635,37 +635,56 @@ function buildWaterways(catalog: CatalogRow[]): Feature[] {
     .map((row) => byCatalogId.get(row.id))
     .filter((f): f is Feature => f != null);
 
-  const missingLineRows = catalog.filter(
-    (row) => row.waterwayClass !== "military" && !byCatalogId.has(row.id)
-  );
+  const missingLineRows = catalog.filter((row) => !byCatalogId.has(row.id));
   if (missingLineRows.length > 0) {
     console.warn(
       `⚠ Waterways missing line geometry: ${missingLineRows.map((r) => r.id).join(", ")}`
     );
   }
 
-  const pointFeatures: Feature[] = [];
-  for (const row of catalog) {
-    if (row.waterwayClass !== "military") continue;
-    const lon = Number(row.lon);
-    const lat = Number(row.lat);
-    if (!Number.isFinite(lon) || !Number.isFinite(lat)) continue;
-    pointFeatures.push({
-      type: "Feature",
-      properties: {
-        id: row.id,
-        name: row.name,
-        featureKind: "point",
-        waterwayClass: "military",
-        militaryBranch: row.militaryBranch,
-        militaryCategory: row.militaryCategory,
-        iconId: `waterway-icon-${String(row.militaryCategory ?? "army-division")}`,
-      },
-      geometry: { type: "Point", coordinates: [lon, lat] },
-    });
-  }
+  return lineFeatures;
+}
 
-  return [...lineFeatures, ...pointFeatures];
+/**
+ * Security formations are their own overlay. They used to ride along in the
+ * Waterways source, which made the Civic security map have to switch on rivers
+ * just to show the Army, Navy and Air Force.
+ */
+function securityFormationFeature(row: CatalogRow): Feature | null {
+  const lon = Number(row.lon);
+  const lat = Number(row.lat);
+  if (!Number.isFinite(lon) || !Number.isFinite(lat)) return null;
+  const category = String(row.militaryCategory ?? "army-division");
+  const optInGroup = optInGroupFor(category);
+  return {
+    type: "Feature",
+    properties: {
+      ...flattenCatalogRow(row),
+      id: row.id,
+      name: row.name,
+      featureKind: "security-formation",
+      militaryBranch: row.militaryBranch,
+      militaryCategory: category,
+      iconId: `security-icon-${category}`,
+      optIn: optInGroup != null,
+      ...(optInGroup ? { [OPT_IN_GROUP_FIELD]: optInGroup } : {}),
+    },
+    geometry: { type: "Point", coordinates: [lon, lat] },
+  };
+}
+
+function buildSecurity(catalog: CatalogRow[]): Feature[] {
+  const features: Feature[] = [];
+  const missing: string[] = [];
+  for (const row of catalog) {
+    const feature = securityFormationFeature(row);
+    if (feature) features.push(feature);
+    else missing.push(row.id);
+  }
+  if (missing.length > 0) {
+    console.warn(`⚠ Security layer missing geometry: ${missing.join(", ")}`);
+  }
+  return features;
 }
 
 const LAKE_POLYGONS: Record<string, [number, number][]> = {
@@ -945,45 +964,6 @@ function coastPointFeature(
   };
 }
 
-/**
- * Opt-in military formations (e.g. the new Army divisional headquarters).
- * Coordinates come from the catalog row so the vetted city centroids stay the
- * single source of truth.
- */
-function proposedMilitaryPointFeature(row: CatalogRow): Feature | null {
-  const lon = Number(row.lon);
-  const lat = Number(row.lat);
-  if (!Number.isFinite(lon) || !Number.isFinite(lat)) return null;
-  const category = String(row.militaryCategory ?? "army-division");
-  const optInGroup = optInGroupFor(category);
-  const isOptIn = optInGroup != null;
-  return {
-    type: "Feature",
-    properties: {
-      ...flattenCatalogRow(row),
-      id: row.id,
-      name: row.name,
-      featureKind: "point",
-      waterwayClass: "military",
-      militaryBranch: row.militaryBranch,
-      militaryCategory: category,
-      iconId: `waterway-icon-${category}`,
-      optIn: isOptIn,
-      ...(optInGroup ? { [OPT_IN_GROUP_FIELD]: optInGroup } : {}),
-    },
-    geometry: { type: "Point", coordinates: [lon, lat] },
-  };
-}
-
-function buildProposedMilitary(catalog: CatalogRow[]): Feature[] {
-  const features: Feature[] = [];
-  for (const row of catalog) {
-    const feature = proposedMilitaryPointFeature(row);
-    if (feature) features.push(feature);
-  }
-  return features;
-}
-
 /** Ocean, national coastline, coast zones, ports and coastal features. */
 function buildCoast(
   coastCatalog: CatalogRow[],
@@ -1094,7 +1074,7 @@ export async function buildOverlays(): Promise<void> {
   const portsCatalog = readCatalog("ports");
   const coastFeaturesCatalog = readCatalog("coast-features");
   const proposedPortsCatalog = readCatalog("ports-proposed");
-  const proposedArmyDivisionsCatalog = readCatalog("army-divisions-proposed");
+  const securityCatalog = readCatalog("security");
   const resourcesCatalog = readCatalog("resources");
 
   const adm0 = readGeoJson("public/geo/nigeria-adm0.geojson");
@@ -1102,7 +1082,8 @@ export async function buildOverlays(): Promise<void> {
   ensureDir(projectRoot("public/geo/overlays"));
 
   // Waterways and coast ship as one layer: rivers, coastline, ports, coastal
-  // features, ocean fill and military formations all live in a single source.
+  // features and ocean fill all live in a single source. Security formations
+  // build separately.
   const waterFeatures = fc(buildWaterways(waterwaysCatalog), waterwaysCatalog, "waterways");
   const coastFeatures = buildCoast(
     coastCatalog,
@@ -1129,15 +1110,7 @@ export async function buildOverlays(): Promise<void> {
     if (coastRow) return mergeCatalog(f, coastCatalog, "waterways");
     return { ...f, properties: { ...f.properties, layerId: "waterways" } };
   });
-  const proposedMilitary = buildProposedMilitary(proposedArmyDivisionsCatalog);
-  const proposedMilitaryMerged = proposedMilitary.map((f) =>
-    mergeCatalog(f, proposedArmyDivisionsCatalog, "waterways")
-  );
-  waterFeatures.features = [
-    ...waterFeatures.features,
-    ...coastMerged,
-    ...proposedMilitaryMerged,
-  ];
+  waterFeatures.features = [...waterFeatures.features, ...coastMerged];
 
   writeGeoJson(
     projectRoot("public/geo/overlays/waterways.geojson"),
@@ -1150,6 +1123,10 @@ export async function buildOverlays(): Promise<void> {
   writeGeoJson(
     projectRoot("public/geo/overlays/power.geojson"),
     fc(buildPower(powerCatalog), powerCatalog, "power")
+  );
+  writeGeoJson(
+    projectRoot("public/geo/overlays/security.geojson"),
+    fc(buildSecurity(securityCatalog), securityCatalog, "security")
   );
   writeGeoJson(
     projectRoot("public/geo/overlays/landforms.geojson"),
@@ -1170,7 +1147,7 @@ export async function buildOverlays(): Promise<void> {
   });
 
   console.log(
-    `✓ Overlays: waterways(${waterFeatures.features.length}) lakes(${buildLakes(lakesCatalog).length}) power(${powerCatalog.length}) landforms(${landformsCatalog.length}) ecology(${ecologyCatalog.length}) cities(${citiesCatalog.length}) resources(${resourceFeatures.length})`
+    `✓ Overlays: waterways(${waterFeatures.features.length}) lakes(${buildLakes(lakesCatalog).length}) power(${powerCatalog.length}) landforms(${landformsCatalog.length}) ecology(${ecologyCatalog.length}) cities(${citiesCatalog.length}) resources(${resourceFeatures.length}) security(${securityCatalog.length})`
   );
 }
 

@@ -22,7 +22,7 @@ import {
   COAST_ZONE_LABELS,
   RESOURCE_TYPE_LABELS,
   TOUR_CATEGORY_LABELS,
-  WATERWAY_MILITARY_CATEGORY_LABELS,
+  SECURITY_FORMATION_CATEGORY_LABELS,
   type CityCategory,
   type CoastCategory,
   type LakeCategory,
@@ -32,7 +32,7 @@ import {
   type PowerPlantCategory,
   type ResourceType,
   type SelectedOverlayFeature,
-  type WaterwayMilitaryCategory,
+  type SecurityFormationCategory,
 } from "@/types/overlay";
 import type { StateLocation } from "@/types/location";
 
@@ -263,7 +263,7 @@ function resourceTypeMeta(value: unknown) {
 
 function militaryCategoryMeta(value: unknown) {
   if (typeof value !== "string") return null;
-  return WATERWAY_MILITARY_CATEGORY_LABELS[value as WaterwayMilitaryCategory] ?? null;
+  return SECURITY_FORMATION_CATEGORY_LABELS[value as SecurityFormationCategory] ?? null;
 }
 
 function capacityLabel(value: unknown): string | null {
@@ -401,6 +401,7 @@ export default function OverlayFeaturePanel({
       layerId === "resources" ||
       layerId === "lakes" ||
       layerId === "power" ||
+      layerId === "security" ||
       layerId === "waterways") &&
     shouldOfferViewOnMap(props as Record<string, unknown>, coverageStateIds);
 
@@ -418,6 +419,7 @@ export default function OverlayFeaturePanel({
   const isProposedPort = text(props.coastCategory) === "proposed-port";
   const isProposedDivision =
     text(props.militaryCategory) === "proposed-army-division";
+  const isSecurityFormation = featureKind === "security-formation";
 
   let toLonLat: [number, number] | null = null;
   {
@@ -758,6 +760,21 @@ export default function OverlayFeaturePanel({
               label="Basis of creation"
               value={text(props.mouSignificance)}
             />
+            <MilestoneList value={props.milestones} />
+          </>
+        )}
+        {isSecurityFormation && !isProposedDivision && (
+          <>
+            <DetailRow label="Service" value={militaryCat?.branch} />
+            <DetailRow
+              label="Area of responsibility"
+              value={text(props.aorNote)}
+            />
+            <DetailRow
+              label="States covered"
+              value={textArrayList(props.statesCrossed)}
+            />
+            <DetailRow label="Nickname" value={text(props.nickname)} />
             <MilestoneList value={props.milestones} />
           </>
         )}

@@ -3,6 +3,7 @@ export type OverlayLayerId =
   | "waterways"
   | "lakes"
   | "power"
+  | "security"
   | "landforms"
   | "ecology"
   | "cities"
@@ -12,6 +13,7 @@ export const OVERLAY_LAYER_IDS: OverlayLayerId[] = [
   "waterways",
   "lakes",
   "power",
+  "security",
   "landforms",
   "ecology",
   "cities",
@@ -32,6 +34,11 @@ export const OVERLAY_LAYER_LABELS: Record<
     label: "Power grid",
     short: "Power",
     category: "Power station",
+  },
+  security: {
+    label: "Security formations",
+    short: "Security",
+    category: "Military formation",
   },
   landforms: {
     label: "Relief",
@@ -105,17 +112,18 @@ export const TOUR_CATEGORY_LABELS: Record<
   tour: { label: "Tourist site", color: "#92400e" },
 };
 
-export const WATERWAY_MILITARY_CATEGORIES = [
+export const SECURITY_FORMATION_CATEGORIES = [
   "army-division",
   "proposed-army-division",
   "navy-base",
   "airforce-hq",
   "airforce-base",
 ] as const;
-export type WaterwayMilitaryCategory = (typeof WATERWAY_MILITARY_CATEGORIES)[number];
+export type SecurityFormationCategory =
+  (typeof SECURITY_FORMATION_CATEGORIES)[number];
 
-export const WATERWAY_MILITARY_CATEGORY_LABELS: Record<
-  WaterwayMilitaryCategory,
+export const SECURITY_FORMATION_CATEGORY_LABELS: Record<
+  SecurityFormationCategory,
   { label: string; color: string; branch: string }
 > = {
   "army-division": { label: "Army division", color: "#3f6212", branch: "Nigerian Army" },
@@ -124,6 +132,21 @@ export const WATERWAY_MILITARY_CATEGORY_LABELS: Record<
   "airforce-hq": { label: "Air Force HQ", color: "#0369a1", branch: "Nigerian Air Force" },
   "airforce-base": { label: "Air Force base", color: "#1e40af", branch: "Nigerian Air Force" },
 };
+
+export const SECURITY_BRANCHES = ["army", "navy", "airforce"] as const;
+export type SecurityBranch = (typeof SECURITY_BRANCHES)[number];
+
+export const SECURITY_BRANCH_LABELS: Record<
+  SecurityBranch,
+  { label: string; short: string; color: string }
+> = {
+  army: { label: "Nigerian Army", short: "Army", color: "#3f6212" },
+  navy: { label: "Nigerian Navy", short: "Navy", color: "#0f172a" },
+  airforce: { label: "Nigerian Air Force", short: "Air Force", color: "#0369a1" },
+};
+
+export const SECURITY_FEATURE_KINDS = ["security-formation"] as const;
+export type SecurityFeatureKind = (typeof SECURITY_FEATURE_KINDS)[number];
 
 export const LAKE_CATEGORIES = ["natural", "reservoir", "lagoon"] as const;
 export type LakeCategory = (typeof LAKE_CATEGORIES)[number];
@@ -455,6 +478,26 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
       "— line = 330 kV (dark) or 132 kV (light)",
     ],
     tip: "Generation, distribution and transmission are separate layers of detail — tap a marker to open its panel, or use focus to isolate one kind at a time.",
+  },
+  security: {
+    title: "Security formations",
+    summary:
+      "Nigerian Army divisional headquarters, Navy commands, and Air Force bases and commands.",
+    description:
+      "Olive markers are Army formations — divisional headquarters, the Guards Brigade, and the four new divisions approved in July 2026, which ship hidden until you reveal them. Dark navy markers are the three Naval Commands. Blue markers are the Air Force HQ and its commands and bases. Each formation carries the states in its area of responsibility, so a divisional HQ highlights the states it covers.",
+    includes: [
+      "Army GHQ and 9 established divisions",
+      "4 new divisions approved July 2026 (hidden by default)",
+      "3 Naval Commands",
+      "Air Force HQ and 4 commands / bases",
+    ],
+    legend: [
+      "🛡 olive = Army formation",
+      "🛡 olive outline = proposed Army division (reveal to show)",
+      "⚓ dark = Naval Command",
+      "✈ blue = Air Force HQ or base",
+    ],
+    tip: "The four new Army divisions are approved but still forming toward Initial Operational Capability, so they are hidden by default — use Reveal to show them.",
   },
   landforms: {
     title: "Highlands & landmarks",

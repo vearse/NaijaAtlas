@@ -1,13 +1,8 @@
 import type { Map } from "maplibre-gl";
-
-export const WATERWAY_MILITARY_CATEGORIES = [
-  "army-division",
-  "proposed-army-division",
-  "navy-base",
-  "airforce-hq",
-  "airforce-base",
-] as const;
-export type WaterwayMilitaryCategory = (typeof WATERWAY_MILITARY_CATEGORIES)[number];
+import {
+  SECURITY_FORMATION_CATEGORIES,
+  type SecurityFormationCategory,
+} from "@/types/overlay";
 
 const SIZE = 48;
 type DrawFn = (ctx: CanvasRenderingContext2D, cx: number, cy: number, r: number) => void;
@@ -68,7 +63,7 @@ function drawArmyProposed(
   drawArmy(ctx, cx, cy, r);
 }
 
-const DRAW: Record<WaterwayMilitaryCategory, DrawFn> = {
+const DRAW: Record<SecurityFormationCategory, DrawFn> = {
   "army-division": drawArmy,
   "proposed-army-division": drawArmyProposed,
   "navy-base": drawShip,
@@ -76,7 +71,7 @@ const DRAW: Record<WaterwayMilitaryCategory, DrawFn> = {
   "airforce-base": drawDelta,
 };
 
-const FILL: Record<WaterwayMilitaryCategory, string> = {
+const FILL: Record<SecurityFormationCategory, string> = {
   "army-division": "#3f6212",
   "proposed-army-division": "#7c3aed",
   "navy-base": "#0f172a",
@@ -84,7 +79,7 @@ const FILL: Record<WaterwayMilitaryCategory, string> = {
   "airforce-base": "#1e40af",
 };
 
-function iconImage(category: WaterwayMilitaryCategory): ImageData {
+function iconImage(category: SecurityFormationCategory): ImageData {
   const canvas = document.createElement("canvas");
   canvas.width = SIZE;
   canvas.height = SIZE;
@@ -151,13 +146,13 @@ function iconImage(category: WaterwayMilitaryCategory): ImageData {
   return ctx.getImageData(0, 0, SIZE, SIZE);
 }
 
-export function waterwayIconId(category: string): string {
-  return `waterway-icon-${category}`;
+export function securityIconId(category: string): string {
+  return `security-icon-${category}`;
 }
 
-export function registerWaterwayIcons(map: Map): void {
-  for (const category of WATERWAY_MILITARY_CATEGORIES) {
-    const id = waterwayIconId(category);
+export function registerSecurityIcons(map: Map): void {
+  for (const category of SECURITY_FORMATION_CATEGORIES) {
+    const id = securityIconId(category);
     if (map.hasImage(id)) continue;
     const image = iconImage(category);
     map.addImage(

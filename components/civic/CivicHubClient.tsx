@@ -30,7 +30,7 @@ function pickDefaultStateId(states: CivicHubData["states"]): string {
 }
 
 export default function CivicHubClient(data: CivicHubData) {
-  const { totals, election, states, lgas } = data;
+  const { totals, election, states, lgas, security } = data;
 
   const [finderResult, setFinderResult] = useState<FindPollingUnitResult | null>(
     null
@@ -253,12 +253,61 @@ export default function CivicHubClient(data: CivicHubData) {
             />
             <MapWorkspaceCard
               map="civic/security"
-              kicker="Divisions &amp; commands"
+              kicker={`${security.formations.length} formations · ${security.byBranch.length} services`}
             />
           </div>
           <p className="mt-4 text-body-sm text-slate-400">
             Basemap: Minimal or Street only on map pages.
           </p>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {security.byBranch.map((group) => (
+              <div
+                key={group.branch}
+                className="rounded-2xl border border-border-subtle bg-surface-card p-5 shadow-sm"
+                style={{ borderLeft: `4px solid ${group.color}` }}
+              >
+                <p className="text-label-caps text-text-muted">
+                  {group.label}
+                </p>
+                <p className="mt-2 font-landing-display text-headline-lg font-bold tabular-nums tracking-tight text-text-primary">
+                  {group.formations.length}
+                </p>
+                <p className="mt-1 text-body-sm text-text-secondary">
+                  {group.branch === "army"
+                    ? "Divisional HQs, Army HQ and the Guards Brigade"
+                    : group.branch === "navy"
+                      ? "Naval Commands covering the coastline"
+                      : "Air Force HQ, commands and bases"}
+                </p>
+                <ul className="mt-3 space-y-1">
+                  {group.formations.map((f) => (
+                    <li
+                      key={f.id}
+                      className="flex items-baseline justify-between gap-2 text-[13px] text-text-secondary"
+                    >
+                      <span className="truncate">{f.name}</span>
+                      <span className="shrink-0 font-mono text-[11px] text-text-muted">
+                        {f.states.length === 37
+                          ? "national"
+                          : `${f.states.length} state${f.states.length === 1 ? "" : "s"}`}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          {security.proposedCount > 0 && (
+            <p className="mt-4 text-body-sm text-text-secondary">
+              <span className="font-semibold text-text-primary">
+                {security.proposedCount} new Army divisions
+              </span>{" "}
+              were approved in July 2026 and are forming toward Initial
+              Operational Capability. They are hidden on the map until you
+              reveal them.
+            </p>
+          )}
         </HubSection>
 
         <HubSection

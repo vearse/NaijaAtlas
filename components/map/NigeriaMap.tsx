@@ -1647,7 +1647,7 @@ export default function NigeriaMap({
     if (!mapReady) return;
     const map = useMapStore.getState().mapInstance;
     if (!map) return;
-    syncOptInGroupVisibility(map, activeOverlays.has("waterways"));
+    syncOptInGroupVisibility(map, activeOverlays);
   }, [mapReady, revealedOptInGroups, activeOverlays]);
 
   useEffect(() => {

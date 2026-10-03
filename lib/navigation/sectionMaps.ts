@@ -207,9 +207,9 @@ export function sectionMapHref(
       params.set(
         "focus",
         encodeFocusParam({
-          layerId: "waterways",
-          matchKey: "waterwayClass",
-          matchValue: "military",
+          layerId: "security",
+          matchKey: "featureKind",
+          matchValue: "security-formation",
           label: "Military formations",
         })
       );

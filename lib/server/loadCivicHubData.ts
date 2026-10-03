@@ -4,6 +4,7 @@ import { getCategoryData } from "@/lib/compare/compareUtils";
 import type { CompareDataBundle } from "@/types/compare";
 import type { ComparePerson } from "@/types/compare";
 import type { StateLocation } from "@/types/location";
+import { loadSecurityData, type SecurityData } from "@/lib/server/loadSecurityData";
 
 /**
  * Candidate rows trimmed for the roster UI. The raw `reps.json` is 1.1 MB and
@@ -65,6 +66,7 @@ export type CivicSenatorialLookups = {
 };
 
 export type CivicHubData = {
+  security: SecurityData;
   election: {
     year: number;
     date: string | null;
@@ -243,6 +245,7 @@ export function loadCivicHubData(root = process.cwd()): CivicHubData {
   };
 
   return {
+    security: loadSecurityData(),
     countryOffice,
     election: {
       year: presidential.election.year,

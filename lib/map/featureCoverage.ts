@@ -88,9 +88,11 @@ export function shouldOfferViewOnMap(
   ) {
     return true;
   }
+  // Security formations are headquarters, not places: worth viewing whenever
+  // they cover more than one state.
   if (
-    props.waterwayClass === "military" &&
-    parseStringArray(props.coversStates).length >= 2 &&
+    props.featureKind === "security-formation" &&
+    parseStringArray(props.statesCrossed).length >= 2 &&
     stateIds.length >= 1
   ) {
     return true;

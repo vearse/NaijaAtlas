@@ -19,6 +19,7 @@ const OVERLAY_LEVELS = new Set<OverlayLevel>([
   "city",
   "lake",
   "power",
+  "security",
   "waterway",
   "coast",
 ]);
@@ -39,6 +40,7 @@ const LEVEL_EMOJI: Record<string, string> = {
   city: "🏙️",
   lake: "💧",
   power: "⚡",
+  security: "🛡️",
   waterway: "🌊",
   coast: "🌊",
 };

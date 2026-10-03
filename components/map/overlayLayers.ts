@@ -3,6 +3,7 @@ import { geoSourceUrl } from "./mapLayers";
 import {
   OVERLAY_REGISTRY,
   overlayLayerIdsForToggle,
+  securityPointFilter,
   waterwaysPointFilter,
   type OverlayRegistryEntry,
 } from "@/lib/map/overlayRegistry";
@@ -18,7 +19,7 @@ import {
   registerLandformIcon,
   registerLandformIcons,
 } from "./landformIcons";
-import { registerWaterwayIcons } from "./waterwayIcons";
+import { registerSecurityIcons } from "./securityIcons";
 import { registerResourceIcons } from "./resourceIcons";
 import {
   EMPTY_GEOJSON,
@@ -80,7 +81,6 @@ const OCEAN_FILL_LAYER_ID = "overlay-ocean-fill";
 
 /** Register the icon sets the Waterways & Coast point layer draws from. */
 function registerWaterwayLayerIcons(map: Map): void {
-  registerWaterwayIcons(map);
   registerCoastIcons(map);
 }
 
@@ -138,6 +138,7 @@ export function addOverlayLayers(map: Map): void {
   registerCityIcons(map);
   registerTourIcon(map);
   registerPowerIcons(map);
+  registerSecurityIcons(map);
   registerLandformIcons(map);
   registerWaterwayLayerIcons(map);
   registerResourceIcons(map);
@@ -157,6 +158,7 @@ export function setOverlayVisibility(
     registerTourIcon(map);
   }
   if (layerId === "power") registerPowerIcons(map);
+  if (layerId === "security") registerSecurityIcons(map);
   if (layerId === "waterways") registerWaterwayLayerIcons(map);
   if (layerId === "resources") registerResourceIcons(map);
   if (layerId === "landforms" || layerId === "ecology") {
@@ -193,6 +195,7 @@ export function prepareOverlayAssets(
     registerTourIcon(map);
   }
   if (active.has("power")) registerPowerIcons(map);
+  if (active.has("security")) registerSecurityIcons(map);
   if (active.has("waterways")) registerWaterwayLayerIcons(map);
   if (active.has("resources")) registerResourceIcons(map);
   if (active.has("landforms") || active.has("ecology")) {
@@ -209,31 +212,42 @@ export function syncAllOverlayVisibility(
     setOverlayVisibility(map, layerId, active.has(layerId));
   }
   finalizeOverlayStack(map);
-  syncOptInGroupVisibility(map, active.has("waterways"));
+  syncOptInGroupVisibility(map, active);
 }
 
-/** Waterways point layers that opt-in features are filtered out of. */
+/** Layers that opt-in features (proposed ports, new Army divisions) are hidden from. */
 const OPT_IN_FILTERED_LAYERS = [
   "overlay-waterways-point-icons",
   "overlay-waterways-point-labels",
+  "overlay-security-icons",
+  "overlay-security-labels",
 ];
 
 /**
- * Apply the opt-in reveal state to the Waterways point layers.
+ * Apply the opt-in reveal state to the Waterways and Security point layers.
  *
  * `setOverlayVisibility` re-mounts nothing once the layers exist, so the
  * registry's default (hide opt-in) filter persists until it is replaced here.
  */
 export function syncOptInGroupVisibility(
   map: Map,
-  layerVisible: boolean
+  active: Set<OverlayLayerId>
 ): void {
-  if (!layerVisible) return;
   const revealed = useMapStore.getState().revealedOptInGroups;
   for (const lid of OPT_IN_FILTERED_LAYERS) {
     if (!map.getLayer(lid)) continue;
+    if (lid.startsWith("overlay-waterways") && !active.has("waterways")) {
+      continue;
+    }
+    if (lid.startsWith("overlay-security") && !active.has("security")) {
+      continue;
+    }
+    // Each overlay keys its opt-in filter on its own `featureKind`.
+    const filter = lid.startsWith("overlay-security")
+      ? securityPointFilter(revealed)
+      : waterwaysPointFilter(revealed);
     try {
-      map.setFilter(lid, waterwaysPointFilter(revealed));
+      map.setFilter(lid, filter);
     } catch (error) {
       console.error(`Failed to set opt-in filter on ${lid}`, error);
     }
@@ -275,8 +289,13 @@ export function restackOverlayLayers(map: Map): void {
 }
 
 /**
- * Symbol overlays above admin boundaries. Order (bottom → top): lakes → landforms
- * → waterways (lines/icons) → cities → resources.
+ * Symbol overlays above admin boundaries. Order (bottom → top): lakes →
+ * landforms → ecology → waterways (lines/icons) → cities → power → security →
+ * resources.
+ *
+ * Derived from `OVERLAY_LAYER_IDS` so a newly added overlay is always moved
+ * above the admin stack. A layer left out here still draws, but ends up buried
+ * under layers that are moved to the top after it.
  */
 export function restackTopOverlayLayers(map: Map): void {
   const waterwayIds = OVERLAY_REGISTRY.waterways.layers
@@ -288,6 +307,8 @@ export function restackTopOverlayLayers(map: Map): void {
     ...OVERLAY_REGISTRY.ecology.layers.map((l) => l.id),
     ...waterwayIds,
     ...OVERLAY_REGISTRY.cities.layers.map((l) => l.id),
+    ...OVERLAY_REGISTRY.power.layers.map((l) => l.id),
+    ...OVERLAY_REGISTRY.security.layers.map((l) => l.id),
     ...OVERLAY_REGISTRY.resources.layers.map((l) => l.id),
   ];
   for (const id of topIds) {
