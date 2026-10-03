@@ -14,6 +14,11 @@ import CompareCategoryNav from "./CompareCategoryNav";
 import CompareMetricsTable from "./CompareMetricsTable";
 import CompareExpandButton from "./CompareExpandButton";
 import FadeIn from "@/components/ui/FadeIn";
+import {
+  explorerKickerClass,
+  explorerTitleClass,
+  explorerPanelCardClass,
+} from "@/components/location/explorerPanelStyles";
 
 const CHIP_COLORS = [
   "border-emerald-200 bg-emerald-50/80 text-emerald-900",
@@ -98,10 +103,10 @@ export default function StateCompareView({
       {!hideHeader && (
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <p className="text-xs font-semibold uppercase tracking-wider text-ng-green">
+            <span className={explorerKickerClass}>
               Compare {states.length} states
-            </p>
-            <h2 className="text-xl font-bold text-text-primary mt-1 leading-snug">
+            </span>
+            <h2 className={`${explorerTitleClass} text-xl mt-2 leading-snug`}>
               {states.map((s) => s.name).join(" · ")}
             </h2>
           </div>
@@ -117,7 +122,7 @@ export default function StateCompareView({
         {states.map((s, i) => (
           <div
             key={s.id}
-            className={`rounded-xl border p-3 ${CHIP_COLORS[i] ?? CHIP_COLORS[0]}`}
+            className={`${explorerPanelCardClass} border-2 p-3 shadow-sm ${CHIP_COLORS[i] ?? CHIP_COLORS[0]}`}
           >
             <div className="flex items-start justify-between gap-2">
               <div className="min-w-0">
@@ -174,7 +179,7 @@ export default function StateCompareView({
             return (
               <div
                 key={s.id}
-                className={`rounded-xl border p-3 ${CHIP_COLORS[i] ?? CHIP_COLORS[0]}`}
+                className={`${explorerPanelCardClass} border-2 p-3 shadow-sm ${CHIP_COLORS[i] ?? CHIP_COLORS[0]}`}
               >
                 <p className="text-xs font-semibold opacity-70 mb-1">{s.name}</p>
                 <p className="text-sm leading-relaxed opacity-90">

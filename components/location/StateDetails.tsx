@@ -25,6 +25,14 @@ import GetDirectionsButton from "@/components/directions/GetDirectionsButton";
 import OverlayItemList from "@/components/location/OverlayItemList";
 import { useMapStore } from "@/lib/store/mapStore";
 import { resolveLgaFocusPlan } from "@/lib/map/lgaMapFocus";
+import {
+  explorerKickerClass,
+  explorerLensTabClass,
+  explorerSectionLabelClass,
+  explorerStatTileClass,
+  explorerPanelCardClass,
+  explorerListCardClass,
+} from "@/components/location/explorerPanelStyles";
 
 interface StateDetailsProps {
   content: StateContent;
@@ -51,26 +59,26 @@ function StatCard({
   value,
   span = false,
   accent = false,
+  accentIndex = 0,
 }: {
   label: string;
   value: string;
   span?: boolean;
   accent?: boolean;
+  accentIndex?: number;
 }) {
   return (
     <div
-      className={`rounded-xl bg-slate-50 border border-slate-100 px-3 py-2.5 ${
-        span ? "col-span-2" : ""
-      }`}
+      className={`${explorerStatTileClass(accentIndex)} ${span ? "col-span-2" : ""}`}
     >
-      <dt className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+      <dt className="text-label-caps font-bold uppercase tracking-wider text-text-muted">
         {label}
       </dt>
       <dd
         className={`${
           accent
-            ? "text-lg font-bold text-ng-green"
-            : "text-sm font-semibold text-slate-800"
+            ? "text-lg font-bold text-primary"
+            : "text-sm font-semibold text-text-primary"
         } mt-0.5`}
       >
         {value}
@@ -194,10 +202,10 @@ export default function StateDetails({
   return (
     <div className="space-y-5">
       <div>
-        <p className="text-xs font-medium uppercase tracking-wide text-ng-green">
-          {content.region}
-        </p>
-        <h2 className="text-2xl font-bold text-text-primary">{content.name}</h2>
+        <span className={explorerKickerClass}>{content.region}</span>
+        <h2 className="font-landing-display text-2xl font-bold tracking-tight text-text-primary mt-2">
+          {content.name}
+        </h2>
         {nickname && <p className="text-sm text-text-muted mt-1">{nickname}</p>}
         <p className="text-xs text-text-secondary leading-relaxed">
           {content.description}
@@ -205,14 +213,14 @@ export default function StateDetails({
       </div>
 
       <dl className="grid grid-cols-2 gap-3">
-        <StatCard label="Land area" value={landArea} span accent />
-        <StatCard label="Capital" value={capital} />
-        <StatCard label="Region" value={location.regionName} />
-        <StatCard label="Founded" value={founded} />
-        <StatCard label="LGAs" value={String(content.lgaCount)} />
+        <StatCard label="Land area" value={landArea} span accent accentIndex={0} />
+        <StatCard label="Capital" value={capital} accentIndex={1} />
+        <StatCard label="Region" value={location.regionName} accentIndex={2} />
+        <StatCard label="Founded" value={founded} accentIndex={3} />
+        <StatCard label="LGAs" value={String(content.lgaCount)} accentIndex={4} />
         {majorCityList.length > 0 && (
-          <div className="rounded-xl bg-slate-50 border border-slate-100 px-3 py-2.5 col-span-2">
-            <dt className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+          <div className={`${explorerStatTileClass(5)} col-span-2`}>
+            <dt className="text-label-caps font-bold uppercase tracking-wider text-text-muted">
               Major cities
             </dt>
             <dd className="text-sm font-semibold text-slate-800 mt-0.5 flex flex-wrap gap-x-3 gap-y-1">
@@ -230,8 +238,8 @@ export default function StateDetails({
           </div>
         )}
         {content.languages && content.languages.length > 0 && (
-          <div className="rounded-xl bg-slate-50 border border-slate-100 px-3 py-2.5 col-span-2">
-            <h3 className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+          <div className={`${explorerStatTileClass(1)} col-span-2`}>
+            <h3 className="text-label-caps font-bold uppercase tracking-wider text-text-muted">
               Languages spoken ({content.languages.length})
             </h3>
             <div className="text-sm font-semibold text-slate-800 mt-0.5 flex flex-wrap gap-x-3 gap-y-1">
@@ -264,6 +272,7 @@ export default function StateDetails({
         <StatCard
           label="Wards"
           value={wardTotal > 0 ? String(wardTotal) : "—"}
+          accentIndex={5}
         />
         <GetDirectionsButton
           name={content.name}
@@ -285,11 +294,7 @@ export default function StateDetails({
             role="tab"
             aria-selected={activeLens === l}
             onClick={() => setActiveLens(l)}
-            className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
-              activeLens === l
-                ? "bg-ng-green text-white shadow-sm"
-                : "bg-surface-card text-text-secondary border border-border-subtle hover:border-ng-green/40 hover:text-ng-green"
-            }`}
+            className={explorerLensTabClass(activeLens === l)}
           >
             {LENS_LABELS[l]}
           </button>
@@ -302,7 +307,7 @@ export default function StateDetails({
 
       {activeLens === "learn" && stateMetro.length > 0 && (
         <div className="space-y-3">
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <h3 className={explorerSectionLabelClass}>
             Metro areas ({stateMetro.length})
           </h3>
           {stateMetro.map((m) => {
@@ -312,7 +317,7 @@ export default function StateDetails({
             return (
               <div
                 key={m.id}
-                className="rounded-xl border border-slate-100 bg-slate-50/70 p-3 space-y-2"
+                className={`${explorerPanelCardClass} bg-gradient-to-br from-lime-50/40 to-white p-3 space-y-2`}
               >
                 <div className="flex items-start justify-between gap-2">
                   <div>
@@ -561,7 +566,7 @@ export default function StateDetails({
           <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
             Local government areas ({stateLgas.length})
           </h3>
-          <ul className="max-h-52 overflow-y-auto rounded-xl border border-slate-100 divide-y divide-slate-100">
+          <ul className={`max-h-52 overflow-y-auto ${explorerListCardClass}`}>
             {stateLgas.map((lga) => (
               <li key={lga.id}>
                 <button

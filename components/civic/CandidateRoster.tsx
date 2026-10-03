@@ -169,10 +169,10 @@ export default function CandidateRoster({
 
   const pageCount = Math.max(1, Math.ceil(visible.length / PAGE_SIZE));
   const pageSafe = Math.min(page, pageCount - 1);
-  const pageSlice = visible.slice(
-    pageSafe * PAGE_SIZE,
-    pageSafe * PAGE_SIZE + PAGE_SIZE
-  );
+  const pageSlice =
+    position === "president"
+      ? visible
+      : visible.slice(pageSafe * PAGE_SIZE, pageSafe * PAGE_SIZE + PAGE_SIZE);
 
   const stateOffice = useMemo(
     () => offices.find((o) => o.stateId === stateId),
@@ -495,7 +495,7 @@ export default function CandidateRoster({
                   );
                 })}
               </div>
-              {pageCount > 1 && (
+              {position !== "president" && pageCount > 1 && (
                 <div className="mt-6 flex items-center justify-center gap-3">
                   <button
                     type="button"

@@ -740,6 +740,22 @@ function buildCompareGroups(
     "social",
     "2021"
   ) as Record<string, Record<string, unknown>>;
+  const general = getCategoryData(
+    bundle,
+    "state",
+    "general",
+    "default"
+  ) as Record<string, Record<string, unknown>>;
+  const federalConstituencies = loadJson<{ state: string }[]>(
+    path.join(root, "data/politics/constituencies/federal-constituencies.json")
+  );
+  const houseRepsByState = new Map<string, number>();
+  for (const fc of federalConstituencies) {
+    houseRepsByState.set(
+      fc.state,
+      (houseRepsByState.get(fc.state) ?? 0) + 1
+    );
+  }
   const wards = loadJson<{ stateName: string }[]>(
     path.join(root, "data/locations/wards.json")
   );
@@ -953,6 +969,33 @@ function buildCompareGroups(
       ],
     },
     {
+      id: "general",
+      label: "General details",
+      icon: "info",
+      metrics: [
+        metric(
+          "yearCreated",
+          "Year established",
+          "State creation or merger",
+          "int",
+          undefined,
+          "lower",
+          byState(numeric(general, "yearCreated")),
+          presentValues(numeric(general, "yearCreated"))
+        ),
+        metric(
+          "houseReps",
+          "House of Reps seats",
+          "Federal constituencies in the state",
+          "int",
+          undefined,
+          "higher",
+          byState((s) => houseRepsByState.get(s.name) ?? null),
+          presentValues((s) => houseRepsByState.get(s.name) ?? null)
+        ),
+      ],
+    },
+    {
       id: "fiscal",
       label: "Fiscal capacity",
       icon: "trend",
@@ -1087,6 +1130,7 @@ export type StateProfileData = {
   content: ReturnType<typeof resolveStateContent>;
   lgas: LgaLocation[];
   senateSeatCount: number;
+  houseRepSeatCount: number;
   allStates: StateLocation[];
   regions: PlacesDirectoryData["regions"];
   slugByStateId: Record<string, string>;
@@ -1122,6 +1166,9 @@ export function loadStateProfileData(
 
   const senateSeatCount =
     explorer.politics.lookups.districtsByStateId[state.id]?.length ?? 0;
+  const houseRepSeatCount = explorer.politics.federalConstituencies.filter(
+    (fc) => fc.state === state.name
+  ).length;
 
   const slugByStateId = Object.fromEntries(
     explorer.states.map((s) => [s.id, s.slug])
@@ -1143,6 +1190,7 @@ export function loadStateProfileData(
     content,
     lgas,
     senateSeatCount,
+    houseRepSeatCount,
     allStates: explorer.states,
     regions: explorer.regions,
     slugByStateId,

@@ -74,16 +74,16 @@ export default function ProfileDataSection({
 
   /* The state being viewed is always locked into the comparison; picks starts
      from the cross-zone default and can be swapped one state at a time. */
-  const [picks, setPicks] = useState<string[]>(() => comparison);
+  const [compareB, setCompareB] = useState(() => comparison[1] ?? "");
+  const [compareC, setCompareC] = useState(() => comparison[2] ?? "");
 
-  const toggle = (id: string) => {
-    setPicks((current) => {
-      const next = current.includes(id)
-        ? current.filter((p) => p !== id)
-        : [...current, id];
-      return next.includes(currentState.id) ? next : [currentState.id, ...next].slice(0, 4);
-    });
-  };
+  const picks = useMemo(
+    () =>
+      [currentState.id, compareB, compareC].filter(
+        (id, i, arr) => id && arr.indexOf(id) === i
+      ),
+    [compareB, compareC, currentState.id]
+  );
 
   return (
     <ProfileSection
@@ -171,40 +171,57 @@ export default function ProfileDataSection({
           </div>
         </div>
 
-        <div className="mt-4 flex flex-wrap items-center gap-2 rounded-xl bg-slate-50 px-4 py-3">
-          <span className="text-xs font-semibold text-text-muted">
-            Active comparison:
-          </span>
-          {picks.map((id) => (
-            <span
-              key={id}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-surface-card px-2.5 py-1 text-xs font-bold text-text-primary ring-1 ring-border-subtle"
-            >
-              {id === currentState.id ? <span aria-hidden>🔒</span> : null}
-              {names.get(id)?.name ?? id}
+        <div className="mt-4 grid gap-3 sm:grid-cols-3">
+          <label className="block">
+            <span className="text-[11px] font-bold uppercase tracking-wide text-text-muted">
+              This state
             </span>
-          ))}
-        </div>
-
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          <span className="text-xs text-text-muted">Add:</span>
-          <select
-            aria-label="Add a state to the comparison"
-            value=""
-            onChange={(e) => {
-              if (e.target.value) toggle(e.target.value);
-            }}
-            className="h-8 rounded-lg border border-border-subtle bg-surface-card px-2 text-xs font-semibold text-text-secondary"
-          >
-            <option value="">Choose a state…</option>
-            {allStates
-              .filter((s) => !picks.includes(s.id))
-              .map((s) => (
-                <option key={s.id} value={s.id}>
-                  {s.name}
-                </option>
-              ))}
-          </select>
+            <select
+              disabled
+              value={currentState.id}
+              className="mt-1 h-10 w-full rounded-lg border border-border-subtle bg-slate-100 px-2 text-sm font-semibold text-text-primary"
+            >
+              <option value={currentState.id}>{currentState.name}</option>
+            </select>
+          </label>
+          <label className="block">
+            <span className="text-[11px] font-bold uppercase tracking-wide text-text-muted">
+              Compare with
+            </span>
+            <select
+              aria-label="Second state in comparison"
+              value={compareB}
+              onChange={(e) => setCompareB(e.target.value)}
+              className="mt-1 h-10 w-full rounded-lg border border-border-subtle bg-surface-card px-2 text-sm font-semibold text-text-primary"
+            >
+              {allStates
+                .filter((s) => s.id !== currentState.id)
+                .map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.name}
+                  </option>
+                ))}
+            </select>
+          </label>
+          <label className="block">
+            <span className="text-[11px] font-bold uppercase tracking-wide text-text-muted">
+              And
+            </span>
+            <select
+              aria-label="Third state in comparison"
+              value={compareC}
+              onChange={(e) => setCompareC(e.target.value)}
+              className="mt-1 h-10 w-full rounded-lg border border-border-subtle bg-surface-card px-2 text-sm font-semibold text-text-primary"
+            >
+              {allStates
+                .filter((s) => s.id !== currentState.id && s.id !== compareB)
+                .map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.name}
+                  </option>
+                ))}
+            </select>
+          </label>
         </div>
 
         <div className="mt-4 space-y-5">

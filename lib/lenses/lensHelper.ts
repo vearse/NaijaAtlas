@@ -146,8 +146,10 @@ export const INVEST_TYPES: string[] = [
   "mega-city",
   "port-city",
   "oil-terminal",
-  "major-hydro",
-  "regional-hydro",
+  "hydro",
+  "gas-ccgt",
+  "gas-ocgt",
+  "steam",
   "seaport",
   "proposed-port",
   // New Army divisional headquarters: national-security infrastructure, so it

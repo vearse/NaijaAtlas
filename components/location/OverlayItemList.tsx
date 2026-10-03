@@ -3,6 +3,11 @@
 import GetDirectionsButton from "@/components/directions/GetDirectionsButton";
 import ViewOnMapButton from "@/components/map/ViewOnMapButton";
 import type { StateOverlayItem } from "@/lib/lenses/stateOverlayItems";
+import {
+  explorerSectionLabelClass,
+  explorerPanelCardClass,
+  explorerChipClass,
+} from "@/components/location/explorerPanelStyles";
 
 interface OverlayItemListProps {
   title: string;
@@ -22,14 +27,14 @@ export default function OverlayItemList({
   if (items.length === 0) return null;
   return (
     <div>
-      <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+      <h3 className={`${explorerSectionLabelClass} mb-2`}>
         {title} ({items.length})
       </h3>
       <ul className="space-y-2">
         {items.map((item) => (
           <li
             key={item.id}
-            className="rounded-xl border border-slate-100 px-3 py-2.5"
+            className={`${explorerPanelCardClass} px-3 py-2.5`}
           >
             <button
               type="button"
@@ -38,7 +43,7 @@ export default function OverlayItemList({
             >
               <span className="flex items-center flex-wrap gap-1.5 text-sm font-semibold text-slate-800 group-hover:text-ng-green">
                 {item.name}
-                <span className="rounded-full border border-border-subtle bg-slate-50 px-1.5 py-px text-[9px] font-semibold uppercase tracking-wide text-text-muted">
+                <span className={`${explorerChipClass} py-px text-[9px] font-bold uppercase tracking-wide`}>
                   {item.category}
                 </span>
               </span>

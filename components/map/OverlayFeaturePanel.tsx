@@ -16,6 +16,7 @@ import {
   LANDFORM_SIZE_LABELS,
   LANDFORM_TYPE_LABELS,
   OVERLAY_LAYER_LABELS,
+  POWER_FEATURE_KIND_LABELS,
   POWER_PLANT_CATEGORY_LABELS,
   COAST_CATEGORY_LABELS,
   COAST_ZONE_LABELS,
@@ -27,6 +28,7 @@ import {
   type LakeCategory,
   type LandformSizeTier,
   type LandformType,
+  type PowerFeatureKind,
   type PowerPlantCategory,
   type ResourceType,
   type SelectedOverlayFeature,
@@ -209,6 +211,27 @@ function powerPlantCategoryMeta(value: unknown) {
   return POWER_PLANT_CATEGORY_LABELS[value as PowerPlantCategory] ?? null;
 }
 
+/**
+ * Generation stations carry a technology badge, so only the non-generation
+ * feature kinds (DisCo, substation, corridor) need a kind badge here.
+ */
+function powerFeatureKindMeta(value: unknown) {
+  if (typeof value !== "string") return null;
+  if (value === "power-plant") return null;
+  return POWER_FEATURE_KIND_LABELS[value as PowerFeatureKind] ?? null;
+}
+
+/**
+ * Corridor endpoints are resolved to readable node names at build time, so the
+ * panel can label a line without the full node list.
+ */
+function gridLinkText(value: Record<string, unknown>): string {
+  const from = text(value.fromName);
+  const to = text(value.toName);
+  if (from && to) return `${from} \u2194 ${to}`;
+  return "";
+}
+
 function coastCategoryMeta(value: unknown) {
   if (typeof value !== "string") return null;
   return COAST_CATEGORY_LABELS[value as CoastCategory] ?? null;
@@ -348,6 +371,7 @@ export default function OverlayFeaturePanel({
   const resourceType = resourceTypeMeta(props.resourceType);
   const militaryCat = militaryCategoryMeta(props.militaryCategory);
   const featureKind = text(props.featureKind);
+  const powerKind = powerFeatureKindMeta(featureKind);
 
   const relatedStateNames = [
     ...parseStringArray(props.statesCrossed),
@@ -376,6 +400,7 @@ export default function OverlayFeaturePanel({
       layerId === "ecology" ||
       layerId === "resources" ||
       layerId === "lakes" ||
+      layerId === "power" ||
       layerId === "waterways") &&
     shouldOfferViewOnMap(props as Record<string, unknown>, coverageStateIds);
 
@@ -545,9 +570,12 @@ export default function OverlayFeaturePanel({
                 {coastZone.label}
               </span>
             )}
-            {featureKind === "power-station" && !plantCat && (
-              <span className="inline-flex items-center rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-[11px] font-medium text-amber-900">
-                Power station
+            {!plantCat && powerKind && (
+              <span
+                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white"
+                style={{ backgroundColor: powerKind.color }}
+              >
+                {powerKind.label}
               </span>
             )}
             {text(props.type) && (
@@ -736,8 +764,13 @@ export default function OverlayFeaturePanel({
         <DetailRow label="Founded" value={text(props.founded)} />
         <DetailRow label="Length" value={lengthKm} />
         <DetailRow label="Installed capacity" value={capacityLabel(props.capacityMw)} />
+        <DetailRow label="Units" value={text(props.units)} />
         <DetailRow label="Commissioned" value={text(props.commissioned)} />
         <DetailRow label="Operator" value={text(props.operator)} />
+        <DetailRow label="Shareholding" value={text(props.shareholding)} />
+        <DetailRow label="Voltage" value={text(props.voltageLabel)} />
+        <DetailRow label="Grid role" value={text(props.role)} />
+        <DetailRow label="Connected substations" value={gridLinkText(props)} />
         <DetailRow label="River" value={text(props.riverName)} />
         <DetailRow label="Dam" value={text(props.damName)} />
         <DetailRow label="Max depth" value={text(props.maxDepthNote)} />

@@ -74,12 +74,15 @@ export default function EconomyHubClient(
           <PortsDirectory ports={data.ports} slugByStateId={slugByStateName} />
         </HubSection>
 
+  
         <HubSection
-          eyebrow="Sub-national signal"
-          title="States to watch"
+          eyebrow="Energy grid"
+          title="Hydropower and distribution"
+          lede="Hydroelectric stations and distribution companies from the lakes layer."
         >
-          <StatesToWatch watch={data.watch} sampleSize={4} />
+          <EnergyGrid power={data.power} slugByStateId={slugByStateName} />
         </HubSection>
+
 
         <HubSection
           id="economy-map"
@@ -92,15 +95,15 @@ export default function EconomyHubClient(
             <MapWorkspaceCard map="economy/ports" kicker="Operating + proposed" />
             <MapWorkspaceCard map="economy/power" kicker="Hydropower" />
           </div>
-        </HubSection>
+        </HubSection> 
 
         <HubSection
-          eyebrow="Energy grid"
-          title="Hydropower and distribution"
-          lede="Hydroelectric stations and distribution companies from the lakes layer."
+          eyebrow="Sub-national signal"
+          title="States to watch"
         >
-          <EnergyGrid power={data.power} slugByStateId={slugByStateName} />
+          <StatesToWatch watch={data.watch} sampleSize={4} />
         </HubSection>
+
 
         <section className="border-t border-border-subtle py-12">
           <h2 className="font-landing-display text-headline-lg text-text-primary">

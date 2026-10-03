@@ -40,6 +40,10 @@ import type { CompareBundle } from "@/types/compare";
 import type { PresidentialBundle } from "@/types/politics";
 import { OVERLAY_LAYER_LABELS } from "@/types/overlay";
 import { resolveStateContent } from "@/lib/location/stateContent";
+import {
+  explorerPanelHeaderClass,
+  explorerSectionLabelClass,
+} from "@/components/location/explorerPanelStyles";
 
 interface LocationPanelProps {
   /** Section maps swap the default panel, e.g. People shows homelands. */
@@ -241,8 +245,8 @@ export default function LocationPanel({
 
   const inner = (
     <div className="flex flex-col h-full">
-      <div className="p-4 border-b border-slate-100 bg-gradient-to-r from-white to-slate-50/80 lg:block hidden">
-        <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+      <div className={`${explorerPanelHeaderClass} lg:block hidden`}>
+        <p className={`${explorerSectionLabelClass} mb-2`}>
           {showDirectionsPanel
             ? "Directions"
             : showOverlay

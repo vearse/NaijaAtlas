@@ -5,13 +5,18 @@ import { useMapStore } from "@/lib/store/mapStore";
 import ViewLgasOnMapButton from "@/components/map/ViewLgasOnMapButton";
 import { resolveLgaFocusPlan } from "@/lib/map/lgaMapFocus";
 import type { MetroGroup, LgaLocation, StateLocation } from "@/types/location";
+import {
+  explorerKickerClass,
+  explorerTitleClass,
+  explorerLensTabClass,
+} from "@/components/location/explorerPanelStyles";
 
 const PAGE = 8;
 
 const CONFIDENCE_BADGE: Record<string, string> = {
   high: "border-emerald-200 bg-emerald-50 text-emerald-800",
   medium: "border-amber-200 bg-amber-50 text-amber-800",
-  low: "border-slate-200 bg-slate-50 text-slate-600",
+  low: "border-lime-200 bg-lime-50 text-text-muted",
 };
 
 /**
@@ -97,10 +102,8 @@ export default function CulturalGroupsPanel({
   return (
     <div className="space-y-4">
       <div>
-        <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-400">
-          Peoples of Nigeria
-        </p>
-        <h2 className="text-xl font-bold text-text-primary">
+        <span className={explorerKickerClass}>Peoples of Nigeria</span>
+        <h2 className={`${explorerTitleClass} text-xl mt-2`}>
           Cultural groups &amp; homelands
         </h2>
         <p className="mt-1 text-xs text-text-muted">
@@ -147,11 +150,7 @@ export default function CulturalGroupsPanel({
               setLimit(PAGE);
             }}
             aria-pressed={stateFilter === f.id}
-            className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold transition-colors ${
-              stateFilter === f.id
-                ? "border-ng-green bg-ng-green text-white"
-                : "border-border-subtle bg-surface-card text-text-secondary hover:border-ng-green/50"
-            }`}
+            className={`text-[11px] transition-colors ${explorerLensTabClass(stateFilter === f.id)}`}
           >
             {f.label}
           </button>
@@ -175,9 +174,9 @@ export default function CulturalGroupsPanel({
             return (
               <li
                 key={group.id}
-                className={`rounded-xl border bg-white px-3.5 py-3 ${
+                className={`rounded-2xl border bg-surface-card px-3.5 py-3 shadow-sm ${
                   onMap
-                    ? "border-ng-green shadow-[0_0_0_3px_rgba(0,135,81,0.12)]"
+                    ? "border-primary-container shadow-[0_0_0_3px_rgba(0,135,81,0.12)]"
                     : "border-border-subtle"
                 }`}
               >

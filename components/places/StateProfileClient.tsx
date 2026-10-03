@@ -52,6 +52,11 @@ export default function StateProfileClient(props: Props) {
     props.lgas[0]?.id ?? null
   );
 
+  useEffect(() => {
+    if (!selectedLgaId) return;
+    document.getElementById("lgas")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }, [selectedLgaId]);
+
   /* The reference profile is one long page with #land, #people, #civic anchors.
      The tabbed shell keeps the same anchors by syncing them both ways, so
      /places/lagos#economy deep-links into a tab and the browser back button
@@ -203,7 +208,12 @@ export default function StateProfileClient(props: Props) {
                       { term: "Population", value: formatPopulation(facts.population) ?? "—" },
                       { term: "Total area", value: facts.landAreaKm2 ? `${formatNumber(facts.landAreaKm2)} km²` : "—" },
                       { term: "LGAs", value: formatNumber(state.lgaCount) },
-                      { term: "Senators", value: props.senateSeatCount ? String(props.senateSeatCount) : "—" },
+                      {
+                        term: "House Reps (total)",
+                        value: props.houseRepSeatCount
+                          ? String(props.houseRepSeatCount)
+                          : "—",
+                      },
                       { term: "IGR (2024)", value: formatNaira(igr) ?? "—" },
                     ].map((chip) => (
                       <div key={chip.term}>
@@ -238,6 +248,8 @@ export default function StateProfileClient(props: Props) {
                       data={props.lgaSvg}
                       stateId={state.id}
                       stateName={state.name}
+                      selectedId={selectedLgaId}
+                      onSelect={(id) => setSelectedLgaId(id)}
                       className="aspect-[4/3] min-h-[240px] w-full overflow-hidden rounded-2xl border border-border-subtle"
                     />
                   ) : (
@@ -272,14 +284,7 @@ export default function StateProfileClient(props: Props) {
                 </div>
               ))}
             </dl>
-
-            <ProfileSynthesis
-              insights={props.insights}
-              content={content}
-              stateName={state.name}
-              stateId={sid}
-            />
-
+            
             <div className="mt-12">
               <ProfileLgaSection
                 lgas={props.lgas}
@@ -293,6 +298,13 @@ export default function StateProfileClient(props: Props) {
                 stateAreaKm2={facts.landAreaKm2}
               />
             </div>
+
+            <ProfileSynthesis
+              insights={props.insights}
+              content={content}
+              stateName={state.name}
+              stateId={sid}
+            />
 
             {props.overview && (
               <section

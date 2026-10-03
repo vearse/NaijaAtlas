@@ -80,7 +80,9 @@ export function shouldOfferViewOnMap(
     return true;
   }
   if (
-    props.featureKind === "power-distributor" &&
+    typeof props.featureKind === "string" &&
+    (props.featureKind === "power-distributor" ||
+      props.featureKind === "grid-substation") &&
     stateIds.length >= 1 &&
     parseStringArray(props.statesCrossed).length >= 2
   ) {

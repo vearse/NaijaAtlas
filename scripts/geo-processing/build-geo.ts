@@ -410,6 +410,7 @@ export async function buildGeo() {
   const resourcesCatalog = readCatalog<CatalogRow>("resources");
   const citiesCatalog = readCatalog<CatalogRow>("cities");
   const lakesCatalog = readCatalog<CatalogRow>("lakes");
+  const powerCatalog = readCatalog<CatalogRow>("power");
   const coastCatalog = readCatalog<CatalogRow>("coast");
 
   const landformTypeLabels: Record<string, string> = {
@@ -477,8 +478,19 @@ export async function buildGeo() {
     natural: "Natural lake",
     reservoir: "Reservoir / dam",
     lagoon: "Coastal lagoon",
-    "power-station": "Hydro power station",
-    "power-distributor": "Power distribution (DISCO)",
+  };
+
+  const powerKindLabels: Record<string, string> = {
+    "power-plant": "Power station",
+    "power-distributor": "Distribution company (DisCo)",
+    "grid-substation": "Transmission substation",
+  };
+
+  const powerPlantCategoryLabels: Record<string, string> = {
+    hydro: "Hydroelectric station",
+    "gas-ccgt": "Gas combined cycle",
+    "gas-ocgt": "Gas turbine (open cycle)",
+    steam: "Gas-fired steam station",
   };
 
   const coastCategoryLabels: Record<string, string> = {
@@ -595,25 +607,39 @@ export async function buildGeo() {
       centroid: centroidOf(row),
       summary: row.summary,
     })),
-    ...lakesCatalog.map((row) => {
-      const kind =
-        row.type === "power-station" || row.featureKind === "power-distributor"
-          ? row.featureKind === "power-distributor"
-            ? "power-distributor"
-            : "power-station"
-          : String(row.lakeCategory ?? "natural");
-      return {
-        id: row.id,
-        name: row.name,
-        level: "lake" as const,
-        parentId: null,
-        layerId: "lakes" as const,
-        typeLabel: lakeCategoryLabels[kind] ?? "Lake / hydro",
-        stateName: row.statesCrossed?.[0],
-        centroid: centroidOf(row),
-        summary: row.summary,
-      };
-    }),
+    ...lakesCatalog.map((row) => ({
+      id: row.id,
+      name: row.name,
+      level: "lake" as const,
+      parentId: null,
+      layerId: "lakes" as const,
+      typeLabel:
+        lakeCategoryLabels[String(row.lakeCategory ?? "natural")] ?? "Lake",
+      stateName: row.statesCrossed?.[0],
+      centroid: centroidOf(row),
+      summary: row.summary,
+    })),
+    ...powerCatalog
+      .filter((row) => row.featureKind !== "grid-corridor")
+      .map((row) => {
+        const featureKind = String(row.featureKind ?? "");
+        const plantCategory = String(row.plantCategory ?? "");
+        return {
+          id: row.id,
+          name: row.name,
+          level: "power" as const,
+          parentId: null,
+          layerId: "power" as const,
+          typeLabel:
+            featureKind === "power-plant"
+              ? (powerPlantCategoryLabels[plantCategory] ??
+                powerKindLabels[featureKind])
+              : (powerKindLabels[featureKind] ?? "Power infrastructure"),
+          stateName: row.statesCrossed?.[0],
+          centroid: centroidOf(row),
+          summary: row.summary,
+        };
+      }),
     ...coastCatalog.map((row) => ({
       id: row.id,
       name: row.name,

@@ -36,6 +36,13 @@ import type {
   StateLocation,
   WikiNote,
 } from "@/types/location";
+import {
+  explorerKickerClass,
+  explorerSectionLabelClass,
+  explorerStatTileClass,
+  explorerPanelCardClass,
+  explorerTitleClass,
+} from "@/components/location/explorerPanelStyles";
 
 interface NigeriaOverviewProps {
   states: StateLocation[];
@@ -125,7 +132,7 @@ function RankedList({
 }) {
   if (items.length === 0) return null;
   return (
-    <ol className="rounded-lg border border-slate-100 divide-y divide-slate-100">
+    <ol className={`${explorerPanelCardClass} divide-y divide-border-subtle shadow-none`}>
       {items.map((row, i) => (
         <li key={row.id} className="flex items-center gap-3 px-3 py-2">
           <RankBadge rank={i + 1} />
@@ -161,7 +168,7 @@ function YearList({
       <h4 className="text-[10px] font-semibold uppercase tracking-wider text-text-muted mb-1.5">
         {title}
       </h4>
-      <ol className="rounded-lg border border-slate-100 divide-y divide-slate-100">
+      <ol className={`${explorerPanelCardClass} divide-y divide-border-subtle shadow-none`}>
         {rows.map((row) => (
           <li key={row.id} className="flex items-center gap-3 px-3 py-2">
             <span className="flex-1 min-w-0">
@@ -198,19 +205,19 @@ function AccordionItem({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-xl border border-slate-100 overflow-hidden">
+    <div className={`${explorerPanelCardClass} overflow-hidden`}>
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={open}
-        className="w-full flex items-center justify-between gap-2 px-3 py-2.5 text-left hover:bg-slate-50 transition-colors"
+        className="w-full flex items-center justify-between gap-2 px-3 py-2.5 text-left hover:bg-lime-50/50 transition-colors"
       >
         <span className="flex items-center gap-2 min-w-0">
-          <span className="text-sm font-semibold text-slate-800">
+          <span className="text-sm font-semibold text-text-primary">
             {title}
           </span>
           {count !== undefined && (
-            <span className="rounded-full bg-slate-100 text-text-muted text-[10px] font-semibold px-2 py-0.5">
+            <span className="rounded-full border border-lime-200 bg-lime-50 text-primary text-[10px] font-bold px-2 py-0.5">
               {count}
             </span>
           )}
@@ -443,8 +450,9 @@ export default function NigeriaOverview({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-bold text-text-primary">Nigeria</h2>
-        <p className="text-sm text-text-secondary mt-1 leading-relaxed">
+        <span className={explorerKickerClass}>Federal Republic</span>
+        <h2 className={`${explorerTitleClass} mt-2`}>Nigeria</h2>
+        <p className="text-sm text-text-secondary mt-2 leading-relaxed">
           The Federal Republic of Nigeria — 36 states, the Federal Capital
           Territory, 774 local government areas, and 6 geopolitical regions.
           Click a state on the map, pick a region above, or search to explore.
@@ -453,36 +461,27 @@ export default function NigeriaOverview({
       </div>
 
       <dl className="grid grid-cols-2 gap-3">
-        <div className="rounded-xl bg-slate-50 px-3 py-3 text-center border border-slate-100">
-          <dt className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-            States
-          </dt>
-          <dd className="text-2xl font-bold text-ng-green mt-0.5">
-            {states.length}
-          </dd>
-        </div>
-        <div className="rounded-xl bg-slate-50 px-3 py-3 text-center border border-slate-100">
-          <dt className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-            LGAs
-          </dt>
-          <dd className="text-2xl font-bold text-ng-green mt-0.5">
-            {totalLgas}
-          </dd>
-        </div>
-        <div className="rounded-xl bg-slate-50 px-3 py-3 text-center border border-slate-100">
-          <dt className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-            Total land area
-          </dt>
-          <dd className="text-2xl font-bold text-ng-green mt-0.5">
-            {totalLand != null ? formatAreaKm2(totalLand) : "—"}
-          </dd>
-        </div>
-        <div className="rounded-xl bg-slate-50 px-3 py-3 text-center border border-slate-100">
-          <dt className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-            Geopolitical regions
-          </dt>
-          <dd className="text-2xl font-bold text-ng-green mt-0.5">6</dd>
-        </div>
+        {(
+          [
+            ["States", states.length],
+            ["LGAs", totalLgas],
+            [
+              "Total land area",
+              totalLand != null ? formatAreaKm2(totalLand) : "—",
+            ],
+            ["Geopolitical regions", "6"],
+          ] as const
+        ).map(([label, value], i) => (
+          <div
+            key={label}
+            className={`${explorerStatTileClass(i)} text-center py-3`}
+          >
+            <dt className="text-label-caps font-bold uppercase tracking-wider text-text-muted">
+              {label}
+            </dt>
+            <dd className="text-2xl font-bold text-primary mt-0.5">{value}</dd>
+          </div>
+        ))}
       </dl>
 
       {fullAtlas && (
@@ -494,15 +493,13 @@ export default function NigeriaOverview({
       )}
 
       <div>
-        <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
-          Country profile
-        </p>
+        <p className={`${explorerSectionLabelClass} mb-3`}>Country profile</p>
         <CountryProfile bundle={compareBundle} />
       </div>
 
       <div>
         <div className="flex items-center justify-between gap-2 mb-3">
-          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <p className={explorerSectionLabelClass}>
             Highlights
             {activeLens !== "learn" && (
               <span className="normal-case font-medium text-text-muted ml-1.5">
@@ -519,15 +516,15 @@ export default function NigeriaOverview({
         <div className="space-y-2">
           {activeLens !== "learn" && countryLensPicks ? (
             <>
-              <div className="rounded-xl border border-slate-100 overflow-hidden">
-                <div className="flex items-center justify-between gap-2 px-3 py-2.5 bg-slate-50/60 border-b border-slate-100">
+              <div className={`${explorerPanelCardClass} overflow-hidden`}>
+                <div className="flex items-center justify-between gap-2 px-3 py-2.5 bg-lime-50/70 border-b border-border-subtle">
                   <span className="flex items-center gap-2 min-w-0">
-                    <span className="text-sm font-semibold text-slate-800">
+                    <span className="text-sm font-semibold text-text-primary">
                       {activeLens === "tourist"
                         ? "Tourist picks across Nigeria"
                         : "Investment picks across Nigeria"}
                     </span>
-                    <span className="rounded-full bg-slate-100 text-text-muted text-[10px] font-semibold px-2 py-0.5">
+                    <span className="rounded-full border border-lime-200 bg-lime-50 text-primary text-[10px] font-bold px-2 py-0.5">
                       {countryLensPicks.total}
                     </span>
                   </span>
@@ -561,13 +558,13 @@ export default function NigeriaOverview({
           ) : null}
 
           {activeLens === "learn" && filteredCountryNotes.length > 0 && (
-            <div className="rounded-xl border border-slate-100 overflow-hidden">
-              <div className="flex items-center justify-between gap-2 px-3 py-2.5 bg-slate-50/60 border-b border-slate-100">
+            <div className={`${explorerPanelCardClass} overflow-hidden`}>
+              <div className="flex items-center justify-between gap-2 px-3 py-2.5 bg-lime-50/70 border-b border-border-subtle">
                 <span className="flex items-center gap-2 min-w-0">
-                  <span className="text-sm font-semibold text-slate-800">
+                  <span className="text-sm font-semibold text-text-primary">
                     Interesting history
                   </span>
-                  <span className="rounded-full bg-slate-100 text-text-muted text-[10px] font-semibold px-2 py-0.5">
+                  <span className="rounded-full border border-lime-200 bg-lime-50 text-primary text-[10px] font-bold px-2 py-0.5">
                     {filteredCountryNotes.length}
                   </span>
                 </span>
@@ -584,7 +581,7 @@ export default function NigeriaOverview({
                         {notes.map((n, i) => (
                           <li
                             key={i}
-                            className="rounded-lg border border-slate-100 px-2.5 py-2"
+                            className={`${explorerPanelCardClass} px-2.5 py-2 shadow-none`}
                           >
                             <button
                               type="button"

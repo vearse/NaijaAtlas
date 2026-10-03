@@ -7,6 +7,7 @@ import {
 import { useMapStore } from "@/lib/store/mapStore";
 import { openCityOnMap } from "@/lib/map/cityCoordsLookup";
 import type { StateLanguage } from "@/types/location";
+import { explorerPanelCardClass } from "@/components/location/explorerPanelStyles";
 
 interface CompareMetricsTableProps {
   rows: CompareRow[];
@@ -84,7 +85,7 @@ export default function CompareMetricsTable({
 }: CompareMetricsTableProps) {
   if (layout === "profile") {
     return (
-      <dl className="rounded-xl border border-slate-100 overflow-hidden divide-y divide-slate-100">
+      <dl className={`${explorerPanelCardClass} overflow-hidden divide-y divide-border-subtle`}>
         {rows.map((row) => {
           const cell = row.values[0];
           return (
@@ -103,11 +104,11 @@ export default function CompareMetricsTable({
   }
 
   return (
-    <div className="rounded-xl border border-slate-100 overflow-x-auto">
+    <div className={`${explorerPanelCardClass} overflow-x-auto`}>
       <table className="w-full text-sm min-w-[280px]">
         <thead>
-          <tr className="bg-slate-50 text-[10px] uppercase tracking-wider text-slate-400">
-            <th className="text-left px-3 py-2 font-semibold sticky left-0 bg-slate-50">
+          <tr className="bg-lime-50/60 text-[10px] uppercase tracking-wider text-text-muted">
+            <th className="text-left px-3 py-2 font-semibold sticky left-0 bg-lime-50/60">
               Metric
             </th>
             {columns.map((col) => (
@@ -124,8 +125,8 @@ export default function CompareMetricsTable({
           {rows.map((row) => {
             const hi = highlightIndices(row);
             return (
-              <tr key={row.key} className="border-t border-slate-100">
-                <td className="px-3 py-2.5 text-text-muted align-top sticky left-0 bg-surface-card">
+              <tr key={row.key} className="border-t border-border-subtle even:bg-slate-50/40">
+                <td className="px-3 py-2.5 text-text-muted align-top sticky left-0 bg-surface-card even:bg-slate-50/40">
                   {row.label}
                 </td>
                 {row.values.map((_, i) => {

@@ -718,7 +718,30 @@ function lakePolygonFeature(row: CatalogRow): Feature | null {
   };
 }
 
-function powerStationFeature(row: CatalogRow): Feature | null {
+function buildLakes(catalog: CatalogRow[]): Feature[] {
+  const features: Feature[] = [];
+  const missing: string[] = [];
+
+  for (const row of catalog) {
+    const feature = lakePolygonFeature(row);
+    if (feature) features.push(feature);
+    else missing.push(row.id);
+  }
+
+  if (missing.length > 0) {
+    console.warn(`⚠ Lakes layer missing geometry: ${missing.join(", ")}`);
+  }
+
+  return features;
+}
+
+/**
+ * Point geometry for every power feature except transmission corridors.
+ *
+ * `featureKind` is carried straight through from the catalogue so generation,
+ * distribution and grid infrastructure stay distinguishable on the map.
+ */
+function powerPointFeature(row: CatalogRow): Feature | null {
   const lon = Number(row.lon);
   const lat = Number(row.lat);
   if (!Number.isFinite(lon) || !Number.isFinite(lat)) return null;
@@ -727,29 +750,78 @@ function powerStationFeature(row: CatalogRow): Feature | null {
     properties: {
       id: row.id,
       name: row.name,
-      featureKind: "power-station",
-      plantCategory: row.plantCategory ?? "regional-hydro",
+      featureKind: String(row.featureKind),
     },
     geometry: { type: "Point", coordinates: [lon, lat] },
   };
 }
 
-function buildLakes(catalog: CatalogRow[]): Feature[] {
+/** Indexes every non-corridor power row by id so corridors can resolve ends. */
+function powerNodeLookup(catalog: CatalogRow[]): Map<string, CatalogRow> {
+  const lookup = new Map<string, CatalogRow>();
+  for (const row of catalog) {
+    if (String(row.featureKind ?? "") !== "grid-corridor") {
+      lookup.set(row.id, row);
+    }
+  }
+  return lookup;
+}
+
+function powerNodeCoords(row: CatalogRow | undefined): [number, number] | null {
+  if (!row) return null;
+  const lon = Number(row.lon);
+  const lat = Number(row.lat);
+  if (!Number.isFinite(lon) || !Number.isFinite(lat)) return null;
+  return [lon, lat];
+}
+
+/**
+ * Transmission corridors are stored as `fromNode`/`toNode` references rather
+ * than inline geometry, so the node list stays the single place coordinates
+ * live. Named multi-stop routes are split into per-segment features.
+ */
+function powerCorridorFeature(
+  row: CatalogRow,
+  nodes: Map<string, CatalogRow>
+): Feature | null {
+  const fromRow = nodes.get(String(row.fromNode));
+  const toRow = nodes.get(String(row.toNode));
+  const from = powerNodeCoords(fromRow);
+  const to = powerNodeCoords(toRow);
+  if (!from || !to) return null;
+  return {
+    type: "Feature",
+    properties: {
+      id: row.id,
+      name: row.name,
+      featureKind: "grid-corridor",
+      voltageKv: row.voltageKv,
+      // Endpoint names are denormalised here so the detail panel can label the
+      // corridor without shipping the whole node list to the client.
+      fromName: fromRow?.name,
+      toName: toRow?.name,
+    },
+    geometry: { type: "LineString", coordinates: [from, to] },
+  };
+}
+
+function buildPower(catalog: CatalogRow[]): Feature[] {
   const features: Feature[] = [];
+  const nodes = powerNodeLookup(catalog);
   const missing: string[] = [];
 
   for (const row of catalog) {
-    const kind = String(row.featureKind ?? "lake");
+    const kind = String(row.featureKind ?? "");
     const feature =
-      kind === "power-station" || kind === "power-distributor"
-        ? powerStationFeature(row)
-        : lakePolygonFeature(row);
+      kind === "grid-corridor"
+        ? powerCorridorFeature(row, nodes)
+        : powerPointFeature(row);
     if (feature) features.push(feature);
     else missing.push(row.id);
   }
 
   if (missing.length > 0) {
-    console.warn(`⚠ Lakes layer missing geometry: ${missing.join(", ")}`);
+    console.warn(`⚠ Power layer missing geometry: ${missing.join(", ")}`);
   }
 
   return features;
@@ -1014,6 +1086,7 @@ function buildResources(catalog: CatalogRow[]): Feature[] {
 export async function buildOverlays(): Promise<void> {
   const waterwaysCatalog = readCatalog("waterways");
   const lakesCatalog = readCatalog("lakes");
+  const powerCatalog = readCatalog("power");
   const landformsCatalog = readCatalog("landforms");
   const ecologyCatalog = readCatalog("ecology");
   const citiesCatalog = readCatalog("cities");
@@ -1075,6 +1148,10 @@ export async function buildOverlays(): Promise<void> {
     fc(buildLakes(lakesCatalog), lakesCatalog, "lakes")
   );
   writeGeoJson(
+    projectRoot("public/geo/overlays/power.geojson"),
+    fc(buildPower(powerCatalog), powerCatalog, "power")
+  );
+  writeGeoJson(
     projectRoot("public/geo/overlays/landforms.geojson"),
     fc(buildLandforms(landformsCatalog), landformsCatalog, "landforms")
   );
@@ -1093,7 +1170,7 @@ export async function buildOverlays(): Promise<void> {
   });
 
   console.log(
-    `✓ Overlays: waterways(${waterFeatures.features.length}) lakes(${lakesCatalog.length}) landforms(${landformsCatalog.length}) ecology(${ecologyCatalog.length}) cities(${citiesCatalog.length}) resources(${resourceFeatures.length})`
+    `✓ Overlays: waterways(${waterFeatures.features.length}) lakes(${buildLakes(lakesCatalog).length}) power(${powerCatalog.length}) landforms(${landformsCatalog.length}) ecology(${ecologyCatalog.length}) cities(${citiesCatalog.length}) resources(${resourceFeatures.length})`
   );
 }
 

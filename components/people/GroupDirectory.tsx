@@ -9,6 +9,7 @@ import StateOverviewPanel from "@/components/places/StateOverviewPanel";
 import { useWikiReader } from "@/hooks/useWikiReader";
 import { sectionMapHref } from "@/lib/navigation/sectionMaps";
 import type { PeopleHubData } from "@/lib/server/loadPeopleHubData";
+import type { WikiNote } from "@/types/location";
 
 const DEFAULT_STATE = "NG-LA";
 const PAGE = 9;
@@ -18,7 +19,13 @@ const CONFIDENCE_BADGE: Record<string, string> = {
   medium: "border-amber-200 bg-amber-50 text-amber-800",
 };
 
-/** One state at a time: its cultural groups first, then the state profile. */
+function formatPeriod(period: NonNullable<WikiNote["period"]>): string | null {
+  const months = period.months?.length ? period.months.join("/") : null;
+  if (period.frequency && months) return `${months} · ${period.frequency}`;
+  return period.frequency ?? months;
+}
+
+/** One state at a time: its cultural groups first, then institutions, then the state profile. */
 export default function GroupDirectory({ data }: { data: PeopleHubData }) {
   const reduceMotion = useReducedMotion();
   const { openArticle, openByName, resolving } = useWikiReader();
@@ -39,19 +46,20 @@ export default function GroupDirectory({ data }: { data: PeopleHubData }) {
 
   const matched = useMemo(
     () =>
-      data.groups.filter((g) => {
-        if (!g.stateIds.includes(stateId)) return false;
-        if (!q) return true;
-        return (
-          g.name.toLowerCase().includes(q) ||
-          g.description.toLowerCase().includes(q) ||
-          g.makeup.map((m) => m.name).join(" ").toLowerCase().includes(q)
-        );
-      }),
+      data.groups
+        .filter((g) => {
+          if (!g.stateIds.includes(stateId)) return false;
+          if (!q) return true;
+          return (
+            g.name.toLowerCase().includes(q) ||
+            g.description.toLowerCase().includes(q) ||
+            g.makeup.map((m) => m.name).join(" ").toLowerCase().includes(q)
+          );
+        })
+        .sort((a, b) => a.name.localeCompare(b.name)),
     [data.groups, q, stateId]
   );
 
-  // A new state or a new search restarts the "see more" window.
   const stateQueryKey = `${stateId}-${q}`;
   const visible = matched.slice(0, limit);
   const hidden = matched.length - visible.length;
@@ -78,11 +86,10 @@ export default function GroupDirectory({ data }: { data: PeopleHubData }) {
           </select>
         </label>
         <p className="pb-3 text-body-sm text-text-muted">
-          Choose a state to meet its cultural groups, then read the state profile.
+          Groups are listed A–Z. Pick a state to read its institutions and profile.
         </p>
       </div>
 
-      {/* Cultural groups come first — the state selector drives this list. */}
       <div className="mt-8">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <h3 className="font-landing-display text-headline-sm text-text-primary">
@@ -122,7 +129,7 @@ export default function GroupDirectory({ data }: { data: PeopleHubData }) {
               <AnimatePresence mode="wait">
                 <motion.ul
                   key={stateQueryKey}
-                  className="grid gap-3 md:grid-cols-2 lg:grid-cols-3"
+                  className="grid gap-4 md:grid-cols-2"
                   {...(reduceMotion
                     ? {}
                     : {
@@ -135,12 +142,22 @@ export default function GroupDirectory({ data }: { data: PeopleHubData }) {
                   {visible.map((g) => (
                     <li
                       key={g.id}
-                      className="flex flex-col rounded-2xl border border-border-subtle bg-surface-card p-4 shadow-sm"
+                      className="flex flex-col rounded-2xl border border-border-subtle bg-surface-card p-5 shadow-sm"
                     >
                       <div className="flex items-start justify-between gap-2">
-                        <h4 className="text-body-md font-semibold text-text-primary">
-                          {g.name}
-                        </h4>
+                        <div className="min-w-0">
+                          <h4 className="text-body-lg font-semibold text-text-primary">
+                            {g.name}
+                          </h4>
+                          <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-text-muted">
+                            {g.memberCount > 0
+                              ? `${g.memberCount} documented LGA areas`
+                              : "Homeland catalogue"}
+                            {g.stateNames.length > 1
+                              ? ` · ${g.stateNames.length} states`
+                              : ""}
+                          </p>
+                        </div>
                         <span
                           className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold ${
                             CONFIDENCE_BADGE[g.confidence] ??
@@ -150,24 +167,46 @@ export default function GroupDirectory({ data }: { data: PeopleHubData }) {
                           {g.confidence}
                         </span>
                       </div>
+
                       {g.description && (
-                        <p className="mt-1.5 line-clamp-3 text-body-sm text-text-secondary">
+                        <p className="mt-3 text-body-sm leading-relaxed text-text-secondary">
                           {g.description}
                         </p>
                       )}
+
                       {g.makeup.length > 0 && (
-                        <p className="mt-2 text-[11px] text-text-muted">
-                          {g.makeup
-                            .slice(0, 3)
-                            .map((m) => `${m.name}${m.role === "dominant" ? " (dominant)" : ""}`)
-                            .join(" · ")}
+                        <div className="mt-3">
+                          <p className="text-[10px] font-bold uppercase tracking-wider text-text-muted">
+                            Ethnic makeup
+                          </p>
+                          <div className="mt-1.5 flex flex-wrap gap-1.5">
+                            {g.makeup.map((m) => (
+                              <span
+                                key={`${m.name}-${m.role}`}
+                                className="rounded-full border border-border-subtle bg-slate-50 px-2.5 py-0.5 text-[11px] font-semibold text-text-secondary"
+                              >
+                                {m.name}
+                                {m.role === "dominant" ? " · dominant" : ""}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {g.stateNames.length > 0 && (
+                        <p className="mt-3 text-body-sm text-text-muted">
+                          <span className="font-semibold text-text-secondary">
+                            Present in:{" "}
+                          </span>
+                          {g.stateNames.join(", ")}
                         </p>
                       )}
+
                       {g.stateNames.length > 1 && (
                         <div className="mt-3 flex flex-wrap gap-1.5">
                           {g.stateNames
                             .filter((name) => data.stateIdByName[name] !== stateId)
-                            .slice(0, 3)
+                            .slice(0, 4)
                             .map((name) => {
                               const id = data.stateIdByName[name];
                               return (
@@ -186,15 +225,26 @@ export default function GroupDirectory({ data }: { data: PeopleHubData }) {
                             })}
                         </div>
                       )}
-                      <button
-                        type="button"
-                        onClick={() => void openByName(g.name)}
-                        disabled={resolving === g.name}
-                        className="mt-auto inline-flex w-fit items-center gap-1 pt-4 text-label-md font-semibold text-primary transition-opacity hover:underline disabled:opacity-60"
-                      >
-                        {resolving === g.name ? "Loading…" : "Read more"}
-                        <span aria-hidden>→</span>
-                      </button>
+
+                      <div className="mt-4 flex flex-wrap gap-3">
+                        <button
+                          type="button"
+                          onClick={() => void openByName(g.name)}
+                          disabled={resolving === g.name}
+                          className="inline-flex items-center gap-1 text-label-md font-semibold text-primary transition-opacity hover:underline disabled:opacity-60"
+                        >
+                          {resolving === g.name ? "Loading…" : "Read more"}
+                          <span aria-hidden>→</span>
+                        </button>
+                        <Link
+                          href={sectionMapHref("people/groups", {
+                            stateIds: g.stateIds.slice(0, 3),
+                          })}
+                          className="text-label-md font-semibold text-text-muted hover:text-primary"
+                        >
+                          On map →
+                        </Link>
+                      </div>
                     </li>
                   ))}
                 </motion.ul>
@@ -215,14 +265,51 @@ export default function GroupDirectory({ data }: { data: PeopleHubData }) {
 
               <p className="mt-4 text-center text-body-sm text-text-muted">
                 Showing {visible.length} of {matched.length} documented groups
-                {overview ? ` in ${overview.name}` : ""}.
+                {overview ? ` in ${overview.name}` : ""} (A–Z).
               </p>
             </>
           )}
         </div>
       </div>
 
-      {/* State details follow the groups they belong to. */}
+      {overview && overview.institutions.length > 0 ? (
+        <div className="mt-12 border-t border-border-subtle pt-10">
+          <h3 className="mb-4 font-landing-display text-headline-sm text-text-primary">
+            Cultural institutions · {overview.name}
+          </h3>
+          <ul className="grid gap-3 md:grid-cols-2">
+            {overview.institutions.map((n, i) => {
+              const period = n.period ? formatPeriod(n.period) : null;
+              return (
+                <li
+                  key={`${n.title}-${i}`}
+                  className="rounded-xl border border-border-subtle bg-surface-card px-4 py-3"
+                >
+                  <button
+                    type="button"
+                    onClick={() => n.url && openArticle(n.url, n.title)}
+                    disabled={!n.url}
+                    className="group w-full text-left"
+                  >
+                    <span className="text-body-md font-semibold text-text-primary group-hover:text-primary">
+                      {n.title}
+                    </span>
+                  </button>
+                  <p className="mt-1 text-body-sm leading-relaxed text-text-secondary">
+                    {n.note}
+                  </p>
+                  {period && (
+                    <p className="mt-2 text-[11px] font-semibold tabular-nums text-text-muted">
+                      {period}
+                    </p>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : null}
+
       {overview ? (
         <div className="mt-12 border-t border-border-subtle pt-10">
           <h3 className="mb-4 font-landing-display text-headline-sm text-text-primary">

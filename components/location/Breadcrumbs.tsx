@@ -65,13 +65,13 @@ export default function Breadcrumbs({ states, lgas }: BreadcrumbsProps) {
     <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1 text-sm">
       {crumbs.map((c, i) => (
         <span key={`${c.label}-${i}`} className="flex items-center gap-1">
-          {i > 0 && <span className="text-slate-300">/</span>}
+          {i > 0 && <span className="text-lime-200">/</span>}
           <button
             type="button"
             onClick={c.onClick}
-            className={`hover:text-ng-green transition-colors ${
+            className={`hover:text-primary transition-colors ${
               i === crumbs.length - 1
-                ? "font-semibold text-text-primary"
+                ? "font-semibold text-primary"
                 : "text-text-muted"
             }`}
           >

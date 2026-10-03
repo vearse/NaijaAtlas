@@ -2,6 +2,7 @@
 export type OverlayLayerId =
   | "waterways"
   | "lakes"
+  | "power"
   | "landforms"
   | "ecology"
   | "cities"
@@ -10,6 +11,7 @@ export type OverlayLayerId =
 export const OVERLAY_LAYER_IDS: OverlayLayerId[] = [
   "waterways",
   "lakes",
+  "power",
   "landforms",
   "ecology",
   "cities",
@@ -26,6 +28,11 @@ export const OVERLAY_LAYER_LABELS: Record<
     category: "Waterway",
   },
   lakes: { label: "Lakes", short: "Lakes", category: "Lake" },
+  power: {
+    label: "Power grid",
+    short: "Power",
+    category: "Power station",
+  },
   landforms: {
     label: "Relief",
     short: "Relief",
@@ -118,12 +125,7 @@ export const WATERWAY_MILITARY_CATEGORY_LABELS: Record<
   "airforce-base": { label: "Air Force base", color: "#1e40af", branch: "Nigerian Air Force" },
 };
 
-export const LAKE_CATEGORIES = [
-  "natural",
-  "reservoir",
-  "lagoon",
-  "power-distributor",
-] as const;
+export const LAKE_CATEGORIES = ["natural", "reservoir", "lagoon"] as const;
 export type LakeCategory = (typeof LAKE_CATEGORIES)[number];
 
 export const LAKE_CATEGORY_LABELS: Record<
@@ -133,22 +135,50 @@ export const LAKE_CATEGORY_LABELS: Record<
   natural: { label: "Natural lake", color: "#2563eb" },
   reservoir: { label: "Reservoir", color: "#0891b2" },
   lagoon: { label: "Coastal lagoon", color: "#0ea5e9" },
-  "power-distributor": {
-    label: "Power distribution (DISCO)",
-    color: "#ca8a04",
-  },
 };
 
-export const POWER_PLANT_CATEGORIES = ["major-hydro", "regional-hydro"] as const;
+/**
+ * Generation technology for a grid-connected power station. Nigeria's mix is
+ * overwhelmingly gas, so gas turbines are split by cycle type and steam
+ * turbines (Egbin, Sapele) are kept separate from the open-cycle fleet.
+ */
+export const POWER_PLANT_CATEGORIES = [
+  "hydro",
+  "gas-ccgt",
+  "gas-ocgt",
+  "steam",
+] as const;
 export type PowerPlantCategory = (typeof POWER_PLANT_CATEGORIES)[number];
 
 export const POWER_PLANT_CATEGORY_LABELS: Record<
   PowerPlantCategory,
   { label: string; color: string }
 > = {
-  "major-hydro": { label: "Major hydro plant", color: "#ca8a04" },
-  "regional-hydro": { label: "Regional hydro / dam", color: "#64748b" },
+  hydro: { label: "Hydroelectric station", color: "#0e7490" },
+  "gas-ccgt": { label: "Gas combined cycle", color: "#b45309" },
+  "gas-ocgt": { label: "Gas turbine (open cycle)", color: "#d97706" },
+  steam: { label: "Gas-fired steam station", color: "#7c2d12" },
 };
+
+export const POWER_FEATURE_KINDS = [
+  "power-plant",
+  "power-distributor",
+  "grid-substation",
+  "grid-corridor",
+] as const;
+export type PowerFeatureKind = (typeof POWER_FEATURE_KINDS)[number];
+
+export const POWER_FEATURE_KIND_LABELS: Record<
+  PowerFeatureKind,
+  { label: string; color: string }
+> = {
+  "power-plant": { label: "Power station", color: "#b45309" },
+  "power-distributor": { label: "Distribution company (DisCo)", color: "#1d4ed8" },
+  "grid-substation": { label: "Transmission substation", color: "#0f766e" },
+  "grid-corridor": { label: "Transmission corridor", color: "#64748b" },
+};
+
+export const GRID_VOLTAGE_CLASSES = [330, 132] as const;
 
 export const COAST_CATEGORIES = [
   "seaport",
@@ -387,13 +417,44 @@ export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
     tip: "Zoom in to read river and coastline names, then tap any line or icon for trade, ecology, and environment notes. Use the reveal sections below to plot proposed ports and the new Army divisions.",
   },
   lakes: {
-    title: "Lakes & hydro",
-    summary: "Lakes, lagoons, reservoirs, and hydroelectric power stations across Nigeria.",
+    title: "Lakes & reservoirs",
+    summary: "Natural lakes, coastal lagoons, and the reservoirs behind Nigeria's dams.",
     description:
-      "Shaded polygons show open water — natural lakes, man-made reservoirs, and coastal lagoons. Gold ⚡ icons mark major hydro plants; grey ⚡ icons are regional dams and multipurpose schemes.",
-    includes: ["Lake Chad, Kainji, Lagos Lagoon", "Regional reservoirs (Goronyo, Dadin Kowa, Asejire)", "Kainji, Jebba, Shiroro, Zungeru power stations"],
-    legend: ["Blue fill = natural lake", "Teal fill = reservoir", "Sky fill = lagoon", "⚡ gold = major hydro", "⚡ grey = regional dam"],
-    tip: "Tap a lake polygon or power icon for capacity, operator, and linked dam details.",
+      "Shaded polygons show open water — natural lakes, man-made reservoirs, and coastal lagoons. Use the Power grid layer for the generating stations, the distribution companies and the transmission network.",
+    includes: [
+      "Lake Chad, Lake Oguta",
+      "Kainji, Asejire and Lagos lagoons",
+      "Goronyo, Dadin Kowa, Challawa reservoirs",
+    ],
+    legend: [
+      "Blue fill = natural lake",
+      "Teal fill = reservoir",
+      "Sky fill = coastal lagoon",
+    ],
+    tip: "Tap a lake polygon for area, depth and usage. Power stations and the grid sit in their own layer.",
+  },
+  power: {
+    title: "Power grid",
+    summary:
+      "Nigeria's generating stations, the 11 distribution companies, and the 330/132 kV transmission network.",
+    description:
+      "Generation icons show the 19 major grid-connected power stations, split by technology: hydro, combined-cycle gas, open-cycle gas turbines, and gas-fired steam. Blue distribution markers show the 11 DisCos at their head offices, with their licensed states in the popup. Teal squares are TCN transmission substations, and the grey lines are documented 330 kV and 132 kV corridors. Unlike the other layers, generation, distribution and transmission are separate feature kinds, so you can focus on any one of them.",
+    includes: [
+      "Egbin 1,320 MW — largest station in Nigeria",
+      "Kainji, Jebba, Shiroro, Zungeru, Dadin Kowa hydro",
+      "11 DisCos across all 36 states and the FCT",
+      "37 documented 330/132 kV corridors",
+    ],
+    legend: [
+      "⚡ teal = hydroelectric",
+      "⚡ amber = gas combined cycle",
+      "⚡ orange = gas turbine (open cycle)",
+      "⚡ brown = gas-fired steam",
+      "🔵 blue = distribution company (DisCo)",
+      "🟦 teal square = transmission substation",
+      "— line = 330 kV (dark) or 132 kV (light)",
+    ],
+    tip: "Generation, distribution and transmission are separate layers of detail — tap a marker to open its panel, or use focus to isolate one kind at a time.",
   },
   landforms: {
     title: "Highlands & landmarks",

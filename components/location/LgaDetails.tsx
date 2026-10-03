@@ -11,6 +11,12 @@ import type {
 import GetDirectionsButton from "@/components/directions/GetDirectionsButton";
 import ViewLgasOnMapButton from "@/components/map/ViewLgasOnMapButton";
 import { resolveLgaFocusPlan } from "@/lib/map/lgaMapFocus";
+import {
+  explorerKickerClass,
+  explorerTitleClass,
+  explorerChipClass,
+  explorerSectionLabelClass,
+} from "@/components/location/explorerPanelStyles";
 
 interface LgaDetailsProps {
   content: LgaContent;
@@ -36,14 +42,14 @@ function ChipList({
   if (items.length === 0) return null;
   return (
     <div>
-      <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+      <h3 className={`${explorerSectionLabelClass} mb-2`}>
         {label} ({items.length})
       </h3>
       <div className="flex flex-wrap gap-1.5">
         {items.map((item) => (
           <span
             key={item}
-            className="rounded-full border border-border-subtle bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-700"
+            className={explorerChipClass}
           >
             {item}
           </span>
@@ -63,7 +69,7 @@ function BulletList({
   if (items.length === 0) return null;
   return (
     <div>
-      <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+      <h3 className={`${explorerSectionLabelClass} mb-2`}>
         {label} ({items.length})
       </h3>
       <ul className="space-y-1">
@@ -120,10 +126,10 @@ export default function LgaDetails({
     <div className="space-y-5">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-text-muted">
+          <span className={explorerKickerClass}>
             {content.stateName} State · LGA
-          </p>
-          <h2 className="text-2xl font-bold text-text-primary">{content.name}</h2>
+          </span>
+          <h2 className={`${explorerTitleClass} mt-2`}>{content.name}</h2>
           {nickname && <p className="text-sm text-text-muted mt-0.5">{nickname}</p>}
         </div>
         <button

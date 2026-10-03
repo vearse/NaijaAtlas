@@ -164,11 +164,36 @@ export default function ProfileLgaSection({
                   />
                   <Cell term="LGA reference" value={selected.id} />
                 </dl>
-                <p className="mt-4 rounded-xl bg-slate-50 px-3 py-2 text-xs text-text-muted">
-                  Ward and area figures come from the INEC delimitation register and
-                  the location gazetteer. Population is not published at LGA level in
-                  the source bundle, so the state projection is not split here.
-                </p>
+                <div className="mt-4 space-y-3 text-body-sm leading-relaxed text-text-secondary">
+                  <p>
+                    {selected.name} is one of {lgas.length} local government areas in{" "}
+                    {stateName} State. It sits in the {regionName} geopolitical zone and
+                    is divided into {selected.wardCount} electoral wards for INEC
+                    delimitation — the ward roll is how polling units are grouped for
+                    elections and civic lookups.
+                  </p>
+                  {selected.areaKm2 && stateAreaKm2 ? (
+                    <p>
+                      At {formatNumber(selected.areaKm2)} km², this LGA covers about{" "}
+                      {((selected.areaKm2 / stateAreaKm2) * 100).toFixed(1)}% of the
+                      state&apos;s published land area
+                      {selected.wardCount > 0
+                        ? `, averaging ${formatNumber(
+                            Math.round(selected.areaKm2 / selected.wardCount)
+                          )} km² per ward.`
+                        : "."}
+                    </p>
+                  ) : (
+                    <p>
+                      Land area for this LGA is not published in the gazetteer bundle;
+                      ward counts still come from the INEC register.
+                    </p>
+                  )}
+                  <p className="text-xs text-text-muted">
+                    Population is not split to LGA level in the national projection, so
+                    figures here focus on territory, wards and map context.
+                  </p>
+                </div>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Link
                     href={`/places/map?states=${stateId}&lgas=1&lga=${selected.id}`}

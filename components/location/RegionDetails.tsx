@@ -3,6 +3,11 @@
 import ShowLgasButton from "@/components/map/ShowLgasButton";
 import { useMapStore } from "@/lib/store/mapStore";
 import type { RegionLocation, StateLocation, StateContent } from "@/types/location";
+import {
+  explorerKickerClass,
+  explorerTitleClass,
+  explorerListCardClass,
+} from "@/components/location/explorerPanelStyles";
 
 interface RegionDetailsProps {
   region: RegionLocation;
@@ -28,11 +33,9 @@ export default function RegionDetails({
             className="h-4 w-4 rounded-full shrink-0 ring-2 ring-white shadow"
             style={{ backgroundColor: region.color }}
           />
-          <p className="text-xs font-semibold uppercase tracking-wider text-text-muted">
-            Geopolitical region
-          </p>
+          <span className={explorerKickerClass}>Geopolitical region</span>
         </div>
-        <h2 className="text-2xl font-bold text-text-primary">{region.name}</h2>
+        <h2 className={`${explorerTitleClass} mt-2`}>{region.name}</h2>
         <p className="text-sm text-text-secondary mt-2">
           {memberStates.length} states · names and colours shown on the map.
           Click a state to explore its LGAs, or select all below.
@@ -42,13 +45,13 @@ export default function RegionDetails({
       <button
         type="button"
         onClick={() => selectStates(region.stateIds)}
-        className="w-full rounded-xl px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-opacity hover:opacity-90"
+        className="w-full rounded-2xl px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-opacity hover:opacity-90"
         style={{ backgroundColor: region.color }}
       >
         Explore all {memberStates.length} states &amp; LGAs on map
       </button>
 
-      <ul className="space-y-1.5 max-h-64 overflow-y-auto rounded-xl border border-slate-100 divide-y divide-slate-100">
+      <ul className={`space-y-0 max-h-64 overflow-y-auto ${explorerListCardClass}`}>
         {memberStates.map((s) => {
           const c = stateContent.find((x) => x.id === s.id);
           return (
@@ -56,7 +59,7 @@ export default function RegionDetails({
               <button
                 type="button"
                 onClick={() => toggleState(s.id)}
-                className="flex-1 text-left px-3 py-2.5 hover:bg-slate-50 transition-colors"
+                className="flex-1 text-left px-3 py-2.5 hover:bg-lime-50/60 transition-colors"
               >
                 <span className="font-medium text-slate-800">{s.name}</span>
                 {c?.capital && (

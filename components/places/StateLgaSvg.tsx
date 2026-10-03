@@ -10,15 +10,20 @@ export default function StateLgaSvg({
   stateId,
   stateName,
   className = "",
+  selectedId = null,
+  onSelect,
 }: {
   data: StateLgaSvgData;
   stateId: string;
   stateName: string;
   className?: string;
+  selectedId?: string | null;
+  onSelect?: (lgaId: string) => void;
 }) {
   const router = useRouter();
   const [hover, setHover] = useState<string | null>(null);
-  const hovered = data.lgas.find((l) => l.id === hover);
+  const activeId = selectedId ?? hover;
+  const hovered = data.lgas.find((l) => l.id === activeId);
 
   return (
     <figure className={`relative bg-gradient-to-br from-emerald-50 via-white to-slate-50 ${className}`}>
@@ -28,30 +33,35 @@ export default function StateLgaSvg({
         role="img"
         aria-label={`${stateName}: ${data.lgas.length} local government areas`}
       >
-        {data.lgas.map((l) => (
+        {data.lgas.map((l) => {
+          const isActive = activeId === l.id;
+          const isDim = activeId !== null && !isActive;
+          return (
           <path
             key={l.id}
             d={l.d}
-            fill={hover === l.id ? "#008751" : l.fill}
-            fillOpacity={hover && hover !== l.id ? 0.55 : 0.85}
+            fill={isActive ? "#043828" : l.fill}
+            fillOpacity={isDim ? 0.45 : 0.88}
             stroke="#ffffff"
             strokeWidth={1.2}
             strokeLinejoin="round"
             className="cursor-pointer transition-[fill,fill-opacity] duration-150"
             onMouseEnter={() => setHover(l.id)}
             onMouseLeave={() => setHover(null)}
-            onClick={() =>
-              router.push(`/places/map?states=${stateId}&lgas=1&lga=${l.id}`)
-            }
+            onClick={() => {
+              if (onSelect) onSelect(l.id);
+              else router.push(`/places/map?states=${stateId}&lgas=1&lga=${l.id}`);
+            }}
           >
             <title>{l.name}</title>
           </path>
-        ))}
+          );
+        })}
       </svg>
       <figcaption className="absolute left-3 bottom-3 rounded-lg bg-white/90 border border-border-subtle px-3 py-1.5 text-body-sm shadow-sm">
         <span className="font-bold text-text-primary">{hovered?.name ?? stateName}</span>
         <span className="text-text-muted">
-          {hovered ? " · open on map" : ` · ${data.lgas.length} LGAs`}
+          {hovered && onSelect ? " · selected" : hovered ? " · open on map" : ` · ${data.lgas.length} LGAs`}
         </span>
       </figcaption>
     </figure>

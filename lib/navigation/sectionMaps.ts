@@ -283,14 +283,14 @@ export function sectionMapHref(
       );
       break;
     case "economy/power":
-      params.set("layers", "lakes");
+      params.set("layers", "power");
       params.set(
         "focus",
         encodeFocusParam({
-          layerId: "lakes",
+          layerId: "power",
           matchKey: "featureKind",
-          matchValue: "power-station",
-          label: "Hydropower",
+          matchValue: "power-plant",
+          label: "Power stations",
         })
       );
       break;

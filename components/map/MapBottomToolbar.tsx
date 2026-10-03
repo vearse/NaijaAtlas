@@ -11,6 +11,7 @@ import {
 const LAYER_ACTIVE: Record<OverlayLayerId, string> = {
   waterways: "bg-sky-100 text-sky-900 ring-1 ring-sky-300/80",
   lakes: "bg-cyan-100 text-cyan-900 ring-1 ring-cyan-300/80",
+  power: "bg-amber-100 text-amber-900 ring-1 ring-amber-300/80",
   landforms: "bg-amber-100 text-amber-900 ring-1 ring-amber-300/80",
   ecology: "bg-lime-100 text-lime-950 ring-1 ring-lime-300/80",
   cities: "bg-slate-200 text-text-primary ring-1 ring-slate-300/80",
@@ -47,6 +48,19 @@ function LayerIcon({ id }: { id: OverlayLayerId }) {
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"
+          />
+        </svg>
+      );
+    case "power":
+      return (
+        <svg viewBox="0 0 20 20" fill="none" className={cls} aria-hidden>
+          <path
+            d="M11.5 2L5 11h4l-1.5 7L15 9h-4l.5-7z"
+            fill="currentColor"
+            opacity="0.35"
+            stroke="currentColor"
+            strokeWidth="1.25"
+            strokeLinejoin="round"
           />
         </svg>
       );

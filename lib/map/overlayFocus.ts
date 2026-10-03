@@ -58,6 +58,16 @@ export function focusFromFeature(
     case "lakes": {
       const featureKind = str(properties.featureKind);
       if (featureKind) return pick("featureKind", featureKind, featureKind);
+      const lakeCategory = str(properties.lakeCategory);
+      return lakeCategory
+        ? pick("lakeCategory", lakeCategory, lakeCategory)
+        : null;
+    }
+    case "power": {
+      // `featureKind` keeps generation, distribution and transmission
+      // independently focusable, so the three are never mixed on the map.
+      const featureKind = str(properties.featureKind);
+      if (featureKind) return pick("featureKind", featureKind, featureKind);
       const plantCategory = str(properties.plantCategory);
       return plantCategory
         ? pick("plantCategory", plantCategory, plantCategory)

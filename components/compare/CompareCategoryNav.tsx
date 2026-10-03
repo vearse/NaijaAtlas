@@ -1,6 +1,7 @@
 "use client";
 
 import type { CompareCategoryDef, ComparePeriodDef } from "@/types/compare";
+import { explorerLensTabClass } from "@/components/location/explorerPanelStyles";
 
 interface CompareCategoryNavProps {
   categories: CompareCategoryDef[];
@@ -36,11 +37,7 @@ export default function CompareCategoryNav({
               role="tab"
               aria-selected={isActive}
               onClick={() => onCategoryChange(cat.id)}
-              className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-semibold transition-all duration-200 min-h-[32px] ${
-                isActive
-                  ? "bg-ng-green text-white shadow-sm"
-                  : "bg-slate-100 text-text-secondary hover:bg-slate-200"
-              }`}
+              className={`shrink-0 whitespace-nowrap min-h-[32px] transition-all duration-200 ${explorerLensTabClass(isActive)}`}
             >
               {cat.label}
             </button>
@@ -52,7 +49,7 @@ export default function CompareCategoryNav({
         <div className="flex items-center gap-2">
           <label
             htmlFor="compare-period"
-            className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 shrink-0"
+            className="text-label-caps font-bold uppercase tracking-wider text-text-muted shrink-0"
           >
             Period
           </label>

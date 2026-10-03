@@ -12,7 +12,7 @@ import { OPT_IN_GROUPS } from "@/types/overlay";
 import { OVERLAY_LAYER_IDS } from "@/types/overlay";
 import { registerCityIcons, registerTourIcon } from "./cityIcons";
 import { registerCoastIcons } from "./coastIcons";
-import { registerLakeIcons } from "./lakeIcons";
+import { registerPowerIcons } from "./powerIcons";
 import {
   landformKindFromImageId,
   registerLandformIcon,
@@ -137,7 +137,7 @@ export function addOverlayLayers(map: Map): void {
   removeStaleWaterwayLayers(map);
   registerCityIcons(map);
   registerTourIcon(map);
-  registerLakeIcons(map);
+  registerPowerIcons(map);
   registerLandformIcons(map);
   registerWaterwayLayerIcons(map);
   registerResourceIcons(map);
@@ -156,7 +156,7 @@ export function setOverlayVisibility(
     registerCityIcons(map);
     registerTourIcon(map);
   }
-  if (layerId === "lakes") registerLakeIcons(map);
+  if (layerId === "power") registerPowerIcons(map);
   if (layerId === "waterways") registerWaterwayLayerIcons(map);
   if (layerId === "resources") registerResourceIcons(map);
   if (layerId === "landforms" || layerId === "ecology") {
@@ -192,7 +192,7 @@ export function prepareOverlayAssets(
     registerCityIcons(map);
     registerTourIcon(map);
   }
-  if (active.has("lakes")) registerLakeIcons(map);
+  if (active.has("power")) registerPowerIcons(map);
   if (active.has("waterways")) registerWaterwayLayerIcons(map);
   if (active.has("resources")) registerResourceIcons(map);
   if (active.has("landforms") || active.has("ecology")) {

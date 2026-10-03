@@ -93,12 +93,10 @@ export default function PollingUnitResultPanel({
   });
 
   const headline = `${titleCase(hit.wardName)} · ${titleCase(hit.lgaName)} LGA · ${hit.stateName} State`;
-  const subline = [
-    district ? `${district.name} Senatorial District` : null,
-    primaryConstituency ? `${primaryConstituency.name} Federal Constituency` : null,
-  ]
-    .filter(Boolean)
-    .join(" · ");
+  const directionsQuery = encodeURIComponent(
+    `${titleCase(hit.wardName)}, ${titleCase(hit.lgaName)}, ${hit.stateName}, Nigeria`
+  );
+  const directionsHref = `https://www.google.com/maps/search/?api=1&query=${directionsQuery}`;
 
   return (
     <div className="col-span-12 space-y-6 rounded-2xl border border-border-subtle bg-surface-card p-6 shadow-sm md:p-8">
@@ -115,9 +113,10 @@ export default function PollingUnitResultPanel({
           <h2 className="mt-2 text-headline-md font-bold text-text-primary">
             {headline}
           </h2>
-          {subline && (
-            <p className="mt-1 text-body-md text-text-secondary">{subline}</p>
-          )}
+          <p className="mt-1 text-body-md text-text-secondary">
+            {hit.wardPollingUnits.toLocaleString()} polling units in this ward ·{" "}
+            {hit.lgaWardCount} wards in {titleCase(hit.lgaName)} LGA
+          </p>
         </div>
         <div className="flex shrink-0 items-center gap-2">
           <button
@@ -132,6 +131,59 @@ export default function PollingUnitResultPanel({
             Share
           </button>
         </div>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-3">
+        <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-4">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-800">
+            Senatorial district
+          </p>
+          <p className="mt-1 text-sm font-bold text-text-primary">
+            {district?.name ?? "Not mapped"}
+          </p>
+          {district && (
+            <p className="mt-1 text-[11px] text-text-muted">
+              {district.lgaNames.length} LGAs in district
+            </p>
+          )}
+        </div>
+        <div className="rounded-xl border border-sky-200 bg-sky-50/60 p-4">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-sky-800">
+            Federal constituency
+          </p>
+          <p className="mt-1 text-sm font-bold text-text-primary">
+            {primaryConstituency?.name ?? "Not mapped"}
+          </p>
+          <p className="mt-1 text-[11px] text-text-muted">House of Reps seat</p>
+        </div>
+        <div className="rounded-xl border border-border-subtle bg-slate-50 p-4">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-text-muted">
+            Registration ward
+          </p>
+          <p className="mt-1 text-sm font-bold text-text-primary">
+            {titleCase(hit.wardName)}
+          </p>
+          <p className="mt-1 text-[11px] text-text-muted">
+            Ward ID {hit.wardId}
+          </p>
+        </div>
+      </div>
+
+      <div className="flex flex-wrap gap-3">
+        <Link
+          href={mapBase}
+          className="inline-flex h-11 items-center rounded-xl bg-primary-container px-5 text-label-md font-semibold text-white hover:bg-[#006d40]"
+        >
+          Visit on election map
+        </Link>
+        <a
+          href={directionsHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex h-11 items-center rounded-xl border border-primary-container px-5 text-label-md font-semibold text-primary hover:bg-emerald-50"
+        >
+          Get directions
+        </a>
       </div>
 
       <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">

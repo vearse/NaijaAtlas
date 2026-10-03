@@ -4,6 +4,11 @@ import { useEffect } from "react";
 import type { CompareBundle } from "@/types/compare";
 import type { LgaLocation, StateContent, StateLocation } from "@/types/location";
 import StateCompareView from "@/components/compare/StateCompareView";
+import {
+  explorerKickerClass,
+  explorerPanelHeaderClass,
+  explorerTitleClass,
+} from "@/components/location/explorerPanelStyles";
 
 interface CompareModalProps {
   open: boolean;
@@ -22,19 +27,19 @@ function CompareModalHeader({
   onClose: () => void;
 }) {
   return (
-    <div className="shrink-0 flex items-center justify-between gap-3 px-4 lg:px-6 py-3 lg:py-4 border-b border-slate-100 bg-gradient-to-r from-white to-slate-50/80">
+    <div className={`shrink-0 flex items-center justify-between gap-3 ${explorerPanelHeaderClass}`}>
       <div className="min-w-0">
-        <p className="text-xs font-semibold uppercase tracking-wider text-ng-green">
+        <span className={explorerKickerClass}>
           Compare {states.length} states
-        </p>
-        <p className="text-sm lg:text-lg font-bold text-text-primary truncate">
+        </span>
+        <p className={`${explorerTitleClass} text-sm lg:text-lg mt-2 truncate`}>
           {states.map((s) => s.name).join(" · ")}
         </p>
       </div>
       <button
         type="button"
         onClick={onClose}
-        className="shrink-0 h-9 w-9 lg:h-10 lg:w-10 flex items-center justify-center rounded-full bg-slate-100 text-text-secondary hover:bg-slate-200 transition-colors text-xl leading-none"
+        className="shrink-0 h-9 w-9 lg:h-10 lg:w-10 flex items-center justify-center rounded-full border border-border-subtle bg-lime-50 text-text-secondary hover:bg-lime-100 transition-colors text-xl leading-none"
         aria-label="Close"
       >
         ×
