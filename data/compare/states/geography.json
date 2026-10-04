@@ -172,7 +172,7 @@
   },
   "NG-KN": {
     "hasCoastline": "No",
-    "hasIntlBorder": "Yes",
+    "hasIntlBorder": "No",
     "borderingStates": "Bauchi · Jigawa · Kaduna · Katsina",
     "distanceToAbujaKm": 355,
     "largestLga": "Tudun Wada",
@@ -217,7 +217,7 @@
   },
   "NG-LA": {
     "hasCoastline": "Yes",
-    "hasIntlBorder": "No",
+    "hasIntlBorder": "Yes",
     "borderingStates": "Ogun",
     "distanceToAbujaKm": 488,
     "largestLga": "Epe",
@@ -316,7 +316,7 @@
   },
   "NG-YO": {
     "hasCoastline": "No",
-    "hasIntlBorder": "No",
+    "hasIntlBorder": "Yes",
     "borderingStates": "Bauchi · Borno · Gombe · Jigawa",
     "distanceToAbujaKm": 559,
     "largestLga": "Fune",
