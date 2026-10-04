@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import LandingPageClient from "@/components/landing/LandingPageClient";
 import { loadLandingPageData } from "@/lib/server/loadLandingPageData";
+import { loadLandingDailyTeaser } from "@/lib/server/loadLandingDailyTeaser";
 import { siteConfig } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
@@ -21,5 +22,6 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const data = loadLandingPageData();
-  return <LandingPageClient {...data} />;
+  const dailyTeaser = loadLandingDailyTeaser();
+  return <LandingPageClient {...data} dailyTeaser={dailyTeaser} />;
 }

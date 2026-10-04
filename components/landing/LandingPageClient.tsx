@@ -15,8 +15,11 @@ import LandingFooter from "@/components/landing/LandingFooter";
 import LandingSearch from "@/components/landing/LandingSearch";
 import { useLandingSpotlight } from "@/components/landing/useLandingSpotlight";
 import type { LandingPageData } from "@/lib/landing/landingPageTypes";
+import type { LandingDailyTeaser } from "@/lib/server/loadLandingDailyTeaser";
 
-export default function LandingPageClient(props: LandingPageData) {
+export default function LandingPageClient(
+  props: LandingPageData & { dailyTeaser: LandingDailyTeaser | null }
+) {
   const { open, close, toggle } = useLandingSpotlight();
 
   return (
@@ -47,7 +50,7 @@ export default function LandingPageClient(props: LandingPageData) {
           onSpotlightClose={close}
           states={Object.values(props.statesByRegion).flat()}
         />
-        <LiveNowStrip />
+        <LiveNowStrip dailyTeaser={props.dailyTeaser} />
         <SectionDoorsGrid
           totalPollingUnits={props.totalPollingUnits}
           culturalGroupCount={props.ethnicGroupCount}
