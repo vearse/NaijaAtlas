@@ -5,8 +5,8 @@
     "militaryBranch": "army",
     "militaryCategory": "army-division",
     "type": "Nigerian Army division / brigade-level formation",
-    "summary": "Headquarters in Kaduna; northwest core states (Kaduna, Kano, Jigawa, Katsina).",
-    "description": "The 1 Division is one of the Nigerian Army's oldest fighting formations. Based in Kaduna, its AOR covers Kaduna, Kano, Jigawa and Katsina. Sokoto, Kebbi and Zamfara align with 8 Division; Niger State with 9 Division under the 2026 expansion.",
+    "summary": "Headquarters in Kaduna; northwest core states (Kaduna, Kano, Jigawa, Katsina) plus Niger.",
+    "description": "The 1 Division is one of the Nigerian Army's oldest fighting formations. Based in Kaduna, its AOR covers Kaduna, Kano, Jigawa, Katsina and Niger. Sokoto, Kebbi and Zamfara align with 8 Division; Niger State is planned to move to 9 Division under the 2026 expansion.",
     "lon": 7.495,
     "lat": 10.56,
     "stateName": "Kaduna",
@@ -17,13 +17,15 @@
       "Kaduna",
       "Kano",
       "Jigawa",
-      "Katsina"
+      "Katsina",
+      "Niger"
     ],
     "coversStates": [
       "Kaduna",
       "Kano",
       "Jigawa",
-      "Katsina"
+      "Katsina",
+      "Niger"
     ],
     "economy": "Defence garrison, barracks infrastructure, and military logistics hub.",
     "climate": "Guinea savanna with distinct harmattan season.",
@@ -47,7 +49,7 @@
     "militaryCategory": "army-division",
     "type": "Nigerian Army division / brigade-level formation",
     "summary": "Headquarters at Ibadan; responsible for the southwest states outside the Lagos metropolitan command.",
-    "description": "The 2 Division is the Nigerian Army's southwest-facing formation. Its area of responsibility spans Oyo, Osun, Ekiti and Ondo. Lagos and Ogun are under 81 Division; Kwara under 9 Division (2026 expansion).",
+    "description": "The 2 Division is the Nigerian Army's southwest-facing formation. Its area of responsibility spans Oyo, Osun, Ekiti, Ondo and Kwara. Lagos and Ogun are under 81 Division; Kwara is planned to move to 9 Division under the 2026 expansion.",
     "lon": 3.9,
     "lat": 7.4,
     "stateName": "Oyo",
@@ -58,13 +60,15 @@
       "Oyo",
       "Osun",
       "Ekiti",
-      "Ondo"
+      "Ondo",
+      "Kwara"
     ],
     "coversStates": [
       "Oyo",
       "Osun",
       "Ekiti",
-      "Ondo"
+      "Ondo",
+      "Kwara"
     ],
     "economy": "Defence garrison and cantonment services for the southwest region.",
     "climate": "Tropical wet-and-dry; rainforest–savanna transition.",
@@ -75,7 +79,7 @@
     ],
     "highlights": [
       "Ibadan-based Division",
-      "Four states (excl. Lagos/Ogun/Kwara)",
+      "Five states (excl. Lagos/Ogun)",
       "Benin border flank"
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Nigerian_Army",
@@ -87,8 +91,8 @@
     "militaryBranch": "army",
     "militaryCategory": "army-division",
     "type": "Nigerian Army division / brigade-level formation",
-    "summary": "Headquarters near Jos; covers Plateau, Bauchi and Gombe after the 2026 divisional expansion.",
-    "description": "3 Division operates from the Jos Plateau. Following the July 2026 expansion to twelve divisions, Benue, Nasarawa and Kogi moved to 5 Division, Kwara and Niger to 9 Division, and Taraba and Adamawa to 10 Division. 3 Division now focuses on Plateau, Bauchi and Gombe.",
+    "summary": "Headquarters near Jos; covers the North-Central and eastern Northeast states (Plateau, Bauchi, Gombe, Benue, Nasarawa, Kogi, Taraba, Adamawa).",
+    "description": "3 Division operates from the Jos Plateau across the Middle Belt and eastern Northeast: Plateau, Bauchi, Gombe, Benue, Nasarawa, Kogi, Taraba and Adamawa. Under the July 2026 expansion to twelve divisions, Benue, Nasarawa and Kogi are planned to move to 5 Division and Taraba and Adamawa to 10 Division.",
     "lon": 8.945,
     "lat": 9.99,
     "stateName": "Plateau",
@@ -98,12 +102,22 @@
     "statesCrossed": [
       "Plateau",
       "Bauchi",
-      "Gombe"
+      "Gombe",
+      "Benue",
+      "Nasarawa",
+      "Kogi",
+      "Taraba",
+      "Adamawa"
     ],
     "coversStates": [
       "Plateau",
       "Bauchi",
-      "Gombe"
+      "Gombe",
+      "Benue",
+      "Nasarawa",
+      "Kogi",
+      "Taraba",
+      "Adamawa"
     ],
     "economy": "Defence cantonments, peace-support logistics, and Middle Belt garrison network.",
     "climate": "Highland climate on the Jos Plateau; warmer southern sectors.",
@@ -215,14 +229,12 @@
     "statesCrossed": [
       "Sokoto",
       "Kebbi",
-      "Zamfara",
-      "Niger"
+      "Zamfara"
     ],
     "coversStates": [
       "Sokoto",
       "Kebbi",
-      "Zamfara",
-      "Niger"
+      "Zamfara"
     ],
     "economy": "Border security, anti-banditry deployments, caliphate-region garrison.",
     "climate": "Sahel; short rains and intense harmattan.",
