@@ -25,11 +25,11 @@ export const OVERLAY_LAYER_LABELS: Record<
   { label: string; short: string; category: string }
 > = {
   waterways: {
-    label: "Waterways & Coast",
+    label: "Waterways",
     short: "Water",
     category: "Waterway",
   },
-  lakes: { label: "Lakes", short: "Lakes", category: "Lake" },
+  lakes: { label: "Lakes & Ports", short: "Lakes", category: "Lake" },
   power: {
     label: "Power grid",
     short: "Power",
@@ -237,8 +237,8 @@ export const COAST_CATEGORY_LABELS: Record<
 };
 
 /**
- * Coast categories that are opt-in: they are built into the Waterways source
- * but kept off the map until the user reveals them from the layer guide.
+ * Coast categories that are opt-in: they are built into the Lakes source but
+ * kept off the map until the user reveals them from the layer guide.
  */
 /** Opt-in group id for the proposed / upcoming deep sea ports. */
 export const PROPOSED_PORT_OPT_IN_GROUP = "proposed-ports";
@@ -246,7 +246,7 @@ export const PROPOSED_PORT_OPT_IN_GROUP = "proposed-ports";
 /** Opt-in group id for the approved-but-forming new Army divisional HQs. */
 export const PROPOSED_ARMY_DIVISION_OPT_IN_GROUP = "proposed-army-divisions";
 
-/** Every opt-in group that ships hidden in the Waterways source. */
+/** Every opt-in group that ships hidden in an overlay source. */
 export const OPT_IN_GROUPS = [
   PROPOSED_PORT_OPT_IN_GROUP,
   PROPOSED_ARMY_DIVISION_OPT_IN_GROUP,
@@ -414,58 +414,54 @@ export const LANDFORM_MAP_LEGEND = [
 
 export const OVERLAY_LAYER_GUIDES: Record<OverlayLayerId, OverlayLayerGuide> = {
   waterways: {
-    title: "Waterways & Coast",
+    title: "Waterways",
     summary:
-      "Major rivers, tributaries, Niger Delta creeks, the Atlantic coastline and ports, and Armed Forces formations.",
+      "Major rivers, tributaries and the Niger Delta creeks that move cargo across Nigeria.",
     description:
-      "Blue lines show permanent waterways. Thicker dark blue lines are major rivers (Niger, Benue); lighter lines are tributaries and delta creeks. Light blue fills the Gulf of Guinea offshore, with a thick dark national coastline and coloured zone traces for the Lagos barrier coast, Niger Delta, and the eastern Cross River shore. Military markers show Army divisions (olive shields), Navy commands (slate ships), and Air Force bases (sky roundels/deltas). Dashed purple markers are planned or approved-but-not-yet-established formations and sites, kept off the map until you reveal them below. Tap any line or marker for details.",
+      "Blue lines show permanent waterways. Thicker dark blue lines are major rivers (Niger, Benue); lighter lines are tributaries and delta creeks. Tap any line for its length, tributaries, ecology and trade role. Formations and sites stay off this layer — Army divisions live in Security formations, and ports live in Lakes & ports.",
     includes: [
       "Niger & Benue main stems",
       "Kaduna, Cross, Osun, Imo rivers",
       "Delta creeks (Nun, Forcados, Bonny)",
-      "853 km national coastline & three coast zones",
-      "Apapa, Lekki, Port Harcourt, Calabar, Warri, Onne",
-      "Forcados, Bonny, Escravos terminals",
-      "Lagos Lagoon, Niger Delta & Cross River estuaries",
-      "8 Army divisions + Army HQ & Guards Brigade, 3 Navy commands, 5 Air Force formations",
     ],
     legend: [
-      "Light blue fill = ocean",
       "Thick dark blue = major river",
       "Medium blue = tributary",
       "Light cyan = delta creek",
-      "Thick dark slate = national coast",
-      "Teal / green / purple = coast zones",
-      "🪖 olive shield = Army division",
-      "🚢 slate ship = Navy command",
-      "🎯 sky roundel = Air Force HQ",
-      "✈️ indigo delta = Air Force base",
-      "⚓ navy = seaport",
-      "💧 amber = oil terminal",
-      "~ cyan = estuary",
-      "🍃 green = coastal environment",
-      "🏛 brown = historic coast",
-      "🪖 dashed purple = new Army division (forming)",
-      "⚓ dashed purple = proposed port (hidden by default)",
     ],
-    tip: "Zoom in to read river and coastline names, then tap any line or icon for trade, ecology, and environment notes. Use the reveal sections below to plot proposed ports and the new Army divisions.",
+    tip: "Zoom in to read river names, then tap any line for trade, ecology and environment notes.",
   },
   lakes: {
-    title: "Lakes & reservoirs",
-    summary: "Natural lakes, coastal lagoons, and the reservoirs behind Nigeria's dams.",
+    title: "Lakes & ports",
+    summary:
+      "Natural lakes, reservoirs, coastal lagoons, the Atlantic coastline and Nigeria's ports.",
     description:
-      "Shaded polygons show open water — natural lakes, man-made reservoirs, and coastal lagoons. Use the Power grid layer for the generating stations, the distribution companies and the transmission network.",
+      "Shaded polygons show open water — natural lakes, man-made reservoirs, and coastal lagoons. Light blue fills the Gulf of Guinea offshore, with a thick dark national coastline and coloured zone traces for the Lagos barrier coast, Niger Delta, and the eastern Cross River shore. Anchors are the operating seaports, dashed purple markers are proposed deep sea ports that stay hidden until you reveal them below, amber markers are oil terminals, and cyan and green markers mark estuaries and coastal environments. Use the Power grid layer for the generating stations, the distribution companies and the transmission network.",
     includes: [
       "Lake Chad, Lake Oguta",
       "Kainji, Asejire and Lagos lagoons",
       "Goronyo, Dadin Kowa, Challawa reservoirs",
+      "853 km national coastline & three coast zones",
+      "Apapa, Lekki, Port Harcourt, Calabar, Warri, Onne",
+      "Forcados, Bonny, Escravos terminals",
+      "Lagos Lagoon, Niger Delta & Cross River estuaries",
+      "8 proposed deep sea ports (hidden by default)",
     ],
     legend: [
+      "Light blue fill = ocean",
       "Blue fill = natural lake",
       "Teal fill = reservoir",
       "Sky fill = coastal lagoon",
+      "Thick dark slate = national coast",
+      "Teal / green / purple = coast zones",
+      "⚓ navy = seaport",
+      "⚓ dashed purple = proposed port (hidden by default)",
+      "💧 amber = oil terminal",
+      "~ cyan = estuary",
+      "🍃 green = coastal environment",
+      "🏛 brown = historic coast",
     ],
-    tip: "Tap a lake polygon for area, depth and usage. Power stations and the grid sit in their own layer.",
+    tip: "Tap a lake polygon or a port marker for area, depth, cargo and status notes. Use the reveal section below to plot the proposed deep sea ports.",
   },
   power: {
     title: "Power grid",

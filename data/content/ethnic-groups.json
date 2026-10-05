@@ -2,9 +2,388 @@
   "schemaVersion": 1,
   "source": "data/content/metro.json",
   "groupType": "cultural-group",
-  "generatedAt": "2026-10-03",
-  "count": 89,
+  "generatedAt": "2026-10-05",
+  "count": 96,
   "groups": [
+    {
+      "id": "group-ife-ijesa-cluster",
+      "name": "Ife-Ijesa Cluster",
+      "groupType": "cultural-group",
+      "isOfficial": false,
+      "partitionsState": null,
+      "stateIds": [
+        "NG-OS"
+      ],
+      "memberIds": [
+        "NG-OS-IFE-CENTRAL",
+        "NG-OS-IFE-EAST",
+        "NG-OS-IFE-NORTH",
+        "NG-OS-IFE-SOUTH",
+        "NG-OS-ILESA-EAST",
+        "NG-OS-ILESA-WEST",
+        "NG-OS-ATAKUNMOSA-EAST",
+        "NG-OS-ATAKUNMOSA-WEST",
+        "NG-OS-OBOKUN",
+        "NG-OS-ORIADE"
+      ],
+      "effectiveFrom": null,
+      "effectiveTo": null,
+      "description": "The historic Ife and Ijesa LGAs of eastern Osun State - Ife regarded in Yoruba tradition as the cradle of the Yoruba people, and Ilesa as the historic Ijesa kingdom capital.",
+      "ethnicMakeup": [
+        {
+          "name": "Ife",
+          "role": "dominant",
+          "memberIds": [
+            "NG-OS-IFE-CENTRAL",
+            "NG-OS-IFE-EAST",
+            "NG-OS-IFE-NORTH",
+            "NG-OS-IFE-SOUTH"
+          ]
+        },
+        {
+          "name": "Ijesa",
+          "role": "dominant",
+          "memberIds": [
+            "NG-OS-ILESA-EAST",
+            "NG-OS-ILESA-WEST",
+            "NG-OS-ATAKUNMOSA-EAST",
+            "NG-OS-ATAKUNMOSA-WEST",
+            "NG-OS-OBOKUN",
+            "NG-OS-ORIADE"
+          ],
+          "note": "Distinct Yoruba sub-group with its own king, the Owa Obokun"
+        }
+      ],
+      "wikiNotes": [
+        {
+          "title": "Cradle of the Yoruba",
+          "note": "Ile-Ife is widely regarded in Yoruba oral tradition as the origin point of the Yoruba people and the seat of the Ooni of Ife.",
+          "category": "history",
+          "url": "https://en.wikipedia.org/wiki/Ile-Ife"
+        },
+        {
+          "title": "Ijesa kingdom",
+          "note": "Ilesa was the historic capital of the Ijesa sub-group, ruled by the Owa Obokun, and a centre of the southwest gold-mining belt.",
+          "category": "history",
+          "url": "https://en.wikipedia.org/wiki/Ilesa"
+        }
+      ]
+    },
+    {
+      "id": "group-owo-ose-cluster",
+      "name": "Owo-Ose Cluster",
+      "groupType": "cultural-group",
+      "isOfficial": false,
+      "partitionsState": null,
+      "stateIds": [
+        "NG-ON"
+      ],
+      "memberIds": [
+        "NG-ON-OWO",
+        "NG-ON-OSE"
+      ],
+      "effectiveFrom": null,
+      "effectiveTo": null,
+      "description": "The historic Owo Kingdom axis of Ondo State, known for its distinctive Yoruba-Benin hybrid art and bronze-casting tradition.",
+      "ethnicMakeup": [
+        {
+          "name": "Owo (Yoruba with Benin/Edo heritage)",
+          "role": "dominant",
+          "memberIds": [
+            "NG-ON-OWO"
+          ]
+        },
+        {
+          "name": "Ose (Ifon and neighbouring communities)",
+          "role": "dominant",
+          "memberIds": [
+            "NG-ON-OSE"
+          ],
+          "note": "Yoruba-Edo borderland communities; verify sub-group labels locally"
+        }
+      ],
+      "wikiNotes": [
+        {
+          "title": "Owo Kingdom art tradition",
+          "note": "The old Owo Kingdom produced a distinctive bronze and ivory-carving tradition blending Yoruba (Ife) and Benin artistic influences.",
+          "category": "culture",
+          "url": "https://en.wikipedia.org/wiki/Owo,_Nigeria"
+        }
+      ]
+    },
+    {
+      "id": "group-ijebuland",
+      "name": "Ijebuland",
+      "groupType": "cultural-group",
+      "isOfficial": false,
+      "partitionsState": null,
+      "stateIds": [
+        "NG-OG"
+      ],
+      "memberIds": [
+        "NG-OG-IJEBU-ODE",
+        "NG-OG-IJEBU-EAST",
+        "NG-OG-IJEBU-NORTH",
+        "NG-OG-IJEBU-NORTH-EAST",
+        "NG-OG-OGUN-WATERSIDE",
+        "NG-OG-ODOGBOLU",
+        "NG-OG-IKENNE",
+        "NG-OG-REMO-NORTH",
+        "NG-OG-SHAGAMU"
+      ],
+      "effectiveFrom": null,
+      "effectiveTo": null,
+      "description": "The historic Ijebu and Remo LGAs of Ogun State, once the independent Ijebu Kingdom known for its trading networks and the Sungbo's Eredo earthworks.",
+      "ethnicMakeup": [
+        {
+          "name": "Ijebu",
+          "role": "dominant",
+          "memberIds": [
+            "NG-OG-IJEBU-ODE",
+            "NG-OG-IJEBU-EAST",
+            "NG-OG-IJEBU-NORTH",
+            "NG-OG-IJEBU-NORTH-EAST",
+            "NG-OG-ODOGBOLU",
+            "NG-OG-OGUN-WATERSIDE"
+          ],
+          "note": "Kingdom of the Awujale"
+        },
+        {
+          "name": "Remo (Ijebu-Remo)",
+          "role": "dominant",
+          "memberIds": [
+            "NG-OG-IKENNE",
+            "NG-OG-REMO-NORTH",
+            "NG-OG-SHAGAMU"
+          ],
+          "note": "Related to Ijebu but with its own towns and identity"
+        }
+      ],
+      "wikiNotes": [
+        {
+          "title": "Ijebu Kingdom trade power",
+          "note": "The pre-colonial Ijebu Kingdom, centred on Ijebu-Ode, controlled key coastal-to-interior trade routes and resisted British incursion until 1892.",
+          "category": "history",
+          "url": "https://en.wikipedia.org/wiki/Ijebu_Kingdom"
+        },
+        {
+          "title": "Sungbo's Eredo",
+          "note": "The kingdom's boundary is traced by Sungbo's Eredo, a vast earthwork wall-and-ditch system among Africa's largest ancient monuments.",
+          "category": "history",
+          "url": "https://en.wikipedia.org/wiki/Sungbo%27s_Eredo"
+        }
+      ]
+    },
+    {
+      "id": "group-yewaland-egbado",
+      "name": "Yewaland (Egbado)",
+      "groupType": "cultural-group",
+      "isOfficial": false,
+      "partitionsState": null,
+      "stateIds": [
+        "NG-OG"
+      ],
+      "memberIds": [
+        "NG-OG-EGBADO-NORTH",
+        "NG-OG-EGBADO-SOUTH",
+        "NG-OG-IMEKO-AFON",
+        "NG-OG-IPOKIA"
+      ],
+      "effectiveFrom": null,
+      "effectiveTo": null,
+      "description": "The Yewa (historically Egbado) axis of western Ogun State bordering Benin Republic, home to the Yewa/Egbado Yoruba sub-group.",
+      "ethnicMakeup": [
+        {
+          "name": "Yewa / Egbado (Yoruba)",
+          "role": "dominant"
+        },
+        {
+          "name": "Egun (Gun)",
+          "role": "minority",
+          "note": "Border communities toward Benin Republic; verify LGA spread"
+        }
+      ],
+      "wikiNotes": [
+        {
+          "title": "Egbado-to-Yewa renaming",
+          "note": "The old 'Egbado' designation has increasingly been replaced locally by 'Yewa,' named for the Yewa River that runs through the area.",
+          "category": "history",
+          "url": "https://en.wikipedia.org/wiki/Yewa_people"
+        },
+        {
+          "title": "Cross-border ties",
+          "note": "The zone's proximity to Benin Republic has shaped centuries of cross-border Yoruba-Egun trade and cultural exchange.",
+          "category": "geography",
+          "url": "https://en.wikipedia.org/wiki/Egbado_North"
+        }
+      ]
+    },
+    {
+      "id": "group-egbaland",
+      "name": "Egbaland (Abeokuta Metro)",
+      "groupType": "cultural-group",
+      "isOfficial": false,
+      "partitionsState": null,
+      "stateIds": [
+        "NG-OG"
+      ],
+      "memberIds": [
+        "NG-OG-ABEOKUTA-NORTH",
+        "NG-OG-ABEOKUTA-SOUTH",
+        "NG-OG-ODEDA",
+        "NG-OG-OBAFEMI-OWODE",
+        "NG-OG-EWEKORO"
+      ],
+      "effectiveFrom": null,
+      "effectiveTo": null,
+      "description": "Ogun State's capital cluster, historic seat of the Egba people who settled under the Olumo Rock in the 1830s.",
+      "ethnicMakeup": [
+        {
+          "name": "Egba (Yoruba)",
+          "role": "dominant",
+          "note": "Ruled by the Alake of Egbaland; sub-divisions include Egba Alake, Oke-Ona and Gbagura"
+        },
+        {
+          "name": "Igbo",
+          "role": "minority"
+        },
+        {
+          "name": "Hausa",
+          "role": "minority"
+        }
+      ],
+      "wikiNotes": [
+        {
+          "title": "Founding at Olumo Rock",
+          "note": "The Egba people settled at Abeokuta in 1830 under Olumo Rock, using its caves as a defensive refuge during the Yoruba civil wars.",
+          "category": "history",
+          "url": "https://en.wikipedia.org/wiki/Olumo_Rock"
+        },
+        {
+          "title": "State capital",
+          "note": "Abeokuta became Ogun State's capital when the state was created in 1976.",
+          "category": "history",
+          "url": "https://en.wikipedia.org/wiki/Abeokuta"
+        }
+      ]
+    },
+    {
+      "id": "group-lokoja-confluence",
+      "name": "Lokoja / Confluence Cluster",
+      "groupType": "cultural-group",
+      "isOfficial": false,
+      "partitionsState": null,
+      "stateIds": [
+        "NG-KO"
+      ],
+      "memberIds": [
+        "NG-KO-LOKOJA",
+        "NG-KO-KOGI"
+      ],
+      "effectiveFrom": null,
+      "effectiveTo": null,
+      "description": "Kogi State's capital area at the confluence of the Niger and Benue rivers, and the first capital of the Protectorate of Northern Nigeria.",
+      "ethnicMakeup": [
+        {
+          "name": "Oworo (Okun-Yoruba)",
+          "role": "major",
+          "memberIds": [
+            "NG-KO-LOKOJA"
+          ]
+        },
+        {
+          "name": "Ebira",
+          "role": "major"
+        },
+        {
+          "name": "Bassa (Komo/Nge)",
+          "role": "major"
+        },
+        {
+          "name": "Igala",
+          "role": "major"
+        },
+        {
+          "name": "Nupe (Kakanda)",
+          "role": "minority",
+          "note": "Riverine communities along the confluence"
+        },
+        {
+          "name": "Hausa-Fulani",
+          "role": "minority"
+        }
+      ],
+      "wikiNotes": [
+        {
+          "title": "First Northern Nigeria capital",
+          "note": "Lokoja was the first capital of the Protectorate of Northern Nigeria, proclaimed there under Frederick Lugard in 1900.",
+          "category": "history",
+          "url": "https://en.wikipedia.org/wiki/Lokoja"
+        },
+        {
+          "title": "River confluence",
+          "note": "The town sits exactly at the meeting point of the Niger and Benue rivers, Nigeria's two largest waterways.",
+          "category": "geography",
+          "url": "https://en.wikipedia.org/wiki/Lokoja"
+        }
+      ]
+    },
+    {
+      "id": "group-lafia-keffi-axis",
+      "name": "Lafia-Keffi Axis",
+      "groupType": "cultural-group",
+      "isOfficial": false,
+      "partitionsState": null,
+      "stateIds": [
+        "NG-NA"
+      ],
+      "memberIds": [
+        "NG-NA-LAFIA",
+        "NG-NA-KEFFI",
+        "NG-NA-AKWANGA"
+      ],
+      "effectiveFrom": null,
+      "effectiveTo": null,
+      "description": "Nasarawa State's main administrative and historic emirate towns, close to the Abuja-Jos-Lafia corridor.",
+      "ethnicMakeup": [
+        {
+          "name": "Eggon",
+          "role": "major",
+          "memberIds": [
+            "NG-NA-AKWANGA"
+          ]
+        },
+        {
+          "name": "Alago and Migili",
+          "role": "major",
+          "memberIds": [
+            "NG-NA-LAFIA"
+          ]
+        },
+        {
+          "name": "Hausa-Fulani",
+          "role": "major",
+          "memberIds": [
+            "NG-NA-KEFFI"
+          ]
+        },
+        {
+          "name": "Gwandara",
+          "role": "minority",
+          "memberIds": [
+            "NG-NA-KEFFI"
+          ]
+        }
+      ],
+      "wikiNotes": [
+        {
+          "title": "Historic emirates",
+          "note": "Keffi and Lafia both trace their origins to 19th-century Fulani emirate foundations tied to the Sokoto Caliphate's southern expansion.",
+          "category": "history",
+          "url": "https://en.wikipedia.org/wiki/Keffi"
+        }
+      ]
+    },
     {
       "id": "culture-eko-lagos-island",
       "name": "Eko (Lagos Island and Mainland)",

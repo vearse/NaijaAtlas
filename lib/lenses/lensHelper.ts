@@ -358,8 +358,8 @@ export function lensInputFromGeoProperties(
 ): LensInput {
   return {
     layerId,
-    // `coastCategory` matters now that Coast ships inside the Waterways layer:
-    // without it seaports/estuaries would dim under the tourist lens.
+    // `coastCategory` matters now that Coast and ports ship inside the Lakes
+    // layer: without it seaports/estuaries would dim under the tourist lens.
     category: String(
       properties.category ??
         properties.militaryCategory ??

@@ -275,7 +275,7 @@ export function sectionMapHref(
       params.set(
         "focus",
         encodeFocusParam({
-          layerId: "waterways",
+          layerId: "lakes",
           matchKey: "waterwayClass",
           matchValue: "seaport",
           label: "Ports",

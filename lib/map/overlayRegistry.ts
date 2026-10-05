@@ -25,14 +25,14 @@ export const HIDE_OPT_IN_FILTER: FilterSpecification = [
 ];
 
 /**
- * Filter for a waterways point layer, honouring which opt-in groups the user
- * has revealed.
+ * Filter for the Lakes & Ports point layer, honouring which opt-in groups the
+ * user has revealed.
  *
  * A point passes when it is not an opt-in feature, or when its `optInGroup` is
  * one the user has revealed. Falls back to the plain point filter when every
  * known group is revealed, which keeps the expression cheap in the common case.
  */
-export function waterwaysPointFilter(
+export function coastPointFilter(
   revealedGroups?: ReadonlySet<string>
 ): FilterSpecification {
   const pointOnly: FilterSpecification = ["==", ["get", "featureKind"], "point"];
@@ -103,7 +103,7 @@ export interface OverlayRegistryEntry {
 }
 
 /**
- * One line paint for the whole Waterways & Coast layer.
+ * One line paint for the waterways layer and the Lakes & Ports coastline.
  *
  * `waterwayClass` discriminates rivers (`major` / `tributary` / `delta`) from
  * the coast (`coastline` / `coast-zone`); `coastZone` picks the zone colour.
@@ -210,7 +210,7 @@ const SECURITY_LABEL_PAINT: SymbolLayerSpecification["paint"] = {
 };
 
 /** Coast points share one label colour lookup. */
-const WATERWAY_POINT_LABEL_PAINT: SymbolLayerSpecification["paint"] = {
+const COAST_POINT_LABEL_PAINT: SymbolLayerSpecification["paint"] = {
   "text-color": [
     "match",
     ["get", "waterwayClass"],
@@ -419,17 +419,8 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
     interactiveLayerIds: [
       "overlay-waterways-line",
       "overlay-waterways-line-labels",
-      "overlay-waterways-point-icons",
-      "overlay-waterways-point-labels",
     ],
     layers: [
-      {
-        id: "overlay-ocean-fill",
-        type: "fill",
-        filter: ["==", ["get", "kind"], "ocean"],
-        paint: { "fill-color": "#7eb8d8", "fill-opacity": 0.6 },
-        layout: { visibility: "none" },
-      },
       {
         id: "overlay-waterways-line",
         type: "line",
@@ -463,39 +454,6 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
           "text-halo-width": 2,
         },
       },
-      {
-        id: "overlay-waterways-point-icons",
-        type: "symbol",
-        filter: waterwaysPointFilter(),
-        minzoom: 4,
-        layout: {
-          visibility: "none",
-          // `iconId` is stamped by the overlay build (coast-icon-*).
-          "icon-image": ["get", "iconId"],
-          "icon-size": ["interpolate", ["linear"], ["zoom"], 4, 0.9, 8, 1.1, 11, 1.4],
-          "icon-allow-overlap": true,
-          "icon-ignore-placement": true,
-          "icon-padding": 8,
-          "icon-anchor": "center",
-        },
-      },
-      {
-        id: "overlay-waterways-point-labels",
-        type: "symbol",
-        filter: waterwaysPointFilter(),
-        minzoom: 6,
-        layout: {
-          visibility: "none",
-          "text-field": ["get", "name"],
-          "text-size": 10,
-          "text-offset": [0, 1.4],
-          "text-font": ["Open Sans Semibold"],
-          "text-anchor": "top",
-          "text-optional": true,
-          "text-max-width": 12,
-        },
-        paint: WATERWAY_POINT_LABEL_PAINT,
-      },
     ],
   },
   lakes: {
@@ -506,8 +464,18 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
     interactiveLayerIds: [
       "overlay-lakes-fill",
       "overlay-lakes-labels",
+      "overlay-lakes-coast-line",
+      "overlay-lakes-port-icons",
+      "overlay-lakes-port-labels",
     ],
     layers: [
+      {
+        id: "overlay-ocean-fill",
+        type: "fill",
+        filter: ["==", ["get", "kind"], "ocean"],
+        paint: { "fill-color": "#7eb8d8", "fill-opacity": 0.6 },
+        layout: { visibility: "none" },
+      },
       {
         id: "overlay-lakes-fill",
         type: "fill",
@@ -594,6 +562,46 @@ export const OVERLAY_REGISTRY: Record<OverlayLayerId, OverlayRegistryEntry> = {
           "text-halo-color": "#ffffff",
           "text-halo-width": 2,
         },
+      },
+      {
+        id: "overlay-lakes-coast-line",
+        type: "line",
+        filter: ["==", ["get", "featureKind"], "line"],
+        paint: WATERWAY_LINE_PAINT,
+        layout: { visibility: "none", "line-cap": "round", "line-join": "round" },
+      },
+      {
+        id: "overlay-lakes-port-icons",
+        type: "symbol",
+        filter: coastPointFilter(),
+        minzoom: 4,
+        layout: {
+          visibility: "none",
+          // `iconId` is stamped by the overlay build (coast-icon-*).
+          "icon-image": ["get", "iconId"],
+          "icon-size": ["interpolate", ["linear"], ["zoom"], 4, 0.9, 8, 1.1, 11, 1.4],
+          "icon-allow-overlap": true,
+          "icon-ignore-placement": true,
+          "icon-padding": 8,
+          "icon-anchor": "center",
+        },
+      },
+      {
+        id: "overlay-lakes-port-labels",
+        type: "symbol",
+        filter: coastPointFilter(),
+        minzoom: 6,
+        layout: {
+          visibility: "none",
+          "text-field": ["get", "name"],
+          "text-size": 10,
+          "text-offset": [0, 1.4],
+          "text-font": ["Open Sans Semibold"],
+          "text-anchor": "top",
+          "text-optional": true,
+          "text-max-width": 12,
+        },
+        paint: COAST_POINT_LABEL_PAINT,
       },
     ],
   },

@@ -27,12 +27,19 @@ type Props = {
   /** `preview` is the hub teaser with a map and a profile CTA; `full` lists everything. */
   variant?: "preview" | "full";
   accent?: string;
+  /**
+   * Blocks the host page already renders directly above the panel. The People
+   * hub lists cultural groups and institutions in full before it, so repeating
+   * them here was the same content twice on one screen.
+   */
+  omit?: ReadonlyArray<"culturalGroups" | "institutions">;
 };
 
 export default function StateOverviewPanel({
   overview: o,
   variant = "preview",
   accent = "#7c3aed",
+  omit,
 }: Props) {
   const reduceMotion = useReducedMotion();
   const { openArticle } = useWikiReader();
@@ -41,8 +48,18 @@ export default function StateOverviewPanel({
   const metros = preview ? o.metros.slice(0, 2) : o.metros;
   // Cultural groups carry the People story, so the hub preview still shows a few.
   const culturalGroups = o.groups.filter((g) => g.groupType === "cultural-group");
-  const groups = preview ? culturalGroups.slice(0, 4) : culturalGroups;
-  const institutions = preview ? o.institutions.slice(0, 3) : o.institutions;
+  const showGroups = !omit?.includes("culturalGroups");
+  const groups = showGroups
+    ? preview
+      ? culturalGroups.slice(0, 4)
+      : culturalGroups
+    : [];
+  const showInstitutions = !omit?.includes("institutions");
+  const institutions = showInstitutions
+    ? preview
+      ? o.institutions.slice(0, 3)
+      : o.institutions
+    : [];
   const celebrations = preview ? o.celebrations.slice(0, 4) : o.celebrations;
 
   const details = (

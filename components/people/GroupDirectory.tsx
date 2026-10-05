@@ -315,7 +315,12 @@ export default function GroupDirectory({ data }: { data: PeopleHubData }) {
           <h3 className="mb-4 font-landing-display text-headline-sm text-text-primary">
             {overview.name} state details
           </h3>
-          <StateOverviewPanel overview={overview} accent="#008751" />
+          {/* Cultural groups and institutions are already listed in full above. */}
+          <StateOverviewPanel
+            overview={overview}
+            accent="#008751"
+            omit={["culturalGroups", "institutions"]}
+          />
         </div>
       ) : null}
 

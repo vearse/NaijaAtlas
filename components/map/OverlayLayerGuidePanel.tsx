@@ -140,24 +140,27 @@ export default function OverlayLayerGuidePanel({
 
   const optInGroups = useMemo<OptInGroup[]>(() => {
     const groups: OptInGroup[] = [];
-    if (layerId !== "waterways") return groups;
-    groups.push({
-      groupId: PROPOSED_PORT_OPT_IN_GROUP,
-      title: "Proposed & upcoming ports",
-      blurb:
-        "Greenfield and planned deep sea ports that are not yet operating. Reveal them to plot their sites on the map, then open any one for its MOU, approval and status record.",
-      features: groupOptInFeatures(features, PROPOSED_PORT_OPT_IN_GROUP),
-    });
-    groups.push({
-      groupId: PROPOSED_ARMY_DIVISION_OPT_IN_GROUP,
-      title: "New Army divisions (forming)",
-      blurb:
-        "Divisional headquarters approved in the Nigerian Army's 2026 expansion from eight to twelve divisions, but not yet at full operational capability. Reveal them to plot the new headquarters, then open any one for its area of responsibility and phasing.",
-      features: groupOptInFeatures(
-        features,
-        PROPOSED_ARMY_DIVISION_OPT_IN_GROUP
-      ),
-    });
+    if (layerId === "lakes") {
+      groups.push({
+        groupId: PROPOSED_PORT_OPT_IN_GROUP,
+        title: "Proposed & upcoming ports",
+        blurb:
+          "Greenfield and planned deep sea ports that are not yet operating. Reveal them to plot their sites on the map, then open any one for its MOU, approval and status record.",
+        features: groupOptInFeatures(features, PROPOSED_PORT_OPT_IN_GROUP),
+      });
+    }
+    if (layerId === "security") {
+      groups.push({
+        groupId: PROPOSED_ARMY_DIVISION_OPT_IN_GROUP,
+        title: "New Army divisions (forming)",
+        blurb:
+          "Divisional headquarters approved in the Nigerian Army's 2026 expansion from eight to twelve divisions, but not yet at full operational capability. Reveal them to plot the new headquarters, then open any one for its area of responsibility and phasing.",
+        features: groupOptInFeatures(
+          features,
+          PROPOSED_ARMY_DIVISION_OPT_IN_GROUP
+        ),
+      });
+    }
     return groups.filter((g) => g.features.length > 0);
   }, [features, layerId]);
 

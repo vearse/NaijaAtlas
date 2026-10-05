@@ -206,12 +206,12 @@ export function getStateOverlayItems(
   const inState = (row: CatalogRow) =>
     stateNameMatches(row, stateId, stateName);
 
-  // Coast zones ride the Waterways & Coast layer, so they get a
-  // `waterways` id and the same multi-state coverage highlight.
+  // Coast zones ride the Lakes & ports layer, so they get a `lakes` id and the
+  // same multi-state coverage highlight.
   const coastItems = (): StateOverlayItem[] =>
     asRows(coastCatalog)
       .filter(inState)
-      .map((row, i) => toItem(row, "waterways", "coast", `coast-${stateId}-${i}`))
+      .map((row, i) => toItem(row, "lakes", "coast", `coast-${stateId}-${i}`))
       .filter((x): x is StateOverlayItem => x != null);
 
   if (lens === "tourist") {

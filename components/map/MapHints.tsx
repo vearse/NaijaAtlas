@@ -99,8 +99,12 @@ export default function MapHints({ variant = "bar" }: Props) {
       return "Landforms layer — icons show savanna, basins, wetlands, forests & highlands. Click any icon for details";
     }
 
+    if (activeOverlays.has("lakes")) {
+      return "Lakes & ports layer — lakes, reservoirs, the coastline, seaports and terminals. Click any of them for details";
+    }
+
     if (activeOverlays.has("waterways")) {
-      return "Waterways & Coast layer active — click rivers, the coastline, seaports, terminals and military markers for details";
+      return "Waterways layer — click the Niger, Benue and their tributaries for details";
     }
 
     if (activeOverlays.size > 0) {

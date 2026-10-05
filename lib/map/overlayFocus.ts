@@ -56,12 +56,15 @@ export function focusFromFeature(
       return category ? pick("category", category, category) : null;
     }
     case "lakes": {
-      const featureKind = str(properties.featureKind);
-      if (featureKind) return pick("featureKind", featureKind, featureKind);
+      // Coast and port features ride this layer too, keyed on `waterwayClass`.
+      const waterwayClass = str(properties.waterwayClass);
+      if (waterwayClass)
+        return pick("waterwayClass", waterwayClass, `Ports: ${waterwayClass}`);
       const lakeCategory = str(properties.lakeCategory);
-      return lakeCategory
-        ? pick("lakeCategory", lakeCategory, lakeCategory)
-        : null;
+      if (lakeCategory)
+        return pick("lakeCategory", lakeCategory, lakeCategory);
+      const featureKind = str(properties.featureKind);
+      return featureKind ? pick("featureKind", featureKind, featureKind) : null;
     }
     case "security": {
       const featureKind = str(properties.featureKind);

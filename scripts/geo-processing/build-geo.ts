@@ -668,7 +668,7 @@ export async function buildGeo() {
       name: row.name,
       level: "coast" as const,
       parentId: null,
-      layerId: "waterways" as const,
+      layerId: "lakes" as const,
       typeLabel:
         coastCategoryLabels[String(row.coastCategory ?? "coast-zone")] ??
         "Coast zone",

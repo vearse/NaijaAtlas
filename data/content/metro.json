@@ -144,7 +144,7 @@
   {
     "id": "group-ife-ijesa-cluster",
     "name": "Ife-Ijesa Cluster",
-    "groupType": "metro-area",
+    "groupType": "cultural-group",
     "isOfficial": false,
     "partitionsState": null,
     "stateIds": [
@@ -247,7 +247,7 @@
   {
     "id": "group-owo-ose-cluster",
     "name": "Owo-Ose Cluster",
-    "groupType": "metro-area",
+    "groupType": "cultural-group",
     "isOfficial": false,
     "partitionsState": null,
     "stateIds": [
@@ -289,7 +289,7 @@
   {
     "id": "group-ijebuland",
     "name": "Ijebuland",
-    "groupType": "metro-area",
+    "groupType": "cultural-group",
     "isOfficial": false,
     "partitionsState": null,
     "stateIds": [
@@ -352,7 +352,7 @@
   {
     "id": "group-yewaland-egbado",
     "name": "Yewaland (Egbado)",
-    "groupType": "metro-area",
+    "groupType": "cultural-group",
     "isOfficial": false,
     "partitionsState": null,
     "stateIds": [
@@ -396,7 +396,7 @@
   {
     "id": "group-egbaland",
     "name": "Egbaland (Abeokuta Metro)",
-    "groupType": "metro-area",
+    "groupType": "cultural-group",
     "isOfficial": false,
     "partitionsState": null,
     "stateIds": [
@@ -652,7 +652,7 @@
   {
     "id": "group-lokoja-confluence",
     "name": "Lokoja / Confluence Cluster",
-    "groupType": "metro-area",
+    "groupType": "cultural-group",
     "isOfficial": false,
     "partitionsState": null,
     "stateIds": [
@@ -759,7 +759,7 @@
   {
     "id": "group-lafia-keffi-axis",
     "name": "Lafia-Keffi Axis",
-    "groupType": "metro-area",
+    "groupType": "cultural-group",
     "isOfficial": false,
     "partitionsState": null,
     "stateIds": [

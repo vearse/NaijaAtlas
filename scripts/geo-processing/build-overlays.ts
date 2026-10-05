@@ -517,9 +517,9 @@ const COAST_FEATURE_COORDS: Record<string, [number, number]> = {
 };
 
 /**
- * Proposed / upcoming deep sea ports. These build into the same Waterways
- * source but carry `optIn: true`, so the runtime keeps them off the map until
- * the user reveals the group from the Waterways layer guide.
+ * Proposed / upcoming deep sea ports. These build into the Lakes source but
+ * carry `optIn: true`, so the runtime keeps them off the map until the user
+ * reveals the group from the Lakes layer guide.
  */
 const PROPOSED_PORT_COORDS: Record<string, [number, number]> = {
   "prop-badagry": [2.883, 6.417],
@@ -536,7 +536,7 @@ const OPT_IN_GROUP_FIELD = "optInGroup";
 
 /**
  * Categories that ship in the source but stay off the map until revealed from
- * the Waterways guide. Keyed by the feature's category value.
+ * the Lakes (ports) or Security guide. Keyed by the feature's category value.
  */
 const OPT_IN_GROUPS: Record<string, string> = {
   "proposed-port": PROPOSED_PORT_OPT_IN_GROUP,
@@ -1081,10 +1081,15 @@ export async function buildOverlays(): Promise<void> {
 
   ensureDir(projectRoot("public/geo/overlays"));
 
-  // Waterways and coast ship as one layer: rivers, coastline, ports, coastal
-  // features and ocean fill all live in a single source. Security formations
-  // build separately.
-  const waterFeatures = fc(buildWaterways(waterwaysCatalog), waterwaysCatalog, "waterways");
+  // Waterways ships rivers only. Coast and ports ride the Lakes source so the
+  // Economy map reaches them from its own layer toggle.
+  const waterwayFeatures = fc(buildWaterways(waterwaysCatalog), waterwaysCatalog, "waterways");
+  writeGeoJson(
+    projectRoot("public/geo/overlays/waterways.geojson"),
+    waterwayFeatures
+  );
+
+  const lakeFeatures = fc(buildLakes(lakesCatalog), lakesCatalog, "lakes");
   const coastFeatures = buildCoast(
     coastCatalog,
     portsCatalog,
@@ -1097,29 +1102,22 @@ export async function buildOverlays(): Promise<void> {
     if (f.properties?.kind === "ocean") {
       return {
         ...f,
-        properties: { ...f.properties, layerId: "waterways", kind: "ocean" },
+        properties: { ...f.properties, layerId: "lakes", kind: "ocean" },
       };
     }
     const portRow = portsCatalog.find((c) => c.id === id);
-    if (portRow) return mergeCatalog(f, portsCatalog, "waterways");
+    if (portRow) return mergeCatalog(f, portsCatalog, "lakes");
     const proposedRow = proposedPortsCatalog.find((c) => c.id === id);
-    if (proposedRow) return mergeCatalog(f, proposedPortsCatalog, "waterways");
+    if (proposedRow) return mergeCatalog(f, proposedPortsCatalog, "lakes");
     const featureRow = coastFeaturesCatalog.find((c) => c.id === id);
-    if (featureRow) return mergeCatalog(f, coastFeaturesCatalog, "waterways");
+    if (featureRow) return mergeCatalog(f, coastFeaturesCatalog, "lakes");
     const coastRow = coastCatalog.find((c) => c.id === id);
-    if (coastRow) return mergeCatalog(f, coastCatalog, "waterways");
-    return { ...f, properties: { ...f.properties, layerId: "waterways" } };
+    if (coastRow) return mergeCatalog(f, coastCatalog, "lakes");
+    return { ...f, properties: { ...f.properties, layerId: "lakes" } };
   });
-  waterFeatures.features = [...waterFeatures.features, ...coastMerged];
+  lakeFeatures.features = [...lakeFeatures.features, ...coastMerged];
 
-  writeGeoJson(
-    projectRoot("public/geo/overlays/waterways.geojson"),
-    waterFeatures
-  );
-  writeGeoJson(
-    projectRoot("public/geo/overlays/lakes.geojson"),
-    fc(buildLakes(lakesCatalog), lakesCatalog, "lakes")
-  );
+  writeGeoJson(projectRoot("public/geo/overlays/lakes.geojson"), lakeFeatures);
   writeGeoJson(
     projectRoot("public/geo/overlays/power.geojson"),
     fc(buildPower(powerCatalog), powerCatalog, "power")
@@ -1147,7 +1145,7 @@ export async function buildOverlays(): Promise<void> {
   });
 
   console.log(
-    `✓ Overlays: waterways(${waterFeatures.features.length}) lakes(${buildLakes(lakesCatalog).length}) power(${powerCatalog.length}) landforms(${landformsCatalog.length}) ecology(${ecologyCatalog.length}) cities(${citiesCatalog.length}) resources(${resourceFeatures.length}) security(${securityCatalog.length})`
+    `✓ Overlays: waterways(${waterwayFeatures.features.length}) lakes(${lakeFeatures.features.length}) power(${powerCatalog.length}) landforms(${landformsCatalog.length}) ecology(${ecologyCatalog.length}) cities(${citiesCatalog.length}) resources(${resourceFeatures.length}) security(${securityCatalog.length})`
   );
 }
 

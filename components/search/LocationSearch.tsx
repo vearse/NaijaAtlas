@@ -207,9 +207,15 @@ export default function LocationSearch({ lgas = [] }: { lgas?: LgaLocation[] }) 
             else if (lid === "resources") layerIds.push("overlay-resources-points");
             else if (lid === "landforms") layerIds.push("overlay-landforms-markers");
             else if (lid === "ecology") layerIds.push("overlay-ecology-markers");
-            else if (lid === "lakes") layerIds.push("overlay-lakes-points", "overlay-lakes-poly");
-            else if (lid === "waterways") {
-              layerIds.push("overlay-waterways-line", "overlay-waterways-point-icons");
+            else if (lid === "lakes") {
+              layerIds.push(
+                "overlay-lakes-points",
+                "overlay-lakes-poly",
+                "overlay-lakes-coast-line",
+                "overlay-lakes-port-icons"
+              );
+            } else if (lid === "waterways") {
+              layerIds.push("overlay-waterways-line");
             }
           }
           const hits = liveMap.queryRenderedFeatures(

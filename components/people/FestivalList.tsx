@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import { type Festival } from "@/lib/festivals";
@@ -26,6 +26,7 @@ export default function FestivalList({ festivals }: { festivals: Festival[] }) {
   const { openByName, resolving } = useWikiReader();
   const [limit, setLimit] = useState(PAGE);
   const [stateName, setStateName] = useState<string | null>(null);
+  const [surpriseId, setSurpriseId] = useState<string | null>(null);
 
   const ordered = useMemo(
     () => [...festivals].sort((a, b) => a.name.localeCompare(b.name)),
@@ -45,55 +46,94 @@ export default function FestivalList({ festivals }: { festivals: Festival[] }) {
   const visible = rows.slice(0, limit);
   const hidden = rows.length - visible.length;
 
+  /**
+   * Jump to one random festival from anywhere in the calendar. The state filter
+   * and the page size are reset first so the pick is always on screen, then the
+   * card is scrolled into view and ringed.
+   */
+  const surprise = useCallback(() => {
+    if (ordered.length === 0) return;
+    const next = ordered[Math.floor(Math.random() * ordered.length)];
+    if (!next) return;
+    setStateName(null);
+    setLimit(PAGE);
+    setSurpriseId(next.id);
+  }, [ordered]);
+
+  // Runs after the reset above has re-rendered the list with the pick in it.
+  useEffect(() => {
+    if (!surpriseId) return;
+    document
+      .getElementById(`festival-${surpriseId}`)
+      ?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+  }, [surpriseId, reduceMotion]);
+
   if (festivals.length === 0) return null;
 
   return (
     <div>
-      <div
-        className="flex max-w-full gap-1.5 overflow-x-auto pb-1"
-        role="group"
-        aria-label="Filter festivals by state"
-      >
-        <button
-          type="button"
-          onClick={() => {
-            setStateName(null);
-            setLimit(PAGE);
-          }}
-          aria-pressed={stateName === null}
-          className={`shrink-0 rounded-full border px-3.5 py-1.5 text-label-md font-semibold transition-colors ${
-            stateName === null
-              ? "border-primary-container bg-primary-container text-white"
-              : "border-border-subtle bg-surface-card text-text-secondary hover:text-text-primary"
-          }`}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div
+          className="flex max-w-full gap-1.5 overflow-x-auto pb-1"
+          role="group"
+          aria-label="Filter festivals by state"
         >
-          All states
-        </button>
-        {stateOptions.map((name) => (
           <button
-            key={name}
             type="button"
             onClick={() => {
-              setStateName(name);
+              setStateName(null);
               setLimit(PAGE);
+              setSurpriseId(null);
             }}
-            aria-pressed={stateName === name}
+            aria-pressed={stateName === null}
             className={`shrink-0 rounded-full border px-3.5 py-1.5 text-label-md font-semibold transition-colors ${
-              stateName === name
+              stateName === null
                 ? "border-primary-container bg-primary-container text-white"
                 : "border-border-subtle bg-surface-card text-text-secondary hover:text-text-primary"
             }`}
           >
-            {name}
+            All states
           </button>
-        ))}
+          {stateOptions.map((name) => (
+            <button
+              key={name}
+              type="button"
+              onClick={() => {
+                setStateName(name);
+                setLimit(PAGE);
+                setSurpriseId(null);
+              }}
+              aria-pressed={stateName === name}
+              className={`shrink-0 rounded-full border px-3.5 py-1.5 text-label-md font-semibold transition-colors ${
+                stateName === name
+                  ? "border-primary-container bg-primary-container text-white"
+                  : "border-border-subtle bg-surface-card text-text-secondary hover:text-text-primary"
+              }`}
+            >
+              {name}
+            </button>
+          ))}
+        </div>
+        <button
+          type="button"
+          onClick={surprise}
+          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border-subtle bg-surface-card px-4 py-2 text-label-md font-semibold text-text-secondary shadow-sm transition-colors hover:border-primary-container/40 hover:text-primary"
+        >
+          <span aria-hidden>🎲</span>
+          Surprise me
+        </button>
       </div>
 
       <ul className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
         {visible.map((festival, i) => (
           <motion.li
             key={`${stateName ?? "all"}-${festival.id}`}
-            className="flex flex-col rounded-2xl border border-border-subtle bg-surface-card p-4 shadow-sm"
+            id={`festival-${festival.id}`}
+            className={`flex scroll-mt-28 flex-col rounded-2xl border bg-surface-card p-4 shadow-sm ${
+              surpriseId === festival.id
+                ? "border-primary-container ring-2 ring-emerald-500/25"
+                : "border-border-subtle"
+            }`}
             {...(reduceMotion
               ? {}
               : {
