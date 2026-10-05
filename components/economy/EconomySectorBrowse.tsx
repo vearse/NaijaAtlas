@@ -17,7 +17,13 @@ const TABS: { id: SectorTab; label: string; accent: string }[] = [
   { id: "disco", label: "DisCos", accent: "#b45309" },
 ];
 
-const MINERAL_MAX = 5;
+const MINERAL_MAX = 7;
+
+const PICK_LABEL: Record<SectorTab, string> = {
+  minerals: "minerals",
+  ports: "ports",
+  disco: "DisCos",
+};
 
 function symbolFor(name: string): string {
   const parts = name.trim().split(/\s+/);
@@ -36,6 +42,9 @@ type MapState = {
   markers: { lon: number; lat: number }[];
   accent: string;
   label: string;
+  detail: string;
+  /** Single deep link for whatever the map is currently showing. */
+  href: string | null;
 };
 
 export default function EconomySectorBrowse({
@@ -70,22 +79,78 @@ export default function EconomySectorBrowse({
     if (tab === "minerals") {
       const r = mineralPool[activeIdx];
       return r
-        ? { highlight: r.stateIds, markers: point(r.lon, r.lat), accent, label: r.name }
-        : { highlight: [], markers: [], accent, label: "Minerals" };
+        ? {
+            highlight: r.stateIds,
+            markers: point(r.lon, r.lat),
+            accent,
+            label: r.name,
+            detail: r.resourceType || r.type,
+            href: sectionMapHref("economy/resources", {
+              focus: {
+                layerId: "resources",
+                matchKey: "id",
+                matchValue: r.id,
+                label: r.name,
+              },
+            }),
+          }
+        : { highlight: [], markers: [], accent, label: "Minerals", detail: "", href: null };
     }
     if (tab === "ports") {
       const p = activePorts[activeIdx];
       return p
-        ? { highlight: p.stateIds, markers: [], accent, label: p.name }
-        : { highlight: [], markers: [], accent, label: "Ports" };
+        ? {
+            highlight: p.stateIds,
+            markers: [],
+            accent,
+            label: p.name,
+            detail: `${p.status} port · ${p.states.slice(0, 3).join(" · ")}`,
+            href: sectionMapHref("economy/ports"),
+          }
+        : { highlight: [], markers: [], accent, label: "Ports", detail: "", href: null };
     }
     const d = discoRows[activeIdx];
     return d
-      ? { highlight: d.stateIds, markers: point(d.lon, d.lat), accent, label: d.name }
-      : { highlight: [], markers: [], accent, label: "Distribution" };
+      ? {
+          highlight: d.stateIds,
+          markers: point(d.lon, d.lat),
+          accent,
+          label: d.name,
+          detail: d.operator ?? d.states.slice(0, 3).join(" · "),
+          href: sectionMapHref("economy/power"),
+        }
+      : { highlight: [], markers: [], accent, label: "Distribution", detail: "", href: null };
   }, [tab, activeIdx, mineralPool, activePorts, discoRows]);
 
   const reshuffleMinerals = useCallback(() => setMineralSeed((s) => s + 1), []);
+
+  /** Cycles the map to the next pick; the outgoing one scrolls up and away. */
+  const advance = useCallback(() => {
+    const total =
+      tab === "minerals"
+        ? mineralPool.length
+        : tab === "ports"
+          ? activePorts.length
+          : discoRows.length;
+    if (total === 0) return;
+    setActiveIdx((i) => (i + 1) % total);
+  }, [activePorts.length, discoRows.length, mineralPool.length, tab]);
+
+  const pickCount =
+    tab === "minerals"
+      ? mineralPool.length
+      : tab === "ports"
+        ? activePorts.length
+        : discoRows.length;
+
+  const scrollAway = reduceMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: -12 },
+        animate: { opacity: 1, y: 0 },
+        exit: { opacity: 0, y: -12 },
+        transition: { duration: 0.22, ease: [0.16, 1, 0.3, 1] as const },
+      };
 
   const fade = reduceMotion
     ? {}
@@ -154,19 +219,13 @@ export default function EconomySectorBrowse({
       </div>
 
       <div className="mt-6 grid items-stretch gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-        <aside className="flex lg:sticky lg:top-28 lg:self-start">
+<aside className="flex flex-col gap-4 lg:sticky lg:top-28 lg:self-start">
           <div className="flex min-h-full w-full flex-col overflow-hidden rounded-2xl border border-border-subtle bg-surface-card shadow-sm">
-            <div className="border-b border-slate-100 px-5 py-3">
+            <div className="flex items-center justify-between gap-2 border-b border-slate-100 px-5 py-3">
               <p className="text-label-caps text-text-muted">Map preview</p>
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={mapState.label}
-                  className="mt-0.5 truncate text-body-sm font-semibold text-text-primary"
-                  {...fade}
-                >
-                  {mapState.label}
-                </motion.p>
-              </AnimatePresence>
+              <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold tabular-nums text-text-secondary">
+                {pickCount} {PICK_LABEL[tab]}
+              </span>
             </div>
             <div className="flex flex-1 flex-col justify-center bg-gradient-to-b from-slate-50 to-white px-4 py-6">
               <AnimatePresence mode="wait">
@@ -185,6 +244,52 @@ export default function EconomySectorBrowse({
                   />
                 </motion.div>
               </AnimatePresence>
+            </div>
+          </div>
+
+          {/* One dynamic button for the map, plus a symbol to roll to the next pick. */}
+          <div className="rounded-2xl border border-border-subtle bg-surface-card p-3 shadow-sm">
+            <AnimatePresence mode="wait">
+              <motion.div key={mapState.label} {...scrollAway}>
+                <div className="flex items-start gap-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-xs font-bold text-white" style={{ backgroundColor: mapState.accent }}>
+                    {symbolFor(mapState.label)}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-body-md font-semibold text-text-primary">
+                      {mapState.label}
+                    </p>
+                    <p className="truncate text-body-sm text-text-muted">
+                      {mapState.detail || PICK_LABEL[tab]}
+                    </p>
+                  </div>
+                  {mapState.href && (
+                    <Link
+                      href={mapState.href}
+                      className="shrink-0 self-center rounded-xl px-3 py-2 text-label-md font-semibold text-white transition-opacity hover:opacity-90"
+                      style={{ backgroundColor: mapState.accent }}
+                    >
+                      On the map →
+                    </Link>
+                  )}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+            <div className="mt-2 flex items-center justify-between gap-2 border-t border-border-subtle pt-2">
+              <span className="text-[11px] tabular-nums text-text-muted">
+                {pickCount > 0 ? `${(activeIdx % pickCount) + 1} of ${pickCount}` : "—"}
+              </span>
+              <button
+                type="button"
+                onClick={advance}
+                disabled={pickCount <= 1}
+                aria-label="View the next pick"
+                title="View more"
+                className="inline-flex h-8 items-center gap-1.5 rounded-full border border-border-subtle bg-surface-card px-3 text-[11px] font-semibold text-text-secondary transition-colors hover:border-primary-container/40 hover:text-primary disabled:opacity-40"
+              >
+                View more
+                <span aria-hidden>▾</span>
+              </button>
             </div>
           </div>
         </aside>
@@ -251,7 +356,7 @@ function MineralRow({
         <button
           type="button"
           onClick={onSelect}
-          className="flex items-center gap-3 text-left md:col-span-4"
+          className="flex items-center gap-3 text-left md:col-span-5"
         >
           <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary-tint-light text-xs font-bold text-primary">
             {symbolFor(r.name)}
@@ -266,21 +371,10 @@ function MineralRow({
         <button
           type="button"
           onClick={onSelect}
-          className="text-left text-body-sm text-text-secondary md:col-span-5"
+          className="text-left text-body-sm text-text-secondary md:col-span-7"
         >
           {r.states.slice(0, 4).join(", ")}
         </button>
-        <div className="md:col-span-3 md:text-right">
-          <Link
-            href={sectionMapHref("economy/resources", {
-              focus: { layerId: "resources", matchKey: "id", matchValue: r.id, label: r.name },
-            })}
-            onClick={(e) => e.stopPropagation()}
-            className="text-label-md font-semibold text-primary hover:underline"
-          >
-            View on map →
-          </Link>
-        </div>
       </div>
       {active && r.summary && (
         <p className="px-5 pb-4 text-body-sm text-text-secondary">{r.summary}</p>

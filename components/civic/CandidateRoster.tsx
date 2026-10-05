@@ -52,7 +52,7 @@ function initials(name: string): string {
   return `${parts[0][0]}${parts[parts.length - 1][0]}`.toUpperCase();
 }
 
-type Race =
+export type Race =
   | { kind: "senate"; race: HubSenateRace }
   | { kind: "reps"; race: HubRepsRace }
   | { kind: "president"; race: { id: string; name: string; ticketIndex: number } };
@@ -612,7 +612,12 @@ function GovernorPanel({
   );
 }
 
-function DossierDrawer({
+/**
+ * Side dossier for one race. Shared with the constituency rosters inside the
+ * “Who represents me?” accordions so a race opens identically wherever it is
+ * listed.
+ */
+export function DossierDrawer({
   selected,
   senateRaces,
   repsRaces,

@@ -1,4 +1,8 @@
-import type { OverlayLayerId } from "@/types/overlay";
+import {
+  SECURITY_BRANCH_LABELS,
+  type OverlayLayerId,
+  type SecurityBranch,
+} from "@/types/overlay";
 
 export interface OverlayFocusSpec {
   layerId: OverlayLayerId;
@@ -67,6 +71,13 @@ export function focusFromFeature(
       return featureKind ? pick("featureKind", featureKind, featureKind) : null;
     }
     case "security": {
+      const militaryBranch = str(properties.militaryBranch);
+      if (militaryBranch) {
+        const branch = militaryBranch as SecurityBranch;
+        const label =
+          SECURITY_BRANCH_LABELS[branch]?.short ?? militaryBranch;
+        return pick("militaryBranch", militaryBranch, label);
+      }
       const featureKind = str(properties.featureKind);
       if (featureKind) return pick("featureKind", featureKind, featureKind);
       const militaryCategory = str(properties.militaryCategory);

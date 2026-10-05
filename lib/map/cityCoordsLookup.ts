@@ -1,4 +1,5 @@
 import citiesCatalog from "@/data/overlays/catalog/cities.json";
+import { flyToOverlayFeature } from "@/lib/map/flyToOverlayFeature";
 import { useMapStore } from "@/lib/store/mapStore";
 import type { SelectedOverlayFeature } from "@/types/overlay";
 
@@ -159,16 +160,6 @@ export function openCityOnMap(name: string): boolean {
   store.setSelectedOverlay(feature);
 
   const map = store.mapInstance;
-  const coords =
-    feature.geometry?.type === "Point"
-      ? (feature.geometry.coordinates as [number, number])
-      : null;
-  if (map && coords) {
-    map.flyTo({
-      center: coords,
-      zoom: Math.max(map.getZoom() ?? 5, 7),
-      speed: 0.9,
-    });
-  }
+  if (map) flyToOverlayFeature(map, feature);
   return true;
 }

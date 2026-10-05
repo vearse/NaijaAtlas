@@ -76,6 +76,7 @@ import {
   getFeatureId,
   getFeatureName,
 } from "@/lib/map/constants";
+import { flyToOverlayFeature } from "@/lib/map/flyToOverlayFeature";
 import {
   fetchLgaGeo,
   prefetchLgaGeoForStates,
@@ -521,13 +522,17 @@ export default function NigeriaMap({
         geometry?: GeoJSON.Geometry | null;
       }
     ) => {
-      useMapStore.getState().setSelectedOverlay({
+      const store = useMapStore.getState();
+      const selected = {
         id: hit.id,
         layerId: overlayLayerId,
         name: hit.name,
         properties: hit.props,
         geometry: hit.geometry,
-      });
+      };
+      store.setSelectedOverlay(selected);
+      const map = store.mapInstance;
+      if (map) flyToOverlayFeature(map, selected);
     },
     []
   );

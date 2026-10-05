@@ -7,9 +7,13 @@ import {
   OVERLAY_LAYER_LABELS,
   PROPOSED_ARMY_DIVISION_OPT_IN_GROUP,
   PROPOSED_PORT_OPT_IN_GROUP,
+  SECURITY_BRANCHES,
+  SECURITY_BRANCH_LABELS,
   type OverlayLayerId,
+  type SecurityBranch,
   type SelectedOverlayFeature,
 } from "@/types/overlay";
+import { flyToOverlayFeature } from "@/lib/map/flyToOverlayFeature";
 import { OVERLAY_REGISTRY } from "@/lib/map/overlayRegistry";
 import { getTourGeoJSON } from "@/lib/map/tourCatalog";
 
@@ -173,6 +177,25 @@ export default function OverlayLayerGuidePanel({
     [features]
   );
 
+  const securityByBranch = useMemo(() => {
+    if (layerId !== "security") return null;
+    const groups = new Map<SecurityBranch, GuideFeature[]>();
+    for (const branch of SECURITY_BRANCHES) groups.set(branch, []);
+    for (const f of defaultFeatures) {
+      const raw = f.properties.militaryBranch;
+      if (
+        typeof raw === "string" &&
+        (SECURITY_BRANCHES as readonly string[]).includes(raw)
+      ) {
+        groups.get(raw as SecurityBranch)!.push(f);
+      }
+    }
+    for (const list of groups.values()) {
+      list.sort((a, b) => a.name.localeCompare(b.name));
+    }
+    return groups;
+  }, [defaultFeatures, layerId]);
+
   const openFeature = (f: GuideFeature) => {
     const feature: SelectedOverlayFeature = {
       id: f.id,
@@ -182,6 +205,8 @@ export default function OverlayLayerGuidePanel({
       geometry: f.geometry,
     };
     setSelectedOverlay(feature);
+    const map = useMapStore.getState().mapInstance;
+    if (map) flyToOverlayFeature(map, feature);
   };
 
   const revealGroup = (groupId: string) => {
@@ -272,7 +297,48 @@ export default function OverlayLayerGuidePanel({
           </p>
         )}
 
-        {defaultFeatures.length > 0 && (
+        {defaultFeatures.length > 0 && securityByBranch && (
+          <div className="space-y-4">
+            {SECURITY_BRANCHES.map((branch) => {
+              const branchFeatures = securityByBranch.get(branch) ?? [];
+              if (branchFeatures.length === 0) return null;
+              const branchMeta = SECURITY_BRANCH_LABELS[branch];
+              return (
+                <div key={branch} className="space-y-1.5">
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 px-0.5">
+                    {branchMeta.short}
+                    <span className="ml-1.5 font-medium tabular-nums">
+                      {branchFeatures.length}
+                    </span>
+                  </p>
+                  <ul className="space-y-1">
+                    {branchFeatures.map((f) => (
+                      <li key={f.id}>
+                        <button
+                          type="button"
+                          onClick={() => openFeature(f)}
+                          className="w-full group flex items-center justify-between gap-2 rounded-lg border border-slate-100 bg-slate-50/60 px-3 py-2 text-left hover:border-ng-green/30 hover:bg-emerald-50/60 transition-colors"
+                        >
+                          <span className="text-sm font-medium text-slate-700 truncate">
+                            {f.name}
+                          </span>
+                          <span
+                            aria-hidden
+                            className="shrink-0 text-slate-400 group-hover:text-ng-green"
+                          >
+                            →
+                          </span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {defaultFeatures.length > 0 && !securityByBranch && (
           <>
             <ul className="space-y-1">
               {defaultFeatures.slice(0, visibleCount).map((f) => (

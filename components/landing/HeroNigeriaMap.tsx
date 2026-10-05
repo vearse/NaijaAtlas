@@ -53,7 +53,7 @@ export default function HeroNigeriaMap({
         )}
       </div>
 
-      <div className="mt-3 flex flex-wrap gap-2">
+      {/* <div className="mt-3 flex flex-wrap gap-2">
         <Link
           href="/places"
           className="inline-flex h-10 items-center rounded-xl border border-primary-container px-4 text-label-md font-semibold text-primary hover:bg-emerald-50"
@@ -66,7 +66,7 @@ export default function HeroNigeriaMap({
         >
           Open the live map
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 }

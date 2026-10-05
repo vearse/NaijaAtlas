@@ -4,8 +4,16 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SourceNote from "@/components/hub/SourceNote";
+import OfficeCandidateRoster, {
+  type OfficeRace,
+} from "@/components/civic/OfficeCandidateRoster";
 import { sectionMapHref } from "@/lib/navigation/sectionMaps";
-import type { HubOfficeholder, HubStateOffice } from "@/lib/server/loadCivicHubData";
+import type {
+  HubOfficeholder,
+  HubRepsRace,
+  HubSenateRace,
+  HubStateOffice,
+} from "@/lib/server/loadCivicHubData";
 
 type OfficeKey = "president" | "governor" | "senator" | "reps";
 
@@ -93,10 +101,16 @@ export default function WhoRepresents({
   offices,
   states,
   president,
+  senateRaces,
+  repsRaces,
+  districtColorIndex,
 }: {
   offices: HubStateOffice[];
   states: { id: string; name: string; slug: string; regionName: string }[];
   president: { name: string; party: string } | null;
+  senateRaces: HubSenateRace[];
+  repsRaces: HubRepsRace[];
+  districtColorIndex: Record<string, number>;
 }) {
   const [stateId, setStateId] = useState(
     states.find((s) => s.id === "NG-LA")?.id ?? states[0]?.id ?? ""
@@ -108,6 +122,24 @@ export default function WhoRepresents({
     [offices, stateId]
   );
   const state = states.find((s) => s.id === stateId);
+
+  // Declared races for the picked state, ready for the roster app.
+  const stateSenateRaces = useMemo(
+    () => senateRaces.filter((r) => r.stateId === stateId),
+    [senateRaces, stateId]
+  );
+  const stateRepsRaces = useMemo(
+    () => repsRaces.filter((r) => r.stateId === stateId),
+    [repsRaces, stateId]
+  );
+  const senateRaceRows = useMemo<OfficeRace[]>(
+    () => stateSenateRaces.map((race) => ({ kind: "senate", race })),
+    [stateSenateRaces]
+  );
+  const repsRaceRows = useMemo<OfficeRace[]>(
+    () => stateRepsRaces.map((race) => ({ kind: "reps", race })),
+    [stateRepsRaces]
+  );
 
   return (
     <div>
@@ -258,6 +290,51 @@ export default function WhoRepresents({
                         House members not recorded for this state.
                       </p>
                     ))}
+
+                  {row.key !== "president" && (
+                    <div className="border-t border-border-subtle pt-4">
+                      <OfficeCandidateRoster
+                        key={`${row.key}-${stateId}`}
+                        races={
+                          row.key === "senator" ? senateRaceRows : repsRaceRows
+                        }
+                        senateRaces={stateSenateRaces}
+                        repsRaces={stateRepsRaces}
+                        districtColorIndex={districtColorIndex}
+                        stateName={state?.name ?? stateId}
+                        officeLabel={
+                          row.key === "senator"
+                            ? "Senate"
+                            : row.key === "reps"
+                              ? "House of Reps"
+                              : "Governor"
+                        }
+                        emptyHint={
+                          row.key === "governor" ? (
+                            <>
+                              INEC has not published a consolidated{" "}
+                              {state?.name ?? stateId} gubernatorial list in this
+                              snapshot. Compare the sitting executive with the
+                              legislative races above.
+                            </>
+                          ) : (
+                            <>
+                              No declared candidates for {state?.name ?? stateId}{" "}
+                              in this office. Open the election map for ward-level
+                              context.
+                            </>
+                          )
+                        }
+                      />
+                      <Link
+                        href="#candidates"
+                        className="mt-3 inline-flex items-center gap-1 text-label-md font-semibold text-primary hover:underline"
+                      >
+                        Open the full national candidate roster
+                        <span aria-hidden>→</span>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               )}
             </div>

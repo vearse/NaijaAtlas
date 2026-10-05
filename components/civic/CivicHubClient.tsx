@@ -17,6 +17,7 @@ import CandidateRoster, {
   type RosterPosition,
 } from "@/components/civic/CandidateRoster";
 import WhoRepresents from "@/components/civic/WhoRepresents";
+import SecurityLookup from "@/components/civic/SecurityLookup";
 import AssemblyExplainer from "@/components/civic/AssemblyExplainer";
 import EmptyState from "@/components/hub/EmptyState";
 import type { CivicHubData } from "@/lib/server/loadCivicHubData";
@@ -95,6 +96,7 @@ export default function CivicHubClient(data: CivicHubData) {
           { href: "#candidates", label: "Candidates", tone: "neutral" },
           { href: "#representatives", label: "Who represents me", tone: "neutral" },
           { href: "#maps", label: "Maps", tone: "neutral" },
+          { href: "#security", label: "Security lookup", tone: "neutral" },
           { href: "#national-assembly", label: "National Assembly", tone: "neutral" },
         ]}
         note="Source: INEC · Last updated October 2024"
@@ -224,7 +226,7 @@ export default function CivicHubClient(data: CivicHubData) {
           id="representatives"
           eyebrow="Constituency lookup"
           title="Who represents me?"
-          lede="Officeholders for the 10th National Assembly, straight from the INEC and NASS returns."
+          lede="Officeholders for the 10th National Assembly, straight from the INEC and NASS returns — with the declared candidates for each state race."
         >
           <WhoRepresents
             offices={data.offices}
@@ -237,6 +239,9 @@ export default function CivicHubClient(data: CivicHubData) {
                   }
                 : null
             }
+            senateRaces={data.senateRaces}
+            repsRaces={data.repsRaces}
+            districtColorIndex={data.senatorialLookups.districtColorIndex}
           />
         </HubSection>
 
@@ -259,55 +264,15 @@ export default function CivicHubClient(data: CivicHubData) {
           <p className="mt-4 text-body-sm text-slate-400">
             Basemap: Minimal or Street only on map pages.
           </p>
+        </HubSection>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {security.byBranch.map((group) => (
-              <div
-                key={group.branch}
-                className="rounded-2xl border border-border-subtle bg-surface-card p-5 shadow-sm"
-                style={{ borderLeft: `4px solid ${group.color}` }}
-              >
-                <p className="text-label-caps text-text-muted">
-                  {group.label}
-                </p>
-                <p className="mt-2 font-landing-display text-headline-lg font-bold tabular-nums tracking-tight text-text-primary">
-                  {group.formations.length}
-                </p>
-                <p className="mt-1 text-body-sm text-text-secondary">
-                  {group.branch === "army"
-                    ? "Divisional HQs, Army HQ and the Guards Brigade"
-                    : group.branch === "navy"
-                      ? "Naval Commands covering the coastline"
-                      : "Air Force HQ, commands and bases"}
-                </p>
-                <ul className="mt-3 space-y-1">
-                  {group.formations.map((f) => (
-                    <li
-                      key={f.id}
-                      className="flex items-baseline justify-between gap-2 text-[13px] text-text-secondary"
-                    >
-                      <span className="truncate">{f.name}</span>
-                      <span className="shrink-0 font-mono text-[11px] text-text-muted">
-                        {f.states.length === 37
-                          ? "national"
-                          : `${f.states.length} state${f.states.length === 1 ? "" : "s"}`}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          {security.proposedCount > 0 && (
-            <p className="mt-4 text-body-sm text-text-secondary">
-              <span className="font-semibold text-text-primary">
-                {security.proposedCount} new Army divisions
-              </span>{" "}
-              were approved in July 2026 and are forming toward Initial
-              Operational Capability. They are hidden on the map until you
-              reveal them.
-            </p>
-          )}
+        <HubSection
+          id="security"
+          eyebrow="Armed Forces"
+          title="Security lookup"
+          lede="Divisional headquarters, naval commands and air bases — the full record for every formation, the way the Travel hub lets you scale up a metro city."
+        >
+          <SecurityLookup security={security} />
         </HubSection>
 
         <HubSection

@@ -12,6 +12,10 @@ import coastCatalog from "@/data/overlays/catalog/coast.json";
 import type { Map as MaplibreMap } from "maplibre-gl";
 import { useMapStore } from "@/lib/store/mapStore";
 import { buildCityOverlayFeature } from "@/lib/map/cityCoordsLookup";
+import {
+  flyToOverlayFeature,
+  resolveOverlayLonLat,
+} from "@/lib/map/flyToOverlayFeature";
 import { OVERLAY_REGISTRY } from "@/lib/map/overlayRegistry";
 import type { SelectedOverlayFeature, OverlayLayerId } from "@/types/overlay";
 import type { StateOverlayItem } from "@/lib/lenses/stateOverlayItems";
@@ -211,26 +215,16 @@ export function openStateOverlayItemOnMap(item: StateOverlayItem): void {
 
   const map = store.mapInstance;
   const coords =
-    feature.geometry?.type === "Point"
-      ? (feature.geometry.coordinates as [number, number])
-      : item.lon != null && item.lat != null
-        ? ([item.lon, item.lat] as [number, number])
-        : null;
+    resolveOverlayLonLat(feature) ??
+    (item.lon != null && item.lat != null
+      ? ([item.lon, item.lat] as [number, number])
+      : null);
 
-  if (!map || !coords) return;
-
-  const zoomTarget =
-    layerId === "landforms" || layerId === "ecology" ? 6.5 : 7.5;
-
-  map.flyTo({
-    center: coords,
-    zoom: Math.max(map.getZoom() ?? 5, zoomTarget),
-    speed: 0.9,
-  });
+  if (map) flyToOverlayFeature(map, feature);
 
   const enrich = () => {
     const live = useMapStore.getState().mapInstance;
-    if (!live) return;
+    if (!live || !coords) return;
     const synced = syncFromRenderedMap(
       live,
       layerId,
@@ -243,6 +237,6 @@ export function openStateOverlayItemOnMap(item: StateOverlayItem): void {
     }
   };
 
-  map.once("idle", enrich);
+  if (map) map.once("idle", enrich);
   window.setTimeout(enrich, 600);
 }
