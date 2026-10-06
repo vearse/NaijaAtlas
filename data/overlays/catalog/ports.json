@@ -5,7 +5,7 @@
     "coastCategory": "seaport",
     "type": "Container and general cargo seaport",
     "summary": "Nigeria's busiest seaport complex; handles most national container traffic.",
-    "description": "Apapa and neighbouring Tin Can Island (TCIP) are the Lagos port cluster under the Nigerian Ports Authority, with private terminal operators. Congestion on the Apapa–Oshodi corridor has been a chronic logistics bottleneck. The ports remain the primary import gateway for the southwest and much of the north.",
+    "description": "Apapa and neighbouring Tin Can Island (TCIP) are separate terminals in the Lagos port cluster under the Nigerian Ports Authority, with private operators at each. Congestion on the Apapa–Oshodi corridor has been a chronic logistics bottleneck. The ports remain the primary import gateway for the southwest and much of the north.",
     "statesCrossed": [
       "Lagos"
     ],
@@ -24,8 +24,11 @@
     "name": "Lekki Deep Sea Port",
     "coastCategory": "seaport",
     "type": "Deep-water container port",
-    "summary": "New deep-water port east of Lagos on the Lekki peninsula; 16 m draft container terminal.",
-    "description": "Lekki Deep Sea Port opened to relieve Lagos congestion with deeper draft and modern quay cranes. It sits within the Lekki Free Zone and connects to the Lekki–Epe expressway. Phase capacity targets multi-million TEU throughput.",
+    "summary": "New deep-water port east of Lagos; NPA reports 19 m access channel depth and berths designed to 16.5 m.",
+    "description": "Lekki Deep Sea Port opened to relieve Lagos congestion. The Nigerian Ports Authority handbook lists a 19 m access channel depth; marine structures were designed for 16.5 m draft. It sits within the Lekki Free Zone and connects to the Lekki–Epe expressway.",
+    "sourceUrl": "https://nigerianports.gov.ng/wp-content/uploads/2024/07/NPA-HANDBOOK.pdf",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29",
     "statesCrossed": [
       "Lagos"
     ],
@@ -103,8 +106,11 @@
     "name": "Onne Port",
     "coastCategory": "seaport",
     "type": "Oil and gas free-zone port",
-    "summary": "Modern deep-water complex east of Port Harcourt; largest Nigerian port by land area.",
-    "description": "Onne (Federal Ocean Terminal / Federal Lighter Terminal and oil-and-gas free zone) was developed for energy logistics: rigs, pipes, and project cargo. It complements congested Lagos for specialised energy shipments.",
+    "summary": "Oil and gas free-zone port east of Port Harcourt; NPA cites about 2,538 ha — largest port land area in Nigeria.",
+    "description": "Onne (Federal Ocean Terminal / Federal Lighter Terminal and oil-and-gas free zone) was developed for energy logistics: rigs, pipes, and project cargo. The Nigerian Ports Authority states the complex covers 2,538.115 hectares. It complements congested Lagos for specialised energy shipments.",
+    "sourceUrl": "https://nigerianports.gov.ng/onne/",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29",
     "statesCrossed": [
       "Rivers"
     ],

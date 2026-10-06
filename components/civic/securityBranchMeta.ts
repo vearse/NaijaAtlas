@@ -23,7 +23,7 @@ export const SECURITY_BRANCHES_META: SecurityBranchMeta[] = [
     label: "Navy",
     icon: "⚓",
     tagline: "Naval Commands covering the coastline.",
-    wash: "from-slate-100",
+    wash: "from-blue-50",
   },
   {
     id: "airforce",

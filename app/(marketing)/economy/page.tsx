@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import EconomyHubClient from "@/components/economy/EconomyHubClient";
 import { loadEconomyHubData } from "@/lib/server/loadEconomyHubData";
 import { loadPowerData } from "@/lib/server/loadPowerData";
-import { siteConfig } from "@/lib/seo/site";
 
-export const metadata: Metadata = {
-  title: `Economy · Resources & Trade · ${siteConfig.name}`,
-  description:
-    "Nigeria's commercial geography: 35 mineral entries with reserves and downstream products, operating and proposed port complexes, agro-ecological belts, and the states that host them.",
-  alternates: { canonical: "/economy" },
-};
+export function generateMetadata(): Metadata {
+  const data = loadEconomyHubData();
+  const mineralTotal = data.resources.length;
+  return {
+    title: "Economy · Resources & Trade",
+    description: `Nigeria's commercial geography: ${mineralTotal} mineral catalogue entries (${data.mineralTypesShown} types in Browse by sector), operating and proposed port complexes, agro-ecological belts, and NERC grid-connected power plants.`,
+    alternates: { canonical: "/economy" },
+  };
+}
 
 export default function EconomyHubPage() {
   const data = loadEconomyHubData();

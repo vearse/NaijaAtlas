@@ -121,8 +121,8 @@ export default function PortsDirectory({
 
       <SourceNote
         className="mt-6"
-        source="Nigerian Ports Authority · concession lists"
-        updated="Repository dataset"
+        source="Nigerian Ports Authority port handbook (2024) · berth characteristics"
+        updated="Last verified 2026-04-29"
       />
     </div>
   );

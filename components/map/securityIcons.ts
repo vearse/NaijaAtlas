@@ -74,9 +74,9 @@ const DRAW: Record<SecurityFormationCategory, DrawFn> = {
 const FILL: Record<SecurityFormationCategory, string> = {
   "army-division": "#3f6212",
   "proposed-army-division": "#7c3aed",
-  "navy-base": "#0f172a",
+  "navy-base": "#1e3a8a",
   "airforce-hq": "#0369a1",
-  "airforce-base": "#1e40af",
+  "airforce-base": "#0284c7",
 };
 
 function iconImage(category: SecurityFormationCategory): ImageData {

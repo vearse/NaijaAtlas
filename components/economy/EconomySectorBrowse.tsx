@@ -5,7 +5,6 @@ import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import NigeriaThumb from "@/components/hub/NigeriaThumb";
 import { sectionMapHref } from "@/lib/navigation/sectionMaps";
-import { shuffle } from "@/lib/utils/shufflePick";
 import type { HubPort, HubResource } from "@/lib/server/loadEconomyHubData";
 import type { HubDistributor } from "@/lib/server/loadPowerData";
 
@@ -17,22 +16,11 @@ const TABS: { id: SectorTab; label: string; accent: string }[] = [
   { id: "disco", label: "DisCos", accent: "#b45309" },
 ];
 
-const MINERAL_MAX = 7;
-
-const PICK_LABEL: Record<SectorTab, string> = {
-  minerals: "minerals",
-  ports: "ports",
-  disco: "DisCos",
-};
-
-function symbolFor(name: string): string {
-  const parts = name.trim().split(/\s+/);
-  if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
-  return name.slice(0, 2).toUpperCase();
-}
+const MINERAL_PAGE = 7;
 
 type Props = {
   resources: HubResource[];
+  mineralTypesShown: number;
   ports: HubPort[];
   distributors: HubDistributor[];
 };
@@ -47,21 +35,39 @@ type MapState = {
   href: string | null;
 };
 
+const PICK_LABEL: Record<SectorTab, string> = {
+  minerals: "minerals",
+  ports: "ports",
+  disco: "DisCos",
+};
+
+function symbolFor(name: string): string {
+  const parts = name.trim().split(/\s+/);
+  if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
+  return name.slice(0, 2).toUpperCase();
+}
+
 export default function EconomySectorBrowse({
   resources,
+  mineralTypesShown,
   ports,
   distributors,
 }: Props) {
   const reduceMotion = useReducedMotion();
   const [tab, setTab] = useState<SectorTab>("minerals");
   const [mineralSeed, setMineralSeed] = useState(0);
+  const [mineralOffset, setMineralOffset] = useState(0);
   const [activeIdx, setActiveIdx] = useState(0);
 
-  const mineralPool = useMemo(
-    () => shuffle(resources).slice(0, MINERAL_MAX),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [resources, mineralSeed]
-  );
+  const mineralPool = useMemo(() => {
+    const sorted = [...resources].sort((a, b) => a.name.localeCompare(b.name));
+    const start = mineralOffset % Math.max(1, sorted.length);
+    const slice: HubResource[] = [];
+    for (let i = 0; i < Math.min(MINERAL_PAGE, sorted.length); i++) {
+      slice.push(sorted[(start + i) % sorted.length]);
+    }
+    return slice;
+  }, [resources, mineralOffset]);
   const activePorts = useMemo(
     () => ports.filter((p) => p.status === "active").slice(0, 4),
     [ports]
@@ -70,7 +76,7 @@ export default function EconomySectorBrowse({
 
   useEffect(() => {
     setActiveIdx(0);
-  }, [tab, mineralSeed]);
+  }, [tab, mineralOffset, mineralSeed]);
 
   const mapState = useMemo<MapState>(() => {
     const accent = TABS.find((t) => t.id === tab)?.accent ?? "#008751";
@@ -122,26 +128,31 @@ export default function EconomySectorBrowse({
       : { highlight: [], markers: [], accent, label: "Distribution", detail: "", href: null };
   }, [tab, activeIdx, mineralPool, activePorts, discoRows]);
 
-  const reshuffleMinerals = useCallback(() => setMineralSeed((s) => s + 1), []);
+  const reshuffleMinerals = useCallback(() => {
+    setMineralSeed((s) => s + 1);
+    setMineralOffset(Math.floor(Math.random() * Math.max(1, resources.length)));
+  }, [resources.length]);
 
-  /** Cycles the map to the next pick; the outgoing one scrolls up and away. */
   const advance = useCallback(() => {
+    if (tab === "minerals") {
+      setMineralOffset((o) => (o + MINERAL_PAGE) % Math.max(1, resources.length));
+      return;
+    }
     const total =
-      tab === "minerals"
-        ? mineralPool.length
-        : tab === "ports"
-          ? activePorts.length
-          : discoRows.length;
+      tab === "ports" ? activePorts.length : discoRows.length;
     if (total === 0) return;
     setActiveIdx((i) => (i + 1) % total);
-  }, [activePorts.length, discoRows.length, mineralPool.length, tab]);
+  }, [activePorts.length, discoRows.length, resources.length, tab]);
 
   const pickCount =
     tab === "minerals"
-      ? mineralPool.length
+      ? resources.length
       : tab === "ports"
         ? activePorts.length
         : discoRows.length;
+
+  const listCount =
+    tab === "minerals" ? mineralPool.length : pickCount;
 
   const scrollAway = reduceMotion
     ? {}
@@ -178,8 +189,9 @@ export default function EconomySectorBrowse({
             Browse by sector
           </h3>
           <p className="mt-1 max-w-xl text-body-sm text-text-secondary">
-            Minerals, operating ports and grid distribution companies. Hydropower
-            is covered in the energy section below.
+            {resources.length} mineral catalogue entries ({mineralTypesShown}{" "}
+            resource types). Power generation is covered in the energy section
+            below.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2 sm:justify-end">
@@ -224,7 +236,9 @@ export default function EconomySectorBrowse({
             <div className="flex items-center justify-between gap-2 border-b border-slate-100 px-5 py-3">
               <p className="text-label-caps text-text-muted">Map preview</p>
               <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold tabular-nums text-text-secondary">
-                {pickCount} {PICK_LABEL[tab]}
+                {tab === "minerals"
+                  ? `${resources.length} minerals`
+                  : `${listCount} ${PICK_LABEL[tab]}`}
               </span>
             </div>
             <div className="flex flex-1 flex-col justify-center bg-gradient-to-b from-slate-50 to-white px-4 py-6">
@@ -277,13 +291,17 @@ export default function EconomySectorBrowse({
             </AnimatePresence>
             <div className="mt-2 flex items-center justify-between gap-2 border-t border-border-subtle pt-2">
               <span className="text-[11px] tabular-nums text-text-muted">
-                {pickCount > 0 ? `${(activeIdx % pickCount) + 1} of ${pickCount}` : "—"}
+                {tab === "minerals"
+                  ? `${Math.min(MINERAL_PAGE, resources.length)} shown · ${resources.length} total`
+                  : pickCount > 0
+                    ? `${(activeIdx % listCount) + 1} of ${listCount}`
+                    : "—"}
               </span>
               <button
                 type="button"
                 onClick={advance}
-                disabled={pickCount <= 1}
-                aria-label="View the next pick"
+                disabled={tab !== "minerals" && listCount <= 1}
+                aria-label={tab === "minerals" ? "Show next minerals" : "View the next pick"}
                 title="View more"
                 className="inline-flex h-8 items-center gap-1.5 rounded-full border border-border-subtle bg-surface-card px-3 text-[11px] font-semibold text-text-secondary transition-colors hover:border-primary-container/40 hover:text-primary disabled:opacity-40"
               >
@@ -378,6 +396,14 @@ function MineralRow({
       </div>
       {active && r.summary && (
         <p className="px-5 pb-4 text-body-sm text-text-secondary">{r.summary}</p>
+      )}
+      {active && r.gasSupplyToPowerNote && (
+        <p className="px-5 pb-4 text-body-sm text-text-secondary">
+          <span className="font-semibold text-text-primary">
+            Gas supply to power:{" "}
+          </span>
+          {r.gasSupplyToPowerNote}
+        </p>
       )}
     </li>
   );

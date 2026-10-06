@@ -55,40 +55,22 @@ export default function SecurityLookup({ security }: { security: SecurityData })
         transition: { duration: 0.28, ease: [0.16, 1, 0.3, 1] as const },
       };
 
-  const surprise = () => {
-    const pool = security.formations.filter((f) => f.id !== formation?.id);
-    const next = pool[Math.floor(Math.random() * pool.length)];
-    if (!next) return;
-    setBranchId(next.branch);
-    setActiveId(next.id);
-  };
-
   if (!branch || !formation) return null;
 
   return (
     <div>
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <span className="font-label-caps text-label-caps uppercase tracking-wider text-primary">
-            Security lookup
-          </span>
-          <h3 className="mt-1 font-landing-display text-headline-lg text-text-primary">
-            Look up any formation.
-          </h3>
-          <p className="mt-1 max-w-xl text-body-md text-text-secondary">
-            {security.formations.length} documented formations across the Armed
-            Forces. Pick a service, open a headquarters, and read its area of
-            responsibility, status and map footprint.
-          </p>
-        </div>
-        <button
-          type="button"
-          onClick={surprise}
-          className="inline-flex items-center gap-2 rounded-full border border-border-subtle bg-surface-card px-4 py-2 text-label-md font-semibold text-text-secondary shadow-sm hover:border-primary-container/40 hover:text-primary"
-        >
-          <span aria-hidden>🎲</span>
-          Surprise me
-        </button>
+      <div>
+        <span className="text-label-caps uppercase tracking-wider text-primary">
+          Armed Forces · Security lookup
+        </span>
+        <h2 className="mt-1 font-landing-display text-headline-md text-text-primary">
+          Look up any formation
+        </h2>
+        <p className="mt-1 max-w-2xl text-body-md text-text-secondary">
+          {security.formations.length} documented formations across the Army,
+          Navy and Air Force. Pick a service, open a headquarters, and read its
+          area of responsibility, status and map footprint.
+        </p>
       </div>
 
       <div className="mt-4 flex flex-wrap gap-2" role="tablist" aria-label="Armed Forces branch">
@@ -102,12 +84,16 @@ export default function SecurityLookup({ security }: { security: SecurityData })
               setBranchId(meta.id);
               setActiveId("");
             }}
-            className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-label-md font-semibold transition-all duration-200 ${
+            className={`inline-flex shrink-0 items-center gap-2 rounded-full border-2 px-4 py-2 text-label-md font-semibold transition-all duration-200 ${
               branchId === meta.id
-                ? "border-transparent text-white shadow-md"
-                : "border-border-subtle bg-surface-card text-text-secondary hover:text-text-primary"
+                ? "text-white shadow-md"
+                : "bg-surface-card hover:shadow-sm"
             }`}
-            style={branchId === meta.id ? { backgroundColor: group?.color } : undefined}
+            style={
+              branchId === meta.id
+                ? { backgroundColor: group?.color, borderColor: group?.color }
+                : { borderColor: `${group?.color}55`, color: group?.color }
+            }
           >
             <span aria-hidden>{meta.icon}</span>
             {meta.label}

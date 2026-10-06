@@ -25,6 +25,7 @@ export type HubResource = {
   type: string;
   reserveNote: string;
   productionNote: string;
+  gasSupplyToPowerNote?: string;
   states: string[];
   stateIds: string[];
   products: string[];
@@ -33,6 +34,9 @@ export type HubResource = {
   highlights: string[];
   lon: number | null;
   lat: number | null;
+  sourceUrl?: string;
+  sourceAccessDate?: string;
+  lastVerified?: string;
 };
 
 export type HubPort = {
@@ -61,6 +65,8 @@ export type HubBelt = {
 
 export type EconomyHubData = {
   resources: HubResource[];
+  /** Distinct resourceType values in the minerals catalogue. */
+  mineralTypesShown: number;
   ports: HubPort[];
   belts: HubBelt[];
   /** Per-state commercial signal, derived from the catalogues. */
@@ -75,7 +81,12 @@ export type EconomyHubData = {
     igrRank: number | null;
   }[];
   stateCount: number;
-  sources: string;
+  sources: {
+    minerals: string;
+    ports: string;
+    power: string;
+    lastVerified: string;
+  };
 };
 
 let cache: EconomyHubData | null = null;
@@ -112,10 +123,18 @@ export function loadEconomyHubData(): EconomyHubData {
       locations: strList(r.locations),
       economy: str(r.economy),
       highlights: strList(r.highlights),
+      gasSupplyToPowerNote: str(r.gasSupplyToPowerNote) || undefined,
       lon,
       lat,
+      sourceUrl: str(r.sourceUrl) || undefined,
+      sourceAccessDate: str(r.sourceAccessDate) || undefined,
+      lastVerified: str(r.lastVerified) || undefined,
     };
   });
+
+  const mineralTypesShown = new Set(
+    resources.map((r) => r.resourceType || r.type).filter(Boolean)
+  ).size;
 
   const ports: HubPort[] = [
     ...readCatalog("ports").map((p) => {
@@ -197,11 +216,19 @@ export function loadEconomyHubData(): EconomyHubData {
 
   cache = {
     resources,
+    mineralTypesShown,
     ports,
     belts,
     watch,
     stateCount: states.length,
-    sources: "MSMD mineral catalogue · Nigerian Ports Authority · NPA concession list",
+    sources: {
+      minerals:
+        "Nigeria Ministry of Solid Minerals Development (MSMD) mineral inventory · NUPRC/Nigeria petroleum data",
+      ports:
+        "Nigerian Ports Authority (NPA) port handbook & berth characteristics",
+      power: "NERC quarterly market operator reports (grid-connected fleet)",
+      lastVerified: "2026-04-29",
+    },
   };
   return cache;
 }

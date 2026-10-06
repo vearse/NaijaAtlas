@@ -128,9 +128,9 @@ export const SECURITY_FORMATION_CATEGORY_LABELS: Record<
 > = {
   "army-division": { label: "Army division", color: "#3f6212", branch: "Nigerian Army" },
   "proposed-army-division": { label: "Proposed Army division", color: "#7c3aed", branch: "Nigerian Army" },
-  "navy-base": { label: "Navy command", color: "#0f172a", branch: "Nigerian Navy" },
+  "navy-base": { label: "Navy command", color: "#1e3a8a", branch: "Nigerian Navy" },
   "airforce-hq": { label: "Air Force HQ", color: "#0369a1", branch: "Nigerian Air Force" },
-  "airforce-base": { label: "Air Force base", color: "#1e40af", branch: "Nigerian Air Force" },
+  "airforce-base": { label: "Air Force base", color: "#0284c7", branch: "Nigerian Air Force" },
 };
 
 export const SECURITY_BRANCHES = ["army", "navy", "airforce"] as const;
@@ -141,7 +141,7 @@ export const SECURITY_BRANCH_LABELS: Record<
   { label: string; short: string; color: string }
 > = {
   army: { label: "Nigerian Army", short: "Army", color: "#3f6212" },
-  navy: { label: "Nigerian Navy", short: "Navy", color: "#0f172a" },
+  navy: { label: "Nigerian Navy", short: "Navy", color: "#1e3a8a" },
   airforce: { label: "Nigerian Air Force", short: "Air Force", color: "#0369a1" },
 };
 

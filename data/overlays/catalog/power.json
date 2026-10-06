@@ -27,7 +27,8 @@
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "wikiUrl": "https://en.wikipedia.org/wiki/Kainji_Dam",
     "gridConnected": true,
-    "gridConnectedNote": "Feeds the national grid."
+    "gridConnectedNote": "Feeds the national grid.",
+    "inventoryGroup": "grid-connected"
   },
   {
     "id": "plant-zungeru",
@@ -55,7 +56,8 @@
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "wikiUrl": "https://en.wikipedia.org/wiki/Zungeru_Hydroelectric_Power_Station",
     "gridConnected": true,
-    "gridConnectedNote": "Feeds the national grid."
+    "gridConnectedNote": "Feeds the national grid.",
+    "inventoryGroup": "grid-connected"
   },
   {
     "id": "plant-shiroro",
@@ -82,7 +84,8 @@
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "wikiUrl": "https://en.wikipedia.org/wiki/Shiroro_Hydroelectric_Power_Station",
     "gridConnected": true,
-    "gridConnectedNote": "Feeds the national grid."
+    "gridConnectedNote": "Feeds the national grid.",
+    "inventoryGroup": "grid-connected"
   },
   {
     "id": "plant-jebba",
@@ -110,7 +113,44 @@
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "wikiUrl": "https://en.wikipedia.org/wiki/Jebba_Hydroelectric_Power_Station",
     "gridConnected": true,
-    "gridConnectedNote": "Feeds the national grid."
+    "gridConnectedNote": "Feeds the national grid.",
+    "inventoryGroup": "grid-connected"
+  },
+  {
+    "id": "plant-ikeja-hydro",
+    "name": "Ikeja Hydroelectric Station",
+    "featureKind": "power-plant",
+    "plantCategory": "regional-hydro",
+    "inventoryGroup": "grid-connected",
+    "type": "Small hydroelectric station",
+    "summary": "110 MW hydro plant on the Kainji cascade (NERC: Ikeja_1).",
+    "description": "Listed in NERC’s grid-connected fleet as Ikeja_1 with 110 MW installed capacity, associated with the Kainji–Jebba cascade development.",
+    "capacityMw": 110,
+    "commissioned": "1990s",
+    "operator": "Mainstream Energy Solutions Ltd",
+    "riverName": "Niger River",
+    "statesCrossed": [
+      "Niger"
+    ],
+    "lon": 4.78778,
+    "lat": 9.13556,
+    "highlights": [
+      "110 MW (NERC Ikeja_1)",
+      "Kainji cascade",
+      "Grid-connected hydro"
+    ],
+    "gridConnected": true,
+    "gridConnectedNote": "Feeds the national grid.",
+    "nercUnits": [
+      {
+        "id": "Ikeja_1",
+        "capacityMw": 110,
+        "plantCategory": "regional-hydro"
+      }
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   },
   {
     "id": "plant-obudu",
@@ -118,9 +158,9 @@
     "featureKind": "power-plant",
     "plantCategory": "regional-hydro",
     "type": "Small hydroelectric dam",
-    "summary": "70 MW plant in Cross River State supporting the southeast grid.",
-    "description": "Obudu Dam on the Cross River system provides peaking power and supports tourism in the Obudu Plateau area. It is among the smaller but strategically placed hydro assets in the south.",
-    "capacityMw": 70,
+    "summary": "Small hydro scheme at Obudu Dam, Cross River State (installed capacity not verified in NERC reports).",
+    "description": "Obudu Dam on the Cross River system supports local supply and tourism on the Obudu Plateau. It is not listed among NERC’s grid-connected generators and is treated here as a regional off-grid scheme.",
+    "capacityMw": null,
     "commissioned": "1999",
     "operator": "Cross River State government / concession",
     "riverName": "Cross River tributary",
@@ -130,13 +170,18 @@
     "lon": 9.35,
     "lat": 6.67,
     "highlights": [
-      "70 MW southeast plant",
-      "Obudu Plateau area",
-      "Peaking power role"
+      "Obudu Plateau",
+      "Regional off-grid scheme",
+      "Capacity unverified"
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Obudu_Dam",
     "gridConnected": false,
-    "gridConnectedNote": "Regional dam scheme — not connected to the national grid."
+    "gridConnectedNote": "Regional dam scheme — not connected to the national grid.",
+    "inventoryGroup": "regional-off-grid",
+    "capacityUnverified": true,
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   },
   {
     "id": "plant-ikere",
@@ -144,9 +189,9 @@
     "featureKind": "power-plant",
     "plantCategory": "regional-hydro",
     "type": "Medium hydroelectric dam",
-    "summary": "60 MW plant on the Ogun River in Oyo State.",
-    "description": "Ikere Gorge Dam impounds the Ogun River for power generation and downstream flow regulation. It complements Asejire further upstream on the Oshun/Ogun system.",
-    "capacityMw": 60,
+    "summary": "Hydro scheme at Ikere Gorge, Oyo State (installed capacity not verified in NERC reports).",
+    "description": "Ikere Gorge Dam impounds the Ogun River for downstream regulation. It is not reported as a grid-connected plant in NERC quarterly capacity tables.",
+    "capacityMw": null,
     "commissioned": "1983",
     "operator": "Ogun-Osun River Basin Development Authority",
     "riverName": "Ogun River",
@@ -156,13 +201,18 @@
     "lon": 3.22,
     "lat": 7.58,
     "highlights": [
-      "60 MW Ogun River plant",
-      "Oyo–Ogun basin regulation",
-      "Gorge dam site"
+      "Ogun River gorge",
+      "Regional off-grid scheme",
+      "Capacity unverified"
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Ikere_Gorge_Dam",
     "gridConnected": false,
-    "gridConnectedNote": "Regional dam scheme — not connected to the national grid."
+    "gridConnectedNote": "Regional dam scheme — not connected to the national grid.",
+    "inventoryGroup": "regional-off-grid",
+    "capacityUnverified": true,
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   },
   {
     "id": "plant-dadin-kowa",
@@ -190,7 +240,8 @@
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "wikiUrl": "https://en.wikipedia.org/wiki/Dadin_Kowa_Dam",
     "gridConnected": true,
-    "gridConnectedNote": "Feeds the national grid."
+    "gridConnectedNote": "Feeds the national grid.",
+    "inventoryGroup": "grid-connected"
   },
   {
     "id": "plant-challawa",
@@ -198,9 +249,9 @@
     "featureKind": "power-plant",
     "plantCategory": "regional-hydro",
     "type": "Medium hydroelectric dam",
-    "summary": "39 MW plant on the Challawa River in Kano State.",
+    "summary": "Challawa Gorge dam, Kano State — irrigation and basin management (generation capacity unverified).",
     "description": "Challawa Gorge Dam supports Kano basin irrigation and runs a 39 MW hydro station. It is part of the broader Hadejia–Jama'are water management system.",
-    "capacityMw": 39,
+    "capacityMw": null,
     "commissioned": "1992",
     "operator": "Hadejia-Jama'are River Basin Development Authority",
     "riverName": "Challawa River",
@@ -217,7 +268,12 @@
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Challawa_Gorge_Dam",
     "gridConnected": false,
-    "gridConnectedNote": "Regional dam scheme — not connected to the national grid."
+    "gridConnectedNote": "Regional dam scheme — not connected to the national grid.",
+    "inventoryGroup": "regional-off-grid",
+    "capacityUnverified": true,
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   },
   {
     "id": "plant-tiga",
@@ -225,9 +281,9 @@
     "featureKind": "power-plant",
     "plantCategory": "regional-hydro",
     "type": "Medium hydroelectric dam",
-    "summary": "20 MW plant on the Hadejia River in Kano State.",
+    "summary": "Tiga Dam, Kano State — irrigation scheme with a small hydro plant (capacity unverified).",
     "description": "Tiga Dam was built in the 1970s for irrigation and includes a 20 MW hydro station. It is upstream of Challawa in the Hadejia–Jama'are basin.",
-    "capacityMw": 20,
+    "capacityMw": null,
     "commissioned": "1974",
     "operator": "Hadejia-Jama'are River Basin Development Authority",
     "riverName": "Hadejia River",
@@ -243,7 +299,12 @@
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Tiga_Dam",
     "gridConnected": false,
-    "gridConnectedNote": "Regional dam scheme — not connected to the national grid."
+    "gridConnectedNote": "Regional dam scheme — not connected to the national grid.",
+    "inventoryGroup": "regional-off-grid",
+    "capacityUnverified": true,
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   },
   {
     "id": "plant-goronyo",
@@ -253,7 +314,7 @@
     "type": "Irrigation dam (small hydro potential)",
     "summary": "Sokoto basin dam primarily for irrigation and water supply.",
     "description": "Goronyo Dam regulates the Rima River for dry-season farming in Sokoto State. While primarily an irrigation asset, it is listed among Nigeria's major water-control structures.",
-    "capacityMw": 0,
+    "capacityMw": null,
     "commissioned": "1984",
     "operator": "Sokoto Rima River Basin Development Authority",
     "riverName": "Rima River",
@@ -270,7 +331,11 @@
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Goronyo_Dam",
     "gridConnected": false,
-    "gridConnectedNote": "Regional dam scheme — not connected to the national grid."
+    "gridConnectedNote": "Regional dam scheme — not connected to the national grid.",
+    "inventoryGroup": "dam-non-power",
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   },
   {
     "id": "plant-bakolori",
@@ -280,7 +345,7 @@
     "type": "Irrigation dam",
     "summary": "Controversial Sokoto irrigation dam on the Sokoto River.",
     "description": "Bakolori Dam was built for irrigated wheat and rice schemes in Sokoto State. It became notable for downstream community displacement and water-access disputes, and is studied in Nigerian environmental history.",
-    "capacityMw": 0,
+    "capacityMw": null,
     "commissioned": "1983",
     "operator": "Sokoto Rima River Basin Development Authority",
     "riverName": "Sokoto River",
@@ -296,7 +361,11 @@
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Bakolori_Dam",
     "gridConnected": false,
-    "gridConnectedNote": "Regional dam scheme — not connected to the national grid."
+    "gridConnectedNote": "Regional dam scheme — not connected to the national grid.",
+    "inventoryGroup": "dam-non-power",
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   },
   {
     "id": "plant-asejire",
@@ -306,7 +375,7 @@
     "type": "Multipurpose dam (water supply)",
     "summary": "Multipurpose dam supplying Ibadan; linked to Asejire reservoir.",
     "description": "Asejire Dam primarily provides raw water for Ibadan and irrigation in the Oshun valley. It is a key urban water asset for southwestern Nigeria.",
-    "capacityMw": 0,
+    "capacityMw": null,
     "commissioned": "1968",
     "operator": "Ogun-Osun River Basin Development Authority",
     "riverName": "Oshun River",
@@ -314,7 +383,7 @@
     "statesCrossed": [
       "Oyo"
     ],
-    "lon": 4.0,
+    "lon": 4,
     "lat": 7.45,
     "highlights": [
       "Ibadan water supply",
@@ -323,7 +392,11 @@
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Asejire_Dam",
     "gridConnected": false,
-    "gridConnectedNote": "Regional dam scheme — not connected to the national grid."
+    "gridConnectedNote": "Regional dam scheme — not connected to the national grid.",
+    "inventoryGroup": "dam-non-power",
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   },
   {
     "id": "plant-afam",
@@ -331,7 +404,7 @@
     "featureKind": "power-plant",
     "plantCategory": "gas-ccgt",
     "type": "Gas turbine and combined-cycle complex",
-    "summary": "1,556 MW of gas generation at Okoloma-Afam, Oyigbo, Rivers State.",
+    "summary": "1,556 MW gas complex at Okoloma-Afam, Oyigbo, Rivers State (NERC: Afam_1, Afam_2, Rivers_1).",
     "description": "Three separate plants share the Afam site: Afam I (Transcorp Power, 726 MW of open-cycle gas turbines from 1982 and 2002), Afam VI (Shell's 650 MW combined cycle, 2010) and the 180 MW Afam II block inaugurated in 2025 by Sahara Power, First Independent Power and Crescendough.",
     "capacityMw": 1556,
     "units": "Afam I 726 MW, Afam VI 650 MW, Afam II 180 MW",
@@ -343,14 +416,34 @@
     "lon": 7.254611,
     "lat": 4.851444,
     "highlights": [
-      "Largest generation complex outside Lagos",
-      "Three operators on one site",
-      "Newest block commissioned 2025"
+      "Three NERC-listed blocks on one site",
+      "Afam VI (Afam_2) combined cycle",
+      "Not the single largest plant — Egbin is larger"
     ],
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "gemUrl": "https://www.gem.wiki/Afam_VI_power_station",
     "gridConnected": true,
-    "gridConnectedNote": "Grid-connected generating station."
+    "gridConnectedNote": "Grid-connected generating station.",
+    "inventoryGroup": "grid-connected",
+    "nercUnits": [
+      {
+        "id": "Afam_1",
+        "capacityMw": 726,
+        "plantCategory": "gas-ocgt"
+      },
+      {
+        "id": "Afam_2",
+        "capacityMw": 650,
+        "plantCategory": "gas-ccgt"
+      },
+      {
+        "id": "Rivers_1",
+        "capacityMw": 180,
+        "plantCategory": "gas-ocgt"
+      }
+    ],
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   },
   {
     "id": "plant-olorunsogo",
@@ -377,7 +470,22 @@
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "gemUrl": "https://www.gem.wiki/Olorunsogo_II_power_station",
     "gridConnected": true,
-    "gridConnectedNote": "Grid-connected generating station."
+    "gridConnectedNote": "Grid-connected generating station.",
+    "inventoryGroup": "grid-connected",
+    "nercUnits": [
+      {
+        "id": "Olorunsogo_1",
+        "capacityMw": 335,
+        "plantCategory": "gas-ocgt"
+      },
+      {
+        "id": "Olorunsogo_2",
+        "capacityMw": 750,
+        "plantCategory": "gas-ccgt"
+      }
+    ],
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   },
   {
     "id": "plant-okpai",
@@ -404,18 +512,20 @@
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "gemUrl": "https://www.gem.wiki/Oando_Kwale_power_station",
     "gridConnected": true,
-    "gridConnectedNote": "Grid-connected generating station."
+    "gridConnectedNote": "Grid-connected generating station.",
+    "inventoryGroup": "grid-connected"
   },
   {
-    "id": "plant-ihovbor",
-    "name": "Ihovbor Power Station",
+    "id": "plant-ihovbor-nipp",
+    "name": "Ihovbor NIPP (Benin I)",
     "featureKind": "power-plant",
     "plantCategory": "gas-ocgt",
-    "type": "Gas turbine power station",
-    "summary": "961 MW at Ihovbor, Benin City, Edo State.",
-    "description": "Two open-cycle blocks built for the National Integrated Power Project: 500 MW commissioned around 2012 and a further 461 MW unit group alongside it. Supply comes from the Escravos-Lagos pipeline system.",
-    "capacityMw": 961,
-    "units": "500 MW and 461 MW blocks",
+    "inventoryGroup": "grid-connected",
+    "type": "Gas turbine power station (NIPP)",
+    "summary": "500 MW open-cycle NIPP block at Ihovbor, Benin City, Edo State (NERC: Ihovbor_1).",
+    "description": "National Integrated Power Project open-cycle block at Ihovbor, reported separately from the Azura-Edo IPP on the same corridor. Fed from the Escravos–Lagos pipeline system.",
+    "capacityMw": 500,
+    "units": "500 MW NIPP block (Ihovbor_1)",
     "commissioned": "2012-2013",
     "operator": "Benin Generation Company Ltd",
     "statesCrossed": [
@@ -424,18 +534,64 @@
     "lon": 5.68333,
     "lat": 6.40556,
     "highlights": [
-      "961 MW at one Edo State site",
-      "Fed from the Escravos-Lagos pipeline",
-      "Connects into Benin North and Ajaokuta"
+      "NERC Ihovbor_1",
+      "NIPP open-cycle block",
+      "Benin North grid node"
+    ],
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station.",
+    "nercUnits": [
+      {
+        "id": "Ihovbor_1",
+        "capacityMw": 500,
+        "plantCategory": "gas-ocgt"
+      }
     ],
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
-    "gemUrl": "https://www.gem.wiki/Ihovbor_power_station",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29",
+    "gemUrl": "https://www.gem.wiki/Ihovbor_power_station"
+  },
+  {
+    "id": "plant-azura-edo",
+    "name": "Azura-Edo IPP",
+    "featureKind": "power-plant",
+    "plantCategory": "gas-ccgt",
+    "inventoryGroup": "grid-connected",
+    "type": "Independent power project (combined cycle)",
+    "summary": "461 MW combined-cycle IPP at Ihovbor, Benin City, Edo State (NERC: Ihovbor_2).",
+    "description": "Azura-Edo Power Plant is a grid-connected independent power project on the Ihovbor site, listed in NERC reports as Ihovbor_2 with 461 MW installed capacity.",
+    "capacityMw": 461,
+    "units": "461 MW combined cycle (Ihovbor_2)",
+    "commissioned": "2018",
+    "operator": "Azura-Edo Power Plant Ltd",
+    "statesCrossed": [
+      "Edo"
+    ],
+    "lon": 5.69,
+    "lat": 6.41,
+    "highlights": [
+      "461 MW IPP",
+      "NERC Ihovbor_2",
+      "Escravos–Lagos gas supply"
+    ],
     "gridConnected": true,
-    "gridConnectedNote": "Grid-connected generating station."
+    "gridConnectedNote": "Grid-connected generating station.",
+    "nercUnits": [
+      {
+        "id": "Ihovbor_2",
+        "capacityMw": 461,
+        "plantCategory": "gas-ccgt"
+      }
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29",
+    "wikiUrl": "https://en.wikipedia.org/wiki/Azura-Edo_Power_Plant"
   },
   {
     "id": "plant-ughelli",
-    "name": "Ughelli Power Station (Delta)",
+    "name": "Ughelli Power Station (Delta GS)",
     "featureKind": "power-plant",
     "plantCategory": "gas-ocgt",
     "type": "Gas turbine combined utility complex",
@@ -458,7 +614,17 @@
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "gemUrl": "https://www.gem.wiki/Ughelli_power_station",
     "gridConnected": true,
-    "gridConnectedNote": "Grid-connected generating station."
+    "gridConnectedNote": "Grid-connected generating station.",
+    "inventoryGroup": "grid-connected",
+    "nercUnits": [
+      {
+        "id": "Delta_1",
+        "capacityMw": 900,
+        "plantCategory": "gas-ocgt"
+      }
+    ],
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   },
   {
     "id": "plant-geregu",
@@ -485,7 +651,22 @@
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "gemUrl": "https://www.gem.wiki/Geregu_I_power_station",
     "gridConnected": true,
-    "gridConnectedNote": "Grid-connected generating station."
+    "gridConnectedNote": "Grid-connected generating station.",
+    "inventoryGroup": "grid-connected",
+    "nercUnits": [
+      {
+        "id": "Geregu_1",
+        "capacityMw": 435,
+        "plantCategory": "gas-ocgt"
+      },
+      {
+        "id": "Geregu_2",
+        "capacityMw": 435,
+        "plantCategory": "gas-ocgt"
+      }
+    ],
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   },
   {
     "id": "plant-omotosho",
@@ -512,7 +693,22 @@
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "gemUrl": "https://www.gem.wiki/Omotosho_II_power_station",
     "gridConnected": true,
-    "gridConnectedNote": "Grid-connected generating station."
+    "gridConnectedNote": "Grid-connected generating station.",
+    "inventoryGroup": "grid-connected",
+    "nercUnits": [
+      {
+        "id": "Omotosho_1",
+        "capacityMw": 335,
+        "plantCategory": "gas-ocgt"
+      },
+      {
+        "id": "Omotosho_2",
+        "capacityMw": 500,
+        "plantCategory": "gas-ocgt"
+      }
+    ],
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   },
   {
     "id": "plant-odukpani",
@@ -539,7 +735,8 @@
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "gemUrl": "https://www.gem.wiki/Calabar_power_station",
     "gridConnected": true,
-    "gridConnectedNote": "Grid-connected generating station."
+    "gridConnectedNote": "Grid-connected generating station.",
+    "inventoryGroup": "grid-connected"
   },
   {
     "id": "plant-alaoji",
@@ -566,7 +763,8 @@
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "gemUrl": "https://www.gem.wiki/Alaoji_power_station",
     "gridConnected": true,
-    "gridConnectedNote": "Grid-connected generating station."
+    "gridConnectedNote": "Grid-connected generating station.",
+    "inventoryGroup": "grid-connected"
   },
   {
     "id": "plant-ibom",
@@ -593,7 +791,8 @@
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "wikiUrl": "https://en.wikipedia.org/wiki/Ibom_Power_Plant",
     "gridConnected": true,
-    "gridConnectedNote": "Grid-connected generating station."
+    "gridConnectedNote": "Grid-connected generating station.",
+    "inventoryGroup": "grid-connected"
   },
   {
     "id": "plant-omoku",
@@ -619,7 +818,8 @@
     ],
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "gridConnected": true,
-    "gridConnectedNote": "Grid-connected generating station."
+    "gridConnectedNote": "Grid-connected generating station.",
+    "inventoryGroup": "grid-connected"
   },
   {
     "id": "plant-trans-amadi",
@@ -645,7 +845,8 @@
     ],
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "gridConnected": true,
-    "gridConnectedNote": "Grid-connected generating station."
+    "gridConnectedNote": "Grid-connected generating station.",
+    "inventoryGroup": "grid-connected"
   },
   {
     "id": "plant-egbin",
@@ -665,14 +866,17 @@
     "lon": 3.615082,
     "lat": 6.563713,
     "highlights": [
-      "Largest generating station in Nigeria",
+      "Largest grid-connected plant in Nigeria (NERC: Egbin_1)",
       "Six 220 MW steam units",
       "Head of the Lagos 330 kV ring"
     ],
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "wikiUrl": "https://en.wikipedia.org/wiki/Egbin_Thermal_Power_Station",
     "gridConnected": true,
-    "gridConnectedNote": "Grid-connected generating station."
+    "gridConnectedNote": "Grid-connected generating station.",
+    "inventoryGroup": "grid-connected",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   },
   {
     "id": "plant-sapele",
@@ -699,7 +903,22 @@
     "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
     "gemUrl": "https://www.gem.wiki/Sapele_power_station",
     "gridConnected": true,
-    "gridConnectedNote": "Grid-connected generating station."
+    "gridConnectedNote": "Grid-connected generating station.",
+    "inventoryGroup": "grid-connected",
+    "nercUnits": [
+      {
+        "id": "Sapele Steam_1",
+        "capacityMw": 720,
+        "plantCategory": "steam"
+      },
+      {
+        "id": "Sapele_2",
+        "capacityMw": 500,
+        "plantCategory": "gas-ocgt"
+      }
+    ],
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   },
   {
     "id": "grid-egbin",
@@ -2381,7 +2600,7 @@
       "Katsina"
     ],
     "lon": 8.52,
-    "lat": 12.0,
+    "lat": 12,
     "highlights": [
       "Kano metropolis",
       "Katsina and Jigawa",
@@ -2439,5 +2658,39 @@
     ],
     "sourceUrl": "https://www.nbs.gov.ng/",
     "wikiUrl": "https://en.wikipedia.org/wiki/Yola_Electricity_Distribution_Company"
+  },
+  {
+    "id": "plant-igbafo",
+    "name": "Igbafo Power Station",
+    "featureKind": "power-plant",
+    "plantCategory": "gas-ocgt",
+    "inventoryGroup": "grid-connected",
+    "type": "Gas turbine power station",
+    "summary": "45 MW grid-connected gas plant (NERC: Igbafo_1).",
+    "description": "Small thermal plant listed in NERC quarterly reports as Igbafo_1 with 45 MW installed capacity.",
+    "capacityMw": 45,
+    "units": "45 MW open cycle",
+    "operator": "Private operator (NERC market operator reports)",
+    "statesCrossed": [
+      "Ogun"
+    ],
+    "lon": 3.35,
+    "lat": 6.85,
+    "highlights": [
+      "45 MW (NERC Igbafo_1)",
+      "Grid-connected thermal"
+    ],
+    "gridConnected": true,
+    "gridConnectedNote": "Grid-connected generating station.",
+    "nercUnits": [
+      {
+        "id": "Igbafo_1",
+        "capacityMw": 45,
+        "plantCategory": "gas-ocgt"
+      }
+    ],
+    "sourceUrl": "https://nerc.gov.ng/wp-content/uploads/2026/04/2025_Q4-Report.pdf",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29"
   }
 ]

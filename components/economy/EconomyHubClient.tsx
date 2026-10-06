@@ -7,7 +7,6 @@ import HubBreadcrumb from "@/components/hub/HubBreadcrumb";
 import HubSection from "@/components/hub/HubSection";
 import MapWorkspaceCard from "@/components/hub/MapWorkspaceCard";
 import SourceNote from "@/components/hub/SourceNote";
-import EmptyState from "@/components/hub/EmptyState";
 import EconomySectorBrowse from "@/components/economy/EconomySectorBrowse";
 import AgricultureBeltSection from "@/components/economy/AgricultureBeltSection";
 import PortsDirectory from "@/components/economy/PortsDirectory";
@@ -52,6 +51,7 @@ export default function EconomyHubClient(
         <HubSection id="minerals" className="!pt-0">
           <EconomySectorBrowse
             resources={data.resources}
+            mineralTypesShown={data.mineralTypesShown}
             ports={data.ports}
             distributors={data.power.distributors}
           />
@@ -74,59 +74,54 @@ export default function EconomyHubClient(
           <PortsDirectory ports={data.ports} slugByStateId={slugByStateName} />
         </HubSection>
 
-  
         <HubSection
           eyebrow="Energy grid"
-          title="Hydropower and distribution"
-          lede="Hydroelectric stations and distribution companies from the lakes layer."
+          title="Power generation and distribution"
+          lede="Grid-connected generation plants and distribution companies from the power catalogue."
         >
           <EnergyGrid power={data.power} slugByStateId={slugByStateName} />
         </HubSection>
-
 
         <HubSection
           id="economy-map"
           eyebrow="Map workspaces"
           title="Economy maps"
-          lede="Focused views for minerals, ports and hydropower on the atlas."
+          lede="Focused views for minerals, ports and power plants on the atlas."
         >
           <div className="grid gap-5 md:grid-cols-3">
             <MapWorkspaceCard map="economy/resources" kicker="Minerals" />
             <MapWorkspaceCard map="economy/ports" kicker="Operating + proposed" />
-            <MapWorkspaceCard map="economy/power" kicker="Hydropower" />
+            <MapWorkspaceCard map="economy/power" kicker="Power generation" />
           </div>
-        </HubSection> 
-
-        <HubSection
-          eyebrow="Sub-national signal"
-          title="States to watch"
-        >
-          <StatesToWatch watch={data.watch} sampleSize={6} />
         </HubSection>
 
+        <HubSection eyebrow="Sub-national signal" title="States to watch">
+          <StatesToWatch watch={data.watch} sampleSize={6} />
+        </HubSection>
 
         <section className="border-t border-border-subtle py-12">
           <h2 className="font-landing-display text-headline-lg text-text-primary">
             What this hub does not cover
           </h2>
-          <div className="mt-4">
-            <EmptyState
-              title="Thermal generation, trade volumes and commodity prices"
-              badge="No dataset"
-              className="border-dashed"
-            >
-              No gas or thermal plant inventory, customs series, or commodity
-              prices in the repository. See the{" "}
+          <div className="mt-4 rounded-2xl border border-dashed border-border-subtle bg-slate-50 px-5 py-4 text-body-sm text-text-secondary">
+            <p>
+              Power plants are listed by installed capacity only. Actual output,
+              plant availability, gas supply and captive/solar/diesel generation
+              are not covered.
+            </p>
+            <p className="mt-2">
+              Customs trade volumes and live commodity prices are also outside
+              this hub. See the{" "}
               <a href="/data" className="font-semibold text-primary hover:underline">
                 data hub
               </a>{" "}
               for verified IGR rankings.
-            </EmptyState>
+            </p>
           </div>
           <SourceNote
             className="mt-6"
-            source={data.sources}
-            updated="Repository datasets"
+            source={`${data.sources.minerals} · ${data.sources.ports} · ${data.sources.power}`}
+            updated={`Last verified ${data.sources.lastVerified}`}
           />
         </section>
       </main>

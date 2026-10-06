@@ -19,7 +19,7 @@
       "Imo"
     ],
     "reserveNote": "~37 billion barrels proven (pre-2024 revisions, varying by source)",
-    "productionNote": "~1.5–2.3 million bpd (excluding shut-ins and crude theft); deepwater share growing",
+    "productionNote": "~1.5–2.3 million bpd onshore and offshore (excluding shut-ins and crude theft); deepwater and federal offshore blocks are not tied to a single state",
     "type": "Light sweet crude oil (Bonny Light, Forcados, Qua Iboe, Escravos)",
     "economy": "Dominant share of federal export earnings and government revenue; dominates JV/PSC fiscal terms.",
     "climate": "Equatorial mangrove delta, shallow offshore, and deepwater blocks.",
@@ -37,6 +37,9 @@
       "NNPC Ltd & JV fiscal system"
     ],
     "wikiUrl": "https://en.wikipedia.org/wiki/Petroleum_industry_in_Nigeria",
+    "sourceUrl": "https://www.nuprc.gov.ng/",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29",
     "products": [
       "Gasoline / Premium Motor Spirit (PMS)",
       "Diesel / Automotive Gas Oil (AGO)",
@@ -110,7 +113,7 @@
   },
   {
     "id": "resource-natural-gas",
-    "name": "Natural Gas (LNG & Associated)",
+    "name": "Natural Gas (Niger Delta and offshore)",
     "resourceType": "natural-gas",
     "summary": "Africa's largest proven gas reserves; LNG exports via Bonny NLNG and growing domestic gas & NIPCo networks.",
     "description": "Nigeria holds Africa's largest proven natural-gas reserves, historically seen as associated gas flared from oil production. The Nigeria LNG (NLNG) plant at Bonny now ranks among the world's top LNG exporters, while the Escravos Gas-to-Liquids (EGTL), Obiafu-Obrikom gas gathering, Oben-Geregu pipeline, and the Ajaokuta-Kaduna-Kano (AKK) pipeline build a domestic gas grid for power, industry, and petrochemicals.",
@@ -131,7 +134,11 @@
       "Kano"
     ],
     "reserveNote": "~200+ trillion standard cubic feet proven (Tcf) — largest in Africa",
-    "productionNote": "NLNG ~22 Mtpa (6 trains); domestic gas expanding via AKK pipeline & DS Phases",
+    "productionNote": "NLNG ~22 Mtpa (6 trains); associated gas from Niger Delta and federal offshore blocks; domestic gas expanding via AKK pipeline & DS Phases",
+    "gasSupplyToPowerNote": "Gas is produced mainly in the Niger Delta and offshore, then piped to open- and combined-cycle plants near load centres (see Power generation below). Grid plants in Edo, Ogun, Lagos and the north consume pipeline gas far from the wellhead.",
+    "sourceUrl": "https://www.nuprc.gov.ng/",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29",
     "type": "Associated & non-associated gas; LNG, LPG, CNG, GTL products",
     "economy": "LNG exports, domestic power/gas-to-plant, fertiliser, new petrochemical hubs.",
     "climate": "Delta swamps + shallow & deepwater blocks, northward gas grid.",
@@ -1870,10 +1877,10 @@
   },
   {
     "id": "resource-gas-anambra",
-    "name": "Natural Gas (Anambra Basin)",
-    "resourceType": "natural-gas",
-    "summary": "Gas discoveries and CNG/power prospects across the Anambra basin interior basin between the Niger and the lower Benue trough.",
-    "description": "The Anambra Basin, spanning Anambra, Enugu, Imo and fringes of Kogi and Benue, hosts non-associated gas accumulations and the Agbada-FF facies outlook west of the Niger. It is the focus of midstream gas-to-power and CNG projects feeding eastern and north-central load centres.",
+    "name": "Natural gas (Anambra Basin prospects)",
+    "resourceType": "natural-gas-prospect",
+    "summary": "Exploratory and early-development gas plays in the Anambra interior basin — not the main producing Niger Delta system.",
+    "description": "The Anambra Basin (Anambra, Enugu, Imo and fringes of Kogi and Benue) hosts non-associated gas prospectivity west of the Niger. Production here remains small compared with the Niger Delta and offshore; this entry tracks basin-scale prospects and CNG/gas-to-power projects, separate from the main producing gas catalogue entry.",
     "lon": 6.82,
     "lat": 6.32,
     "statesCrossed": [
@@ -1884,7 +1891,10 @@
       "Benue"
     ],
     "reserveNote": "Prospectivity from non-associated gas windows of the basin",
-    "productionNote": "Developmental CNG & gas-to-power projects emerging",
+    "productionNote": "Prospect and early-development only — not listed as primary NUPRC producing area",
+    "sourceUrl": "https://www.nuprc.gov.ng/",
+    "sourceAccessDate": "2026-04-29",
+    "lastVerified": "2026-04-29",
     "type": "Non-associated and shallow gas, Anambra basin",
     "economy": "Gas-to-power, CNG feedstock, industrial heat, fertiliser potential.",
     "climate": "Tropical rainforest fringe to the south; wet-and-dry to the north.",

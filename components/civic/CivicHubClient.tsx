@@ -226,7 +226,7 @@ export default function CivicHubClient(data: CivicHubData) {
           id="representatives"
           eyebrow="Constituency lookup"
           title="Who represents me?"
-          lede="Officeholders for the 10th National Assembly, straight from the INEC and NASS returns — with the declared candidates for each state race."
+          lede="Officeholders for the 10th National Assembly, straight from the INEC and NASS returns. Tap a senatorial district on the map to find your senator."
         >
           <WhoRepresents
             offices={data.offices}
@@ -241,7 +241,7 @@ export default function CivicHubClient(data: CivicHubData) {
             }
             senateRaces={data.senateRaces}
             repsRaces={data.repsRaces}
-            districtColorIndex={data.senatorialLookups.districtColorIndex}
+            senatorialLookups={data.senatorialLookups}
           />
         </HubSection>
 
@@ -266,12 +266,7 @@ export default function CivicHubClient(data: CivicHubData) {
           </p>
         </HubSection>
 
-        <HubSection
-          id="security"
-          eyebrow="Armed Forces"
-          title="Security lookup"
-          lede="Divisional headquarters, naval commands and air bases — the full record for every formation, the way the Travel hub lets you scale up a metro city."
-        >
+        <HubSection id="security">
           <SecurityLookup security={security} />
         </HubSection>
 

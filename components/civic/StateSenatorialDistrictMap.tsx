@@ -81,12 +81,14 @@ export default function StateSenatorialDistrictMap({
   stateName,
   lookups,
   highlightDistrictId,
+  onSelectDistrict,
   className = "",
 }: {
   stateId: string;
   stateName: string;
   lookups: CivicSenatorialLookups;
   highlightDistrictId?: string | null;
+  onSelectDistrict?: (districtId: string) => void;
   className?: string;
 }) {
   const [geo, setGeo] = useState<{
@@ -152,6 +154,12 @@ export default function StateSenatorialDistrictMap({
             strokeLinejoin="round"
             onMouseEnter={() => setHover(l.id)}
             onMouseLeave={() => setHover(null)}
+            onClick={
+              onSelectDistrict && l.districtId
+                ? () => onSelectDistrict(l.districtId)
+                : undefined
+            }
+            className={onSelectDistrict ? "cursor-pointer" : undefined}
           >
             <title>{l.name}</title>
           </path>

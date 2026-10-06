@@ -6,8 +6,7 @@ const LINKS = [
   { label: "Open Data Portal", href: "/data" },
   { label: "Election Bureau", href: "/civic" },
   { label: "State Factsheets", href: "/places" },
-  { label: "Methodology", href: "/data" },
-  { label: "Privacy & Terms", href: "/places" },
+  { label: "Methodology", href: "/data#sources" },
 ];
 
 export default function HubFooter() {
