@@ -202,7 +202,8 @@ export default function WhoRepresents({
             stateId={stateId}
             stateName={state?.name ?? stateId}
             lookups={senatorialLookups}
-            highlightDistrictId={hoverDistrictId ?? districtId}
+            highlightRegionId={hoverDistrictId ?? districtId}
+            onHoverRegion={setHoverDistrictId}
             onSelectDistrict={selectDistrict}
             className="aspect-square w-full"
           />

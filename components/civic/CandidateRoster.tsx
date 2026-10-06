@@ -93,7 +93,7 @@ export default function CandidateRoster({
   const [query, setQuery] = useState("");
   const [senateRaceId, setSenateRaceId] = useState("all");
   const [page, setPage] = useState(0);
-  const [hoverDistrictId, setHoverDistrictId] = useState<string | null>(null);
+  const [hoverRegionId, setHoverRegionId] = useState<string | null>(null);
   const [selected, setSelected] = useState<{
     kind: "senate" | "reps" | "president";
     raceId: string;
@@ -179,16 +179,15 @@ export default function CandidateRoster({
     [offices, stateId]
   );
 
-  const selectedDistrictId =
-    selected?.kind === "senate"
+  const selectedRegionId =
+    selected?.kind === "senate" || selected?.kind === "reps"
       ? selected.raceId
-      : selected?.kind === "reps"
-        ? (repsRaces.find((r) => r.id === selected.raceId)?.districtId ?? null)
-        : null;
+      : null;
+  const mapRegionMode = position === "reps" ? "constituency" : "senatorial";
   const mapHighlight =
-    hoverDistrictId ??
-    selectedDistrictId ??
-    (senateRaceId !== "all" ? senateRaceId : null);
+    hoverRegionId ??
+    selectedRegionId ??
+    (position !== "reps" && senateRaceId !== "all" ? senateRaceId : null);
 
   const selectClass =
     "h-10 rounded-lg border border-border-subtle bg-surface-card px-3 text-xs font-semibold text-slate-800 focus:border-primary-container focus:outline-none focus:ring-4 focus:ring-emerald-500/10";
@@ -288,7 +287,9 @@ export default function CandidateRoster({
             stateId={stateId}
             stateName={stateName}
             lookups={senatorialLookups}
-            highlightDistrictId={mapHighlight}
+            regionMode={mapRegionMode}
+            highlightRegionId={mapHighlight}
+            onHoverRegion={setHoverRegionId}
             className="aspect-square w-full"
           />
           {senateInState.length > 0 && (
@@ -310,8 +311,8 @@ export default function CandidateRoster({
                           setSenateRaceId(active ? "all" : r.id);
                           setPage(0);
                         }}
-                        onMouseEnter={() => setHoverDistrictId(r.id)}
-                        onMouseLeave={() => setHoverDistrictId(null)}
+                        onMouseEnter={() => setHoverRegionId(r.id)}
+                        onMouseLeave={() => setHoverRegionId(null)}
                         className={`flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left text-xs transition-colors ${
                           active
                             ? "bg-emerald-50 font-bold text-primary"
@@ -414,6 +415,8 @@ export default function CandidateRoster({
                   }
                   const districtId =
                     row.kind === "senate" ? row.race.id : row.race.districtId;
+                  const mapRegionForRow =
+                    row.kind === "reps" ? row.race.id : row.race.id;
                   const lgaNames = row.race.lgaNames;
                   const cands = row.race.candidates;
                   return (
@@ -423,10 +426,10 @@ export default function CandidateRoster({
                       onClick={() =>
                         setSelected({ kind: row.kind, raceId: row.race.id })
                       }
-                      onMouseEnter={() => setHoverDistrictId(districtId)}
-                      onMouseLeave={() => setHoverDistrictId(null)}
-                      onFocus={() => setHoverDistrictId(districtId)}
-                      onBlur={() => setHoverDistrictId(null)}
+                      onMouseEnter={() => setHoverRegionId(mapRegionForRow)}
+                      onMouseLeave={() => setHoverRegionId(null)}
+                      onFocus={() => setHoverRegionId(mapRegionForRow)}
+                      onBlur={() => setHoverRegionId(null)}
                       className={`flex flex-col rounded-xl border bg-surface-card p-3 text-left shadow-sm transition-colors ${
                         isSelected
                           ? "border-primary-container ring-2 ring-emerald-500/20"

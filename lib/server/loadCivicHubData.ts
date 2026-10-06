@@ -61,8 +61,11 @@ export type HubStateOffice = {
 
 export type CivicSenatorialLookups = {
   lgaToDistrictId: Record<string, string>;
+  lgaToConstituencyId: Record<string, string>;
   districtColorIndex: Record<string, number>;
+  constituencyColorIndex: Record<string, number>;
   districtById: Record<string, { id: string; name: string }>;
+  constituencyById: Record<string, { id: string; name: string }>;
 };
 
 export type CivicHubData = {
@@ -293,15 +296,34 @@ export function loadCivicHubData(root = process.cwd()): CivicHubData {
       stateId: l.parentId,
     })),
     offices,
-    senatorialLookups: {
-      lgaToDistrictId: politics.lookups.lgaToSenatorialDistrictId,
-      districtColorIndex: politics.lookups.districtColorIndex,
-      districtById: Object.fromEntries(
-        Object.values(politics.lookups.districtById).map((d) => [
-          d.id,
-          { id: d.id, name: d.name },
-        ])
-      ),
-    },
+    senatorialLookups: (() => {
+      const lgaToConstituencyId: Record<string, string> = {};
+      const constituencyById: Record<string, { id: string; name: string }> =
+        {};
+      const constituencyColorIndex: Record<string, number> = {};
+      let constituencyIdx = 0;
+      for (const c of politics.federalConstituencies) {
+        constituencyById[c.id] = { id: c.id, name: c.name };
+        if (constituencyColorIndex[c.id] == null) {
+          constituencyColorIndex[c.id] = constituencyIdx++;
+        }
+        for (const lgaId of c.lga_ids) {
+          lgaToConstituencyId[lgaId] = c.id;
+        }
+      }
+      return {
+        lgaToDistrictId: politics.lookups.lgaToSenatorialDistrictId,
+        lgaToConstituencyId,
+        districtColorIndex: politics.lookups.districtColorIndex,
+        constituencyColorIndex,
+        districtById: Object.fromEntries(
+          Object.values(politics.lookups.districtById).map((d) => [
+            d.id,
+            { id: d.id, name: d.name },
+          ])
+        ),
+        constituencyById,
+      };
+    })(),
   };
 }

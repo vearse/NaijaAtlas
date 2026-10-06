@@ -139,23 +139,24 @@ function parseNercUnits(r: Row, fallbackCategory: PowerPlantCategory): NercUnitR
     if (mw == null || mw <= 0) return [];
     return [{ capacityMw: mw, plantCategory: fallbackCategory }];
   }
-  return raw
-    .map((u) => {
-      const row = u as Record<string, unknown>;
-      const cat = POWER_PLANT_CATEGORIES.includes(
-        row.plantCategory as PowerPlantCategory
-      )
-        ? (row.plantCategory as PowerPlantCategory)
-        : fallbackCategory;
-      const mw = num(row.capacityMw);
-      if (mw == null || mw <= 0) return null;
-      return {
-        id: str(row.id),
-        capacityMw: mw,
-        plantCategory: cat,
-      };
-    })
-    .filter((x): x is NercUnitRow => x != null);
+  const units: NercUnitRow[] = [];
+  for (const u of raw) {
+    const row = u as Record<string, unknown>;
+    const cat = POWER_PLANT_CATEGORIES.includes(
+      row.plantCategory as PowerPlantCategory
+    )
+      ? (row.plantCategory as PowerPlantCategory)
+      : fallbackCategory;
+    const mw = num(row.capacityMw);
+    if (mw == null || mw <= 0) continue;
+    const id = str(row.id);
+    units.push({
+      ...(id ? { id } : {}),
+      capacityMw: mw,
+      plantCategory: cat,
+    });
+  }
+  return units;
 }
 
 /** Largest-remainder method so mix shares sum to exactly 100%. */
