@@ -7,6 +7,7 @@ import { colorForDistrict } from "@/lib/politics/senatorialColors";
 import { CandidateRow } from "./CandidateAvatar";
 import PartyIcon from "@/components/election/PartyIcon";
 import PresidentialTicketList from "./PresidentialTicketList";
+import { STATE_ELECTION_INEC_NOTICE } from "@/lib/election/stateElectionCandidates";
 
 interface ElectionDistrictDetailProps {
   politics: PoliticsBundle;
@@ -272,8 +273,8 @@ export default function ElectionDistrictDetail({
 
         <section className="border-t border-slate-100 pt-4">
           <h3 className="text-sm font-bold text-text-primary">State elections</h3>
-          <p className="mt-2 text-sm text-text-secondary rounded-xl border border-dashed border-border-subtle bg-slate-50 p-3">
-            Governorship & State Assembly lists when INEC publishes them.
+          <p className="mt-2 text-sm text-text-secondary rounded-xl border border-amber-200 bg-amber-50/80 p-3">
+            {STATE_ELECTION_INEC_NOTICE}
           </p>
         </section>
       </div>

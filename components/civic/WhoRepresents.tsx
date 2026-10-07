@@ -190,8 +190,10 @@ export default function WhoRepresents({
         </label>
         {state && (
           <p className="pb-3 text-body-sm text-text-muted">
-            {state.regionName} · {office?.houseSeats ?? "—"} House seats ·{" "}
-            {office?.stateAssemblySeats ?? "—"} assembly seats
+            {state.regionName} · {office?.houseSeats ?? "—"} House seats
+            {office?.stateAssemblySeats != null && (
+              <> · {office.stateAssemblySeats} assembly seats</>
+            )}
           </p>
         )}
       </div>

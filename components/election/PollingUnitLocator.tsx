@@ -25,6 +25,7 @@ import {
 import { useMapStore } from "@/lib/store/mapStore";
 import { useToastStore } from "@/lib/store/toastStore";
 import GetDirectionsButton from "@/components/directions/GetDirectionsButton";
+import { commitPollingUnitFromShard } from "@/lib/civic/pollingUnitSession";
 
 interface PollingUnitLocatorProps {
   pollingCounts: PollingUnitCountsBundle;
@@ -144,6 +145,11 @@ export default function PollingUnitLocator({
         return;
       }
       setResolved(hit.unit);
+      void commitPollingUnitFromShard(
+        hit.unit,
+        "delimitation",
+        formatDelimitationDisplay(normalized)
+      );
       setCodeInput(formatDelimitationDisplay(normalized));
       setSelectedLgaId(hit.unit.lgaId);
       flyToSelection(hit.unit.lgaId, hit.stateId);
@@ -189,6 +195,11 @@ export default function PollingUnitLocator({
     const unit = wardUnits.find((u) => u.id === puId);
     if (unit && selectedLga?.parentId) {
       setResolved(unit);
+      void commitPollingUnitFromShard(
+        unit,
+        "browse",
+        formatDelimitationDisplay(unit.delimitation) || unit.name
+      );
       flyToSelection(unit.lgaId, selectedLga.parentId);
     }
   };
@@ -343,7 +354,7 @@ export default function PollingUnitLocator({
       </div>
 
       {resolved && (
-        <div className="rounded-xl border border-emerald-100 bg-emerald-50/60 p-3 text-sm space-y-3">
+        <div className="mt-4 rounded-xl border border-emerald-100 bg-emerald-50/60 p-3 text-sm space-y-3">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <p className="font-semibold text-text-primary">{resolved.name}</p>

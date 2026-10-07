@@ -6,6 +6,7 @@ import type {
 } from "@/types/politics";
 import { normalizeDelimitation } from "@/lib/politics/delimitation";
 import { loadExplorerPageData } from "@/lib/server/loadExplorerPageData";
+import { serverProjectRoot } from "@/lib/server/serverProjectRoot";
 
 /**
  * Server-side polling-unit lookup.
@@ -59,7 +60,7 @@ let cachedStates: PollingUnitStateCount[] | null = null;
 let cachedTotalPollingUnits = 0;
 let cachedWardIndex: WardIndex | null = null;
 
-function loadWardIndex(root = process.cwd()): WardIndex | null {
+function loadWardIndex(root = serverProjectRoot()): WardIndex | null {
   if (cachedWardIndex) return cachedWardIndex;
   const file = path.join(
     root,
@@ -72,7 +73,7 @@ function loadWardIndex(root = process.cwd()): WardIndex | null {
   return cachedWardIndex;
 }
 
-function loadStates(root = process.cwd()): PollingUnitStateCount[] {
+function loadStates(root = serverProjectRoot()): PollingUnitStateCount[] {
   if (cachedStates) return cachedStates;
   const bundle = JSON.parse(
     fs.readFileSync(
@@ -87,13 +88,13 @@ function loadStates(root = process.cwd()): PollingUnitStateCount[] {
   return cachedStates;
 }
 
-export function totalPollingUnits(root = process.cwd()): number {
+export function totalPollingUnits(root = serverProjectRoot()): number {
   loadStates(root);
   return cachedTotalPollingUnits;
 }
 
 export function pollingUnitStateOptions(
-  root = process.cwd()
+  root = serverProjectRoot()
 ): { id: string; name: string; pollingUnitCount: number }[] {
   return loadStates(root)
     .map((s) => ({
@@ -138,7 +139,7 @@ function wardHit(
 
 export function listLgas(
   stateId: string,
-  root = process.cwd()
+  root = serverProjectRoot()
 ): { id: string; name: string; pollingUnitCount: number; wardCount: number }[] {
   const state = loadStates(root).find((s) => s.id === stateId);
   if (!state) return [];
@@ -154,7 +155,7 @@ export function listLgas(
 
 export function listWards(
   lgaId: string,
-  root = process.cwd()
+  root = serverProjectRoot()
 ): { id: string; name: string; pollingUnitCount: number }[] {
   for (const state of loadStates(root)) {
     for (const lga of state.lgas ?? []) {
@@ -171,7 +172,7 @@ export function listWards(
   return [];
 }
 
-export function wardById(wardId: string, root = process.cwd()): WardHit | null {
+export function wardById(wardId: string, root = serverProjectRoot()): WardHit | null {
   for (const state of loadStates(root)) {
     for (const lga of state.lgas ?? []) {
       const ward = (lga.wards ?? []).find((w) => w.id === wardId);
@@ -190,7 +191,7 @@ export function wardById(wardId: string, root = process.cwd()): WardHit | null {
  */
 export function lookupByDelimitation(
   raw: string,
-  root = process.cwd()
+  root = serverProjectRoot()
 ): PollingUnitLookupResult | null {
   const normalized = normalizeDelimitation(raw);
   if (!normalized) return null;
@@ -230,7 +231,7 @@ export function lookupByDelimitation(
 export function lookupByText(
   query: string,
   stateId: string | null,
-  root = process.cwd()
+  root = serverProjectRoot()
 ): PollingUnitLookupResult | null {
   const q = query.trim().toLowerCase();
   if (!q) return null;

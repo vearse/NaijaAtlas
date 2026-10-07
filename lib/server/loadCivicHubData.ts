@@ -118,8 +118,12 @@ export type CivicHubData = {
 function toPerson(value: unknown): HubOfficeholder | null {
   const p = value as ComparePerson | null;
   if (!p || typeof p !== "object" || !p.name) return null;
+  const name = String(p.name).trim();
+  if (!name || name === "—" || name === "-" || name.toLowerCase() === "n/a") {
+    return null;
+  }
   return {
-    name: p.name,
+    name,
     party: p.party ?? "—",
     imageUrl: p.imageUrl ?? null,
     role: p.role ?? null,

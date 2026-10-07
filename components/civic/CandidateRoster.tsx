@@ -6,6 +6,10 @@ import SourceNote from "@/components/hub/SourceNote";
 import EmptyState from "@/components/hub/EmptyState";
 import PartyIcon from "@/components/election/PartyIcon";
 import { sectionMapHref } from "@/lib/navigation/sectionMaps";
+import {
+  STATE_ELECTION_CANDIDATES_PUBLISHED,
+  STATE_ELECTION_INEC_NOTICE,
+} from "@/lib/election/stateElectionCandidates";
 import StateSenatorialDistrictMap from "@/components/civic/StateSenatorialDistrictMap";
 import { colorForSenatorialIndex } from "@/lib/politics/senatorialColors";
 import type {
@@ -566,10 +570,15 @@ function GovernorPanel({
         <h3 className="mt-1 text-headline-sm font-bold text-text-primary">
           Governor · {stateName} State
         </h3>
+        {!STATE_ELECTION_CANDIDATES_PUBLISHED && (
+          <p className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-body-sm text-amber-950">
+            {STATE_ELECTION_INEC_NOTICE}
+          </p>
+        )}
         <p className="mt-2 text-body-sm text-text-secondary">
-          The {electionYear} gubernatorial ballot follows INEC&apos;s published
-          list when declarations are final. Until then, compare the current
-          executive below with national assembly races for the same state.
+          {STATE_ELECTION_CANDIDATES_PUBLISHED
+            ? `Declared gubernatorial candidates for ${electionYear} appear here when INEC publishes the state list.`
+            : "Until INEC publishes state-election candidates, use the incumbent executive below and federal races for this state."}
         </p>
         {governor ? (
           <div className="mt-4 rounded-xl border border-border-subtle bg-surface-card p-4">
@@ -599,11 +608,18 @@ function GovernorPanel({
       </div>
       <EmptyState
         title={`${electionYear} gubernatorial candidates`}
-        badge="INEC roster"
+        badge={STATE_ELECTION_CANDIDATES_PUBLISHED ? "INEC roster" : "Pending INEC"}
       >
-        Gubernatorial aspirants are not bundled in this hub snapshot yet. Use
-        Senate and House tabs for declared legislative candidates in {stateName},
-        or open the election map for ward-level context.
+        {STATE_ELECTION_CANDIDATES_PUBLISHED
+          ? `No declared gubernatorial candidates are loaded for ${stateName} yet.`
+          : STATE_ELECTION_INEC_NOTICE}
+        {!STATE_ELECTION_CANDIDATES_PUBLISHED && (
+          <>
+            {" "}
+            Use Senate and House tabs for declared legislative candidates in{" "}
+            {stateName}.
+          </>
+        )}
         <Link
           href={sectionMapHref("civic/elections", { stateIds: [stateId] })}
           className="mt-3 block font-semibold text-primary hover:underline"

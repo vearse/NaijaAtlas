@@ -1,18 +1,26 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Fuse from "fuse.js";
 import SourceNote from "@/components/hub/SourceNote";
 import {
+  enrichPollingUnitMatch,
   findPollingUnit,
   getPollingWards,
   type FindPollingUnitResult,
   type PollingUnitMatch,
 } from "@/app/(marketing)/civic/actions";
 import {
+  fetchPollingUnitsForState,
+  resolvePollingUnitByDelimitation,
+} from "@/lib/politics/fetchPollingUnits";
+import {
   formatDelimitationDisplay,
   formatDelimitationInput,
+  normalizeDelimitation,
 } from "@/lib/politics/delimitation";
+import { commitPollingUnitSession } from "@/lib/civic/pollingUnitSession";
+import type { PollingUnitShardEntry } from "@/types/politics";
 
 type Mode = "code" | "lga";
 
@@ -50,6 +58,15 @@ type Props = {
   onResultChange: (result: FindPollingUnitResult | null) => void;
 };
 
+function publishResult(
+  onResultChange: Props["onResultChange"],
+  result: FindPollingUnitResult,
+  unit: PollingUnitShardEntry | null
+) {
+  if (result.primary) commitPollingUnitSession(result, unit);
+  onResultChange(result);
+}
+
 export default function PollingUnitFinder({
   stateCount,
   pollingUnitTotal,
@@ -63,7 +80,13 @@ export default function PollingUnitFinder({
   const [showLgaSuggestions, setShowLgaSuggestions] = useState(false);
   const [wards, setWards] = useState<WardOption[]>([]);
   const [wardId, setWardId] = useState("");
-  const [pending, startTransition] = useTransition();
+  const [browsePuId, setBrowsePuId] = useState("");
+  const [wardUnits, setWardUnits] = useState<
+    { id: string; name: string; delimitation: string }[]
+  >([]);
+  const [loadingWard, setLoadingWard] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const fuse = useMemo(
     () =>
@@ -98,20 +121,136 @@ export default function PollingUnitFinder({
     });
   }, [selectedLgaId]);
 
-  const run = useCallback(
-    (input: Parameters<typeof findPollingUnit>[0]) => {
-      startTransition(async () => {
-        const next = await findPollingUnit(input);
-        onResultChange(next);
+  useEffect(() => {
+    if (!wardId || !selectedLga?.stateId) {
+      setWardUnits([]);
+      setBrowsePuId("");
+      return;
+    }
+    let cancelled = false;
+    setLoadingWard(true);
+    fetchPollingUnitsForState(selectedLga.stateId)
+      .then((units) => {
+        if (cancelled) return;
+        const inWard = units
+          .filter((u) => u.wardId === wardId)
+          .map((u) => ({
+            id: u.id,
+            name: u.name,
+            delimitation: u.delimitation,
+          }));
+        setWardUnits(inWard);
+        setBrowsePuId(inWard[0]?.id ?? "");
+      })
+      .catch(() => {
+        if (!cancelled) setWardUnits([]);
+      })
+      .finally(() => {
+        if (!cancelled) setLoadingWard(false);
       });
-    },
-    [onResultChange]
-  );
+    return () => {
+      cancelled = true;
+    };
+  }, [wardId, selectedLga?.stateId]);
+
+  const runCode = useCallback(async () => {
+    const trimmed = query.trim();
+    if (!trimmed) return;
+    setPending(true);
+    setError(null);
+    try {
+      const normalized = normalizeDelimitation(trimmed);
+      if (!normalized) {
+        onResultChange({
+          mode: "delimitation",
+          query: trimmed,
+          primary: null,
+          alternatives: [],
+          note:
+            "Enter a 9-digit PU code in the form State-LGA-Ward-Unit, for example 24-01-02-005.",
+        });
+        return;
+      }
+
+      try {
+        const resolved = await resolvePollingUnitByDelimitation(normalized);
+        if (resolved?.unit.wardId) {
+          const enriched = await enrichPollingUnitMatch(resolved.unit.wardId);
+          if (enriched?.primary) {
+            publishResult(
+              onResultChange,
+              {
+                ...enriched,
+                mode: "delimitation",
+                query: formatDelimitationDisplay(normalized),
+              },
+              resolved.unit
+            );
+            return;
+          }
+        }
+      } catch {
+        // Fall back to ward-level delimitation index on the server.
+      }
+
+      const next = await findPollingUnit({
+        mode: "delimitation",
+        query: trimmed,
+      });
+      publishResult(onResultChange, next, null);
+    } catch {
+      setError("PU lookup failed. Check the code or try Browse LGA.");
+      onResultChange(null);
+    } finally {
+      setPending(false);
+    }
+  }, [onResultChange, query]);
+
+  const runBrowse = useCallback(async () => {
+    if (!wardId) return;
+    setPending(true);
+    setError(null);
+    try {
+      const selectedPu = wardUnits.find((u) => u.id === browsePuId);
+      if (selectedPu?.delimitation) {
+        const normalized = normalizeDelimitation(selectedPu.delimitation);
+        if (normalized) {
+          try {
+            const resolved = await resolvePollingUnitByDelimitation(normalized);
+            if (resolved?.unit.wardId) {
+              const enriched = await enrichPollingUnitMatch(resolved.unit.wardId);
+              if (enriched?.primary) {
+                publishResult(
+                  onResultChange,
+                  {
+                    ...enriched,
+                    mode: "ward",
+                    query: selectedPu.name,
+                  },
+                  resolved.unit
+                );
+                return;
+              }
+            }
+          } catch {
+            // server ward fallback below
+          }
+        }
+      }
+
+      const next = await findPollingUnit({ mode: "ward", wardId });
+      publishResult(onResultChange, next, null);
+    } catch {
+      setError("Could not load that ward. Try another LGA or ward.");
+      onResultChange(null);
+    } finally {
+      setPending(false);
+    }
+  }, [browsePuId, onResultChange, wardId, wardUnits]);
 
   function submitCode(e: React.FormEvent) {
     e.preventDefault();
-    if (!query.trim()) return;
-    run({ mode: "delimitation", query });
+    void runCode();
   }
 
   const pickLga = (lga: LgaSearchRow) => {
@@ -119,6 +258,7 @@ export default function PollingUnitFinder({
     setLgaQuery(`${titleCase(lga.name)}, ${lga.stateName}`);
     setShowLgaSuggestions(false);
     onResultChange(null);
+    setError(null);
   };
 
   return (
@@ -132,7 +272,7 @@ export default function PollingUnitFinder({
             aria-selected={mode === tab.id}
             onClick={() => {
               setMode(tab.id);
-              onResultChange(null);
+              setError(null);
             }}
             className={`rounded-md px-4 py-1.5 text-label-md transition-colors ${
               mode === tab.id
@@ -144,6 +284,12 @@ export default function PollingUnitFinder({
           </button>
         ))}
       </div>
+
+      {error && (
+        <p className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-body-sm text-red-800" role="alert">
+          {error}
+        </p>
+      )}
 
       {mode === "code" && (
         <form onSubmit={submitCode} className="space-y-2">
@@ -227,34 +373,54 @@ export default function PollingUnitFinder({
           </div>
 
           {selectedLga && (
-            <label className="block">
-              <span className={labelClass}>Ward</span>
-              <select
-                value={wardId}
-                onChange={(e) => setWardId(e.target.value)}
-                className={`${fieldClass} mt-2`}
-              >
-                {wards.map((w) => (
-                  <option key={w.id} value={w.id}>
-                    {titleCase(w.name)} ({w.pollingUnitCount.toLocaleString()}{" "}
-                    PUs)
-                  </option>
-                ))}
-              </select>
-            </label>
+            <>
+              <label className="block">
+                <span className={labelClass}>Ward</span>
+                <select
+                  value={wardId}
+                  onChange={(e) => setWardId(e.target.value)}
+                  className={`${fieldClass} mt-2`}
+                >
+                  {wards.map((w) => (
+                    <option key={w.id} value={w.id}>
+                      {titleCase(w.name)} ({w.pollingUnitCount.toLocaleString()}{" "}
+                      PUs)
+                    </option>
+                  ))}
+                </select>
+              </label>
+              {wardUnits.length > 0 && (
+                <label className="block">
+                  <span className={labelClass}>Polling unit</span>
+                  <select
+                    value={browsePuId}
+                    onChange={(e) => setBrowsePuId(e.target.value)}
+                    disabled={loadingWard}
+                    className={`${fieldClass} mt-2`}
+                  >
+                    {wardUnits.map((u) => (
+                      <option key={u.id} value={u.id}>
+                        {titleCase(u.name)} ·{" "}
+                        {formatDelimitationDisplay(u.delimitation)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              )}
+            </>
           )}
 
           <button
             type="button"
-            disabled={!wardId || pending}
-            onClick={() => wardId && run({ mode: "ward", wardId })}
+            disabled={!wardId || pending || loadingWard}
+            onClick={() => void runBrowse()}
             className="inline-flex h-11 items-center rounded-lg bg-primary-container px-6 text-label-md font-semibold text-white hover:bg-[#006d40] disabled:opacity-60"
           >
-            {pending ? "Locating…" : "Show polling area"}
+            {pending ? "Locating…" : "Show polling unit"}
           </button>
           <p className="text-body-sm text-text-muted">
-            Pick the ward that matches your registration — we map your senatorial
-            district and federal constituency from INEC delimitation.
+            Search your LGA, pick ward and polling unit — same flow as the
+            election map.
           </p>
         </div>
       )}

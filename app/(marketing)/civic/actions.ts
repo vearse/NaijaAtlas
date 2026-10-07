@@ -16,6 +16,7 @@ import {
   wardById,
   type WardHit,
 } from "@/lib/server/pollingUnitLookup";
+import { serverProjectRoot } from "@/lib/server/serverProjectRoot";
 
 /**
  * Polling-unit finder actions for the Civic hub.
@@ -35,7 +36,7 @@ type ConstituencyBundle = {
 
 let cachedBundle: ConstituencyBundle | null = null;
 
-function bundle(root = process.cwd()): ConstituencyBundle {
+function bundle(root = serverProjectRoot()): ConstituencyBundle {
   if (cachedBundle) return cachedBundle;
   const read = <T,>(p: string) =>
     JSON.parse(fs.readFileSync(path.join(root, p), "utf-8")) as T;
@@ -153,6 +154,20 @@ export async function getPollingLgas(stateId: string) {
 
 export async function getPollingWards(lgaId: string) {
   return listWards(lgaId);
+}
+
+/** Ward-level match for client-side PU resolution (election-map shards). */
+export async function enrichPollingUnitMatch(
+  wardId: string
+): Promise<FindPollingUnitResult | null> {
+  const hit = wardById(wardId);
+  if (!hit) return null;
+  return {
+    mode: "ward",
+    query: hit.wardName,
+    primary: toMatch(hit),
+    alternatives: [],
+  };
 }
 
 export type FindPollingUnitInput =

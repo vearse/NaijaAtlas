@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import HubShell from "@/components/hub/HubShell";
 import HubHeader from "@/components/hub/HubHeader";
@@ -23,6 +23,11 @@ import EmptyState from "@/components/hub/EmptyState";
 import type { CivicHubData } from "@/lib/server/loadCivicHubData";
 import type { FindPollingUnitResult } from "@/app/(marketing)/civic/actions";
 import { useToastStore } from "@/lib/store/toastStore";
+import {
+  commitPollingUnitSession,
+  readPollingUnitSession,
+  restorePollingUnitSessionToStore,
+} from "@/lib/civic/pollingUnitSession";
 
 function pickDefaultStateId(states: CivicHubData["states"]): string {
   if (states.length === 0) return "NG-LA";
@@ -40,6 +45,13 @@ export default function CivicHubClient(data: CivicHubData) {
     pickDefaultStateId(states)
   );
   const [rosterPosition, setRosterPosition] = useState<RosterPosition>("president");
+
+  useEffect(() => {
+    const session = restorePollingUnitSessionToStore();
+    if (!session?.result?.primary) return;
+    setFinderResult(session.result);
+    setRosterStateId(session.result.primary.hit.stateId);
+  }, []);
 
   const lgaSearchRows = useMemo(
     () =>
@@ -137,7 +149,11 @@ export default function CivicHubClient(data: CivicHubData) {
             </div>
           </div>
 
-          <div className="grid grid-cols-12 gap-8">
+          <div
+            className={`grid grid-cols-12 gap-8 ${
+              finderResult?.primary ? "mt-5 md:mt-6" : "mt-0"
+            }`}
+          >
 
             {finderResult?.note && !finderResult.primary && (
               <p
@@ -149,7 +165,7 @@ export default function CivicHubClient(data: CivicHubData) {
             )}
 
             {finderResult?.primary && (
-              <div className="col-span-12">
+              <div className="col-span-12 mt-1">
                 <PollingUnitResultPanel
                   match={finderResult.primary}
                   onOpenCandidates={openCandidatesFromBallot}
@@ -177,13 +193,19 @@ export default function CivicHubClient(data: CivicHubData) {
                     <li key={alt.hit.wardId}>
                       <button
                         type="button"
-                        onClick={() =>
-                          setFinderResult({
+                        onClick={() => {
+                          const next = {
                             ...finderResult,
                             primary: alt,
                             alternatives: [],
-                          })
-                        }
+                          };
+                          commitPollingUnitSession(
+                            next,
+                            readPollingUnitSession()?.unit ?? null
+                          );
+                          setFinderResult(next);
+                          setRosterStateId(alt.hit.stateId);
+                        }}
                         className="w-full rounded-xl border border-border-subtle px-4 py-3 text-left text-body-sm hover:border-primary-container/50 hover:bg-emerald-50/50"
                       >
                         <span className="font-semibold text-text-primary">
