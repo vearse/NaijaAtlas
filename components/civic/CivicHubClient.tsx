@@ -35,8 +35,16 @@ function pickDefaultStateId(states: CivicHubData["states"]): string {
   return states[idx]?.id ?? states[0].id;
 }
 
+function formatInecUpdated(iso: string | null | undefined): string {
+  if (!iso) return "September 2026";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "September 2026";
+  return d.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+}
+
 export default function CivicHubClient(data: CivicHubData) {
   const { totals, election, states, lgas, security } = data;
+  const inecUpdatedLabel = formatInecUpdated(election.verifiedDate);
 
   const [finderResult, setFinderResult] = useState<FindPollingUnitResult | null>(
     null
@@ -111,7 +119,7 @@ export default function CivicHubClient(data: CivicHubData) {
           { href: "#security", label: "Security lookup", tone: "neutral" },
           { href: "#national-assembly", label: "National Assembly", tone: "neutral" },
         ]}
-        note="Source: INEC · Last updated October 2024"
+        note={`Source: INEC · Last updated ${inecUpdatedLabel}`}
       />
 
       <main className="mx-auto max-w-7xl space-y-12 px-4 py-8 md:px-6">
@@ -133,7 +141,6 @@ export default function CivicHubClient(data: CivicHubData) {
           <div className="mt-8 flex flex-col gap-6 lg:flex-row lg:items-stretch">
             <div className="min-w-0 flex-1">
               <PollingUnitFinder
-                stateCount={totals.states}
                 pollingUnitTotal={totals.pollingUnits}
                 lgaRows={lgaSearchRows}
                 onResultChange={handleResultChange}

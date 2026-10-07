@@ -52,7 +52,6 @@ function titleCase(value: string): string {
 }
 
 type Props = {
-  stateCount: number;
   pollingUnitTotal: number;
   lgaRows: LgaSearchRow[];
   onResultChange: (result: FindPollingUnitResult | null) => void;
@@ -68,7 +67,6 @@ function publishResult(
 }
 
 export default function PollingUnitFinder({
-  stateCount,
   pollingUnitTotal,
   lgaRows,
   onResultChange,
@@ -427,8 +425,8 @@ export default function PollingUnitFinder({
 
       <SourceNote source="INEC delimitation register" updated="Sep 2025" />
       <p className="text-body-sm text-slate-400">
-        {pollingUnitTotal.toLocaleString()} polling units across {stateCount}{" "}
-        states and the FCT.
+        {pollingUnitTotal.toLocaleString()} polling units across 36 states and
+        the FCT.
       </p>
     </div>
   );
