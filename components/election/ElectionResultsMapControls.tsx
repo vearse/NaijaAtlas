@@ -1,58 +1,74 @@
 "use client";
 
 import { useMapStore } from "@/lib/store/mapStore";
-import type { PresidentialResultsBundle } from "@/types/politics";
 
 type Props = {
   availableYears: number[];
-  resultsByYear: Record<number, PresidentialResultsBundle>;
 };
 
-export default function ElectionResultsMapControls({
-  availableYears,
-  resultsByYear,
-}: Props) {
-  const year = useMapStore((s) => s.electionResultsYear);
-  const office = useMapStore((s) => s.electionResultsOffice);
+export function useElectionModeSwitch(availableYears: number[]) {
   const setYear = useMapStore((s) => s.setElectionResultsYear);
   const setOffice = useMapStore((s) => s.setElectionResultsOffice);
 
-  const hasResults = year != null && resultsByYear[year];
+  const showResults = (year = availableYears[0]) => {
+    if (year == null) return;
+    useMapStore.getState().selectStates([]);
+    setYear(year);
+    setOffice("president");
+  };
+  const showCurrent = () => setYear(null);
+
+  return { showResults, showCurrent };
+}
+
+export default function ElectionResultsMapControls({ availableYears }: Props) {
+  const year = useMapStore((s) => s.electionResultsYear);
+  const { showResults, showCurrent } = useElectionModeSwitch(availableYears);
+  const inResults = year != null;
+
+  const tab = (active: boolean) =>
+    `rounded-lg px-2.5 py-1 text-xs font-semibold transition-colors ${
+      active
+        ? "bg-primary-container text-white shadow-sm"
+        : "text-text-secondary hover:bg-slate-100"
+    }`;
 
   return (
-    <div className="flex flex-wrap items-center gap-2 rounded-xl border border-border-subtle bg-surface-card/95 px-2 py-1.5 shadow-sm backdrop-blur-sm">
-      <label className="flex items-center gap-1.5 text-[11px] font-semibold text-text-muted">
-        Year
-        <select
-          value={year ?? ""}
-          onChange={(e) => {
-            const v = e.target.value;
-            if (!v) {
-              setYear(null);
-              setOffice(null);
-              return;
-            }
-            setYear(Number(v));
-            setOffice("president");
-            useMapStore.getState().selectStates([]);
-          }}
-          className="rounded-lg border border-border-subtle bg-white px-2 py-1 text-xs font-medium text-text-primary"
+    <div className="flex flex-wrap items-center gap-2 rounded-xl border border-border-subtle bg-surface-card/95 px-1.5 py-1.5 shadow-sm backdrop-blur-sm">
+      <div className="flex items-center gap-1" role="tablist" aria-label="Election view">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={!inResults}
+          onClick={showCurrent}
+          className={tab(!inResults)}
         >
-          <option value="">2027 · districts</option>
-          {availableYears.map((y) => (
-            <option key={y} value={y}>{y} · results</option>
-          ))}
-        </select>
-      </label>
-      {hasResults && (
-        <label className="flex items-center gap-1.5 text-[11px] font-semibold text-text-muted">
-          Office
+          2027 · Candidates
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={inResults}
+          onClick={() => !inResults && showResults()}
+          disabled={availableYears.length === 0}
+          className={tab(inResults)}
+        >
+          Past results
+        </button>
+      </div>
+      {inResults && (
+        <label className="flex items-center gap-1.5 pr-1 text-[11px] font-semibold text-text-muted">
+          Year
           <select
-            value={office ?? "president"}
-            onChange={() => setOffice("president")}
+            value={year ?? ""}
+            onChange={(e) => showResults(Number(e.target.value))}
             className="rounded-lg border border-border-subtle bg-white px-2 py-1 text-xs font-medium text-text-primary"
           >
-            <option value="president">President</option>
+            {availableYears.map((y) => (
+              <option key={y} value={y}>
+                {y} · President
+              </option>
+            ))}
           </select>
         </label>
       )}

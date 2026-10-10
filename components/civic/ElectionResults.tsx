@@ -171,7 +171,7 @@ export default function ElectionResults({
           </select>
         </label>
         <Link
-          href="/civic/map/elections?view=zones"
+          href={`/civic/map/elections?resultYear=${results.election.year}&resultOffice=president${hasZoneView ? "&view=zones" : ""}`}
           className="ml-auto inline-flex h-11 items-center rounded-xl bg-primary-container px-4 text-label-md font-semibold text-white hover:opacity-90"
         >
           View on election map

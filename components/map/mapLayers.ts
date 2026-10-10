@@ -676,7 +676,7 @@ export function applyElectionResultsChoroplethPaint(
   map: Map,
   fillByState: Record<string, string>,
   options: {
-    highlightedStateId: string | null;
+    highlightedStateIds: string[];
     activeRegionId: string | null;
     regionStateIds: string[];
   }
@@ -686,13 +686,17 @@ export function applyElectionResultsChoroplethPaint(
     options.activeRegionId && options.regionStateIds.length > 0
       ? (["in", ["get", "id"], ["literal", options.regionStateIds]] as const)
       : null;
-  const highlight = options.highlightedStateId;
+  const highlightIds = options.highlightedStateIds;
+  const isHighlighted =
+    highlightIds.length > 0
+      ? (["in", ["get", "id"], ["literal", highlightIds]] as const)
+      : null;
 
   if (map.getLayer("states-fill")) {
     map.setPaintProperty("states-fill", "fill-color", fill);
     map.setPaintProperty("states-fill", "fill-opacity", [
       "case",
-      highlight != null && ["==", ["get", "id"], highlight],
+      isHighlighted != null && isHighlighted,
       0.95,
       inRegion != null && ["!", inRegion],
       0.28,
@@ -705,13 +709,13 @@ export function applyElectionResultsChoroplethPaint(
   if (map.getLayer("states-line")) {
     map.setPaintProperty("states-line", "line-color", [
       "case",
-      highlight != null && ["==", ["get", "id"], highlight],
+      isHighlighted != null && isHighlighted,
       "#003322",
       "#ffffff",
     ]);
     map.setPaintProperty("states-line", "line-width", [
       "case",
-      highlight != null && ["==", ["get", "id"], highlight],
+      isHighlighted != null && isHighlighted,
       3.5,
       1.2,
     ]);

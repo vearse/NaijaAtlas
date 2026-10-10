@@ -169,3 +169,13 @@ export function resolveResultForState(
   }
   return null;
 }
+
+/** All modern state ids to select when the user clicks one polygon. */
+export function modernStateIdsForElectionClick(
+  results: PresidentialResultsBundle,
+  clickedStateId: string
+): string[] {
+  const match = resolveResultForState(results, clickedStateId);
+  if (!match) return [clickedStateId];
+  return memberIdsFor(results.election.year, match.row.stateId);
+}

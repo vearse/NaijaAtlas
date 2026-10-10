@@ -12,6 +12,7 @@ import ElectionDistrictDetail from "./ElectionDistrictDetail";
 import PresidentialCandidatesDetail from "./PresidentialCandidatesDetail";
 import ElectionResultsMapPanel from "./ElectionResultsMapPanel";
 import { isElectionResultsMapActive } from "@/lib/election/electionResultsMapActive";
+import { useElectionModeSwitch } from "./ElectionResultsMapControls";
 import type { PresidentialResultsBundle } from "@/types/politics";
 import type { StateLocation } from "@/types/location";
 
@@ -20,6 +21,7 @@ interface ElectionPanelProps {
   pollingCounts: PollingUnitCountsBundle;
   lgas: LgaLocation[];
   presidentialResults?: PresidentialResultsBundle | null;
+  resultYears?: number[];
   states?: StateLocation[];
 }
 
@@ -28,8 +30,10 @@ export default function ElectionPanel({
   pollingCounts,
   lgas,
   presidentialResults = null,
+  resultYears = [],
   states = [],
 }: ElectionPanelProps) {
+  const { showResults, showCurrent } = useElectionModeSwitch(resultYears);
   const electionResultsYear = useMapStore((s) => s.electionResultsYear);
   const electionResultsOffice = useMapStore((s) => s.electionResultsOffice);
   const mapType = useMapStore((s) => s.mapType);
@@ -105,6 +109,7 @@ export default function ElectionPanel({
       <ElectionResultsMapPanel
         results={presidentialResults}
         states={states}
+        onBackToCurrent={showCurrent}
       />
     ) : null;
 
@@ -124,8 +129,8 @@ export default function ElectionPanel({
       : inPresidentialPhase
         ? "Presidential candidates"
         : "2027 Elections";
-  const sheetSubtitle = resultsMapActive && resultsYear
-    ? "State-by-state · INEC"
+  const sheetSubtitle = resultsMapActive && resultsYear && presidentialResults
+    ? `State-by-state · ${presidentialResults.election.declaredBy}`
     : inDistrictPhase
       ? `${district?.state} · Candidates`
       : inPresidentialPhase

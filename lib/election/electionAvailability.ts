@@ -11,8 +11,9 @@ export function electionBreakdownUnavailableMessage(
   results: PresidentialResultsBundle
 ): string | null {
   const year = results.election.year;
+  const authority = results.election.declaredBy.trim() || "the electoral commission";
   if (!electionHasStateBreakdown(results)) {
-    return `INEC did not publish state-by-state presidential figures for ${year}. Only the national totals below are shown — zone and map breakdowns are not available for this election.`;
+    return `${authority} did not publish state-by-state presidential figures for ${year}. Only the national totals below are shown — zone and map breakdowns are not available for this election.`;
   }
   if (!electionHasStateVoteCounts(results)) {
     return `For ${year}, only percentage shares by state are available (not raw vote counts), so zone totals cannot be summed. Use the state-by-state table for shares; the zone view is hidden.`;

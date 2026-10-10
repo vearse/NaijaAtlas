@@ -12,11 +12,7 @@ import {
   stateWinnerParty,
 } from "@/lib/election/zoneAggregate";
 import ElectionStateResultDetail from "@/components/election/ElectionStateResultDetail";
-import {
-  historicalGroupFor,
-  memberIdsFor,
-  resolveResultForState,
-} from "@/lib/election/historicalStates";
+import { historicalGroupFor, memberIdsFor } from "@/lib/election/historicalStates";
 import type { StateLocation } from "@/types/location";
 import type { PresidentialResultsBundle } from "@/types/politics";
 
@@ -24,12 +20,83 @@ function surname(name: string): string {
   return name.split(" ").filter(Boolean).pop() ?? name;
 }
 
+function ElectionResultsContestants({
+  results,
+}: {
+  results: PresidentialResultsBundle;
+}) {
+  const total = results.national.validVotes;
+  const winnerParty = results.national.winner;
+  const ranked = [...results.candidates].sort(
+    (a, b) =>
+      (results.national.byParty[b.party] ?? 0) -
+      (results.national.byParty[a.party] ?? 0)
+  );
+
+  return (
+    <section className="space-y-2" aria-labelledby="election-contestants-heading">
+      <h3
+        id="election-contestants-heading"
+        className="text-label-caps text-text-muted"
+      >
+        Contestants
+      </h3>
+      <ul className="space-y-2">
+        {ranked.map((c) => {
+          const votes = results.national.byParty[c.party] ?? 0;
+          const share = total > 0 ? (votes / total) * 100 : 0;
+          const isWinner = c.party === winnerParty;
+          return (
+            <li
+              key={c.party}
+              className="rounded-xl border border-border-subtle bg-surface-card p-3"
+              style={{ borderLeftWidth: 4, borderLeftColor: c.color }}
+            >
+              <div className="flex flex-wrap items-start justify-between gap-2">
+                <div className="min-w-0">
+                  <p className="text-[10px] font-bold uppercase tracking-wide text-text-muted">
+                    {c.party}
+                    {isWinner && (
+                      <span className="ml-2 rounded-full bg-primary-container px-1.5 py-0.5 text-[9px] font-bold text-white normal-case">
+                        Winner
+                      </span>
+                    )}
+                  </p>
+                  <p className="text-sm font-semibold text-text-primary">
+                    {c.name}
+                  </p>
+                  {c.runningMate && (
+                    <p className="text-xs text-text-muted mt-0.5">
+                      Running mate: {c.runningMate}
+                    </p>
+                  )}
+                </div>
+                <p className="text-right text-xs tabular-nums text-text-secondary shrink-0">
+                  <span className="block font-semibold text-text-primary">
+                    {formatVotes(votes)}
+                  </span>
+                  {formatShare(share)}
+                </p>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
+
 type Props = {
   results: PresidentialResultsBundle;
   states: StateLocation[];
+  onBackToCurrent?: () => void;
 };
 
-export default function ElectionResultsMapPanel({ results, states }: Props) {
+export default function ElectionResultsMapPanel({
+  results,
+  states,
+  onBackToCurrent,
+}: Props) {
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
   const selectedStateOrder = useMapStore((s) => s.selectedStateOrder);
   const activeRegionId = useMapStore((s) => s.activeRegionId);
@@ -91,14 +158,10 @@ export default function ElectionResultsMapPanel({ results, states }: Props) {
     return rows;
   }, [results.states, results.election.year, states, activeRegionId]);
 
-  const focusRowId = focusStateId
-    ? resolveResultForState(results, focusStateId)?.row.stateId ?? null
-    : null;
-
   const list = (
     <ul className="space-y-1.5">
       {stateRows.map((row) => {
-        const active = row.stateId === focusRowId;
+        const active = row.memberIds.every((id) => selectedStateIds.has(id));
         return (
           <li key={row.stateId}>
             <button
@@ -138,12 +201,21 @@ export default function ElectionResultsMapPanel({ results, states }: Props) {
   return (
     <div className="flex flex-col h-full min-h-0">
       <div className="p-4 border-b border-border-subtle bg-surface-card shrink-0">
+        {onBackToCurrent && (
+          <button
+            type="button"
+            onClick={onBackToCurrent}
+            className="mb-2 text-xs font-semibold text-primary hover:underline"
+          >
+            ← Back to 2027 candidates
+          </button>
+        )}
         <div className="flex flex-wrap items-center gap-2">
           <span className="inline-flex rounded-full bg-primary-container px-3 py-1 text-xs font-bold text-white">
             {results.election.year} presidential
           </span>
           <span className="text-label-caps text-primary">
-            INEC results
+            {results.election.declaredBy} results
           </span>
         </div>
         <h2 className="text-lg font-bold text-text-primary mt-2">
@@ -152,13 +224,14 @@ export default function ElectionResultsMapPanel({ results, states }: Props) {
         <p className="text-xs text-text-muted mt-1">
           Tap a state on the map or pick from the list.
         </p>
+      </div>
+      <div className="flex-1 overflow-y-auto p-4 space-y-6">
         {results.election.description && (
-          <p className="text-xs leading-relaxed text-text-primary/80 mt-2 border-l-2 border-primary-container pl-2">
+          <p className="text-sm md:text-base leading-relaxed text-text-primary border-l-4 border-primary-container pl-3 pr-1">
             {results.election.description}
           </p>
         )}
-      </div>
-      <div className="flex-1 overflow-y-auto p-4 space-y-6">
+        <ElectionResultsContestants results={results} />
         {!electionHasStateBreakdown(results) && (
           <div
             className="rounded-xl border border-amber-200 bg-amber-50/80 p-3 text-xs leading-relaxed text-amber-950"

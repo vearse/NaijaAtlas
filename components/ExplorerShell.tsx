@@ -75,6 +75,8 @@ const NigeriaMap = dynamic(() => import("@/components/map/NigeriaMap"), {
 
 export type { SectionWorkspaceMode };
 
+const UPCOMING_ELECTION_YEAR = 2027;
+
 interface ExplorerShellProps {
   sectionWorkspace?: SectionWorkspaceMode;
   states: StateLocation[];
@@ -132,6 +134,7 @@ export default function ExplorerShell({
     () =>
       Object.keys(presidentialResultsByYear)
         .map(Number)
+        .filter((y) => y < UPCOMING_ELECTION_YEAR)
         .sort((a, b) => b - a),
     [presidentialResultsByYear]
   );
@@ -140,17 +143,14 @@ export default function ExplorerShell({
       ? presidentialResultsByYear[electionResultsYear] ?? null
       : null;
 
+  // The 2027 candidates / districts map is the default; past results are opt-in
+  // (UrlSync's `resultYear=` runs after this and can still switch modes).
   useLayoutEffect(() => {
-    if (sectionWorkspace === "elections" && resultYears.length > 0) {
-      setElectionResultsYear(resultYears[0]);
-      setElectionResultsOffice("president");
+    if (sectionWorkspace === "elections") {
+      setElectionResultsYear(null);
+      setElectionResultsOffice(null);
     }
-  }, [
-    sectionWorkspace,
-    resultYears,
-    setElectionResultsYear,
-    setElectionResultsOffice,
-  ]);
+  }, [sectionWorkspace, setElectionResultsYear, setElectionResultsOffice]);
   const preset = sectionWorkspace ? SECTION_PRESETS[sectionWorkspace] : null;
 
   // Runs before UrlSync's effect, so `layers=` / `focus=` in the URL still win.
@@ -287,9 +287,12 @@ export default function ExplorerShell({
                     <CompareMenu />
                   </>
                 )}
-                {isSpecialMapMode && <MapViewSelect />}
+                {(isRankingMode || resultsMapActive) && <MapViewSelect />}
               </div>
               <div className="flex items-center gap-2 flex-wrap justify-end">
+                {isElectionMode && resultYears.length > 0 && (
+                  <ElectionResultsMapControls availableYears={resultYears} />
+                )}
                 <MapTypeToggle />
               </div>
             </div>
@@ -470,7 +473,7 @@ export default function ExplorerShell({
                 presidentialResults={presidentialResults}
               />
             </div>
-            {mapCanvasView === "zones" && isElectionMode && (
+            {mapCanvasView === "zones" && isElectionMode && resultsMapActive && (
               <MapZonesPanel
                 mode="elections"
                 regions={regions}
@@ -489,11 +492,10 @@ export default function ExplorerShell({
             )}
             {(preset?.lgaAndCompare || isSpecialMapMode) && (
               <div className="absolute top-3 left-3 z-10 flex flex-wrap items-center gap-2">
-                {isSpecialMapMode && <MapViewSelect />}
+                {(isRankingMode || resultsMapActive) && <MapViewSelect />}
                 {isElectionMode && resultYears.length > 0 && (
                   <ElectionResultsMapControls
                     availableYears={resultYears}
-                    resultsByYear={presidentialResultsByYear}
                   />
                 )}
                 {preset?.lgaAndCompare && (
@@ -532,6 +534,7 @@ export default function ExplorerShell({
             pollingCounts={pollingCounts}
             lgas={lgas}
             presidentialResults={presidentialResults}
+            resultYears={resultYears}
             states={states}
           />
         ) : isRankingMode ? (

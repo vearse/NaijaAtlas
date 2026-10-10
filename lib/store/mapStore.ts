@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import type { Map as MaplibreMap } from "maplibre-gl";
+import { electionSenatorialDistrictsActive } from "@/lib/election/electionMapLga";
 
 const MAX_COMPARE_STATES = 3;
 export const MAX_ELECTION_STATES = 5;
@@ -8,12 +9,9 @@ function maxSelectedStates(mapType: MapTypeId): number {
   return mapType === "election" ? MAX_ELECTION_STATES : MAX_COMPARE_STATES;
 }
 
-/**
- * LGA polygons and LGA drill-down controls are not used on the ranking or
- * election maps — those maps own the state fill (choropleth / districts).
- */
+/** LGA drill-down is off on the ranking map and during presidential results choropleth. */
 export function lgaLayersDisabled(mapType: MapTypeId): boolean {
-  return mapType === "election" || mapType === "ranking";
+  return mapType === "ranking";
 }
 
 export type MobileSheetMode = "hidden" | "peek" | "open";
@@ -556,7 +554,13 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       notifyLgaVisibility(get);
       return;
     }
-    set({ electionResultsYear: null, electionResultsOffice: null });
+    set({
+      electionResultsYear: null,
+      electionResultsOffice: null,
+      selectedStateIds: new Set(),
+      selectedStateOrder: [],
+      mapCanvasView: "map",
+    });
   },
   setElectionResultsOffice: (office) =>
     set({ electionResultsOffice: office }),
@@ -899,6 +903,9 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     for (const sid of get().selectedStateIds) {
       if (!evicted.ids.has(sid)) lgaVisible.delete(sid);
     }
+    if (electionSenatorialDistrictsActive(get())) {
+      for (const sid of evicted.ids) lgaVisible.add(sid);
+    }
     set({
       selectedStateIds: evicted.ids,
       selectedStateOrder: evicted.order,
@@ -957,6 +964,9 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     const lgaVisible = new Set(
       [...get().lgaVisibleStateIds].filter((sid) => idSet.has(sid))
     );
+    if (electionSenatorialDistrictsActive(get())) {
+      for (const sid of ids) lgaVisible.add(sid);
+    }
     set({
       selectedStateIds: idSet,
       selectedStateOrder: [...ids],
