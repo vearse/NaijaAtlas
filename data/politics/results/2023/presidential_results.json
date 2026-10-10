@@ -1,0 +1,455 @@
+{
+  "election": {
+    "year": 2023,
+    "date": "2023-02-25",
+    "office": "president",
+    "declaredBy": "INEC",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2023_Nigerian_presidential_election"
+  },
+  "candidates": [
+    {
+      "party": "APC",
+      "name": "Bola Ahmed Tinubu",
+      "runningMate": "Kashim Shettima",
+      "color": "#126638"
+    },
+    {
+      "party": "PDP",
+      "name": "Atiku Abubakar",
+      "runningMate": "Ifeanyi Okowa",
+      "color": "#C1272D"
+    },
+    {
+      "party": "LP",
+      "name": "Peter Obi",
+      "runningMate": "Yusuf Datti Baba-Ahmed",
+      "color": "#2E5DAC"
+    },
+    {
+      "party": "NNPP",
+      "name": "Rabiu Kwankwaso",
+      "runningMate": "Isaac Idahosa",
+      "color": "#D97706"
+    }
+  ],
+  "national": {
+    "validVotes": 24025940,
+    "byParty": {
+      "APC": 8794726,
+      "PDP": 6984520,
+      "LP": 6101533,
+      "NNPP": 1496687,
+      "others": 648474
+    },
+    "winner": "APC"
+  },
+  "states": [
+    {
+      "stateId": "NG-AB",
+      "votes": {
+        "APC": 8914,
+        "PDP": 22676,
+        "LP": 327095,
+        "NNPP": 1239,
+        "others": 10113
+      },
+      "validVotes": 370037
+    },
+    {
+      "stateId": "NG-AD",
+      "votes": {
+        "APC": 182881,
+        "PDP": 417611,
+        "LP": 105648,
+        "NNPP": 8006,
+        "others": 16994
+      },
+      "validVotes": 731140
+    },
+    {
+      "stateId": "NG-AK",
+      "votes": {
+        "APC": 160620,
+        "PDP": 214012,
+        "LP": 132683,
+        "NNPP": 7796,
+        "others": 39978
+      },
+      "validVotes": 555089
+    },
+    {
+      "stateId": "NG-AN",
+      "votes": {
+        "APC": 5111,
+        "PDP": 9036,
+        "LP": 584621,
+        "NNPP": 1967,
+        "others": 13126
+      },
+      "validVotes": 613861
+    },
+    {
+      "stateId": "NG-BA",
+      "votes": {
+        "APC": 316694,
+        "PDP": 426607,
+        "LP": 27373,
+        "NNPP": 72103,
+        "others": 10739
+      },
+      "validVotes": 853516
+    },
+    {
+      "stateId": "NG-BY",
+      "votes": {
+        "APC": 42572,
+        "PDP": 68818,
+        "LP": 49975,
+        "NNPP": 540,
+        "others": 3420
+      },
+      "validVotes": 165325
+    },
+    {
+      "stateId": "NG-BE",
+      "votes": {
+        "APC": 310468,
+        "PDP": 130081,
+        "LP": 308372,
+        "NNPP": 4740,
+        "others": 16414
+      },
+      "validVotes": 770075
+    },
+    {
+      "stateId": "NG-BO",
+      "votes": {
+        "APC": 252282,
+        "PDP": 190921,
+        "LP": 7205,
+        "NNPP": 4626,
+        "others": 10253
+      },
+      "validVotes": 465287
+    },
+    {
+      "stateId": "NG-CR",
+      "votes": {
+        "APC": 130520,
+        "PDP": 95425,
+        "LP": 179917,
+        "NNPP": 1644,
+        "others": 9462
+      },
+      "validVotes": 416968
+    },
+    {
+      "stateId": "NG-DE",
+      "votes": {
+        "APC": 90183,
+        "PDP": 161600,
+        "LP": 341866,
+        "NNPP": 3122,
+        "others": 18570
+      },
+      "validVotes": 615341
+    },
+    {
+      "stateId": "NG-EB",
+      "votes": {
+        "APC": 42402,
+        "PDP": 13503,
+        "LP": 259738,
+        "NNPP": 1661,
+        "others": 8047
+      },
+      "validVotes": 325351
+    },
+    {
+      "stateId": "NG-ED",
+      "votes": {
+        "APC": 144471,
+        "PDP": 89585,
+        "LP": 331163,
+        "NNPP": 2743,
+        "others": 13304
+      },
+      "validVotes": 581266
+    },
+    {
+      "stateId": "NG-EK",
+      "votes": {
+        "APC": 201494,
+        "PDP": 89554,
+        "LP": 11397,
+        "NNPP": 264,
+        "others": 5462
+      },
+      "validVotes": 308171
+    },
+    {
+      "stateId": "NG-EN",
+      "votes": {
+        "APC": 4772,
+        "PDP": 15749,
+        "LP": 428640,
+        "NNPP": 1808,
+        "others": 5455
+      },
+      "validVotes": 456424
+    },
+    {
+      "stateId": "NG-FC",
+      "votes": {
+        "APC": 90902,
+        "PDP": 74194,
+        "LP": 281717,
+        "NNPP": 4517,
+        "others": 8741
+      },
+      "validVotes": 460071
+    },
+    {
+      "stateId": "NG-GO",
+      "votes": {
+        "APC": 146977,
+        "PDP": 317123,
+        "LP": 26160,
+        "NNPP": 10520,
+        "others": 9263
+      },
+      "validVotes": 510043
+    },
+    {
+      "stateId": "NG-IM",
+      "votes": {
+        "APC": 66171,
+        "PDP": 30004,
+        "LP": 352904,
+        "NNPP": 1536,
+        "others": 8646
+      },
+      "validVotes": 459261
+    },
+    {
+      "stateId": "NG-JI",
+      "votes": {
+        "APC": 421390,
+        "PDP": 386587,
+        "LP": 1889,
+        "NNPP": 98234,
+        "others": 12431
+      },
+      "validVotes": 920531
+    },
+    {
+      "stateId": "NG-KD",
+      "votes": {
+        "APC": 399293,
+        "PDP": 554360,
+        "LP": 294494,
+        "NNPP": 92969,
+        "others": 19037
+      },
+      "validVotes": 1360153
+    },
+    {
+      "stateId": "NG-KN",
+      "votes": {
+        "APC": 517341,
+        "PDP": 131716,
+        "LP": 28513,
+        "NNPP": 997279,
+        "others": 27156
+      },
+      "validVotes": 1702005
+    },
+    {
+      "stateId": "NG-KT",
+      "votes": {
+        "APC": 482283,
+        "PDP": 489045,
+        "LP": 6376,
+        "NNPP": 69386,
+        "others": 11583
+      },
+      "validVotes": 1058673
+    },
+    {
+      "stateId": "NG-KE",
+      "votes": {
+        "APC": 248088,
+        "PDP": 285175,
+        "LP": 10682,
+        "NNPP": 5038,
+        "others": 10539
+      },
+      "validVotes": 559522
+    },
+    {
+      "stateId": "NG-KO",
+      "votes": {
+        "APC": 240751,
+        "PDP": 145104,
+        "LP": 56217,
+        "NNPP": 4238,
+        "others": 10480
+      },
+      "validVotes": 456790
+    },
+    {
+      "stateId": "NG-KW",
+      "votes": {
+        "APC": 263572,
+        "PDP": 136909,
+        "LP": 31186,
+        "NNPP": 3141,
+        "others": 35163
+      },
+      "validVotes": 469971
+    },
+    {
+      "stateId": "NG-LA",
+      "votes": {
+        "APC": 572606,
+        "PDP": 75750,
+        "LP": 582454,
+        "NNPP": 8442,
+        "others": 32199
+      },
+      "validVotes": 1271451
+    },
+    {
+      "stateId": "NG-NA",
+      "votes": {
+        "APC": 172922,
+        "PDP": 147093,
+        "LP": 191361,
+        "NNPP": 12715,
+        "others": 16475
+      },
+      "validVotes": 540566
+    },
+    {
+      "stateId": "NG-NI",
+      "votes": {
+        "APC": 375183,
+        "PDP": 284898,
+        "LP": 80452,
+        "NNPP": 21836,
+        "others": 16299
+      },
+      "validVotes": 778668
+    },
+    {
+      "stateId": "NG-OG",
+      "votes": {
+        "APC": 341554,
+        "PDP": 123831,
+        "LP": 85829,
+        "NNPP": 2200,
+        "others": 26710
+      },
+      "validVotes": 580124
+    },
+    {
+      "stateId": "NG-ON",
+      "votes": {
+        "APC": 369924,
+        "PDP": 115463,
+        "LP": 44405,
+        "NNPP": 930,
+        "others": 20286
+      },
+      "validVotes": 551008
+    },
+    {
+      "stateId": "NG-OS",
+      "votes": {
+        "APC": 343945,
+        "PDP": 354366,
+        "LP": 23283,
+        "NNPP": 713,
+        "others": 10896
+      },
+      "validVotes": 733203
+    },
+    {
+      "stateId": "NG-OY",
+      "votes": {
+        "APC": 449884,
+        "PDP": 182977,
+        "LP": 99110,
+        "NNPP": 4095,
+        "others": 73419
+      },
+      "validVotes": 809485
+    },
+    {
+      "stateId": "NG-PL",
+      "votes": {
+        "APC": 307195,
+        "PDP": 243808,
+        "LP": 466272,
+        "NNPP": 8869,
+        "others": 62026
+      },
+      "validVotes": 1088170
+    },
+    {
+      "stateId": "NG-RI",
+      "votes": {
+        "APC": 231591,
+        "PDP": 88468,
+        "LP": 175071,
+        "NNPP": 1322,
+        "others": 27199
+      },
+      "validVotes": 523651
+    },
+    {
+      "stateId": "NG-SO",
+      "votes": {
+        "APC": 285444,
+        "PDP": 288679,
+        "LP": 6568,
+        "NNPP": 1300,
+        "others": 4824
+      },
+      "validVotes": 586815
+    },
+    {
+      "stateId": "NG-TA",
+      "votes": {
+        "APC": 135165,
+        "PDP": 189017,
+        "LP": 146315,
+        "NNPP": 12818,
+        "others": 16043
+      },
+      "validVotes": 499358
+    },
+    {
+      "stateId": "NG-YO",
+      "votes": {
+        "APC": 151459,
+        "PDP": 198567,
+        "LP": 2406,
+        "NNPP": 18270,
+        "others": 7695
+      },
+      "validVotes": 378397
+    },
+    {
+      "stateId": "NG-ZA",
+      "votes": {
+        "APC": 298396,
+        "PDP": 193978,
+        "LP": 1660,
+        "NNPP": 4044,
+        "others": 4845
+      },
+      "validVotes": 502923
+    }
+  ]
+}

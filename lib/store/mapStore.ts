@@ -8,8 +8,18 @@ function maxSelectedStates(mapType: MapTypeId): number {
   return mapType === "election" ? MAX_ELECTION_STATES : MAX_COMPARE_STATES;
 }
 
+/**
+ * LGA polygons and LGA drill-down controls are not used on the ranking or
+ * election maps — those maps own the state fill (choropleth / districts).
+ */
+export function lgaLayersDisabled(mapType: MapTypeId): boolean {
+  return mapType === "election" || mapType === "ranking";
+}
+
 export type MobileSheetMode = "hidden" | "peek" | "open";
 export type MapTypeId = "minimal" | "osm" | "election" | "ranking";
+export type MapCanvasView = "map" | "zones" | "states";
+export type ElectionResultsOffice = "president";
 
 /** Active comparison panel (state today; metro & LGA later). */
 export type CompareViewId = "state" | "metro" | "lga";
@@ -86,17 +96,6 @@ function retainCompareView(
       : null;
   }
   return current;
-}
-
-function syncElectionLgaVisibility(
-  mapType: MapTypeId,
-  selectedStateIds: Set<string>,
-  lgaVisible: Set<string>
-): void {
-  if (mapType !== "election") return;
-  for (const id of selectedStateIds) {
-    lgaVisible.add(id);
-  }
 }
 
 export interface DirectionsTarget {
@@ -225,6 +224,14 @@ export interface MapSelectionState {
   reset: () => void;
   mapType: MapTypeId;
   setMapType: (id: MapTypeId) => void;
+  /** Map canvas vs geopolitical zone board (election / rankings workspaces). */
+  mapCanvasView: MapCanvasView;
+  setMapCanvasView: (view: MapCanvasView) => void;
+  /** When set (e.g. 2023), election map shows presidential results choropleth. */
+  electionResultsYear: number | null;
+  electionResultsOffice: ElectionResultsOffice | null;
+  setElectionResultsYear: (year: number | null) => void;
+  setElectionResultsOffice: (office: ElectionResultsOffice | null) => void;
   selectedSenatorialDistrictId: string | null;
   /** When set, House section in district detail expands this constituency. */
   electionFederalConstituencyFocusId: string | null;
@@ -329,6 +336,9 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   mapInstance: null,
   lgaVisibilityHandler: null,
   mapType: "minimal",
+  mapCanvasView: "map",
+  electionResultsYear: null,
+  electionResultsOffice: null,
   selectedSenatorialDistrictId: null,
   electionFederalConstituencyFocusId: null,
   confirmedPollingUnit: null,
@@ -389,6 +399,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
 
   toggleMetroMapView: (plan) => {
     if (!plan || plan.stateIds.length === 0) return;
+    if (lgaLayersDisabled(get().mapType)) return;
     const current = get().metroMapViews;
     const existing = current.find((v) => v.id === plan.id);
     if (existing) {
@@ -500,6 +511,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         overlayFeatureFocus: null,
         selectedSenatorialDistrictId: null,
         lgaVisibleStateIds: new Set(),
+        labeledLgaOrder: [],
         selectedLgaId: null,
         activeRegionId: null,
         directionsPanelTarget: null,
@@ -513,16 +525,14 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       return;
     }
     if (id === "election" && prev !== "election") {
-      const selected = new Set(get().selectedStateIds);
-      const lgaVisible = new Set(get().lgaVisibleStateIds);
-      syncElectionLgaVisibility("election", selected, lgaVisible);
       set({
         mapType: id,
         activeOverlays: new Set(),
         selectedOverlay: null,
         overlayGuideLayer: null,
         selectedSenatorialDistrictId: null,
-        lgaVisibleStateIds: lgaVisible,
+        lgaVisibleStateIds: new Set(),
+        labeledLgaOrder: [],
         activeRegionId: null,
         directionsPanelTarget: null,
         metroMapViews: [],
@@ -534,6 +544,22 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     }
     set({ mapType: id });
   },
+  setMapCanvasView: (view) => set({ mapCanvasView: view }),
+  setElectionResultsYear: (year) => {
+    if (year != null) {
+      set({
+        electionResultsYear: year,
+        lgaVisibleStateIds: new Set(),
+        selectedLgaId: null,
+        selectedSenatorialDistrictId: null,
+      });
+      notifyLgaVisibility(get);
+      return;
+    }
+    set({ electionResultsYear: null, electionResultsOffice: null });
+  },
+  setElectionResultsOffice: (office) =>
+    set({ electionResultsOffice: office }),
   setSelectedSenatorialDistrict: (id, options) =>
     set({
       selectedSenatorialDistrictId: id,
@@ -873,7 +899,6 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     for (const sid of get().selectedStateIds) {
       if (!evicted.ids.has(sid)) lgaVisible.delete(sid);
     }
-    syncElectionLgaVisibility(get().mapType, evicted.ids, lgaVisible);
     set({
       selectedStateIds: evicted.ids,
       selectedStateOrder: evicted.order,
@@ -907,7 +932,6 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     for (const sid of get().selectedStateIds) {
       if (!evicted.ids.has(sid)) lgaVisible.delete(sid);
     }
-    syncElectionLgaVisibility(get().mapType, evicted.ids, lgaVisible);
     set({
       selectedStateIds: evicted.ids,
       selectedStateOrder: evicted.order,
@@ -933,9 +957,6 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     const lgaVisible = new Set(
       [...get().lgaVisibleStateIds].filter((sid) => idSet.has(sid))
     );
-    if (get().mapType === "election") {
-      for (const sid of idSet) lgaVisible.add(sid);
-    }
     set({
       selectedStateIds: idSet,
       selectedStateOrder: [...ids],
@@ -959,6 +980,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   },
 
   showLgas: (id) => {
+    if (lgaLayersDisabled(get().mapType)) return;
     const lgaVisible = new Set(get().lgaVisibleStateIds);
     lgaVisible.add(id);
     let selected = new Set(get().selectedStateIds);
@@ -1034,6 +1056,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   },
 
   showLgasForStates: (ids) => {
+    if (lgaLayersDisabled(get().mapType)) return;
     set({
       lgaVisibleStateIds: new Set(ids),
       selectedStateIds: new Set(ids),

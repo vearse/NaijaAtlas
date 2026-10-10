@@ -619,6 +619,106 @@ export function applyRankingChoroplethPaint(
   }
 }
 
+const electionResultStateIdsRef = new WeakMap<Map, string[]>();
+
+const ELECTION_RESULT_TEXT_FIELD: ExpressionSpecification = [
+  "format",
+  ["get", "name"],
+  {},
+  "\n",
+  {},
+  [
+    "case",
+    ["boolean", ["feature-state", "resultLine"], false],
+    ["feature-state", "resultLine"],
+    "",
+  ],
+  { "font-scale": 0.72, "text-font": ["literal", [MAP_FONT]] },
+];
+
+export function resetElectionResultsStateLabels(map: Map): void {
+  if (!map.getLayer(STATES_LABEL_LAYER)) return;
+  map.setLayoutProperty(STATES_LABEL_LAYER, "text-field", ["get", "name"]);
+  const ids = electionResultStateIdsRef.get(map);
+  electionResultStateIdsRef.delete(map);
+  for (const stateId of ids ?? []) {
+    map.setFeatureState(
+      { source: GEO_SOURCES.adm1, id: stateId },
+      { resultLine: null }
+    );
+  }
+}
+
+export function applyElectionResultsStateLabels(
+  map: Map,
+  labelLineByStateId: Record<string, string>
+): void {
+  if (!map.getLayer(STATES_LABEL_LAYER)) return;
+  resetElectionResultsStateLabels(map);
+  map.setLayoutProperty(
+    STATES_LABEL_LAYER,
+    "text-field",
+    ELECTION_RESULT_TEXT_FIELD
+  );
+  const applied: string[] = [];
+  for (const [stateId, line] of Object.entries(labelLineByStateId)) {
+    map.setFeatureState(
+      { source: GEO_SOURCES.adm1, id: stateId },
+      { resultLine: line }
+    );
+    applied.push(stateId);
+  }
+  electionResultStateIdsRef.set(map, applied);
+}
+
+/** Presidential results choropleth — winner party colour per state. */
+export function applyElectionResultsChoroplethPaint(
+  map: Map,
+  fillByState: Record<string, string>,
+  options: {
+    highlightedStateId: string | null;
+    activeRegionId: string | null;
+    regionStateIds: string[];
+  }
+): void {
+  const fill = matchStateColors(fillByState, RANKING_MISSING_FILL);
+  const inRegion =
+    options.activeRegionId && options.regionStateIds.length > 0
+      ? (["in", ["get", "id"], ["literal", options.regionStateIds]] as const)
+      : null;
+  const highlight = options.highlightedStateId;
+
+  if (map.getLayer("states-fill")) {
+    map.setPaintProperty("states-fill", "fill-color", fill);
+    map.setPaintProperty("states-fill", "fill-opacity", [
+      "case",
+      highlight != null && ["==", ["get", "id"], highlight],
+      0.95,
+      inRegion != null && ["!", inRegion],
+      0.28,
+      inRegion != null,
+      0.88,
+      0.82,
+    ]);
+  }
+
+  if (map.getLayer("states-line")) {
+    map.setPaintProperty("states-line", "line-color", [
+      "case",
+      highlight != null && ["==", ["get", "id"], highlight],
+      "#003322",
+      "#ffffff",
+    ]);
+    map.setPaintProperty("states-line", "line-width", [
+      "case",
+      highlight != null && ["==", ["get", "id"], highlight],
+      3.5,
+      1.2,
+    ]);
+    map.setPaintProperty("states-line", "line-opacity", 0.95);
+  }
+}
+
 export function stackAllLgaLayers(map: Map, stateIds: Iterable<string>): void {
   for (const stateId of stateIds) stackLgaLayers(map, stateId);
 }

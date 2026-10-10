@@ -5,6 +5,11 @@ import type { CompareDataBundle } from "@/types/compare";
 import type { ComparePerson } from "@/types/compare";
 import type { StateLocation } from "@/types/location";
 import { loadSecurityData, type SecurityData } from "@/lib/server/loadSecurityData";
+import {
+  loadAllPresidentialResults,
+} from "@/lib/server/loadElectionResults";
+import type { PresidentialResultsBundle } from "@/types/politics";
+import type { RegionLocation } from "@/types/location";
 
 /**
  * Candidate rows trimmed for the roster UI. The raw `reps.json` is 1.1 MB and
@@ -113,6 +118,10 @@ export type CivicHubData = {
   lgas: { id: string; name: string; stateId: string }[];
   offices: HubStateOffice[];
   senatorialLookups: CivicSenatorialLookups;
+  presidentialResultsByYear: Record<number, PresidentialResultsBundle>;
+  presidentialResultYears: number[];
+  regions: RegionLocation[];
+  mapStates: StateLocation[];
 };
 
 function toPerson(value: unknown): HubOfficeholder | null {
@@ -147,7 +156,11 @@ function titleFromSlug(slug: string): string {
 
 export function loadCivicHubData(root = process.cwd()): CivicHubData {
   const explorer = loadExplorerPageData(root);
-  const { politics, states, lgas, compareBundle } = explorer;
+  const { politics, states, lgas, compareBundle, regions } = explorer;
+  const presidentialResultsByYear = loadAllPresidentialResults(root);
+  const presidentialResultYears = Object.keys(presidentialResultsByYear)
+    .map(Number)
+    .sort((a, b) => b - a);
   const lgaNameById = new Map(lgas.map((l) => [l.id, l.name]));
   const stateIdByName = new Map<string, string>();
   for (const s of states as StateLocation[]) {
@@ -329,5 +342,9 @@ export function loadCivicHubData(root = process.cwd()): CivicHubData {
         constituencyById,
       };
     })(),
+    presidentialResultsByYear,
+    presidentialResultYears,
+    regions,
+    mapStates: states as StateLocation[],
   };
 }

@@ -53,6 +53,56 @@ export interface PresidentialCandidateTicket {
   vice_presidential_candidate: { name: string; age?: number; gender?: string };
 }
 
+/**
+ * Party keys are data-driven per election year (e.g. 2011 had CPC/ACN/ANPP,
+ * 2015/2019 APC/PDP, 2023 APC/PDP/LP/NNPP). The reserved `others` bucket holds
+ * every candidate not individually reported.
+ */
+export type PresidentialResultParty = string;
+
+export interface PresidentialResultCandidate {
+  party: Exclude<PresidentialResultParty, "others">;
+  name: string;
+  runningMate?: string;
+  color: string;
+}
+
+export interface PresidentialStateResult {
+  stateId: string;
+  votes: Record<PresidentialResultParty, number>;
+  validVotes: number;
+}
+
+export interface PresidentialResultsBundle {
+  election: {
+    year: number;
+    date: string;
+    office: string;
+    declaredBy: string;
+    sourceUrl: string;
+  };
+  candidates: PresidentialResultCandidate[];
+  national: {
+    validVotes: number;
+    byParty: Record<PresidentialResultParty, number>;
+    winner: Exclude<PresidentialResultParty, "others">;
+  };
+  states: PresidentialStateResult[];
+}
+
+export interface ZoneElectionAggregate {
+  regionId: string;
+  regionName: string;
+  stateIds: string[];
+  stateNames: string[];
+  votes: Record<PresidentialResultParty, number>;
+  validVotes: number;
+  shares: Record<Exclude<PresidentialResultParty, "others">, number>;
+  leader: Exclude<PresidentialResultParty, "others">;
+  leaderName: string;
+  leaderColor: string;
+}
+
 export interface PresidentialBundle {
   election: {
     country: string;

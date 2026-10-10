@@ -10,18 +10,36 @@ import PollingUnitLocator from "./PollingUnitLocator";
 import ElectionDistrictPicker from "./ElectionDistrictPicker";
 import ElectionDistrictDetail from "./ElectionDistrictDetail";
 import PresidentialCandidatesDetail from "./PresidentialCandidatesDetail";
+import ElectionResultsMapPanel from "./ElectionResultsMapPanel";
+import { isElectionResultsMapActive } from "@/lib/election/electionResultsMapActive";
+import type { PresidentialResultsBundle } from "@/types/politics";
+import type { StateLocation } from "@/types/location";
 
 interface ElectionPanelProps {
   politics: PoliticsBundle;
   pollingCounts: PollingUnitCountsBundle;
   lgas: LgaLocation[];
+  presidentialResults?: PresidentialResultsBundle | null;
+  states?: StateLocation[];
 }
 
 export default function ElectionPanel({
   politics,
   pollingCounts,
   lgas,
+  presidentialResults = null,
+  states = [],
 }: ElectionPanelProps) {
+  const electionResultsYear = useMapStore((s) => s.electionResultsYear);
+  const electionResultsOffice = useMapStore((s) => s.electionResultsOffice);
+  const mapType = useMapStore((s) => s.mapType);
+  const resultsMapActive =
+    presidentialResults &&
+    isElectionResultsMapActive({
+      mapType,
+      electionResultsYear,
+      electionResultsOffice,
+    });
   const isMobile = useIsMobile();
   const mobileSheet = useMapStore((s) => s.mobileSheet);
   const openMobileSheet = useMapStore((s) => s.openMobileSheet);
@@ -82,11 +100,21 @@ export default function ElectionPanel({
     />
   );
 
-  const inner = inDistrictPhase
-    ? districtPhase
-    : inPresidentialPhase
-      ? presidentialPhase
-      : browsePhase;
+  const resultsPanel =
+    resultsMapActive && presidentialResults ? (
+      <ElectionResultsMapPanel
+        results={presidentialResults}
+        states={states}
+      />
+    ) : null;
+
+  const inner = resultsPanel
+    ? resultsPanel
+    : inDistrictPhase
+      ? districtPhase
+      : inPresidentialPhase
+        ? presidentialPhase
+        : browsePhase;
 
   const sheetTitle = inDistrictPhase
     ? district?.name ?? "District"

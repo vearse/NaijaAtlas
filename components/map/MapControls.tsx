@@ -4,6 +4,10 @@ import { useMapStore } from "@/lib/store/mapStore";
 
 export default function MapControls() {
   const reset = useMapStore((s) => s.reset);
+  const mapCanvasView = useMapStore((s) => s.mapCanvasView);
+
+  // Only meaningful while the interactive map canvas is showing.
+  if (mapCanvasView !== "map") return null;
 
   const handleReset = () => {
     reset();

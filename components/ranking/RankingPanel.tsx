@@ -285,23 +285,27 @@ export default function RankingPanel({
           id="ranking-tabpanel"
           role="tabpanel"
           aria-labelledby={`ranking-tab-${rankingCategory}`}
-          className="mt-3 grid grid-cols-2 gap-x-2 gap-y-1 max-h-32 overflow-y-auto"
+          className="mt-3 flex gap-2 overflow-x-auto pb-1 snap-x snap-mandatory [scrollbar-width:thin]"
         >
-          {visibleFields.map((f) => (
+          {visibleFields.map((f) => {
+            const active =
+              rankingCategory === f.categoryId &&
+              rankingFieldKey === f.fieldKey;
+            return (
             <button
               key={`${f.categoryId}-${f.fieldKey}`}
               type="button"
               onClick={() => setRankingMetric(f.categoryId, f.fieldKey)}
-              className={`text-left text-xs rounded-lg px-2 py-1.5 border ${
-                rankingCategory === f.categoryId &&
-                rankingFieldKey === f.fieldKey
-                  ? "border-ng-green bg-emerald-50 text-emerald-900 font-semibold"
-                  : "border-slate-100 text-text-secondary hover:bg-slate-50"
+              className={`shrink-0 snap-start text-left text-xs rounded-full px-3 py-2 border transition-all ${
+                active
+                  ? "border-primary-container bg-primary-container text-white font-semibold shadow-sm"
+                  : "border-border-subtle bg-surface-card text-text-secondary hover:border-primary-container/40 hover:text-primary"
               }`}
             >
               {f.label}
             </button>
-          ))}
+            );
+          })}
         </div>
       </div>
 

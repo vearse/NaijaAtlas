@@ -1,6 +1,6 @@
 "use client";
 
-import { useMapStore } from "@/lib/store/mapStore";
+import { useMapStore, lgaLayersDisabled } from "@/lib/store/mapStore";
 import DragModeButton from "./DragModeButton";
 
 interface ShowLgasButtonProps {
@@ -38,9 +38,10 @@ export default function ShowLgasButton({
   compact = false,
   hideDrag = false,
 }: ShowLgasButtonProps) {
-  const { lgaVisibleStateIds, showLgas, hideLgas, lgaUi } = useMapStore();
+  const { lgaVisibleStateIds, showLgas, hideLgas, lgaUi, mapType } =
+    useMapStore();
   const visible = lgaVisibleStateIds.has(stateId);
-  if (!lgaUi) return null;
+  if (!lgaUi || lgaLayersDisabled(mapType)) return null;
 
   const lgaButton = compact ? (
     <button

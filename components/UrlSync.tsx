@@ -33,6 +33,9 @@ export default function UrlSync({ defaultMapType }: UrlSyncProps = {}) {
   const rankingCategory = useMapStore((s) => s.rankingCategory);
   const rankingFieldKey = useMapStore((s) => s.rankingFieldKey);
   const rankingPeriod = useMapStore((s) => s.rankingPeriod);
+  const mapCanvasView = useMapStore((s) => s.mapCanvasView);
+  const electionResultsYear = useMapStore((s) => s.electionResultsYear);
+  const electionResultsOffice = useMapStore((s) => s.electionResultsOffice);
   const overlayFeatureFocus = useMapStore((s) => s.overlayFeatureFocus);
   const revealedOptInGroups = useMapStore((s) => s.revealedOptInGroups);
   const directionsFrom = useMapStore((s) => s.directions.from);
@@ -76,6 +79,18 @@ export default function UrlSync({ defaultMapType }: UrlSyncProps = {}) {
     const lensParam = params.get("lens");
     if (lensParam) {
       store.setActiveLens(parseLensId(lensParam));
+    }
+
+    const viewParam = params.get("view");
+    if (viewParam === "zones" || viewParam === "states") {
+      store.setMapCanvasView(viewParam);
+    }
+    const resultYear = params.get("resultYear");
+    if (resultYear) {
+      store.setElectionResultsYear(Number(resultYear));
+      store.setElectionResultsOffice("president");
+    } else if (params.get("resultYear") === "") {
+      store.setElectionResultsYear(null);
     }
 
     if (store.mapType === "ranking") {
@@ -164,6 +179,18 @@ export default function UrlSync({ defaultMapType }: UrlSyncProps = {}) {
       params.set("rankPeriod", rankingPeriod);
     }
     if (
+      (mapCanvasView === "zones" || mapCanvasView === "states") &&
+      (mapType === "election" || mapType === "ranking")
+    ) {
+      params.set("view", mapCanvasView);
+    }
+    if (mapType === "election" && electionResultsYear) {
+      params.set("resultYear", String(electionResultsYear));
+      if (electionResultsOffice) {
+        params.set("resultOffice", electionResultsOffice);
+      }
+    }
+    if (
       overlayFeatureFocus &&
       mapType !== "election" &&
       mapType !== "ranking"
@@ -198,6 +225,9 @@ export default function UrlSync({ defaultMapType }: UrlSyncProps = {}) {
     rankingCategory,
     rankingFieldKey,
     rankingPeriod,
+    mapCanvasView,
+    electionResultsYear,
+    electionResultsOffice,
     overlayFeatureFocus,
     revealedOptInGroups,
     directionsFrom,

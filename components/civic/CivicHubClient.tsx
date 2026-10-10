@@ -19,6 +19,7 @@ import CandidateRoster, {
 import WhoRepresents from "@/components/civic/WhoRepresents";
 import SecurityLookup from "@/components/civic/SecurityLookup";
 import AssemblyExplainer from "@/components/civic/AssemblyExplainer";
+import ElectionResults from "@/components/civic/ElectionResults";
 import EmptyState from "@/components/hub/EmptyState";
 import type { CivicHubData } from "@/lib/server/loadCivicHubData";
 import type { FindPollingUnitResult } from "@/app/(marketing)/civic/actions";
@@ -114,6 +115,7 @@ export default function CivicHubClient(data: CivicHubData) {
         items={[
           { href: "#find", label: "Find my polling unit", tone: "primary" },
           { href: "#candidates", label: "Candidates", tone: "neutral" },
+          { href: "#results", label: "Election results", tone: "neutral" },
           { href: "#representatives", label: "Who represents me", tone: "neutral" },
           { href: "#maps", label: "Maps", tone: "neutral" },
           { href: "#security", label: "Security lookup", tone: "neutral" },
@@ -248,6 +250,20 @@ export default function CivicHubClient(data: CivicHubData) {
             position={rosterPosition}
             onPositionChange={setRosterPosition}
             senatorialLookups={data.senatorialLookups}
+          />
+        </HubSection>
+
+        <HubSection
+          id="results"
+          eyebrow="Past elections"
+          title="Election results"
+          lede="Official presidential results by state and geopolitical zone, from 2011 through 2023."
+        >
+          <ElectionResults
+            resultsByYear={data.presidentialResultsByYear}
+            regions={data.regions}
+            states={data.mapStates}
+            availableYears={data.presidentialResultYears}
           />
         </HubSection>
 

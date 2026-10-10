@@ -12,6 +12,7 @@ interface ElectionMapLegendProps {
 export default function ElectionMapLegend({ lookups }: ElectionMapLegendProps) {
   const mapType = useMapStore((s) => s.mapType);
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
+  const mapCanvasView = useMapStore((s) => s.mapCanvasView);
 
   const entries = useMemo(() => {
     if (selectedStateIds.size === 0) return [];
@@ -34,7 +35,11 @@ export default function ElectionMapLegend({ lookups }: ElectionMapLegendProps) {
   if (mapType !== "election" || entries.length === 0) return null;
 
   return (
-    <div className="absolute bottom-20 left-3 z-10 max-w-[220px] rounded-xl border border-border-subtle/90 bg-surface-card/95 backdrop-blur px-3 py-2 shadow-sm text-xs">
+    <div
+      className={`absolute left-3 z-10 max-w-[220px] rounded-xl border border-border-subtle/90 bg-surface-card/95 backdrop-blur px-3 py-2 shadow-sm text-xs ${
+        mapCanvasView === "map" ? "bottom-20" : "bottom-3"
+      }`}
+    >
       <p className="font-semibold text-slate-700 mb-1.5">Senatorial districts</p>
       <ul className="space-y-1">
         {entries.map((e) => (

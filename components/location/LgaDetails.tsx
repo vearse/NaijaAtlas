@@ -335,7 +335,7 @@ export default function LgaDetails({
           <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
             Wards ({wardList.length})
           </h3>
-          <ul className="max-h-56 overflow-y-auto rounded-xl border border-slate-100 divide-y divide-slate-100">
+          <ul className="overflow-y-auto rounded-xl border border-slate-100 divide-y divide-slate-100">
             {wardList.map((ward) => (
               <li
                 key={ward}

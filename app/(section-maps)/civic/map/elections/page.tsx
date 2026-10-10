@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ExplorerShell from "@/components/ExplorerShell";
 import { loadExplorerPageData } from "@/lib/server/loadExplorerPageData";
+import { loadAllPresidentialResults } from "@/lib/server/loadElectionResults";
 import { siteConfig } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
@@ -11,5 +12,12 @@ export const metadata: Metadata = {
 
 export default function ElectionMapPage() {
   const data = loadExplorerPageData();
-  return <ExplorerShell sectionWorkspace="elections" {...data} />;
+  const presidentialResultsByYear = loadAllPresidentialResults();
+  return (
+    <ExplorerShell
+      sectionWorkspace="elections"
+      {...data}
+      presidentialResultsByYear={presidentialResultsByYear}
+    />
+  );
 }

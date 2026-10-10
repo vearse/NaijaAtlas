@@ -4,6 +4,8 @@ import { useState, useMemo, useEffect, useLayoutEffect } from "react";
 import dynamic from "next/dynamic";
 import SearchSpotlight from "@/components/search/SearchSpotlight";
 import LensSelect from "@/components/map/LensSelect";
+import MapViewSelect from "@/components/map/MapViewSelect";
+import MapZonesPanel from "@/components/map/MapZonesPanel";
 import RegionSelect from "@/components/map/RegionSelect";
 import SelectedStatesBar from "@/components/map/SelectedStatesBar";
 import MapControls from "@/components/map/MapControls";
@@ -36,10 +38,17 @@ import type {
   LgaGeneral,
 } from "@/types/location";
 import type { CompareBundle } from "@/types/compare";
-import type { PoliticsBundle, PollingUnitCountsBundle } from "@/types/politics";
+import type {
+  PoliticsBundle,
+  PollingUnitCountsBundle,
+  PresidentialResultsBundle,
+} from "@/types/politics";
 import { buildCapitalLgaIdMap } from "@/lib/map/capitalLga";
 import ElectionPanel from "@/components/election/ElectionPanel";
 import ElectionMapLegend from "@/components/election/ElectionMapLegend";
+import ElectionResultsMapControls from "@/components/election/ElectionResultsMapControls";
+import ElectionResultsPartyLegend from "@/components/election/ElectionResultsPartyLegend";
+import { isElectionResultsMapActive } from "@/lib/election/electionResultsMapActive";
 import RankingPanel from "@/components/ranking/RankingPanel";
 import RankingMapLegend from "@/components/ranking/RankingMapLegend";
 import MapCornerSlot from "@/components/map/MapCornerSlot";
@@ -82,6 +91,7 @@ interface ExplorerShellProps {
   lgaGeneral: Record<string, LgaGeneral>;
   politics: PoliticsBundle;
   pollingCounts: PollingUnitCountsBundle;
+  presidentialResultsByYear?: Record<number, PresidentialResultsBundle>;
 }
 
 export default function ExplorerShell({
@@ -100,9 +110,47 @@ export default function ExplorerShell({
   lgaGeneral,
   politics,
   pollingCounts,
+  presidentialResultsByYear = {},
 }: ExplorerShellProps) {
   const isMobile = useIsMobile();
   const mapType = useMapStore((s) => s.mapType);
+  const mapCanvasView = useMapStore((s) => s.mapCanvasView);
+  const electionResultsYear = useMapStore((s) => s.electionResultsYear);
+  const electionResultsOffice = useMapStore((s) => s.electionResultsOffice);
+  const setElectionResultsYear = useMapStore((s) => s.setElectionResultsYear);
+  const setElectionResultsOffice = useMapStore(
+    (s) => s.setElectionResultsOffice
+  );
+
+  const resultsMapActive = isElectionResultsMapActive({
+    mapType,
+    electionResultsYear,
+    electionResultsOffice,
+  });
+
+  const resultYears = useMemo(
+    () =>
+      Object.keys(presidentialResultsByYear)
+        .map(Number)
+        .sort((a, b) => b - a),
+    [presidentialResultsByYear]
+  );
+  const presidentialResults =
+    electionResultsYear != null
+      ? presidentialResultsByYear[electionResultsYear] ?? null
+      : null;
+
+  useLayoutEffect(() => {
+    if (sectionWorkspace === "elections" && resultYears.length > 0) {
+      setElectionResultsYear(resultYears[0]);
+      setElectionResultsOffice("president");
+    }
+  }, [
+    sectionWorkspace,
+    resultYears,
+    setElectionResultsYear,
+    setElectionResultsOffice,
+  ]);
   const preset = sectionWorkspace ? SECTION_PRESETS[sectionWorkspace] : null;
 
   // Runs before UrlSync's effect, so `layers=` / `focus=` in the URL still win.
@@ -122,7 +170,6 @@ export default function ExplorerShell({
       sectionMap: true,
       lgaUi:
         !!preset.lgaAndCompare ||
-        preset.id === "elections" ||
         // The People map highlights each cultural group's member LGAs.
         preset.id === "people",
       activeOverlays: new Set(preset.defaultLayers),
@@ -240,6 +287,7 @@ export default function ExplorerShell({
                     <CompareMenu />
                   </>
                 )}
+                {isSpecialMapMode && <MapViewSelect />}
               </div>
               <div className="flex items-center gap-2 flex-wrap justify-end">
                 <MapTypeToggle />
@@ -406,18 +454,54 @@ export default function ExplorerShell({
                 : ""
             }`}
           >
-            <NigeriaMap
-              states={states}
-              regions={regions}
-              lgas={lgas}
-              capitalLgaByState={capitalLgaByState}
-              politicsLookups={politics.lookups}
-              compareBundle={compareBundle}
-            />
-            {preset?.lgaAndCompare && (
+            <div
+              className={`h-full w-full ${
+                mapCanvasView === "zones" ? "invisible pointer-events-none" : ""
+              }`}
+              aria-hidden={mapCanvasView === "zones"}
+            >
+              <NigeriaMap
+                states={states}
+                regions={regions}
+                lgas={lgas}
+                capitalLgaByState={capitalLgaByState}
+                politicsLookups={politics.lookups}
+                compareBundle={compareBundle}
+                presidentialResults={presidentialResults}
+              />
+            </div>
+            {mapCanvasView === "zones" && isElectionMode && (
+              <MapZonesPanel
+                mode="elections"
+                regions={regions}
+                states={states}
+                compareBundle={compareBundle}
+                presidentialResults={presidentialResults}
+              />
+            )}
+            {mapCanvasView === "zones" && isRankingMode && (
+              <MapZonesPanel
+                mode="rankings"
+                regions={regions}
+                states={states}
+                compareBundle={compareBundle}
+              />
+            )}
+            {(preset?.lgaAndCompare || isSpecialMapMode) && (
               <div className="absolute top-3 left-3 z-10 flex flex-wrap items-center gap-2">
-                <RegionSelect regions={regions} />
-                <CompareMenu />
+                {isSpecialMapMode && <MapViewSelect />}
+                {isElectionMode && resultYears.length > 0 && (
+                  <ElectionResultsMapControls
+                    availableYears={resultYears}
+                    resultsByYear={presidentialResultsByYear}
+                  />
+                )}
+                {preset?.lgaAndCompare && (
+                  <>
+                    <RegionSelect regions={regions} />
+                    <CompareMenu />
+                  </>
+                )}
               </div>
             )}
             {!isSpecialMapMode && (!preset || preset.layers.length > 0) && (
@@ -426,7 +510,12 @@ export default function ExplorerShell({
                 basemapToggle={preset ? !!preset.basemapToggle : false}
               />
             )}
-            <ElectionMapLegend lookups={politics.lookups} />
+            {!resultsMapActive && (
+              <ElectionMapLegend lookups={politics.lookups} />
+            )}
+            {resultsMapActive && presidentialResults && (
+              <ElectionResultsPartyLegend results={presidentialResults} />
+            )}
             {sectionWorkspace === "rankings" && (
               <RankingsMapCallouts
                 compareBundle={compareBundle}
@@ -442,6 +531,8 @@ export default function ExplorerShell({
             politics={politics}
             pollingCounts={pollingCounts}
             lgas={lgas}
+            presidentialResults={presidentialResults}
+            states={states}
           />
         ) : isRankingMode ? (
           sectionWorkspace === "rankings" ? (

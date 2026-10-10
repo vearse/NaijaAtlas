@@ -4,6 +4,7 @@ import {
   useMapStore,
   MAX_COMPARE_STATES,
   MAX_ELECTION_STATES,
+  lgaLayersDisabled,
   type DirectionsTarget,
 } from "@/lib/store/mapStore";
 import { FEATURE_MAP_VIEW_CHIP_CLASSES } from "@/lib/map/featureMapViews";
@@ -72,6 +73,7 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
   const maxStates =
     mapType === "election" ? MAX_ELECTION_STATES : MAX_COMPARE_STATES;
   const isElection = mapType === "election";
+  const lgaDisabled = lgaLayersDisabled(mapType);
 
   const selected = states.filter((s) => selectedStateIds.has(s.id));
 
@@ -112,7 +114,7 @@ export default function SelectedStatesBar({ states }: SelectedStatesBarProps) {
             >
               {s.name}
             </button>
-            {!isElection && (
+            {!lgaDisabled && (
               <button
                 type="button"
                 aria-label={

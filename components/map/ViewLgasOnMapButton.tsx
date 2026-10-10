@@ -1,6 +1,6 @@
 "use client";
 
-import { useMapStore } from "@/lib/store/mapStore";
+import { useMapStore, lgaLayersDisabled } from "@/lib/store/mapStore";
 import type { LgaFocusPlan } from "@/lib/map/lgaMapFocus";
 import { MAX_METRO_MAP_VIEWS } from "@/lib/map/metroMapViews";
 
@@ -26,7 +26,8 @@ export default function ViewLgasOnMapButton({
   const atCap = views.length >= MAX_METRO_MAP_VIEWS && !active;
   const disabled = plan.stateIds.length === 0 || atCap;
   const lgaUi = useMapStore((s) => s.lgaUi);
-  if (!lgaUi) return null;
+  const mapType = useMapStore((s) => s.mapType);
+  if (!lgaUi || lgaLayersDisabled(mapType)) return null;
 
   return (
     <button
