@@ -4,6 +4,8 @@ import { useMemo } from "react";
 import FadeIn from "@/components/ui/FadeIn";
 import ZoneBoard from "@/components/zones/ZoneBoard";
 import { buildElectionZoneBoard } from "@/lib/election/buildElectionZoneBoard";
+import { electionBreakdownUnavailableMessage } from "@/lib/election/electionAvailability";
+import { electionHasStateVoteCounts } from "@/lib/election/zoneAggregate";
 import { buildRankingZoneBoard } from "@/lib/ranking/zoneRanking";
 import { useMapStore } from "@/lib/store/mapStore";
 import type { CompareBundle } from "@/types/compare";
@@ -34,6 +36,7 @@ export default function MapZonesPanel({
 
   const boardProps = useMemo(() => {
     if (mode === "elections" && presidentialResults) {
+      if (!electionHasStateVoteCounts(presidentialResults)) return null;
       const base = buildElectionZoneBoard(
         presidentialResults,
         regions,
@@ -93,10 +96,28 @@ export default function MapZonesPanel({
       ? `${rankingCategory}|${rankingFieldKey}|${rankingPeriod}`
       : `election-${presidentialResults?.election.year ?? ""}`;
 
+  const unavailableNote =
+    mode === "elections" && presidentialResults
+      ? electionBreakdownUnavailableMessage(presidentialResults)
+      : null;
+
   if (!boardProps) {
     return (
-      <div className="flex h-full min-h-[320px] items-center justify-center rounded-2xl border border-dashed border-border-subtle bg-surface-card p-8 text-center text-sm text-text-muted">
-        Zone breakdown is not available for this selection yet.
+      <div className="absolute inset-0 z-[5] overflow-y-auto bg-surface-canvas p-3 md:p-5">
+        <div
+          className="flex h-full min-h-[320px] flex-col items-center justify-center gap-3 rounded-2xl border border-amber-200 bg-amber-50/80 p-8 text-center"
+          role="status"
+        >
+          <p className="text-label-caps font-bold text-amber-900">
+            {mode === "elections" && presidentialResults
+              ? `${presidentialResults.election.year} presidential · zones`
+              : "Zone view"}
+          </p>
+          <p className="max-w-lg text-sm leading-relaxed text-amber-950/90">
+            {unavailableNote ??
+              "Zone breakdown is not available for this selection yet."}
+          </p>
+        </div>
       </div>
     );
   }

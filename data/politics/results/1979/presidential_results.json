@@ -1,0 +1,169 @@
+{
+  "election": {
+    "year": 1979,
+    "date": "1979-08-11",
+    "office": "president",
+    "declaredBy": "FEDECO",
+    "sourceUrl": "https://en.wikipedia.org/wiki/1979_Nigerian_presidential_election",
+    "description": "Nigeria's first presidential election since independence, held on 11 August 1979 after more than a decade of military rule, with five parties contesting. Shehu Shagari of the NPN won a 33.77% plurality of the 16,846,533 valid votes, ahead of Obafemi Awolowo (UPN) and Nnamdi Azikiwe (NPP), and was declared elected by FEDECO; the Supreme Court later upheld his win in Awolowo v Shagari over the two-thirds-of-states threshold. State figures are reported as percentage shares only — no per-state vote counts were published — so each state row shows the winning party and its share. Bendel and Gongola are the 19-state boundaries of the time and have no modern polygon."
+  },
+  "candidates": [
+    {
+      "party": "NPN",
+      "name": "Shehu Shagari",
+      "runningMate": "Alex Ekwueme",
+      "color": "#126638"
+    },
+    {
+      "party": "UPN",
+      "name": "Obafemi Awolowo",
+      "runningMate": "Philip Umeadi",
+      "color": "#2E5DAC"
+    },
+    {
+      "party": "NPP",
+      "name": "Nnamdi Azikiwe",
+      "runningMate": "Ishaya Audu",
+      "color": "#C1272D"
+    },
+    {
+      "party": "GNPP",
+      "name": "Waziri Ibrahim",
+      "color": "#D97706"
+    },
+    {
+      "party": "PRP",
+      "name": "Aminu Kano",
+      "color": "#7C3AED"
+    }
+  ],
+  "national": {
+    "validVotes": 16846533,
+    "byParty": {
+      "NPN": 5688857,
+      "UPN": 4916551,
+      "NPP": 2822523,
+      "GNPP": 1686489,
+      "PRP": 1732113
+    },
+    "winner": "NPN"
+  },
+  "states": [
+    {
+      "stateId": "NG-AN",
+      "percentOnly": true,
+      "votes": { "GNPP": 1.67, "UPN": 0.75, "NPN": 13.5, "PRP": 1.2, "NPP": 82.88 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-BA",
+      "percentOnly": true,
+      "votes": { "GNPP": 16.44, "UPN": 3.0, "NPN": 62.48, "PRP": 14.34, "NPP": 4.74 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-HIST-BENDEL",
+      "name": "Bendel",
+      "percentOnly": true,
+      "votes": { "GNPP": 1.2, "UPN": 53.2, "NPN": 36.2, "PRP": 0.7, "NPP": 8.6 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-BE",
+      "percentOnly": true,
+      "votes": { "GNPP": 7.97, "UPN": 2.57, "NPN": 76.38, "PRP": 1.35, "NPP": 11.77 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-BO",
+      "percentOnly": true,
+      "votes": { "GNPP": 54.04, "UPN": 3.35, "NPN": 34.71, "PRP": 6.52, "NPP": 1.35 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-CR",
+      "percentOnly": true,
+      "votes": { "GNPP": 15.14, "UPN": 11.76, "NPN": 64.4, "PRP": 1.01, "NPP": 7.66 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-HIST-GONGOLA",
+      "name": "Gongola",
+      "percentOnly": true,
+      "votes": { "GNPP": 34.09, "UPN": 21.67, "NPN": 35.52, "PRP": 4.34, "NPP": 4.35 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-IM",
+      "percentOnly": true,
+      "votes": { "GNPP": 3.0, "UPN": 0.64, "NPN": 8.8, "PRP": 0.59, "NPP": 84.69 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-KD",
+      "percentOnly": true,
+      "votes": { "GNPP": 14.0, "UPN": 7.0, "NPN": 43.0, "PRP": 31.0, "NPP": 5.0 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-KN",
+      "percentOnly": true,
+      "votes": { "GNPP": 1.54, "UPN": 1.23, "NPN": 19.94, "PRP": 76.41, "NPP": 0.91 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-KW",
+      "percentOnly": true,
+      "votes": { "GNPP": 5.71, "UPN": 37.48, "NPN": 53.62, "PRP": 0.67, "NPP": 0.52 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-LA",
+      "percentOnly": true,
+      "votes": { "GNPP": 0.48, "UPN": 82.3, "NPN": 7.18, "PRP": 0.47, "NPP": 9.57 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-NI",
+      "percentOnly": true,
+      "votes": { "GNPP": 16.6, "UPN": 3.67, "NPN": 74.88, "PRP": 3.77, "NPP": 1.11 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-OG",
+      "percentOnly": true,
+      "votes": { "GNPP": 0.53, "UPN": 92.61, "NPN": 6.23, "PRP": 0.31, "NPP": 0.32 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-ON",
+      "percentOnly": true,
+      "votes": { "GNPP": 0.26, "UPN": 94.5, "NPN": 4.19, "PRP": 0.18, "NPP": 0.86 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-OY",
+      "percentOnly": true,
+      "votes": { "GNPP": 0.57, "UPN": 85.78, "NPN": 12.75, "PRP": 0.32, "NPP": 0.55 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-PL",
+      "percentOnly": true,
+      "votes": { "GNPP": 6.82, "UPN": 5.29, "NPN": 34.72, "PRP": 3.98, "NPP": 49.7 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-RI",
+      "percentOnly": true,
+      "votes": { "GNPP": 2.18, "UPN": 10.33, "NPN": 72.65, "PRP": 0.46, "NPP": 14.35 },
+      "validVotes": 100
+    },
+    {
+      "stateId": "NG-SO",
+      "percentOnly": true,
+      "votes": { "GNPP": 26.61, "UPN": 2.52, "NPN": 66.58, "PRP": 3.33, "NPP": 0.92 },
+      "validVotes": 100
+    }
+  ]
+}

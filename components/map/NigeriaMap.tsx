@@ -94,6 +94,7 @@ import type { RegionLocation, StateLocation, LgaLocation } from "@/types/locatio
 import type { PoliticsLookups, PresidentialResultsBundle } from "@/types/politics";
 import { buildElectionResultsMapStyle } from "@/lib/election/electionResultsMapStyle";
 import { isElectionResultsMapActive } from "@/lib/election/electionResultsMapActive";
+import { resolveResultForState } from "@/lib/election/historicalStates";
 
 interface NigeriaMapProps {
   states: StateLocation[];
@@ -410,14 +411,18 @@ export default function NigeriaMap({
     return true;
   }, []);
 
-  const applyElectionResultsPaint = useCallback((map: maplibregl.Map) => {
+  const applyElectionResultsPaint = useCallback(
+    (map: maplibregl.Map) => {
     const store = useMapStore.getState();
     if (!isElectionResultsMapActive(store)) {
       resetElectionResultsStateLabels(map);
       return false;
     }
-    const bundle = presidentialResultsRef.current;
-    if (!bundle) return false;
+    const bundle = presidentialResults;
+    if (!bundle || bundle.states.length === 0) {
+      resetElectionResultsStateLabels(map);
+      return false;
+    }
     const style = buildElectionResultsMapStyle(bundle);
     const region = store.activeRegionId
       ? regionsRef.current.find((r) => r.id === store.activeRegionId)
@@ -433,7 +438,9 @@ export default function NigeriaMap({
     applyElectionResultsStateLabels(map, style.labelLineByStateId);
     applyAdminLayersMapTypeTuning(map, "election");
     return true;
-  }, []);
+  },
+    [presidentialResults]
+  );
 
   const refreshSelectionPaint = useCallback(
     (map: maplibregl.Map) => {
@@ -703,7 +710,9 @@ export default function NigeriaMap({
           return;
         }
         if (isElectionResultsMapActive(store)) {
-          store.selectStates([id]);
+          const bundle = presidentialResultsRef.current;
+          const match = bundle ? resolveResultForState(bundle, id) : null;
+          store.selectStates(match?.group?.memberIds ?? [id]);
           store.openMobileSheet();
           return;
         }
@@ -1461,7 +1470,7 @@ export default function NigeriaMap({
     // Map-type tuning must be the final writer so OSM stays uncluttered
     // no matter which selection/mask effect ran above.
     applyAdminLayersMapTypeTuning(map, useMapStore.getState().mapType);
-  }, [selectedKey, featureMapViewsKey, lgaVisibleKey, metroMapViewsKey, lgaReadyKey, activeRegionId, draggedStateId, states, regions, setFeatureState, mapReady, selectedStateIds, lgaVisibleStateIds, metroMapViews, readyLgaStateIds, applyRankingPaint, applyElectionResultsPaint]);
+  }, [selectedKey, featureMapViewsKey, lgaVisibleKey, metroMapViewsKey, lgaReadyKey, activeRegionId, draggedStateId, states, regions, setFeatureState, mapReady, selectedStateIds, lgaVisibleStateIds, metroMapViews, readyLgaStateIds, applyRankingPaint, applyElectionResultsPaint, electionResultsYear, presidentialResults]);
 
   const rankingPaintKey = `${rankingCategory}|${rankingFieldKey}|${rankingPeriod}|${rankingHighlightedStateId ?? ""}`;
 
@@ -1473,7 +1482,7 @@ export default function NigeriaMap({
     map.once("idle", onIdle);
   }, [mapType, rankingPaintKey, mapReady, compareBundle, applyRankingPaint]);
 
-  const electionResultsPaintKey = `${electionResultsYear ?? ""}|${electionResultsOffice ?? ""}|${activeRegionId ?? ""}|${selectedKey}`;
+  const electionResultsPaintKey = `${electionResultsYear ?? ""}|${presidentialResults?.election.year ?? ""}|${electionResultsOffice ?? ""}|${activeRegionId ?? ""}|${selectedKey}`;
 
   useEffect(() => {
     const map = mapRef.current;

@@ -34,6 +34,7 @@ export default function ElectionResultsMapControls({
             }
             setYear(Number(v));
             setOffice("president");
+            useMapStore.getState().selectStates([]);
           }}
           className="rounded-lg border border-border-subtle bg-white px-2 py-1 text-xs font-medium text-text-primary"
         >

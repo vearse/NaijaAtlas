@@ -116,18 +116,23 @@ export default function ElectionPanel({
         ? presidentialPhase
         : browsePhase;
 
-  const sheetTitle = inDistrictPhase
-    ? district?.name ?? "District"
-    : inPresidentialPhase
-      ? "Presidential candidates"
-      : "2027 Elections";
-  const sheetSubtitle = inDistrictPhase
-    ? `${district?.state} · Candidates`
-    : inPresidentialPhase
-      ? `${politics.presidential.candidates.length} tickets · ${politics.presidential.election.election_date ?? "2027"}`
-      : selectedStateIds.size > 0
-        ? `${selectedStateIds.size} state(s) on map`
-        : "Find polling unit & districts";
+  const resultsYear = presidentialResults?.election.year;
+  const sheetTitle = resultsMapActive && resultsYear
+    ? `${resultsYear} presidential results`
+    : inDistrictPhase
+      ? district?.name ?? "District"
+      : inPresidentialPhase
+        ? "Presidential candidates"
+        : "2027 Elections";
+  const sheetSubtitle = resultsMapActive && resultsYear
+    ? "State-by-state · INEC"
+    : inDistrictPhase
+      ? `${district?.state} · Candidates`
+      : inPresidentialPhase
+        ? `${politics.presidential.candidates.length} tickets · ${politics.presidential.election.election_date ?? "2027"}`
+        : selectedStateIds.size > 0
+          ? `${selectedStateIds.size} state(s) on map`
+          : "Find polling unit & districts";
 
   if (isMobile) {
     if (mobileSheet === "hidden") {

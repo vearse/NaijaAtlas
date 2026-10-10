@@ -1,0 +1,58 @@
+{
+  "election": {
+    "year": 1983,
+    "date": "1983-08-06",
+    "office": "president",
+    "declaredBy": "FEDECO",
+    "sourceUrl": "https://en.wikipedia.org/wiki/1983_Nigerian_presidential_election",
+    "description": "Held on 6 August 1983, the second and last presidential election of the Second Republic. Incumbent Shehu Shagari of the NPN was declared re-elected by FEDECO with 47.51% of the valid votes, ahead of Obafemi Awolowo (UPN, 31.09%) and Nnamdi Azikiwe (NPP, 13.99%) among six candidates; Wikipedia credits the NPN with 11 states, the UPN 5 and the NPP 2. The poll was widely alleged to have been rigged, and the military overthrew the government on 31 December 1983. National figures are the amended FEDECO totals (Nohlen et al.); FEDECO's first announcement (Shagari 12,047,648, Awolowo 7,885,434) was later corrected for admitted errors. No verifiable per-state vote counts or shares could be sourced, so the states array is intentionally empty."
+  },
+  "candidates": [
+    {
+      "party": "NPN",
+      "name": "Shehu Shagari",
+      "runningMate": "Alex Ekwueme",
+      "color": "#126638"
+    },
+    {
+      "party": "UPN",
+      "name": "Obafemi Awolowo",
+      "runningMate": "Muhammad Kura",
+      "color": "#2E5DAC"
+    },
+    {
+      "party": "NPP",
+      "name": "Nnamdi Azikiwe",
+      "runningMate": "Shettima Mustafa",
+      "color": "#C1272D"
+    },
+    {
+      "party": "PRP",
+      "name": "Khalifa Hassan Yusuf",
+      "color": "#7C3AED"
+    },
+    {
+      "party": "GNPP",
+      "name": "Waziri Ibrahim",
+      "color": "#D97706"
+    },
+    {
+      "party": "NAP",
+      "name": "Tunji Braithwaite",
+      "color": "#0F766E"
+    }
+  ],
+  "national": {
+    "validVotes": 25430097,
+    "byParty": {
+      "NPN": 12081471,
+      "UPN": 7907209,
+      "NPP": 3557113,
+      "PRP": 968974,
+      "GNPP": 643806,
+      "NAP": 271524
+    },
+    "winner": "NPN"
+  },
+  "states": []
+}

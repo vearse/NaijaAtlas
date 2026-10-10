@@ -1,0 +1,190 @@
+{
+  "election": {
+    "year": 1993,
+    "date": "1993-06-12",
+    "office": "president",
+    "declaredBy": "NEC",
+    "sourceUrl": "https://en.wikipedia.org/wiki/1993_Nigerian_presidential_election",
+    "description": "Held on 12 June 1993 under a two-party system in which the military government had created only the SDP and NRC; voting used the open-ballot 'Option A4' method, with the SDP's Moshood Abiola defeating the NRC's Bashir Tofa by roughly 58% to 42%. Observers judged the poll free and fair, but before final results could be formally released the regime of General Ibrahim Babangida annulled the election on 24 June 1993. State-level figures below are the collated unofficial results leaked by democracy activists, since the result was never officially declared."
+  },
+  "candidates": [
+    {
+      "party": "SDP",
+      "name": "Moshood Abiola",
+      "runningMate": "Baba Gana Kingibe",
+      "color": "#126638"
+    },
+    {
+      "party": "NRC",
+      "name": "Bashir Tofa",
+      "runningMate": "Sylvester Ugoh",
+      "color": "#2E5DAC"
+    }
+  ],
+  "national": {
+    "validVotes": 14293396,
+    "byParty": {
+      "SDP": 8341309,
+      "NRC": 5952087,
+      "others": 0
+    },
+    "winner": "SDP"
+  },
+  "states": [
+    {
+      "stateId": "NG-AB",
+      "votes": { "SDP": 105273, "NRC": 151227 },
+      "validVotes": 256500
+    },
+    {
+      "stateId": "NG-AD",
+      "votes": { "SDP": 140875, "NRC": 167239 },
+      "validVotes": 308114
+    },
+    {
+      "stateId": "NG-AK",
+      "votes": { "SDP": 214787, "NRC": 199342 },
+      "validVotes": 414129
+    },
+    {
+      "stateId": "NG-AN",
+      "votes": { "SDP": 212024, "NRC": 159258 },
+      "validVotes": 371282
+    },
+    {
+      "stateId": "NG-BA",
+      "votes": { "SDP": 339339, "NRC": 524836 },
+      "validVotes": 864175
+    },
+    {
+      "stateId": "NG-BE",
+      "votes": { "SDP": 246830, "NRC": 186302 },
+      "validVotes": 433132
+    },
+    {
+      "stateId": "NG-BO",
+      "votes": { "SDP": 153496, "NRC": 128684 },
+      "validVotes": 282180
+    },
+    {
+      "stateId": "NG-CR",
+      "votes": { "SDP": 189303, "NRC": 153452 },
+      "validVotes": 342755
+    },
+    {
+      "stateId": "NG-DE",
+      "votes": { "SDP": 327277, "NRC": 145001 },
+      "validVotes": 472278
+    },
+    {
+      "stateId": "NG-ED",
+      "votes": { "SDP": 205407, "NRC": 103572 },
+      "validVotes": 308979
+    },
+    {
+      "stateId": "NG-EN",
+      "votes": { "SDP": 263101, "NRC": 284050 },
+      "validVotes": 547151
+    },
+    {
+      "stateId": "NG-IM",
+      "votes": { "SDP": 159350, "NRC": 195836 },
+      "validVotes": 355186
+    },
+    {
+      "stateId": "NG-JI",
+      "votes": { "SDP": 138552, "NRC": 89836 },
+      "validVotes": 228388
+    },
+    {
+      "stateId": "NG-KD",
+      "votes": { "SDP": 389713, "NRC": 356860 },
+      "validVotes": 746573
+    },
+    {
+      "stateId": "NG-KN",
+      "votes": { "SDP": 169619, "NRC": 154809 },
+      "validVotes": 324428
+    },
+    {
+      "stateId": "NG-KT",
+      "votes": { "SDP": 171162, "NRC": 271077 },
+      "validVotes": 442239
+    },
+    {
+      "stateId": "NG-KE",
+      "votes": { "SDP": 70219, "NRC": 144808 },
+      "validVotes": 215027
+    },
+    {
+      "stateId": "NG-KO",
+      "votes": { "SDP": 222760, "NRC": 265732 },
+      "validVotes": 488492
+    },
+    {
+      "stateId": "NG-KW",
+      "votes": { "SDP": 272270, "NRC": 80209 },
+      "validVotes": 352479
+    },
+    {
+      "stateId": "NG-LA",
+      "votes": { "SDP": 883965, "NRC": 149432 },
+      "validVotes": 1033397
+    },
+    {
+      "stateId": "NG-NI",
+      "votes": { "SDP": 136350, "NRC": 221437 },
+      "validVotes": 357787
+    },
+    {
+      "stateId": "NG-OG",
+      "votes": { "SDP": 425725, "NRC": 59246 },
+      "validVotes": 484971
+    },
+    {
+      "stateId": "NG-ON",
+      "votes": { "SDP": 883024, "NRC": 162994 },
+      "validVotes": 1046018
+    },
+    {
+      "stateId": "NG-OS",
+      "votes": { "SDP": 365266, "NRC": 72068 },
+      "validVotes": 437334
+    },
+    {
+      "stateId": "NG-OY",
+      "votes": { "SDP": 536011, "NRC": 105788 },
+      "validVotes": 641799
+    },
+    {
+      "stateId": "NG-PL",
+      "votes": { "SDP": 417565, "NRC": 259394 },
+      "validVotes": 676959
+    },
+    {
+      "stateId": "NG-RI",
+      "votes": { "SDP": 370578, "NRC": 640973 },
+      "validVotes": 1011551
+    },
+    {
+      "stateId": "NG-SO",
+      "votes": { "SDP": 97726, "NRC": 372250 },
+      "validVotes": 469976
+    },
+    {
+      "stateId": "NG-TA",
+      "votes": { "SDP": 101887, "NRC": 64001 },
+      "validVotes": 165888
+    },
+    {
+      "stateId": "NG-YO",
+      "votes": { "SDP": 111887, "NRC": 64061 },
+      "validVotes": 175948
+    },
+    {
+      "stateId": "NG-FC",
+      "votes": { "SDP": 19968, "NRC": 18313 },
+      "validVotes": 38281
+    }
+  ]
+}

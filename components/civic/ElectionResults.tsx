@@ -1,15 +1,21 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import ZoneBoard from "@/components/zones/ZoneBoard";
 import { buildElectionZoneBoard } from "@/lib/election/buildElectionZoneBoard";
 import {
+  electionHasStateVoteCounts,
   formatShare,
   formatVotes,
   stateWinnerParty,
 } from "@/lib/election/zoneAggregate";
 import SourceNote from "@/components/hub/SourceNote";
+import {
+  electionBreakdownUnavailableMessage,
+  electionHasStateBreakdown,
+} from "@/lib/election/electionAvailability";
+import { historicalGroupFor } from "@/lib/election/historicalStates";
 import type { RegionLocation, StateLocation } from "@/types/location";
 import type { PresidentialResultsBundle } from "@/types/politics";
 
@@ -25,10 +31,10 @@ type Props = {
 };
 
 export default function ElectionResults({
-  resultsByYear,
+  resultsByYear = {},
   regions,
   states,
-  availableYears,
+  availableYears = [],
 }: Props) {
   const years = availableYears.length
     ? availableYears
@@ -38,11 +44,25 @@ export default function ElectionResults({
 
   const [year, setYear] = useState(years[0]);
   const [sort, setSort] = useState<"state" | "winner">("state");
-  const [breakdownView, setBreakdownView] = useState<"zones" | "states">(
-    "zones"
-  );
 
   const results = resultsByYear[year] ?? resultsByYear[years[0]];
+  const hasZoneView = results ? electionHasStateVoteCounts(results) : false;
+  const hasStateView = results ? electionHasStateBreakdown(results) : false;
+  const breakdownNote = results
+    ? electionBreakdownUnavailableMessage(results)
+    : null;
+
+  const [breakdownView, setBreakdownView] = useState<"zones" | "states">(
+    hasZoneView ? "zones" : "states"
+  );
+
+  useEffect(() => {
+    const r = resultsByYear[year];
+    if (!r) return;
+    setBreakdownView(electionHasStateVoteCounts(r) ? "zones" : "states");
+  }, [year, resultsByYear]);
+
+  const activeBreakdown = hasZoneView ? breakdownView : "states";
 
   const board = useMemo(
     () =>
@@ -84,9 +104,15 @@ export default function ElectionResults({
           total ? ((row.votes[c.party] ?? 0) / total) * 100 : 0,
         ])
       ) as Record<string, number>;
+      const group = historicalGroupFor(results.election.year, row.stateId);
       return {
         stateId: row.stateId,
-        stateName: nameById.get(row.stateId) ?? row.stateId,
+        stateName: group
+          ? `${group.name} (now ${group.memberIds
+              .map((id) => nameById.get(id) ?? id)
+              .join(" & ")})`
+          : nameById.get(row.stateId) ?? row.name ?? row.stateId,
+        note: group?.note,
         winner,
         shares,
       };
@@ -185,11 +211,24 @@ export default function ElectionResults({
         </div>
       </div>
 
+      {breakdownNote && (
+        <div
+          className="rounded-xl border border-amber-200 bg-amber-50/80 px-4 py-3 text-sm leading-relaxed text-amber-950"
+          role="status"
+        >
+          {breakdownNote}
+        </div>
+      )}
+
       <div className="flex flex-wrap gap-2">
         {(
           [
-            { id: "zones" as const, label: "By zone" },
-            { id: "states" as const, label: "State-by-state" },
+            ...(hasZoneView
+              ? [{ id: "zones" as const, label: "By zone" }]
+              : []),
+            ...(hasStateView
+              ? [{ id: "states" as const, label: "State-by-state" }]
+              : []),
           ] as const
         ).map((opt) => (
           <button
@@ -197,7 +236,7 @@ export default function ElectionResults({
             type="button"
             onClick={() => setBreakdownView(opt.id)}
             className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-              breakdownView === opt.id
+              activeBreakdown === opt.id
                 ? "bg-primary-container text-white shadow-sm"
                 : "border border-border-subtle bg-surface-card text-text-secondary hover:border-primary-container/40"
             }`}
@@ -207,9 +246,9 @@ export default function ElectionResults({
         ))}
       </div>
 
-      {breakdownView === "zones" && <ZoneBoard {...board} />}
+      {activeBreakdown === "zones" && hasZoneView && <ZoneBoard {...board} />}
 
-      {breakdownView === "states" && (
+      {activeBreakdown === "states" && (
       <div>
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
           <h3 className="font-landing-display text-lg font-bold text-text-primary">
@@ -246,7 +285,14 @@ export default function ElectionResults({
                   key={row.stateId}
                   className="border-t border-border-subtle even:bg-slate-50/40"
                 >
-                  <td className="px-3 py-2 font-medium">{row.stateName}</td>
+                  <td className="px-3 py-2 font-medium">
+                    {row.stateName}
+                    {row.note && (
+                      <span className="block text-[11px] font-normal text-text-muted">
+                        {row.note}
+                      </span>
+                    )}
+                  </td>
                   <td className="px-3 py-2">
                     <span
                       className="inline-flex rounded-full px-2 py-0.5 text-[11px] font-bold text-white"

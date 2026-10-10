@@ -41,7 +41,7 @@ export function aggregatePresidentialByZone(
 
     for (const stateId of region.stateIds) {
       const row = byStateId.get(stateId);
-      if (!row) continue;
+      if (!row || row.percentOnly) continue;
       validVotes += row.validVotes;
       for (const key of Object.keys(votes)) {
         votes[key] += row.votes[key] ?? 0;
@@ -82,6 +82,7 @@ export function stateWinnerParty(
 ): string {
   let winner = "others";
   let max = -1;
+
   for (const [party, votes] of Object.entries(row.votes)) {
     if (party === "others") continue;
     if (votes > max) {
@@ -98,4 +99,14 @@ export function formatVotes(n: number): string {
 
 export function formatShare(pct: number): string {
   return `${pct.toFixed(1)}%`;
+}
+
+/**
+ * Whether the election ships per-state vote counts. False for share-only years
+ * (e.g. 1979) and national-only bundles, whose state rows cannot be summed.
+ */
+export function electionHasStateVoteCounts(
+  results: PresidentialResultsBundle
+): boolean {
+  return results.states.length > 0 && results.states.every((s) => !s.percentOnly);
 }

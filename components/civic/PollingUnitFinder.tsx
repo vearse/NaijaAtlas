@@ -347,7 +347,7 @@ export default function PollingUnitFinder({
             />
             {showLgaSuggestions && lgaSuggestions.length > 0 && (
               <ul
-                className="absolute z-20 mt-1 max-h-56 w-full overflow-auto rounded-xl border border-border-subtle bg-surface-card py-1 shadow-lg"
+                className="absolute z-20 mt-1 max-h-64 w-full overflow-auto rounded-xl border border-border-subtle bg-surface-card py-1 shadow-lg"
                 role="listbox"
               >
                 {lgaSuggestions.map((lga) => (

@@ -69,6 +69,14 @@ export interface PresidentialResultCandidate {
 
 export interface PresidentialStateResult {
   stateId: string;
+  /** Period-correct label for pre-1996 states that have no modern polygon. */
+  name?: string;
+  /**
+   * True when `votes` holds percentage shares rather than vote counts (e.g.
+   * 1979, where no per-state counts were published). `validVotes` is 100 so
+   * downstream share maths still resolves correctly.
+   */
+  percentOnly?: boolean;
   votes: Record<PresidentialResultParty, number>;
   validVotes: number;
 }
@@ -80,6 +88,8 @@ export interface PresidentialResultsBundle {
     office: string;
     declaredBy: string;
     sourceUrl: string;
+    /** Short editorial summary shown above the state-by-state list. */
+    description?: string;
   };
   candidates: PresidentialResultCandidate[];
   national: {

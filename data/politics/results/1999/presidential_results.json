@@ -1,0 +1,220 @@
+{
+  "election": {
+    "year": 1999,
+    "date": "1999-02-27",
+    "office": "president",
+    "declaredBy": "INEC",
+    "sourceUrl": "https://en.wikipedia.org/wiki/1999_Nigerian_presidential_election",
+    "description": "Held on 27 February 1999, the first election of the Fourth Republic after sixteen years of military rule, and run by the military-appointed transition government of General Abdulsalami Abubakar. The PDP's Olusegun Obasanjo — himself a former military head of state (1976–79) — defeated the AD–APP alliance candidate Olu Falae by 62.8% to 37.2%, carrying 27 states plus the FCT. Falae's support was concentrated in the South-West, which he swept."
+  },
+  "candidates": [
+    {
+      "party": "PDP",
+      "name": "Olusegun Obasanjo",
+      "runningMate": "Atiku Abubakar",
+      "color": "#C1272D"
+    },
+    {
+      "party": "AD",
+      "name": "Olu Falae",
+      "runningMate": "Umaru Shinkafi",
+      "color": "#2E5DAC"
+    }
+  ],
+  "national": {
+    "validVotes": 29848441,
+    "byParty": {
+      "PDP": 18738154,
+      "AD": 11110287,
+      "others": 0
+    },
+    "winner": "PDP"
+  },
+  "states": [
+    {
+      "stateId": "NG-AB",
+      "votes": { "PDP": 360823, "AD": 175095 },
+      "validVotes": 535918
+    },
+    {
+      "stateId": "NG-AD",
+      "votes": { "PDP": 667239, "AD": 177868 },
+      "validVotes": 845107
+    },
+    {
+      "stateId": "NG-AK",
+      "votes": { "PDP": 730744, "AD": 152534 },
+      "validVotes": 883278
+    },
+    {
+      "stateId": "NG-AN",
+      "votes": { "PDP": 633717, "AD": 199461 },
+      "validVotes": 833178
+    },
+    {
+      "stateId": "NG-BA",
+      "votes": { "PDP": 834308, "AD": 342233 },
+      "validVotes": 1176541
+    },
+    {
+      "stateId": "NG-BY",
+      "votes": { "PDP": 457812, "AD": 152220 },
+      "validVotes": 610032
+    },
+    {
+      "stateId": "NG-BE",
+      "votes": { "PDP": 983912, "AD": 269045 },
+      "validVotes": 1252957
+    },
+    {
+      "stateId": "NG-BO",
+      "votes": { "PDP": 581382, "AD": 334593 },
+      "validVotes": 915975
+    },
+    {
+      "stateId": "NG-CR",
+      "votes": { "PDP": 592688, "AD": 283468 },
+      "validVotes": 876156
+    },
+    {
+      "stateId": "NG-DE",
+      "votes": { "PDP": 576230, "AD": 240344 },
+      "validVotes": 816574
+    },
+    {
+      "stateId": "NG-EB",
+      "votes": { "PDP": 250987, "AD": 94934 },
+      "validVotes": 345921
+    },
+    {
+      "stateId": "NG-ED",
+      "votes": { "PDP": 516581, "AD": 163203 },
+      "validVotes": 679784
+    },
+    {
+      "stateId": "NG-EK",
+      "votes": { "PDP": 191618, "AD": 522072 },
+      "validVotes": 713690
+    },
+    {
+      "stateId": "NG-EN",
+      "votes": { "PDP": 640418, "AD": 195168 },
+      "validVotes": 835586
+    },
+    {
+      "stateId": "NG-FC",
+      "votes": { "PDP": 59234, "AD": 39788 },
+      "validVotes": 99022
+    },
+    {
+      "stateId": "NG-GO",
+      "votes": { "PDP": 533158, "AD": 311381 },
+      "validVotes": 844539
+    },
+    {
+      "stateId": "NG-IM",
+      "votes": { "PDP": 421767, "AD": 314339 },
+      "validVotes": 736106
+    },
+    {
+      "stateId": "NG-JI",
+      "votes": { "PDP": 311571, "AD": 237025 },
+      "validVotes": 548596
+    },
+    {
+      "stateId": "NG-KD",
+      "votes": { "PDP": 1294679, "AD": 381350 },
+      "validVotes": 1676029
+    },
+    {
+      "stateId": "NG-KN",
+      "votes": { "PDP": 682255, "AD": 222458 },
+      "validVotes": 904713
+    },
+    {
+      "stateId": "NG-KT",
+      "votes": { "PDP": 964216, "AD": 229181 },
+      "validVotes": 1193397
+    },
+    {
+      "stateId": "NG-KE",
+      "votes": { "PDP": 339893, "AD": 172336 },
+      "validVotes": 512229
+    },
+    {
+      "stateId": "NG-KO",
+      "votes": { "PDP": 507903, "AD": 476807 },
+      "validVotes": 984710
+    },
+    {
+      "stateId": "NG-KW",
+      "votes": { "PDP": 470510, "AD": 189088 },
+      "validVotes": 659598
+    },
+    {
+      "stateId": "NG-LA",
+      "votes": { "PDP": 209012, "AD": 1542969 },
+      "validVotes": 1751981
+    },
+    {
+      "stateId": "NG-NA",
+      "votes": { "PDP": 423731, "AD": 173277 },
+      "validVotes": 597008
+    },
+    {
+      "stateId": "NG-NI",
+      "votes": { "PDP": 730665, "AD": 140465 },
+      "validVotes": 871130
+    },
+    {
+      "stateId": "NG-OG",
+      "votes": { "PDP": 143564, "AD": 332340 },
+      "validVotes": 475904
+    },
+    {
+      "stateId": "NG-ON",
+      "votes": { "PDP": 133323, "AD": 668474 },
+      "validVotes": 801797
+    },
+    {
+      "stateId": "NG-OS",
+      "votes": { "PDP": 187011, "AD": 607628 },
+      "validVotes": 794639
+    },
+    {
+      "stateId": "NG-OY",
+      "votes": { "PDP": 227668, "AD": 693510 },
+      "validVotes": 921178
+    },
+    {
+      "stateId": "NG-PL",
+      "votes": { "PDP": 499072, "AD": 173370 },
+      "validVotes": 672442
+    },
+    {
+      "stateId": "NG-RI",
+      "votes": { "PDP": 1352275, "AD": 213328 },
+      "validVotes": 1565603
+    },
+    {
+      "stateId": "NG-SO",
+      "votes": { "PDP": 155598, "AD": 198829 },
+      "validVotes": 354427
+    },
+    {
+      "stateId": "NG-TA",
+      "votes": { "PDP": 789749, "AD": 81290 },
+      "validVotes": 871039
+    },
+    {
+      "stateId": "NG-YO",
+      "votes": { "PDP": 146517, "AD": 165061 },
+      "validVotes": 311578
+    },
+    {
+      "stateId": "NG-ZA",
+      "votes": { "PDP": 136324, "AD": 243755 },
+      "validVotes": 380079
+    }
+  ]
+}

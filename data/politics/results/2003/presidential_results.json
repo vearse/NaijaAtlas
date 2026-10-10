@@ -1,0 +1,226 @@
+{
+  "election": {
+    "year": 2003,
+    "date": "2003-04-19",
+    "office": "president",
+    "declaredBy": "INEC",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2003_Nigerian_presidential_election",
+    "description": "Held on 19 April 2003 with the highest turnout (69%) since the return to democracy, incumbent President Olusegun Obasanjo of the PDP was re-elected, defeating Muhammadu Buhari of the ANPP and Emeka Ojukwu of APGA among twenty candidates, and carrying 26 states plus the FCT. Observers — notably the EU — reported serious irregularities and fraud in a number of states; Buhari and the ANPP challenged the outcome in court but Obasanjo's victory was upheld."
+  },
+  "candidates": [
+    {
+      "party": "PDP",
+      "name": "Olusegun Obasanjo",
+      "runningMate": "Atiku Abubakar",
+      "color": "#C1272D"
+    },
+    {
+      "party": "ANPP",
+      "name": "Muhammadu Buhari",
+      "runningMate": "Chuba Okadigbo",
+      "color": "#D97706"
+    },
+    {
+      "party": "APGA",
+      "name": "Chukwuemeka Odumegwu Ojukwu",
+      "color": "#2E5DAC"
+    }
+  ],
+  "national": {
+    "validVotes": 39480489,
+    "byParty": {
+      "PDP": 24456140,
+      "ANPP": 12710022,
+      "APGA": 1297445,
+      "others": 1016882
+    },
+    "winner": "PDP"
+  },
+  "states": [
+    {
+      "stateId": "NG-AB",
+      "votes": { "PDP": 386748, "ANPP": 84305, "APGA": 260899, "others": 16082 },
+      "validVotes": 748034
+    },
+    {
+      "stateId": "NG-AD",
+      "votes": { "PDP": 660780, "ANPP": 285151, "APGA": 2352, "others": 7564 },
+      "validVotes": 955847
+    },
+    {
+      "stateId": "NG-AK",
+      "votes": { "PDP": 1084574, "ANPP": 162542, "APGA": 1077, "others": 44202 },
+      "validVotes": 1292395
+    },
+    {
+      "stateId": "NG-AN",
+      "votes": { "PDP": 466866, "ANPP": 79476, "APGA": 279378, "others": 36473 },
+      "validVotes": 862193
+    },
+    {
+      "stateId": "NG-BA",
+      "votes": { "PDP": 617291, "ANPP": 1043442, "APGA": 1678, "others": 18131 },
+      "validVotes": 1680542
+    },
+    {
+      "stateId": "NG-BY",
+      "votes": { "PDP": 708312, "ANPP": 18344, "APGA": 3, "others": 11506 },
+      "validVotes": 738165
+    },
+    {
+      "stateId": "NG-BE",
+      "votes": { "PDP": 662422, "ANPP": 494804, "APGA": 6731, "others": 49886 },
+      "validVotes": 1213843
+    },
+    {
+      "stateId": "NG-BO",
+      "votes": { "PDP": 380875, "ANPP": 727595, "APGA": 3549, "others": 8133 },
+      "validVotes": 1120152
+    },
+    {
+      "stateId": "NG-CR",
+      "votes": { "PDP": 1207675, "ANPP": 11624, "APGA": 2112, "others": 11910 },
+      "validVotes": 1233321
+    },
+    {
+      "stateId": "NG-DE",
+      "votes": { "PDP": 1072527, "ANPP": 27492, "APGA": 15062, "others": 27541 },
+      "validVotes": 1142622
+    },
+    {
+      "stateId": "NG-EB",
+      "votes": { "PDP": 752823, "ANPP": 16308, "APGA": 20525, "others": 6970 },
+      "validVotes": 796626
+    },
+    {
+      "stateId": "NG-ED",
+      "votes": { "PDP": 979775, "ANPP": 109401, "APGA": 2247, "others": 15389 },
+      "validVotes": 1106812
+    },
+    {
+      "stateId": "NG-EK",
+      "votes": { "PDP": 301185, "ANPP": 7500, "APGA": 1300, "others": 15896 },
+      "validVotes": 325881
+    },
+    {
+      "stateId": "NG-EN",
+      "votes": { "PDP": 897721, "ANPP": 18987, "APGA": 177050, "others": 33187 },
+      "validVotes": 1126945
+    },
+    {
+      "stateId": "NG-FC",
+      "votes": { "PDP": 130243, "ANPP": 99220, "APGA": 22481, "others": 9219 },
+      "validVotes": 261163
+    },
+    {
+      "stateId": "NG-GO",
+      "votes": { "PDP": 452328, "ANPP": 516081, "APGA": 1601, "others": 6126 },
+      "validVotes": 976136
+    },
+    {
+      "stateId": "NG-IM",
+      "votes": { "PDP": 656861, "ANPP": 53983, "APGA": 281114, "others": 24523 },
+      "validVotes": 1016481
+    },
+    {
+      "stateId": "NG-JI",
+      "votes": { "PDP": 202502, "ANPP": 885505, "APGA": 2136, "others": 11766 },
+      "validVotes": 1101909
+    },
+    {
+      "stateId": "NG-KD",
+      "votes": { "PDP": 1025347, "ANPP": 870454, "APGA": 7800, "others": 14764 },
+      "validVotes": 1918365
+    },
+    {
+      "stateId": "NG-KN",
+      "votes": { "PDP": 492755, "ANPP": 1628085, "APGA": 10229, "others": 41113 },
+      "validVotes": 2172182
+    },
+    {
+      "stateId": "NG-KT",
+      "votes": { "PDP": 380914, "ANPP": 1259789, "APGA": 2928, "others": 9530 },
+      "validVotes": 1653161
+    },
+    {
+      "stateId": "NG-KE",
+      "votes": { "PDP": 272564, "ANPP": 529512, "APGA": 3888, "others": 9255 },
+      "validVotes": 815219
+    },
+    {
+      "stateId": "NG-KO",
+      "votes": { "PDP": 528778, "ANPP": 314494, "APGA": 2275, "others": 18442 },
+      "validVotes": 863989
+    },
+    {
+      "stateId": "NG-KW",
+      "votes": { "PDP": 390800, "ANPP": 170325, "APGA": 2293, "others": 10951 },
+      "validVotes": 574369
+    },
+    {
+      "stateId": "NG-LA",
+      "votes": { "PDP": 1129521, "ANPP": 116510, "APGA": 134764, "others": 247953 },
+      "validVotes": 1628748
+    },
+    {
+      "stateId": "NG-NA",
+      "votes": { "PDP": 470936, "ANPP": 244005, "APGA": 1488, "others": 12837 },
+      "validVotes": 729266
+    },
+    {
+      "stateId": "NG-NI",
+      "votes": { "PDP": 486621, "ANPP": 390103, "APGA": 11849, "others": 94633 },
+      "validVotes": 983206
+    },
+    {
+      "stateId": "NG-OG",
+      "votes": { "PDP": 1360170, "ANPP": 680, "APGA": 27, "others": 374 },
+      "validVotes": 1361251
+    },
+    {
+      "stateId": "NG-ON",
+      "votes": { "PDP": 840988, "ANPP": 31994, "APGA": 4180, "others": 11701 },
+      "validVotes": 888863
+    },
+    {
+      "stateId": "NG-OS",
+      "votes": { "PDP": 582089, "ANPP": 14369, "APGA": 1424, "others": 13711 },
+      "validVotes": 611593
+    },
+    {
+      "stateId": "NG-OY",
+      "votes": { "PDP": 828725, "ANPP": 25112, "APGA": 4519, "others": 24215 },
+      "validVotes": 882571
+    },
+    {
+      "stateId": "NG-PL",
+      "votes": { "PDP": 706432, "ANPP": 324566, "APGA": 6362, "others": 13010 },
+      "validVotes": 1050370
+    },
+    {
+      "stateId": "NG-RI",
+      "votes": { "PDP": 2003521, "ANPP": 42346, "APGA": 5964, "others": 108302 },
+      "validVotes": 2160133
+    },
+    {
+      "stateId": "NG-SO",
+      "votes": { "PDP": 232258, "ANPP": 681153, "APGA": 6869, "others": 8805 },
+      "validVotes": 929085
+    },
+    {
+      "stateId": "NG-TA",
+      "votes": { "PDP": 694527, "ANPP": 198023, "APGA": 1179, "others": 12340 },
+      "validVotes": 906069
+    },
+    {
+      "stateId": "NG-YO",
+      "votes": { "PDP": 206984, "ANPP": 383583, "APGA": 3522, "others": 5042 },
+      "validVotes": 599131
+    },
+    {
+      "stateId": "NG-ZA",
+      "votes": { "PDP": 200702, "ANPP": 843159, "APGA": 4590, "others": 5400 },
+      "validVotes": 1053851
+    }
+  ]
+}

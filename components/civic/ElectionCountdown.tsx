@@ -84,7 +84,10 @@ export default function ElectionCountdown({
       </div>
 
       <div className="rounded-xl border border-border-subtle bg-[#fafaf9] p-4 text-center">
-        <p className="font-landing-display text-headline-xl font-bold tabular-nums tracking-tight text-primary">
+        <p
+          suppressHydrationWarning
+          className="font-landing-display text-headline-xl font-bold tabular-nums tracking-tight text-primary"
+        >
           {remaining.days}
           <span className="mx-1 text-sm font-normal text-slate-400">d</span>
           {String(remaining.hours).padStart(2, "0")}

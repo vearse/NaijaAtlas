@@ -1,0 +1,41 @@
+{
+  "election": {
+    "year": 2007,
+    "date": "2007-04-21",
+    "office": "president",
+    "declaredBy": "INEC",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2007_Nigerian_general_election",
+    "description": "Held on 21 April 2007, with incumbent Olusegun Obasanjo barred from a third term. INEC chairman Maurice Iwu declared the PDP's Umaru Yar'Adua the winner with 24,638,063 votes (69.60%) ahead of Muhammadu Buhari (ANPP, 18.66%) and Atiku Abubakar (Action Congress, 7.45%) among 25 candidates. EU observers said the process could not be considered credible and local monitors called for the poll to be cancelled; the courts nevertheless upheld the result, with the Supreme Court dismissing the final appeal in December 2008. Only national totals were ever announced: no state-by-state breakdown was published, and INEC later told TheCable it does not hold one, so the states array is intentionally empty rather than filled with unofficial or estimated figures."
+  },
+  "candidates": [
+    {
+      "party": "PDP",
+      "name": "Umaru Yar'Adua",
+      "runningMate": "Goodluck Jonathan",
+      "color": "#C1272D"
+    },
+    {
+      "party": "ANPP",
+      "name": "Muhammadu Buhari",
+      "runningMate": "Edwin Ume-Ezeoke",
+      "color": "#D97706"
+    },
+    {
+      "party": "AC",
+      "name": "Atiku Abubakar",
+      "runningMate": "Ben Obi",
+      "color": "#2E5DAC"
+    }
+  ],
+  "national": {
+    "validVotes": 35397517,
+    "byParty": {
+      "PDP": 24638063,
+      "ANPP": 6605299,
+      "AC": 2637848,
+      "others": 1516307
+    },
+    "winner": "PDP"
+  },
+  "states": []
+}
