@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 interface PartyIconProps {
   icon?: string | null;
   abbreviation: string;
@@ -16,7 +18,13 @@ export default function PartyIcon({
   className = "",
 }: PartyIconProps) {
   const dim = SIZE[size];
-  if (icon) {
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    setFailed(false);
+  }, [icon]);
+
+  if (icon && !failed) {
     return (
       <img
         src={icon}
@@ -24,6 +32,7 @@ export default function PartyIcon({
         className={`${dim} shrink-0 rounded-lg object-cover ring-1 ring-slate-200/80 bg-surface-card ${className}`}
         loading="lazy"
         decoding="async"
+        onError={() => setFailed(true)}
       />
     );
   }

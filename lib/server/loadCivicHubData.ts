@@ -51,6 +51,28 @@ export type HubOfficeholder = {
   role: string | null;
 };
 
+export type HubGovernorshipPerson = {
+  name: string;
+  age?: number;
+  gender?: string;
+  qualification?: string;
+};
+
+export type HubGovernorshipTicket = {
+  party: string;
+  partyName: string;
+  partyIcon?: string | null;
+  governor: HubGovernorshipPerson;
+  deputyGovernor: HubGovernorshipPerson;
+};
+
+export type HubGovernorshipRace = {
+  stateId: string;
+  state: string;
+  region?: string;
+  candidates: HubGovernorshipTicket[];
+};
+
 export type HubStateOffice = {
   stateId: string;
   stateName: string;
@@ -92,6 +114,7 @@ export type CivicHubData = {
     presidentialTickets: number;
     senateCandidates: number;
     repsCandidates: number;
+    governorshipCandidates: number;
     houseSeats: number;
   };
   countryOffice: {
@@ -100,6 +123,7 @@ export type CivicHubData = {
   };
   senateRaces: HubSenateRace[];
   repsRaces: HubRepsRace[];
+  governorshipRaces: HubGovernorshipRace[];
   presidential: {
     party: string;
     partyName: string;
@@ -214,6 +238,24 @@ export function loadCivicHubData(root = process.cwd()): CivicHubData {
     };
   });
 
+  const governorshipRaces: HubGovernorshipRace[] = politics.governorship.states
+    .map((race) => {
+      const stateId = race.state_id ?? stateIdFor(race.state);
+      return {
+        stateId,
+        state: race.state,
+        region: race.region,
+        candidates: race.candidates.map((t) => ({
+          party: t.party,
+          partyName: t.party_name ?? t.party,
+          partyIcon: t.party_icon ?? null,
+          governor: { ...t.governor },
+          deputyGovernor: { ...t.deputy_governor },
+        })),
+      };
+    })
+    .filter((race) => race.stateId !== "");
+
   const governance = getCategoryData(
     compareBundle,
     "state",
@@ -288,10 +330,15 @@ export function loadCivicHubData(root = process.cwd()): CivicHubData {
         0
       ),
       repsCandidates: repsRaces.reduce((sum, r) => sum + r.candidates.length, 0),
+      governorshipCandidates: governorshipRaces.reduce(
+        (sum, r) => sum + r.candidates.length,
+        0
+      ),
       houseSeats: politics.federalConstituencies.length,
     },
     senateRaces,
     repsRaces,
+    governorshipRaces,
     presidential: presidential.candidates.map((t) => ({
       party: t.party.abbreviation,
       partyName: t.party.name,

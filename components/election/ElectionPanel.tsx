@@ -10,6 +10,7 @@ import PollingUnitLocator from "./PollingUnitLocator";
 import ElectionDistrictPicker from "./ElectionDistrictPicker";
 import ElectionDistrictDetail from "./ElectionDistrictDetail";
 import PresidentialCandidatesDetail from "./PresidentialCandidatesDetail";
+import GovernorshipCandidatesDetail from "./GovernorshipCandidatesDetail";
 import ElectionResultsMapPanel from "./ElectionResultsMapPanel";
 import { isElectionResultsMapActive } from "@/lib/election/electionResultsMapActive";
 import { useElectionModeSwitch } from "./ElectionResultsMapControls";
@@ -56,17 +57,28 @@ export default function ElectionPanel({
     : null;
 
   const [viewPresidential, setViewPresidential] = useState(false);
+  const [viewGovernor, setViewGovernor] = useState(false);
 
   const inDistrictPhase = Boolean(selectedSenatorialDistrictId && district);
-  const inPresidentialPhase = viewPresidential && !inDistrictPhase;
+  const inPresidentialPhase =
+    viewPresidential && !inDistrictPhase && !viewGovernor;
+  const inGovernorPhase = viewGovernor && !inDistrictPhase;
 
   useEffect(() => {
-    if (selectedSenatorialDistrictId && viewPresidential) {
+    if (selectedSenatorialDistrictId && (viewPresidential || viewGovernor)) {
       setViewPresidential(false);
+      setViewGovernor(false);
     }
-  }, [selectedSenatorialDistrictId, viewPresidential]);
+  }, [selectedSenatorialDistrictId, viewPresidential, viewGovernor]);
 
-  const openPresidential = () => setViewPresidential(true);
+  const openPresidential = () => {
+    setViewGovernor(false);
+    setViewPresidential(true);
+  };
+  const openGovernor = () => {
+    setViewPresidential(false);
+    setViewGovernor(true);
+  };
 
   const browsePhase = (
     <div className="flex flex-col h-full min-h-0">
@@ -88,6 +100,7 @@ export default function ElectionPanel({
         <ElectionDistrictPicker
           politics={politics}
           onShowPresidential={openPresidential}
+          onShowGovernor={openGovernor}
         />
       </div>
     </div>
@@ -101,6 +114,14 @@ export default function ElectionPanel({
     <PresidentialCandidatesDetail
       politics={politics}
       onBack={() => setViewPresidential(false)}
+    />
+  );
+
+  const governorPhase = (
+    <GovernorshipCandidatesDetail
+      politics={politics}
+      states={states}
+      onBack={() => setViewGovernor(false)}
     />
   );
 
@@ -119,7 +140,9 @@ export default function ElectionPanel({
       ? districtPhase
       : inPresidentialPhase
         ? presidentialPhase
-        : browsePhase;
+        : inGovernorPhase
+          ? governorPhase
+          : browsePhase;
 
   const resultsYear = presidentialResults?.election.year;
   const sheetTitle = resultsMapActive && resultsYear
@@ -128,16 +151,20 @@ export default function ElectionPanel({
       ? district?.name ?? "District"
       : inPresidentialPhase
         ? "Presidential candidates"
-        : "2027 Elections";
+        : inGovernorPhase
+          ? "Governorship candidates"
+          : "2027 Elections";
   const sheetSubtitle = resultsMapActive && resultsYear && presidentialResults
     ? `State-by-state · ${presidentialResults.election.declaredBy}`
     : inDistrictPhase
       ? `${district?.state} · Candidates`
       : inPresidentialPhase
         ? `${politics.presidential.candidates.length} tickets · ${politics.presidential.election.election_date ?? "2027"}`
-        : selectedStateIds.size > 0
-          ? `${selectedStateIds.size} state(s) on map`
-          : "Find polling unit & districts";
+        : inGovernorPhase
+          ? "State governorship tickets · INEC final list"
+          : selectedStateIds.size > 0
+            ? `${selectedStateIds.size} state(s) on map`
+            : "Find polling unit & districts";
 
   if (isMobile) {
     if (mobileSheet === "hidden") {
@@ -151,7 +178,9 @@ export default function ElectionPanel({
             ? district?.name ?? "Election"
             : inPresidentialPhase
               ? "Presidential candidates"
-              : "2027 Elections"}
+              : inGovernorPhase
+                ? "Governorship candidates"
+                : "2027 Elections"}
         </button>
       );
     }

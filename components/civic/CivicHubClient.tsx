@@ -241,6 +241,7 @@ export default function CivicHubClient(data: CivicHubData) {
           <CandidateRoster
             senateRaces={data.senateRaces}
             repsRaces={data.repsRaces}
+            governorshipRaces={data.governorshipRaces}
             presidential={data.presidential}
             states={data.states}
             offices={data.offices}

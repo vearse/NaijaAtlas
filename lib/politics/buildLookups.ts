@@ -6,6 +6,8 @@ import type {
   SenateRace,
   SenatorialDistrict,
   PresidentialBundle,
+  GovernorshipBundle,
+  GovernorshipStateRace,
 } from "@/types/politics";
 import type { StateLocation } from "@/types/location";
 
@@ -25,6 +27,7 @@ export function buildPoliticsLookups(
   federalConstituencies: FederalConstituency[],
   senateRaces: SenateRace[],
   repsRaces: RepsRace[],
+  governorship: GovernorshipBundle,
   states: StateLocation[]
 ): PoliticsLookups {
   const lgaToSenatorialDistrictId: Record<string, string> = {};
@@ -79,12 +82,19 @@ export function buildPoliticsLookups(
     repsByFederalConstituencyId[race.federal_constituency_id] = race;
   }
 
+  const governorshipByStateId: Record<string, GovernorshipStateRace> = {};
+  for (const race of governorship.states) {
+    const stateId = race.state_id ?? stateNameToId(race.state, states);
+    if (stateId) governorshipByStateId[stateId] = race;
+  }
+
   return {
     lgaToSenatorialDistrictId,
     districtById,
     federalBySenatorialDistrictId,
     senateBySenatorialDistrictId,
     repsByFederalConstituencyId,
+    governorshipByStateId,
     districtsByStateId,
     districtColorIndex,
   };
@@ -96,6 +106,7 @@ export function buildPoliticsBundle(
   senateRaces: SenateRace[],
   repsRaces: RepsRace[],
   presidential: PresidentialBundle,
+  governorship: GovernorshipBundle,
   states: StateLocation[]
 ): PoliticsBundle {
   return {
@@ -104,11 +115,13 @@ export function buildPoliticsBundle(
     senateRaces,
     repsRaces,
     presidential,
+    governorship,
     lookups: buildPoliticsLookups(
       senatorialDistricts,
       federalConstituencies,
       senateRaces,
       repsRaces,
+      governorship,
       states
     ),
   };

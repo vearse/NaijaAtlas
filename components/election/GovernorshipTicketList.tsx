@@ -1,0 +1,129 @@
+"use client";
+
+import { useState } from "react";
+import type { GovernorshipStateRace } from "@/types/politics";
+import PartyIcon from "@/components/election/PartyIcon";
+
+function Chevron({ open }: { open: boolean }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      aria-hidden
+      className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
+        open ? "rotate-180" : ""
+      }`}
+    >
+      <path
+        fillRule="evenodd"
+        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
+function toggleInSet(set: Set<string>, id: string): Set<string> {
+  const next = new Set(set);
+  if (next.has(id)) {
+    next.delete(id);
+  } else {
+    next.add(id);
+  }
+  return next;
+}
+
+function personMeta(person: { gender?: string; age?: number }): string {
+  return [
+    person.gender,
+    person.age ? `Age ${person.age}` : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+}
+
+export default function GovernorshipTicketList({
+  race,
+}: {
+  race: GovernorshipStateRace;
+}) {
+  const [open, setOpen] = useState<Set<string>>(() => new Set());
+
+  return (
+    <ul className="space-y-2">
+      {race.candidates.map((ticket) => {
+        const id = ticket.party;
+        const isOpen = open.has(id);
+        return (
+          <li
+            key={id}
+            className={`overflow-hidden rounded-xl border bg-surface-card transition-colors ${
+              isOpen ? "border-ng-green/40" : "border-slate-100"
+            }`}
+          >
+            <button
+              type="button"
+              onClick={() => setOpen((s) => toggleInSet(s, id))}
+              aria-expanded={isOpen}
+              className="w-full flex items-center gap-2.5 px-3 py-2.5 text-left transition-colors hover:bg-slate-50"
+            >
+              <PartyIcon
+                icon={ticket.party_icon}
+                abbreviation={ticket.party}
+                size="md"
+              />
+              <span className="min-w-0 flex-1">
+                <span className="block text-sm font-medium text-text-primary truncate">
+                  {ticket.governor.name}
+                </span>
+                <span className="block text-[10px] text-slate-400 truncate">
+                  {ticket.party_name ?? ticket.party}
+                </span>
+              </span>
+              <Chevron open={isOpen} />
+            </button>
+            {isOpen && (
+              <div className="px-3 pb-3 pt-1">
+                <div className="rounded-lg border border-slate-100 bg-slate-50/60 px-2.5 py-2 text-sm">
+                  <p className="text-text-muted text-xs">
+                    Deputy governorship candidate
+                  </p>
+                  <p className="font-semibold text-text-primary truncate">
+                    {ticket.deputy_governor.name}
+                  </p>
+                  {personMeta(ticket.deputy_governor) && (
+                    <p className="text-xs text-slate-400">
+                      {personMeta(ticket.deputy_governor)}
+                    </p>
+                  )}
+                  {ticket.deputy_governor.qualification && (
+                    <p className="text-[11px] text-slate-400">
+                      {ticket.deputy_governor.qualification}
+                    </p>
+                  )}
+                </div>
+                {(ticket.governor.age ||
+                  ticket.governor.gender ||
+                  ticket.governor.qualification) && (
+                  <div className="mt-1.5">
+                    {personMeta(ticket.governor) && (
+                      <p className="text-xs text-slate-400">
+                        {personMeta(ticket.governor)} · Governorship candidate
+                      </p>
+                    )}
+                    {ticket.governor.qualification && (
+                      <p className="text-[11px] text-slate-400">
+                        {ticket.governor.qualification}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}

@@ -20,6 +20,7 @@ import type {
   FederalConstituency,
   PollingUnitCountsBundle,
   PresidentialBundle,
+  GovernorshipBundle,
   RepsRace,
   SenateRace,
   SenatorialDistrict,
@@ -107,12 +108,16 @@ export function loadExplorerPageData(root = process.cwd()): ExplorerPageData {
   const presidential = loadJson<PresidentialBundle>(
     path.join(root, "data/politics/candidate/2027/presidential_candidates.json")
   );
+  const governorship = loadJson<GovernorshipBundle>(
+    path.join(root, "data/politics/candidate/2027/governorship/governorship.json")
+  );
   const politics = buildPoliticsBundle(
     senatorialDistricts,
     federalConstituencies,
     senateRaces,
     repsRaces,
     presidential,
+    governorship,
     states
   );
   const pollingCounts = loadJson<PollingUnitCountsBundle>(

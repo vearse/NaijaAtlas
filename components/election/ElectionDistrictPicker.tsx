@@ -8,11 +8,13 @@ import NationalAssemblyIntro from "./NationalAssemblyIntro";
 interface ElectionDistrictPickerProps {
   politics: PoliticsBundle;
   onShowPresidential: () => void;
+  onShowGovernor: () => void;
 }
 
 export default function ElectionDistrictPicker({
   politics,
   onShowPresidential,
+  onShowGovernor,
 }: ElectionDistrictPickerProps) {
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
   const setSelectedSenatorialDistrict = useMapStore(
@@ -45,6 +47,9 @@ export default function ElectionDistrictPicker({
     : selectedDistricts;
 
   const ticketCount = presidential.candidates.length;
+  const governorshipStateCount = Object.keys(
+    politics.lookups.governorshipByStateId
+  ).length;
 
   return (
     <section className="space-y-3">
@@ -62,6 +67,28 @@ export default function ElectionDistrictPicker({
           </span>
           <span className="text-xs text-text-muted block">
             All {ticketCount} tickets · 2027
+          </span>
+        </span>
+        <span className="shrink-0 text-slate-400" aria-hidden>
+          →
+        </span>
+      </button>
+
+      <button
+        type="button"
+        onClick={onShowGovernor}
+        className="w-full text-left rounded-xl border border-slate-100 bg-gradient-to-r from-emerald-50 to-white px-3 py-3 shadow-sm hover:border-ng-green/40 hover:shadow transition flex items-center gap-3"
+      >
+        <span className="shrink-0 flex h-10 w-10 items-center justify-center rounded-lg bg-ng-green text-lg text-white shadow-sm">
+          🏛️
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="font-bold text-text-primary block">
+            Governorship candidates
+          </span>
+          <span className="text-xs text-text-muted block">
+            {governorshipStateCount} state
+            {governorshipStateCount === 1 ? "" : "s"} published · 2027
           </span>
         </span>
         <span className="shrink-0 text-slate-400" aria-hidden>

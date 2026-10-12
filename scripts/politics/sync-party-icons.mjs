@@ -120,6 +120,20 @@ enrichReps(
   path.join(root, "data/politics/candidate/2027/representative/reps.json")
 );
 
+function enrichGovernorship(filePath) {
+  const doc = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+  for (const race of doc.states ?? []) {
+    for (const ticket of race.candidates ?? []) {
+      ticket.party_icon = iconForPartyCode(ticket.party);
+    }
+  }
+  fs.writeFileSync(filePath, JSON.stringify(doc, null, 2) + "\n");
+}
+
+enrichGovernorship(
+  path.join(root, "data/politics/candidate/2027/governorship/governorship.json")
+);
+
 console.log(
-  `✓ Party icons: ${Object.keys(partyMap).length} SVGs in public/politics/parties/; enriched presidential, senate, reps JSON`
+  `✓ Party icons: ${Object.keys(partyMap).length} SVGs in public/politics/parties/; enriched presidential, senate, reps, governorship JSON`
 );

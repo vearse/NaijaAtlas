@@ -6,16 +6,13 @@ import SourceNote from "@/components/hub/SourceNote";
 import EmptyState from "@/components/hub/EmptyState";
 import PartyIcon from "@/components/election/PartyIcon";
 import { sectionMapHref } from "@/lib/navigation/sectionMaps";
-import {
-  STATE_ELECTION_CANDIDATES_PUBLISHED,
-  STATE_ELECTION_INEC_NOTICE,
-} from "@/lib/election/stateElectionCandidates";
 import StateSenatorialDistrictMap from "@/components/civic/StateSenatorialDistrictMap";
+import GovernorCandidatesPanel from "@/components/civic/GovernorCandidatesPanel";
 import { colorForSenatorialIndex } from "@/lib/politics/senatorialColors";
 import type {
   CivicSenatorialLookups,
   HubCandidate,
-  HubOfficeholder,
+  HubGovernorshipRace,
   HubRepsRace,
   HubSenateRace,
   HubStateOffice,
@@ -64,6 +61,7 @@ export type Race =
 type Props = {
   senateRaces: HubSenateRace[];
   repsRaces: HubRepsRace[];
+  governorshipRaces: HubGovernorshipRace[];
   presidential: {
     party: string;
     partyName: string;
@@ -84,6 +82,7 @@ type Props = {
 export default function CandidateRoster({
   senateRaces,
   repsRaces,
+  governorshipRaces,
   presidential,
   states,
   offices,
@@ -105,6 +104,9 @@ export default function CandidateRoster({
 
   const stateName =
     states.find((s) => s.id === stateId)?.name ?? stateId.replace("NG-", "");
+
+  const governorRace =
+    governorshipRaces.find((r) => r.stateId === stateId) ?? null;
 
   const senateInState = useMemo(
     () => senateRaces.filter((r) => r.stateId === stateId),
@@ -348,12 +350,14 @@ export default function CandidateRoster({
 
       <div className="min-w-0">
       {position === "governor" && (
-        <GovernorPanel
+        <GovernorCandidatesPanel
           stateName={stateName}
           stateId={stateId}
+          race={governorRace}
           governor={stateOffice?.governor ?? null}
           deputy={stateOffice?.deputyGovernor ?? null}
           electionYear={electionYear}
+          query={query}
         />
       )}
 
@@ -546,87 +550,6 @@ export default function CandidateRoster({
         source="INEC final candidate list"
         updated="Sep 2026"
       />
-    </div>
-  );
-}
-
-function GovernorPanel({
-  stateName,
-  stateId,
-  governor,
-  deputy,
-  electionYear,
-}: {
-  stateName: string;
-  stateId: string;
-  governor: HubOfficeholder | null;
-  deputy: HubOfficeholder | null;
-  electionYear: number;
-}) {
-  return (
-    <div className="grid gap-6 lg:grid-cols-2">
-      <div className="rounded-xl border border-border-subtle bg-slate-50 p-6">
-        <p className="text-label-caps text-primary">State executive</p>
-        <h3 className="mt-1 text-headline-sm font-bold text-text-primary">
-          Governor · {stateName} State
-        </h3>
-        {!STATE_ELECTION_CANDIDATES_PUBLISHED && (
-          <p className="mt-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-body-sm text-amber-950">
-            {STATE_ELECTION_INEC_NOTICE}
-          </p>
-        )}
-        <p className="mt-2 text-body-sm text-text-secondary">
-          {STATE_ELECTION_CANDIDATES_PUBLISHED
-            ? `Declared gubernatorial candidates for ${electionYear} appear here when INEC publishes the state list.`
-            : "Until INEC publishes state-election candidates, use the incumbent executive below and federal races for this state."}
-        </p>
-        {governor ? (
-          <div className="mt-4 rounded-xl border border-border-subtle bg-surface-card p-4">
-            <p className="text-body-md font-semibold text-text-primary">
-              {governor.name}
-            </p>
-            <p className="text-body-sm text-text-secondary">
-              Incumbent · {governor.party}
-            </p>
-            {deputy && (
-              <p className="mt-2 text-body-sm text-text-muted">
-                Deputy: {deputy.name}
-              </p>
-            )}
-          </div>
-        ) : (
-          <EmptyState className="mt-4" title="No executive profile loaded">
-            Officeholder data will appear when available for {stateName}.
-          </EmptyState>
-        )}
-        <Link
-          href="#representatives"
-          className="mt-4 inline-flex text-label-md font-semibold text-primary hover:underline"
-        >
-          See who represents {stateName} →
-        </Link>
-      </div>
-      <EmptyState
-        title={`${electionYear} gubernatorial candidates`}
-        badge={STATE_ELECTION_CANDIDATES_PUBLISHED ? "INEC roster" : "Pending INEC"}
-      >
-        {STATE_ELECTION_CANDIDATES_PUBLISHED
-          ? `No declared gubernatorial candidates are loaded for ${stateName} yet.`
-          : STATE_ELECTION_INEC_NOTICE}
-        {!STATE_ELECTION_CANDIDATES_PUBLISHED && (
-          <>
-            {" "}
-            Use Senate and House tabs for declared legislative candidates in{" "}
-            {stateName}.
-          </>
-        )}
-        <Link
-          href={sectionMapHref("civic/elections", { stateIds: [stateId] })}
-          className="mt-3 block font-semibold text-primary hover:underline"
-        >
-          Open {stateName} on election map →
-        </Link>
-      </EmptyState>
     </div>
   );
 }

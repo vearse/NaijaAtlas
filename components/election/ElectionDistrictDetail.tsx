@@ -7,7 +7,8 @@ import { colorForDistrict } from "@/lib/politics/senatorialColors";
 import { CandidateRow } from "./CandidateAvatar";
 import PartyIcon from "@/components/election/PartyIcon";
 import PresidentialTicketList from "./PresidentialTicketList";
-import { STATE_ELECTION_INEC_NOTICE } from "@/lib/election/stateElectionCandidates";
+import GovernorshipTicketList from "./GovernorshipTicketList";
+import { governorshipStateNotice } from "@/lib/election/stateElectionCandidates";
 
 interface ElectionDistrictDetailProps {
   politics: PoliticsBundle;
@@ -92,6 +93,12 @@ export default function ElectionDistrictDetail({
     ? (lookups.federalBySenatorialDistrictId[selectedSenatorialDistrictId] ??
       [])
     : [];
+
+  const governorRace = district
+    ? Object.values(lookups.governorshipByStateId).find(
+        (r) => r.state === district.state
+      ) ?? null
+    : null;
 
   if (!district) return null;
 
@@ -272,10 +279,16 @@ export default function ElectionDistrictDetail({
         </section>
 
         <section className="border-t border-slate-100 pt-4">
-          <h3 className="text-sm font-bold text-text-primary">State elections</h3>
-          <p className="mt-2 text-sm text-text-secondary rounded-xl border border-amber-200 bg-amber-50/80 p-3">
-            {STATE_ELECTION_INEC_NOTICE}
-          </p>
+          <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">
+            Governorship
+          </h3>
+          {governorRace && governorRace.candidates.length > 0 ? (
+            <GovernorshipTicketList race={governorRace} />
+          ) : (
+            <p className="text-sm text-text-secondary rounded-xl border border-amber-200 bg-amber-50/80 p-3">
+              {governorshipStateNotice(district.state)}
+            </p>
+          )}
         </section>
       </div>
     </div>

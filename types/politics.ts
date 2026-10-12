@@ -125,12 +125,48 @@ export interface PresidentialBundle {
   candidates: PresidentialCandidateTicket[];
 }
 
+export interface GovernorshipPerson {
+  name: string;
+  age?: number;
+  gender?: string;
+  qualification?: string;
+}
+
+export interface GovernorshipTicket {
+  party: string;
+  party_name?: string;
+  party_icon?: string;
+  governor: GovernorshipPerson;
+  deputy_governor: GovernorshipPerson;
+}
+
+export interface GovernorshipStateRace {
+  state: string;
+  state_id?: string;
+  region?: string;
+  candidates: GovernorshipTicket[];
+}
+
+export interface GovernorshipBundle {
+  election: {
+    country: string;
+    year: number;
+    type: string;
+    election_date?: string;
+    candidate_list_status?: string;
+    candidate_list_published?: string;
+  };
+  source?: Record<string, string>;
+  states: GovernorshipStateRace[];
+}
+
 export interface PoliticsLookups {
   lgaToSenatorialDistrictId: Record<string, string>;
   districtById: Record<string, SenatorialDistrict>;
   federalBySenatorialDistrictId: Record<string, FederalConstituency[]>;
   senateBySenatorialDistrictId: Record<string, SenateRace>;
   repsByFederalConstituencyId: Record<string, RepsRace>;
+  governorshipByStateId: Record<string, GovernorshipStateRace>;
   districtsByStateId: Record<string, SenatorialDistrict[]>;
   districtColorIndex: Record<string, number>;
 }
@@ -141,6 +177,7 @@ export interface PoliticsBundle {
   senateRaces: SenateRace[];
   repsRaces: RepsRace[];
   presidential: PresidentialBundle;
+  governorship: GovernorshipBundle;
   lookups: PoliticsLookups;
 }
 
