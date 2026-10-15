@@ -11,11 +11,13 @@ import {
   formationCoverage,
   formationTypeLabel,
 } from "@/components/civic/securityBranchMeta";
+import SecurityServiceAbout from "@/components/civic/SecurityServiceAbout";
 import type {
   HubFormation,
   SecurityBranchSummary,
   SecurityData,
 } from "@/lib/server/loadSecurityData";
+import type { SecurityServicesData } from "@/lib/server/loadSecurityServices";
 
 /**
  * Security lookup.
@@ -25,7 +27,13 @@ import type {
  * the point — every formation gets its area of responsibility, highlights,
  * milestones and map footprint, which the previous three-card grid could not fit.
  */
-export default function SecurityLookup({ security }: { security: SecurityData }) {
+export default function SecurityLookup({
+  security,
+  services,
+}: {
+  security: SecurityData;
+  services: SecurityServicesData;
+}) {
   const reduceMotion = useReducedMotion();
   const { openArticle, openByName, resolving } = useWikiReader();
 
@@ -45,6 +53,7 @@ export default function SecurityLookup({ security }: { security: SecurityData })
   const accent = branch?.group?.color ?? "#008751";
   const inBranch: HubFormation[] = branch?.group?.formations ?? [];
   const formation = inBranch.find((f) => f.id === activeId) ?? inBranch[0];
+  const service = services.services.find((s) => s.id === branch?.meta.id) ?? null;
 
   const swap = reduceMotion
     ? {}
@@ -103,6 +112,16 @@ export default function SecurityLookup({ security }: { security: SecurityData })
           </button>
         ))}
       </div>
+
+      {service ? (
+        <SecurityServiceAbout
+          key={service.id}
+          service={service}
+          data={services}
+          accent={accent}
+          icon={branch.meta.icon}
+        />
+      ) : null}
 
       <div
         className={`mt-6 overflow-hidden rounded-3xl border border-border-subtle bg-gradient-to-br ${branch.meta.wash} via-white to-white shadow-sm`}

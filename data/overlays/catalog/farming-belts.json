@@ -1,0 +1,619 @@
+[
+  {
+    "id": "farming-rainforest",
+    "name": "Rainforest (Lowland Rainforest)",
+    "color": "#15803d",
+    "type": "Humid lowland rainforest belt",
+    "summary": "Nigeria's cocoa and oil-palm heartland across the humid south-west, south-east and south-south.",
+    "description": "Humid lowland rainforest on the southern coastal plain: tall, multi-storey evergreen forest on deeply leached, acidic soils. The wet season is long with no real dry month. This is the historic and current cocoa, oil-palm, rubber and timber zone. Belt boundaries are approximate \u2014 the rainforest grades into derived savanna through a wide transition.",
+    "rainfall": "1,500\u20132,500 mm/yr (coastal forest zone >1,600 mm; FAO FOSA)",
+    "crops": [
+      "Cocoa (cash)",
+      "Oil palm (cash)",
+      "Cassava",
+      "Plantain and banana",
+      "Rubber (cash)",
+      "Kolanut (cash)",
+      "Yam",
+      "Maize",
+      "Cocoyam",
+      "Vegetables (ugu, okra, pepper)",
+      "Timber (obeche, mahogany, iroko)"
+    ],
+    "statesCrossed": [
+      "Ondo",
+      "Ogun",
+      "Osun",
+      "Oyo",
+      "Ekiti",
+      "Edo",
+      "Anambra",
+      "Imo",
+      "Abia",
+      "Ebonyi",
+      "Akwa Ibom",
+      "Cross River",
+      "Lagos",
+      "Delta",
+      "Bayelsa",
+      "Rivers",
+      "Enugu",
+      "Taraba"
+    ],
+    "statesFully": [
+      "Ondo",
+      "Ogun",
+      "Osun",
+      "Oyo",
+      "Ekiti",
+      "Edo",
+      "Anambra",
+      "Imo",
+      "Abia",
+      "Ebonyi",
+      "Akwa Ibom",
+      "Cross River"
+    ],
+    "statesPartly": [
+      "Lagos",
+      "Delta",
+      "Bayelsa",
+      "Rivers",
+      "Enugu",
+      "Taraba"
+    ],
+    "agriculture": "Deep, leached ferralitic soils under high rainfall. Tree-crop agroforestry (cocoa, oil palm, kola) dominates, with root crops, plantain and vegetables in the understorey and on cleared ground.",
+    "economy": "Cocoa, oil palm, rubber and timber \u2014 Nigeria's historic and current export tree-crop zone.",
+    "approximate": true,
+    "sources": [
+      {
+        "label": "NAERLS National Farmers' Helpline \u2014 states by ecological zone",
+        "url": "https://nfhl.naerls.gov.ng/index.php?solution_id=1000"
+      },
+      {
+        "label": "ICCO \u2014 Feasibility Study on an Africa Cocoa Exchange, Nigeria annex",
+        "url": "https://www.icco.org/wp-content/uploads/4-FEASIBILITY-STUDY-ON-AFRICA-COCOA-EXCHANGE__Annex_NIGERIA.pdf"
+      },
+      {
+        "label": "FAO FOSA Nigeria \u2014 vegetation zones and rainfall",
+        "url": "https://www.fao.org/4/ab592e/AB592E02.htm"
+      },
+      {
+        "label": "WUR / YieldGap \u2014 six agro-ecological zones of Nigeria",
+        "url": "https://yieldgap.containers.wur.nl/nigeria"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "farming-belt"
+  },
+  {
+    "id": "farming-derived-savanna",
+    "name": "Derived Savanna",
+    "color": "#84cc16",
+    "type": "Forest\u2013savanna transition mosaic",
+    "summary": "The forest\u2013savanna transition, farmed intensively for yam, cassava and maize.",
+    "description": "Derived savanna is the transition mosaic between lowland rainforest and Guinea savanna: secondary forest, tall grasses and heavy farmland, produced by centuries of clearing and continuous cultivation. It carries some of Nigeria's densest rural populations. Belt boundaries are approximate.",
+    "rainfall": "1,150\u20131,500 mm/yr, ~3-month dry season (FAO FOSA)",
+    "crops": [
+      "Yam",
+      "Cassava",
+      "Maize",
+      "Soybean",
+      "Rice (fadama)",
+      "Sorghum",
+      "Cowpea",
+      "Groundnut",
+      "Shea (cash)",
+      "Cashew (cash)",
+      "Oil palm (relict groves)"
+    ],
+    "statesCrossed": [
+      "Nasarawa",
+      "Kwara",
+      "Kogi",
+      "Benue",
+      "Enugu",
+      "Federal Capital Territory",
+      "Plateau",
+      "Oyo",
+      "Osun",
+      "Ogun",
+      "Ekiti",
+      "Ondo",
+      "Edo",
+      "Taraba",
+      "Adamawa",
+      "Cross River"
+    ],
+    "statesFully": [
+      "Nasarawa",
+      "Kwara",
+      "Kogi",
+      "Benue",
+      "Enugu",
+      "Federal Capital Territory"
+    ],
+    "statesPartly": [
+      "Plateau",
+      "Oyo",
+      "Osun",
+      "Ogun",
+      "Ekiti",
+      "Ondo",
+      "Edo",
+      "Taraba",
+      "Adamawa",
+      "Cross River"
+    ],
+    "agriculture": "A mix of leached forest soils and savanna luvisols. Short fallows and dense population drive near-continuous cultivation of root crops and cereals.",
+    "economy": "Yam, cassava, soybean and food grains feeding southern and Middle Belt markets.",
+    "approximate": true,
+    "sources": [
+      {
+        "label": "NAERLS National Farmers' Helpline \u2014 states by ecological zone",
+        "url": "https://nfhl.naerls.gov.ng/index.php?solution_id=1000"
+      },
+      {
+        "label": "FAO FOSA Nigeria \u2014 vegetation zones and rainfall",
+        "url": "https://www.fao.org/4/ab592e/AB592E02.htm"
+      },
+      {
+        "label": "WUR / YieldGap \u2014 six agro-ecological zones of Nigeria",
+        "url": "https://yieldgap.containers.wur.nl/nigeria"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "farming-belt"
+  },
+  {
+    "id": "farming-southern-guinea-savanna",
+    "name": "Southern Guinea Savanna",
+    "color": "#eab308",
+    "type": "Wooded savanna belt (southern Guinea)",
+    "summary": "The southern half of the Guinea savanna \u2014 yam, shea and grain country.",
+    "description": "Wooded savanna of the southern Middle Belt with parkland trees (shea, Daniellia, Isoberlinia), tall grasses and gallery forest along streams. It carries the deep ferric luvisols that support Nigeria's yam belt. Belt boundaries are approximate.",
+    "rainfall": "1,150\u20131,500 mm/yr, 4\u20135-month dry season (FAO FOSA)",
+    "crops": [
+      "Yam",
+      "Cassava",
+      "Maize",
+      "Sorghum",
+      "Rice (fadama)",
+      "Shea (cash)",
+      "Groundnut",
+      "Cowpea",
+      "Soybean",
+      "Cashew (cash)",
+      "Mango and citrus"
+    ],
+    "statesCrossed": [
+      "Adamawa",
+      "Niger",
+      "Taraba",
+      "Kwara",
+      "Kaduna",
+      "Federal Capital Territory",
+      "Plateau",
+      "Gombe"
+    ],
+    "statesFully": ["Adamawa", "Niger", "Taraba"],
+    "statesPartly": [
+      "Kwara",
+      "Kaduna",
+      "Federal Capital Territory",
+      "Plateau",
+      "Gombe"
+    ],
+    "agriculture": "Deep ferric luvisols support root crops and cereals; shea parklands are retained on farm fields across the belt and short fallow rotations are common.",
+    "economy": "Yam, shea butter, grains and livestock corridors.",
+    "approximate": true,
+    "sources": [
+      {
+        "label": "NAERLS National Farmers' Helpline \u2014 states by ecological zone",
+        "url": "https://nfhl.naerls.gov.ng/index.php?solution_id=1000"
+      },
+      {
+        "label": "FAO FOSA Nigeria \u2014 vegetation zones and rainfall",
+        "url": "https://www.fao.org/4/ab592e/AB592E02.htm"
+      },
+      {
+        "label": "WUR / YieldGap \u2014 six agro-ecological zones of Nigeria",
+        "url": "https://yieldgap.containers.wur.nl/nigeria"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "farming-belt"
+  },
+  {
+    "id": "farming-northern-guinea-savanna",
+    "name": "Northern Guinea Savanna",
+    "color": "#f97316",
+    "type": "Wooded savanna belt (northern Guinea)",
+    "summary": "The northern half of the Guinea savanna \u2014 sorghum, cowpea and cotton.",
+    "description": "Drier Guinea savanna with open Isoberlinia\u2013Daniellia woodland and shorter grass. This is the core grain-and-legume zone of northern Nigeria, with a longer dry season and dry-season fadama irrigation. Belt boundaries are approximate.",
+    "rainfall": "1,000\u20131,250 mm/yr, 5\u20136-month dry season (FAO FOSA)",
+    "crops": [
+      "Sorghum (guinea corn)",
+      "Maize",
+      "Cowpea",
+      "Groundnut",
+      "Cotton (cash)",
+      "Yam",
+      "Rice (fadama)",
+      "Soybean",
+      "Millet",
+      "Ginger (cash, southern Kaduna)"
+    ],
+    "statesCrossed": [
+      "Bauchi",
+      "Gombe",
+      "Kaduna",
+      "Kano",
+      "Katsina",
+      "Zamfara",
+      "Sokoto",
+      "Kebbi",
+      "Plateau",
+      "Kwara"
+    ],
+    "statesFully": ["Bauchi", "Gombe", "Kaduna"],
+    "statesPartly": [
+      "Kano",
+      "Katsina",
+      "Zamfara",
+      "Sokoto",
+      "Kebbi",
+      "Plateau",
+      "Kwara"
+    ],
+    "agriculture": "Sandy-loam luvisols farmed with organic manure and short fallows, plus dry-season fadama irrigation along the inland valleys.",
+    "economy": "Grains, legumes and cotton, with expanding dry-season irrigation.",
+    "approximate": true,
+    "sources": [
+      {
+        "label": "NAERLS National Farmers' Helpline \u2014 states by ecological zone",
+        "url": "https://nfhl.naerls.gov.ng/index.php?solution_id=1000"
+      },
+      {
+        "label": "FAO FOSA Nigeria \u2014 vegetation zones and rainfall",
+        "url": "https://www.fao.org/4/ab592e/AB592E02.htm"
+      },
+      {
+        "label": "WUR / YieldGap \u2014 six agro-ecological zones of Nigeria",
+        "url": "https://yieldgap.containers.wur.nl/nigeria"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "farming-belt"
+  },
+  {
+    "id": "ecology-sudan-savanna",
+    "name": "Sudan Savanna",
+    "color": "#d97706",
+    "type": "Vegetation / landscape belt",
+    "summary": "Open-tree savanna of the far-north fringe \u2014 drier than Guinea, main cereal and legume zone.",
+    "description": "Sudan savanna is Nigeria's northern crop-and-livestock belt with 500\u2013900 mm annual rainfall, a shorter wet season (3\u20135 months) and scattered acacia and baobab trees. It covers most of Kano, Katsina, southern Sokoto, southern Borno, Jigawa, Bauchi and Gombe. Belt boundaries are approximate.",
+    "rainfall": "500\u2013900 mm/yr, 5\u20137-month dry season (FAO FOSA)",
+    "crops": [
+      "Millet (early and extra-early varieties)",
+      "Guinea corn / Sorghum",
+      "Cowpea (dan wake)",
+      "Groundnut",
+      "Sesame (Jigawa, Bauchi, Gombe)",
+      "Wheat (irrigated dry season)",
+      "Onion (dry-season irrigated)",
+      "Tomato and pepper (irrigated)",
+      "Sweet potato (orange-fleshed)",
+      "Baobab (fruit, kuka leaves)",
+      "Acacia gum (gum arabic)",
+      "Neem (shade, windbreak)"
+    ],
+    "statesCrossed": [
+      "Jigawa",
+      "Kano",
+      "Katsina",
+      "Kebbi",
+      "Sokoto",
+      "Zamfara",
+      "Bauchi",
+      "Gombe",
+      "Yobe",
+      "Borno",
+      "Kaduna",
+      "Niger"
+    ],
+    "statesFully": [
+      "Jigawa",
+      "Kano",
+      "Katsina",
+      "Kebbi",
+      "Sokoto",
+      "Zamfara"
+    ],
+    "statesPartly": ["Bauchi", "Gombe", "Yobe", "Borno", "Kaduna"],
+    "agriculture": "Shallow sandy-loam soils with low organic matter \u2014 rely on organic manure, mulch and small-scale irrigation (fadamas). Wind erosion and desertification pressure the northern fringe.",
+    "economy": "Cereals, legumes, livestock, irrigation dams and dry-season onion belts.",
+    "approximate": true,
+    "sources": [
+      {
+        "label": "NAERLS National Farmers' Helpline \u2014 states by ecological zone",
+        "url": "https://nfhl.naerls.gov.ng/index.php?solution_id=1000"
+      },
+      {
+        "label": "FAO FOSA Nigeria \u2014 vegetation zones and rainfall",
+        "url": "https://www.fao.org/4/ab592e/AB592E02.htm"
+      },
+      {
+        "label": "FAO \u2014 Nigeria vegetation zones (Sudan savanna)",
+        "url": "https://www.fao.org/3/t3660e/t3660e01.htm"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "ecology"
+  },
+  {
+    "id": "ecology-sahel-savanna",
+    "name": "Sahel Savanna",
+    "color": "#92400e",
+    "type": "Semi-arid vegetation belt at the desert fringe",
+    "summary": "Semi-arid grass and acacia steppe on the northern desert boundary \u2014 pastoral and resilient dry-crop zone.",
+    "description": "The Sahel is the narrow northernmost vegetation zone along the Niger border with under 500 mm annual rainfall and frequent droughts. It is dominated by short grass, sparse acacia and a pastoral economy of cattle, sheep and goats, with Lake Chad and the Komadugu\u2013Yobe basins sustaining irrigation oases. Belt boundaries are approximate.",
+    "rainfall": "Under 500 mm/yr, 7\u20138-month dry season (FAO FOSA)",
+    "crops": [
+      "Drought millet (extra-early 60-day varieties)",
+      "Sorghum (early-maturing drought types)",
+      "Cowpea (drought-tolerant black-eyed varieties)",
+      "Wheat (Lake Chad pump irrigation)",
+      "Dryland rice (on fadamas where water is available)",
+      "Date palm (Lake Chad oases)",
+      "Gum arabic (Acacia senegal)",
+      "Balanites aegyptiaca (desert date)",
+      "Acacia nilotica",
+      "Wild melon / egusi-type gourds",
+      "Roselle (zobo)",
+      "Fodder sorghum\u2013sudangrass hybrids"
+    ],
+    "statesCrossed": [
+      "Borno",
+      "Yobe",
+      "Sokoto",
+      "Kebbi",
+      "Jigawa",
+      "Katsina",
+      "Kano",
+      "Zamfara"
+    ],
+    "statesFully": ["Borno", "Yobe"],
+    "statesPartly": [
+      "Sokoto",
+      "Kebbi",
+      "Jigawa",
+      "Katsina",
+      "Kano",
+      "Zamfara"
+    ],
+    "agriculture": "Very fragile sandy soils with low water-holding capacity \u2014 depend on drought-tolerant crops, water-harvesting structures and lake/fadama irrigation. Desertification and wind erosion are active challenges.",
+    "economy": "Pastoralism, drought-millet, lake-basin irrigation and gum-arabic agroforestry.",
+    "approximate": true,
+    "sources": [
+      {
+        "label": "NAERLS National Farmers' Helpline \u2014 states by ecological zone",
+        "url": "https://nfhl.naerls.gov.ng/index.php?solution_id=1000"
+      },
+      {
+        "label": "FAO FOSA Nigeria \u2014 vegetation zones and rainfall",
+        "url": "https://www.fao.org/4/ab592e/AB592E02.htm"
+      },
+      {
+        "label": "FAO \u2014 Nigeria vegetation zones (Sahel)",
+        "url": "https://www.fao.org/3/t3660e/t3660e01.htm"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "ecology"
+  },
+  {
+    "id": "farming-mangrove-coastal-swamp",
+    "name": "Mangrove & Coastal Swamp",
+    "color": "#0891b2",
+    "type": "Mangrove and coastal swamp belt",
+    "summary": "The saltwater and swamp fringe of the coast, including the Lagos\u2013Badagry coconut belt.",
+    "description": "Tidal mangrove and brackish-to-freshwater swamp along the lagoon and delta fringe, with barrier beaches and estuaries. Salt-tolerant Rhizophora and Avicennia grow on waterlogged, saline mud. The belt includes the Lagos\u2013Badagry coconut coast. Belt boundaries are approximate.",
+    "rainfall": ">2,500 mm/yr in the delta and eastern coast; >1,600 mm across the forest zone (FAO FOSA)",
+    "crops": [
+      "Coconut (cash; Lagos\u2013Badagry)",
+      "Oil palm (cash)",
+      "Cassava",
+      "Rice (swamp)",
+      "Plantain and banana",
+      "Fish, shrimp and crab (fisheries)",
+      "Mangrove (fuelwood and poles)"
+    ],
+    "statesCrossed": [
+      "Lagos",
+      "Bayelsa",
+      "Ogun",
+      "Ondo",
+      "Edo",
+      "Delta",
+      "Rivers",
+      "Akwa Ibom",
+      "Cross River"
+    ],
+    "statesFully": ["Lagos", "Bayelsa"],
+    "statesPartly": [
+      "Ogun",
+      "Ondo",
+      "Edo",
+      "Delta",
+      "Rivers",
+      "Akwa Ibom",
+      "Cross River"
+    ],
+    "agriculture": "Saline, poorly aerated muds limit cultivation to stabilised, non-saline swamp and levee ridges; artisanal fisheries are economically vital.",
+    "economy": "Coconut, oil palm, swamp rice and coastal fisheries.",
+    "approximate": true,
+    "sources": [
+      {
+        "label": "NAERLS National Farmers' Helpline \u2014 states by ecological zone",
+        "url": "https://nfhl.naerls.gov.ng/index.php?solution_id=1000"
+      },
+      {
+        "label": "FAO FOSA Nigeria \u2014 vegetation zones and rainfall",
+        "url": "https://www.fao.org/4/ab592e/AB592E02.htm"
+      },
+      {
+        "label": "FAO \u2014 Nigeria vegetation zones (mangrove/swamp forest)",
+        "url": "https://www.fao.org/3/t3660e/t3660e01.htm"
+      },
+      {
+        "label": "The Guardian Nigeria \u2014 Lagos and the coconut connection",
+        "url": "https://guardian.ng/opinion/lagos-and-the-coconut-connection/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "farming-belt"
+  },
+  {
+    "id": "ecology-niger-delta",
+    "name": "Niger Delta",
+    "color": "#0d9488",
+    "type": "Coastal sedimentary lowland",
+    "summary": "Africa's largest wetland delta where the Niger meets the Atlantic \u2014 Nigeria's petroleum heartland.",
+    "description": "The delta covers roughly 70,000 km\u00b2 of mangrove, freshwater swamp and barrier islands. It holds the bulk of Nigeria's oil and gas, a dense creek network, and highly politicised environmental and federal-revenue issues. Belt boundaries are approximate.",
+    "rainfall": ">2,500 mm/yr (FAO FOSA)",
+    "crops": [
+      "Oil palm (Elaeis guineensis) \u2014 heart of the smallholder oil-palm belt",
+      "Rubber (Hevea brasiliensis) \u2014 drier ridge plantations",
+      "Plantain and banana \u2014 staple on levee soils",
+      "Cassava \u2014 garri, lafun and fufu processing",
+      "Yam \u2014 white and yellow yam in the drier northern fringe",
+      "Rice \u2014 lowland swamp and fadama paddies",
+      "Cocoyam \u2014 shade-tolerant tuber under palm canopy",
+      "Fluted pumpkin (ugu) \u2014 widely intercropped leaf vegetable",
+      "Vegetables: amaranth, okra, peppers, garden egg",
+      "Coconut palm \u2014 barrier beaches and island fringes",
+      "Mangrove (Rhizophora, Avicennia) \u2014 fuelwood, poles and fisheries habitat",
+      "Fish, shrimp and crab artisanal fisheries \u2014 Nigeria's richest coastal fishery"
+    ],
+    "statesCrossed": [
+      "Delta",
+      "Rivers",
+      "Bayelsa",
+      "Edo",
+      "Ondo",
+      "Abia",
+      "Imo",
+      "Akwa Ibom",
+      "Cross River"
+    ],
+    "statesFully": ["Delta", "Rivers"],
+    "statesPartly": [
+      "Bayelsa",
+      "Edo",
+      "Ondo",
+      "Abia",
+      "Imo",
+      "Akwa Ibom",
+      "Cross River"
+    ],
+    "agriculture": "Hydromorphic gleysols, peat and alluvial deposits on seasonally flooded flats, backswamps and levees. Oil-palm agroforest dominates the better-drained levee ridges; fisheries are economically vital.",
+    "economy": "Oil and gas, fisheries, boat transport, refining and oil-palm agroforestry.",
+    "approximate": true,
+    "sources": [
+      {
+        "label": "NAERLS National Farmers' Helpline \u2014 states by ecological zone",
+        "url": "https://nfhl.naerls.gov.ng/index.php?solution_id=1000"
+      },
+      {
+        "label": "FAO FOSA Nigeria \u2014 vegetation zones and rainfall",
+        "url": "https://www.fao.org/4/ab592e/AB592E02.htm"
+      },
+      {
+        "label": "WUR / YieldGap \u2014 six agro-ecological zones of Nigeria",
+        "url": "https://yieldgap.containers.wur.nl/nigeria"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "ecology"
+  },
+  {
+    "id": "farming-montane-plateau",
+    "name": "Montane / Plateau",
+    "color": "#7c3aed",
+    "type": "Highland plateau and montane belt",
+    "summary": "Nigeria's cool highlands \u2014 Irish potato, temperate vegetables and highland grains.",
+    "description": "Cool highland plateau and montane grassland/forest rising above the surrounding savanna \u2014 chiefly the Jos Plateau and the Mambilla highlands. Cooler temperatures and high orographic rainfall allow temperate crops that cannot be grown on the surrounding plains. Belt boundaries are approximate and patchy \u2014 it is an island belt, not a continuous zone.",
+    "rainfall": "1,400\u20134,000 mm/yr on the highlands; 5\u201320\u00b0C (FAO montane/plateau climate)",
+    "crops": [
+      "Irish potato (Plateau)",
+      "Highland maize and beans",
+      "Temperate vegetables (cabbage, carrot, tomato)",
+      "Wheat (irrigated)",
+      "Pear and apple (Jos Plateau)"
+    ],
+    "statesCrossed": ["Plateau", "Taraba", "Adamawa", "Cross River"],
+    "statesFully": ["Plateau"],
+    "statesPartly": ["Taraba", "Adamawa", "Cross River"],
+    "agriculture": "Volcanic and basement-complex soils on plateau surfaces; the cool climate supports temperate root and vegetable crops alongside highland cereals.",
+    "economy": "Irish potato (Plateau supplies roughly 90% of national output), temperate vegetables and highland grains.",
+    "approximate": true,
+    "sources": [
+      {
+        "label": "FAO \u2014 Nigeria vegetation zones (Jos Plateau and montane climate)",
+        "url": "https://www.fao.org/3/t3660e/t3660e01.htm"
+      },
+      {
+        "label": "Nigeria REDD+ National Forest Reference Emission Level \u2014 Jos Plateau & Montane zones",
+        "url": "https://redd.unfccc.int/media/nigeria_national_frel_modified_revised__for_posting.pdf"
+      },
+      {
+        "label": "AfDB-assisted Potato Value Chain Support Project \u2014 Plateau share of output (via PotatoPro)",
+        "url": "https://www.potatopro.com/news/2025/bumper-potato-harvest-nigeria-drives-down-prices-attracts-buyers-across-africa"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "farming-belt"
+  },
+  {
+    "id": "ecology-oban-hills",
+    "name": "Oban Hills",
+    "color": "#166534",
+    "type": "Rainforest hill range",
+    "summary": "Cross River rainforest highlands linked to the Oban sector of Cross River National Park.",
+    "description": "The Oban Hills lie in the Cross River\u2013Cameroon biodiversity hotspot with lowland and montane rainforest, drill monkeys and rare forest elephants. The terrain is rugged and heavily forested, and the belt is a sub-state highland within Cross River's rainforest. Belt boundaries are approximate.",
+    "rainfall": "High rainforest rainfall, >2,000 mm/yr (FAO forest zone)",
+    "crops": [
+      "Cocoa (Theobroma cacao) \u2014 shaded agroforestry in the park buffer zone",
+      "Oil palm (Elaeis guineensis) \u2014 semi-wild stands and plantation palms",
+      "Rubber (Hevea brasiliensis) \u2014 smallholder rubber on gentler slopes",
+      "Plantain and banana \u2014 staple food of Efik and Ejagham communities",
+      "Cassava and yam \u2014 shifting-cultivation staples",
+      "Cocoyam, sweet potato and taro \u2014 under-storey root crops",
+      "Okra, pepper and amaranth \u2014 backyard vegetables",
+      "Citrus (oranges, tangerine, lime)",
+      "Kolanut (Cola nitida & acuminata) \u2014 ceremonial cash crop",
+      "Bush mango (Irvingia gabonensis) \u2014 ogbono soup seeds",
+      "Raffia palm (Raphia spp.) \u2014 palm wine, thatch and fibre",
+      "Timber (mahogany, obeche, iroko) \u2014 protected inside the national park"
+    ],
+    "statesCrossed": ["Cross River"],
+    "statesFully": [],
+    "statesPartly": ["Cross River"],
+    "agriculture": "Acrisols and ferralsols on steep slopes \u2014 highly leached but suitable for tree crops. Land-use pressure is intense outside the park boundary with shifting cultivation and cocoa farms.",
+    "economy": "Ecotourism, conservation and limited hill farming.",
+    "approximate": true,
+    "sources": [
+      {
+        "label": "NAERLS National Farmers' Helpline \u2014 states by ecological zone",
+        "url": "https://nfhl.naerls.gov.ng/index.php?solution_id=1000"
+      },
+      {
+        "label": "FAO \u2014 Nigeria vegetation zones (lowland rainforest)",
+        "url": "https://www.fao.org/3/t3660e/t3660e01.htm"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "ecology"
+  }
+]

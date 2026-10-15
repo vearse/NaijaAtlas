@@ -54,6 +54,11 @@ export function focusFromFeature(
     }
     case "landforms":
     case "ecology": {
+      const id = str(properties.id);
+      const name = str(properties.name);
+      if (id && (properties.domain === "crop" || properties.landformType === "crop")) {
+        return pick("id", id, name ?? id);
+      }
       const landformType = str(properties.landformType);
       if (landformType) return pick("landformType", landformType, landformType);
       const category = str(properties.category);

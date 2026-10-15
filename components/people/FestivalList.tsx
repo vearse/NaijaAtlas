@@ -46,28 +46,6 @@ export default function FestivalList({ festivals }: { festivals: Festival[] }) {
   const visible = rows.slice(0, limit);
   const hidden = rows.length - visible.length;
 
-  /**
-   * Jump to one random festival from anywhere in the calendar. The state filter
-   * and the page size are reset first so the pick is always on screen, then the
-   * card is scrolled into view and ringed.
-   */
-  const surprise = useCallback(() => {
-    if (ordered.length === 0) return;
-    const next = ordered[Math.floor(Math.random() * ordered.length)];
-    if (!next) return;
-    setStateName(null);
-    setLimit(PAGE);
-    setSurpriseId(next.id);
-  }, [ordered]);
-
-  // Runs after the reset above has re-rendered the list with the pick in it.
-  useEffect(() => {
-    if (!surpriseId) return;
-    document
-      .getElementById(`festival-${surpriseId}`)
-      ?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
-  }, [surpriseId, reduceMotion]);
-
   if (festivals.length === 0) return null;
 
   return (
@@ -114,14 +92,6 @@ export default function FestivalList({ festivals }: { festivals: Festival[] }) {
             </button>
           ))}
         </div>
-        <button
-          type="button"
-          onClick={surprise}
-          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border-subtle bg-surface-card px-4 py-2 text-label-md font-semibold text-text-secondary shadow-sm transition-colors hover:border-primary-container/40 hover:text-primary"
-        >
-          <span aria-hidden>🎲</span>
-          Surprise me
-        </button>
       </div>
 
       <ul className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">

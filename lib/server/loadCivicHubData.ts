@@ -6,6 +6,10 @@ import type { ComparePerson } from "@/types/compare";
 import type { StateLocation } from "@/types/location";
 import { loadSecurityData, type SecurityData } from "@/lib/server/loadSecurityData";
 import {
+  loadSecurityServices,
+  type SecurityServicesData,
+} from "@/lib/server/loadSecurityServices";
+import {
   loadAllPresidentialResults,
 } from "@/lib/server/loadElectionResults";
 import type { PresidentialResultsBundle } from "@/types/politics";
@@ -97,6 +101,7 @@ export type CivicSenatorialLookups = {
 
 export type CivicHubData = {
   security: SecurityData;
+  securityServices: SecurityServicesData;
   election: {
     year: number;
     date: string | null;
@@ -308,6 +313,7 @@ export function loadCivicHubData(root = process.cwd()): CivicHubData {
 
   return {
     security: loadSecurityData(),
+    securityServices: loadSecurityServices(),
     countryOffice,
     election: {
       year: presidential.election.year,

@@ -255,7 +255,7 @@ export default function QuizSetup({
             </div>
           ) : (
             <p className="rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-900">
-              Everyone gets the same 7 questions today. Daily streak: <b>{progress.daily.streak}</b> 🔥
+              Everyone gets the same 10 questions today. Daily streak: <b>{progress.daily.streak}</b> 🔥
             </p>
           )}
 

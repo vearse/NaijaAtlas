@@ -182,7 +182,7 @@ export default function LearnHubClient({
           <div className="flex flex-col justify-between overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-[#043828] to-[#008751] p-6 text-white shadow-sm md:p-8">
             <div>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-label-caps">📅 Daily challenge</span>
-              <h2 className="mt-4 font-landing-display text-headline-lg font-bold">Seven questions. Same for everyone.</h2>
+              <h2 className="mt-4 font-landing-display text-headline-lg font-bold">Ten questions. Same for everyone.</h2>
               <p className="mt-2 text-sm text-white/80">
                 A fresh mix of map hunts, states and LGAs every day. Come back daily to grow your streak and earn bonus XP.
               </p>

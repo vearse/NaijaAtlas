@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Stylised illustration of the Calabar Carnival: costumed dancers in tall feathered headdresses and flowing bands parading under bunting and confetti against a warm evening sky.">
+  <title>Calabar Carnival</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4c1d95" />
+      <stop offset="45%" stop-color="#be185d" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="0.72" r="0.5">
+      <stop offset="0%" stop-color="#fef3c7" stop-opacity="0.9" />
+      <stop offset="60%" stop-color="#fcd34d" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#fcd34d" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="plumeA" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#db2777" />
+      <stop offset="100%" stop-color="#f9a8d4" />
+    </linearGradient>
+    <linearGradient id="plumeB" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#0d9488" />
+      <stop offset="100%" stop-color="#5eead4" />
+    </linearGradient>
+    <linearGradient id="dressA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#9d174d" />
+    </linearGradient>
+    <linearGradient id="dressB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <clipPath id="frame">
+      <rect width="400" height="400" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="400" height="400" fill="url(#sky)" />
+    <rect width="400" height="400" fill="url(#sun)" />
+
+    <!-- Bunting across the top -->
+    <g stroke="#fef3c7" stroke-opacity="0.5" stroke-width="2" fill="none">
+      <path d="M-10 34 Q 200 66 410 30" />
+      <path d="M-10 66 Q 200 96 410 62" />
+    </g>
+    <g>
+      <path d="M60 41 l 12 2 -7 16 z" fill="#5eead4" />
+      <path d="M132 51 l 12 1 -8 16 z" fill="#f9a8d4" />
+      <path d="M204 56 l 12 0 -8 17 z" fill="#fcd34d" />
+      <path d="M276 52 l 12 -1 -9 16 z" fill="#5eead4" />
+      <path d="M348 42 l 12 -2 -8 16 z" fill="#f9a8d4" />
+    </g>
+
+    <!-- Confetti -->
+    <g>
+      <rect x="40" y="120" width="7" height="7" rx="1.5" fill="#fde68a" transform="rotate(24 43 123)" />
+      <rect x="120" y="96" width="6" height="6" rx="1.5" fill="#5eead4" transform="rotate(-18 123 99)" />
+      <rect x="250" y="110" width="7" height="7" rx="1.5" fill="#f9a8d4" transform="rotate(36 253 113)" />
+      <rect x="330" y="132" width="6" height="6" rx="1.5" fill="#fde68a" transform="rotate(-30 333 135)" />
+      <circle cx="90" cy="168" r="3.2" fill="#fef3c7" />
+      <circle cx="300" cy="150" r="3" fill="#fef3c7" />
+      <circle cx="360" cy="196" r="3.4" fill="#fbcfe8" />
+      <circle cx="60" cy="212" r="3" fill="#99f6e4" />
+    </g>
+
+    <!-- Distant crowd silhouette -->
+    <g fill="#3b0764" opacity="0.85">
+      <path d="M0 322 c 20 -18 44 -18 64 0 l 6 40 H-6 z" />
+      <path d="M78 316 c 22 -20 48 -20 70 0 l 6 46 H72 z" />
+      <path d="M170 320 c 20 -18 46 -18 66 0 l 6 42 h -78 z" />
+      <path d="M252 314 c 24 -20 50 -20 74 0 l 6 48 h -86 z" />
+      <path d="M338 322 c 20 -18 44 -18 64 0 l 6 40 h -76 z" />
+    </g>
+    <g fill="#2e1065" opacity="0.9">
+      <circle cx="30" cy="308" r="12" />
+      <circle cx="112" cy="302" r="13" />
+      <circle cx="204" cy="306" r="12" />
+      <circle cx="290" cy="300" r="13" />
+      <circle cx="370" cy="308" r="12" />
+    </g>
+
+    <!-- Left dancer -->
+    <g>
+      <path d="M150 190 c 26 0 40 20 40 44 l 6 70 -20 6 -8 -50 -12 48 -18 -6 8 -66 c 0 -26 12 -46 44 -46 z" fill="url(#dressA)" />
+      <path d="M162 150 a 17 17 0 1 1 0.1 0 z" fill="#5b3a1f" />
+      <path d="M160 140 l -4 -46 10 34 4 -40 8 44 z" fill="url(#plumeA)" />
+      <path d="M176 138 l 6 -42 2 36 12 -30 -2 40 z" fill="url(#plumeB)" />
+      <path d="M150 178 q 26 -16 48 4 l 2 12 q -28 -14 -52 -2 z" fill="#fcd34d" />
+      <path d="M150 246 q 18 12 40 6 l -4 14 q -22 6 -42 -8 z" fill="#fbcfe8" opacity="0.8" />
+      <rect x="136" y="250" width="26" height="9" rx="4" fill="#fcd34d" />
+    </g>
+
+    <!-- Right dancer -->
+    <g>
+      <path d="M236 198 c 24 0 38 18 38 42 l 6 66 -19 6 -8 -48 -11 46 -17 -6 8 -62 c 0 -24 11 -44 42 -44 z" fill="url(#dressB)" />
+      <path d="M248 160 a 16 16 0 1 1 0.1 0 z" fill="#3f2d1c" />
+      <path d="M246 150 l -4 -44 10 32 4 -38 8 42 z" fill="url(#plumeB)" />
+      <path d="M262 148 l 6 -40 2 34 12 -28 -2 38 z" fill="url(#plumeA)" />
+      <path d="M236 186 q 24 -15 46 4 l 2 11 q -27 -13 -50 -2 z" fill="#5eead4" />
+      <path d="M236 250 q 18 12 38 6 l -4 13 q -21 6 -40 -8 z" fill="#fde68a" opacity="0.8" />
+      <rect x="222" y="252" width="25" height="9" rx="4" fill="#5eead4" />
+    </g>
+
+    <!-- Talking drum on the ground -->
+    <g>
+      <path d="M300 300 l 44 0 -6 -30 -32 0 z" fill="#7c2d12" />
+      <ellipse cx="322" cy="270" rx="17" ry="6" fill="#b45309" />
+      <path d="M302 288 q 20 8 40 0" stroke="#fcd34d" stroke-width="3" fill="none" />
+      <rect x="316" y="238" width="12" height="8" rx="3" fill="#fcd34d" />
+    </g>
+
+    <!-- Foreground streamers -->
+    <g fill="#f9a8d4" opacity="0.7">
+      <path d="M-6 330 q 60 30 118 6 l 4 16 q -64 26 -126 -4 z" />
+    </g>
+    <g fill="#5eead4" opacity="0.7">
+      <path d="M292 344 q 60 -28 116 -6 l -2 16 q -56 -18 -110 6 z" />
+    </g>
+  </g>
+</svg>

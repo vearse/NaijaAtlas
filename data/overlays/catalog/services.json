@@ -1,0 +1,217 @@
+{
+  "lastVerified": "2026-10-15",
+  "note": "Service-level reference for the Security lookup. Ranks are listed as text only; no insignia images are reproduced. Every rank and institution here is drawn from the sources on each record.",
+  "services": [
+    {
+      "id": "army",
+      "name": "Nigerian Army",
+      "role": "Land warfare",
+      "established": "1863 (origins); 1956 (current form)",
+      "hq": "Army Headquarters, Armed Forces Complex, Muhammadu Buhari Way, Garki, Abuja",
+      "description": "The land component of the Nigerian Armed Forces and its largest service. It traces its origins to the 1863 Glover Hausas and took its current form in 1956. It is charged with the defence of Nigerian territory, internal security operations in aid of civil authority, and contributions to peacekeeping. It is headed by the Chief of Army Staff and governed by the Nigerian Army Council.",
+      "officerRanks": [
+        "Field Marshal",
+        "General",
+        "Lieutenant General",
+        "Major General",
+        "Brigadier General",
+        "Colonel",
+        "Lieutenant Colonel",
+        "Major",
+        "Captain",
+        "Lieutenant",
+        "Second Lieutenant"
+      ],
+      "enlistedRanks": [
+        "Army Warrant Officer",
+        "Master Warrant Officer",
+        "Warrant Officer",
+        "Staff Sergeant",
+        "Sergeant",
+        "Corporal",
+        "Lance Corporal",
+        "Private",
+        "Recruit"
+      ],
+      "training": [
+        {
+          "name": "Nigerian Defence Academy (NDA), Kaduna",
+          "note": "University and initial officer training shared by the three services."
+        },
+        {
+          "name": "Depot Nigerian Army, Zaria",
+          "note": "Main recruit training depot for other ranks."
+        },
+        {
+          "name": "Nigerian Army School of Infantry (NASI), Jaji",
+          "note": "Infantry officer and soldier training."
+        },
+        {
+          "name": "Armed Forces Command and Staff College (AFCSC), Jaji",
+          "note": "Tri-service middle-level staff training."
+        },
+        {
+          "name": "National Defence College (NDC), Abuja",
+          "note": "Tri-service apex strategic-level training."
+        },
+        {
+          "name": "Nigerian Army College of Logistics (NACOL)",
+          "note": "Logistics and supply training."
+        }
+      ],
+      "sources": [
+        { "label": "Nigerian Army — About", "url": "https://army.mil.ng/about" },
+        { "label": "NAFC — Nigerian Army military ranks", "url": "https://nafc.army.mil.ng/militaryranks.html" },
+        { "label": "National Defence College", "url": "https://ndc.gov.ng/" }
+      ]
+    },
+    {
+      "id": "navy",
+      "name": "Nigerian Navy",
+      "role": "Maritime warfare",
+      "established": "1 June 1956 (Naval Defence Force); 1958 (Royal Nigerian Navy); 1964 (Nigerian Navy)",
+      "hq": "Naval Headquarters, Armed Forces Complex, Plot 1092 Muhammadu Buhari Way, Area 7 Garki, Abuja",
+      "description": "The maritime component of the Nigerian Armed Forces. Its origins reach back to the Royal Navy's Marine Department of 1887; the Naval Defence Force commenced operations on 1 June 1956, was re-designated the Royal Nigerian Navy in 1958, and became the Nigerian Navy when Nigeria became a republic. It is charged with defending Nigeria's maritime domain. It is headed by the Chief of the Naval Staff.",
+      "officerRanks": [
+        "Admiral of the Fleet",
+        "Admiral",
+        "Vice Admiral",
+        "Rear Admiral",
+        "Commodore",
+        "Captain",
+        "Commander",
+        "Lieutenant Commander",
+        "Lieutenant",
+        "Sub-Lieutenant",
+        "Midshipman"
+      ],
+      "enlistedRanks": [
+        "Navy Warrant Officer",
+        "Master Warrant Officer",
+        "Warrant Officer",
+        "Chief Petty Officer",
+        "Petty Officer",
+        "Leading Seaman",
+        "Able Seaman",
+        "Seaman",
+        "Ordinary Seaman"
+      ],
+      "training": [
+        {
+          "name": "Nigerian Defence Academy (NDA), Kaduna",
+          "note": "University and initial officer training shared by the three services."
+        },
+        {
+          "name": "Nigerian Naval College, Onne",
+          "note": "Basic officer training."
+        },
+        {
+          "name": "Nigerian Navy Basic Training School, Onne",
+          "note": "Basic training for ratings."
+        },
+        {
+          "name": "NNS Quorra, Apapa",
+          "note": "Professional courses for officers and ratings."
+        },
+        {
+          "name": "Nigerian Navy Engineering College (NNEC), Sapele",
+          "note": "Technical training for naval personnel."
+        },
+        {
+          "name": "Naval Training Command (NAVTRAC), Onne",
+          "note": "Coordinates all naval training institutions."
+        }
+      ],
+      "sources": [
+        { "label": "Nigerian Navy — About Us", "url": "https://www.navy.mil.ng/about" },
+        { "label": "Nigerian Navy — Naval Training Command", "url": "https://www.navy.mil.ng/naval-training-command" }
+      ]
+    },
+    {
+      "id": "airforce",
+      "name": "Nigerian Air Force",
+      "role": "Aerial warfare",
+      "established": "18 April 1964 (Air Force Act 1964)",
+      "hq": "Nigerian Air Force Headquarters, Abuja",
+      "description": "The air component and youngest service of the Nigerian Armed Forces, formally established on 18 April 1964 by the Air Force Act 1964. It is responsible for defending Nigeria's airspace and for providing mobility and close support to the land and maritime services. It is headed by the Chief of the Air Staff.",
+      "officerRanks": [
+        "Marshal of the Air Force",
+        "Air Chief Marshal",
+        "Air Marshal",
+        "Air Vice-Marshal",
+        "Air Commodore",
+        "Group Captain",
+        "Wing Commander",
+        "Squadron Leader",
+        "Flight Lieutenant",
+        "Flying Officer",
+        "Pilot Officer"
+      ],
+      "enlistedRanks": [
+        "Air Warrant Officer",
+        "Master Warrant Officer",
+        "Warrant Officer",
+        "Flight Sergeant",
+        "Sergeant",
+        "Corporal",
+        "Lance Corporal",
+        "Aircraftman",
+        "Recruit"
+      ],
+      "training": [
+        {
+          "name": "Nigerian Defence Academy (NDA), Kaduna",
+          "note": "University and initial officer training shared by the three services."
+        },
+        {
+          "name": "Air Force Institute of Technology (AFIT), Kaduna",
+          "note": "Aerospace and technical education for the Air Force."
+        },
+        {
+          "name": "301 Flying Training School, Kaduna",
+          "note": "Pilot training."
+        },
+        {
+          "name": "Air Training Command, Kaduna",
+          "note": "Air Force training command."
+        },
+        {
+          "name": "Armed Forces Command and Staff College (AFCSC), Jaji",
+          "note": "Tri-service middle-level staff training."
+        },
+        {
+          "name": "National Defence College (NDC), Abuja",
+          "note": "Tri-service apex strategic-level training."
+        }
+      ],
+      "sources": [
+        { "label": "Nigerian Air Force — History", "url": "https://airforce.mil.ng/history" },
+        { "label": "Air Force Institute of Technology", "url": "https://afit.edu.ng/" }
+      ]
+    }
+  ],
+  "officerEquivalence": [
+    { "army": "Field Marshal", "navy": "Admiral of the Fleet", "airforce": "Marshal of the Air Force" },
+    { "army": "General", "navy": "Admiral", "airforce": "Air Chief Marshal" },
+    { "army": "Lieutenant General", "navy": "Vice Admiral", "airforce": "Air Marshal" },
+    { "army": "Major General", "navy": "Rear Admiral", "airforce": "Air Vice-Marshal" },
+    { "army": "Brigadier General", "navy": "Commodore", "airforce": "Air Commodore" },
+    { "army": "Colonel", "navy": "Captain", "airforce": "Group Captain" },
+    { "army": "Lieutenant Colonel", "navy": "Commander", "airforce": "Wing Commander" },
+    { "army": "Major", "navy": "Lieutenant Commander", "airforce": "Squadron Leader" },
+    { "army": "Captain", "navy": "Lieutenant", "airforce": "Flight Lieutenant" },
+    { "army": "Lieutenant", "navy": "Sub-Lieutenant", "airforce": "Flying Officer" },
+    { "army": "Second Lieutenant", "navy": "Midshipman", "airforce": "Pilot Officer" }
+  ],
+  "enlistedEquivalence": [
+    { "army": "Army Warrant Officer", "navy": "Navy Warrant Officer", "airforce": "Air Warrant Officer" },
+    { "army": "Master Warrant Officer", "navy": "Master Warrant Officer", "airforce": "Master Warrant Officer" },
+    { "army": "Warrant Officer", "navy": "Warrant Officer", "airforce": "Warrant Officer" },
+    { "army": "Staff Sergeant", "navy": "Chief Petty Officer", "airforce": "Flight Sergeant" },
+    { "army": "Sergeant", "navy": "Petty Officer", "airforce": "Sergeant" },
+    { "army": "Corporal", "navy": "Leading Seaman", "airforce": "Corporal" },
+    { "army": "Lance Corporal", "navy": "Able Seaman", "airforce": "Lance Corporal" },
+    { "army": "Private", "navy": "Seaman", "airforce": "Aircraftman" },
+    { "army": "Recruit", "navy": "Ordinary Seaman", "airforce": "Recruit" }
+  ]
+}

@@ -407,6 +407,8 @@ export async function buildGeo() {
 
   const landformsCatalog = readCatalog<CatalogRow>("landforms");
   const ecologyCatalog = readCatalog<CatalogRow>("ecology");
+  const farmingBeltsCatalog = readCatalog<CatalogRow>("farming-belts");
+  const cropsCatalog = readCatalog<CatalogRow>("crops");
   const resourcesCatalog = readCatalog<CatalogRow>("resources");
   const citiesCatalog = readCatalog<CatalogRow>("cities");
   const lakesCatalog = readCatalog<CatalogRow>("lakes");
@@ -596,6 +598,30 @@ export async function buildGeo() {
         summary: row.summary,
       };
     }),
+    ...farmingBeltsCatalog
+      .filter((row) => !ecologyCatalog.some((e) => e.id === row.id))
+      .map((row) => ({
+        id: row.id,
+        name: row.name,
+        level: "ecology" as const,
+        parentId: null,
+        layerId: "ecology" as const,
+        typeLabel: "Farming belt",
+        stateName: row.statesCrossed?.[0],
+        centroid: centroidOf(row, ecologyCentroids[row.id]),
+        summary: row.summary,
+      })),
+    ...cropsCatalog.map((row) => ({
+      id: row.id,
+      name: String(row.crop ?? row.name),
+      level: "crop" as const,
+      parentId: null,
+      layerId: "ecology" as const,
+      typeLabel: "Crop",
+      stateName: row.statesCrossed?.[0],
+      centroid: centroidOf(row),
+      summary: row.summary,
+    })),
     ...resourcesCatalog.map((row) => ({
       id: row.id,
       name: row.name,

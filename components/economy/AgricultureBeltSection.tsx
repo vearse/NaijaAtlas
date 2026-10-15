@@ -34,6 +34,15 @@ export default function AgricultureBeltSection({
         transition: { duration: 0.28, ease: [0.16, 1, 0.3, 1] as const },
       };
 
+  const mapHref = sectionMapHref("economy/resources", {
+    focus: {
+      layerId: "ecology",
+      matchKey: "id",
+      matchValue: belt.id,
+      label: belt.name,
+    },
+  });
+
   return (
     <div className="overflow-hidden rounded-3xl border border-amber-200 bg-gradient-to-br from-amber-50/70 via-white to-white shadow-sm">
       <div className="flex gap-2 overflow-x-auto border-b border-amber-100 px-5 py-4">
@@ -77,6 +86,12 @@ export default function AgricultureBeltSection({
               />
             </motion.div>
           </AnimatePresence>
+          <Link
+            href={mapHref}
+            className="mt-4 flex h-11 w-full items-center justify-center rounded-xl bg-amber-600 px-5 text-label-md font-semibold text-white hover:bg-amber-700 sm:mt-5"
+          >
+            See the belt on the map →
+          </Link>
         </div>
 
         <AnimatePresence mode="wait">
@@ -90,13 +105,11 @@ export default function AgricultureBeltSection({
             {belt.crops.length > 0 && (
               <div className="mt-5">
                 <p className="text-label-caps text-text-muted">What grows here</p>
-                <ul className="mt-2 flex flex-wrap gap-2">
-                  {belt.crops.slice(0, 8).map((c) => (
-                    <li
-                      key={c}
-                      className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-body-sm font-medium text-amber-900"
-                    >
-                      {c}
+                <ul className="mt-2 space-y-2 text-body-sm text-text-secondary">
+                  {belt.crops.map((c) => (
+                    <li key={c} className="flex gap-2">
+                      <span className="text-amber-600" aria-hidden>•</span>
+                      <span>{c}</span>
                     </li>
                   ))}
                 </ul>
@@ -104,7 +117,7 @@ export default function AgricultureBeltSection({
             )}
 
             {(belt.agriculture || belt.economy) && (
-              <p className="mt-4 text-body-sm text-text-secondary">
+              <p className="mt-4 text-body-sm leading-relaxed text-text-secondary">
                 {belt.agriculture || belt.economy}
               </p>
             )}
@@ -125,15 +138,6 @@ export default function AgricultureBeltSection({
                 </div>
               </div>
             )}
-
-            <Link
-              href={sectionMapHref("economy/resources", {
-                focus: { layerId: "ecology", matchKey: "id", matchValue: belt.id, label: belt.name },
-              })}
-              className="mt-6 inline-flex h-11 items-center rounded-xl bg-amber-600 px-5 text-label-md font-semibold text-white hover:bg-amber-700"
-            >
-              See the belt on the map →
-            </Link>
           </motion.div>
         </AnimatePresence>
       </div>

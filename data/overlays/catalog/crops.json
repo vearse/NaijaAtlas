@@ -1,0 +1,772 @@
+[
+  {
+    "id": "crop-cocoa",
+    "crop": "Cocoa",
+    "color": "#7c2d12",
+    "summary": "Nigeria's historic tree-crop export, grown in shaded lowland rainforest.",
+    "statesCrossed": [
+      "Ondo",
+      "Ogun",
+      "Osun",
+      "Oyo",
+      "Ekiti",
+      "Cross River",
+      "Edo",
+      "Delta",
+      "Akwa Ibom",
+      "Abia",
+      "Kogi",
+      "Kwara",
+      "Adamawa",
+      "Taraba"
+    ],
+    "statesFully": [
+      "Ondo",
+      "Ogun",
+      "Osun",
+      "Oyo",
+      "Ekiti",
+      "Cross River",
+      "Edo",
+      "Delta",
+      "Akwa Ibom",
+      "Abia"
+    ],
+    "statesPartly": ["Kogi", "Kwara", "Adamawa", "Taraba"],
+    "leadingState": "Ondo",
+    "leadingNote": "Ondo is Nigeria's largest cocoa-producing state; the south-west accounts for roughly three-quarters of national output.",
+    "sources": [
+      {
+        "label": "ICCO \u2014 Feasibility Study on an Africa Cocoa Exchange, Nigeria annex",
+        "url": "https://www.icco.org/wp-content/uploads/4-FEASIBILITY-STUDY-ON-AFRICA-COCOA-EXCHANGE__Annex_NIGERIA.pdf"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-yam",
+    "crop": "Yam",
+    "color": "#ca8a04",
+    "summary": "Nigeria's leading tuber staple, concentrated in the Middle Belt and forest fringe.",
+    "statesCrossed": [
+      "Benue",
+      "Cross River",
+      "Delta",
+      "Taraba",
+      "Nasarawa",
+      "Ebonyi",
+      "Anambra"
+    ],
+    "statesFully": ["Benue", "Cross River", "Taraba", "Nasarawa"],
+    "statesPartly": ["Delta", "Ebonyi", "Anambra"],
+    "leadingState": "Benue",
+    "leadingNote": "Benue is the largest yam-producing state; Zaki Biam hosts Nigeria's biggest yam market.",
+    "sources": [
+      {
+        "label": "Dubawa \u2014 Does Nigeria have the biggest yam market in the world? (FDC data)",
+        "url": "https://dubawa.org/does-nigeria-have-the-biggest-yam-market-in-the-world/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-coconut",
+    "crop": "Coconut",
+    "color": "#0d9488",
+    "summary": "Coastal estate crop, led by the Lagos\u2013Badagry belt.",
+    "statesCrossed": [
+      "Lagos",
+      "Akwa Ibom",
+      "Delta",
+      "Edo",
+      "Ekiti",
+      "Ogun",
+      "Ondo",
+      "Oyo",
+      "Rivers",
+      "Taraba"
+    ],
+    "statesFully": ["Lagos", "Akwa Ibom", "Delta", "Edo"],
+    "statesPartly": ["Ekiti", "Ogun", "Ondo", "Oyo", "Rivers", "Taraba"],
+    "leadingState": "Lagos",
+    "leadingNote": "Lagos produces about 70% of Nigeria's coconuts, mainly from the Badagry belt.",
+    "sources": [
+      {
+        "label": "The Guardian Nigeria \u2014 Lagos and the coconut connection",
+        "url": "https://guardian.ng/opinion/lagos-and-the-coconut-connection/"
+      },
+      {
+        "label": "Blueprint \u2014 RMRDC and coconut production (1995 national coconut survey LGAs)",
+        "url": "https://blueprint.ng/rmrdc-saving-nigeria-n20bn-through-increased-coconut-production/"
+      },
+      {
+        "label": "FAO \u2014 Lagos State coconut value chain study",
+        "url": "https://www.fao.org/sustainable-food-value-chains/library/details/en/c/1759734/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-rice",
+    "crop": "Rice",
+    "color": "#65a30d",
+    "summary": "Staple cereal grown on fadama and lowland paddies, with major producing hubs in the north-west and south-east.",
+    "statesCrossed": [
+      "Kebbi",
+      "Cross River",
+      "Anambra",
+      "Ebonyi",
+      "Taraba",
+      "Nasarawa",
+      "Jigawa",
+      "Sokoto",
+      "Bayelsa",
+      "Kano"
+    ],
+    "statesFully": ["Kebbi", "Ebonyi", "Cross River", "Nasarawa"],
+    "statesPartly": [
+      "Anambra",
+      "Taraba",
+      "Jigawa",
+      "Sokoto",
+      "Bayelsa",
+      "Kano"
+    ],
+    "leadingState": "Kebbi",
+    "leadingNote": "Kebbi is described as the hub of Nigerian rice production; Ebonyi's Abakaliki rice is a well-known brand.",
+    "sources": [
+      {
+        "label": "The Guardian Nigeria \u2014 Nigeria can generate over $15bn from rice export (Bagudu)",
+        "url": "https://guardian.ng/features/nigeria-can-generate-over-15b-from-rice-export-yearly-bagudu/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-onion",
+    "crop": "Onion",
+    "color": "#9333ea",
+    "summary": "Dry-season irrigated bulb crop of the north-west, dominated by Sokoto.",
+    "statesCrossed": ["Sokoto"],
+    "statesFully": ["Sokoto"],
+    "statesPartly": [],
+    "leadingState": "Sokoto",
+    "leadingNote": "Sokoto produced about 840,000 of Nigeria's ~2.1 million tonnes of onions in 2025 (about 40%), the largest share.",
+    "sources": [
+      {
+        "label": "Blueprint \u2014 Governor Aliyu's onion revolution in Sokoto State (NOPPMAN)",
+        "url": "https://blueprint.ng/governor-aliyus-onion-revolution-in-sokoto-state/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-irish-potato",
+    "crop": "Irish Potato",
+    "color": "#a16207",
+    "summary": "Cool-climate tuber grown almost entirely on the Jos Plateau.",
+    "statesCrossed": ["Plateau"],
+    "statesFully": ["Plateau"],
+    "statesPartly": [],
+    "leadingState": "Plateau",
+    "leadingNote": "Plateau accounts for about 90% of Nigeria's Irish potato production.",
+    "sources": [
+      {
+        "label": "AfDB-assisted Potato Value Chain Support Project \u2014 Plateau share of output (via PotatoPro)",
+        "url": "https://www.potatopro.com/news/2025/bumper-potato-harvest-nigeria-drives-down-prices-attracts-buyers-across-africa"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-cassava",
+    "crop": "Cassava",
+    "color": "#84cc16",
+    "summary": "Nigeria's largest food crop by area — garri, fufu, and starch for industry.",
+    "statesCrossed": [
+      "Benue",
+      "Cross River",
+      "Delta",
+      "Edo",
+      "Enugu",
+      "Imo",
+      "Abia",
+      "Akwa Ibom",
+      "Ondo",
+      "Ogun",
+      "Osun",
+      "Oyo",
+      "Ekiti",
+      "Kwara",
+      "Kogi",
+      "Niger",
+      "Taraba",
+      "Adamawa"
+    ],
+    "statesFully": ["Benue", "Cross River", "Delta", "Edo", "Enugu", "Imo", "Abia"],
+    "statesPartly": [
+      "Akwa Ibom",
+      "Ondo",
+      "Ogun",
+      "Osun",
+      "Oyo",
+      "Ekiti",
+      "Kwara",
+      "Kogi",
+      "Niger",
+      "Taraba",
+      "Adamawa"
+    ],
+    "leadingState": "Benue",
+    "leadingNote": "Benue and the south-east/south-south belts dominate national cassava output; Nigeria is the world's largest producer.",
+    "sources": [
+      {
+        "label": "FAO — Cassava production statistics",
+        "url": "https://www.fao.org/faostat/en/#data/QCL"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-maize",
+    "crop": "Maize",
+    "color": "#facc15",
+    "summary": "Dual-purpose cereal for food, poultry feed, and brewing across the Middle Belt and north.",
+    "statesCrossed": [
+      "Kaduna",
+      "Niger",
+      "Benue",
+      "Taraba",
+      "Plateau",
+      "Kano",
+      "Katsina",
+      "Bauchi",
+      "Gombe",
+      "Oyo",
+      "Osun",
+      "Kwara",
+      "Nasarawa",
+      "Federal Capital Territory"
+    ],
+    "statesFully": ["Kaduna", "Benue", "Taraba", "Plateau"],
+    "statesPartly": [
+      "Niger",
+      "Kano",
+      "Katsina",
+      "Bauchi",
+      "Gombe",
+      "Oyo",
+      "Osun",
+      "Kwara",
+      "Nasarawa",
+      "Federal Capital Territory"
+    ],
+    "leadingState": "Kaduna",
+    "leadingNote": "Kaduna and Benue are among the top maize states; the crop bridges Guinea savanna and forest-fringe rotations.",
+    "sources": [
+      {
+        "label": "NAERLS — Maize production zones",
+        "url": "https://nfhl.naerls.gov.ng/index.php?solution_id=1000"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-oil-palm",
+    "crop": "Oil palm",
+    "color": "#16a34a",
+    "summary": "Red palm oil and kernel oil from smallholder groves and estates in the humid south.",
+    "statesCrossed": [
+      "Akwa Ibom",
+      "Cross River",
+      "Rivers",
+      "Bayelsa",
+      "Delta",
+      "Edo",
+      "Ondo",
+      "Abia",
+      "Imo",
+      "Enugu",
+      "Ebonyi",
+      "Ogun",
+      "Lagos"
+    ],
+    "statesFully": ["Akwa Ibom", "Cross River", "Rivers", "Bayelsa", "Delta", "Edo", "Ondo"],
+    "statesPartly": ["Abia", "Imo", "Enugu", "Ebonyi", "Ogun", "Lagos"],
+    "leadingState": "Akwa Ibom",
+    "leadingNote": "South-south and south-east states anchor Nigeria's oil-palm belt; domestic refining of palm oil remains a major rural industry.",
+    "sources": [
+      {
+        "label": "FAO — Oil palm development in Nigeria",
+        "url": "https://www.fao.org/4/ab592e/AB592E02.htm"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-rubber",
+    "crop": "Rubber",
+    "color": "#1e293b",
+    "summary": "Hevea plantations and smallholdings on the forest-savanna fringe and delta ridges.",
+    "statesCrossed": [
+      "Edo",
+      "Delta",
+      "Ondo",
+      "Cross River",
+      "Akwa Ibom",
+      "Abia",
+      "Rivers",
+      "Bayelsa"
+    ],
+    "statesFully": ["Edo", "Delta", "Ondo", "Cross River"],
+    "statesPartly": ["Akwa Ibom", "Abia", "Rivers", "Bayelsa"],
+    "leadingState": "Edo",
+    "leadingNote": "Edo and Delta host the largest mature rubber estates; Ondo and Cross River add substantial smallholder latex.",
+    "sources": [
+      {
+        "label": "Rubber Research Institute of Nigeria (RRIN)",
+        "url": "https://rrin.gov.ng/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-groundnut",
+    "crop": "Groundnut",
+    "color": "#d97706",
+    "summary": "Historic groundnut pyramid crop of the north-west and north-central savannas.",
+    "statesCrossed": [
+      "Kano",
+      "Katsina",
+      "Jigawa",
+      "Kebbi",
+      "Sokoto",
+      "Zamfara",
+      "Kaduna",
+      "Bauchi",
+      "Gombe",
+      "Niger",
+      "Plateau"
+    ],
+    "statesFully": ["Kano", "Katsina", "Jigawa", "Kebbi", "Sokoto"],
+    "statesPartly": ["Zamfara", "Kaduna", "Bauchi", "Gombe", "Niger", "Plateau"],
+    "leadingState": "Kano",
+    "leadingNote": "Kano, Katsina, and Jigawa remain the core of Nigeria's groundnut belt — oil, cake, and kulikuli processing.",
+    "sources": [
+      {
+        "label": "National Groundnut Producers, Processors and Marketers Association (NGPPMA)",
+        "url": "https://blueprint.ng/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-sorghum",
+    "crop": "Sorghum",
+    "color": "#b45309",
+    "summary": "Guinea corn staple and malt input across the Sudan and northern Guinea savannas.",
+    "statesCrossed": [
+      "Kano",
+      "Katsina",
+      "Jigawa",
+      "Bauchi",
+      "Gombe",
+      "Adamawa",
+      "Taraba",
+      "Benue",
+      "Niger",
+      "Kaduna",
+      "Kebbi",
+      "Sokoto"
+    ],
+    "statesFully": ["Kano", "Katsina", "Jigawa", "Bauchi", "Gombe"],
+    "statesPartly": [
+      "Adamawa",
+      "Taraba",
+      "Benue",
+      "Niger",
+      "Kaduna",
+      "Kebbi",
+      "Sokoto"
+    ],
+    "leadingState": "Kano",
+    "leadingNote": "Northern states dominate sorghum for tuwo, pap, and brewery malt; Adamawa and Taraba extend production into the Middle Belt.",
+    "sources": [
+      {
+        "label": "NAERLS — Sorghum production guide",
+        "url": "https://nfhl.naerls.gov.ng/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-millet",
+    "crop": "Millet",
+    "color": "#eab308",
+    "summary": "Early-maturing dryland cereal of the Sudan and Sahel savannas.",
+    "statesCrossed": [
+      "Borno",
+      "Yobe",
+      "Adamawa",
+      "Bauchi",
+      "Gombe",
+      "Jigawa",
+      "Kano",
+      "Katsina",
+      "Kebbi",
+      "Sokoto",
+      "Zamfara"
+    ],
+    "statesFully": ["Borno", "Yobe", "Jigawa", "Kano", "Katsina"],
+    "statesPartly": ["Adamawa", "Bauchi", "Gombe", "Kebbi", "Sokoto", "Zamfara"],
+    "leadingState": "Borno",
+    "leadingNote": "Borno and Yobe lead millet output on the Lake Chad basin fringe; Jigawa and Kano are major suppliers to national markets.",
+    "sources": [
+      {
+        "label": "FAO — Millet production in West Africa",
+        "url": "https://www.fao.org/faostat/en/#data/QCL"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-sesame",
+    "crop": "Sesame",
+    "color": "#f59e0b",
+    "summary": "High-value oilseed export crop expanding across the north-east and north-west.",
+    "statesCrossed": [
+      "Jigawa",
+      "Bauchi",
+      "Gombe",
+      "Taraba",
+      "Niger",
+      "Benue",
+      "Kano",
+      "Katsina",
+      "Kebbi",
+      "Sokoto",
+      "Zamfara",
+      "Adamawa"
+    ],
+    "statesFully": ["Jigawa", "Bauchi", "Gombe", "Taraba"],
+    "statesPartly": [
+      "Niger",
+      "Benue",
+      "Kano",
+      "Katsina",
+      "Kebbi",
+      "Sokoto",
+      "Zamfara",
+      "Adamawa"
+    ],
+    "leadingState": "Jigawa",
+    "leadingNote": "Jigawa, Bauchi, and Gombe are frequently cited among Nigeria's top sesame exporters; Benue adds Middle Belt production.",
+    "sources": [
+      {
+        "label": "Nigeria Export Promotion Council — Sesame seed profile",
+        "url": "https://nepc.gov.ng/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-cotton",
+    "crop": "Cotton",
+    "color": "#e2e8f0",
+    "summary": "Rain-fed lint crop of the northern Guinea and Sudan savannas for ginneries and textile mills.",
+    "statesCrossed": [
+      "Kano",
+      "Katsina",
+      "Kaduna",
+      "Zamfara",
+      "Sokoto",
+      "Kebbi",
+      "Bauchi",
+      "Gombe",
+      "Adamawa",
+      "Taraba",
+      "Niger",
+      "Plateau"
+    ],
+    "statesFully": ["Kano", "Katsina", "Kaduna", "Zamfara"],
+    "statesPartly": [
+      "Sokoto",
+      "Kebbi",
+      "Bauchi",
+      "Gombe",
+      "Adamawa",
+      "Taraba",
+      "Niger",
+      "Plateau"
+    ],
+    "leadingState": "Kano",
+    "leadingNote": "Kano and Kaduna anchor ginnery supply chains feeding Kaduna and Aba textile corridors.",
+    "sources": [
+      {
+        "label": "Cotton Farmers Association of Nigeria (CFAN)",
+        "url": "https://guardian.ng/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-ginger",
+    "crop": "Ginger",
+    "color": "#f97316",
+    "summary": "Export-oriented rhizome from the southern Kaduna highlands and Middle Belt.",
+    "statesCrossed": ["Kaduna", "Nasarawa", "Benue", "Plateau", "Gombe", "Taraba"],
+    "statesFully": ["Kaduna", "Nasarawa"],
+    "statesPartly": ["Benue", "Plateau", "Gombe", "Taraba"],
+    "leadingState": "Kaduna",
+    "leadingNote": "Southern Kaduna (Kachia, Kagarko) is Nigeria's best-known ginger cluster; Nasarawa and Benue add commercial volumes.",
+    "sources": [
+      {
+        "label": "Nigeria Ginger Export Development Programme (media reports)",
+        "url": "https://guardian.ng/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-tomato",
+    "crop": "Tomato",
+    "color": "#dc2626",
+    "summary": "Irrigated dry-season tomatoes from Kadawa (Kano) and other northern fadama belts.",
+    "statesCrossed": [
+      "Kano",
+      "Kaduna",
+      "Jigawa",
+      "Bauchi",
+      "Gombe",
+      "Plateau",
+      "Niger",
+      "Benue",
+      "Ogun",
+      "Osun"
+    ],
+    "statesFully": ["Kano", "Kaduna", "Jigawa"],
+    "statesPartly": ["Bauchi", "Gombe", "Plateau", "Niger", "Benue", "Ogun", "Osun"],
+    "leadingState": "Kano",
+    "leadingNote": "Kadawa in Kano State is Nigeria's best-known tomato concentration; seasonal gluts and transport losses remain a policy focus.",
+    "sources": [
+      {
+        "label": "Federal Ministry of Agriculture — Tomato value chain initiatives",
+        "url": "https://fmard.gov.ng/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-plantain",
+    "crop": "Plantain",
+    "color": "#22c55e",
+    "summary": "Staple cooking banana of the humid south and delta levees.",
+    "statesCrossed": [
+      "Cross River",
+      "Akwa Ibom",
+      "Rivers",
+      "Bayelsa",
+      "Delta",
+      "Edo",
+      "Ondo",
+      "Ogun",
+      "Lagos",
+      "Enugu",
+      "Ebonyi"
+    ],
+    "statesFully": ["Cross River", "Akwa Ibom", "Rivers", "Delta", "Edo"],
+    "statesPartly": ["Bayelsa", "Ondo", "Ogun", "Lagos", "Enugu", "Ebonyi"],
+    "leadingState": "Cross River",
+    "leadingNote": "Cross River and the south-south supply urban plantain markets year-round; intercropping under oil palm is common.",
+    "sources": [
+      {
+        "label": "IITA — Plantain and banana systems in West Africa",
+        "url": "https://www.iita.org/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-cashew",
+    "crop": "Cashew",
+    "color": "#fdba74",
+    "summary": "Tree nut and apple crop expanding on Guinea savanna parklands.",
+    "statesCrossed": [
+      "Oyo",
+      "Osun",
+      "Ogun",
+      "Ondo",
+      "Edo",
+      "Kogi",
+      "Kwara",
+      "Niger",
+      "Enugu",
+      "Ebonyi",
+      "Cross River"
+    ],
+    "statesFully": ["Oyo", "Osun", "Ogun", "Ondo", "Enugu"],
+    "statesPartly": ["Edo", "Kogi", "Kwara", "Niger", "Ebonyi", "Cross River"],
+    "leadingState": "Oyo",
+    "leadingNote": "South-west states (Oyo, Osun, Ogun) lead raw cashew nut exports; processing hubs are growing around Ogbomoso and Ibadan.",
+    "sources": [
+      {
+        "label": "National Cashew Association of Nigeria (NCAN)",
+        "url": "https://guardian.ng/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-cowpea",
+    "crop": "Cowpea",
+    "color": "#a3e635",
+    "summary": "Beans (dan wake) and leafy vegetable across the savanna — protein staple of the north.",
+    "statesCrossed": [
+      "Borno",
+      "Yobe",
+      "Adamawa",
+      "Bauchi",
+      "Gombe",
+      "Taraba",
+      "Benue",
+      "Niger",
+      "Kaduna",
+      "Kano",
+      "Katsina",
+      "Jigawa",
+      "Kebbi",
+      "Sokoto",
+      "Zamfara",
+      "Plateau"
+    ],
+    "statesFully": ["Borno", "Yobe", "Bauchi", "Gombe", "Kano", "Katsina"],
+    "statesPartly": [
+      "Adamawa",
+      "Taraba",
+      "Benue",
+      "Niger",
+      "Kaduna",
+      "Jigawa",
+      "Kebbi",
+      "Sokoto",
+      "Zamfara",
+      "Plateau"
+    ],
+    "leadingState": "Borno",
+    "leadingNote": "Borno and Yobe are major cowpea producers; Kano and Katsina supply national bean markets and da wake snacks.",
+    "sources": [
+      {
+        "label": "IITA — Cowpea improvement programme",
+        "url": "https://www.iita.org/cowpea/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-soybean",
+    "crop": "Soybean",
+    "color": "#4d7c0f",
+    "summary": "Oilseed and poultry-feed crop spreading through the Middle Belt and north.",
+    "statesCrossed": [
+      "Benue",
+      "Niger",
+      "Kaduna",
+      "Nasarawa",
+      "Kwara",
+      "Kogi",
+      "Taraba",
+      "Adamawa",
+      "Bauchi",
+      "Gombe",
+      "Plateau",
+      "Kebbi"
+    ],
+    "statesFully": ["Benue", "Niger", "Kaduna", "Nasarawa"],
+    "statesPartly": [
+      "Kwara",
+      "Kogi",
+      "Taraba",
+      "Adamawa",
+      "Bauchi",
+      "Gombe",
+      "Plateau",
+      "Kebbi"
+    ],
+    "leadingState": "Benue",
+    "leadingNote": "Benue and Niger are frequently cited among top soybean states, feeding poultry and oil mills in Lagos and the south-west.",
+    "sources": [
+      {
+        "label": "Soybean Farmers Association of Nigeria (SOYAN)",
+        "url": "https://guardian.ng/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  },
+  {
+    "id": "crop-shea",
+    "crop": "Shea nut",
+    "color": "#78716c",
+    "summary": "Parkland shea butter tree across the Guinea savanna — women's cooperative processing.",
+    "statesCrossed": [
+      "Kwara",
+      "Niger",
+      "Kogi",
+      "Benue",
+      "Nasarawa",
+      "Plateau",
+      "Kaduna",
+      "Federal Capital Territory",
+      "Oyo",
+      "Osun",
+      "Ogun",
+      "Edo",
+      "Bauchi",
+      "Gombe",
+      "Adamawa",
+      "Taraba"
+    ],
+    "statesFully": ["Kwara", "Niger", "Kogi", "Benue", "Nasarawa", "Plateau", "Kaduna"],
+    "statesPartly": [
+      "Federal Capital Territory",
+      "Oyo",
+      "Osun",
+      "Ogun",
+      "Edo",
+      "Bauchi",
+      "Gombe",
+      "Adamawa",
+      "Taraba"
+    ],
+    "leadingState": "Niger",
+    "leadingNote": "Guinea savanna states supply the bulk of Nigeria's shea kernels for butter and export; Niger and Kwara are major collection hubs.",
+    "sources": [
+      {
+        "label": "Global Shea Alliance — Nigeria country profile",
+        "url": "https://www.globalshea.com/"
+      }
+    ],
+    "lastVerified": "2026-10-15",
+    "domain": "crop"
+  }
+]

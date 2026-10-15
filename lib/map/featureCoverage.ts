@@ -97,5 +97,11 @@ export function shouldOfferViewOnMap(
   ) {
     return true;
   }
+  if (
+    (props.domain === "crop" || props.landformType === "crop") &&
+    stateIds.length >= 1
+  ) {
+    return true;
+  }
   return false;
 }

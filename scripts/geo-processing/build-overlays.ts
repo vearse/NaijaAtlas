@@ -227,6 +227,42 @@ const LANDFORM_POLYGONS: Record<string, [number, number][]> = {
   "landform-edumanom-forest": [
     [6.35, 4.85], [6.85, 4.88], [6.88, 5.25], [6.32, 5.22], [6.35, 4.85],
   ],
+  "landform-rainforest": [
+    [2.85, 4.45], [6.55, 4.42], [9.85, 5.05], [10.45, 6.85], [9.05, 8.35],
+    [6.15, 8.55], [3.55, 7.95], [2.85, 6.05], [2.85, 4.45],
+  ],
+  "landform-derived-savanna": [
+    [3.45, 7.35], [8.25, 7.38], [8.45, 9.55], [3.48, 9.52], [3.45, 7.35],
+  ],
+  "landform-southern-guinea-savanna": [
+    [3.48, 7.42], [12.05, 7.45], [12.15, 9.85], [3.52, 9.82], [3.48, 7.42],
+  ],
+  "landform-northern-guinea-savanna": [
+    [3.52, 9.82], [13.45, 9.85], [13.55, 11.75], [3.55, 11.72], [3.52, 9.82],
+  ],
+  "landform-sudan-savanna": [
+    [3.85, 11.45], [14.05, 11.48], [14.08, 13.15], [3.88, 13.12], [3.85, 11.45],
+  ],
+  "landform-sahel-savanna": [
+    [3.55, 12.75], [14.25, 12.78], [14.28, 13.75], [3.58, 13.72], [3.55, 12.75],
+  ],
+  "landform-mangrove-coastal-swamp": [
+    [4.95, 4.15], [8.55, 4.18], [8.58, 5.75], [4.98, 5.72], [4.95, 4.15],
+  ],
+  "landform-montane-plateau": [
+    [8.48, 9.02], [11.58, 6.72], [11.62, 10.28], [8.52, 10.25], [8.48, 9.02],
+  ],
+};
+
+const FARMING_GEOMETRY_ALIASES: Record<string, string> = {
+  "farming-rainforest": "landform-rainforest",
+  "farming-derived-savanna": "landform-derived-savanna",
+  "farming-southern-guinea-savanna": "landform-southern-guinea-savanna",
+  "farming-northern-guinea-savanna": "landform-northern-guinea-savanna",
+  "farming-mangrove-coastal-swamp": "landform-mangrove-coastal-swamp",
+  "farming-montane-plateau": "landform-montane-plateau",
+  "ecology-sudan-savanna": "landform-sudan-savanna",
+  "ecology-sahel-savanna": "landform-sahel-savanna",
 };
 
 /** Circular footprint for hill clusters without a hand-traced polygon. */
@@ -242,9 +278,141 @@ const LANDFORM_BUFFERS: Record<
 };
 
 function landformGeometryKey(rowId: string): string {
+  const alias = FARMING_GEOMETRY_ALIASES[rowId];
+  if (alias) return alias;
   return rowId.startsWith("ecology-")
     ? rowId.replace(/^ecology-/, "landform-")
     : rowId;
+}
+
+type StateBboxRow = {
+  name: string;
+  bbox: [number, number, number, number];
+};
+
+function readStateBboxes(): StateBboxRow[] {
+  const p = projectRoot("data/locations/states.json");
+  if (!fs.existsSync(p)) return [];
+  return JSON.parse(fs.readFileSync(p, "utf-8")) as StateBboxRow[];
+}
+
+function normalizeStateNameForMatch(raw: string): string {
+  let s = raw.trim().toLowerCase();
+  if (s === "nasarawa") s = "nassarawa";
+  if (s === "abuja" || s === "fct") s = "federal capital territory";
+  return s.replace(/\s+/g, " ");
+}
+
+function centroidFromStateNames(names: string[]): [number, number] | null {
+  const states = readStateBboxes();
+  if (states.length === 0 || names.length === 0) return null;
+  let minLon = Infinity;
+  let minLat = Infinity;
+  let maxLon = -Infinity;
+  let maxLat = -Infinity;
+  let found = false;
+  for (const name of names) {
+    const token = normalizeStateNameForMatch(name);
+    const row = states.find(
+      (s) => normalizeStateNameForMatch(s.name) === token
+    );
+    if (!row?.bbox) continue;
+    found = true;
+    minLon = Math.min(minLon, row.bbox[0]);
+    minLat = Math.min(minLat, row.bbox[1]);
+    maxLon = Math.max(maxLon, row.bbox[2]);
+    maxLat = Math.max(maxLat, row.bbox[3]);
+  }
+  if (!found) return null;
+  return [(minLon + maxLon) / 2, (minLat + maxLat) / 2];
+}
+
+function inferLandformType(row: CatalogRow): string {
+  const id = String(row.id ?? "");
+  const name = String(row.name ?? "").toLowerCase();
+  if (id.includes("rainforest") || name.includes("rainforest")) return "forest";
+  if (id.includes("mangrove") || name.includes("mangrove")) return "delta";
+  if (id.includes("delta") || name.includes("delta")) return "delta";
+  if (id.includes("montane") || name.includes("plateau")) return "plateau";
+  if (id.includes("sahel") || name.includes("sahel")) return "savanna";
+  if (id.includes("savanna") || name.includes("savanna")) return "savanna";
+  if (id.includes("forest") || name.includes("forest")) return "forest";
+  return "savanna";
+}
+
+function enrichAgroCatalogRow(row: CatalogRow): CatalogRow {
+  const domain = String(row.domain ?? "");
+  if (domain === "crop") {
+    const cropName = String(row.crop ?? row.name ?? "");
+    return {
+      ...row,
+      name: cropName,
+      featureKind: "point",
+      landformType: "crop",
+      sizeTier: String(row.sizeTier ?? "medium"),
+    };
+  }
+  if (domain === "farming-belt" || String(row.id).startsWith("farming-")) {
+    return {
+      ...row,
+      featureKind: String(row.featureKind ?? "area"),
+      landformType: String(row.landformType ?? inferLandformType(row)),
+      sizeTier: String(row.sizeTier ?? "major"),
+    };
+  }
+  return row;
+}
+
+function mergeEcologyCatalog(): CatalogRow[] {
+  const ecology = readCatalog("ecology");
+  const belts = readCatalog("farming-belts");
+  const byId = new Map<string, CatalogRow>();
+  for (const row of ecology) byId.set(row.id, row);
+  for (const row of belts) {
+    const prev = byId.get(row.id);
+    byId.set(row.id, prev ? { ...prev, ...row } : row);
+  }
+  return [...byId.values()].map(enrichAgroCatalogRow);
+}
+
+function buildCropMarkers(catalog: CatalogRow[]): Feature[] {
+  const features: Feature[] = [];
+  const missing: string[] = [];
+
+  for (const row of catalog) {
+    const states = Array.isArray(row.statesCrossed)
+      ? (row.statesCrossed as string[])
+      : [];
+    let lon = Number(row.lon);
+    let lat = Number(row.lat);
+    if (!Number.isFinite(lon) || !Number.isFinite(lat)) {
+      const centroid = centroidFromStateNames(states);
+      if (!centroid) {
+        missing.push(row.id);
+        continue;
+      }
+      [lon, lat] = centroid;
+    }
+    const cropName = String(row.crop ?? row.name ?? row.id);
+    features.push({
+      type: "Feature",
+      properties: {
+        id: row.id,
+        name: cropName,
+        featureKind: "point",
+        landformType: "crop",
+        sizeTier: "medium",
+        isLabelAnchor: true,
+      },
+      geometry: { type: "Point", coordinates: [lon, lat] },
+    });
+  }
+
+  if (missing.length > 0) {
+    console.warn(`⚠ Crops missing centroid: ${missing.join(", ")}`);
+  }
+
+  return features;
 }
 
 function landformAreaFeature(row: CatalogRow): Feature | null {
@@ -1068,7 +1236,8 @@ export async function buildOverlays(): Promise<void> {
   const lakesCatalog = readCatalog("lakes");
   const powerCatalog = readCatalog("power");
   const landformsCatalog = readCatalog("landforms");
-  const ecologyCatalog = readCatalog("ecology");
+  const ecologyCatalog = mergeEcologyCatalog();
+  const cropsCatalog = readCatalog("crops").map(enrichAgroCatalogRow);
   const citiesCatalog = readCatalog("cities");
   const coastCatalog = readCatalog("coast");
   const portsCatalog = readCatalog("ports");
@@ -1130,9 +1299,14 @@ export async function buildOverlays(): Promise<void> {
     projectRoot("public/geo/overlays/landforms.geojson"),
     fc(buildLandforms(landformsCatalog), landformsCatalog, "landforms")
   );
+  const ecologyFeatures = [
+    ...buildLandforms(ecologyCatalog),
+    ...buildCropMarkers(cropsCatalog),
+  ];
+  const ecologyCatalogMerged = [...ecologyCatalog, ...cropsCatalog];
   writeGeoJson(
     projectRoot("public/geo/overlays/ecology.geojson"),
-    fc(buildLandforms(ecologyCatalog), ecologyCatalog, "ecology")
+    fc(ecologyFeatures, ecologyCatalogMerged, "ecology")
   );
   writeGeoJson(
     projectRoot("public/geo/overlays/cities.geojson"),
@@ -1145,7 +1319,7 @@ export async function buildOverlays(): Promise<void> {
   });
 
   console.log(
-    `✓ Overlays: waterways(${waterwayFeatures.features.length}) lakes(${lakeFeatures.features.length}) power(${powerCatalog.length}) landforms(${landformsCatalog.length}) ecology(${ecologyCatalog.length}) cities(${citiesCatalog.length}) resources(${resourceFeatures.length}) security(${securityCatalog.length})`
+    `✓ Overlays: waterways(${waterwayFeatures.features.length}) lakes(${lakeFeatures.features.length}) power(${powerCatalog.length}) landforms(${landformsCatalog.length}) ecology(${ecologyCatalog.length}+${cropsCatalog.length} crops) cities(${citiesCatalog.length}) resources(${resourceFeatures.length}) security(${securityCatalog.length})`
   );
 }
 

@@ -826,6 +826,8 @@ export default function OverlayFeaturePanel({
         <DetailRow label="Usage" value={text(props.usage)} />
         <DetailRow label="Landscape" value={text(props.character)} />
         <DetailRow label="Soil & agriculture" value={text(props.agriculture)} />
+        <DetailRow label="Leading state" value={text(props.leadingState)} />
+        <DetailRow label="Production note" value={text(props.leadingNote)} />
         <DetailRow label="Significance" value={text(props.significance)} />
       </dl>
 

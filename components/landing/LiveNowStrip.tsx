@@ -7,6 +7,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { GENERAL_ELECTION_DATE_MS } from "@/lib/election/schedule";
 import { IconArrow } from "@/components/landing/icons";
 import type { LandingDailyTeaser } from "@/lib/server/loadLandingDailyTeaser";
+import type { LandingFestivalFeature } from "@/lib/server/loadLandingFestivalFeature";
 import { useLearnProgress } from "@/lib/learn/progress";
 import { todayKey } from "@/lib/learn/rng";
 
@@ -35,7 +36,13 @@ function useCountdown(target: Date) {
 
 type TeaserOutcome = "idle" | "correct" | "wrong";
 
-export default function LiveNowStrip({ dailyTeaser }: { dailyTeaser: LandingDailyTeaser | null }) {
+export default function LiveNowStrip({
+  dailyTeaser,
+  festivalFeature,
+}: {
+  dailyTeaser: LandingDailyTeaser | null;
+  festivalFeature: LandingFestivalFeature | null;
+}) {
   const { days, hours, mins, secs } = useCountdown(ELECTION_DATE);
   const progress = useLearnProgress();
   const reduce = useReducedMotion();
@@ -109,34 +116,43 @@ export default function LiveNowStrip({ dailyTeaser }: { dailyTeaser: LandingDail
       <div className="landing-light-card rounded-2xl p-6 flex flex-col justify-between group bg-surface-card">
         <div className="flex items-center justify-between">
           <span className="text-label-caps text-amber-800 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200 font-bold">
-            Happening this month
+            {festivalFeature?.badge ?? "Heritage"}
           </span>
           <span className="text-label-md text-text-muted">Heritage</span>
         </div>
         <div className="my-3 flex items-center gap-4">
           <div className="w-20 h-20 rounded-xl overflow-hidden border border-border-subtle shrink-0 bg-amber-50">
-            <Image
-              src="/images/osun-osogbo-grove.svg"
-              alt="Illustration of worshippers in ceremonial white and indigo cloth at the riverbank of the Osun-Osogbo Sacred Grove, with brass offerings and ancient rainforest canopy behind them."
-              width={80}
-              height={80}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
+            {festivalFeature?.image ? (
+              <Image
+                src={festivalFeature.image}
+                alt={festivalFeature.imageAlt ?? festivalFeature.name}
+                width={80}
+                height={80}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            ) : (
+              <span
+                className="flex h-full w-full items-center justify-center font-landing-display text-2xl font-bold text-amber-700"
+                aria-hidden
+              >
+                {festivalFeature?.name.slice(0, 1) ?? "▲"}
+              </span>
+            )}
           </div>
           <div>
             <h2 className="text-headline-sm text-text-primary leading-tight font-bold">
-              Osun-Osogbo Sacred Grove
+              {festivalFeature?.name ?? "Nigerian festivals"}
             </h2>
             <p className="text-body-sm text-text-secondary mt-1">
-              UNESCO World Heritage Site · Osun State
+              {festivalFeature?.meta ?? "Festival calendar"}
             </p>
             <p className="text-[12px] font-label-caps text-amber-700 mt-1 font-bold">
-              Annual festival season
+              {festivalFeature?.category ?? "Heritage"}
             </p>
           </div>
         </div>
         <Link
-          href="/travel"
+          href={festivalFeature?.href ?? "/travel#festivals"}
           className="inline-flex items-center justify-between w-full pt-2 text-label-md text-primary hover:text-primary-container font-semibold transition-colors"
         >
           <span>Discover festival guide</span>
@@ -268,7 +284,9 @@ export default function LiveNowStrip({ dailyTeaser }: { dailyTeaser: LandingDail
               ? dailyDone !== undefined
                 ? `You finished today's run (${dailyDone}%)`
                 : "Atlas-generated · refreshes at midnight"
-              : "6 more in today's set on Learn"}
+              : dailyTeaser
+                ? `${dailyTeaser.totalQuestions - dailyTeaser.questionIndex} more in today's set on Learn`
+                : "More in today's set on Learn"}
           </span>
           <span aria-hidden>🏆</span>
         </div>

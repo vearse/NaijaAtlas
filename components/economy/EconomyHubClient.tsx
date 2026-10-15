@@ -9,6 +9,7 @@ import MapWorkspaceCard from "@/components/hub/MapWorkspaceCard";
 import SourceNote from "@/components/hub/SourceNote";
 import EconomySectorBrowse from "@/components/economy/EconomySectorBrowse";
 import AgricultureBeltSection from "@/components/economy/AgricultureBeltSection";
+import AgricultureCropsSection from "@/components/economy/AgricultureCropsSection";
 import PortsDirectory from "@/components/economy/PortsDirectory";
 import StatesToWatch from "@/components/economy/StatesToWatch";
 import EnergyGrid from "@/components/economy/EnergyGrid";
@@ -61,9 +62,18 @@ export default function EconomyHubClient(
           id="agriculture"
           eyebrow="Agriculture belts"
           title="From savannah grain to forest tree crops"
-          lede="Pick a belt to see its states, what it grows, and where it sits on the map."
+          lede="Pick a farming belt or a major crop to see where it concentrates, then follow it on the map."
         >
-          <AgricultureBeltSection belts={data.belts} slugByStateName={slugByStateName} />
+          <div className="space-y-8">
+            <AgricultureBeltSection
+              belts={data.belts}
+              slugByStateName={slugByStateName}
+            />
+            <AgricultureCropsSection
+              crops={data.crops}
+              slugByStateName={slugByStateName}
+            />
+          </div>
         </HubSection>
 
         <HubSection

@@ -330,6 +330,8 @@ function createReliefOverlayEntry(
             "landform-icon-forest",
             "reserve",
             "landform-icon-reserve",
+            "crop",
+            "landform-icon-grass",
             "hill",
             "landform-icon-hill",
             "mountain-range",

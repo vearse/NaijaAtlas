@@ -6,6 +6,8 @@ import citiesCatalog from "@/data/overlays/catalog/cities.json";
 import tourCatalog from "@/data/overlays/catalog/tour.json";
 import landformsCatalog from "@/data/overlays/catalog/landforms.json";
 import ecologyCatalog from "@/data/overlays/catalog/ecology.json";
+import farmingBeltsCatalog from "@/data/overlays/catalog/farming-belts.json";
+import cropsCatalog from "@/data/overlays/catalog/crops.json";
 import resourcesCatalog from "@/data/overlays/catalog/resources.json";
 import lakesCatalog from "@/data/overlays/catalog/lakes.json";
 import coastCatalog from "@/data/overlays/catalog/coast.json";
@@ -60,6 +62,8 @@ interface CatalogRow {
   character?: string;
   agriculture?: string;
   crops?: string[] | string;
+  crop?: string;
+  domain?: string;
   planting?: string[] | string;
   wikiUrl?: string;
   lon?: number;
@@ -258,9 +262,20 @@ export function getStateOverlayItems(
     )
     .filter((x): x is StateOverlayItem => x != null);
 
-  const agriculture = asRows(ecologyCatalog)
+  const agriculture = [
+    ...asRows(ecologyCatalog),
+    ...asRows(farmingBeltsCatalog),
+    ...asRows(cropsCatalog).map((row) => ({
+      ...row,
+      name:
+        typeof row.crop === "string" && row.crop.trim()
+          ? row.crop
+          : row.name,
+    })),
+  ]
     .filter(inState)
     .filter((row) => {
+      if (row.domain === "crop" || row.domain === "farming-belt") return true;
       if (hasAgriFields(row)) return true;
       return matchesLensByType(lensInputFromRow(row, "ecology"), "invest");
     })

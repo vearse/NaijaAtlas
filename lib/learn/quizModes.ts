@@ -181,12 +181,12 @@ export const QUIZ_MODES: QuizMode[] = [
   {
     id: "daily",
     title: "Daily challenge",
-    tagline: "Same 7 for everyone",
-    description: "Seven fresh questions every day. Keep your daily streak alive.",
+    tagline: "Same 10 for everyone",
+    description: "Ten fresh questions every day. Keep your daily streak alive.",
     emoji: "📅",
     category: "arcade",
     filter: {},
-    defaultLength: 7,
+    defaultLength: 10,
     daily: true,
   },
 ];

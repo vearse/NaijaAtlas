@@ -44,7 +44,7 @@ function formatInecUpdated(iso: string | null | undefined): string {
 }
 
 export default function CivicHubClient(data: CivicHubData) {
-  const { totals, election, states, lgas, security } = data;
+  const { totals, election, states, lgas, security, securityServices } = data;
   const inecUpdatedLabel = formatInecUpdated(election.verifiedDate);
 
   const [finderResult, setFinderResult] = useState<FindPollingUnitResult | null>(
@@ -291,6 +291,11 @@ export default function CivicHubClient(data: CivicHubData) {
           />
         </HubSection>
 
+        <HubSection id="security">
+          <SecurityLookup security={security} services={securityServices} />
+        </HubSection>
+
+
         <HubSection
           id="maps"
           eyebrow="Geopolitical intelligence"
@@ -310,10 +315,6 @@ export default function CivicHubClient(data: CivicHubData) {
           <p className="mt-4 text-body-sm text-slate-400">
             Basemap: Minimal or Street only on map pages.
           </p>
-        </HubSection>
-
-        <HubSection id="security">
-          <SecurityLookup security={security} />
         </HubSection>
 
         <HubSection

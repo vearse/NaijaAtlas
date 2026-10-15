@@ -52,15 +52,52 @@ export type HubPort = {
   highlights: string[];
 };
 
+export type HubSource = {
+  label: string;
+  url: string;
+};
+
 export type HubBelt = {
   id: string;
   name: string;
+  color: string;
+  type: string;
+  summary: string;
+  description: string;
+  rainfall: string;
+  crops: string[];
+  /** All states the belt touches (fully + partly). */
   states: string[];
   stateIds: string[];
-  crops: string[];
+  /** States largely inside the belt. */
+  statesFully: string[];
+  stateIdsFully: string[];
+  /** States only partly inside the belt. */
+  statesPartly: string[];
+  stateIdsPartly: string[];
   agriculture: string;
   economy: string;
+  /** True while the belt boundaries are drawn approximately. */
+  approximate: boolean;
+  sources: HubSource[];
+  lastVerified: string;
+};
+
+export type HubCrop = {
+  id: string;
+  crop: string;
+  color: string;
   summary: string;
+  states: string[];
+  stateIds: string[];
+  statesFully: string[];
+  stateIdsFully: string[];
+  statesPartly: string[];
+  stateIdsPartly: string[];
+  leadingState: string | null;
+  leadingNote: string;
+  sources: HubSource[];
+  lastVerified: string;
 };
 
 export type EconomyHubData = {
@@ -69,6 +106,7 @@ export type EconomyHubData = {
   mineralTypesShown: number;
   ports: HubPort[];
   belts: HubBelt[];
+  crops: HubCrop[];
   /** Per-state commercial signal, derived from the catalogues. */
   watch: {
     stateId: string;
@@ -104,6 +142,17 @@ export function loadEconomyHubData(): EconomyHubData {
     typeof v === "string" ? v : fallback;
   const strList = (v: unknown): string[] =>
     Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : [];
+  const bool = (v: unknown, fallback = false): boolean =>
+    typeof v === "boolean" ? v : fallback;
+  const sources = (v: unknown): HubSource[] =>
+    Array.isArray(v)
+      ? v
+          .map((s) => {
+            const row = (s ?? {}) as Record<string, unknown>;
+            return { label: str(row.label), url: str(row.url) };
+          })
+          .filter((s) => s.url)
+      : [];
 
   const resources: HubResource[] = readCatalog("resources").map((r) => {
     const states = strList(r.statesCrossed);
@@ -169,21 +218,56 @@ export function loadEconomyHubData(): EconomyHubData {
     }),
   ];
 
-  const belts: HubBelt[] = readCatalog("ecology")
+  const belts: HubBelt[] = readCatalog("farming-belts")
     .filter((e) => strList(e.crops).length > 0)
     .map((e) => {
       const states = strList(e.statesCrossed);
+      const statesFully = strList(e.statesFully);
+      const statesPartly = strList(e.statesPartly);
       return {
         id: str(e.id),
         name: str(e.name),
+        color: str(e.color, "#d97706"),
+        type: str(e.type),
+        summary: str(e.summary),
+        description: str(e.description),
+        rainfall: str(e.rainfall),
+        crops: strList(e.crops),
         states,
         stateIds: toIds(states),
-        crops: strList(e.crops),
+        statesFully,
+        stateIdsFully: toIds(statesFully),
+        statesPartly,
+        stateIdsPartly: toIds(statesPartly),
         agriculture: str(e.agriculture),
         economy: str(e.economy),
-        summary: str(e.summary),
+        approximate: bool(e.approximate),
+        sources: sources(e.sources),
+        lastVerified: str(e.lastVerified) || "2026-10-15",
       };
     });
+
+  const crops: HubCrop[] = readCatalog("crops").map((c) => {
+    const states = strList(c.statesCrossed);
+    const statesFully = strList(c.statesFully);
+    const statesPartly = strList(c.statesPartly);
+    return {
+      id: str(c.id),
+      crop: str(c.crop),
+      color: str(c.color, "#d97706"),
+      summary: str(c.summary),
+      states,
+      stateIds: toIds(states),
+      statesFully,
+      stateIdsFully: toIds(statesFully),
+      statesPartly,
+      stateIdsPartly: toIds(statesPartly),
+      leadingState: str(c.leadingState) || null,
+      leadingNote: str(c.leadingNote),
+      sources: sources(c.sources),
+      lastVerified: str(c.lastVerified) || "2026-10-15",
+    };
+  });
 
   // Commercial signal per state: catalogue counts plus the IGR ranking.
   const bundle = loadCompareBundle(process.cwd());
@@ -219,6 +303,7 @@ export function loadEconomyHubData(): EconomyHubData {
     mineralTypesShown,
     ports,
     belts,
+    crops,
     watch,
     stateCount: states.length,
     sources: {
