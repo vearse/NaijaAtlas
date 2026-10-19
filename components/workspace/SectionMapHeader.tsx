@@ -12,12 +12,15 @@ type Props = {
   statusSlot?: ReactNode;
   /** Hide the “Full atlas” CTA when you are already on `/explore`. */
   hideFullAtlasLink?: boolean;
+  /** Top-right actions (e.g. screenshot & share). */
+  headerActions?: ReactNode;
 };
 
 export default function SectionMapHeader({
   preset,
   statusSlot,
   hideFullAtlasLink = false,
+  headerActions,
 }: Props) {
   return (
     <header className="shrink-0 z-20 bg-white border-b border-slate-200">
@@ -49,14 +52,17 @@ export default function SectionMapHeader({
             );
           })}
         </nav>
-        {!hideFullAtlasLink && (
-          <Link
-            href="/explore"
-            className="inline-flex h-9 items-center px-4 rounded-lg bg-[#043828] text-white text-label-md font-semibold whitespace-nowrap"
-          >
-            Full atlas
-          </Link>
-        )}
+        <div className="flex items-center gap-2 shrink-0">
+          {headerActions}
+          {!hideFullAtlasLink && (
+            <Link
+              href="/explore"
+              className="inline-flex h-9 items-center px-4 rounded-lg bg-[#043828] text-white text-label-md font-semibold whitespace-nowrap"
+            >
+              Full atlas
+            </Link>
+          )}
+        </div>
       </div>
 
       <div className="border-t border-slate-100 bg-slate-50/70">

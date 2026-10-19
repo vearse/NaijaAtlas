@@ -197,7 +197,10 @@ export default function ElectionPanel({
   }
 
   return (
-    <aside className="w-full lg:w-[var(--panel-w,400px)] xl:w-[var(--panel-wx,420px)] shrink-0 border-l border-border-subtle/80 bg-surface-card flex flex-col min-h-0 hidden lg:flex">
+    <aside
+      data-capture-root="panel"
+      className="w-full lg:w-[var(--panel-w,400px)] xl:w-[var(--panel-wx,420px)] shrink-0 min-h-0 max-h-full border-l border-border-subtle/80 bg-surface-card flex flex-col h-full hidden lg:flex"
+    >
       {inner}
     </aside>
   );

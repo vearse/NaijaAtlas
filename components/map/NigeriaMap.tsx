@@ -1065,6 +1065,7 @@ export default function NigeriaMap({
       minZoom: MAP_MIN_ZOOM,
       maxZoom: MAP_MAX_ZOOM,
       attributionControl: false,
+      preserveDrawingBuffer: true,
     });
 
     map.addControl(

@@ -244,7 +244,7 @@ export default function LocationPanel({
             : undefined;
 
   const inner = (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col min-h-0 flex-1 overflow-hidden">
       <div className={`${explorerPanelHeaderClass} lg:block hidden`}>
         <p className={`${explorerSectionLabelClass} mb-2`}>
           {showDirectionsPanel
@@ -269,7 +269,7 @@ export default function LocationPanel({
         </p>
         {!showOverlay && !showDirectionsPanel && <Breadcrumbs states={states} lgas={lgas} />}
       </div>
-      <div className="flex-1 overflow-y-auto p-4">
+      <div className="flex-1 min-h-0 overflow-y-auto p-4">
         {isMobile && hasMapSelection && !showOverlay && !showDirectionsPanel && (
           <div className="mb-3 lg:hidden">
             <Breadcrumbs states={states} lgas={lgas} />
@@ -391,10 +391,21 @@ export default function LocationPanel({
     </div>
   );
 
-  const hasSheetContent = hasMapSelection || !!activeRegionId || showOverlay || showOverlayGuide || showDirectionsPanel;
+  const hasSheetContent =
+    hasMapSelection ||
+    !!activeRegionId ||
+    showOverlay ||
+    showOverlayGuide ||
+    showDirectionsPanel;
+  const hasPanelBody =
+    hasSheetContent ||
+    showOverview ||
+    showRegion ||
+    showMetroMap ||
+    showStateCompare;
 
   if (isMobile) {
-    if (mobileSheet === "hidden" && hasSheetContent) {
+    if (mobileSheet === "hidden" && hasPanelBody) {
       return (
         <button
           type="button"
@@ -407,13 +418,13 @@ export default function LocationPanel({
       );
     }
 
-    if (mobileSheet === "hidden" && !hasSheetContent) return null;
+    if (mobileSheet === "hidden" && !hasPanelBody) return null;
 
     return (
       <MobileBottomSheet
         title={sheetTitle}
         subtitle={sheetSubtitle}
-        hasContent={hasSheetContent}
+        hasContent={hasPanelBody}
       >
         {inner}
       </MobileBottomSheet>
@@ -421,7 +432,10 @@ export default function LocationPanel({
   }
 
   return (
-    <aside className="w-full lg:w-[var(--panel-w,400px)] xl:w-[var(--panel-wx,440px)] shrink-0 bg-surface-card border-l border-border-subtle/80 flex flex-col h-full shadow-xl lg:shadow-none">
+    <aside
+      data-capture-root="panel"
+      className="w-full lg:w-[var(--panel-w,400px)] xl:w-[var(--panel-wx,440px)] shrink-0 min-h-0 self-stretch overflow-hidden bg-surface-card border-l border-border-subtle/80 flex flex-col shadow-xl lg:shadow-none"
+    >
       {inner}
       {!isMobile && showStateCompare && (
         <DesktopCompareModal

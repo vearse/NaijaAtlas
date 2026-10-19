@@ -35,6 +35,7 @@ export default function MobileBottomSheet({
       )}
 
       <div
+        data-capture-root="panel"
         className={`fixed inset-x-0 bottom-0 z-40 lg:hidden flex flex-col bg-surface-card rounded-t-2xl shadow-[0_-4px_24px_rgba(0,0,0,0.12)] border-t border-border-subtle/80 transition-[transform,max-height] duration-300 ease-out ${
           mobileSheet === "hidden"
             ? "translate-y-full pointer-events-none"

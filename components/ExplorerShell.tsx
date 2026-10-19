@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect, useLayoutEffect } from "react";
+import { useState, useMemo, useEffect, useLayoutEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import SearchSpotlight from "@/components/search/SearchSpotlight";
 import LensSelect from "@/components/map/LensSelect";
@@ -54,6 +54,7 @@ import RankingMapLegend from "@/components/ranking/RankingMapLegend";
 import MapCornerSlot from "@/components/map/MapCornerSlot";
 import ToastStack from "@/components/ui/ToastStack";
 import SectionMapHeader from "@/components/workspace/SectionMapHeader";
+import MapCaptureShare from "@/components/map/MapCaptureShare";
 import RankingsWorkspaceChrome from "@/components/workspace/RankingsWorkspaceChrome";
 import RankingsMapCallouts from "@/components/workspace/RankingsMapCallouts";
 import WorkspaceMapFooter from "@/components/workspace/WorkspaceMapFooter";
@@ -114,15 +115,13 @@ export default function ExplorerShell({
   pollingCounts,
   presidentialResultsByYear = {},
 }: ExplorerShellProps) {
+  const mapFrameRef = useRef<HTMLDivElement>(null);
+  const workspaceCaptureRef = useRef<HTMLElement>(null);
   const isMobile = useIsMobile();
   const mapType = useMapStore((s) => s.mapType);
   const mapCanvasView = useMapStore((s) => s.mapCanvasView);
   const electionResultsYear = useMapStore((s) => s.electionResultsYear);
   const electionResultsOffice = useMapStore((s) => s.electionResultsOffice);
-  const setElectionResultsYear = useMapStore((s) => s.setElectionResultsYear);
-  const setElectionResultsOffice = useMapStore(
-    (s) => s.setElectionResultsOffice
-  );
 
   const resultsMapActive = isElectionResultsMapActive({
     mapType,
@@ -146,12 +145,23 @@ export default function ExplorerShell({
   // The 2027 candidates / districts map is the default; past results are opt-in
   // (UrlSync's `resultYear=` runs after this and can still switch modes).
   useLayoutEffect(() => {
-    if (sectionWorkspace === "elections") {
-      setElectionResultsYear(null);
-      setElectionResultsOffice(null);
-    }
-  }, [sectionWorkspace, setElectionResultsYear, setElectionResultsOffice]);
+    if (sectionWorkspace !== "elections") return;
+    useMapStore.getState().setElectionResultsYear(null);
+  }, [sectionWorkspace]);
   const preset = sectionWorkspace ? SECTION_PRESETS[sectionWorkspace] : null;
+  const capturePresetTitle = preset?.title ?? FULL_ATLAS_CHROME.title;
+  const capturePresetLabel = preset?.subtitle ?? FULL_ATLAS_CHROME.subtitle;
+  const captureShare = (
+    <MapCaptureShare
+      presetTitle={capturePresetTitle}
+      presetLabel={capturePresetLabel}
+      mapFrameRef={mapFrameRef}
+      workspaceRef={workspaceCaptureRef}
+      states={states}
+      regions={regions}
+      lgas={lgas}
+    />
+  );
 
   // Runs before UrlSync's effect, so `layers=` / `focus=` in the URL still win.
   useLayoutEffect(() => {
@@ -260,7 +270,9 @@ export default function ExplorerShell({
       }`}
     >
       <UrlSync defaultMapType={defaultMapType} />
-      {preset && <SectionMapHeader preset={preset} />}
+      {preset && (
+        <SectionMapHeader preset={preset} headerActions={captureShare} />
+      )}
       {!preset && (
       <>
       <SectionMapHeader
@@ -273,6 +285,7 @@ export default function ExplorerShell({
               : FULL_ATLAS_CHROME.subtitle,
         }}
         hideFullAtlasLink
+        headerActions={captureShare}
         statusSlot={<MapHints variant="status" />}
       />
       <header className="shrink-0 z-20 border-b border-border-subtle/80 bg-surface-card/90 backdrop-blur-xl shadow-sm relative">
@@ -439,18 +452,22 @@ export default function ExplorerShell({
       )}
 
       <main
+        ref={workspaceCaptureRef}
+        data-capture-root="workspace"
         className={`flex flex-col lg:flex-row min-h-0 mx-auto w-full ${
           preset
             ? "flex-none max-w-[1680px] h-[calc(100dvh-6.5rem)] overflow-hidden lg:gap-5 lg:p-5 [--panel-w:min(560px,42vw)] [--panel-wx:620px]"
-            : "flex-1 max-w-[1600px]"
+            : "flex-1 min-h-0 basis-0 max-w-[1600px] overflow-hidden items-stretch [--panel-w:min(400px,36vw)] [--panel-wx:440px]"
         }`}
       >
         <div
-          className={`flex-1 relative min-h-0 flex flex-col ${
+          className={`flex-1 min-w-0 relative min-h-0 flex flex-col ${
             preset ? "p-2 lg:p-0" : "p-2 lg:p-5"
           }`}
         >
           <div
+            ref={mapFrameRef}
+            data-capture-root="map"
             className={`relative flex-1 min-h-0 ${
               preset
                 ? "rounded-2xl overflow-hidden border border-slate-200 bg-[#dbe5ee]"

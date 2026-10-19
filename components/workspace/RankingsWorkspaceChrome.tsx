@@ -59,7 +59,10 @@ export default function RankingsWorkspaceChrome({
     setCompareIds((prev) => prev.filter((x) => x !== id));
 
   return (
-    <div className="w-full lg:w-[min(520px,40vw)] xl:w-[560px] shrink-0 border-l border-border-subtle bg-surface-card flex flex-col min-h-0">
+    <div
+      data-capture-root="panel"
+      className="w-full lg:w-[min(520px,40vw)] xl:w-[560px] shrink-0 border-l border-border-subtle bg-surface-card flex flex-col min-h-0"
+    >
       <div className="shrink-0 overflow-y-auto border-b border-slate-100 p-5 space-y-5 max-h-[45vh] lg:max-h-[38vh]">
         <div className="flex items-start justify-between gap-2">
           <div>

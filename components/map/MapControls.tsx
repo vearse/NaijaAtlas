@@ -15,7 +15,10 @@ export default function MapControls() {
   };
 
   return (
-    <div className="absolute bottom-4 left-4 z-10 flex flex-col gap-2">
+    <div
+      data-capture-exclude
+      className="absolute bottom-4 left-4 z-10 flex flex-col gap-2"
+    >
       <button
         type="button"
         onClick={handleReset}
