@@ -134,6 +134,7 @@ import {
 import type { OverlayFocusSpec } from "@/lib/map/overlayFocus";
 import type { RankingCategoryId } from "@/lib/ranking/types";
 import { DEFAULT_RANKING } from "@/lib/ranking/defaults";
+import { GOT_OFF, getGotRealm } from "@/lib/map/gotRealms";
 
 const DEFAULT_ACTIVE_OVERLAYS = new Set<OverlayLayerId>(["cities"]);
 
@@ -216,6 +217,9 @@ export interface MapSelectionState {
   zoomIn: () => void;
   zoomOut: () => void;
   setActiveRegion: (id: string | null) => void;
+  /** Temporary “GOT” interpretive lens (see `gotRealms`). */
+  gotRealmId: string | null;
+  setGotRealmId: (id: string | null) => void;
   openMobileSheet: () => void;
   peekMobileSheet: () => void;
   closeMobileSheet: () => void;
@@ -316,6 +320,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   draggedStateId: null,
   dragModeStateId: null,
   activeRegionId: null,
+  gotRealmId: null,
   panelOpen: false,
   mobileSheet: "hidden",
   resetCounter: 0,
@@ -1116,9 +1121,21 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
     });
   },
 
+  setGotRealmId: (id) => {
+    if (!id || id === GOT_OFF) {
+      set({ gotRealmId: null });
+      return;
+    }
+    const realm = getGotRealm(id);
+    if (!realm) return;
+    set({ gotRealmId: id, activeRegionId: null });
+    get().selectStates(realm.stateIds);
+  },
+
   setActiveRegion: (id) => {
     set({
       activeRegionId: id,
+      gotRealmId: id ? null : get().gotRealmId,
       selectedStateIds: new Set(),
       selectedStateOrder: [],
       lgaVisibleStateIds: new Set(),
@@ -1145,6 +1162,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       draggedStateId: null,
       dragModeStateId: null,
       activeRegionId: null,
+      gotRealmId: null,
       panelOpen: false,
       mobileSheet: "hidden",
       labeledLgaOrder: [],

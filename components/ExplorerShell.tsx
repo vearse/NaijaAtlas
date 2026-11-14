@@ -7,6 +7,7 @@ import LensSelect from "@/components/map/LensSelect";
 import MapViewSelect from "@/components/map/MapViewSelect";
 import MapZonesPanel from "@/components/map/MapZonesPanel";
 import RegionSelect from "@/components/map/RegionSelect";
+import GotSelect from "@/components/map/GotSelect";
 import SelectedStatesBar from "@/components/map/SelectedStatesBar";
 import MapControls from "@/components/map/MapControls";
 import MapHints from "@/components/map/MapHints";
@@ -313,6 +314,7 @@ export default function ExplorerShell({
                 )}
               </div>
               <div className="flex items-center gap-2 flex-wrap justify-end">
+                <GotSelect />
                 {isElectionMode &&
                   resultYears.length > 0 &&
                   !speculationMode && (

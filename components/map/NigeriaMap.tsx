@@ -98,6 +98,7 @@ import { buildElectionResultsMapStyle } from "@/lib/election/electionResultsMapS
 import { isElectionResultsMapActive } from "@/lib/election/electionResultsMapActive";
 import { modernStateIdsForElectionClick } from "@/lib/election/historicalStates";
 import { shouldRenderLgaLayers } from "@/lib/election/electionMapLga";
+import { applyGotRealmPaint } from "@/lib/map/gotRealms";
 import { useSpeculationStore } from "@/lib/store/speculationStore";
 import { aggregateNational } from "@/lib/speculation/calc";
 import { buildSpeculationMapStyle } from "@/lib/speculation/mapStyle";
@@ -214,6 +215,7 @@ export default function NigeriaMap({
   const draggedStateId = useMapStore((s) => s.draggedStateId);
   const dragModeStateId = useMapStore((s) => s.dragModeStateId);
   const activeRegionId = useMapStore((s) => s.activeRegionId);
+  const gotRealmId = useMapStore((s) => s.gotRealmId);
   const resetCounter = useMapStore((s) => s.resetCounter);
   const activeOverlays = useMapStore((s) => s.activeOverlays);
   const revealedOptInGroups = useMapStore((s) => s.revealedOptInGroups);
@@ -453,6 +455,19 @@ export default function NigeriaMap({
     []
   );
 
+  const applyGotPaint = useCallback((map: maplibregl.Map) => {
+    const realmId = useMapStore.getState().gotRealmId;
+    if (!realmId) return false;
+    if (
+      useSpeculationStore.getState().active &&
+      useSpeculationStore.getState().parties.length === REQUIRED_PARTIES
+    ) {
+      return false;
+    }
+    if (isElectionResultsMapActive(useMapStore.getState())) return false;
+    return applyGotRealmPaint(map, realmId);
+  }, []);
+
   const applyRankingPaint = useCallback((map: maplibregl.Map) => {
     const store = useMapStore.getState();
     if (store.mapType !== "ranking") {
@@ -568,6 +583,7 @@ export default function NigeriaMap({
       if (
         !applySpeculationPaint(map) &&
         !applyElectionResultsPaint(map) &&
+        !applyGotPaint(map) &&
         !applyRankingPaint(map)
       ) {
         applyStateSelectionPaint(
@@ -584,6 +600,7 @@ export default function NigeriaMap({
       applyRankingPaint,
       applyElectionResultsPaint,
       applySpeculationPaint,
+      applyGotPaint,
     ]
   );
 
@@ -967,6 +984,13 @@ export default function NigeriaMap({
           draggedBaseGeometryRef.current = cloneGeometry(newGeometry);
           dragSessionRef.current.startLngLat = e.lngLat;
         }
+        return;
+      }
+
+      if (useMapStore.getState().gotRealmId) {
+        map.getCanvas().style.cursor = "";
+        hoverRef.current?.clear();
+        setTooltip(null);
         return;
       }
 
@@ -1542,7 +1566,7 @@ export default function NigeriaMap({
       if (useMapStore.getState().mapType === "osm") {
         map.setLayoutProperty("states-labels", "visibility", "none");
       } else {
-      const hideLabels = effectiveLga.size > 0;
+      const hideLabels = effectiveLga.size > 0 || Boolean(gotRealmId);
       if (hideLabels) {
         map.setLayoutProperty("states-labels", "visibility", "none");
       } else if (activeRegionId) {
@@ -1593,6 +1617,8 @@ export default function NigeriaMap({
         // speculation choropleth owns state fill
       } else if (applyElectionResultsPaint(map)) {
         // results choropleth owns state fill
+      } else if (applyGotPaint(map)) {
+        // temporary GOT lens
       } else if (useMapStore.getState().mapType === "ranking") {
         applyRankingPaint(map);
       } else if (
@@ -1630,7 +1656,7 @@ export default function NigeriaMap({
     // Map-type tuning must be the final writer so OSM stays uncluttered
     // no matter which selection/mask effect ran above.
     applyAdminLayersMapTypeTuning(map, useMapStore.getState().mapType);
-  }, [selectedKey, featureMapViewsKey, lgaVisibleKey, metroMapViewsKey, lgaReadyKey, activeRegionId, draggedStateId, states, regions, setFeatureState, mapReady, selectedStateIds, lgaVisibleStateIds, metroMapViews, readyLgaStateIds, applyRankingPaint, applyElectionResultsPaint, applySpeculationPaint, featureMapViews.length, electionResultsYear, presidentialResults]);
+  }, [selectedKey, featureMapViewsKey, lgaVisibleKey, metroMapViewsKey, lgaReadyKey, activeRegionId, gotRealmId, draggedStateId, states, regions, setFeatureState, mapReady, selectedStateIds, lgaVisibleStateIds, metroMapViews, readyLgaStateIds, applyRankingPaint, applyElectionResultsPaint, applySpeculationPaint, applyGotPaint, featureMapViews.length, electionResultsYear, presidentialResults]);
 
   const rankingPaintKey = `${rankingCategory}|${rankingFieldKey}|${rankingPeriod}|${rankingHighlightedStateId ?? ""}`;
 
