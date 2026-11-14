@@ -81,6 +81,32 @@ export interface PresidentialStateResult {
   validVotes: number;
 }
 
+export interface RegisteredVotersBundle {
+  election: {
+    year: number;
+    date?: string;
+    source: string;
+    sourceUrl: string;
+    note?: string;
+    totalRegisteredVoters: number;
+  };
+  states: Record<string, number>;
+}
+
+export interface ParliamentaryParty {
+  abbreviation: string;
+  name: string;
+}
+
+export interface SpeculationData {
+  /** Most recent presidential result used for baselines and turnout history. */
+  latestResults: PresidentialResultsBundle;
+  /** All presidential results, used only for two-election turnout defaults. */
+  resultsByYear: Record<number, PresidentialResultsBundle>;
+  registeredVotersByYear: Record<number, RegisteredVotersBundle>;
+  partyDirectory: ParliamentaryParty[];
+}
+
 export interface PresidentialResultsBundle {
   election: {
     year: number;

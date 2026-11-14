@@ -42,13 +42,16 @@ import type {
   PoliticsBundle,
   PollingUnitCountsBundle,
   PresidentialResultsBundle,
+  SpeculationData,
 } from "@/types/politics";
 import { buildCapitalLgaIdMap } from "@/lib/map/capitalLga";
 import ElectionPanel from "@/components/election/ElectionPanel";
 import ElectionMapLegend from "@/components/election/ElectionMapLegend";
 import ElectionResultsMapControls from "@/components/election/ElectionResultsMapControls";
 import ElectionResultsPartyLegend from "@/components/election/ElectionResultsPartyLegend";
+import SpeculationMapLegend from "@/components/election/SpeculationMapLegend";
 import { isElectionResultsMapActive } from "@/lib/election/electionResultsMapActive";
+import { useSpeculationStore } from "@/lib/store/speculationStore";
 import RankingPanel from "@/components/ranking/RankingPanel";
 import RankingMapLegend from "@/components/ranking/RankingMapLegend";
 import MapCornerSlot from "@/components/map/MapCornerSlot";
@@ -95,6 +98,7 @@ interface ExplorerShellProps {
   politics: PoliticsBundle;
   pollingCounts: PollingUnitCountsBundle;
   presidentialResultsByYear?: Record<number, PresidentialResultsBundle>;
+  speculation?: SpeculationData;
 }
 
 export default function ExplorerShell({
@@ -114,6 +118,7 @@ export default function ExplorerShell({
   politics,
   pollingCounts,
   presidentialResultsByYear = {},
+  speculation,
 }: ExplorerShellProps) {
   const mapFrameRef = useRef<HTMLDivElement>(null);
   const workspaceCaptureRef = useRef<HTMLElement>(null);
@@ -122,6 +127,9 @@ export default function ExplorerShell({
   const mapCanvasView = useMapStore((s) => s.mapCanvasView);
   const electionResultsYear = useMapStore((s) => s.electionResultsYear);
   const electionResultsOffice = useMapStore((s) => s.electionResultsOffice);
+  const speculationActive = useSpeculationStore((s) => s.active);
+  const speculationMode = Boolean(speculation) && speculationActive;
+  const effectiveCanvasView = speculationMode ? "map" : mapCanvasView;
 
   const resultsMapActive = isElectionResultsMapActive({
     mapType,
@@ -300,12 +308,16 @@ export default function ExplorerShell({
                     <CompareMenu />
                   </>
                 )}
-                {(isRankingMode || resultsMapActive) && <MapViewSelect />}
+                {(isRankingMode || (resultsMapActive && !speculationMode)) && (
+                  <MapViewSelect />
+                )}
               </div>
               <div className="flex items-center gap-2 flex-wrap justify-end">
-                {isElectionMode && resultYears.length > 0 && (
-                  <ElectionResultsMapControls availableYears={resultYears} />
-                )}
+                {isElectionMode &&
+                  resultYears.length > 0 &&
+                  !speculationMode && (
+                    <ElectionResultsMapControls availableYears={resultYears} />
+                  )}
                 <MapTypeToggle />
               </div>
             </div>
@@ -476,9 +488,11 @@ export default function ExplorerShell({
           >
             <div
               className={`h-full w-full ${
-                mapCanvasView === "zones" ? "invisible pointer-events-none" : ""
+                effectiveCanvasView === "zones"
+                  ? "invisible pointer-events-none"
+                  : ""
               }`}
-              aria-hidden={mapCanvasView === "zones"}
+              aria-hidden={effectiveCanvasView === "zones"}
             >
               <NigeriaMap
                 states={states}
@@ -488,9 +502,10 @@ export default function ExplorerShell({
                 politicsLookups={politics.lookups}
                 compareBundle={compareBundle}
                 presidentialResults={presidentialResults}
+                speculation={speculation}
               />
             </div>
-            {mapCanvasView === "zones" && isElectionMode && resultsMapActive && (
+            {effectiveCanvasView === "zones" && isElectionMode && resultsMapActive && (
               <MapZonesPanel
                 mode="elections"
                 regions={regions}
@@ -499,7 +514,7 @@ export default function ExplorerShell({
                 presidentialResults={presidentialResults}
               />
             )}
-            {mapCanvasView === "zones" && isRankingMode && (
+            {effectiveCanvasView === "zones" && isRankingMode && (
               <MapZonesPanel
                 mode="rankings"
                 regions={regions}
@@ -509,12 +524,16 @@ export default function ExplorerShell({
             )}
             {(preset?.lgaAndCompare || isSpecialMapMode) && (
               <div className="absolute top-3 left-3 z-10 flex flex-wrap items-center gap-2">
-                {(isRankingMode || resultsMapActive) && <MapViewSelect />}
-                {isElectionMode && resultYears.length > 0 && (
-                  <ElectionResultsMapControls
-                    availableYears={resultYears}
-                  />
+                {(isRankingMode || (resultsMapActive && !speculationMode)) && (
+                  <MapViewSelect />
                 )}
+                {isElectionMode &&
+                  resultYears.length > 0 &&
+                  !speculationMode && (
+                    <ElectionResultsMapControls
+                      availableYears={resultYears}
+                    />
+                  )}
                 {preset?.lgaAndCompare && (
                   <>
                     <RegionSelect regions={regions} />
@@ -529,12 +548,13 @@ export default function ExplorerShell({
                 basemapToggle={preset ? !!preset.basemapToggle : false}
               />
             )}
-            {!resultsMapActive && (
+            {!speculationMode && !resultsMapActive && (
               <ElectionMapLegend lookups={politics.lookups} />
             )}
-            {resultsMapActive && presidentialResults && (
+            {!speculationMode && resultsMapActive && presidentialResults && (
               <ElectionResultsPartyLegend results={presidentialResults} />
             )}
+            {speculationMode && <SpeculationMapLegend />}
             {sectionWorkspace === "rankings" && (
               <RankingsMapCallouts
                 compareBundle={compareBundle}
@@ -553,6 +573,7 @@ export default function ExplorerShell({
             presidentialResults={presidentialResults}
             resultYears={resultYears}
             states={states}
+            speculation={speculation}
           />
         ) : isRankingMode ? (
           sectionWorkspace === "rankings" ? (

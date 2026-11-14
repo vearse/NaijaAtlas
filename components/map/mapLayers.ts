@@ -727,6 +727,102 @@ export function stackAllLgaLayers(map: Map, stateIds: Iterable<string>): void {
   for (const stateId of stateIds) stackLgaLayers(map, stateId);
 }
 
+const SPECULATION_TIE_LAYER = "speculation-ties";
+
+function tiePatternId(partyA: string, partyB: string): string {
+  return `spec-tie-${partyA}-${partyB}`;
+}
+
+function ensureTiePatternImage(
+  map: Map,
+  id: string,
+  colorA: string,
+  colorB: string
+): void {
+  if (map.hasImage(id)) return;
+  if (typeof document === "undefined") return;
+  const size = 16;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+  ctx.fillStyle = colorA;
+  ctx.fillRect(0, 0, size, size);
+  ctx.strokeStyle = colorB;
+  ctx.lineWidth = 5;
+  for (let offset = -size; offset < size * 2; offset += 8) {
+    ctx.beginPath();
+    ctx.moveTo(offset, size);
+    ctx.lineTo(offset + size, 0);
+    ctx.stroke();
+  }
+  map.addImage(id, ctx.getImageData(0, 0, size, size), { pixelRatio: 1 });
+}
+
+/** Diagonal two-party stripes for states whose top two parties tie exactly. */
+export function applySpeculationTiePaint(
+  map: Map,
+  ties: { stateId: string; partyA: string; partyB: string }[],
+  colorForParty: (party: string) => string
+): void {
+  if (!map.getLayer(SPECULATION_TIE_LAYER)) {
+    const layer: LayerSpecification = {
+      id: SPECULATION_TIE_LAYER,
+      source: GEO_SOURCES.adm1,
+      type: "fill",
+      filter: ["==", ["get", "id"], "__none__"],
+      paint: {
+        "fill-opacity": 0.96,
+        "fill-pattern": "spec-tie-none",
+      },
+    };
+    map.addLayer(layer, map.getLayer("states-line") ? "states-line" : undefined);
+  }
+  if (typeof document !== "undefined" && !map.hasImage("spec-tie-none")) {
+    const canvas = document.createElement("canvas");
+    canvas.width = 1;
+    canvas.height = 1;
+    const ctx = canvas.getContext("2d");
+    if (ctx) {
+      ctx.clearRect(0, 0, 1, 1);
+      map.addImage("spec-tie-none", ctx.getImageData(0, 0, 1, 1));
+    }
+  }
+  if (ties.length === 0) {
+    map.setFilter(SPECULATION_TIE_LAYER, ["==", ["get", "id"], "__none__"]);
+    return;
+  }
+
+  const patternExpression: (string | string[])[] = ["match", ["get", "id"]];
+  for (const tie of ties) {
+    const id = tiePatternId(tie.partyA, tie.partyB);
+    ensureTiePatternImage(
+      map,
+      id,
+      colorForParty(tie.partyA),
+      colorForParty(tie.partyB)
+    );
+    patternExpression.push(tie.stateId, id);
+  }
+  patternExpression.push("spec-tie-none");
+  map.setPaintProperty(
+    SPECULATION_TIE_LAYER,
+    "fill-pattern",
+    patternExpression as ExpressionSpecification
+  );
+  map.setFilter(
+    SPECULATION_TIE_LAYER,
+    ["in", ["get", "id"], ["literal", ties.map((tie) => tie.stateId)]] as ExpressionSpecification
+  );
+}
+
+export function resetSpeculationTiePaint(map: Map): void {
+  if (!map.getLayer(SPECULATION_TIE_LAYER)) return;
+  map.setFilter(SPECULATION_TIE_LAYER, ["==", ["get", "id"], "__none__"]);
+}
+
+
 export function createNeighborLayers(): LayerSpecification[] {
   return [
     {

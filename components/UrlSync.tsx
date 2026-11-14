@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
+import { useSpeculationStore } from "@/lib/store/speculationStore";
+import { decodeScenario, encodeScenario } from "@/lib/speculation/codec";
+import { REQUIRED_PARTIES } from "@/lib/speculation/constants";
 import { parseMapTypeParam } from "@/lib/map/mapType";
 import { parseLensId } from "@/lib/lenses/lensHelper";
 import type { RankingCategoryId } from "@/lib/ranking/types";
@@ -36,6 +39,10 @@ export default function UrlSync({ defaultMapType }: UrlSyncProps = {}) {
   const mapCanvasView = useMapStore((s) => s.mapCanvasView);
   const electionResultsYear = useMapStore((s) => s.electionResultsYear);
   const electionResultsOffice = useMapStore((s) => s.electionResultsOffice);
+  const speculationActive = useSpeculationStore((s) => s.active);
+  const speculationParties = useSpeculationStore((s) => s.parties);
+  const speculationStates = useSpeculationStore((s) => s.states);
+  const speculationUse2023 = useSpeculationStore((s) => s.use2023ForUnset);
   const overlayFeatureFocus = useMapStore((s) => s.overlayFeatureFocus);
   const revealedOptInGroups = useMapStore((s) => s.revealedOptInGroups);
   const directionsFrom = useMapStore((s) => s.directions.from);
@@ -91,6 +98,32 @@ export default function UrlSync({ defaultMapType }: UrlSyncProps = {}) {
       store.setElectionResultsOffice("president");
     } else if (params.get("resultYear") === "") {
       store.setElectionResultsYear(null);
+    }
+
+    const mode = params.get("mode");
+    const encodedScenario = params.get("s");
+    const speculationStore = useSpeculationStore.getState();
+    if (mode === "speculate") {
+      const fallbackParties = params
+        .get("parties")
+        ?.split(",")
+        .filter(Boolean);
+      const decoded = encodedScenario
+        ? decodeScenario(encodedScenario, fallbackParties)
+        : null;
+      if (decoded) {
+        const use2023Param = params.get("use2023");
+        speculationStore.hydrateFromUrl(
+          decoded.scenario,
+          use2023Param == null
+            ? decoded.use2023ForUnset
+            : use2023Param === "1"
+        );
+      } else {
+        speculationStore.setActive(true);
+      }
+    } else if (speculationStore.active) {
+      speculationStore.setActive(false);
     }
 
     if (store.mapType === "ranking") {
@@ -184,10 +217,24 @@ export default function UrlSync({ defaultMapType }: UrlSyncProps = {}) {
     ) {
       params.set("view", mapCanvasView);
     }
-    if (mapType === "election" && electionResultsYear) {
+    if (mapType === "election" && electionResultsYear && !speculationActive) {
       params.set("resultYear", String(electionResultsYear));
       if (electionResultsOffice) {
         params.set("resultOffice", electionResultsOffice);
+      }
+    }
+    if (speculationActive) {
+      params.set("mode", "speculate");
+      if (speculationParties.length === REQUIRED_PARTIES) {
+        params.set("parties", speculationParties.join(","));
+        params.set(
+          "s",
+          encodeScenario(
+            { parties: speculationParties, states: speculationStates },
+            speculationUse2023
+          )
+        );
+        params.set("use2023", speculationUse2023 ? "1" : "0");
       }
     }
     if (
@@ -228,6 +275,10 @@ export default function UrlSync({ defaultMapType }: UrlSyncProps = {}) {
     mapCanvasView,
     electionResultsYear,
     electionResultsOffice,
+    speculationActive,
+    speculationParties,
+    speculationStates,
+    speculationUse2023,
     overlayFeatureFocus,
     revealedOptInGroups,
     directionsFrom,

@@ -29,6 +29,8 @@ import {
   applyElectionResultsChoroplethPaint,
   applyElectionResultsStateLabels,
   resetElectionResultsStateLabels,
+  applySpeculationTiePaint,
+  resetSpeculationTiePaint,
   restackLgaStack,
   geoSourceUrl,
   lgaSourceId,
@@ -91,11 +93,15 @@ import {
 } from "@/lib/map/lgaGeoCache";
 import { effectiveLgaStateIds } from "@/lib/map/lgaMapFocus";
 import type { RegionLocation, StateLocation, LgaLocation } from "@/types/location";
-import type { PoliticsLookups, PresidentialResultsBundle } from "@/types/politics";
+import type { PoliticsLookups, PresidentialResultsBundle, SpeculationData } from "@/types/politics";
 import { buildElectionResultsMapStyle } from "@/lib/election/electionResultsMapStyle";
 import { isElectionResultsMapActive } from "@/lib/election/electionResultsMapActive";
 import { modernStateIdsForElectionClick } from "@/lib/election/historicalStates";
 import { shouldRenderLgaLayers } from "@/lib/election/electionMapLga";
+import { useSpeculationStore } from "@/lib/store/speculationStore";
+import { aggregateNational } from "@/lib/speculation/calc";
+import { buildSpeculationMapStyle } from "@/lib/speculation/mapStyle";
+import { colorForParty, REQUIRED_PARTIES } from "@/lib/speculation/constants";
 
 interface NigeriaMapProps {
   states: StateLocation[];
@@ -105,6 +111,7 @@ interface NigeriaMapProps {
   politicsLookups: PoliticsLookups;
   compareBundle: CompareBundle;
   presidentialResults?: PresidentialResultsBundle | null;
+  speculation?: SpeculationData;
 }
 
 type HitKind = "lga" | "state" | "region";
@@ -148,6 +155,7 @@ export default function NigeriaMap({
   politicsLookups,
   compareBundle,
   presidentialResults = null,
+  speculation,
 }: NigeriaMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
@@ -187,6 +195,7 @@ export default function NigeriaMap({
   const [tooltip, setTooltip] = useState<{
     name: string;
     level: string;
+    detail?: string;
     x: number;
     y: number;
   } | null>(null);
@@ -222,8 +231,67 @@ export default function NigeriaMap({
   const overlayFeatureFocus = useMapStore((s) => s.overlayFeatureFocus);
   const directions = useMapStore((s) => s.directions);
   const featureMapViews = useMapStore((s) => s.featureMapViews);
+  const speculationActive = useSpeculationStore((s) => s.active);
+  const speculationParties = useSpeculationStore((s) => s.parties);
+  const speculationStateInputs = useSpeculationStore((s) => s.states);
+  const speculationUse2023 = useSpeculationStore((s) => s.use2023ForUnset);
+  const speculationSelectedStateId = useSpeculationStore(
+    (s) => s.selectedStateId
+  );
+  const speculationPhase = useSpeculationStore((s) => s.phase);
   const loadedLgaRef = useRef(new Set<string>());
   const [lgaReadyKey, setLgaReadyKey] = useState(0);
+
+  const speculationAggregate = useMemo(() => {
+    if (
+      !speculation ||
+      speculationParties.length !== REQUIRED_PARTIES
+    ) {
+      return null;
+    }
+    return aggregateNational({
+      scenario: {
+        parties: speculationParties,
+        states: speculationStateInputs,
+      },
+      results2023: speculation.latestResults,
+      resultsByYear: speculation.resultsByYear,
+      registeredVotersByYear: speculation.registeredVotersByYear,
+      use2023ForUnset: speculationUse2023,
+    });
+  }, [
+    speculation,
+    speculationParties,
+    speculationStateInputs,
+    speculationUse2023,
+  ]);
+
+  const speculationMapStyle = useMemo(() => {
+    if (!speculation || !speculationAggregate) return null;
+    const savedCount = Object.keys(speculationStateInputs).length;
+    const showSavedOnly =
+      speculationPhase !== "result" && savedCount > 0;
+    return buildSpeculationMapStyle({
+      aggregate: speculationAggregate,
+      scenario: {
+        parties: speculationParties,
+        states: speculationStateInputs,
+      },
+      latestResults: speculation.latestResults,
+      use2023ForUnset: speculationPhase === "result" && speculationUse2023,
+      savedStatesOnly: showSavedOnly,
+    });
+  }, [
+    speculation,
+    speculationAggregate,
+    speculationParties,
+    speculationStateInputs,
+    speculationUse2023,
+    speculationPhase,
+  ]);
+
+  const speculationStyleRef = useRef(speculationMapStyle);
+  speculationStyleRef.current = speculationMapStyle;
 
   const selectedKey = useMemo(
     () => [...selectedStateIds].sort().join(","),
@@ -415,6 +483,13 @@ export default function NigeriaMap({
   const applyElectionResultsPaint = useCallback(
     (map: maplibregl.Map) => {
     const store = useMapStore.getState();
+    const speculation = useSpeculationStore.getState();
+    if (
+      speculation.active &&
+      speculation.parties.length === REQUIRED_PARTIES
+    ) {
+      return false;
+    }
     if (!isElectionResultsMapActive(store)) {
       resetElectionResultsStateLabels(map);
       return false;
@@ -445,6 +520,42 @@ export default function NigeriaMap({
     [presidentialResults]
   );
 
+  const applySpeculationPaint = useCallback(
+    (map: maplibregl.Map) => {
+      const store = useSpeculationStore.getState();
+      const style = speculationStyleRef.current;
+      const savedCount = Object.keys(store.states).length;
+      const choroplethReady =
+        store.phase === "result" ? savedCount >= 0 : savedCount > 0;
+      if (!store.active || !speculation || !style || !choroplethReady) {
+        resetSpeculationTiePaint(map);
+        if (!isElectionResultsMapActive(useMapStore.getState())) {
+          resetElectionResultsStateLabels(map);
+        }
+        return false;
+      }
+      if (
+        store.parties.length !== REQUIRED_PARTIES ||
+        store.phase === "setup"
+      ) {
+        resetSpeculationTiePaint(map);
+        return false;
+      }
+      applyElectionResultsChoroplethPaint(map, style.fillByStateId, {
+        highlightedStateIds: store.selectedStateId
+          ? [store.selectedStateId]
+          : [],
+        activeRegionId: null,
+        regionStateIds: [],
+      });
+      applyElectionResultsStateLabels(map, style.labelLineByStateId);
+      applySpeculationTiePaint(map, style.ties, colorForParty);
+      applyAdminLayersMapTypeTuning(map, "election");
+      return true;
+    },
+    [speculation]
+  );
+
   const refreshSelectionPaint = useCallback(
     (map: maplibregl.Map) => {
       const store = useMapStore.getState();
@@ -455,6 +566,7 @@ export default function NigeriaMap({
       const ready = readyLgaStateIds(map, effective);
       applyStateMaskForLgaVisibility(map, ready, store.draggedStateId);
       if (
+        !applySpeculationPaint(map) &&
         !applyElectionResultsPaint(map) &&
         !applyRankingPaint(map)
       ) {
@@ -467,7 +579,12 @@ export default function NigeriaMap({
       }
       applyAdminLayersMapTypeTuning(map, useMapStore.getState().mapType);
     },
-    [readyLgaStateIds, applyRankingPaint, applyElectionResultsPaint]
+    [
+      readyLgaStateIds,
+      applyRankingPaint,
+      applyElectionResultsPaint,
+      applySpeculationPaint,
+    ]
   );
 
   const refreshMetroLgaFills = useCallback((map: maplibregl.Map) => {
@@ -507,16 +624,18 @@ export default function NigeriaMap({
       }
 
       const store = useMapStore.getState();
-      const effective = shouldRenderLgaLayers(
-        store.mapType,
-        store.electionResultsYear,
-        store.electionResultsOffice
-      )
-        ? effectiveLgaStateIds(
-            store.lgaVisibleStateIds,
-            store.metroMapViews
-          )
-        : new Set<string>();
+      const effective =
+        !useSpeculationStore.getState().active &&
+        shouldRenderLgaLayers(
+          store.mapType,
+          store.electionResultsYear,
+          store.electionResultsOffice
+        )
+          ? effectiveLgaStateIds(
+              store.lgaVisibleStateIds,
+              store.metroMapViews
+            )
+          : new Set<string>();
       const dragged = store.draggedStateId;
       const readyVisible = readyLgaStateIds(map, effective);
       applyStateMaskForLgaVisibility(map, readyVisible, dragged);
@@ -712,6 +831,19 @@ export default function NigeriaMap({
       }
 
       if (hit.kind === "state") {
+        const speculation = useSpeculationStore.getState();
+        if (speculation.active) {
+          if (speculation.parties.length !== REQUIRED_PARTIES) {
+            store.openMobileSheet();
+            return;
+          }
+          if (!store.selectedStateIds.has(id)) {
+            store.toggleState(id);
+          }
+          speculation.selectState(id);
+          store.openMobileSheet();
+          return;
+        }
         if (store.mapType === "ranking") {
           store.setRankingHighlightedState(id);
           return;
@@ -791,6 +923,7 @@ export default function NigeriaMap({
   const handleMapDblClick = useCallback(
     (map: maplibregl.Map, e: maplibregl.MapMouseEvent) => {
       e.preventDefault();
+      if (useSpeculationStore.getState().active) return;
       const layers = ["states-fill", "states-labels"].filter((id) =>
         map.getLayer(id)
       );
@@ -895,6 +1028,20 @@ export default function NigeriaMap({
 
       const levelLabel =
         hit.kind === "lga" ? "LGA" : hit.kind === "state" ? "State" : "Region";
+
+      if (hit.kind === "state" && useSpeculationStore.getState().active) {
+        const detail = id
+          ? speculationStyleRef.current?.detailByStateId[id]
+          : undefined;
+        setTooltip({
+          name,
+          level: "State · speculation",
+          detail,
+          x: e.point.x,
+          y: e.point.y,
+        });
+        return;
+      }
 
       setTooltip({ name, level: levelLabel, x: e.point.x, y: e.point.y });
     },
@@ -1270,7 +1417,7 @@ export default function NigeriaMap({
           readyLgas,
           store.draggedStateId
         );
-        if (!applyRankingPaint(map)) {
+        if (!applySpeculationPaint(map) && !applyRankingPaint(map)) {
           applyStateSelectionPaint(
             map,
             store.selectedStateIds,
@@ -1442,7 +1589,9 @@ export default function NigeriaMap({
     }
 
     if (map.getLayer("states-fill")) {
-      if (applyElectionResultsPaint(map)) {
+      if (applySpeculationPaint(map)) {
+        // speculation choropleth owns state fill
+      } else if (applyElectionResultsPaint(map)) {
         // results choropleth owns state fill
       } else if (useMapStore.getState().mapType === "ranking") {
         applyRankingPaint(map);
@@ -1481,7 +1630,7 @@ export default function NigeriaMap({
     // Map-type tuning must be the final writer so OSM stays uncluttered
     // no matter which selection/mask effect ran above.
     applyAdminLayersMapTypeTuning(map, useMapStore.getState().mapType);
-  }, [selectedKey, featureMapViewsKey, lgaVisibleKey, metroMapViewsKey, lgaReadyKey, activeRegionId, draggedStateId, states, regions, setFeatureState, mapReady, selectedStateIds, lgaVisibleStateIds, metroMapViews, readyLgaStateIds, applyRankingPaint, applyElectionResultsPaint, electionResultsYear, presidentialResults]);
+  }, [selectedKey, featureMapViewsKey, lgaVisibleKey, metroMapViewsKey, lgaReadyKey, activeRegionId, draggedStateId, states, regions, setFeatureState, mapReady, selectedStateIds, lgaVisibleStateIds, metroMapViews, readyLgaStateIds, applyRankingPaint, applyElectionResultsPaint, applySpeculationPaint, featureMapViews.length, electionResultsYear, presidentialResults]);
 
   const rankingPaintKey = `${rankingCategory}|${rankingFieldKey}|${rankingPeriod}|${rankingHighlightedStateId ?? ""}`;
 
@@ -1495,9 +1644,44 @@ export default function NigeriaMap({
 
   const electionResultsPaintKey = `${electionResultsYear ?? ""}|${presidentialResults?.election.year ?? ""}|${electionResultsOffice ?? ""}|${activeRegionId ?? ""}|${selectedKey}`;
 
+  const speculationPaintKey = `${speculationActive ? 1 : 0}|${speculationParties.join(
+    ","
+  )}|${speculationUse2023 ? 1 : 0}|${speculationSelectedStateId ?? ""}|${JSON.stringify(
+    speculationStateInputs
+  )}`;
+
   useEffect(() => {
     const map = mapRef.current;
     if (!map?.isStyleLoaded() || !mapReady || mapType !== "election") return;
+    if (!speculationActive) {
+      resetSpeculationTiePaint(map);
+      refreshSelectionPaintRef.current(map);
+      return;
+    }
+    applySpeculationPaint(map);
+    const onIdle = () => applySpeculationPaint(map);
+    map.once("idle", onIdle);
+    return () => {
+      map.off("idle", onIdle);
+    };
+  }, [
+    mapType,
+    speculationPaintKey,
+    mapReady,
+    applySpeculationPaint,
+    speculationActive,
+  ]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map?.isStyleLoaded() || !mapReady || mapType !== "election") return;
+    const speculation = useSpeculationStore.getState();
+    if (
+      speculation.active &&
+      speculation.parties.length === REQUIRED_PARTIES
+    ) {
+      return;
+    }
     if (!isElectionResultsMapActive(useMapStore.getState())) {
       resetElectionResultsStateLabels(map);
       return;
@@ -1677,6 +1861,7 @@ export default function NigeriaMap({
     mapType,
     electionResultsYear,
     electionResultsOffice,
+    speculationActive,
   ]);
 
   useEffect(() => {
@@ -1759,6 +1944,7 @@ export default function NigeriaMap({
     if (!mapReady) return;
     const store = useMapStore.getState();
     if (
+      useSpeculationStore.getState().active ||
       !shouldRenderLgaLayers(
         store.mapType,
         store.electionResultsYear,
@@ -1922,6 +2108,7 @@ export default function NigeriaMap({
         <MapTooltip
           name={tooltip.name}
           level={tooltip.level}
+          detail={tooltip.detail}
           x={tooltip.x}
           y={tooltip.y}
         />

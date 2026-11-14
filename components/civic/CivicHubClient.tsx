@@ -20,6 +20,7 @@ import WhoRepresents from "@/components/civic/WhoRepresents";
 import SecurityLookup from "@/components/civic/SecurityLookup";
 import AssemblyExplainer from "@/components/civic/AssemblyExplainer";
 import ElectionResults from "@/components/civic/ElectionResults";
+import PresidentialSpeculationCard from "@/components/civic/PresidentialSpeculationCard";
 import EmptyState from "@/components/hub/EmptyState";
 import type { CivicHubData } from "@/lib/server/loadCivicHubData";
 import type { FindPollingUnitResult } from "@/app/(marketing)/civic/actions";
@@ -115,6 +116,7 @@ export default function CivicHubClient(data: CivicHubData) {
         items={[
           { href: "#find", label: "Find my polling unit", tone: "primary" },
           { href: "#candidates", label: "Candidates", tone: "neutral" },
+          { href: "#speculate", label: "Speculation", tone: "neutral" },
           { href: "#results", label: "Election results", tone: "neutral" },
           { href: "#representatives", label: "Who represents me", tone: "neutral" },
           { href: "#maps", label: "Maps", tone: "neutral" },
@@ -252,6 +254,15 @@ export default function CivicHubClient(data: CivicHubData) {
             onPositionChange={setRosterPosition}
             senatorialLookups={data.senatorialLookups}
           />
+        </HubSection>
+
+        <HubSection
+          id="speculate"
+          eyebrow="Scenario builder"
+          title="Presidential speculation"
+          lede="A what-if workspace for the presidential map. Six 2027 tickets by default (NDC uses 2023 LP shares), set turnout and vote share state by state, and share the result. It is a projection tool, not a forecast."
+        >
+          <PresidentialSpeculationCard />
         </HubSection>
 
         <HubSection

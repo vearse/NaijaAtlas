@@ -9,12 +9,14 @@ interface ElectionDistrictPickerProps {
   politics: PoliticsBundle;
   onShowPresidential: () => void;
   onShowGovernor: () => void;
+  onShowSpeculation?: () => void;
 }
 
 export default function ElectionDistrictPicker({
   politics,
   onShowPresidential,
   onShowGovernor,
+  onShowSpeculation,
 }: ElectionDistrictPickerProps) {
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
   const setSelectedSenatorialDistrict = useMapStore(
@@ -95,6 +97,29 @@ export default function ElectionDistrictPicker({
           →
         </span>
       </button>
+
+      {onShowSpeculation && (
+        <button
+          type="button"
+          onClick={onShowSpeculation}
+          className="w-full text-left rounded-xl border border-slate-100 bg-gradient-to-r from-violet-50 to-white px-3 py-3 shadow-sm hover:border-violet-300/60 hover:shadow transition flex items-center gap-3"
+        >
+          <span className="shrink-0 flex h-10 w-10 items-center justify-center rounded-lg bg-violet-700 text-lg text-white shadow-sm">
+            📊
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="font-bold text-text-primary block">
+              Presidential speculation
+            </span>
+            <span className="text-xs text-text-muted block">
+              Six 2027 tickets · What-if national map
+            </span>
+          </span>
+          <span className="shrink-0 text-slate-400" aria-hidden>
+            →
+          </span>
+        </button>
+      )}
 
       {selectedStateIds.size === 0 && <NationalAssemblyIntro />}
 

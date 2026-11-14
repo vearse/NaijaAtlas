@@ -3,11 +3,18 @@
 interface MapTooltipProps {
   name: string | null;
   level: string | null;
+  detail?: string;
   x: number;
   y: number;
 }
 
-export default function MapTooltip({ name, level, x, y }: MapTooltipProps) {
+export default function MapTooltip({
+  name,
+  level,
+  detail,
+  x,
+  y,
+}: MapTooltipProps) {
   if (!name) return null;
 
   return (
@@ -17,6 +24,11 @@ export default function MapTooltip({ name, level, x, y }: MapTooltipProps) {
     >
       <div className="rounded-xl bg-slate-900/95 text-white px-4 py-2 shadow-2xl backdrop-blur-md border border-white/15 min-w-[120px] text-center">
         <div className="font-semibold text-sm leading-tight">{name}</div>
+        {detail && (
+          <div className="text-[11px] text-slate-200 mt-0.5 max-w-[220px]">
+            {detail}
+          </div>
+        )}
         {level && (
           <div className="text-[10px] uppercase tracking-widest text-emerald-300/90 mt-0.5">
             {level}
