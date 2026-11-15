@@ -23,15 +23,17 @@ function PostHogPageviewTracker() {
 
 interface PostHogProviderProps {
   apiKey?: string;
+  apiHost?: string;
   children: React.ReactNode;
 }
 
 export default function PostHogProvider({
   apiKey,
+  apiHost,
   children,
 }: PostHogProviderProps) {
   useEffect(() => {
-    if (!apiKey) return;
+    if (!apiKey || !apiHost) return;
     if (
       typeof window !== "undefined" &&
       LOCAL_HOSTNAMES.has(window.location.hostname)
@@ -39,10 +41,10 @@ export default function PostHogProvider({
       return;
     }
     posthog.init(apiKey, {
-      api_host: "https://us.i.posthog.com",
+      api_host: apiHost,
       person_profiles: "identified_only",
     });
-  }, [apiKey]);
+  }, [apiKey, apiHost]);
 
   return (
     <PostHogReactProvider client={posthog}>

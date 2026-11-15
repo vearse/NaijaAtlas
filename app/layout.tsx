@@ -108,7 +108,14 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}
       >
         <JsonLd data={buildRootJsonLd()} />
-        <PostHogProvider apiKey={process.env.POSTHOG_API_KEY}>
+        <PostHogProvider
+          apiKey={
+            process.env.NEXT_PUBLIC_POSTHOG_KEY ?? process.env.POSTHOG_API_KEY
+          }
+          apiHost={
+            process.env.NEXT_PUBLIC_POSTHOG_HOST ?? process.env.POSTHOG_HOST
+          }
+        >
           <PwaRegister />
           <PwaInstallPrompt />
           {children}
