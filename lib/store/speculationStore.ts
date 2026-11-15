@@ -1,5 +1,13 @@
 import { create } from "zustand";
-import { REQUIRED_PARTIES } from "@/lib/speculation/constants";
+import {
+  MAX_SPECULATION_PARTIES,
+  MIN_SPECULATION_PARTIES,
+} from "@/lib/speculation/constants";
+import {
+  isSpeculationLineupActive,
+  isValidSpeculationLineup,
+  normalizeSpeculationLineup,
+} from "@/lib/speculation/parties";
 import type {
   SpeculationScenario,
   SpeculationStateInput,
@@ -38,11 +46,28 @@ interface SpeculationStore {
   hydrateFromUrl: (scenario: SpeculationScenario, use2023: boolean) => void;
 }
 
-const DRAFT_KEY = "naija-atlas:speculation-draft:v2";
+const DRAFT_KEY = "naija-atlas:speculation-draft:v3";
 
-function normaliseParties(parties: string[]): string[] {
-  const unique = [...new Set(parties.filter(Boolean))];
-  return unique.slice(0, REQUIRED_PARTIES);
+function partiesChanged(a: string[], b: string[]): boolean {
+  if (a.length !== b.length) return true;
+  const setB = new Set(b);
+  return a.some((party) => !setB.has(party));
+}
+
+function scrubStatesForParties(
+  states: Record<string, SpeculationStateInput>,
+  parties: string[]
+): Record<string, SpeculationStateInput> {
+  const next: Record<string, SpeculationStateInput> = {};
+  for (const [stateId, input] of Object.entries(states)) {
+    const shares: Record<string, number> = {};
+    for (const party of parties) {
+      const value = input.shares[party];
+      if (Number.isFinite(value)) shares[party] = value;
+    }
+    next[stateId] = { ...input, shares };
+  }
+  return next;
 }
 
 export function readSpeculationDraft(): DraftScenario | null {
@@ -51,11 +76,9 @@ export function readSpeculationDraft(): DraftScenario | null {
     const raw = window.localStorage.getItem(DRAFT_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as Partial<DraftScenario>;
-    if (!Array.isArray(parsed.parties) || parsed.parties.length !== REQUIRED_PARTIES) {
-      return null;
-    }
-    const parties = normaliseParties(parsed.parties);
-    if (parties.length !== REQUIRED_PARTIES) return null;
+    if (!Array.isArray(parsed.parties)) return null;
+    const parties = normalizeSpeculationLineup(parsed.parties);
+    if (!isValidSpeculationLineup(parties)) return null;
     const states: Record<string, SpeculationStateInput> = {};
     for (const [stateId, value] of Object.entries(parsed.states ?? {})) {
       if (!value || typeof value !== "object") continue;
@@ -104,7 +127,7 @@ function persist(state: {
   states: Record<string, SpeculationStateInput>;
   use2023ForUnset: boolean;
 }): void {
-  if (state.parties.length !== REQUIRED_PARTIES) return;
+  if (!isSpeculationLineupActive(state.parties)) return;
   writeSpeculationDraft({
     parties: state.parties,
     states: state.states,
@@ -132,19 +155,21 @@ export const useSpeculationStore = create<SpeculationStore>((set, get) => ({
         Object.keys(state.states).length > 0
           ? state.phase === "result"
             ? "result"
-            : "list"
+            : isSpeculationLineupActive(state.parties)
+              ? "list"
+              : "setup"
           : "setup",
     });
   },
 
   start: (parties) => {
-    const nextParties = normaliseParties(parties);
-    if (nextParties.length !== REQUIRED_PARTIES) return;
+    const nextParties = normalizeSpeculationLineup(parties);
+    if (!isValidSpeculationLineup(nextParties)) return;
     const state = get();
-    const changed =
-      state.parties.length === REQUIRED_PARTIES &&
-      nextParties.some((party, index) => party !== state.parties[index]);
-    const states = changed ? {} : state.states;
+    const changed = partiesChanged(state.parties, nextParties);
+    const states = changed
+      ? {}
+      : scrubStatesForParties(state.states, nextParties);
     const next = {
       active: true,
       phase: "list" as const,
@@ -197,6 +222,7 @@ export const useSpeculationStore = create<SpeculationStore>((set, get) => ({
   resetAll: () => {
     clearSpeculationDraft();
     set({
+      active: false,
       phase: "setup",
       parties: [],
       states: {},
@@ -223,23 +249,31 @@ export const useSpeculationStore = create<SpeculationStore>((set, get) => ({
     persist(next);
   },
 
-  restoreDraft: (draft) =>
+  restoreDraft: (draft) => {
+    const parties = normalizeSpeculationLineup(draft.parties);
+    if (!isValidSpeculationLineup(parties)) return;
     set({
       active: true,
       phase: "list",
-      parties: normaliseParties(draft.parties),
-      states: draft.states,
+      parties,
+      states: scrubStatesForParties(draft.states, parties),
       selectedStateId: null,
       use2023ForUnset: draft.use2023ForUnset,
-    }),
+    });
+  },
 
-  hydrateFromUrl: (scenario, use2023) =>
+  hydrateFromUrl: (scenario, use2023) => {
+    const parties = normalizeSpeculationLineup(scenario.parties);
+    if (!isValidSpeculationLineup(parties)) return;
     set({
       active: true,
       phase: "result",
-      parties: normaliseParties(scenario.parties),
-      states: scenario.states,
+      parties,
+      states: scrubStatesForParties(scenario.states, parties),
       selectedStateId: null,
       use2023ForUnset: use2023,
-    }),
+    });
+  },
 }));
+
+export { MIN_SPECULATION_PARTIES, MAX_SPECULATION_PARTIES };

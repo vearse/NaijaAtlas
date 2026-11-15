@@ -136,12 +136,30 @@
 		},
 		{
 		"title": "Sokoto Caliphate",
-		"note": "Usman dan Fodio's jihad of 1804 created the Sokoto Caliphate, one of the largest states in 19th-century Africa, whose Sultan remains a leading Muslim authority today.",
+		"note": "Usman dan Fodio's jihad of 1804 created the Sokoto Caliphate, one of the largest states in 19th-century Africa, linking more than 30 emirates across present-day northern Nigeria, Niger and Cameroon. British forces ended its sovereignty in 1903, but the Sultan of Sokoto remains a leading Muslim authority today.",
 		"category": "history",
 		"relatedStateIds": [
-			"NG-SO"
+			"NG-SO",
+			"NG-KE"
 		],
 		"url": "https://en.wikipedia.org/wiki/Sokoto_Caliphate",
+		"confidence": "high"
+		},
+		{
+		"title": "Emirates of the Sokoto Caliphate",
+		"note": "The caliphate was a loose confederation of more than 30 emirates, each led by a flag-bearer appointed by the Sultan. Kano, Katsina, Zazzau, Bauchi, Adamawa and Ilorin were among the most prominent, and many kept considerable autonomy while recognising the Amir al-Mu'minin at Sokoto.",
+		"category": "history",
+		"relatedStateIds": [
+			"NG-SO",
+			"NG-KE",
+			"NG-KN",
+			"NG-KT",
+			"NG-ZA",
+			"NG-BA",
+			"NG-AD",
+			"NG-KW"
+		],
+		"url": "https://en.wikipedia.org/wiki/Emirates_of_the_Sokoto_Caliphate",
 		"confidence": "high"
 		},
 		{
@@ -375,6 +393,16 @@
 			"NG-KN"
 		],
 		"url": null,
+		"confidence": "high"
+		},
+		{
+		"title": "Seghosen",
+		"note": "Seghosen, literally 'the cloth that takes all money', is a hand-woven Yoruba prestige fabric from Owo in Ondo State. Woven on a broad loom with intricate patterns, it is the most expensive traditional cloth made in Owo and is worn for weddings, festivals and royal occasions.",
+		"category": "culture",
+		"relatedStateIds": [
+			"NG-ON"
+		],
+		"url": "https://en.wikipedia.org/wiki/Seghosen",
 		"confidence": "high"
 		},
 		{

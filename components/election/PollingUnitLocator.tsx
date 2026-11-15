@@ -273,85 +273,85 @@ export default function PollingUnitLocator({
             it with anyone.
           </span>
         </p>
-      </div>
+        <div className="space-y-2 border-t border-slate-100 pt-4">
+          <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+            Browse by LGA
+          </p>
+          <div className="relative">
+            <input
+              type="search"
+              value={lgaQuery}
+              onChange={(e) => {
+                setLgaQuery(e.target.value);
+                setShowLgaSuggestions(true);
+                if (!e.target.value.trim()) {
+                  setSelectedLgaId("");
+                  setBrowseWardId("");
+                  setBrowsePuId("");
+                }
+              }}
+              onFocus={() => setShowLgaSuggestions(true)}
+              placeholder="Search LGA name…"
+              className="w-full rounded-lg border border-border-subtle px-3 py-2 text-sm"
+            />
+            {showLgaSuggestions && lgaSuggestions.length > 0 && (
+              <ul className="absolute z-20 mt-1 max-h-48 w-full overflow-y-auto rounded-lg border border-border-subtle bg-surface-card shadow-lg">
+                {lgaSuggestions.map((lga) => (
+                  <li key={lga.id}>
+                    <button
+                      type="button"
+                      className="w-full px-3 py-2 text-left text-sm hover:bg-emerald-50"
+                      onMouseDown={(e) => e.preventDefault()}
+                      onClick={() => pickLga(lga)}
+                    >
+                      <span className="font-medium">{lga.name}</span>
+                      <span className="text-text-muted text-xs ml-1">
+                        · {lga.stateName}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
 
-      <div className="space-y-2 border-t border-slate-100 pt-4">
-        <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-400">
-          Browse by LGA
-        </p>
-        <div className="relative">
-          <input
-            type="search"
-            value={lgaQuery}
-            onChange={(e) => {
-              setLgaQuery(e.target.value);
-              setShowLgaSuggestions(true);
-              if (!e.target.value.trim()) {
-                setSelectedLgaId("");
-                setBrowseWardId("");
-                setBrowsePuId("");
-              }
-            }}
-            onFocus={() => setShowLgaSuggestions(true)}
-            placeholder="Search LGA name…"
-            className="w-full rounded-lg border border-border-subtle px-3 py-2 text-sm"
-          />
-          {showLgaSuggestions && lgaSuggestions.length > 0 && (
-            <ul className="absolute z-20 mt-1 max-h-48 w-full overflow-y-auto rounded-lg border border-border-subtle bg-surface-card shadow-lg">
-              {lgaSuggestions.map((lga) => (
-                <li key={lga.id}>
-                  <button
-                    type="button"
-                    className="w-full px-3 py-2 text-left text-sm hover:bg-emerald-50"
-                    onMouseDown={(e) => e.preventDefault()}
-                    onClick={() => pickLga(lga)}
-                  >
-                    <span className="font-medium">{lga.name}</span>
-                    <span className="text-text-muted text-xs ml-1">
-                      · {lga.stateName}
-                    </span>
-                  </button>
-                </li>
-              ))}
-            </ul>
+          {selectedLgaId && (
+            <>
+              <select
+                value={browseWardId}
+                onChange={(e) => {
+                  setBrowseWardId(e.target.value);
+                  setBrowsePuId("");
+                }}
+                className="w-full rounded-lg border border-border-subtle px-3 py-2 text-sm"
+              >
+                <option value="">Ward</option>
+                {wardOptions.map((w) => (
+                  <option key={w.id} value={w.id}>
+                    {w.name} ({w.pollingUnitCount} PUs)
+                  </option>
+                ))}
+              </select>
+              <select
+                value={browsePuId}
+                disabled={!browseWardId || loadingWard}
+                onChange={(e) => onBrowsePuChange(e.target.value)}
+                className="w-full rounded-lg border border-border-subtle px-3 py-2 text-sm disabled:opacity-50"
+              >
+                <option value="">
+                  {loadingWard ? "Loading units…" : "Polling unit"}
+                </option>
+                {wardUnits.map((u) => (
+                  <option key={u.id} value={u.id}>
+                    {formatDelimitationDisplay(u.delimitation)} — {u.name}
+                  </option>
+                ))}
+              </select>
+            </>
           )}
         </div>
-
-        {selectedLgaId && (
-          <>
-            <select
-              value={browseWardId}
-              onChange={(e) => {
-                setBrowseWardId(e.target.value);
-                setBrowsePuId("");
-              }}
-              className="w-full rounded-lg border border-border-subtle px-3 py-2 text-sm"
-            >
-              <option value="">Ward</option>
-              {wardOptions.map((w) => (
-                <option key={w.id} value={w.id}>
-                  {w.name} ({w.pollingUnitCount} PUs)
-                </option>
-              ))}
-            </select>
-            <select
-              value={browsePuId}
-              disabled={!browseWardId || loadingWard}
-              onChange={(e) => onBrowsePuChange(e.target.value)}
-              className="w-full rounded-lg border border-border-subtle px-3 py-2 text-sm disabled:opacity-50"
-            >
-              <option value="">
-                {loadingWard ? "Loading units…" : "Polling unit"}
-              </option>
-              {wardUnits.map((u) => (
-                <option key={u.id} value={u.id}>
-                  {formatDelimitationDisplay(u.delimitation)} — {u.name}
-                </option>
-              ))}
-            </select>
-          </>
-        )}
       </div>
+
 
       {resolved && (
         <div className="mt-4 rounded-xl border border-emerald-100 bg-emerald-50/60 p-3 text-sm space-y-3">

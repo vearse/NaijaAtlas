@@ -20,13 +20,19 @@ import {
 } from "@/lib/speculation/calc";
 import {
   colorForParty,
-  DEFAULT_SPECULATION_PARTIES,
   historicalVotesForParty,
   OTHERS_LABEL,
-  REQUIRED_PARTIES,
+  MAX_SPECULATION_PARTIES,
+  MIN_SPECULATION_PARTIES,
 } from "@/lib/speculation/constants";
+import {
+  defaultSpeculationLineup,
+  isSpeculationLineupActive,
+  isValidSpeculationLineup,
+} from "@/lib/speculation/parties";
 import type { PresidentialBundle } from "@/types/politics";
 import SpeculationDefaultTickets from "./SpeculationDefaultTickets";
+import ShareScenarioModal from "./ShareScenarioModal";
 import { encodeScenario } from "@/lib/speculation/codec";
 import type {
   NationalAggregate,
@@ -43,7 +49,9 @@ import {
   buildRandomStateInputsForAll,
   randomSpeculationShares,
   randomTurnoutAround,
+  softenApmOyoShares,
 } from "@/lib/speculation/random";
+import SpeculationPartyLineupEditor from "./SpeculationPartyLineupEditor";
 
 const REGION_ORDER = [
   "North Central",
@@ -141,9 +149,21 @@ function StateEditor({
   };
 
   const applyRandomSplit = () => {
-    setShares(randomSpeculationShares(parties));
+    setShares(
+      stateId === "NG-OY" && parties.includes("APM")
+        ? softenApmOyoShares(parties)
+        : randomSpeculationShares(parties)
+    );
     setTurnout(randomTurnoutAround(defaultTurnout));
   };
+
+  const partiesByShare = useMemo(
+    () =>
+      [...parties].sort(
+        (a, b) => (shares[b] ?? 0) - (shares[a] ?? 0)
+      ),
+    [parties, shares]
+  );
 
   return (
     <div className="flex flex-col h-full min-h-0">
@@ -250,7 +270,7 @@ function StateEditor({
             </button>
           </div>
           <ul className="space-y-2">
-            {parties.map((party) => {
+            {partiesByShare.map((party) => {
               const baseShare = row?.validVotes
                 ? (historicalVotesForParty(row.votes, party) / row.validVotes) *
                   100
@@ -380,7 +400,7 @@ function NationalResult({
   onToggleUse2023,
   onReset,
 }: NationalResultProps) {
-  const [copied, setCopied] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
   const parties = scenario.parties;
   const setCount = aggregate.setStateIds.length;
   const leader = aggregate.leader;
@@ -436,16 +456,6 @@ function NationalResult({
     return `${window.location.origin}/civic/map/elections?${params.toString()}`;
   };
 
-  const copyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(shareUrl());
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2000);
-    } catch {
-      setCopied(false);
-    }
-  };
-
   const partyRows = [
     ...parties.map((party) => ({
       key: party,
@@ -491,7 +501,7 @@ function NationalResult({
       <div className="flex-1 overflow-y-auto p-4 space-y-5">
         <section
           className={`grid gap-2 ${
-            allStatesComplete ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-2"
+            allStatesComplete ? "grid-cols-2" : "grid-cols-2"
           }`}
         >
           <div className="rounded-xl border border-border-subtle bg-slate-50 p-3">
@@ -711,10 +721,10 @@ function NationalResult({
         <div className="flex flex-wrap gap-2">
           <button
             type="button"
-            onClick={() => void copyLink()}
+            onClick={() => setShareOpen(true)}
             className="rounded-xl bg-primary-container px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary"
           >
-            {copied ? "Link copied" : "Share scenario"}
+            Share scenario
           </button>
           <button
             type="button"
@@ -739,6 +749,11 @@ function NationalResult({
           </button>
         </div>
       </div>
+      <ShareScenarioModal
+        open={shareOpen}
+        url={shareOpen ? shareUrl() : ""}
+        onClose={() => setShareOpen(false)}
+      />
     </div>
   );
 }
@@ -775,7 +790,7 @@ export default function SpeculationPanel({
   useEffect(() => {
     if (restoredRef.current) return;
     restoredRef.current = true;
-    if (parties.length === REQUIRED_PARTIES) return;
+    if (isSpeculationLineupActive(parties)) return;
     const draft = readSpeculationDraft();
     if (draft) restoreDraft(draft);
   }, [parties.length, restoreDraft]);
@@ -786,9 +801,9 @@ export default function SpeculationPanel({
     [data.latestResults, data.partyDirectory]
   );
   const [picked, setPicked] = useState<string[]>(() =>
-    parties.length === REQUIRED_PARTIES
+    isSpeculationLineupActive(parties)
       ? parties
-      : [...DEFAULT_SPECULATION_PARTIES]
+      : defaultSpeculationLineup()
   );
   const selectStatesOnMap = useMapStore((s) => s.selectStates);
 
@@ -798,7 +813,13 @@ export default function SpeculationPanel({
   }, [selectedStateId, selectStatesOnMap]);
 
   useEffect(() => {
-    if (parties.length === REQUIRED_PARTIES) {
+    if (phase === "setup" && isSpeculationLineupActive(parties)) {
+      setPicked(parties);
+    }
+  }, [phase, parties]);
+
+  useEffect(() => {
+    if (isSpeculationLineupActive(parties)) {
       setPicked(parties);
     } else if (parties.length === 0) {
       setPicked(defaultParties);
@@ -807,14 +828,14 @@ export default function SpeculationPanel({
 
   const scenario = useMemo<SpeculationScenario>(
     () => ({
-      parties: parties.length === REQUIRED_PARTIES ? parties : picked,
+      parties: isSpeculationLineupActive(parties) ? parties : picked,
       states: stateInputs,
     }),
     [parties, picked, stateInputs]
   );
 
   const aggregate = useMemo(() => {
-    if (scenario.parties.length !== REQUIRED_PARTIES) return null;
+    if (!isSpeculationLineupActive(scenario.parties)) return null;
     return aggregateNational({
       scenario,
       results2023: data.latestResults,
@@ -839,23 +860,31 @@ export default function SpeculationPanel({
   const allStatesCompleteRef = useRef(false);
 
   const randomizeAllStates = () => {
-    if (parties.length !== REQUIRED_PARTIES) return;
+    if (!isSpeculationLineupActive(parties)) return;
     const inputs = buildRandomStateInputsForAll({
       stateIds: states.map((state) => state.id),
       parties,
       resultsByYear: data.resultsByYear,
       registeredVotersByYear: data.registeredVotersByYear,
       registeredYear,
+      stateRegions: Object.fromEntries(
+        states.map((state) => [state.id, state.regionName])
+      ),
     });
     const openResult = inputs.length >= states.length;
     mergeStates(inputs, { openResult });
+  };
+
+  const resetScenario = () => {
+    resetAll();
+    useMapStore.getState().reset();
   };
 
   useEffect(() => {
     const complete = allStatesComplete;
     if (
       phase === "list" &&
-      parties.length === REQUIRED_PARTIES &&
+      isSpeculationLineupActive(parties) &&
       complete &&
       !allStatesCompleteRef.current
     ) {
@@ -897,17 +926,19 @@ export default function SpeculationPanel({
         onEditParties={openSetup}
         onRandomizeAll={randomizeAllStates}
         onToggleUse2023={setUse2023ForUnset}
-        onReset={resetAll}
+        onReset={resetScenario}
       />
     );
   }
 
-  if (phase === "setup" || parties.length !== REQUIRED_PARTIES) {
+  if (phase === "setup" || !isSpeculationLineupActive(parties)) {
     const changed =
-      parties.length === REQUIRED_PARTIES &&
-      picked.some((party, index) => party !== parties[index]);
-    const duplicate = new Set(picked).size !== REQUIRED_PARTIES;
-    const isCustomEdit = phase === "setup" && parties.length === REQUIRED_PARTIES;
+      isSpeculationLineupActive(parties) &&
+      (parties.length !== picked.length ||
+        parties.some((party) => !picked.includes(party)));
+    const lineupValid = isValidSpeculationLineup(picked);
+    const isCustomEdit =
+      phase === "setup" && isSpeculationLineupActive(parties);
 
     return (
       <div className="flex flex-col h-full min-h-0">
@@ -920,7 +951,7 @@ export default function SpeculationPanel({
           </h2>
           <p className="text-xs text-text-muted mt-1">
             {isCustomEdit
-              ? "Swap any of the six parties in your scenario."
+              ? `Keep APC, NDC & ADC — add or remove others (${MIN_SPECULATION_PARTIES}–${MAX_SPECULATION_PARTIES} total).`
               : "Start with six tickets, then pick states on the map and set turnout and vote share."}
           </p>
         </div>
@@ -941,67 +972,34 @@ export default function SpeculationPanel({
           </div>
 
           {isCustomEdit ? (
-            <ul className="space-y-2">
-              {Array.from({ length: REQUIRED_PARTIES }).map((_, index) => {
-                const value = picked[index] ?? "";
-                return (
-                  <li key={index} className="flex items-center gap-2">
-                    <span className="w-5 text-xs font-bold text-text-muted">
-                      {index + 1}
-                    </span>
-                    <select
-                      value={value}
-                      onChange={(event) => {
-                        const next = [...picked];
-                        next[index] = event.target.value;
-                        setPicked(next);
-                      }}
-                      className="min-w-0 flex-1 rounded-xl border border-border-subtle bg-white px-3 py-2 text-sm font-medium text-text-primary"
-                      aria-label={`Party ${index + 1}`}
-                    >
-                      <option value="">Select party</option>
-                      {data.partyDirectory.map((party) => (
-                        <option
-                          key={party.abbreviation}
-                          value={party.abbreviation}
-                          disabled={
-                            picked.includes(party.abbreviation) &&
-                            party.abbreviation !== value
-                          }
-                        >
-                          {party.abbreviation} · {party.name}
-                        </option>
-                      ))}
-                    </select>
-                  </li>
-                );
-              })}
-            </ul>
+            <SpeculationPartyLineupEditor
+              picked={picked}
+              directory={data.partyDirectory}
+              onChange={setPicked}
+            />
           ) : (
             <SpeculationDefaultTickets presidential={presidential} />
           )}
 
-          {(duplicate || changed) && setCount > 0 && isCustomEdit && (
+          {changed && setCount > 0 && isCustomEdit && (
             <p className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs text-amber-950">
-              {duplicate
-                ? "Choose six different parties."
-                : `Changing parties clears the ${setCount} state assumption(s) already set.`}
+              Changing the lineup clears the {setCount} state assumption(s)
+              already set.
             </p>
           )}
+
+          <p className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs leading-relaxed text-amber-950">
+            <span className="font-semibold">Disclaimer:</span> This is a
+            speculative what-if scenario, not a prediction or official result.
+            Only INEC has the authority to announce actual election results.
+          </p>
 
           <button
             type="button"
             onClick={() =>
-              start(
-                isCustomEdit ? picked : [...DEFAULT_SPECULATION_PARTIES]
-              )
+              start(isCustomEdit ? picked : defaultSpeculationLineup())
             }
-            disabled={
-              isCustomEdit &&
-              (duplicate ||
-                picked.length !== REQUIRED_PARTIES ||
-                picked.some((party) => !party))
-            }
+            disabled={isCustomEdit && !lineupValid}
             className="w-full rounded-xl bg-primary-container px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary disabled:cursor-not-allowed disabled:opacity-40"
           >
             {setCount > 0 && !changed && isCustomEdit
@@ -1087,7 +1085,7 @@ export default function SpeculationPanel({
           </button>
           <button
             type="button"
-            onClick={resetAll}
+            onClick={resetScenario}
             className="rounded-lg border border-red-200 px-2.5 py-1.5 text-xs font-semibold text-red-700 hover:bg-red-50"
           >
             Reset

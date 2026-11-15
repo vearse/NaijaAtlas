@@ -165,9 +165,11 @@ function LayersStackIcon() {
 export default function MapBottomToolbar({
   layers = OVERLAY_LAYER_IDS,
   basemapToggle = false,
+  layersEnabled = true,
 }: {
   layers?: OverlayLayerId[];
   basemapToggle?: boolean;
+  layersEnabled?: boolean;
 } = {}) {
   const [layersOpen, setLayersOpen] = useState(false);
   const mapType = useMapStore((s) => s.mapType);
@@ -209,6 +211,7 @@ export default function MapBottomToolbar({
       role="group"
       aria-label="Map layers and zoom"
     >
+      {layersEnabled && (
       <div className="rounded-xl bg-surface-card/90 backdrop-blur-md p-2 shadow-lg border border-border-subtle/80">
         {!layersOpen ? (
           <button
@@ -277,6 +280,7 @@ export default function MapBottomToolbar({
           </>
         )}
       </div>
+      )}
 
       <div className="flex flex-col gap-1">
         <ZoomButton label="Zoom in" onClick={zoomIn}>

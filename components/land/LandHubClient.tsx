@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback, useState } from "react";
 import Link from "next/link";
 import HubShell from "@/components/hub/HubShell";
 import HubHeader from "@/components/hub/HubHeader";
@@ -11,12 +12,33 @@ import SourceNote from "@/components/hub/SourceNote";
 import LandHero from "@/components/land/LandHero";
 import LandExplorer from "@/components/land/LandExplorer";
 import NigeriaHighlights from "@/components/land/NigeriaHighlights";
+import RandomStoryModal from "@/components/land/RandomStoryModal";
 import RegionGrid from "@/components/land/RegionGrid";
 import WikipediaReaderModal from "@/components/map/WikipediaReaderModal";
-import type { LandHubData } from "@/lib/server/loadLandHubData";
+import type { HubCountryNote, LandHubData } from "@/lib/server/loadLandHubData";
 
 export default function LandHubClient(data: LandHubData) {
   const stateSlugByName = data.slugByStateName;
+  const [randomStory, setRandomStory] = useState<HubCountryNote | null>(null);
+
+  const pickStory = useCallback(
+    (excludeTitle?: string) => {
+      const pool = data.highlights.filter((n) => n.title !== excludeTitle);
+      const source = pool.length > 0 ? pool : data.highlights;
+      return source[Math.floor(Math.random() * source.length)] ?? null;
+    },
+    [data.highlights]
+  );
+
+  const openRandomStory = useCallback(() => {
+    setRandomStory(pickStory());
+  }, [pickStory]);
+
+  const nextRandomStory = useCallback(() => {
+    setRandomStory((current) => pickStory(current?.title));
+  }, [pickStory]);
+
+  const closeRandomStory = useCallback(() => setRandomStory(null), []);
 
   return (
     <HubShell>
@@ -48,7 +70,7 @@ export default function LandHubClient(data: LandHubData) {
       />
 
       <main className="mx-auto max-w-[1280px] px-4 md:px-6">
-        <LandHero regions={data.regions} />
+        <LandHero regions={data.regions} onRandomStory={openRandomStory} />
 
         <HubSection
           id="terrain"
@@ -65,7 +87,10 @@ export default function LandHubClient(data: LandHubData) {
           title="Stories behind the map"
           lede="History, culture and geography notes from the atlas overview."
         >
-          <NigeriaHighlights notes={data.highlights} />
+          <NigeriaHighlights
+            notes={data.highlights}
+            onRandomStory={openRandomStory}
+          />
         </HubSection>
 
         <HubSection
@@ -95,6 +120,11 @@ export default function LandHubClient(data: LandHubData) {
       </main>
 
       <HubFooter />
+      <RandomStoryModal
+        story={randomStory}
+        onClose={closeRandomStory}
+        onAnother={nextRandomStory}
+      />
       <WikipediaReaderModal />
     </HubShell>
   );

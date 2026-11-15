@@ -39,6 +39,7 @@ export default function MapHints({ variant = "bar" }: Props) {
   const selectedOverlay = useMapStore((s) => s.selectedOverlay);
   const activeLens = useMapStore((s) => s.activeLens);
   const mapType = useMapStore((s) => s.mapType);
+  const sectionMap = useMapStore((s) => s.sectionMap);
   const overlayFeatureFocus = useMapStore((s) => s.overlayFeatureFocus);
 
   useEffect(() => {
@@ -71,6 +72,10 @@ export default function MapHints({ variant = "bar" }: Props) {
 
     if (mapType === "ranking") {
       return "Ranking mode — pick a metric in the panel; click a state to highlight it on the map and list";
+    }
+
+    if (!sectionMap && mapType === "osm") {
+      return "Street map mode — custom layers are hidden; switch to Minimal to show cities and resources";
     }
 
     if (overlayFeatureFocus) {
@@ -131,6 +136,7 @@ export default function MapHints({ variant = "bar" }: Props) {
   }, [
     activeLens,
     mapType,
+    sectionMap,
     overlayFeatureFocus,
     mapActionHint,
     dragModeStateId,

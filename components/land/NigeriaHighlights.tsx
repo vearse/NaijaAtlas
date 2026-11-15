@@ -24,8 +24,35 @@ const CATEGORY_STYLES: Record<string, string> = {
 
 const PAGE = 6;
 
+function ShuffleIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M16 3h5v5" />
+      <path d="M4 20 21 3" />
+      <path d="M21 16v5h-5" />
+      <path d="M15 15l6 6" />
+      <path d="M4 4l5 5" />
+    </svg>
+  );
+}
+
 /** Country notes from the atlas overview, shown as browsable highlight cards. */
-export default function NigeriaHighlights({ notes }: { notes: HubCountryNote[] }) {
+export default function NigeriaHighlights({
+  notes,
+  onRandomStory,
+}: {
+  notes: HubCountryNote[];
+  onRandomStory?: () => void;
+}) {
   const openWikiModal = useMapStore((s) => s.openWikiModal);
   const [category, setCategory] = useState<string>("all");
   const [visible, setVisible] = useState(PAGE);
@@ -51,25 +78,37 @@ export default function NigeriaHighlights({ notes }: { notes: HubCountryNote[] }
 
   return (
     <div>
-      <div className="flex flex-wrap gap-2">
-        {["all", ...categories].map((c) => {
-          const active = c === category;
-          return (
-            <button
-              key={c}
-              type="button"
-              onClick={() => choose(c)}
-              aria-pressed={active}
-              className={`h-9 rounded-full border px-4 text-body-sm font-semibold capitalize transition-colors ${
-                active
-                  ? "border-primary-container bg-primary-container text-white"
-                  : "border-border-subtle bg-surface-card text-text-secondary hover:border-slate-300 hover:text-text-primary"
-              }`}
-            >
-              {c === "all" ? "All highlights" : c}
-            </button>
-          );
-        })}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap gap-2">
+          {["all", ...categories].map((c) => {
+            const active = c === category;
+            return (
+              <button
+                key={c}
+                type="button"
+                onClick={() => choose(c)}
+                aria-pressed={active}
+                className={`h-9 rounded-full border px-4 text-body-sm font-semibold capitalize transition-colors ${
+                  active
+                    ? "border-primary-container bg-primary-container text-white"
+                    : "border-border-subtle bg-surface-card text-text-secondary hover:border-slate-300 hover:text-text-primary"
+                }`}
+              >
+                {c === "all" ? "All highlights" : c}
+              </button>
+            );
+          })}
+        </div>
+        {onRandomStory && (
+          <button
+            type="button"
+            onClick={onRandomStory}
+            className="inline-flex h-9 items-center gap-2 rounded-full border border-primary-container px-4 text-body-sm font-semibold text-primary transition-colors hover:bg-emerald-50"
+          >
+            <ShuffleIcon />
+            Random story
+          </button>
+        )}
       </div>
 
       <ul className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">

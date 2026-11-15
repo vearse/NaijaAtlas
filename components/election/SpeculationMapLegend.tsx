@@ -5,19 +5,19 @@ import {
   colorForParty,
   OTHERS_COLOR,
   OTHERS_LABEL,
-  REQUIRED_PARTIES,
 } from "@/lib/speculation/constants";
+import { isSpeculationLineupActive } from "@/lib/speculation/parties";
 
 export default function SpeculationMapLegend() {
   const parties = useSpeculationStore((s) => s.parties);
   const states = useSpeculationStore((s) => s.states);
   const use2023 = useSpeculationStore((s) => s.use2023ForUnset);
 
-  if (parties.length !== REQUIRED_PARTIES) return null;
+  if (!isSpeculationLineupActive(parties)) return null;
   const setCount = Object.keys(states).length;
 
   return (
-    <div className="absolute bottom-20 left-3 z-10 max-w-[260px] rounded-xl border border-border-subtle/90 bg-surface-card/95 px-3 py-2 shadow-sm backdrop-blur-sm">
+    <div className="absolute bottom-6 right-3 z-10 max-w-[260px] rounded-xl border border-border-subtle/90 bg-surface-card/95 px-3 py-2 shadow-sm backdrop-blur-sm">
       <div className="flex flex-wrap gap-x-3 gap-y-1.5">
         {parties.map((party) => (
           <span

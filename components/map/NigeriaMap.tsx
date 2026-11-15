@@ -102,7 +102,8 @@ import { applyGotRealmPaint } from "@/lib/map/gotRealms";
 import { useSpeculationStore } from "@/lib/store/speculationStore";
 import { aggregateNational } from "@/lib/speculation/calc";
 import { buildSpeculationMapStyle } from "@/lib/speculation/mapStyle";
-import { colorForParty, REQUIRED_PARTIES } from "@/lib/speculation/constants";
+import { colorForParty } from "@/lib/speculation/constants";
+import { isSpeculationLineupActive } from "@/lib/speculation/parties";
 
 interface NigeriaMapProps {
   states: StateLocation[];
@@ -211,6 +212,9 @@ export default function NigeriaMap({
   const selectedStateIds = useMapStore((s) => s.selectedStateIds);
   const lgaVisibleStateIds = useMapStore((s) => s.lgaVisibleStateIds);
   const selectedLgaId = useMapStore((s) => s.selectedLgaId);
+  const selectedSenatorialDistrictId = useMapStore(
+    (s) => s.selectedSenatorialDistrictId
+  );
   const metroMapViews = useMapStore((s) => s.metroMapViews);
   const draggedStateId = useMapStore((s) => s.draggedStateId);
   const dragModeStateId = useMapStore((s) => s.dragModeStateId);
@@ -247,7 +251,7 @@ export default function NigeriaMap({
   const speculationAggregate = useMemo(() => {
     if (
       !speculation ||
-      speculationParties.length !== REQUIRED_PARTIES
+      !isSpeculationLineupActive(speculationParties)
     ) {
       return null;
     }
@@ -460,7 +464,7 @@ export default function NigeriaMap({
     if (!realmId) return false;
     if (
       useSpeculationStore.getState().active &&
-      useSpeculationStore.getState().parties.length === REQUIRED_PARTIES
+      isSpeculationLineupActive(useSpeculationStore.getState().parties)
     ) {
       return false;
     }
@@ -501,7 +505,7 @@ export default function NigeriaMap({
     const speculation = useSpeculationStore.getState();
     if (
       speculation.active &&
-      speculation.parties.length === REQUIRED_PARTIES
+      isSpeculationLineupActive(speculation.parties)
     ) {
       return false;
     }
@@ -550,7 +554,7 @@ export default function NigeriaMap({
         return false;
       }
       if (
-        store.parties.length !== REQUIRED_PARTIES ||
+        !isSpeculationLineupActive(store.parties) ||
         store.phase === "setup"
       ) {
         resetSpeculationTiePaint(map);
@@ -850,7 +854,7 @@ export default function NigeriaMap({
       if (hit.kind === "state") {
         const speculation = useSpeculationStore.getState();
         if (speculation.active) {
-          if (speculation.parties.length !== REQUIRED_PARTIES) {
+          if (!isSpeculationLineupActive(speculation.parties)) {
             store.openMobileSheet();
             return;
           }
@@ -1704,7 +1708,7 @@ export default function NigeriaMap({
     const speculation = useSpeculationStore.getState();
     if (
       speculation.active &&
-      speculation.parties.length === REQUIRED_PARTIES
+      isSpeculationLineupActive(speculation.parties)
     ) {
       return;
     }
@@ -1739,8 +1743,13 @@ export default function NigeriaMap({
       for (const l of lgas) {
         if (l.parentId !== stateId) continue;
         const selected = l.id === selectedLgaId;
+        const districtSelected =
+          selectedSenatorialDistrictId != null &&
+          politicsLookups.lgaToSenatorialDistrictId[l.id] ===
+            selectedSenatorialDistrictId;
         const statePayload = {
           selected,
+          districtSelected,
           focused: false,
           dimmed: false,
         };
@@ -1748,7 +1757,7 @@ export default function NigeriaMap({
         setFeatureState(lgaOutlineSourceId(stateId), l.id, statePayload);
       }
     }
-  }, [effectiveLgaKey, selectedLgaId, lgas, setFeatureState, lgaVisibleStateIds, metroMapViews, lgaReadyKey]);
+  }, [effectiveLgaKey, selectedLgaId, selectedSenatorialDistrictId, politicsLookups, lgas, setFeatureState, lgaVisibleStateIds, metroMapViews, lgaReadyKey]);
 
   // ——— Metro map views: election-style fillColor on LGA sources ———
   useEffect(() => {
@@ -2006,6 +2015,20 @@ export default function NigeriaMap({
       return;
     }
 
+    if (selectedSenatorialDistrictId) {
+      const bboxes = lgas
+        .filter(
+          (lga) =>
+            politicsLookups.lgaToSenatorialDistrictId[lga.id] ===
+            selectedSenatorialDistrictId
+        )
+        .map((lga) => lga.bbox);
+      if (bboxes.length > 0) {
+        flyToBounds(unionBboxes(bboxes), 64);
+        return;
+      }
+    }
+
     if (activeRegionId && selectedStateIds.size === 0) {
       const region = regions.find((r) => r.id === activeRegionId);
       if (region) {
@@ -2026,9 +2049,12 @@ export default function NigeriaMap({
   }, [
     selectedKey,
     selectedLgaId,
+    selectedSenatorialDistrictId,
     activeRegionId,
     states,
     regions,
+    lgas,
+    politicsLookups,
     bboxById,
     flyToBounds,
     selectedStateIds,

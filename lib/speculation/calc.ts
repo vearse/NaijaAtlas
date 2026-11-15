@@ -8,6 +8,7 @@ import {
   historicalResultKeysForParties,
   historicalVotesForParty,
   OTHERS_PARTY,
+  MAX_SPECULATION_PARTIES,
   REQUIRED_PARTIES,
 } from "./constants";
 import type {
@@ -69,7 +70,7 @@ export function validateShares(shares: SpeculationShares): ShareValidation {
       ok: false,
       sum: round1(sum),
       others: 0,
-      error: `The six parties add up to ${round1(sum)}%. Reduce them to 100% or less.`,
+      error: `Party shares add up to ${round1(sum)}%. Reduce them to 100% or less.`,
     };
   }
   return {

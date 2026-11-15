@@ -101,7 +101,7 @@ const registeredByYear: RegisteredVotersByYear = {
   2015: registered(2015, { "NG-AB": 1000 }),
 };
 
-const parties = ["APC", "PDP", "LP", "NNPP", "APGA", "ADC"];
+const parties = ["APC", "PDP", "NDC", "NNPP", "APGA", "ADC"];
 
 test("random party shares stay within 100%", () => {
   for (let i = 0; i < 20; i += 1) {
@@ -168,7 +168,7 @@ test("state winner uses plurality among the named parties", () => {
     stateId: "NG-AB",
     registeredVoters: 1000,
     turnout: 50,
-    shares: { APC: 40, PDP: 35, LP: 15, NNPP: 5, APGA: 0, ADC: 0 },
+    shares: { APC: 40, PDP: 35, NDC: 15, NNPP: 5, APGA: 0, ADC: 0 },
     parties,
   });
   assert.equal(outcome.totalVotes, 500);
@@ -184,7 +184,7 @@ test("exact ties are flagged and broken by the 2023 state result", () => {
     stateId: "NG-AD",
     registeredVoters: 1000,
     turnout: 100,
-    shares: { APC: 40, PDP: 40, LP: 10, NNPP: 10, APGA: 0, ADC: 0 },
+    shares: { APC: 40, PDP: 40, NDC: 10, NNPP: 10, APGA: 0, ADC: 0 },
     parties,
     actual2023: results2023.states[1],
   });
@@ -200,7 +200,7 @@ test("2023 prefill assigns the remainder to Others", () => {
   assert.deepEqual(shares, {
     APC: 40,
     PDP: 30,
-    LP: 20,
+    NDC: 20,
     NNPP: 10,
     APGA: 0,
     ADC: 0,
@@ -216,7 +216,7 @@ test("national aggregation can use 2023 for unset states or leave them out", () 
       "NG-AB": {
         stateId: "NG-AB",
         turnout: 50,
-        shares: { APC: 50, PDP: 25, LP: 25, NNPP: 0, APGA: 0, ADC: 0 },
+        shares: { APC: 50, PDP: 25, NDC: 25, NNPP: 0, APGA: 0, ADC: 0 },
       },
     },
   };
@@ -231,7 +231,7 @@ test("national aggregation can use 2023 for unset states or leave them out", () 
   assert.equal(with2023.totalVotes, 600);
   assert.equal(with2023.votesByParty.APC, 260);
   assert.equal(with2023.votesByParty.PDP, 165);
-  assert.equal(with2023.votesByParty.LP, 165);
+  assert.equal(with2023.votesByParty.NDC, 165);
   assert.equal(with2023.votesByParty.NNPP, 10);
   assert.deepEqual(with2023.statesWonByParty.APC, ["NG-AB"]);
   assert.deepEqual(with2023.statesWonByParty.PDP, ["NG-AD"]);
@@ -291,7 +291,7 @@ test("URL encode/decode round-trips the scenario", () => {
         shares: {
           APC: 41.1,
           PDP: 30.2,
-          LP: 18.3,
+          NDC: 18.3,
           NNPP: 5.4,
           APGA: 2.5,
           ADC: 0,
@@ -300,7 +300,7 @@ test("URL encode/decode round-trips the scenario", () => {
       "NG-AD": {
         stateId: "NG-AD",
         turnout: 31.5,
-        shares: { APC: 10, PDP: 40, LP: 40, NNPP: 10, APGA: 0, ADC: 0 },
+        shares: { APC: 10, PDP: 40, NDC: 40, NNPP: 10, APGA: 0, ADC: 0 },
       },
     },
   };

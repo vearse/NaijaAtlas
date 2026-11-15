@@ -104,3 +104,7 @@ body {
     animation: none;
   }
 }
+
+#nl-badge-frame {
+  display: none;
+}

@@ -28,7 +28,34 @@ const BANDS = [
   },
 ];
 
-export default function LandHero({ regions }: { regions: LandHubData["regions"] }) {
+function ShuffleIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M16 3h5v5" />
+      <path d="M4 20 21 3" />
+      <path d="M21 16v5h-5" />
+      <path d="M15 15l6 6" />
+      <path d="M4 4l5 5" />
+    </svg>
+  );
+}
+
+export default function LandHero({
+  regions,
+  onRandomStory,
+}: {
+  regions: LandHubData["regions"];
+  onRandomStory?: () => void;
+}) {
   return (
     <section id="overview" className="scroll-mt-32 pt-10 md:pt-14">
       <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)]">
@@ -72,6 +99,16 @@ export default function LandHero({ regions }: { regions: LandHubData["regions"] 
             >
               Open the terrain map
             </Link>
+            {onRandomStory && (
+              <button
+                type="button"
+                onClick={onRandomStory}
+                className="inline-flex h-11 items-center gap-2 rounded-xl border border-border-subtle px-5 text-label-md font-semibold text-text-secondary transition-colors hover:border-primary-container hover:text-primary"
+              >
+                <ShuffleIcon />
+                Random story
+              </button>
+            )}
           </div>
         </div>
 

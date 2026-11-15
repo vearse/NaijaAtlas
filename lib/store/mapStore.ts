@@ -14,6 +14,17 @@ export function lgaLayersDisabled(mapType: MapTypeId): boolean {
   return mapType === "ranking";
 }
 
+/**
+ * Full-atlas modes other than Minimal fully own the canvas. Section maps keep
+ * their preset overlay layers when the basemap toggles to Street.
+ */
+export function overlayLayersSuppressed(
+  mapType: MapTypeId,
+  sectionMap: boolean
+): boolean {
+  return !sectionMap && mapType !== "minimal";
+}
+
 export type MobileSheetMode = "hidden" | "peek" | "open";
 export type MapTypeId = "minimal" | "osm" | "election" | "ranking";
 export type MapCanvasView = "map" | "zones" | "states";
@@ -157,6 +168,8 @@ export interface MapSelectionState {
   /** True on section map routes; hides full-atlas-only controls. */
   sectionMap: boolean;
   activeOverlays: Set<OverlayLayerId>;
+  /** Overlay selection restored when returning to the full-atlas Minimal map. */
+  savedFullAtlasOverlays: Set<OverlayLayerId> | null;
   /** Layer guide shown in the panel when a toolbar layer is toggled on. */
   overlayGuideLayer: OverlayLayerId | null;
   /**
@@ -327,6 +340,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   lgaUi: true,
   sectionMap: false,
   activeOverlays: new Set(DEFAULT_ACTIVE_OVERLAYS),
+  savedFullAtlasOverlays: null,
   overlayGuideLayer: null,
   revealedOptInGroups: new Set<string>(),
   selectedOverlay: null,
@@ -476,7 +490,27 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
 
   closeCompareView: () => set({ compareView: null }),
   setMapType: (id) => {
-    const prev = get().mapType;
+    const state = get();
+    const prev = state.mapType;
+    const suppressNext = overlayLayersSuppressed(id, state.sectionMap);
+    const suppressPrev = overlayLayersSuppressed(prev, state.sectionMap);
+
+    const overlayPatch: Partial<MapSelectionState> = {};
+    if (!state.sectionMap) {
+      if (suppressNext && !suppressPrev) {
+        overlayPatch.savedFullAtlasOverlays = new Set(state.activeOverlays);
+        overlayPatch.activeOverlays = new Set();
+        overlayPatch.selectedOverlay = null;
+        overlayPatch.overlayGuideLayer = null;
+        overlayPatch.overlayFeatureFocus = null;
+      } else if (!suppressNext && suppressPrev) {
+        overlayPatch.activeOverlays = new Set(
+          state.savedFullAtlasOverlays ?? DEFAULT_ACTIVE_OVERLAYS
+        );
+        overlayPatch.savedFullAtlasOverlays = null;
+      }
+    }
+
     if (prev === "election" && id !== "election") {
       set({
         mapType: id,
@@ -487,6 +521,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         metroMapViews: [],
         activeMetroPanelId: null,
         compareView: null,
+        ...overlayPatch,
       });
       notifyLgaVisibility(get);
       return;
@@ -501,6 +536,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         selectedLgaId: null,
         activeRegionId: null,
         compareView: null,
+        ...overlayPatch,
       });
       notifyLgaVisibility(get);
       return;
@@ -523,6 +559,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         compareView: null,
         rankingHighlightedStateId: null,
         mobileSheet: "open",
+        ...overlayPatch,
       });
       notifyLgaVisibility(get);
       return;
@@ -541,11 +578,12 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
         metroMapViews: [],
         activeMetroPanelId: null,
         compareView: null,
+        ...overlayPatch,
       });
       notifyLgaVisibility(get);
       return;
     }
-    set({ mapType: id });
+    set({ mapType: id, ...overlayPatch });
   },
   setMapCanvasView: (view) => set({ mapCanvasView: view }),
   setElectionResultsYear: (year) => {
@@ -736,6 +774,7 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
 
   toggleOverlay: (id) => {
     const state = get();
+    if (overlayLayersSuppressed(state.mapType, state.sectionMap)) return;
     const next = new Set(state.activeOverlays);
     const turningOn = !next.has(id);
     const focus =
@@ -1154,11 +1193,14 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
   },
 
   reset: () => {
+    const state = get();
     set({
       selectedStateIds: new Set(),
       selectedStateOrder: [],
       lgaVisibleStateIds: new Set(),
       selectedLgaId: null,
+      selectedSenatorialDistrictId: null,
+      electionFederalConstituencyFocusId: null,
       draggedStateId: null,
       dragModeStateId: null,
       activeRegionId: null,
@@ -1172,8 +1214,11 @@ export const useMapStore = create<MapSelectionState>((set, get) => ({
       wikiModal: null,
       directionsModalFeature: null,
       directionsPanelTarget: null,
-      activeOverlays: new Set(DEFAULT_ACTIVE_OVERLAYS),
-      resetCounter: get().resetCounter + 1,
+      activeOverlays: overlayLayersSuppressed(state.mapType, state.sectionMap)
+        ? new Set()
+        : new Set(DEFAULT_ACTIVE_OVERLAYS),
+      savedFullAtlasOverlays: null,
+      resetCounter: state.resetCounter + 1,
       featureMapViews: [],
       metroMapViews: [],
       activeMetroPanelId: null,

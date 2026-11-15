@@ -1,13 +1,17 @@
-import { REQUIRED_PARTIES } from "./constants";
+import {
+  MAX_SPECULATION_PARTIES,
+  MIN_SPECULATION_PARTIES,
+} from "./constants";
+import { isValidSpeculationLineup } from "./parties";
 import { round1 } from "./calc";
 import type { SpeculationScenario } from "./types";
 
 interface CompactScenario {
-  v: 1;
+  v: 2;
   p: string[];
   u: 0 | 1;
-  /** [stateId, turnout, ...five shares] */
-  s: [string, number, number, number, number, number, number][];
+  /** [stateId, turnout, ...party shares in `p` order] */
+  s: (string | number)[][];
 }
 
 export interface DecodedScenario {
@@ -33,12 +37,18 @@ function fromBase64Url(value: string): string | null {
 }
 
 function isPartyList(value: unknown): value is string[] {
-  return (
-    Array.isArray(value) &&
-    value.length === REQUIRED_PARTIES &&
-    value.every((party) => typeof party === "string" && party.length > 0) &&
-    new Set(value).size === REQUIRED_PARTIES
-  );
+  if (!Array.isArray(value)) return false;
+  if (
+    value.length < MIN_SPECULATION_PARTIES ||
+    value.length > MAX_SPECULATION_PARTIES
+  ) {
+    return false;
+  }
+  if (!value.every((party) => typeof party === "string" && party.length > 0)) {
+    return false;
+  }
+  if (new Set(value).size !== value.length) return false;
+  return isValidSpeculationLineup(value);
 }
 
 export function encodeScenario(
@@ -46,7 +56,7 @@ export function encodeScenario(
   use2023ForUnset: boolean
 ): string {
   const compact: CompactScenario = {
-    v: 1,
+    v: 2,
     p: scenario.parties,
     u: use2023ForUnset ? 1 : 0,
     s: Object.values(scenario.states)
@@ -55,7 +65,7 @@ export function encodeScenario(
         state.stateId,
         round1(state.turnout),
         ...scenario.parties.map((party) => round1(state.shares[party] ?? 0)),
-      ]) as CompactScenario["s"],
+      ]),
   };
   return toBase64Url(JSON.stringify(compact));
 }
@@ -73,7 +83,11 @@ export function decodeScenario(
     return null;
   }
   if (!parsed || typeof parsed !== "object") return null;
-  const data = parsed as Partial<CompactScenario>;
+  const data = parsed as Partial<CompactScenario> & {
+    v?: number;
+    p?: string[];
+    s?: (string | number)[][];
+  };
   const parties = isPartyList(data.p)
     ? data.p
     : isPartyList(fallbackParties)
@@ -84,14 +98,14 @@ export function decodeScenario(
 
   const states: SpeculationScenario["states"] = {};
   for (const row of data.s) {
-    if (!Array.isArray(row) || row.length < 2 + REQUIRED_PARTIES) continue;
+    if (!Array.isArray(row) || row.length < 2 + parties.length) continue;
     const stateId = row[0];
     if (typeof stateId !== "string" || !stateId.startsWith("NG-")) continue;
     const turnout = Number(row[1]);
     if (!Number.isFinite(turnout) || turnout < 1 || turnout > 100) continue;
     const shares: Record<string, number> = {};
     let valid = true;
-    for (let i = 0; i < REQUIRED_PARTIES; i += 1) {
+    for (let i = 0; i < parties.length; i += 1) {
       const value = Number(row[i + 2]);
       if (!Number.isFinite(value) || value < 0 || value > 100) {
         valid = false;

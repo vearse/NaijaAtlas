@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useMapStore } from "@/lib/store/mapStore";
 import { useSpeculationStore } from "@/lib/store/speculationStore";
 import { decodeScenario, encodeScenario } from "@/lib/speculation/codec";
-import { REQUIRED_PARTIES } from "@/lib/speculation/constants";
+import { isSpeculationLineupActive } from "@/lib/speculation/parties";
 import { parseMapTypeParam } from "@/lib/map/mapType";
 import { parseLensId } from "@/lib/lenses/lensHelper";
 import type { RankingCategoryId } from "@/lib/ranking/types";
@@ -225,7 +225,7 @@ export default function UrlSync({ defaultMapType }: UrlSyncProps = {}) {
     }
     if (speculationActive) {
       params.set("mode", "speculate");
-      if (speculationParties.length === REQUIRED_PARTIES) {
+      if (isSpeculationLineupActive(speculationParties)) {
         params.set("parties", speculationParties.join(","));
         params.set(
           "s",

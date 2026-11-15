@@ -31,7 +31,11 @@ export const OTHERS_COLOR = "#94A3B8";
 export const UNSET_FILL = "#F1F5F9";
 export const SELECTED_OUTLINE = "#008751";
 export const TOTAL_STATES = 37;
+/** @deprecated Use MAX_SPECULATION_PARTIES */
 export const REQUIRED_PARTIES = 6;
+export const MIN_SPECULATION_PARTIES = 3;
+export const MAX_SPECULATION_PARTIES = 6;
+export const LOCKED_SPECULATION_PARTIES = ["APC", "NDC", "ADC"] as const;
 
 /** Default 2027 tickets for the presidential speculation workspace. */
 export const DEFAULT_SPECULATION_PARTIES = [

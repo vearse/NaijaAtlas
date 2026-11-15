@@ -7,7 +7,7 @@ import LensSelect from "@/components/map/LensSelect";
 import MapViewSelect from "@/components/map/MapViewSelect";
 import MapZonesPanel from "@/components/map/MapZonesPanel";
 import RegionSelect from "@/components/map/RegionSelect";
-import GotSelect from "@/components/map/GotSelect";
+// import GotSelect from "@/components/map/GotSelect";
 import SelectedStatesBar from "@/components/map/SelectedStatesBar";
 import MapControls from "@/components/map/MapControls";
 import MapHints from "@/components/map/MapHints";
@@ -23,6 +23,7 @@ import UrlSync from "@/components/UrlSync";
 import {
   useMapStore,
   canCompareStates,
+  overlayLayersSuppressed,
 } from "@/lib/store/mapStore";
 import { useIsMobile } from "@/hooks/useMediaQuery";
 import type {
@@ -176,6 +177,18 @@ export default function ExplorerShell({
   useLayoutEffect(() => {
     if (!preset) {
       useMapStore.setState({ lgaUi: true, sectionMap: false });
+      const store = useMapStore.getState();
+      if (
+        overlayLayersSuppressed(store.mapType, false) &&
+        store.activeOverlays.size > 0
+      ) {
+        useMapStore.setState({
+          activeOverlays: new Set(),
+          selectedOverlay: null,
+          overlayGuideLayer: null,
+          overlayFeatureFocus: null,
+        });
+      }
       return;
     }
     const store = useMapStore.getState();
@@ -314,12 +327,6 @@ export default function ExplorerShell({
                 )}
               </div>
               <div className="flex items-center gap-2 flex-wrap justify-end">
-                <GotSelect />
-                {isElectionMode &&
-                  resultYears.length > 0 &&
-                  !speculationMode && (
-                    <ElectionResultsMapControls availableYears={resultYears} />
-                  )}
                 <MapTypeToggle />
               </div>
             </div>
@@ -548,6 +555,7 @@ export default function ExplorerShell({
               <MapBottomToolbar
                 layers={preset?.layers}
                 basemapToggle={preset ? !!preset.basemapToggle : false}
+                layersEnabled={preset ? true : mapType === "minimal"}
               />
             )}
             {!speculationMode && !resultsMapActive && (
@@ -576,6 +584,7 @@ export default function ExplorerShell({
             resultYears={resultYears}
             states={states}
             speculation={speculation}
+            showSpeculationModeSwitch={Boolean(sectionWorkspace)}
           />
         ) : isRankingMode ? (
           sectionWorkspace === "rankings" ? (

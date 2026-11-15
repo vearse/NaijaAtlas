@@ -28,6 +28,7 @@ interface ElectionPanelProps {
   resultYears?: number[];
   states?: StateLocation[];
   speculation?: SpeculationData;
+  showSpeculationModeSwitch?: boolean;
 }
 
 export default function ElectionPanel({
@@ -38,6 +39,7 @@ export default function ElectionPanel({
   resultYears = [],
   states = [],
   speculation,
+  showSpeculationModeSwitch = true,
 }: ElectionPanelProps) {
   const { showResults, showCurrent } = useElectionModeSwitch(resultYears);
   const electionResultsYear = useMapStore((s) => s.electionResultsYear);
@@ -160,6 +162,23 @@ export default function ElectionPanel({
       />
     ) : null;
 
+  const modeHeader =
+    speculation && showSpeculationModeSwitch ? (
+      <div className="shrink-0 border-b border-border-subtle bg-surface-card p-3">
+        <SpeculationModeSwitch />
+      </div>
+    ) : speculation && speculationActive ? (
+      <div className="shrink-0 border-b border-border-subtle bg-surface-card p-3">
+        <button
+          type="button"
+          onClick={() => setSpeculationActive(false)}
+          className="text-xs font-semibold text-primary hover:underline"
+        >
+          ← Back to candidates
+        </button>
+      </div>
+    ) : null;
+
   const inner = speculationPanel
     ? speculationPanel
     : resultsPanel
@@ -228,11 +247,7 @@ export default function ElectionPanel({
         hasContent
       >
         <div className="flex flex-col max-h-[75vh] min-h-[40vh]">
-          {speculation && (
-            <div className="shrink-0 border-b border-border-subtle bg-surface-card p-3">
-              <SpeculationModeSwitch />
-            </div>
-          )}
+          {modeHeader}
           <div className="flex-1 min-h-0">{inner}</div>
         </div>
       </MobileBottomSheet>
@@ -244,11 +259,7 @@ export default function ElectionPanel({
       data-capture-root="panel"
       className="w-full lg:w-[var(--panel-w,400px)] xl:w-[var(--panel-wx,420px)] shrink-0 min-h-0 max-h-full border-l border-border-subtle/80 bg-surface-card flex flex-col h-full hidden lg:flex"
     >
-      {speculation && (
-        <div className="shrink-0 border-b border-border-subtle bg-surface-card p-3">
-          <SpeculationModeSwitch />
-        </div>
-      )}
+      {modeHeader}
       <div className="flex-1 min-h-0">{inner}</div>
     </aside>
   );
