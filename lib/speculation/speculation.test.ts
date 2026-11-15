@@ -9,9 +9,15 @@ import {
   computeDefaultTurnout,
   computeStateOutcome,
   prefillSharesFrom2023,
+  sumShares,
   validateShares,
 } from "./calc";
-import { randomSpeculationShares } from "./random";
+import {
+  isLockedSpeculationParty,
+  LOCKED_COALITION_SHARE,
+  SCENARIO_SHARE_TOTAL,
+} from "./constants";
+import { realisticScenarioShares, randomSpeculationShares } from "./random";
 import { decodeScenario, encodeScenario } from "./codec";
 import type {
   PresidentialResultsByYear,
@@ -109,6 +115,27 @@ test("random party shares stay within 100%", () => {
     const validation = validateShares(shares);
     assert.equal(validation.ok, true);
     assert.ok(validation.sum <= 100);
+  }
+});
+
+test("realistic splits put most votes on scenario parties", () => {
+  const lineup = ["AAC", "ADC", "APC", "APM", "NDC", "PDP"];
+  for (let i = 0; i < 30; i += 1) {
+    const shares = realisticScenarioShares(lineup);
+    const validation = validateShares(shares);
+    assert.equal(validation.ok, true);
+    const total = sumShares(shares);
+    assert.ok(
+      total >= SCENARIO_SHARE_TOTAL,
+      `expected at least ${SCENARIO_SHARE_TOTAL}%, got ${total}%`
+    );
+    const lockedTotal = lineup
+      .filter(isLockedSpeculationParty)
+      .reduce((sum, party) => sum + (shares[party] ?? 0), 0);
+    assert.ok(
+      lockedTotal >= LOCKED_COALITION_SHARE,
+      `expected locked at least ${LOCKED_COALITION_SHARE}%, got ${lockedTotal}%`
+    );
   }
 });
 

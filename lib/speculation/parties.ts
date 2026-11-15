@@ -1,5 +1,6 @@
 import {
   DEFAULT_SPECULATION_PARTIES,
+  isLockedSpeculationParty,
   LOCKED_SPECULATION_PARTIES,
   MAX_SPECULATION_PARTIES,
   MIN_SPECULATION_PARTIES,
@@ -22,9 +23,7 @@ export function normalizeSpeculationLineup(parties: string[]): string[] {
   const locked = LOCKED_SPECULATION_PARTIES.filter((party) =>
     unique.includes(party)
   );
-  const rest = unique.filter(
-    (party) => !LOCKED_SPECULATION_PARTIES.includes(party)
-  );
+  const rest = unique.filter((party) => !isLockedSpeculationParty(party));
   const merged = [...locked, ...rest];
   return merged.slice(0, MAX_SPECULATION_PARTIES);
 }
@@ -33,9 +32,7 @@ export function canRemovePartyFromLineup(
   party: string,
   lineup: string[]
 ): boolean {
-  if ((LOCKED_SPECULATION_PARTIES as readonly string[]).includes(party)) {
-    return false;
-  }
+  if (isLockedSpeculationParty(party)) return false;
   if (!lineup.includes(party)) return false;
   return lineup.length > MIN_SPECULATION_PARTIES;
 }

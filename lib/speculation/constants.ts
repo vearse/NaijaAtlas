@@ -37,6 +37,15 @@ export const MIN_SPECULATION_PARTIES = 3;
 export const MAX_SPECULATION_PARTIES = 6;
 export const LOCKED_SPECULATION_PARTIES = ["APC", "NDC", "ADC"] as const;
 
+/** Floor for combined valid-vote share on scenario parties (can go higher; remainder → Others). */
+export const SCENARIO_SHARE_TOTAL = 85;
+/** Floor for APC + NDC + ADC combined when all three are on the ballot. */
+export const LOCKED_COALITION_SHARE = 65;
+
+export function isLockedSpeculationParty(party: string): boolean {
+  return (LOCKED_SPECULATION_PARTIES as readonly string[]).includes(party);
+}
+
 /** Default 2027 tickets for the presidential speculation workspace. */
 export const DEFAULT_SPECULATION_PARTIES = [
   "AAC",

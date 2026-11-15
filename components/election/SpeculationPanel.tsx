@@ -47,7 +47,7 @@ import {
 import { defaultPartiesFor2023 } from "@/lib/speculation/calc";
 import {
   buildRandomStateInputsForAll,
-  randomSpeculationShares,
+  realisticScenarioShares,
   randomTurnoutAround,
   softenApmOyoShares,
 } from "@/lib/speculation/random";
@@ -152,7 +152,7 @@ function StateEditor({
     setShares(
       stateId === "NG-OY" && parties.includes("APM")
         ? softenApmOyoShares(parties)
-        : randomSpeculationShares(parties)
+        : realisticScenarioShares(parties)
     );
     setTurnout(randomTurnoutAround(defaultTurnout));
   };
@@ -457,11 +457,16 @@ function NationalResult({
   };
 
   const partyRows = [
-    ...parties.map((party) => ({
-      key: party,
-      label: party,
-      color: colorForParty(party),
-    })),
+    ...[...parties]
+      .sort(
+        (a, b) =>
+          (aggregate.votesByParty[b] ?? 0) - (aggregate.votesByParty[a] ?? 0)
+      )
+      .map((party) => ({
+        key: party,
+        label: party,
+        color: colorForParty(party),
+      })),
     {
       key: "others",
       label: OTHERS_LABEL,

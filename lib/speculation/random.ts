@@ -4,6 +4,11 @@ import {
   round1,
   validateShares,
 } from "./calc";
+import {
+  isLockedSpeculationParty,
+  LOCKED_COALITION_SHARE,
+  SCENARIO_SHARE_TOTAL,
+} from "./constants";
 import type {
   PresidentialResultsByYear,
   RegisteredVotersByYear,
@@ -11,35 +16,90 @@ import type {
   SpeculationStateInput,
 } from "./types";
 
-/** Valid party shares (≤100%) with a random split among the scenario parties. */
-export function randomSpeculationShares(
+function sumPartyShares(shares: SpeculationShares): number {
+  return Object.values(shares).reduce(
+    (total, value) => total + (Number.isFinite(value) ? value : 0),
+    0
+  );
+}
+
+function splitBudget(
+  partyIds: string[],
+  budget: number,
+  random: () => number
+): SpeculationShares {
+  if (partyIds.length === 0) return {};
+  const weights = partyIds.map(() => 0.2 + random());
+  const weightSum = weights.reduce((total, value) => total + value, 0);
+  const shares: SpeculationShares = {};
+  let running = 0;
+  for (let index = 0; index < partyIds.length; index += 1) {
+    const isLast = index === partyIds.length - 1;
+    const value = isLast
+      ? round1(clamp(budget - running, 0, 100))
+      : round1((weights[index] / weightSum) * budget);
+    shares[partyIds[index]] = value;
+    running = round1(running + value);
+  }
+  return shares;
+}
+
+/**
+ * Realistic split: locked trio ≥65%, selected parties ≥85% (Others shrinks when totals run higher).
+ */
+export function realisticScenarioShares(
   parties: string[],
-  random = Math.random
+  random: () => number = Math.random
 ): SpeculationShares {
   if (parties.length === 0) return {};
 
-  const weights = parties.map(() => 0.15 + random());
-  const weightSum = weights.reduce((total, value) => total + value, 0);
-  const targetSum = round1(62 + random() * 33);
+  const scenarioTotal = round1(
+    clamp(
+      SCENARIO_SHARE_TOTAL + random() * (100 - SCENARIO_SHARE_TOTAL),
+      SCENARIO_SHARE_TOTAL,
+      99.5
+    )
+  );
+  const locked = parties.filter((party) => isLockedSpeculationParty(party));
+  const optional = parties.filter((party) => !isLockedSpeculationParty(party));
 
-  const shares: SpeculationShares = {};
-  let running = 0;
-  for (let index = 0; index < parties.length; index += 1) {
-    const isLast = index === parties.length - 1;
-    const value = isLast
-      ? round1(clamp(targetSum - running, 0, 100))
-      : round1((weights[index] / weightSum) * targetSum);
-    shares[parties[index]] = value;
-    running = round1(running + value);
+  let shares: SpeculationShares = {};
+
+  if (optional.length === 0 || locked.length === 0) {
+    shares = splitBudget(parties, scenarioTotal, random);
+  } else {
+    const minOptionalEach = 1.5;
+    const reservedOptional = round1(optional.length * minOptionalEach);
+    const lockedCeil = round1(
+      clamp(scenarioTotal - reservedOptional, LOCKED_COALITION_SHARE, scenarioTotal)
+    );
+    const lockedBudget = round1(
+      clamp(
+        LOCKED_COALITION_SHARE + random() * (lockedCeil - LOCKED_COALITION_SHARE),
+        LOCKED_COALITION_SHARE,
+        lockedCeil
+      )
+    );
+    const optionalBudget = round1(scenarioTotal - lockedBudget);
+    shares = {
+      ...splitBudget(locked, lockedBudget, random),
+      ...splitBudget(optional, optionalBudget, random),
+    };
   }
 
   const validation = validateShares(shares);
   if (validation.ok) return shares;
 
-  const fallbackEach = round1(
-    Math.min(100 / parties.length, 100 / (parties.length + 1))
-  );
-  return Object.fromEntries(parties.map((party) => [party, fallbackEach]));
+  const each = round1(scenarioTotal / parties.length);
+  return Object.fromEntries(parties.map((party) => [party, each]));
+}
+
+/** @deprecated alias — use realisticScenarioShares */
+export function randomSpeculationShares(
+  parties: string[],
+  random = Math.random
+): SpeculationShares {
+  return realisticScenarioShares(parties, random);
 }
 
 export function randomTurnoutAround(
@@ -83,34 +143,37 @@ function randomWinnerShares(
   winner: string,
   random: () => number
 ): SpeculationShares {
+  const base = realisticScenarioShares(parties, random);
   const others = parties.filter((party) => party !== winner);
-  if (others.length === 0) return randomSpeculationShares(parties, random);
+  if (others.length === 0) return base;
 
-  const winnerShare = round1(50 + random() * 15);
-  const otherBudget = round1(
-    Math.min(100 - winnerShare, 12 + random() * 23)
+  const targetWinner = round1(
+    clamp((base[winner] ?? 30) + 8 + random() * 22, 5, 78)
   );
+  const baseTotal = sumPartyShares(base);
+  const budget = round1(
+    clamp(
+      baseTotal + random() * (100 - baseTotal),
+      Math.max(baseTotal, SCENARIO_SHARE_TOTAL),
+      99.5
+    )
+  );
+  const pool = budget - targetWinner;
   const weights = others.map(() => 0.2 + random());
   const weightSum = weights.reduce((total, value) => total + value, 0);
-  const shares: SpeculationShares = { [winner]: winnerShare };
-
+  const shares: SpeculationShares = { [winner]: targetWinner };
   let running = 0;
   for (let index = 0; index < others.length; index += 1) {
     const isLast = index === others.length - 1;
     const value = isLast
-      ? round1(clamp(otherBudget - running, 0, 100 - winnerShare))
-      : round1((weights[index] / weightSum) * otherBudget);
+      ? round1(clamp(pool - running, 0, 100 - targetWinner))
+      : round1((weights[index] / weightSum) * pool);
     shares[others[index]] = value;
     running = round1(running + value);
   }
 
-  const validation = validateShares(shares);
-  const maxOther = Math.max(0, ...others.map((party) => shares[party] ?? 0));
-  if (validation.ok && (shares[winner] ?? 0) > maxOther) return shares;
-
-  return Object.fromEntries(
-    parties.map((party) => [party, party === winner ? 50 : 0])
-  );
+  if (validateShares(shares).ok) return shares;
+  return realisticScenarioShares(parties, random);
 }
 
 export function buildRandomStateInput(input: {
@@ -136,7 +199,7 @@ export function buildRandomStateInput(input: {
   return {
     stateId: input.stateId,
     turnout: randomTurnoutAround(defaultTurnout, rand),
-    shares: randomSpeculationShares(input.parties, rand),
+    shares: realisticScenarioShares(input.parties, rand),
   };
 }
 
@@ -246,7 +309,7 @@ function ensureApmMinimum(
   const current = shares.APM ?? 0;
   if (current >= minimum) return shares;
   const need = round1(minimum - current);
-  let next = { ...shares, APM: round1(minimum) };
+  let next: SpeculationShares = { ...shares, APM: round1(minimum) };
   next = trimExcessFromLargest(next, parties, need);
   return next;
 }
@@ -256,7 +319,7 @@ export function softenApmOyoShares(
   parties: string[],
   random: () => number = Math.random
 ): SpeculationShares {
-  if (!parties.includes("APM")) return randomSpeculationShares(parties, random);
+  if (!parties.includes("APM")) return realisticScenarioShares(parties, random);
 
   const majors = ["APC", "NDC", "ADC"].filter((party) => parties.includes(party));
   let shares: SpeculationShares;
@@ -265,44 +328,15 @@ export function softenApmOyoShares(
     shares = randomWinnerShares(parties, winner, random);
   } else {
     shares = randomWinnerShares(parties, "APM", random);
-    if ((shares.APM ?? 0) < APM_OYO_MIN_SHARE) {
-      shares = randomWinnerShares(parties, "APM", random);
-    }
   }
 
   shares = ensureApmMinimum(shares, parties, APM_OYO_MIN_SHARE);
+  const maxTotal = 99.5;
+  const over = sumPartyShares(shares) - maxTotal;
+  if (over > 0) shares = trimExcessFromLargest(shares, parties, over);
 
   const validation = validateShares(shares);
-  if (!validation.ok) return randomSpeculationShares(parties, random);
-
-  const apm = shares.APM ?? 0;
-  const highest = Math.max(
-    ...parties.map((party) => shares[party] ?? 0)
-  );
-  if (apm < highest && random() > 0.35) {
-    return shares;
-  }
-  if (apm < highest) {
-    shares = {
-      ...shares,
-      APM: round1(Math.min(100, apm + 2 + random() * 6)),
-    };
-    shares = trimExcessFromLargest(
-      shares,
-      parties,
-      sumPartyShares(shares) - 100
-    );
-    shares = ensureApmMinimum(shares, parties, APM_OYO_MIN_SHARE);
-  }
-
-  return validateShares(shares).ok
+  return validation.ok
     ? shares
-    : randomSpeculationShares(parties, random);
-}
-
-function sumPartyShares(shares: SpeculationShares): number {
-  return Object.values(shares).reduce(
-    (total, value) => total + (Number.isFinite(value) ? value : 0),
-    0
-  );
+    : realisticScenarioShares(parties, random);
 }

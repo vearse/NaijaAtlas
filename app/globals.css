@@ -106,5 +106,5 @@ body {
 }
 
 #nl-badge-frame {
-  display: none;
+  display: none !important;
 }
