@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback, useState } from "react";
 import LandingShell from "@/components/landing/LandingShell";
 import LandingHeader from "@/components/landing/LandingHeader";
 import LandingHero from "@/components/landing/LandingHero";
@@ -13,18 +14,47 @@ import OpenCivicSources from "@/components/landing/OpenCivicSources";
 import SponsorsBand from "@/components/landing/SponsorsBand";
 import LandingFooter from "@/components/landing/LandingFooter";
 import LandingSearch from "@/components/landing/LandingSearch";
+import NigeriaHighlights from "@/components/land/NigeriaHighlights";
+import RandomStoryModal from "@/components/land/RandomStoryModal";
+import WikipediaReaderModal from "@/components/map/WikipediaReaderModal";
 import { useLandingSpotlight } from "@/components/landing/useLandingSpotlight";
 import type { LandingPageData } from "@/lib/landing/landingPageTypes";
 import type { LandingDailyTeaser } from "@/lib/server/loadLandingDailyTeaser";
 import type { LandingFestivalFeature } from "@/lib/server/loadLandingFestivalFeature";
+import type { HubCountryNote } from "@/lib/server/loadLandHubData";
 
 export default function LandingPageClient(
   props: LandingPageData & {
     dailyTeaser: LandingDailyTeaser | null;
     festivalFeature: LandingFestivalFeature | null;
+    highlights: HubCountryNote[];
   }
 ) {
   const { open, close, toggle } = useLandingSpotlight();
+  const [randomStory, setRandomStory] = useState<HubCountryNote | null>(null);
+
+  const pickStory = useCallback(
+    (excludeTitle?: string) => {
+      const pool = props.highlights.filter((n) => n.title !== excludeTitle);
+      const source = pool.length > 0 ? pool : props.highlights;
+      return source[Math.floor(Math.random() * source.length)] ?? null;
+    },
+    [props.highlights]
+  );
+
+  const openRandomStory = useCallback(() => {
+    setRandomStory(pickStory());
+  }, [pickStory]);
+
+  const selectStory = useCallback((note: HubCountryNote) => {
+    setRandomStory(note);
+  }, []);
+
+  const nextRandomStory = useCallback(() => {
+    setRandomStory((current) => pickStory(current?.title));
+  }, [pickStory]);
+
+  const closeRandomStory = useCallback(() => setRandomStory(null), []);
 
   return (
     <LandingShell>
@@ -64,6 +94,26 @@ export default function LandingPageClient(
           statesByRegion={props.statesByRegion}
           totalPollingUnits={props.totalPollingUnits}
         />
+        {props.highlights.length > 0 && (
+          <section id="nigeria-highlights" className="mt-28 scroll-mt-24">
+            <div className="mb-8">
+              <span className="text-label-caps uppercase text-primary block mb-2">
+                Nigeria highlights
+              </span>
+              <h2 className="font-landing-display text-headline-xl text-text-primary font-extrabold">
+                Stories behind the map
+              </h2>
+              <p className="mt-2 max-w-2xl text-body-md text-text-secondary">
+                History, culture and geography notes from across Nigeria.
+              </p>
+            </div>
+            <NigeriaHighlights
+              notes={props.highlights}
+              onRandomStory={openRandomStory}
+              onSelectStory={selectStory}
+            />
+          </section>
+        )}
         <PeopleSpotlight
           spotlight={props.ethnicSpotlight}
           totalCount={props.ethnicGroupCount}
@@ -79,6 +129,12 @@ export default function LandingPageClient(
       </main>
 
       <LandingFooter />
+      <RandomStoryModal
+        story={randomStory}
+        onClose={closeRandomStory}
+        onAnother={nextRandomStory}
+      />
+      <WikipediaReaderModal />
     </LandingShell>
   );
 }

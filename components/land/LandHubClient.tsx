@@ -40,6 +40,10 @@ export default function LandHubClient(data: LandHubData) {
 
   const closeRandomStory = useCallback(() => setRandomStory(null), []);
 
+  const selectStory = useCallback((note: HubCountryNote) => {
+    setRandomStory(note);
+  }, []);
+
   return (
     <HubShell>
       <HubHeader
@@ -90,6 +94,7 @@ export default function LandHubClient(data: LandHubData) {
           <NigeriaHighlights
             notes={data.highlights}
             onRandomStory={openRandomStory}
+            onSelectStory={selectStory}
           />
         </HubSection>
 

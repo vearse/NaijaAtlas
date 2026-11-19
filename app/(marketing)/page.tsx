@@ -3,6 +3,7 @@ import LandingPageClient from "@/components/landing/LandingPageClient";
 import { loadLandingPageData } from "@/lib/server/loadLandingPageData";
 import { loadLandingDailyTeaser } from "@/lib/server/loadLandingDailyTeaser";
 import { loadLandingFestivalFeature } from "@/lib/server/loadLandingFestivalFeature";
+import { loadLandHubData } from "@/lib/server/loadLandHubData";
 import { siteConfig } from "@/lib/seo/site";
 
 export const metadata: Metadata = {
@@ -25,11 +26,13 @@ export default function HomePage() {
   const data = loadLandingPageData();
   const dailyTeaser = loadLandingDailyTeaser();
   const festivalFeature = loadLandingFestivalFeature();
+  const { highlights } = loadLandHubData();
   return (
     <LandingPageClient
       {...data}
       dailyTeaser={dailyTeaser}
       festivalFeature={festivalFeature}
+      highlights={highlights}
     />
   );
 }
